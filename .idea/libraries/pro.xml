@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="pro">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/plugins/qh360/proj.android/ForAssets/pro.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

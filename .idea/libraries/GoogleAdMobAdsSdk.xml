@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="GoogleAdMobAdsSdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/plugins/admob/proj.android/sdk/GoogleAdMobAdsSdk.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,33 @@
+{
+    "project_type": "javascript",
+
+    "debugMode" : 1,
+    "showFPS" : true,
+    "frameRate" : 60,
+    "id" : "gameCanvas",
+    "renderMode" : 0,
+    "engineDir":"frameworks/cocos2d-html5",
+
+    "modules"  : ["cocos2d", "extensions", "external"],
+
+    "jsList" : [
+        "src/resource.js",
+        "src/globals.js",
+        "src/utils/network.js",
+        "src/consts/consts.js",
+        "src/utils/utils.js",
+        "src/events/gameMessageEvent.js",
+
+        "src/views/template/common.js",
+        "src/views/template/headerLayer.js",
+        "src/views/template/sprites.js",
+
+        "src/views/scene/loginScene.js",
+        "src/views/scene/signupScene.js",
+        "src/views/scene/indexScene.js",
+        "src/views/scene/lobbyScene.js",
+
+        "src/controllers/authController.js"
+
+    ]
+}

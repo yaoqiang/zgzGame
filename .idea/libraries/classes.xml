@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="classes">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/cocos/platform/android/java/bin/classes.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
