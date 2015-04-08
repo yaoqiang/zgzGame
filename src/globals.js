@@ -18,3 +18,15 @@ var avatars = [
     ["#touxiang_nan.png","#touxiang_nan_2.png"],
     ["#touxiang_nv.png","#touxiang_nv_2.png"]
 ];
+
+
+var ZGZ = ZGZ || {};
+
+ZGZ.GAME_STATE = {
+    HOLD: 0,
+    READY: 1,
+    PLAY: 2,
+    OVER: 3
+}
+
+ZGZ.SCALE = 1;

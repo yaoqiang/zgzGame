@@ -130,7 +130,7 @@ var LoginLayer = cc.Layer.extend({
 
     onExit: function()
     {
-        this._super();
+        //this._super();
     }
 
 

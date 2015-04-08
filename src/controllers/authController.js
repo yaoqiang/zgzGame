@@ -11,8 +11,6 @@ AuthController.login = function(username, password)
         args : "username="+username+"&password="+password,
         onSuccess : function(result) {
 
-            console.log(result);
-
             if (result.code == 1001)
             {
                 console.log('用户名不存在');
@@ -55,7 +53,6 @@ AuthController.login = function(username, password)
 
 
 AuthController.init = function (data) {
-    console.log(data);
     gPlayer = data.player;
 
     var indexScene = new IndexScene();
