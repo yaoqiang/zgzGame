@@ -29,4 +29,11 @@ ZGZ.GAME_STATE = {
     OVER: 3
 }
 
+//游戏类型
+ZGZ.GAME_TYPE = {
+    T1: 5,  //5人游戏
+    T2: 7   //7人游戏
+}
+
 ZGZ.SCALE = 1;
+

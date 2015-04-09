@@ -3,8 +3,6 @@ var IndexScene = cc.Scene.extend({
 
         this._super();
 
-
-
     },
 
     ctor: function () {
@@ -12,14 +10,6 @@ var IndexScene = cc.Scene.extend({
 
         cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
         cc.spriteFrameCache.addSpriteFrames(res.index_plist, res.index_png);
-
-        var winSize = cc.director.getWinSize();
-
-        //background
-        var bg = cc.Scale9Sprite.createWithSpriteFrameName("beijing.png", cc.rect(1, 1, 15, 15));
-        bg.setContentSize(winSize.width, winSize.height);
-        bg.setAnchorPoint(cc.p(0, 0));
-        this.addChild(bg);
 
 
         //header
@@ -42,6 +32,11 @@ var IndexLayer = cc.Layer.extend({
 
         var winSize = cc.director.getWinSize();
 
+        //background
+        var bg = cc.Sprite.create("#beijing.png");
+        bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
+        bg.scale = ZGZ.SCALE * 10;
+        this.addChild(bg);
 
         this.addChild(new HornSprite());
 

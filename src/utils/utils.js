@@ -1,4 +1,4 @@
-var utils = {};
+var utils = utils || {};
 utils.getAvatar = function (avatar, type) {
     switch (type)
     {
@@ -8,4 +8,4 @@ utils.getAvatar = function (avatar, type) {
         default :
             return  avatars[avatar][1];
     }
-}
+};

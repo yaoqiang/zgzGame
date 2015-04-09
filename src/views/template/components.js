@@ -20,21 +20,53 @@ var HornSprite = cc.Sprite.extend({
 
 
 //牌局中头像框component
-var Avator = cc.Sprite.extend({
+var PlayerLayer = cc.Layer.extend({
     ctor: function (params) {
         this._super();
+
+        this.avatarBg = new cc.Sprite("#kongtouxiang.png");
+
+        this.index = params.index;
         this.position = params.position;
-        this.uid = params.uid;
+        this.anchorX = params.anchor.x;
+        this.anchorY = params.anchor.y;
 
         this.init();
     },
     init: function () {
-        
+        this.avatarBg.setPosition(cc.p(this.position.x, this.position.y));
+        this.avatarBg.anchorX = this.anchorX;
+        this.avatarBg.anchorY = this.anchorY;
+        this.avatarBg.scale = ZGZ.SCALE * 0.5;
+        this.addChild(this.avatarBg);
+
+
     },
     fill: function () {
         
     },
     leave: function () {
+        
+    },
+    fan: function () {
+
+    },
+    action: function () {
+
+    },
+    chat: function () {
+
+    },
+    expression: function () {
+        
+    },
+    identity3: function () {
+
+    },
+    zha: function () {
+
+    },
+    details: function () {
         
     }
 });

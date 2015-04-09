@@ -18,7 +18,7 @@
         "src/utils/utils.js",
         "src/events/gameMessageEvent.js",
 
-        "src/views/template/common.js",
+        "src/views/template/alert.js",
         "src/views/template/headerLayer.js",
         "src/views/template/components.js",
 

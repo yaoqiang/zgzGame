@@ -27,12 +27,33 @@ var GameLayer = cc.Layer.extend({
 
     init: function () {
         cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
+        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+
         var winSize = cc.director.getWinSize();
 
-        var bg = cc.Scale9Sprite.createWithSpriteFrameName("beijing.png", cc.rect(1, 1, 15, 15));
-        bg.setContentSize(winSize.width, winSize.height);
-        bg.setAnchorPoint(cc.p(0, 0));
+        //牌桌
+        var bg = cc.Sprite.create("#beijing.png");
+        bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
+        bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
+
+        //其他玩家
+        switch (this.type)
+        {
+            case ZGZ.GAME_TYPE.T1:
+                var player1 = new PlayerLayer({index: 0, position: {x: 20, y: 100}, anchor: {x: 0, y: 0}});
+                var player2 = new PlayerLayer({index: 0, position: {x: 20, y: 300}, anchor: {x: 0, y: 0}});
+                var player3 = new PlayerLayer({index: 0, position: {x: winSize.width-20, y: 300}, anchor: {x: 1, y: 0}});
+                var player4 = new PlayerLayer({index: 0, position: {x: winSize.width-20, y: 100}, anchor: {x: 1, y: 0}});
+
+                this.addChild(player1);
+                this.addChild(player2);
+                this.addChild(player3);
+                this.addChild(player4);
+                break;
+            case ZGZ.GAME_TYPE.T2:
+                break;
+        }
 
     },
 
@@ -52,11 +73,10 @@ var GameLayer = cc.Layer.extend({
         
     },
 
-    fanOut: function () {
+    fan: function () {
 
     },
-    
-    
+
     over: function () {
 
     }

@@ -8,14 +8,7 @@ var LobbyScene = cc.Scene.extend({
     ctor: function (data, lobbyId) {
         this._super();
 
-        var winSize = cc.director.getWinSize();
-
-        //background
-        var bg = cc.Scale9Sprite.createWithSpriteFrameName("beijing.png", cc.rect(1, 1, 15, 15));
-        bg.setContentSize(winSize.width, winSize.height);
-        bg.setAnchorPoint(cc.p(0, 0));
-        this.addChild(bg);
-
+        cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
 
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId]});
@@ -34,9 +27,14 @@ var LobbyLayer = cc.Layer.extend({
     ctor: function (data) {
         this._super();
         this.addChild(new HornSprite());
-        cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
 
         var winSize = cc.director.getWinSize();
+
+        //background
+        var bg = cc.Sprite.create("#beijing.png");
+        bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
+        bg.scale = ZGZ.SCALE * 10;
+        this.addChild(bg);
 
 
         var width=-200, height=250;
