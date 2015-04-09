@@ -1,6 +1,7 @@
 var SignupScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
+
         var layer = new SignupLayer();
         this.addChild(layer);
     }

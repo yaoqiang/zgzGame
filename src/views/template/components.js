@@ -1,3 +1,4 @@
+// 小喇叭component
 var HornSprite = cc.Sprite.extend({
     ctor: function () {
         this._super();
@@ -16,3 +17,24 @@ var HornSprite = cc.Sprite.extend({
     }
 });
 
+
+
+//牌局中头像框component
+var Avator = cc.Sprite.extend({
+    ctor: function (params) {
+        this._super();
+        this.position = params.position;
+        this.uid = params.uid;
+
+        this.init();
+    },
+    init: function () {
+        
+    },
+    fill: function () {
+        
+    },
+    leave: function () {
+        
+    }
+});

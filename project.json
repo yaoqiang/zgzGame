@@ -20,12 +20,13 @@
 
         "src/views/template/common.js",
         "src/views/template/headerLayer.js",
-        "src/views/template/sprites.js",
+        "src/views/template/components.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
         "src/views/scene/indexScene.js",
         "src/views/scene/lobbyScene.js",
+        "src/views/scene/gameScene.js",
 
         "src/controllers/authController.js"
 
