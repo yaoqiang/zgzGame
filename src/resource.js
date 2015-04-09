@@ -32,6 +32,7 @@ var g_resources = [
     res.common_plist,
     res.login_plist,
     res.index_plist,
+    res.room_plist,
     res.game_plist
     //fnt
 

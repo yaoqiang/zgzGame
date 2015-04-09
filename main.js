@@ -6,7 +6,8 @@ cc.game.onStart = function(){
 	cc.view.resizeWithBrowserSize(true);
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
-        cc.director.runScene(new GameScene(ZGZ.GAME_TYPE.T1));
+        //cc.director.runScene(new GameScene(ZGZ.GAME_TYPE.T1));
+        cc.director.runScene(new GameScene(5));
     }, this);
 };
 cc.game.run();
