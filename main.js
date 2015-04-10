@@ -7,7 +7,7 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         //cc.director.runScene(new GameScene(ZGZ.GAME_TYPE.T1));
-        cc.director.runScene(new GameScene(5));
+        cc.director.runScene(new LoginScene());
     }, this);
 };
 cc.game.run();

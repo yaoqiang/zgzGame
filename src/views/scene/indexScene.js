@@ -139,11 +139,7 @@ var IndexLayer = cc.Layer.extend({
         node.runAction(seq);
 
         this.scheduleOnce(function () {
-            Network.enterLobby(lobbyId, function (data) {
-                console.log(data);
-                var scene = new LobbyScene(data, lobbyId);
-                cc.director.runScene(new cc.TransitionFade(1.2, scene));
-            });
+            GameController.enterLobby(lobbyId);
         }, 1);
     }
 });

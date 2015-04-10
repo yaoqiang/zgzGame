@@ -3,7 +3,6 @@ var LobbyScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
 
-
     },
     ctor: function (data, lobbyId) {
         this._super();
@@ -91,8 +90,6 @@ var LobbyLayer = cc.Layer.extend({
             }
         }
 
-
-
         return true;
 
 
@@ -112,9 +109,7 @@ var LobbyLayer = cc.Layer.extend({
 
             case ccui.Widget.TOUCH_ENDED:
                 console.log("Touch Up");
-                Network.join(sender.room.id, function (data) {
-                    console.log(data);
-                });
+                GameController.join(sender.room.id);
                 break;
 
             case ccui.Widget.TOUCH_CANCELED:
@@ -125,4 +120,4 @@ var LobbyLayer = cc.Layer.extend({
                 break;
         }
     }
-})
+});

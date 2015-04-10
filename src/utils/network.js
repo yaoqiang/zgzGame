@@ -35,6 +35,7 @@ var Network = {
     onError : function(status) {
     },
 
+    //连接pomelo: connector server
     enter: function(uid, token, cb) {
         pomelo.init({
             host: gGameSvrAddr.host,
@@ -56,18 +57,5 @@ var Network = {
                 });
             });
         });
-    },
-    
-    enterLobby: function (lobbyId, cb) {
-        pomelo.request(route.enterLobby, {lobbyId: lobbyId}, function(data) {
-            cb(data);
-        });
-    },
-    
-    join: function (roomId, cb) {
-        pomelo.request(route.join, {roomId: roomId}, function(data) {
-            cb(data);
-        });
     }
-
 };
