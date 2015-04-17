@@ -6,4 +6,6 @@ zgzGame
 ===
 install：
 拷贝cocos2d-js目录下frameworks目录和tools目录到程序根目录；
-cocos2d-js v3.1
+
+===
+based on cocos2d-js v3.1
