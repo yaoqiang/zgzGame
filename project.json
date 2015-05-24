@@ -21,6 +21,7 @@
         "src/views/template/alert.js",
         "src/views/template/headerLayer.js",
         "src/views/template/components.js",
+        "src/views/template/HelpLayer.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",

@@ -74,11 +74,24 @@ var HeaderLayer = cc.Layer.extend({
         shoppingCar.setScale(0.9);
         rightTopBg.addChild(shoppingCar);
 
-        var help = cc.Sprite.create("#wenhao.png");
-        help.setAnchorPoint(cc.p(0, 0.5));
-        help.setPosition(100, rightTopBg.height/2);
-        help.setScale(0.9);
-        rightTopBg.addChild(help);
+//        var help = cc.Sprite.create("#wenhao.png");
+//        help.setAnchorPoint(cc.p(0, 0.5));
+//        help.setPosition(100, rightTopBg.height/2);
+//        help.setScale(0.9);
+//        rightTopBg.addChild(help);
+
+        // create help button sprite
+        var helpNormal = new cc.Sprite("#wenhao.png");
+        helpNormal.attr({scale:0.9});
+        var helpSelected = new cc.Sprite("#wenhao.png");
+        helpSelected.attr({scale:0.8});
+        var helpDisabled = new cc.Sprite("#wenhao.png");
+
+        // create help button and added it to header
+        var helpButton = new cc.MenuItemSprite(helpNormal, helpSelected, helpDisabled, this.onHelpButton, this);
+        var menu = new cc.Menu(helpButton);
+        menu.setPosition(125, rightTopBg.height/2);
+        rightTopBg.addChild(menu);
 
         var setting = cc.Sprite.create("#shezhi_icon.png");
         setting.setAnchorPoint(cc.p(0, 0.5));
@@ -104,5 +117,25 @@ var HeaderLayer = cc.Layer.extend({
     
     profile: function () {
         console.log('profile clicked.');
+    },
+
+    /**
+     * When click the help button(?) on right side of top screen.
+     */
+    onHelpButton:function(){
+        this.onButtonEffect();
+        var scene = new cc.Scene();
+        scene.addChild(new HelpLayer());
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+    },
+
+    /**
+     * Playing sounds when click the button.
+     */
+    onButtonEffect:function(){
+        if (ZGZ.SOUND) {
+            var s = cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.fireEffect_wav : res.fireEffect_mp3);
+        }
     }
+
 })

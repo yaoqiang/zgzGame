@@ -1,5 +1,6 @@
 var gGameSvrAddr = {
-    host: '127.0.0.1',
+     //host: '192.243.119.61',
+     host: '127.0.0.1',
     port: 3014
 };
 
@@ -37,3 +38,5 @@ ZGZ.GAME_TYPE = {
 
 ZGZ.SCALE = 1;
 
+//sound
+ZGZ.SOUND = true;
