@@ -14,8 +14,11 @@ var res = {
     login_plist : "res/login_scene.plist",
     index_plist : "res/index.plist",
     room_plist : "res/room.plist",
-    game_plist : "res/game.plist"
+    game_plist : "res/game.plist",
 
+    //effect
+    fireEffect_mp3 : 'res/music/fireEffect.mp3',
+    fireEffect_wav : 'res/music/fireEffect.wav'
 };
 
 var g_resources = [
@@ -33,7 +36,7 @@ var g_resources = [
     res.login_plist,
     res.index_plist,
     res.room_plist,
-    res.game_plist
+    res.game_plist,
     //fnt
 
     //tmx
@@ -41,4 +44,6 @@ var g_resources = [
     //bgm
 
     //effect
+    res.fireEffect_wav,
+    res.fireEffect_mp3
 ];
