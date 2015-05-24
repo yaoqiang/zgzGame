@@ -4,6 +4,12 @@ var gGameSvrAddr = {
     port: 3014
 };
 
+var gWebSvrAddr = {
+    host: 'http://127.0.0.1',
+    //host: '192.243.119.61',
+    port: '3001'
+}
+
 var gPlayer = {};
 
 
@@ -26,8 +32,9 @@ var ZGZ = ZGZ || {};
 ZGZ.GAME_STATE = {
     HOLD: 0,
     READY: 1,
-    PLAY: 2,
-    OVER: 3
+    TALK: 2,
+    PLAY: 3,
+    OVER: 4
 }
 
 //游戏类型
