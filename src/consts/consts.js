@@ -1,4 +1,4 @@
 var route = {
-    enterLobby: 'game.gameHandler.enterLobby',
+    enterLobby: 'connector.entryHandler.enterLobby',
     join: 'game.gameHandler.join'
 }
