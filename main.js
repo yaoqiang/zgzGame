@@ -7,7 +7,26 @@ cc.game.onStart = function(){
     //load resources
     cc.LoaderScene.preload(g_resources, function () {
         //cc.director.runScene(new GameScene(ZGZ.GAME_TYPE.T1));
-        cc.director.runScene(new LoginScene());
+
+        //cc.director.runScene(new LoginScene());
+
+        debug();
+
+
     }, this);
 };
 cc.game.run();
+
+
+function debug() {
+    var uid = 1;
+    var token = 'f63b5f48c154286bfe1472cc9f241e6b';
+    Network.enter(uid, token, function (data) {
+        if (data.code !== 200)
+        {
+            console.log('err.');
+            return;
+        }
+        AuthController.init(data);
+    });
+}
