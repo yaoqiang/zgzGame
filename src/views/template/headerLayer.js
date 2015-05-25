@@ -84,7 +84,7 @@ var HeaderLayer = cc.Layer.extend({
         var helpNormal = new cc.Sprite("#wenhao.png");
         helpNormal.attr({scale:0.9});
         var helpSelected = new cc.Sprite("#wenhao.png");
-        helpSelected.attr({scale:0.8});
+        helpSelected.attr({scale:1});
         var helpDisabled = new cc.Sprite("#wenhao.png");
 
         // create help button and added it to header
