@@ -6,9 +6,9 @@ var GameController = GameController || {};
  * 加入游戏
  * @param roomId
  */
-GameController.join = function (roomId)
+GameController.join = function (roomId, lobbyId)
 {
-    pomelo.request(route.join, {roomId: roomId}, function(data) {
+    pomelo.request(route.join, {roomId: roomId, lobbyId: lobbyId}, function(data) {
         cc.log("new :", data);
     });
 };
