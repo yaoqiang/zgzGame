@@ -8,7 +8,7 @@ var GameController = GameController || {};
  */
 GameController.join = function (roomId, lobbyId)
 {
-    pomelo.request(route.join, {roomId: roomId, lobbyId: lobbyId}, function(data) {
+    pomelo.request(route.join, {roomId: roomId}, function(data) {
         cc.log("new :", data);
     });
 };
