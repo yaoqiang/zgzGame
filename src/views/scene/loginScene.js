@@ -29,9 +29,10 @@ var LoginLayer = cc.Layer.extend({
         bg.setPosition(size.width/2, size.height/2);
         this.addChild(bg);
 
-        var logo = cc.Sprite.create("#game_logo.png");
+        //var logo = cc.Sprite.create("#game_logo.png");
+        var logo = new cc.LabelTTF("豆面扎股子", "AmericanTypewriter", 42);
+        logo.setColor(cc.color.YELLOW);
         logo.setPosition(cc.p(bg.width/2, 350));
-        logo.setScale(0.7);
         bg.addChild(logo);
 
         var blockSize = cc.size(180, 30);
