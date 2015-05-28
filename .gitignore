@@ -1,6 +1,7 @@
 reated by .ignore support plugin (hsz.mobi)
 
 #ignore
-frameworks
-runtime
-tools
+/frameworks
+/runtime
+/tools
+/.idea
