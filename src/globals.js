@@ -46,4 +46,6 @@ ZGZ.GAME_TYPE = {
 ZGZ.SCALE = 1;
 
 //sound
-ZGZ.SOUND = true;
+ZGZ.SOUND = true;// 背景音乐
+ZGZ.SOUND_EFFECT = true;//游戏，按钮声效
+ZGZ.VIBRATION_EFFECT = true;//游戏振动
