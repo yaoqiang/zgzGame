@@ -4,4 +4,4 @@ reated by .ignore support plugin (hsz.mobi)
 /frameworks
 /runtime
 /tools
-/.idea
+.idea/*
