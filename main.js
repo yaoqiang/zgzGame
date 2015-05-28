@@ -8,9 +8,9 @@ cc.game.onStart = function(){
     cc.LoaderScene.preload(g_resources, function () {
         //cc.director.runScene(new GameScene(ZGZ.GAME_TYPE.T1));
 
-        //cc.director.runScene(new LoginScene());
+        cc.director.runScene(new LoginScene());
 
-        debug();
+        //debug();
 
 
     }, this);
