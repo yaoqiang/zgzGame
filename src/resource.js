@@ -4,6 +4,7 @@ var res = {
 
     //image
     common_png: "res/common.png",
+    other_png: "res/other.png",
     login_png : "res/login_scene.png",
     index_png : "res/index.png",
     room_png : "res/room.png",
@@ -11,6 +12,7 @@ var res = {
 
     //plist
     common_plist: "res/common.plist",
+    other_plist: "res/other.plist",
     login_plist : "res/login_scene.plist",
     index_plist : "res/index.plist",
     room_plist : "res/room.plist",
@@ -26,6 +28,7 @@ var g_resources = [
 
     //
     res.common_png,
+    res.other_png,
     res.login_png,
     res.index_png,
     res.room_png,
@@ -33,6 +36,7 @@ var g_resources = [
 
     //plist
     res.common_plist,
+    res.other_plist,
     res.login_plist,
     res.index_plist,
     res.room_plist,

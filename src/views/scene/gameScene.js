@@ -1,12 +1,9 @@
 var GameScene = cc.Scene.extend({
-    onEnter: function () {
-
-        this._super();
-
-    },
-
     ctor: function (type) {
         this._super();
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
+        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+
         var layer = new GameLayer(type);
         this.addChild(layer);
 
@@ -26,8 +23,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     init: function () {
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+
 
         var winSize = cc.director.getWinSize();
 
@@ -36,6 +32,8 @@ var GameLayer = cc.Layer.extend({
         bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
+
+        this.addChild(new HornSpriteForGame());
 
         //其他玩家
         switch (this.type)

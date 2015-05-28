@@ -1,13 +1,11 @@
 var LobbyScene = cc.Scene.extend({
     lobbyTitle: ['扎股子-五人', '扎股子-七人'],
-    onEnter: function () {
-        this._super();
-
-    },
     ctor: function (data, lobbyId) {
         this._super();
 
         cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
+        cc.spriteFrameCache.addSpriteFrames(res.other_plist, res.other_png);
+
 
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId]});
@@ -15,9 +13,6 @@ var LobbyScene = cc.Scene.extend({
 
         var lobbyLayer = new LobbyLayer(data);
         this.addChild(lobbyLayer);
-    },
-    onExit: function () {
-        this._super();
     }
 });
 
@@ -88,14 +83,53 @@ var LobbyLayer = cc.Layer.extend({
             {
                 width += 400;
             }
+
+
         }
+
+        var back = cc.Sprite.create("#btn_fanhui.png");
+        back.setAnchorPoint(cc.p(0, 0));
+        back.setPosition(cc.p(0, 0));
+        back.scale = ZGZ.SCALE * 0.7
+        this.addChild(back);
+
+        //template
+        var mission = cc.Sprite.create("#renwu.png");
+        mission.setAnchorPoint(cc.p(0, 0));
+        mission.setPosition(cc.p(120, 10));
+        mission.scale = ZGZ.SCALE * 1
+        this.addChild(mission);
+
+        var rank = cc.Sprite.create("#paihang.png");
+        rank.setAnchorPoint(cc.p(0, 0));
+        rank.setPosition(cc.p(240, 10));
+        rank.scale = ZGZ.SCALE * 1
+        this.addChild(rank);
+
+        var exchange = cc.Sprite.create("#duihuan.png");
+        exchange.setAnchorPoint(cc.p(0, 0));
+        exchange.setPosition(cc.p(360, 10));
+        exchange.scale = ZGZ.SCALE * 1
+        this.addChild(exchange);
+
+        var message = cc.Sprite.create("#tongzhi.png");
+        message.setAnchorPoint(cc.p(0, 0));
+        message.setPosition(cc.p(480, 10));
+        message.scale = ZGZ.SCALE * 1
+        this.addChild(message);
+
+
+
+
+        var quickStart = cc.Sprite.create("#kuaisuyouxi.png");
+        quickStart.setAnchorPoint(cc.p(1, 0));
+        quickStart.setPosition(cc.p(winSize.width, 0));
+        quickStart.scale = ZGZ.SCALE * 0.6
+        this.addChild(quickStart);
 
         return true;
 
 
-    },
-    onExit: function () {
-        this._super();
     },
     touchEvent: function (sender, type) {
         switch (type) {

@@ -10,6 +10,7 @@ var IndexScene = cc.Scene.extend({
 
         cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
         cc.spriteFrameCache.addSpriteFrames(res.index_plist, res.index_png);
+        cc.spriteFrameCache.addSpriteFrames(res.other_plist, res.other_png);
 
 
         //header
@@ -140,6 +141,6 @@ var IndexLayer = cc.Layer.extend({
 
         this.scheduleOnce(function () {
             GameController.enterLobby(lobbyId);
-        }, 1);
+        }, 2);
     }
 });

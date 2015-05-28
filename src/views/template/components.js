@@ -17,14 +17,32 @@ var HornSprite = cc.Sprite.extend({
     }
 });
 
+// 小喇叭component
+var HornSpriteForGame = cc.Sprite.extend({
+    ctor: function () {
+        this._super();
+        var winSize = cc.director.getWinSize();
+        //horn background
+        var hornBg = cc.Sprite.create("#laba_tiao.png");
+        hornBg.setScale(0.7);
+        hornBg.setPosition(winSize.width / 2, winSize.height - 35);
+        //horn icon
+        var hornIcon = cc.Sprite.create("#laba_icon.png");
+        hornIcon.setAnchorPoint(0, 0);
+        hornIcon.setPosition(10, 8);
+        hornBg.addChild(hornIcon);
+        this.addChild(hornBg);
+        return true;
+    }
+});
+
 
 
 //牌局中头像框component
 var PlayerLayer = cc.Layer.extend({
     ctor: function (params) {
         this._super();
-
-        this.avatarBg = new cc.Sprite("#kongtouxiang.png");
+        this.avatarBg = new cc.Sprite("#touxiangkuang.png");
 
         this.index = params.index;
         this.position = params.position;
