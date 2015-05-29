@@ -50,7 +50,7 @@ var IndexLayer = cc.Layer.extend({
         var disabled2 = cc.Sprite.create("#mianban_05.png", cc.rect(0, 33*2, 126, 138));
 
         //五人场
-        var lobbyOf5 = cc.MenuItemSprite.create(normal, selected, disabled, this.onMenuCallback, this);
+        var lobbyOf5 = cc.MenuItemSprite(normal, selected, disabled, this.onMenuCallback, this);
         this.lobbyOf5Icon = cc.Sprite.create("#renwu_02.png");
         this.lobbyOf5Icon.scale = 0.9;
         this.lobbyOf5Icon.setPosition(lobbyOf5.width/2, lobbyOf5.height/2+30);
@@ -75,7 +75,7 @@ var IndexLayer = cc.Layer.extend({
         lobbyOf5.addChild(labelBg);
 
         //七人场
-        var lobbyOf7 = cc.MenuItemSprite.create(normal2, selected2, disabled2, this.onMenuCallback2, this);
+        var lobbyOf7 = cc.MenuItemSprite(normal2, selected2, disabled2, this.onMenuCallback2, this);
         lobbyOf7.setScale(0.75);
         this.lobbyOf7Icon = cc.Sprite.create("#renwu_03.png");
         this.lobbyOf7Icon.scale = 0.9;

@@ -87,11 +87,27 @@ var LobbyLayer = cc.Layer.extend({
 
         }
 
-        var back = cc.Sprite.create("#btn_fanhui.png");
+        //var back = cc.Sprite.create("#btn_fanhui.png");
+        //back.setAnchorPoint(cc.p(0, 0));
+        //back.setPosition(cc.p(0, 0));
+        //back.scale = ZGZ.SCALE * 0.7
+        //this.addChild(back);
+
+        var back = cc.MenuItemImage(
+            "#btn_fanhui.png",
+            "#btn_fanhui.png",
+            function () {
+                var scene = new IndexScene();
+                cc.director.runScene(new cc.TransitionFade(1.2, scene));
+            },
+            this
+        );
         back.setAnchorPoint(cc.p(0, 0));
-        back.setPosition(cc.p(0, 0));
-        back.scale = ZGZ.SCALE * 0.7
-        this.addChild(back);
+        var backMenu = cc.Menu(back);
+        backMenu.setAnchorPoint(cc.p(0, 0));
+        backMenu.setPosition(cc.p(0, 0));
+        backMenu.scale = ZGZ.SCALE * 0.7;
+        this.addChild(backMenu);
 
         //template
         var mission = cc.Sprite.create("#renwu.png");

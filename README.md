@@ -9,3 +9,8 @@ install：
 
 ===
 based on cocos2d-js v3.5
+
+
+===
+Native编译时候需要在project.json的jsList数组第一行添加
+"src/pomelo-cocos2d-jsb/index.js",

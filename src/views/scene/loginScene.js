@@ -1,7 +1,9 @@
 var LoginScene = cc.Scene.extend({
-    onEnter: function () {
+    ctor: function () {
 
         this._super();
+        cc.spriteFrameCache.addSpriteFrames(res.login_plist, res.login_png);
+
 
         var layer = new LoginLayer();
         this.addChild(layer);
@@ -19,8 +21,6 @@ var LoginLayer = cc.Layer.extend({
         this._super();
 
         var size = cc.director.getWinSize();
-
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist, res.login_png);
 
 
         var bg = cc.Sprite.create("#mianban.png");
@@ -54,14 +54,14 @@ var LoginLayer = cc.Layer.extend({
         bg.addChild(this.pwd);
 
         //登录
-        this.btnLogin = cc.MenuItemSprite.create(
-            cc.Sprite.create("#kaishiyouxi.png"),
-            cc.Sprite.create("#kaishiyouxi.png"),
+        this.btnLogin = cc.MenuItemImage(
+            "#kaishiyouxi.png",
+            "#kaishiyouxi.png",
             this.onLogin,
             this
         );
 
-        this.menuLogin = cc.Menu.create(this.btnLogin);
+        this.menuLogin = cc.Menu(this.btnLogin);
         this.menuLogin.setPosition(cc.p(bg.width/2 + 40, 180));
         this.menuLogin.setScale(0.8);
 
@@ -74,14 +74,14 @@ var LoginLayer = cc.Layer.extend({
         bg.addChild(this.quickLogin);
 
         //注册
-        this.register = cc.MenuItemSprite.create(
-            cc.Sprite.create("#wanchengzhuce.png"),
-            cc.Sprite.create("#wanchengzhuce.png"),
+        this.register = cc.MenuItemImage(
+            "#wanchengzhuce.png",
+            "#wanchengzhuce.png",
             this.onSignup,
             this
         );
 
-        this.registerMenu = cc.Menu.create(this.register);
+        this.registerMenu = cc.Menu(this.register);
         this.registerMenu.setPosition(cc.p(bg.width/2-80, 42));
         this.registerMenu.setScale(0.65);
 
@@ -114,7 +114,6 @@ var LoginLayer = cc.Layer.extend({
         var password = this.pwd.getString();
         if (username === '请输入账号' || password === '请输入密码')
         {
-            console.log('invalid input');
             prompt.fade('用户名密码不能为空');
             return;
         }
@@ -127,13 +126,7 @@ var LoginLayer = cc.Layer.extend({
     onSignup: function () {
         var scene = new SignupScene();
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
-    },
-
-    onExit: function()
-    {
-        //this._super();
     }
 
 
 });
-
