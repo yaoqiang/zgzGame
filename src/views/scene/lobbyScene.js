@@ -93,7 +93,7 @@ var LobbyLayer = cc.Layer.extend({
         //back.scale = ZGZ.SCALE * 0.7
         //this.addChild(back);
 
-        var back = cc.MenuItemImage(
+        var back = new cc.MenuItemImage(
             "#btn_fanhui.png",
             "#btn_fanhui.png",
             function () {
@@ -102,10 +102,10 @@ var LobbyLayer = cc.Layer.extend({
             },
             this
         );
-        back.setAnchorPoint(cc.p(0, 0));
-        var backMenu = cc.Menu(back);
-        backMenu.setAnchorPoint(cc.p(0, 0));
-        backMenu.setPosition(cc.p(0, 0));
+        back.setAnchorPoint(0, 0);
+        var backMenu = new cc.Menu(back);
+        backMenu.setAnchorPoint(0, 0);
+        backMenu.setPosition(0, 0);
         backMenu.scale = ZGZ.SCALE * 0.7;
         this.addChild(backMenu);
 
