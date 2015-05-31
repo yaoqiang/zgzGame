@@ -9,6 +9,7 @@ var res = {
     index_png : "res/index.png",
     room_png : "res/room.png",
     game_png : "res/game.png",
+    anniu_png : "res/anniu.png",
 
     //plist
     common_plist: "res/common.plist",
@@ -20,7 +21,9 @@ var res = {
 
     //effect
     fireEffect_mp3 : 'res/music/fireEffect.mp3',
-    fireEffect_wav : 'res/music/fireEffect.wav'
+    fireEffect_wav : 'res/music/fireEffect.wav',
+    buttonEffect1_wav : 'res/music/buttonEffect1.wav',
+    background_mp3 : 'res/music/background.mp3'
 };
 
 var g_resources = [
@@ -33,7 +36,7 @@ var g_resources = [
     res.index_png,
     res.room_png,
     res.game_png,
-
+    res.anniu_png,
     //plist
     res.common_plist,
     res.other_plist,

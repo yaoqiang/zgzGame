@@ -12,16 +12,22 @@ var HelpLayer = cc.Layer.extend({
         this.addChild(bg);
 
         // create back button sprite
-        var backNormal = new cc.Sprite("#fanhuianniu.png");
+        cc.MenuItemFont.setFontName("Arial");
+        cc.MenuItemFont.setFontSize(18);
+        var view = new cc.MenuItemFont("返回");
+        view.attr({x:-5,y:-1});
+
+        var backNormal = new cc.Sprite(res.anniu_png);
         backNormal.attr({scale:0.9});
-        var backSelected = new cc.Sprite("#fanhuianniu.png");
-        backSelected.attr({scale:1});
-        var backDisabled = new cc.Sprite("#fanhuianniu.png");
+        var backSelected = new cc.Sprite(res.anniu_png);
+        backSelected.attr({scale:0.9});
+        var backDisabled = new cc.Sprite(res.anniu_png);
 
         // create back button
         var backButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackCallback, this);
         var HeaderMenu = new cc.Menu(backButton);
         HeaderMenu.attr({x:80, y:size.height - 50});
+        HeaderMenu.addChild(view);
         this.addChild(HeaderMenu);
 
         var title = new cc.LabelTTF("设置", "Arial", 21, 10 );
@@ -53,7 +59,7 @@ var HelpLayer = cc.Layer.extend({
         var musicState = ZGZ.SOUND ? 0 : 1;
         musicButton.setSelectedIndex(musicState);
         var musicMenu = new cc.Menu(musicButton);
-        musicMenu.attr({x:150, y: 28});
+        musicMenu.attr({x:160, y: 28});
         musicItemsBg.addChild(musicMenu);
 
         // Sound effect setting items.
@@ -77,11 +83,11 @@ var HelpLayer = cc.Layer.extend({
             new cc.MenuItemFont("On"),
             new cc.MenuItemFont("Off")
         );
-        soundEffectButton.setCallback(this.onSoundControl );
+        soundEffectButton.setCallback(this.onEffectControl );
         var soundEffectState = ZGZ.SOUND_EFFECT ? 0 : 1;
         soundEffectButton.setSelectedIndex(soundEffectState);
         var soundEffectMenu = new cc.Menu(soundEffectButton);
-        soundEffectMenu.attr({x:150, y: 28});
+        soundEffectMenu.attr({x:160, y: 28});
         soundEffectBg.addChild(soundEffectMenu);
 
         // questions setting items
@@ -99,14 +105,20 @@ var HelpLayer = cc.Layer.extend({
         questionsLabel.setColor(cc.color.YELLOW);
         questionsEffectBg.addChild(questionsLabel);
 
-        var questionsNormal = new cc.Sprite("#jianou.png");
+        cc.MenuItemFont.setFontName("Arial");
+        cc.MenuItemFont.setFontSize(18);
+        var view1 = new cc.MenuItemFont("查看");
+        view1.attr({x:-5,y:-1});
+
+        var questionsNormal = new cc.Sprite(res.anniu_png);
         questionsNormal.attr({scale:0.9});
-        var questionsSelected = new cc.Sprite("#jianou.png");
-        questionsSelected.attr({scale:1});
-        var questionsDisabled = new cc.Sprite("#jianou.png");
+        var questionsSelected = new cc.Sprite(res.anniu_png);
+        questionsSelected.attr({scale:0.9});
+        var questionsDisabled = new cc.Sprite(res.anniu_png);
         var questionsButton = new cc.MenuItemSprite(questionsNormal, questionsSelected, questionsDisabled, this.onQuestionsCallback, this);
         var questionsMenu = new cc.Menu(questionsButton);
-        questionsMenu.attr({x:150, y: 28});
+        questionsMenu.attr({x:180, y: 28});
+        questionsMenu.addChild(view1);
         questionsEffectBg.addChild(questionsMenu);
 
         // game vibration setting items.
@@ -134,7 +146,7 @@ var HelpLayer = cc.Layer.extend({
         var vibrationEffectState = ZGZ.VIBRATION_EFFECT ? 0 : 1;
         vibrationEffectButton.setSelectedIndex(vibrationEffectState);
         var vibrationEffectMenu = new cc.Menu(vibrationEffectButton);
-        vibrationEffectMenu.attr({x:150, y: 28});
+        vibrationEffectMenu.attr({x:160, y: 28});
         vibrationEffectBg.addChild(vibrationEffectMenu);
 
         // feedback setting items
@@ -152,14 +164,20 @@ var HelpLayer = cc.Layer.extend({
         feedbackLabel.setColor(cc.color.YELLOW);
         feedbackEffectBg.addChild(feedbackLabel);
 
-        var feedbackNormal = new cc.Sprite("#jianou.png");
+        cc.MenuItemFont.setFontName("Arial");
+        cc.MenuItemFont.setFontSize(18);
+        var view2 = new cc.MenuItemFont("查看");
+        view2.attr({x:-5,y:-1});
+
+        var feedbackNormal = new cc.Sprite(res.anniu_png);
         feedbackNormal.attr({scale:0.9});
-        var feedbackSelected = new cc.Sprite("#jianou.png");
-        feedbackSelected.attr({scale:1});
-        var feedbackDisabled = new cc.Sprite("#jianou.png");
-        var feedbackButton = new cc.MenuItemSprite(feedbackNormal, feedbackSelected, feedbackDisabled, this.onQuestionsCallback, this);
+        var feedbackSelected = new cc.Sprite(res.anniu_png);
+        feedbackSelected.attr({scale:0.9});
+        var feedbackDisabled = new cc.Sprite(res.anniu_png);
+        var feedbackButton = new cc.MenuItemSprite(feedbackNormal, feedbackSelected, feedbackDisabled, this.onFeedbackCallback, this);
         var feedbackMenu = new cc.Menu(feedbackButton);
-        feedbackMenu.attr({x:150, y: 28});
+        feedbackMenu.attr({x:180, y: 28});
+        feedbackMenu.addChild(view2);
         feedbackEffectBg.addChild(feedbackMenu);
 
         // about setting items
@@ -177,14 +195,20 @@ var HelpLayer = cc.Layer.extend({
         aboutLabel.setColor(cc.color.YELLOW);
         aboutEffectBg.addChild(aboutLabel);
 
-        var aboutNormal = new cc.Sprite("#jianou.png");
+        cc.MenuItemFont.setFontName("Arial");
+        cc.MenuItemFont.setFontSize(18);
+        var view3 = new cc.MenuItemFont("查看");
+        view3.attr({x:-5,y:-1});
+
+        var aboutNormal = new cc.Sprite(res.anniu_png);
         aboutNormal.attr({scale:0.9});
-        var aboutSelected = new cc.Sprite("#jianou.png");
-        aboutSelected.attr({scale:1});
-        var aboutDisabled = new cc.Sprite("#jianou.png");
+        var aboutSelected = new cc.Sprite(res.anniu_png);
+        aboutSelected.attr({scale:0.9});
+        var aboutDisabled = new cc.Sprite(res.anniu_png);
         var aboutButton = new cc.MenuItemSprite(aboutNormal, aboutSelected, aboutDisabled, this.onQuestionsCallback, this);
         var aboutMenu = new cc.Menu(aboutButton);
-        aboutMenu.attr({x:150, y: 28});
+        aboutMenu.attr({x:180, y: 28});
+        aboutMenu.addChild(view3);
         aboutEffectBg.addChild(aboutMenu);
 
         // switchUser setting items
@@ -195,21 +219,27 @@ var HelpLayer = cc.Layer.extend({
         this.addChild(switchUserEffectBg);
 
         cc.MenuItemFont.setFontName("Arial");
-        cc.MenuItemFont.setFontSize(24);
-        var switchUserLabel = new cc.MenuItemFont("某某某");
+        cc.MenuItemFont.setFontSize(20);
+        var switchUserLabel = new cc.MenuItemFont(gPlayer.nickName);
         switchUserLabel.setEnabled(false);
-        switchUserLabel.attr({x:50, y: 28});
+        switchUserLabel.attr({x:70, y: 28});
         switchUserLabel.setColor(cc.color.YELLOW);
         switchUserEffectBg.addChild(switchUserLabel);
 
-        var switchUserNormal = new cc.Sprite("#jianou.png");
+        cc.MenuItemFont.setFontName("Arial");
+        cc.MenuItemFont.setFontSize(18);
+        var view4 = new cc.MenuItemFont("切换");
+        view4.attr({x:-5,y:-1});
+
+        var switchUserNormal = new cc.Sprite(res.anniu_png);
         switchUserNormal.attr({scale:0.9});
-        var switchUserSelected = new cc.Sprite("#jianou.png");
-        switchUserSelected.attr({scale:1});
-        var switchUserDisabled = new cc.Sprite("#jianou.png");
-        var switchUserButton = new cc.MenuItemSprite(switchUserNormal, switchUserSelected, switchUserDisabled, this.onQuestionsCallback, this);
+        var switchUserSelected = new cc.Sprite(res.anniu_png);
+        switchUserSelected.attr({scale:0.9});
+        var switchUserDisabled = new cc.Sprite(res.anniu_png);
+        var switchUserButton = new cc.MenuItemSprite(switchUserNormal, switchUserSelected, switchUserDisabled, this.onSwitchUserCallback, this);
         var switchUserMenu = new cc.Menu(switchUserButton);
-        switchUserMenu.attr({x:150, y: 28});
+        switchUserMenu.attr({x:180, y: 28});
+        switchUserMenu.addChild(view4);
         switchUserEffectBg.addChild(switchUserMenu);
 
         // version info and upgrade items
@@ -227,51 +257,21 @@ var HelpLayer = cc.Layer.extend({
         versionInfoLabel.setColor(cc.color.YELLOW);
         versionInfoEffectBg.addChild(versionInfoLabel);
 
-        var versionInfoNormal = new cc.Sprite("#jianou.png");
+        cc.MenuItemFont.setFontName("Arial");
+        cc.MenuItemFont.setFontSize(18);
+        var view5 = new cc.MenuItemFont("更新");
+        view5.attr({x:-5,y:-1});
+
+        var versionInfoNormal = new cc.Sprite(res.anniu_png);
         versionInfoNormal.attr({scale:0.9});
-        var versionInfoSelected = new cc.Sprite("#jianou.png");
-        versionInfoSelected.attr({scale:1});
-        var versionInfoDisabled = new cc.Sprite("#jianou.png");
+        var versionInfoSelected = new cc.Sprite(res.anniu_png);
+        versionInfoSelected.attr({scale:0.9});
+        var versionInfoDisabled = new cc.Sprite(res.anniu_png);
         var versionInfoButton = new cc.MenuItemSprite(versionInfoNormal, versionInfoSelected, versionInfoDisabled, this.onQuestionsCallback, this);
         var versionInfoMenu = new cc.Menu(versionInfoButton);
-        versionInfoMenu.attr({x:150, y: 28});
+        versionInfoMenu.attr({x:180, y: 28});
+        versionInfoMenu.addChild(view5);
         versionInfoEffectBg.addChild(versionInfoMenu);
-
-//        cc.MenuItemFont.setFontName("Arial");
-//        cc.MenuItemFont.setFontSize(26);
-//        var feedbackLabel = new cc.MenuItemFont("反馈");
-//        feedbackLabel.setEnabled(false);
-//        feedbackLabel.setColor(cc.color.YELLOW);
-//
-//        var feedbackNormal = new cc.Sprite("#jianou.png");
-//        feedbackNormal.attr({scale:0.9});
-//        var feedbackSelected = new cc.Sprite("#jianou.png");
-//        feedbackSelected.attr({scale:1});
-//        var feedbackDisabled = new cc.Sprite("#jianou.png");
-//        var feedbackButton = new cc.MenuItemSprite(feedbackNormal, feedbackSelected, feedbackDisabled, this.onFeedbackCallback, this);
-
-
-//        var SettingMenu = new cc.Menu(
-//            musicLabel, musicButton, questions, questionsButton,
-//            soundEffectLabel, soundEffectButton, feedbackLabel, feedbackButton);
-//        SettingMenu.alignItemsInColumns(4,4,1,1);
-
-
-
-        //this.addChild(SettingMenu);
-
-//        var help = new cc.LabelTTF("大同扎投子游戏说明", "Arial", 21, 10 );
-//        help.attr({
-//            x: 200,
-//            y: size.height / 2,
-//            anchorX: 0.5,
-//            anchorY: 0.5
-//        });
-//        help.setColor(cc.color.YELLOW);
-//        this.addChild(help);
-
-
-
     },
 
     /**
@@ -279,6 +279,7 @@ var HelpLayer = cc.Layer.extend({
      * @param pSender
      */
     onBackCallback:function (pSender) {
+        this.onButtonEffect();
         var scene = new IndexScene();
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
@@ -288,15 +289,55 @@ var HelpLayer = cc.Layer.extend({
      * @param pSender
      */
     onQuestionsCallback:function (pSender) {
-
+        this.onButtonEffect();
     },
+
 
     /**
      * Forward to feedback scene
      * @param pSender
      */
     onFeedbackCallback:function (pSender) {
+        this.onButtonEffect();
+    },
 
+    /**
+     * Log out and forward to LoginScene
+     */
+    onSwitchUserCallback:function(){
+        this.onButtonEffect();
+        var scene = new LoginScene();
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+    },
+
+    /**
+     * Background music control
+     */
+    onSoundControl:function(){
+        ZGZ.SOUND = !ZGZ.SOUND;
+        var audioEngine = cc.audioEngine;
+        if(ZGZ.SOUND){
+            audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.background_mp3 : res.background_mp3);
+        }else{
+            audioEngine.stopMusic();
+            audioEngine.stopAllEffects();
+        }
+    },
+
+    /**
+     *
+     */
+    onEffectControl:function(){
+
+    },
+
+    /**
+     * Playing sounds when click the button.
+     */
+    onButtonEffect:function(){
+        if (ZGZ.SOUND) {
+            var s = cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.buttonEffect1_wav : res.buttonEffect1_wav);
+        }
     }
 
 });

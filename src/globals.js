@@ -1,12 +1,12 @@
 var gGameSvrAddr = {
-     host: '192.243.119.61',
-     //host: '127.0.0.1',
+    //host: '192.243.119.61',
+     host: '127.0.0.1',
     port: 3014
 };
 
 var gWebSvrAddr = {
-    //host: 'http://127.0.0.1',
-    host: 'http://192.243.119.61',
+    host: 'http://127.0.0.1',
+    //host: 'http://192.243.119.61',
     port: '3001'
 }
 
