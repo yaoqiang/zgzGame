@@ -29,6 +29,7 @@
         "src/views/scene/indexScene.js",
         "src/views/scene/lobbyScene.js",
         "src/views/scene/gameScene.js",
+        "src/views/scene/questionsScene.js",
 
         "src/controllers/authController.js",
         "src/controllers/gameController.js"

@@ -290,8 +290,10 @@ var HelpLayer = cc.Layer.extend({
      */
     onQuestionsCallback:function (pSender) {
         this.onButtonEffect();
-    },
+        var scene = new QuestionsScene();
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
 
+    },
 
     /**
      * Forward to feedback scene
