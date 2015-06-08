@@ -316,14 +316,6 @@ var HelpLayer = cc.Layer.extend({
      * Background music control
      */
     onSoundControl:function(){
-        ZGZ.SOUND = !ZGZ.SOUND;
-        var audioEngine = cc.audioEngine;
-        if(ZGZ.SOUND){
-            audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.background_mp3 : res.background_mp3);
-        }else{
-            audioEngine.stopMusic();
-            audioEngine.stopAllEffects();
-        }
     },
 
     /**
