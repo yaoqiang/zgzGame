@@ -54,7 +54,7 @@ AuthController.login = function(username, password)
 
 AuthController.init = function (data) {
     gPlayer = data.player;
-
+    console.log("gPlayer:", gPlayer);
     var indexScene = new IndexScene();
     cc.director.runScene(new cc.TransitionFade(1.2, indexScene));
 

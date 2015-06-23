@@ -23,6 +23,10 @@
         "src/views/template/headerLayer.js",
         "src/views/template/components.js",
         "src/views/template/HelpLayer.js",
+        "src/views/template/playerLayer.js",
+        "src/views/template/modeStruct.js",
+        "src/views/template/cueBox.js",
+        "src/views/template/multiLabel.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
@@ -32,7 +36,18 @@
         "src/views/scene/questionsScene.js",
 
         "src/controllers/authController.js",
-        "src/controllers/gameController.js"
+        "src/controllers/gameController.js",
+
+        "src/views/layer/fivePeopleTableLayer.js",
+        "src/views/layer/sevenPeopleTableLayer.js",
+        "src/views/layer/gameMenuLayer.js",
+        "src/views/layer/readyMenuLayer.js",
+
+
+        "src/views/poker/pokerLayer.js",
+        "src/views/poker/bidMenuLayer.js",
+        "src/views/poker/fanOutMenuLayer.js",
+        "src/views/poker/pokerCard.js"
 
 
     ]

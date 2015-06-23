@@ -1,17 +1,19 @@
 var gGameSvrAddr = {
-    //host: '192.243.119.61',
-     host: '127.0.0.1',
+    host: '192.243.119.61',
+    // host: '127.0.0.1',
     port: 3014
 };
 
 var gWebSvrAddr = {
-    host: 'http://127.0.0.1',
-    //host: 'http://192.243.119.61',
+   // host: 'http://127.0.0.1',
+    host: 'http://192.243.119.61',
     port: '3001'
 }
 
 var gPlayer = {};
-
+var gLobbyId = 0;
+var gRoomId = 0;
+var gGameId = 0;
 
 var avatars = [
     ["#touxiang_09.png","#touxiang_09_2.png"],
@@ -39,8 +41,9 @@ ZGZ.GAME_STATE = {
 
 //游戏类型
 ZGZ.GAME_TYPE = {
-    T1: 5,  //5人游戏
-    T2: 7   //7人游戏
+    T1: 0,  //5人游戏
+    T2: 1,   //6人游戏
+    T3: 2   //7人游戏
 }
 
 ZGZ.SCALE = 1;
@@ -49,3 +52,10 @@ ZGZ.SCALE = 1;
 ZGZ.SOUND = true;// 背景音乐
 ZGZ.SOUND_EFFECT = true;//游戏，按钮声效
 ZGZ.VIBRATION_EFFECT = true;//游戏振动
+
+
+var lobbyName = [
+    "五人场",
+    "六人场",
+    "七人场"
+];
