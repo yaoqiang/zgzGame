@@ -2,18 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/poker/bidMenuLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/template/cueBox.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/poker/fanOutMenuLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/layer/gameMenuLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/template/modeStruct.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/template/multiLabel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/template/playerLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/poker/pokerCard.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/poker/pokerLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/layer/readyMenuLayer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/layer/sevenPeopleTableLayer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZgzGame.iws" />
@@ -103,8 +91,8 @@
       <file leaf-file-name="pokerCard.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/poker/pokerCard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.2766705">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6014068">
+              <caret line="219" column="30" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -124,7 +112,7 @@
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+              <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -554,7 +542,13 @@
       <option name="project" value="LOCAL" />
       <updated>1435069662046</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="main entry">
+      <created>1435069774926</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1435069774926</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -976,7 +970,7 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -999,8 +993,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/poker/pokerCard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2766705">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6014068">
+          <caret line="219" column="30" selection-start-line="219" selection-start-column="30" selection-end-line="219" selection-end-column="30" />
           <folding />
         </state>
       </provider>
