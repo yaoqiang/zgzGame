@@ -20,22 +20,36 @@ pomelo.on('onReady', function (data) {
     cc.eventManager.dispatchCustomEvent("ReadyEvent", data);
 });
 
-pomelo.on('onTalk', function (data) {
-    console.log('receive onTalk event.');
-});
 
-pomelo.on('onGameStart', function (data) {
-    console.log('receive onGameStart event.');
+
+pomelo.on('onStart', function (data) {
+    console.log('receive onStart event.');
     console.log(data);
     cc.eventManager.dispatchCustomEvent("GameStartEvent", data);
 });
 
-pomelo.on('onDeal', function (data) {
-    console.log('receive onDeal event.');
+pomelo.on('onTalkCountdown', function (data) {
+    console.log('receive onTalkCountdown event.');
 });
 
-pomelo.on('onFanOut', function (data) {
-    console.log('receive onFanOut event.');
+pomelo.on('onTalkTimeout', function (data) {
+    console.log('onTalkTimeout.');
+});
+
+pomelo.on('onTalk', function (data) {
+    console.log('receive onTalk event.');
+});
+
+pomelo.on('onFanCountdown', function (data) {
+    console.log('receive onFanCountdown event.');
+});
+
+pomelo.on('onFanTimeout', function (data) {
+    console.log('onFanTimeout.');
+});
+
+pomelo.on('onFan', function (data) {
+    console.log('receive onTalk event.');
 });
 
 pomelo.on('onChat', function (data) {
