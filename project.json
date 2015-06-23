@@ -19,6 +19,9 @@
         "src/utils/network.js",
         "src/consts/consts.js",
         "src/utils/utils.js",
+        "src/utils/cards/cardRecognization.js",
+        "src/utils/cards/cardLogic.js",
+        "src/utils/cards/cardSorter.js",
         "src/events/gameMessageEvent.js",
 
         "src/views/template/alert.js",
