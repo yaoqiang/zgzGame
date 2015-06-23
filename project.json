@@ -12,6 +12,8 @@
 
     "jsList" : [
 
+        "src/vendors/underscore-min.js",
+
         "src/resource.js",
         "src/globals.js",
         "src/utils/network.js",
