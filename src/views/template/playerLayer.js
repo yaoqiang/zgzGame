@@ -12,7 +12,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_anchorX = params.anchor.x;
         this.m_anchorY = params.anchor.y;
 
-        this.m_id = -1;
+        this.m_uid = -1;
         this.m_nickNname = "";
         this.m_avatar = -1;
         this.m_gold = 0;
@@ -36,7 +36,7 @@ var PlayerLayer = cc.Layer.extend({
     },
 
     clear:function(){
-        this.m_id = -1;
+        this.m_uid = -1;
         this.m_nickNname = "";
         this.m_avatar = -1;
 
@@ -84,7 +84,7 @@ var PlayerLayer = cc.Layer.extend({
         console.log(args);
         var properties = args.m_properties;
 
-        this.m_id = properties.id;
+        this.m_uid = args.m_uid;
         this.m_nickNname = properties.nickName;
         this.m_avatar = properties.avatar;
         this.m_gold = properties.gold;
