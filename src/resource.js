@@ -10,7 +10,7 @@ var res = {
     room_png : "res/room.png",
     game_png : "res/game.png",
     anniu_png : "res/anniu.png",
-
+    card_png : "res/card.png",
     //plist
     common_plist: "res/common.plist",
     other_plist: "res/other.plist",
@@ -18,7 +18,7 @@ var res = {
     index_plist : "res/index.plist",
     room_plist : "res/room.plist",
     game_plist : "res/game.plist",
-
+    card_plist : "res/card.plist",
     //effect
     fireEffect_mp3 : 'res/music/fireEffect.mp3',
     fireEffect_wav : 'res/music/fireEffect.wav',
@@ -37,6 +37,7 @@ var g_resources = [
     res.room_png,
     res.game_png,
     res.anniu_png,
+    res.card_png,
     //plist
     res.common_plist,
     res.other_plist,
@@ -44,6 +45,7 @@ var g_resources = [
     res.index_plist,
     res.room_plist,
     res.game_plist,
+    res.card_plist,
     //fnt
 
     //tmx

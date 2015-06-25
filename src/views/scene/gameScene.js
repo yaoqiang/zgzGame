@@ -3,6 +3,7 @@ var GameScene = cc.Scene.extend({
         this._super();
         cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
         cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+        cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
 
         var layer = new GameLayer(args);
         this.addChild(layer);
@@ -58,6 +59,13 @@ var GameLayer = cc.Layer.extend({
         this.updataActorHD();
         //gamen nenu
         this.addMenu();
+
+
+        //var card = new PokerCard({cardPoint:10, cardFace:4, cardSize:PokerCard_enum.kCCCardSizeLarge});
+        //card.x = winSize.width/2-70;
+        //card.y = winSize.height/2;
+        //this.addChild(card);
+
     },
 
     addMenu:function(){
@@ -101,7 +109,7 @@ var GameLayer = cc.Layer.extend({
             //离开别人
             for(var i=0; this.m_actorList.length; i++){
                 var one = this.m_actorList[i];
-                if(actor.m_properties.id == one.m_properties.id){
+                if(actor.m_uid == one.m_uid){
                     //this.m_actorList.delete(one);
                     this.m_actorList.splice(i,1);
                     return;
@@ -117,7 +125,7 @@ var GameLayer = cc.Layer.extend({
 
         for(var i=0; i < len; i++){
             console.log(actorArray[i]);
-            console.log(actorArray[i].gameStatus);
+            //console.log(actorArray[i].gameStatus);
             console.log(actorArray[i].properties);
             var actor = new Actor(actorArray[i]);
             this.m_actorList.push(actor);
@@ -127,7 +135,7 @@ var GameLayer = cc.Layer.extend({
 
     selfLeave: function (actor) {
         var actor = new Actor(actor);
-        if(actor.m_properties.id == gPlayer.id){
+        if(actor.m_uid == gPlayer.uid){
             return true;
         }
         return false;
@@ -157,43 +165,47 @@ var GameLayer = cc.Layer.extend({
         //var actor = new Actor(actor);
        // this.m_pTableLayer.readyEvent(actor);
         for(var i=0; this.m_actorList.length; i++){
-            var one = this.m_actorList[i];
-            if(data.actorNr == one.m_actorNr){
-                one.m_isReady = true;
-                this.m_pTableLayer.readyEvent(one);
+            var actor = this.m_actorList[i];
+            if(data.actorNr == actor.m_actorNr){
+                actor.m_isReady = true;
+                this.m_pTableLayer.readyEvent(actor);
                 return;
             }
         }
     },
 
-    gameStartEvent:function (data) {
+    gameStartEvent:function(data){
         console.log("gameStartEvent :");
-        console.log(data);
+        console.log(data.actor);
 
 
     },
 
-    startEvent: function (data) {
+    startEvent:function(data){
         
     },
 
-    fanEvent: function (data) {
+    fanEvent:function(data){
 
     },
 
-    overEvent: function (data) {
+    overEvent:function(data){
 
     },
 ////response
-    readyResponse: function () {
+    readyResponse:function(){
+        cc.log("---->readyResponse");
+        cc.log(this.m_actorList);
         this.m_pReadyMenu.removeFromParent(true);
         this.m_pReadyMenu = null;
-
+        var actor;
         for(var i=0; this.m_actorList.length; i++){
-            var one = this.m_actorList[i];
-            if(gPlayer.id == one.m_properties.id){
-                one.m_isReady = true;
-                this.m_pTableLayer.readyResponse(one);
+            actor = this.m_actorList[i];
+            cc.log("---->gPlayer.id:"+ gPlayer.uid + "--actor.m_uid:"+actor.m_uid);
+            if(gPlayer.uid == actor.m_uid){
+                actor.m_isReady = true;
+                cc.log(actor);
+                this.m_pTableLayer.readyResponse(actor);
                 return;
             }
         }
@@ -244,6 +256,11 @@ var GameLayer = cc.Layer.extend({
 
         //response
         cc.eventManager.removeCustomListeners("ReadyResponse");
+
+
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
     }
     
     

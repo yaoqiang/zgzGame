@@ -1,3 +1,5 @@
+
+
 var PokerLayer = cc.Layer.extend({
 
     ctor: function(args){

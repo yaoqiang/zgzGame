@@ -33,6 +33,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
     },
 
     updataActorHD:function(args){
+        cc.log("---->updataActorHD:",args);
         var len = args.length;
         var listlen =  this.m_HDList.length;
         var i=0;
@@ -42,14 +43,8 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
 
         for(i=0; i<len; i++){
-            //if(args[i].m_properties.id == this.m_HDList[i].id){
-            //    continue;
-            //}
             this.m_HDList[i].updata(args[i]);
         }
-
-
-
     },
 
     readyResponse: function (actor) {
@@ -57,7 +52,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var i=0;
 
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_id == actor.m_properties.id){
+            if(this.m_HDList[i].m_uid == actor.m_uid){
                 this.m_HDList[i].showReady(true);
                 return;
             }
@@ -69,7 +64,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var i=0;
 
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_id ==actor.m_properties.id){
+            if(this.m_HDList[i].m_uid ==actor.m_uid){
                 this.m_HDList[i].showReady(true);
                 return;
             }

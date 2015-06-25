@@ -1,3 +1,4 @@
+
 var PokerCard = cc.Node.extend({
 
     ctor: function(args){
@@ -12,7 +13,8 @@ var PokerCard = cc.Node.extend({
         this.cardSize = args.cardSize;
         this.oldPos = cc.p(0, 0);
 
-        -- 当前状态
+        this.setAnchorPoint(0.5,0.5);
+        //-- 当前状态
         this.state = 0;
 
         this.isSelected = false;
@@ -21,7 +23,7 @@ var PokerCard = cc.Node.extend({
         this.isOperation = true;
 
 
-        this.init();
+        //this.init();
     },
 
     init:function(){
@@ -31,10 +33,14 @@ var PokerCard = cc.Node.extend({
 
     },
 
+    setFanOutMenuLayerForCard:function(callBack){
+        this.showFanOutMenuLayerForCard = callBack;
+    },
+
     updatePokerImage:function(){
 
         if(0 == this.state){
-            self.state = 1;
+            this.state = 1;
             var pading = 5;
             var frameName = "#Card_front.png";
 
@@ -50,7 +56,7 @@ var PokerCard = cc.Node.extend({
 
             var colorStr = "black";
             var colorFaceStr =  "blue";
-            if (self.cardFace < 3)
+            if (this.cardFace < 3)
             {
                 colorStr = "red";
                 colorFaceStr = "red";
@@ -61,37 +67,43 @@ var PokerCard = cc.Node.extend({
             var smallFaceBuf = null;
 
             if (this.cardPoint == 11) {
-                pointbuf = string.format("Card_J_%s.png", colorStr);
-                bigFaceBuf = string.format("Card_Duke_%s.png", colorFaceStr);
+                pointbuf = "Card_J_" + colorStr + ".png";
+                bigFaceBuf = "Card_Duke_" + colorFaceStr + "%s.png";
             }else if (this.cardPoint == 12){
-                pointbuf = string.format("Card_Q_%s.png", colorStr);
-                bigFaceBuf = string.format("Card_queen_%s.png", colorFaceStr);
+                pointbuf = "Card_Q_"+ colorStr + ".png";
+                bigFaceBuf = "Card_queen_" + colorFaceStr + ".png";
             }else if (this.cardPoint == 13){
-                pointbuf = string.format("Card_K_%s.png", colorStr);
-                bigFaceBuf = string.format("Card_King_%s.png", colorFaceStr);
+                pointbuf = "Card_K_" + colorStr +"s.png";
+                bigFaceBuf = "Card_King_" + colorFaceStr + ".png";
             }else if (this.cardPoint == 14){
-                pointbuf = string.format("Card_A_%s.png", colorStr);
+                pointbuf = "Card_A_" + colorStr + ".png";
             }else if (this.cardPoint == 15){
-                pointbuf = string.format("Card_2_%s.png", colorStr);
+                pointbuf = "Card_2_" + colorStr +".png";
             }else if (this.cardPoint == 16){
-                pointbuf = string.format("Card_clown_gray.png");
+                pointbuf = "Card_clown_gray.png";
             }else if (this.cardPoint == 17){
-                pointbuf = string.format("Card_clown_red.png");
+                pointbuf = "Card_clown_red.png";
             }else{
-                pointbuf = string.format("Card_%d_%s.png", this.cardPoint, colorStr);
+                pointbuf = "Card_" + this.cardPoint + "_" + colorStr + ".png";
             }
 
             this.cardPointImage = new cc.Sprite.create("#"+pointbuf);//display.newSprite("#"..pointbuf)
 
             if (this.cardPoint == 16 || this.cardPoint == 17){
-                display.align(self.cardPointImage, display.LEFT_TOP, pading, size.height - pading);
+                this.cardPointImage.setAnchorPoint(0,1);
+                this.cardPointImage.x = pading;
+                this.cardPointImage.y = size.height - pading;
             }else{
-                if (this.cardSize == PokerCard.kCCCardSizeSmall){
+                if (this.cardSize == PokerCard_enum.kCCCardSizeSmall){
                     this.cardPointImage.setScale(1.2);
-                    display.align(self.cardPointImage, display.CENTER, 30, size.height - 45);
+                    this.cardPointImage.setAnchorPoint(0.5,0.5);
+                    this.cardPointImage.x = 30;
+                    this.cardPointImage.y = size.height - 45;
                 }else{
-                    this.cardPointImage.setScale(self.cardPointImageScale);
-                    display.align(self.cardPointImage, display.CENTER, 27, size.height - 35);
+                    this.cardPointImage.setScale(this.cardPointImageScale);
+                    this.cardPointImage.setAnchorPoint(0.5,0.5);
+                    this.cardPointImage.x = 27;
+                    this.cardPointImage.y = size.height - 35;
                 }
 
             }
@@ -99,78 +111,77 @@ var PokerCard = cc.Node.extend({
             this.cardFrame.addChild(this.cardPointImage);
 
             //--小牌，去除JQK的图案
-            if (self.cardSize == PokerCard.kCCCardSizeSmall){
-                var isGCard = (self.cardPoint == 11) || (self.cardPoint == 12) || (self.cardPoint == 13);
+            if (this.cardSize == PokerCard_enum.kCCCardSizeSmall){
+                var isGCard = (this.cardPoint == 11) || (this.cardPoint == 12) || (this.cardPoint == 13);
 
-                if (self.cardFace == PokerCard.kCCCardFaceClub){
+                if (this.cardFace == PokerCard_enum.kCCCardFaceClub){
                     if (isGCard)
                         bigFaceBuf = "Card_Flower_black_1.png" ;
-                }else if (self.cardFace == PokerCard.kCCCardFaceDiamond){
+                }else if (this.cardFace == PokerCard_enum.kCCCardFaceDiamond){
                     if (isGCard)
                         bigFaceBuf = "Card_Square-piece_red_1.png" ;
-                }else if (self.cardFace == PokerCard.kCCCardFaceHeart){
+                }else if (this.cardFace == PokerCard_enum.kCCCardFaceHeart){
                     if (isGCard)
                         bigFaceBuf = "Card_hearts_red_1.png" ;
-                }else if (self.cardFace == PokerCard.kCCCardFaceSpade){
+                }else if (this.cardFace == PokerCard_enum.kCCCardFaceSpade){
                     if (isGCard)
                         bigFaceBuf = "Card_hearts_black_1.png" ;
                 }
             }
 
-            if (self.cardPoint < 16){
+            if (this.cardPoint < 16){
 
-                var isGCard = (self.cardPoint < 11) || (self.cardPoint == 14) || (self.cardPoint == 15);
+                var isGCard = (this.cardPoint < 11) || (this.cardPoint == 14) || (this.cardPoint == 15);
 
-                if (self.cardFace == PokerCard.kCCCardFaceClub ){
+                if (this.cardFace == PokerCard_enum.kCCCardFaceClub ){
                     if (isGCard)
                         bigFaceBuf = "Card_Flower_black_1.png" ;
                     smallFaceBuf = "Card_Flower_black_1.png";
-                }else if (self.cardFace == PokerCard.kCCCardFaceDiamond){
+                }else if (this.cardFace == PokerCard_enum.kCCCardFaceDiamond){
                     if (isGCard)
                         bigFaceBuf = "Card_Square-piece_red_1.png" ;
                     smallFaceBuf = "Card_Square-piece_red_1.png";
-                }else if (self.cardFace == PokerCard.kCCCardFaceHeart){
+                }else if (this.cardFace == PokerCard_enum.kCCCardFaceHeart){
                     if (isGCard)
                         bigFaceBuf = "Card_hearts_red_1.png" ;
                     smallFaceBuf = "Card_hearts_red_1.png";
-                }else if (self.cardFace == PokerCard.kCCCardFaceSpade){
+                }else if (this.cardFace == PokerCard_enum.kCCCardFaceSpade){
                     if (isGCard)
                         bigFaceBuf = "Card_hearts_black_1.png" ;
                     smallFaceBuf = "Card_hearts_black_1.png";
                 }
 
-                if (this.cardSize != PokerCard.kCCCardSizeSmall ){
+                if (this.cardSize != PokerCard_enum.kCCCardSizeSmall ){
                     var sp = new cc.Sprite.create("#"+smallFaceBuf);
                     sp.scale = 0.5;
-                    sp.align();
-                    display.align(sp, display.CENTER, 27, size.height - 35 - self.cardPointImage.getContentSize().height);
-                    self.cardFrame.addChild(sp);
+                    MDisplay.align(sp, MDisplay.CENTER, 27, size.height - 35 - this.cardPointImage.getContentSize().height);
+                    this.cardFrame.addChild(sp);
                 }
 
                 if (bigFaceBuf) {
                     sp = new cc.Sprite.create("#"+bigFaceBuf);//display.newSprite("#"+bigFaceBuf);
-                    display.align(sp, display.BOTTOM_RIGHT, size.width - pading, pading);
+                    MDisplay.align(sp, MDisplay.BOTTOM_RIGHT, size.width - pading, pading);
                     this.cardFrame.addChild(sp);
 
                 }
 
             }else{
-                if (self.cardPoint == 16) {
+                if (this.cardPoint == 16) {
                     smallFaceBuf = "Card_JOKER_black.png";
-                }else if (self.cardPoint == 17){
+                }else if (this.cardPoint == 17){
                     smallFaceBuf = "Card_JOKER_red.png";
                 }
                 if (smallFaceBuf) {
                     var sp = new cc.Sprite.create("#"+smallFaceBuf);//display.newSprite("#"+smallFaceBuf);
-                    display.align(sp, display.LEFT_TOP, pading + 5, size.height - pading);
-                    self.cardFrame.addChild(sp);
+                    MDisplay.align(sp, MDisplay.LEFT_TOP, pading + 5, size.height - pading);
+                    this.cardFrame.addChild(sp);
                 }
             }
 
-            if (self.cardFace == 6) {
+            if (this.cardFace == 6) {
                 var sp = new cc.Sprite.create("#Card_back.png");
-                sp:setPosition(size.width / 2, size.height / 2);
-                self.cardFrame.addChild(sp);
+                sp.setPosition(size.width / 2, size.height / 2);
+                this.cardFrame.addChild(sp);
             }
 
         }
@@ -187,11 +198,43 @@ var PokerCard = cc.Node.extend({
     setHitted:function(isHitted){
         this.isHitted = isHitted;
 
-        if (self.isHitted){
+        if (this.isHitted){
+            if (this.state != 0){
+                if (null == this.cardMask){
+                    this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
+                    this.cardMask.setPosition(this.cardFrame.getPosition());
+                    this.cardMask.setColor(cc.BLACK);
+                    this.cardMask.setOpacity(128);
+                    this.addChild(this.cardMask, 9);
+                }
+            }
 
         }
+
+        if (null != this.cardMask){
+            this.cardMask.setVisible(this.isHitted);
+        }
+
+
     },
 
+    setOperation:function(operation){
+        this.isOperation = operation;
+        if (!this.isOperation){
+            if(null == this.cardMask){
+                this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
+                this.cardMask.setPosition(this.cardFrame.getPosition());
+                this.cardMask.setColor(cc.BLACK);
+                this.cardMask.setOpacity(128);
+                this.addChild(this.cardMask, 9);
+            }
+        }
+
+        if (this.cardMask != null){
+            this.cardMask.setVisible(!this.isOperation);
+        }
+
+    },
 
     selectCards:function(){
         if (this.cardSize != PokerCard_enum.kCCCardSizeLarge)
