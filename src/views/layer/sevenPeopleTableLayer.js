@@ -96,12 +96,6 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         setting.setScale(0.9);
         rightTopBg.addChild(setting);
 
-        // playing background music
-        if (ZGZ.SOUND) {
-            cc.audioEngine.setMusicVolume(0.7);
-            cc.audioEngine.playMusic(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.background_mp3 : res.background_mp3, true);
-        }
-
         //中间
         var middleBg = cc.Sprite.create("#mianban_04.png");
         middleBg.setScaleX(1);
@@ -125,19 +119,9 @@ var SevenPeopleTableLayer = cc.Layer.extend({
      * When click the help button(?) on right side of top screen.
      */
     onHelpButton:function(){
-        this.onButtonEffect();
         var scene = new cc.Scene();
         scene.addChild(new HelpLayer());
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
-    },
-
-    /**
-     * Playing sounds when click the button.
-     */
-    onButtonEffect:function(){
-        if (ZGZ.SOUND) {
-            var s = cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.buttonEffect1_wav : res.buttonEffect1_wav);
-        }
     }
 
 })
