@@ -11,11 +11,11 @@ var FivePeopleTableLayer = cc.Layer.extend({
     init:function(){
         var winSize = cc.director.getWinSize();
 
-        var player5 = new PlayerLayer({index: 5, position: {x: 50, y: 120}, anchor: {x: 0.5, y: 0.5}});
-        var player4 = new PlayerLayer({index: 4, position: {x: 50, y: 300}, anchor: {x: 0.5, y: 0.5}});
+        var player1 = new PlayerLayer({index: 1, position: {x: 50, y: 120}, anchor: {x: 0.5, y: 0.5}});
+        var player2 = new PlayerLayer({index: 2, position: {x: 50, y: 300}, anchor: {x: 0.5, y: 0.5}});
         var player3 = new PlayerLayer({index: 3, position: {x: winSize.width/2, y: winSize.height-50}, anchor: {x: 0.5, y: 0.5}});
-        var player2 = new PlayerLayer({index: 2, position: {x: winSize.width-50, y: 300}, anchor: {x: 0.5, y: 0.5}});
-        var player1 = new PlayerLayer({index: 1, position: {x: winSize.width-50, y: 120}, anchor: {x: 0.5, y: 0.5}});
+        var player4 = new PlayerLayer({index: 4, position: {x: winSize.width-50, y: 300}, anchor: {x: 0.5, y: 0.5}});
+        var player5 = new PlayerLayer({index: 5, position: {x: winSize.width-50, y: 120}, anchor: {x: 0.5, y: 0.5}});
 
 
         this.addChild(player1);
@@ -37,13 +37,30 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var len = args.length;
         var listlen =  this.m_HDList.length;
         var i=0;
-
+        var j=0;
         for(i=0; i<listlen; i++){
              this.m_HDList[i].clear();
         }
-
+        //for(i=0; i<len; i++){
+        //    this.m_HDList[i].updata(args[i]);
+        //}
+        //找到自己
+        var selfId = 0;
         for(i=0; i<len; i++){
-            this.m_HDList[i].updata(args[i]);
+            if(args[i].m_uid == gPlayer.uid){
+                selfId = i;
+            }
+        }
+        //从自己向后排列
+        for(i=selfId; i<len; i++){
+            this.m_HDList[j].updata(args[i]);
+            j++;
+        }
+        //排列自己前面的
+        j=0;
+        for(i=selfId-1; i>=0; i--){
+            this.m_HDList[listlen-1-j].updata(args[i]);
+            j++;
         }
     },
 

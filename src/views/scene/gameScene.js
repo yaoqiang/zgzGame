@@ -125,7 +125,6 @@ var GameLayer = cc.Layer.extend({
 
         for(var i=0; i < len; i++){
             console.log(actorArray[i]);
-            //console.log(actorArray[i].gameStatus);
             console.log(actorArray[i].properties);
             var actor = new Actor(actorArray[i]);
             this.m_actorList.push(actor);
