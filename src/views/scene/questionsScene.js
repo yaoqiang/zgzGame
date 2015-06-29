@@ -108,18 +108,9 @@ var QuestionsLayer = cc.Layer.extend({
      * @param pSender
      */
     onBackCallback:function (pSender) {
-        this.onButtonEffect();
         var scene = new cc.Scene();
         scene.addChild(new HelpLayer());
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
-    },
-
-    /**
-     * Playing sounds when click the button.
-     */
-    onButtonEffect:function(){
-        if (ZGZ.SOUND) {
-            var s = cc.audioEngine.playEffect(cc.sys.os == cc.sys.OS_WP8 || cc.sys.os == cc.sys.OS_WINRT ? res.buttonEffect1_wav : res.buttonEffect1_wav);
-        }
     }
+
  });
