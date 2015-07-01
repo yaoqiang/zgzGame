@@ -74,6 +74,18 @@ PokerCard_enum = {
 var HOLDING_CARD_BOTTOM = 10;
 var CARD_SELECTED_UP_OFFSET = 10;
 
+var SHOW_MODE = {
+    LEFT:1,
+    RIGHT:2,
+    CENTER:3
+};
+var FanOutMenuBtn =  {
+    kCCFanOutMenu_Pass : 1, //--不出
+    kCCFanOutMenu_Reset : 2,//--重选
+    kCCFanOutMenu_Hint : 3, //--提示
+    kCCFanOutMenu_FanOut : 4 //--出牌
+};
+
 var MDisplay = {
     CENTER:{x:0.5, y:0.5},
     LEFT_TOP:{x:0, y:1},
@@ -88,3 +100,4 @@ var MDisplay = {
         node.y = y;
     }
 };
+

@@ -1,9 +1,61 @@
 
-var SHOW_MODE = {
-    LEFT:1,
-    RIGHT:2,
-    CENTER:3
+var ZySize = {
+
+    scale : height() / 640,
+    scalew : width() / 960,
+
+    SCALE:function(x){
+        return Math.round(scale * x);
+    },
+    SCALEW:function(x){
+        return Math.round(scalew * x);
+    },
+
+    width:function(){
+        var winSize = cc.director.getWinSize();
+        return winSize.width;
+    },
+    height:function(){
+        var winSize = cc.director.getWinSize();
+        return winSize.height;
+    }
 };
+
+
+//var SHOW_MODE = {
+//    LEFT:1,
+//    RIGHT:2,
+//    CENTER:3
+//};
+
+//var FanOutMenuBtn =  {
+//    kCCFanOutMenu_Pass : 1, //--不出
+//    kCCFanOutMenu_Reset : 2,//--重选
+//    kCCFanOutMenu_Hint : 3, //--提示
+//    kCCFanOutMenu_FanOut : 4 //--出牌
+//};
+
+CARD_WIDTH_LARGE = ZySize.SCALE(120);
+CARD_HEIGHT_LARGE = ZySize.SCALE(168);
+CARD_WIDTH_NORMAL = ZySize.SCALE(80);
+CARD_HEIGHT_NORMAL = ZySize.SCALE(108);
+CARD_WIDTH_SMALL = ZySize.SCALE(44);
+CARD_HEIGHT_SMALL = ZySize.SCALE(56);
+
+HOLDING_CARD_BOTTOM = ZySize.SCALE(40);  //--相对屏幕底部边缘的留边宽度
+HOLDING_CARD_PADDING = ZySize.SCALE(20); //--相对屏幕左右边缘的留边宽度
+
+LARGE_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(52);//--卡片重叠时的最小可视宽度
+LARGE_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(80); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
+
+CARD_SELECTED_UP_OFFSET = ZySize.SCALE(30)
+NORMAL_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(20); //--卡片重叠时的最小可视宽度
+NORMAL_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(40); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
+
+SMALL_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(20); //--卡片重叠时的最小可视宽度
+SMALL_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(40); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
+
+
 
 
 
@@ -18,18 +70,20 @@ var PokerLayer = cc.Layer.extend({
         this.m_pFanOutMenuLayer = null;
 
         this.m_pSelfCardArray = [];    //--当前持有的纸牌
-        //this.m_pSelfCardHDArray = [];    //--当前持有的纸牌
         this.m_pSelectedWillOutCards = [];   //--自己选中要出的牌
 
         this.m_pFanOutCard = [];   //--打出的牌，所有玩家打出、显示再牌桌中心。
-        //this.m_pFanOutCardHD = [];   //--打出的牌，所有玩家打出、显示再牌桌中心。
+        this.m_pFanOutHDCard = [];   //--打出的牌，所有玩家打出、显示再牌桌中心。
 
+        this.hintCards = [];//提示
 
-
-
-
-
-
+        this.m_tCardTouchableRect = cc.rect(0, 0, 0, 0);// --可相应触摸的范围（卡牌区）
+        this.m_tTouchDownPoint = null;
+        this.m_tTouchUpPoint = null;
+        this.m_tTouchCurPoint = null;
+        this.m_bIsOperation  = true;
+       // --   J   Q   K    A    2   LJoker  BJoker
+       // --  11  12  13   14   15    16      17
 
 
 
@@ -101,13 +155,16 @@ var PokerLayer = cc.Layer.extend({
          for(var i = 0; i< cardsArray.length; i++){
              var card = cardsArray[i];
              card.setVisible(false);
+             card.removeFromParent();
          }
+
+         actorHD.clearfanOutCards();// =null即可
     },
 
 
     showFanOutMenuLayerForCard:function(){
         //--显示可以操作的按钮
-        self.m_pFanOutMenuLayer.setBtnEnabled(this.checkForFanOut());
+        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut,this.checkForFanOut());
     },
 
 //--向当前持有纸牌中增加一张底牌
@@ -176,7 +233,7 @@ var PokerLayer = cc.Layer.extend({
 
             var pos = cc.p(winSize.width/2 - pObj.getContentSize().width/2, pp);
             pObj.setPosition(pos);
-            self.m_tCardTouchableRect = cc.rect(pos.x, pos.y, CARD_WIDTH_LARGE, CARD_HEIGHT_LARGE + CARD_SELECTED_UP_OFFSET);
+            this.m_tCardTouchableRect = cc.rect(pos.x, pos.y, CARD_WIDTH_LARGE, CARD_HEIGHT_LARGE + CARD_SELECTED_UP_OFFSET);
 
             return;
         }
@@ -346,6 +403,172 @@ cardRunAction:function(){
         }
     },
 
+    resetSelectedCards:function(){
+        var len = this.m_pSelfCardArray.length;
+        for(var  i = 0; i< len; i++ ){
+            var pc = this.m_pSelfCardArray[i];
+            pc.setHitted(false);
+            pc.isSelected = false;
+            pc.setPositionY(HOLDING_CARD_BOTTOM);
+        }
+        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
+        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, false);
+    },
+
+
+
+    setFanOutCards:function(cardsVector, actorNr){
+        this.hideFanOutCards(actorNr);
+        var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
+        var cardsArray = [];
+
+        var len = cardsVector.length;
+        if (len > 0){
+            for (var idx = 0; idx<len; idx++){
+                var cardValue = cardsVector[idx];
+
+                var cardFace = Math.floor(cardValue/100);
+                var cardPoint = cardValue % 100;
+                var pc = new PokerCard(cardFace, cardPoint, PokerCard.kCCCardSizeNormal);
+                pc.setCardPointImageScale(1.1);
+                pc.scale(ZySize.scale * 0.6);
+                this.addChild(pc);
+                cardsArray.push(pc);
+            }
+            this.showFanOutCards(cardsArray, actorNr);
+        }
+
+        if (this.m_pTable.isSelfHD(actorNr)){
+            for (var i = 0; i<len; i++){
+                var cardValue = cardsVector[i];
+
+                for  (var idx = this.m_pSelfCardArray.length - 1; idx == 0; idx--){
+                    var pc = this.m_pSelfCardArray[i];
+                    if (pc.cardValue == cardValue ){
+                        pc.removeFromParent();
+                        this.m_pSelfCardArray.splice(idx,1);
+                    }
+                }
+            }
+            this.updateSelfCardDisplay();
+        }
+
+
+    },
+
+    clearCards:function(){
+        var len = this.m_pSelfCardArray.length;
+        for (var i = 0; i<len; i++){
+            var pc = this.m_pSelfCardArray[i];
+            pc.removeFromParent();
+        }
+        this.m_pSelfCardArray = [];
+    },
+
+
+    checkSelfCard:function(){
+        var len = this.m_pSelfCardArray.length;
+        for (var idx = len - 1; idx == 0; idx--){
+            var pc = this.m_pSelfCardArray[i];
+            if (pc.isSelected)
+                return true;
+        }
+        return false;
+    },
+
+    isOperationHoldingCard:function(operation){
+        this.m_bIsOperation = operation;
+        var len = this.m_pSelfCardArray.length;
+        for (var idx = len - 1; idx == 0; idx--){
+            var pc = this.m_pSelfCardArray[i];
+            pc.setOperation(operation);
+        }
+    },
+
+    checkForFanOut:function(){
+
+    },
+
+    hideFanOutMenu:function(){
+        this.m_pFanOutMenuLayer.setVisible(false);
+        this.isFanOut = false;
+    },
+
+    clearAll:function(){
+        this.m_bIsOperation = true;
+        //self:clearSatyCards()
+        //self:clearPendingCards()
+        //self:clearCards()
+        //self:clearFanOutCards(self.m_pCurrentFanOutCard)
+        //self:clearFanOutCards(self.m_pNextFanOutCard)
+        //self:clearFanOutCards(self.m_pPreFanOutCard)
+        //self.m_pLastValidFanOutCard:removeAllObjects()
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    touchBegan:function(x, y){
+        this.iaFanOut = this.isHaveSelectCars();
+        this.m_tTouchDownPoint = cc.p(x, y);
+        if(cc.rectIntersectsRect(this.m_tCardTouchableRect, this.m_tTouchDownPoint)){
+            var touchSound = this.hitCards(this.m_tTouchDownPoint, this.m_tTouchDownPoint);
+            if (touchSound){
+                //ZySounds.playSound({type = ZySounds.EnumType.SoundsType,  index = ZySounds.SoundsType.card})
+            }
+            return true;
+        }
+        this.hintCards = {};
+        this.resetSelectedCards();
+        return false;
+    },
+
+    touchMoved:function(x, y){
+        this.m_tTouchCurPoint = cc.p(x, y);
+        this.hitCards(this.m_tTouchDownPoint, this.m_tTouchCurPoint);
+    },
+    touchEnded:function(x, y){
+        this.m_tTouchUpPoint = cc.p(x, y);
+        this.hitCards(this.m_tTouchDownPoint, this.m_tTouchUpPoint);
+        this.selectCards();
+        if (this.iaFanOut){
+            this.hintFromHintCards();
+        }
+
+        //--显示可以操作的按钮
+        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut());
+        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard());
+    },
+    touchCancelled:function(x, y){
+        var len = this.m_pSelfCardArray.length;
+
+        for (var i = 0; i<len; i++){
+            var pc = this.m_pSelfCardArray[i];
+            pc.setHitted(false);
+        }
+    },
+
+
 
 
 
@@ -379,25 +602,31 @@ cardRunAction:function(){
         var pos = touch.getLocation();
         var id = touch.getID();
         //cc.log("NoteLayer onTouchBegan at: " + pos.x + " " + pos.y);
+        if (!this.m_bIsOperation) return false;
+
+        this.touchBegan(pos.x, pos.y);
+
         return true;
     },
     onTouchMoved:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        //cc.log("NoteLayer onTouchMoved");
-        //event.getCurrentTarget().update_id(id,pos);
+
+        this.touchMoved(pos.x, pos.y);
     },
     onTouchEnded:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
         //cc.log("NoteLayer onTouchEnded at: " + pos.x + " " + pos.y);
         //event.getCurrentTarget().release_id(id,pos);
+        this.touchEnded(pos.x, pos.y);
     },
     onTouchCancelled:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
         //cc.log("NoteLayer onTouchCancelled ");
         //event.getCurrentTarget().update_id(id,pos);
+        this.touchCancelled(pos.x, pos.y);
     }
 
 

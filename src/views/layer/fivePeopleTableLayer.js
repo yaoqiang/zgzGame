@@ -57,8 +57,6 @@ var FivePeopleTableLayer = cc.Layer.extend({
             for(var k =0 ; k<listlen; k++){
                 var v = args[selfId].m_actorNr-1;
                 this.m_HDList[k].m_Nr = (v+k)%listlen + 1;
-                console.log("------------->v:",this.m_HDList[k].m_Nr);
-                console.log("-");
             }
         }
         //从自己向后排列

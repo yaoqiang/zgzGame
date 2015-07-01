@@ -8,14 +8,21 @@ var ReadyMenuLayer = cc.Layer.extend({
     init:function(){
         var winSize = cc.director.getWinSize();
 
-        var backNormal = new cc.Sprite("#likai_icon.png");
-        var backSelected = new cc.Sprite("#likai_icon.png");
-        var backDisabled = new cc.Sprite("#likai_icon.png");
-        var helpButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onReadyButton, this);
-        var menu = new cc.Menu(helpButton);
-        menu.setPosition(winSize.width/2, winSize.height/2);
-        this.addChild(menu);
+        var readyNormal = new cc.Sprite(res.anniu_png);
+        var readySelected = new cc.Sprite(res.anniu_png);
+        var readyDisabled = new cc.Sprite(res.anniu_png);
+        var readyButton = new cc.MenuItemSprite(readyNormal, readySelected, readyDisabled, this.onReadyButton, this);
+        readyButton.setPosition(winSize.width/2, winSize.height/2);
 
+        var butsize  = readyButton.getContentSize();
+        var readyStr = new cc.LabelTTF("ready", "Arial", 24);
+        readyStr.color = cc.color.YELLOW;
+        readyStr.setPosition(butsize.width/2, butsize.height/2);
+        readyButton.addChild(readyStr);
+
+        var menu = new cc.Menu(readyButton);
+        menu.setPosition(0,0);
+        this.addChild(menu);
     },
 
     onReadyButton:function(){

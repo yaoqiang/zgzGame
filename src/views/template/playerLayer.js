@@ -12,6 +12,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_anchorX = params.anchor.x;
         this.m_anchorY = params.anchor.y;
 
+        this.m_Nr = -1;
         this.m_uid = -1;
         this.m_nickNname = "";
         this.m_avatar = -1;

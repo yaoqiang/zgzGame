@@ -54,7 +54,7 @@ var GameLayer = cc.Layer.extend({
                 this.addChild(this.m_pTableLayer);
                 break;
         }
-        this.addPokerLayer();
+        //this.addPokerLayer();
         //刷新玩家信息
         this.updataActorHD();
         //gamen nenu
