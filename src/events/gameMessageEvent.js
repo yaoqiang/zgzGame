@@ -37,7 +37,7 @@ pomelo.on('onTalkCountdown', function (data) {
 
     console.log('data.actor.uid + gPlayer.uid => ', data.actor.uid, gPlayer.uid);
     console.log('data.actor.uid == gPlayer.uid => ', data.actor.uid == gPlayer.uid);
-    cc.eventManager.dispatchCustomEvent("onTalkCountdown", data);
+    cc.eventManager.dispatchCustomEvent("onTalkCountdownEvent", data);
 
 
 });

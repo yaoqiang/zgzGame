@@ -224,8 +224,8 @@ var PokerLayer = cc.Layer.extend({
 
         this.m_tCardTouchableRect = cc.rect(leftStartPos, HOLDING_CARD_BOTTOM, occupyWidth, CARD_HEIGHT_LARGE + CARD_SELECTED_UP_OFFSET);
 
-        console.log("-----leftStartPos:", leftStartPos);
-        console.log("-----this.m_nCardVisibleWidth:", this.m_nCardVisibleWidth);
+        //console.log("-----leftStartPos:", leftStartPos);
+        //console.log("-----this.m_nCardVisibleWidth:", this.m_nCardVisibleWidth);
         var idx = 0;
         for (var i = 0; i<len; i++){
             var pc = this.m_pSelfCardArray[i];
@@ -236,7 +236,7 @@ var PokerLayer = cc.Layer.extend({
             }else{
                 pp = HOLDING_CARD_BOTTOM;
             }
-            console.log("-----pos:", leftStartPos+idx*this.m_nCardVisibleWidth);
+            //console.log("-----pos:", leftStartPos+idx*this.m_nCardVisibleWidth);
             var pos = cc.p(leftStartPos+idx*this.m_nCardVisibleWidth, pp);
             pc.oldPos = pos;
             pc.setPosition(pos);
@@ -709,7 +709,7 @@ cardRunAction:function(){
         var id = touch.getID();
         var target = event.getCurrentTarget();
 
-        //this.touchMoved(pos.x, pos.y);
+        target.touchMoved(pos.x, pos.y);
     },
     onTouchEnded:function(touch, event) {
         var pos = touch.getLocation();
