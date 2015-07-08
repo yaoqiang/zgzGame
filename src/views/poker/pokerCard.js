@@ -38,7 +38,7 @@ var PokerCard = cc.Node.extend({
     },
 
     updatePokerImage:function(){
-
+        console.log("PokerCard updatePokerImage begin");
         if(0 == this.state){
             this.state = 1;
             var pading = 5;
@@ -50,7 +50,6 @@ var PokerCard = cc.Node.extend({
             this.setContentSize(size);
             this.cardFrame.setPosition(size.width / 2, size.height / 2);
             this.addChild(this.cardFrame, 0);
-
             this.frameName = frameName;
             this.setHitted(this.isHitted);
 
@@ -68,20 +67,24 @@ var PokerCard = cc.Node.extend({
 
             if (this.cardPoint == 11) {
                 pointbuf = "Card_J_" + colorStr + ".png";
-                bigFaceBuf = "Card_Duke_" + colorFaceStr + "%s.png";
+                bigFaceBuf = "Card_Duke_" + colorFaceStr + ".png";
             }else if (this.cardPoint == 12){
                 pointbuf = "Card_Q_"+ colorStr + ".png";
                 bigFaceBuf = "Card_queen_" + colorFaceStr + ".png";
             }else if (this.cardPoint == 13){
-                pointbuf = "Card_K_" + colorStr +"s.png";
+                pointbuf = "Card_K_" + colorStr +".png";
                 bigFaceBuf = "Card_King_" + colorFaceStr + ".png";
             }else if (this.cardPoint == 14){
                 pointbuf = "Card_A_" + colorStr + ".png";
             }else if (this.cardPoint == 15){
                 pointbuf = "Card_2_" + colorStr +".png";
             }else if (this.cardPoint == 16){
-                pointbuf = "Card_clown_gray.png";
+                pointbuf = "Card_3_" + colorStr +".png";
             }else if (this.cardPoint == 17){
+                pointbuf = "Card_4_" + colorStr +".png";
+            }else if (this.cardPoint == 18){
+                pointbuf = "Card_clown_gray.png";
+            }else if (this.cardPoint == 19){
                 pointbuf = "Card_clown_red.png";
             }else{
                 pointbuf = "Card_" + this.cardPoint + "_" + colorStr + ".png";
@@ -89,7 +92,7 @@ var PokerCard = cc.Node.extend({
 
             this.cardPointImage = new cc.Sprite.create("#"+pointbuf);//display.newSprite("#"..pointbuf)
 
-            if (this.cardPoint == 16 || this.cardPoint == 17){
+            if (this.cardPoint == 18 || this.cardPoint == 19){
                 this.cardPointImage.setAnchorPoint(0,1);
                 this.cardPointImage.x = pading;
                 this.cardPointImage.y = size.height - pading;
@@ -109,7 +112,6 @@ var PokerCard = cc.Node.extend({
             }
 
             this.cardFrame.addChild(this.cardPointImage);
-
             //--小牌，去除JQK的图案
             if (this.cardSize == PokerCard_enum.kCCCardSizeSmall){
                 var isGCard = (this.cardPoint == 11) || (this.cardPoint == 12) || (this.cardPoint == 13);
@@ -129,9 +131,9 @@ var PokerCard = cc.Node.extend({
                 }
             }
 
-            if (this.cardPoint < 16){
+            if (this.cardPoint < 18){
 
-                var isGCard = (this.cardPoint < 11) || (this.cardPoint == 14) || (this.cardPoint == 15);
+                var isGCard = (this.cardPoint < 11) || (this.cardPoint == 14) || (this.cardPoint == 15)|| (this.cardPoint == 16) || (this.cardPoint == 17);
 
                 if (this.cardFace == PokerCard_enum.kCCCardFaceClub ){
                     if (isGCard)
@@ -157,7 +159,6 @@ var PokerCard = cc.Node.extend({
                     MDisplay.align(sp, MDisplay.CENTER, 27, size.height - 35 - this.cardPointImage.getContentSize().height);
                     this.cardFrame.addChild(sp);
                 }
-
                 if (bigFaceBuf) {
                     sp = new cc.Sprite.create("#"+bigFaceBuf);//display.newSprite("#"+bigFaceBuf);
                     MDisplay.align(sp, MDisplay.BOTTOM_RIGHT, size.width - pading, pading);
@@ -166,9 +167,9 @@ var PokerCard = cc.Node.extend({
                 }
 
             }else{
-                if (this.cardPoint == 16) {
+                if (this.cardPoint == 18) {
                     smallFaceBuf = "Card_JOKER_black.png";
-                }else if (this.cardPoint == 17){
+                }else if (this.cardPoint == 19){
                     smallFaceBuf = "Card_JOKER_red.png";
                 }
                 if (smallFaceBuf) {
@@ -177,7 +178,6 @@ var PokerCard = cc.Node.extend({
                     this.cardFrame.addChild(sp);
                 }
             }
-
             if (this.cardFace == 6) {
                 var sp = new cc.Sprite.create("#Card_back.png");
                 sp.setPosition(size.width / 2, size.height / 2);
@@ -185,6 +185,7 @@ var PokerCard = cc.Node.extend({
             }
 
         }
+        console.log("PokerCard updatePokerImage end");
     },
 
     setCardPointImageScale:function(scale){
@@ -203,7 +204,7 @@ var PokerCard = cc.Node.extend({
                 if (null == this.cardMask){
                     this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
                     this.cardMask.setPosition(this.cardFrame.getPosition());
-                    this.cardMask.setColor(cc.BLACK);
+                    this.cardMask.setColor(cc.color.BLACK);
                     this.cardMask.setOpacity(128);
                     this.addChild(this.cardMask, 9);
                 }
@@ -224,7 +225,7 @@ var PokerCard = cc.Node.extend({
             if(null == this.cardMask){
                 this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
                 this.cardMask.setPosition(this.cardFrame.getPosition());
-                this.cardMask.setColor(cc.BLACK);
+                this.cardMask.setColor(cc.color.BLACK);
                 this.cardMask.setOpacity(128);
                 this.addChild(this.cardMask, 9);
             }
@@ -268,14 +269,14 @@ var PokerCard = cc.Node.extend({
 
     onEnter:function(){
         this._super();
-        console.log("PokerLayer onEnter");
+        console.log("PokerCard onEnter");
 
         this.updatePokerImage();
     },
 
     onExit:function(){
         this._super();
-        console.log("PokerLayer onEnter");
+        console.log("PokerCard onExit");
     }
 
 })

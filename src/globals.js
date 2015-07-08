@@ -18,6 +18,7 @@ var gGameType = 0;
 var gActor = {};
 var gLastFanCardRecognization = null;   //上手牌型
 
+var gGameState = 0;
 var avatars = [
     ["#touxiang_09.png","#touxiang_09_2.png"],
     ["#touxiang_10.png","#touxiang_10_2.png"],
@@ -59,45 +60,4 @@ var lobbyName = [
 ];
 
 
-PokerCard_enum = {
-    kCCCardSizeSmall:0,
-    kCCCardSizeNormal:1,
-    kCCCardSizeLarge:2,
-
-    kCCCardFaceJoker:0,     //大小鬼
-    kCCCardFaceDiamond:1,   //方片
-    kCCCardFaceHeart:2,     //红心
-    kCCCardFaceSpade:3,     //黑桃
-    kCCCardFaceClub:4       //黑梅花
-};
-
-var HOLDING_CARD_BOTTOM = 10;
-var CARD_SELECTED_UP_OFFSET = 10;
-
-var SHOW_MODE = {
-    LEFT:1,
-    RIGHT:2,
-    CENTER:3
-};
-var FanOutMenuBtn =  {
-    kCCFanOutMenu_Pass : 1, //--不出
-    kCCFanOutMenu_Reset : 2,//--重选
-    kCCFanOutMenu_Hint : 3, //--提示
-    kCCFanOutMenu_FanOut : 4 //--出牌
-};
-
-var MDisplay = {
-    CENTER:{x:0.5, y:0.5},
-    LEFT_TOP:{x:0, y:1},
-    RIGHT_TOP:{x:0, y:1},
-    BOTTOM_RIGHT:{x:1, y:0},
-    BOTTOM_LEFT:{x:0, y:0},
-
-    align : function(node, anchor, x, y ){
-        if(node == null) return;
-        node.setAnchorPoint(anchor.x, anchor.y);
-        node.x = x;
-        node.y = y;
-    }
-};
 

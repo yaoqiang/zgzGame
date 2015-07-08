@@ -2,47 +2,58 @@ var BidMenuLayer = cc.Layer.extend({
     ctor: function(){
         console.log('BidMenuLayer ctor');
         this._super();
+
+        this.m_pTarge = null;
+        this.m_pCallback = null;
+
+
+
         this.init();
 
     },
     init:function(){
         var winSize = cc.director.getWinSize();
         var h = winSize.height*0.1;
-//ÁÁ3
+//ï¿½ï¿½3
         var liangNormal = new cc.Sprite(res.anniu_png);
         var liangSelected = new cc.Sprite(res.anniu_png);
         var liangDisabled = new cc.Sprite(res.anniu_png);
         var liangButton = new cc.MenuItemSprite(liangNormal, liangSelected, liangDisabled, this.onLiangButton, this);
-        liangButton.setPosition(winSize.width/2 - 50 , h);
+        liangButton.setPosition(winSize.width/2 + 50 , h);
+        liangButton.setTag(BidMenuBtn.kCCBidMenu_Liang);
+        liangButton.setVisible(false);
 
         var size  = liangButton.getContentSize();
-        var liangStr = new cc.LabelTTF("ÁÁ 3", "Arial", 24);
+        var liangStr = new cc.LabelTTF("ï¿½ï¿½ 3", "Arial", 24);
         liangStr.color = cc.color.YELLOW;
         liangStr.setPosition(size.width/2, size.height/2);
         liangButton.addChild(liangStr);
 
-//¹È×Ó
+//ï¿½ï¿½ï¿½ï¿½
         var guziNormal = new cc.Sprite(res.anniu_png);
         var guziSelected = new cc.Sprite(res.anniu_png);
         var guziDisabled = new cc.Sprite(res.anniu_png);
         var guziButton = new cc.MenuItemSprite(guziNormal, guziSelected, guziDisabled, this.onGuziButton, this);
-        guziButton.setPosition(winSize.width/2 , h);
+        guziButton.setPosition(winSize.width/2 + 50, h);
+        guziButton.setTag(BidMenuBtn.kCCBidMenu_Guzi);
+        guziButton.setVisible(false);
 
         size  = guziButton.getContentSize();
-        var guziStr = new cc.LabelTTF("¹È ×Ó", "Arial", 24);
+        var guziStr = new cc.LabelTTF("ï¿½ï¿½ ï¿½ï¿½", "Arial", 24);
         guziStr.color = cc.color.YELLOW;
         guziStr.setPosition(size.width/2, size.height/2);
         guziButton.addChild(guziStr);
-//²»½Ð
+//ï¿½ï¿½ï¿½ï¿½
 
         var bujiaoNormal = new cc.Sprite(res.anniu_png);
         var bujiaoSelected = new cc.Sprite(res.anniu_png);
         var bujiaoDisabled = new cc.Sprite(res.anniu_png);
         var bujiaoButton = new cc.MenuItemSprite(bujiaoNormal, bujiaoSelected, bujiaoDisabled, this.onBujiaoButton, this);
-        bujiaoButton.setPosition(winSize.width/2 + 50 , h);
+        bujiaoButton.setPosition(winSize.width/2 - 50 , h);
+        bujiaoButton.setTag(BidMenuBtn.kCCBidMenu_Bujiao);
 
         size  = bujiaoButton.getContentSize();
-        var bujiaoStr = new cc.LabelTTF("²» ½Ð", "Arial", 24);
+        var bujiaoStr = new cc.LabelTTF("ï¿½ï¿½ ï¿½ï¿½", "Arial", 24);
         bujiaoStr.color = cc.color.YELLOW;
         bujiaoStr.setPosition(size.width/2, size.height/2);
         bujiaoButton.addChild(bujiaoStr);
@@ -56,21 +67,47 @@ var BidMenuLayer = cc.Layer.extend({
     },
 
     onLiangButton:function(){
-        console.log("ÁÁÈý");
-        //GameController.ready(gRoomId, gGameId);
+        console.log("ï¿½ï¿½ï¿½ï¿½");
+        if(this.m_targe && cc.isFunction(this.m_pCallBack)){
+            this.m_pCallBack.call(this.m_targe, BidMenuBtn.kCCBidMenu_Liang);
+        }
+        //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3);
     },
 
     onGuziButton:function(){
-        console.log("¹È×Ó");
-        //GameController.ready(gRoomId, gGameId);
+        console.log("ï¿½ï¿½ï¿½ï¿½");
+        if(this.m_targe && cc.isFunction(this.m_pCallBack)){
+            this.m_pCallBack.call(this.m_targe, BidMenuBtn.kCCBidMenu_Guzi);
+        }
+        //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.GUZI, []);
     },
 
     onBujiaoButton:function(){
-        console.log("²»½Ð");
-        //GameController.ready(gRoomId, gGameId);
+        console.log("ï¿½ï¿½ï¿½ï¿½");
+        if(this.m_targe && cc.isFunction(this.m_pCallBack)){
+            this.m_pCallBack.call(this.m_targe, BidMenuBtn.kCCBidMenu_Bujiao);
+        }
+        //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.UNKNOW, []);
     },
 
 
+    setCallback:function(targe, callback){
+        if(targe == null || callback == null){
+            return;
+        }
+        this.m_pTarge = targe;
+        this.m_pCallback = callback;
+    },
+
+    setBtnEnabled:function(tag, isEnabled){
+        var item = this.m_pMenu.getChildByTag(tag);
+        item.setEnable(isEnabled);
+    },
+
+    setBtnVisible:function(tag, isVisible){
+        var item = this.m_pMenu.getChildByTag(tag);
+        item.setVisible(isVisible);
+    },
 
     onEnter:function(){
         this._super();

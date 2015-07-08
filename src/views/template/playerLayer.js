@@ -21,6 +21,9 @@ var PlayerLayer = cc.Layer.extend({
         this.m_isready = false;
 
 
+        this.m_pRedImage = null;
+        this.m_pBlackImage = null;
+        this.m_pGuziImage = null;
 
         this.init();
     },
@@ -46,8 +49,64 @@ var PlayerLayer = cc.Layer.extend({
         }
         this.showNickName();
         this.showReady(false);
+        this.removeIdentity();
        // this.visible = false;
     },
+    redIdentity: function () {
+        if(this.m_pRedImage == null){
+            this.m_pRedImage = new cc.Sprite("#Card_hearts_red_1.png");
+            this.m_pRedImage.setPosition(cc.p(0, 0));
+            this.m_pRedImage.anchorX = 0;
+            this.m_pRedImage.anchorY = 0;
+            this.m_pRedImage.scale = 0.5;
+            this.m_pAvatarBg.addChild(this.m_pRedImage, 1);
+        }
+    },
+    blackIdentity: function () {
+        if(this.m_pBlackImage == null){
+            this.m_pBlackImage = new cc.Sprite("#Card_hearts_black_1.png");
+            this.m_pBlackImage.setPosition(cc.p(20, 0));
+            this.m_pBlackImage.anchorX = 0;
+            this.m_pBlackImage.anchorY = 0;
+            this.m_pBlackImage.scale = 0.5;
+            this.m_pAvatarBg.addChild(this.m_pBlackImage, 1);
+        }
+    },
+    guziIdentity: function () {
+        if(this.m_pGuziImage == null){
+            this.m_pGuziImage = new cc.LabelTTF("谷子", "Arial", 28);
+            var size = this.m_pAvatarBg.getContentSize();
+            this.m_pGuziImage.anchorX = 0.5;
+            this.m_pGuziImage.anchorY = 1;
+            this.m_pGuziImage.setPosition(cc.p(size.width/2, size.height));
+            this.m_pAvatarBg.addChild(this.m_pGuziImage, 1);
+        }
+    },
+    removeGuziIdentity: function () {
+        if(this.m_pGuziImage){
+            this.m_pGuziImage.removeFromParent(true);
+            this.m_pGuziImage = null;
+        }
+    },
+
+    removeRedIdentity: function () {
+        if(this.m_pRedImage){
+            this.m_pRedImage.removeFromParent(true);
+            this.m_pRedImage = null;
+        }
+    },
+    removeBlackIdentity: function () {
+        if(this.m_pBlackImage){
+            this.m_pBlackImage.removeFromParent(true);
+            this.m_pBlackImage = null;
+        }
+    },
+    removeIdentity: function () {
+        this.removeRedIdentity();
+        this.removeBlackIdentity();
+        this.removeGuziIdentity();
+    },
+
     fill: function () {
         
     },

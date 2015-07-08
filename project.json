@@ -48,9 +48,11 @@
         "src/views/layer/sevenPeopleTableLayer.js",
         "src/views/layer/gameMenuLayer.js",
         "src/views/layer/readyMenuLayer.js",
+        "src/views/layer/clock.js",
 
 
         "src/views/poker/pokerLayer.js",
+        "src/views/poker/pokerLayerDefine.js",
         "src/views/poker/bidMenuLayer.js",
         "src/views/poker/fanOutMenuLayer.js",
         "src/views/poker/pokerCard.js"

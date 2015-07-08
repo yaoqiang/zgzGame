@@ -5,6 +5,15 @@ var FivePeopleTableLayer = cc.Layer.extend({
 //类变量
         this.m_actorList = [];
         this.m_HDList = [];
+        this.m_pClock = null;
+        this.m_pClockCallback = null;
+        this.m_pClockTarge = null;
+
+
+
+
+
+
         this.init();
     },
 
@@ -129,6 +138,84 @@ var FivePeopleTableLayer = cc.Layer.extend({
             }
         }
     },
+//闹钟
+    showClockPosition:function(actorNr){
+        var winSize = cc.director.getWinSize();
+        var listlen =  this.m_HDList.length;
+        var i=0;
+        var selfNr;
+        for(i=0; i<listlen; i++){
+            if(this.m_HDList[i].m_uid == gPlayer.uid){
+                selfNr = this.m_HDList[i].m_actorNr;
+                break;
+            }
+        }
+
+        for(i=0; i<listlen; i++){
+            if(this.m_HDList[i].m_actorNr ==actorNr){
+                if(this.m_HDList[i].x < winSize.width/2 ){
+                    return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.LEFT};
+                }else{
+                    return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.RIGHT};
+                }
+            }
+        }
+    },
+
+    showClock:function(actorNr, time){
+        var showP = this.showClockPosition(actorNr);
+
+        var x = showP.x;
+        var y = showP.y;
+        var space = 30;
+
+        switch (showP.mode){
+            case SHOW_MODE.LEFT:
+            {
+                x = showP.x + space;
+            }
+                break;
+            case SHOW_MODE.RIGHT:
+            {
+                x = showP.x - space;
+            }
+                break;
+        }
+
+        //闹钟测试
+        if(!this.m_pClock){
+            this.m_pClock = new Clock({time:time, callback:this.clockCallback, targe:this});
+            this.m_pClock.x = x;
+            this.m_pClock.y = y;
+            this.addChild(this.m_pClock);
+        }
+
+    },
+    stopClock:function() {
+        if (this.m_pClock) {
+            this.m_pClock.removeFromParent(true);
+            this.m_pClock = null;
+        }
+    },
+    clockCallback:function(){
+        this.stopClock();
+
+        if(this.m_pClockTarge && cc.isFunction(this.m_pClockCallback)){
+            this.m_pClockCallback.call(this.m_pClockTarge);
+        }
+    },
+
+    setClockCallback:function(targe, callback){
+        if(targe == null || callback == null){
+            return;
+        }
+        this.m_pClockTarge = targe;
+        this.m_pClockCallback = callback;
+    },
+
+//闹钟 end
+
+
 
     getActorHDWithNr:function(actorNr){
         var listlen =  this.m_HDList.length;
@@ -151,4 +238,4 @@ var FivePeopleTableLayer = cc.Layer.extend({
     }
 
 
-})
+});

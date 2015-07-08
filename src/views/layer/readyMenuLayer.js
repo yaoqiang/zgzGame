@@ -12,7 +12,7 @@ var ReadyMenuLayer = cc.Layer.extend({
         var readySelected = new cc.Sprite(res.anniu_png);
         var readyDisabled = new cc.Sprite(res.anniu_png);
         var readyButton = new cc.MenuItemSprite(readyNormal, readySelected, readyDisabled, this.onReadyButton, this);
-        readyButton.setPosition(winSize.width/2, winSize.height/2);
+        readyButton.setPosition(winSize.width/2, winSize.height/2+50);
 
         var butsize  = readyButton.getContentSize();
         var readyStr = new cc.LabelTTF("ready", "Arial", 24);

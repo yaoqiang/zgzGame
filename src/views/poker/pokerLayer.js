@@ -1,73 +1,13 @@
-
-var ZySize = {
-
-    scale : height() / 640,
-    scalew : width() / 960,
-
-    SCALE:function(x){
-        return Math.round(scale * x);
-    },
-    SCALEW:function(x){
-        return Math.round(scalew * x);
-    },
-
-    width:function(){
-        var winSize = cc.director.getWinSize();
-        return winSize.width;
-    },
-    height:function(){
-        var winSize = cc.director.getWinSize();
-        return winSize.height;
-    }
-};
-
-
-//var SHOW_MODE = {
-//    LEFT:1,
-//    RIGHT:2,
-//    CENTER:3
-//};
-
-//var FanOutMenuBtn =  {
-//    kCCFanOutMenu_Pass : 1, //--不出
-//    kCCFanOutMenu_Reset : 2,//--重选
-//    kCCFanOutMenu_Hint : 3, //--提示
-//    kCCFanOutMenu_FanOut : 4 //--出牌
-//};
-
-CARD_WIDTH_LARGE = ZySize.SCALE(120);
-CARD_HEIGHT_LARGE = ZySize.SCALE(168);
-CARD_WIDTH_NORMAL = ZySize.SCALE(80);
-CARD_HEIGHT_NORMAL = ZySize.SCALE(108);
-CARD_WIDTH_SMALL = ZySize.SCALE(44);
-CARD_HEIGHT_SMALL = ZySize.SCALE(56);
-
-HOLDING_CARD_BOTTOM = ZySize.SCALE(40);  //--相对屏幕底部边缘的留边宽度
-HOLDING_CARD_PADDING = ZySize.SCALE(20); //--相对屏幕左右边缘的留边宽度
-
-LARGE_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(52);//--卡片重叠时的最小可视宽度
-LARGE_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(80); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
-
-CARD_SELECTED_UP_OFFSET = ZySize.SCALE(30)
-NORMAL_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(20); //--卡片重叠时的最小可视宽度
-NORMAL_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(40); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
-
-SMALL_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(20); //--卡片重叠时的最小可视宽度
-SMALL_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(40); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
-
-
-
-
-
 var PokerLayer = cc.Layer.extend({
-
     ctor: function(args){
         this._super();
+        cc.log("---->PokerLayer:ctor");
 //类变量
         this.m_pActorHDList = null;
         this.m_pTable = null;
 
         this.m_pFanOutMenuLayer = null;
+        this.m_pBidMenuLayer = null;
 
         this.m_pSelfCardArray = [];    //--当前持有的纸牌
         this.m_pSelectedWillOutCards = [];   //--自己选中要出的牌
@@ -76,6 +16,7 @@ var PokerLayer = cc.Layer.extend({
         this.m_pFanOutHDCard = [];   //--打出的牌，所有玩家打出、显示再牌桌中心。
 
         this.hintCards = [];//提示
+        this.iaFanOut = false;
 
         this.m_tCardTouchableRect = cc.rect(0, 0, 0, 0);// --可相应触摸的范围（卡牌区）
         this.m_tTouchDownPoint = null;
@@ -85,13 +26,36 @@ var PokerLayer = cc.Layer.extend({
        // --   J   Q   K    A    2   LJoker  BJoker
        // --  11  12  13   14   15    16      17
 
+//card define
 
+        CARD_WIDTH_LARGE = ZySize.SCALE(120);
+        CARD_HEIGHT_LARGE = ZySize.SCALE(168);
+        CARD_WIDTH_NORMAL = ZySize.SCALE(80);
+        CARD_HEIGHT_NORMAL = ZySize.SCALE(108);
+        CARD_WIDTH_SMALL = ZySize.SCALE(44);
+        CARD_HEIGHT_SMALL = ZySize.SCALE(56);
+
+        HOLDING_CARD_BOTTOM = ZySize.SCALE(40);  //--相对屏幕底部边缘的留边宽度
+        HOLDING_CARD_PADDING = ZySize.SCALE(20); //--相对屏幕左右边缘的留边宽度
+
+        LARGE_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(52);//--卡片重叠时的最小可视宽度
+        LARGE_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(80); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
+
+        CARD_SELECTED_UP_OFFSET = ZySize.SCALE(30);
+        NORMAL_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(20); //--卡片重叠时的最小可视宽度
+        NORMAL_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(40); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
+
+        SMALL_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(20); //--卡片重叠时的最小可视宽度
+        SMALL_CARD_MAX_VISIBLE_WIDTH = ZySize.SCALE(40); //--卡片重叠时的最大可视宽度（非单张或最后一张时）
+//card define  end
 
 
         this.init();
     },
 
     init:function(){
+        this._super();
+        cc.log("---->PokerLayer:init");
         var winSize = cc.director.getWinSize();
 
 
@@ -164,13 +128,15 @@ var PokerLayer = cc.Layer.extend({
 
     showFanOutMenuLayerForCard:function(){
         //--显示可以操作的按钮
-        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut,this.checkForFanOut());
+        if(this.m_pFanOutMenuLayer) {
+            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut());
+        }
     },
 
 //--向当前持有纸牌中增加一张底牌
     insertSelfCard:function(cardValue){
         var pCard = this.addSelfCard(cardValue);
-        this.m_pSelfCardArray.push(pCard);
+        //this.m_pSelfCardArray.push(pCard);
 
         var cardPoint = cardValue % 100;
         var insertIndex = 0;
@@ -182,7 +148,9 @@ var PokerLayer = cc.Layer.extend({
                 break;
             insertIndex = insertIndex + 1;
         }
-        this.m_pSelfCardArray.splice(insertIndex, pCard);//插入元素
+        //console.log("--->insertIndex:"+ insertIndex);
+        this.m_pSelfCardArray.splice(insertIndex, 0, pCard);//插入元素
+
 
         this.updataSelfCardZoder();
         this.updateSelfCardDisplay();
@@ -198,9 +166,10 @@ var PokerLayer = cc.Layer.extend({
     addSelfCardDetail:function( cardFace, cardPoint ){
         var card = new PokerCard({cardPoint:cardPoint, cardFace:cardFace, cardSize:PokerCard_enum.kCCCardSizeLarge});
         card.isSelected = false;
-        card.scale = ZySize.scale;
+        //card.scale = ZySize.scale();
         MDisplay.align(card, MDisplay.BOTTOM_LEFT, 0, HOLDING_CARD_BOTTOM);
         this.addChild(card);
+        //card.retain();
         return card;
     },
 
@@ -208,10 +177,11 @@ var PokerLayer = cc.Layer.extend({
     updataSelfCardZoder:function(){
         var zOrder = 1;
         var len = this.m_pSelfCardArray.length;
+        console.log("updataSelfCardZoder:  "+len);
         for (var i = 0; i< len; i++){
-            var pObj = self.m_pSelfCardArray[i];
-            this.reorderChild(pObj, zOrder);
-            zOrder = zOrder + 1;
+            var card = this.m_pSelfCardArray[i];
+            this.reorderChild(card, zOrder);
+            zOrder++;
         }
 
     },
@@ -221,8 +191,8 @@ var PokerLayer = cc.Layer.extend({
         var len = this.m_pSelfCardArray.length;
 
         if(len ==1){
-            var pObj = this.m_pSelfCardArray[0];
-            pObj.setVisible(true);
+            var pc = this.m_pSelfCardArray[0];
+            pc.setVisible(true);
 
             var pp = 0;
             if (pc.isSelected){
@@ -231,8 +201,8 @@ var PokerLayer = cc.Layer.extend({
                 pp = HOLDING_CARD_BOTTOM;
             }
 
-            var pos = cc.p(winSize.width/2 - pObj.getContentSize().width/2, pp);
-            pObj.setPosition(pos);
+            var pos = cc.p(winSize.width/2 - pc.getContentSize().width/2, pp);
+            pc.setPosition(pos);
             this.m_tCardTouchableRect = cc.rect(pos.x, pos.y, CARD_WIDTH_LARGE, CARD_HEIGHT_LARGE + CARD_SELECTED_UP_OFFSET);
 
             return;
@@ -245,7 +215,7 @@ var PokerLayer = cc.Layer.extend({
         if (this.m_nCardVisibleWidth > LARGE_CARD_MAX_VISIBLE_WIDTH){
             this.m_nCardVisibleWidth =LARGE_CARD_MAX_VISIBLE_WIDTH;
         }else{
-            this.m_nCardVisibleWidth =this.m_nCardVisibleWidth;
+            //this.m_nCardVisibleWidth =this.m_nCardVisibleWidth;
         }
 
         var occupyWidth = (this.m_nCardVisibleWidth *(len -1)) + CARD_WIDTH_LARGE;
@@ -254,7 +224,8 @@ var PokerLayer = cc.Layer.extend({
 
         this.m_tCardTouchableRect = cc.rect(leftStartPos, HOLDING_CARD_BOTTOM, occupyWidth, CARD_HEIGHT_LARGE + CARD_SELECTED_UP_OFFSET);
 
-
+        console.log("-----leftStartPos:", leftStartPos);
+        console.log("-----this.m_nCardVisibleWidth:", this.m_nCardVisibleWidth);
         var idx = 0;
         for (var i = 0; i<len; i++){
             var pc = this.m_pSelfCardArray[i];
@@ -265,7 +236,7 @@ var PokerLayer = cc.Layer.extend({
             }else{
                 pp = HOLDING_CARD_BOTTOM;
             }
-
+            console.log("-----pos:", leftStartPos+idx*this.m_nCardVisibleWidth);
             var pos = cc.p(leftStartPos+idx*this.m_nCardVisibleWidth, pp);
             pc.oldPos = pos;
             pc.setPosition(pos);
@@ -331,7 +302,7 @@ cardRunAction:function(){
             if (endIdx == idx){
                 xx = CARD_WIDTH_LARGE;
             }else{
-                xx = self.m_nCardVisibleWidth;
+                xx = this.m_nCardVisibleWidth;
             }
 
             var vMaxX = pc.getPositionX() + xx;
@@ -411,8 +382,10 @@ cardRunAction:function(){
             pc.isSelected = false;
             pc.setPositionY(HOLDING_CARD_BOTTOM);
         }
-        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
-        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, false);
+        if(this.m_pFanOutMenuLayer) {
+            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
+            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, false);
+        }
     },
 
 
@@ -431,7 +404,7 @@ cardRunAction:function(){
                 var cardPoint = cardValue % 100;
                 var pc = new PokerCard(cardFace, cardPoint, PokerCard.kCCCardSizeNormal);
                 pc.setCardPointImageScale(1.1);
-                pc.scale(ZySize.scale * 0.6);
+                pc.scale(ZySize.scale() * 0.6);
                 this.addChild(pc);
                 cardsArray.push(pc);
             }
@@ -463,6 +436,7 @@ cardRunAction:function(){
             pc.removeFromParent();
         }
         this.m_pSelfCardArray = [];
+        console.log("-------->clearCards:",this.m_pSelfCardArray);
     },
 
 
@@ -486,11 +460,56 @@ cardRunAction:function(){
     },
 
     checkForFanOut:function(){
+        this.m_pSelectedWillOutCards = [];
+        var selectCardVector = [];
+        var count = this.m_pSelfCardArray.length;
+        var idx = 0;
+        var i = 1;
+
+        for(idx = count-1; idx>=0; idx--){
+            var pc = this.m_pSelfCardArray[idx];
+            if (pc.isSelected){
+                selectCardVector.push(pc.cardValue);//(pc.cardPoint);
+                this.m_pSelectedWillOutCards.push(pc.cardValue);
+             }
+        }
+
+        switch (gGameState){
+            case ZGZ.GAME_STATE.TALK:
+            {
+                var len = selectCardVector.length;
+                if(len > 2){
+                    return false;
+                }
+                var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
+                if (identity == GAME.IDENTITY.HONG3) {
+                    for(var i=0; i<len; i++){
+                        if(selectCardVector[i] != 216 || selectCardVector[i] != 116){
+                            return false;
+                        }
+                    }
+                }else{
+                    for(var i=0; i<len; i++){
+                        if(selectCardVector[i] != 316 || selectCardVector[i] != 416){
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+                break;
+            case ZGZ.GAME_STATE.PLAY:
+
+                break;
+        }
+
 
     },
 
     hideFanOutMenu:function(){
-        this.m_pFanOutMenuLayer.setVisible(false);
+        if(this.m_pFanOutMenuLayer) {
+            this.m_pFanOutMenuLayer.setVisible(false);
+        }
         this.isFanOut = false;
     },
 
@@ -506,11 +525,60 @@ cardRunAction:function(){
     },
 
 
+    gameStart:function(data){
+        console.log("actor:",data);
+        console.log("properties:",data.properties);
+        console.log("gameStatus:",data.gameStatus);
+        var HoldingCards = data.gameStatus.currentHoldingCards;
+        //HoldingCards = [18,113,212,112,111,410,310,109,408,105];
+        console.log("HoldingCards:",HoldingCards);
+
+
+        var len ;
+
+        this.clearCards();
+        len = HoldingCards.length;
+        for (var i = 0; i<len; i++){
+            var card  = HoldingCards[i];
+            if (card > 0 ){
+                this.insertSelfCard(card);
+            }
+        }
+
+    },
+
+    isHaveSelectCars:function(){
+        var len = this.m_pSelfCardArray.length;
+        for (var i = len-1; i >= 0; i--){
+            var card  = this.m_pSelfCardArray[i];
+            if (card.isSelected){
+                return true;
+            }
+        }
+        return false;
+    },
+
+
+    onTalkCountdown:function(data){
+        return;
+        if (data.actor.uid == gPlayer.uid) {
+            //识别当前玩家身份
+            var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
+            //如果是红3，显示亮3说话按钮
+            if (identity == GAME.IDENTITY.HONG3) {
+                cc.log('说话阶段-当前玩家是红3，显示“亮3”按钮')
+            }
+            else
+            {
+                cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
+            }
+        }else {
+
+        }
 
 
 
-
-
+    },
 
 
 
@@ -552,12 +620,28 @@ cardRunAction:function(){
         this.hitCards(this.m_tTouchDownPoint, this.m_tTouchUpPoint);
         this.selectCards();
         if (this.iaFanOut){
-            this.hintFromHintCards();
+            //this.hintFromHintCards();
         }
 
         //--显示可以操作的按钮
-        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut());
-        self.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard());
+        switch (gGameState){
+            case ZGZ.GAME_STATE.TALK:
+            {
+                if(this.getParent().m_pBidMenuLayer)
+                    this.getParent().m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang, this.checkForFanOut());
+
+            }
+                break;
+            case ZGZ.GAME_STATE.PLAY:
+            {
+                if(this.m_pFanOutMenuLayer){
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut());
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard());
+                }
+            }
+                break;
+        }
+
     },
     touchCancelled:function(x, y){
         var len = this.m_pSelfCardArray.length;
@@ -590,44 +674,61 @@ cardRunAction:function(){
             onTouchCancelled: this.onTouchCancelled
         });
         cc.eventManager.addListener(this._touchListener, this);
+
+
+        //this.gameStart({properties:"测试", gameStatus:"牌型", currentHoldingCards:10});
     },
 
     onExit:function(){
         this._super();
-        console.log("PokerLayer onEnter");
+        console.log("PokerLayer onExit");
         cc.eventManager.removeListener(this._touchListener);
     },
 
     onTouchBegan:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        //cc.log("NoteLayer onTouchBegan at: " + pos.x + " " + pos.y);
-        if (!this.m_bIsOperation) return false;
+        var target = event.getCurrentTarget();
 
-        this.touchBegan(pos.x, pos.y);
+        cc.log("PokerLayer this.m_bIsOperation: " + target.m_bIsOperation);
+        //if (!this.m_bIsOperation) return false;
+        cc.log("PokerLayer onTouchBegan at: " + pos.x + " " + pos.y);
+        target.touchBegan(pos.x, pos.y);
+
+
+        var pc = target.m_pSelfCardArray[0];
+        var size = pc.getContentSize();
+        console.log(size);
+        console.log(target.m_tCardTouchableRect);
+
 
         return true;
     },
     onTouchMoved:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
+        var target = event.getCurrentTarget();
 
-        this.touchMoved(pos.x, pos.y);
+        //this.touchMoved(pos.x, pos.y);
     },
     onTouchEnded:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        //cc.log("NoteLayer onTouchEnded at: " + pos.x + " " + pos.y);
+        var target = event.getCurrentTarget();
+
+        cc.log("PokerLayer onTouchEnded at: " + pos.x + " " + pos.y);
         //event.getCurrentTarget().release_id(id,pos);
-        this.touchEnded(pos.x, pos.y);
+        target.touchEnded(pos.x, pos.y);
     },
     onTouchCancelled:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        //cc.log("NoteLayer onTouchCancelled ");
+        var target = event.getCurrentTarget();
+
+        //cc.log("PokerLayer onTouchCancelled ");
         //event.getCurrentTarget().update_id(id,pos);
-        this.touchCancelled(pos.x, pos.y);
+        target.touchCancelled(pos.x, pos.y);
     }
 
 
-})
+});

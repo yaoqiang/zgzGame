@@ -35,24 +35,10 @@ pomelo.on('onStart', function (data) {
 pomelo.on('onTalkCountdown', function (data) {
     console.log('receive onTalkCountdown event.', data);
 
-    console.log('data.actor.uid + gPlayer.uid => ', data.actor.uid, gPlayer.uid)
-    console.log('data.actor.uid == gPlayer.uid => ', data.actor.uid == gPlayer.uid)
-    //如果说话倒计时是当前玩家
-    if (data.actor.uid == gPlayer.uid) {
-        //识别当前玩家身份
-        var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
-        //如果是红3，显示亮3说话按钮
-        if (identity == GAME.IDENTITY.HONG3) {
-            cc.log('说话阶段-当前玩家是红3，显示“亮3”按钮')
-        }
-        else
-        {
-            cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
-        }
-    }
-    else {
+    console.log('data.actor.uid + gPlayer.uid => ', data.actor.uid, gPlayer.uid);
+    console.log('data.actor.uid == gPlayer.uid => ', data.actor.uid == gPlayer.uid);
+    cc.eventManager.dispatchCustomEvent("onTalkCountdown", data);
 
-    }
 
 });
 
