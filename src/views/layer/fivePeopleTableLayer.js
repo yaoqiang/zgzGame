@@ -120,7 +120,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var selfNr;
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_uid == gPlayer.uid){
-                selfNr = this.m_HDList[i].m_actorNr;
+                selfNr = this.m_HDList[i].m_Nr;
                 break;
             }
         }
@@ -129,7 +129,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
             return {x:winSize.width/2, y:100, mode:SHOW_MODE.CENTER};
         }
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_actorNr ==actorNr){
+            if(this.m_HDList[i].m_Nr ==actorNr){
                 if(this.m_HDList[i].x < winSize.width/2 ){
                     return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.LEFT};
                 }else{
@@ -146,13 +146,13 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var selfNr;
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_uid == gPlayer.uid){
-                selfNr = this.m_HDList[i].m_actorNr;
+                selfNr = this.m_HDList[i].m_Nr;
                 break;
             }
         }
 
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_actorNr ==actorNr){
+            if(this.m_HDList[i].m_Nr ==actorNr){
                 if(this.m_HDList[i].x < winSize.width/2 ){
                     return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.LEFT};
                 }else{

@@ -5,7 +5,7 @@ var BidMenuLayer = cc.Layer.extend({
 
         this.m_pTarge = null;
         this.m_pCallback = null;
-
+        this.m_pMenu = null;
 
 
         this.init();
@@ -60,9 +60,9 @@ var BidMenuLayer = cc.Layer.extend({
 //menu
 
 
-        var menu = new cc.Menu(liangButton, guziButton,bujiaoButton);
-        menu.setPosition(0, 0);
-        this.addChild(menu);
+        this.m_pMenu = new cc.Menu(liangButton, guziButton,bujiaoButton);
+        this.m_pMenu.setPosition(0, 0);
+        this.addChild(this.m_pMenu);
 
     },
 
@@ -102,6 +102,7 @@ var BidMenuLayer = cc.Layer.extend({
     setBtnEnabled:function(tag, isEnabled){
         var item = this.m_pMenu.getChildByTag(tag);
         item.setEnable(isEnabled);
+
     },
 
     setBtnVisible:function(tag, isVisible){
