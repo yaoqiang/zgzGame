@@ -183,6 +183,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
 
         //闹钟测试
+        this.stopClock();
         if(!this.m_pClock){
             this.m_pClock = new Clock({time:time, callback:this.clockCallback, targe:this});
             this.m_pClock.x = x;
