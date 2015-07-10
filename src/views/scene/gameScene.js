@@ -83,7 +83,7 @@ var GameLayer = cc.Layer.extend({
 
     addPokerLayer:function(){
         this.m_pPokerLayer = new PokerLayer();
-        this.addChild(this.m_pPokerLayer);
+        this.addChild(this.m_pPokerLayer,0);
     },
 
      updataActorHD:function(){
@@ -172,7 +172,7 @@ var GameLayer = cc.Layer.extend({
     addBidMenu:function(tag){
         if(this.m_pBidMenuLayer == null){
             this.m_pBidMenuLayer = new BidMenuLayer();
-            this.addChild(this.m_pBidMenuLayer, 99);
+            this.addChild(this.m_pBidMenuLayer, 10);
             this.m_pBidMenuLayer.setCallback(this, this.bidMenuCallback);
         }
         this.m_pBidMenuLayer.setBtnVisible(tag, true);
@@ -180,7 +180,7 @@ var GameLayer = cc.Layer.extend({
     addFanOutMenu:function(){
         if(this.m_pFanOutMenuLayer == null){
             this.m_pFanOutMenuLayer = new FanOutMenuLayer();
-            this.addChild(this.m_pFanOutMenuLayer);
+            this.addChild(this.m_pFanOutMenuLayer, 10);
             this.m_pFanOutMenuLayer.setCallback(this, this.fanOutCallback);
 
             if(this.m_pTableLayer){
@@ -379,6 +379,8 @@ var GameLayer = cc.Layer.extend({
             selfPointer.TalkResponse(event._userData);
         });
 
+        //this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
+        //this.m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,true);
     },
 
     onExit:function(){

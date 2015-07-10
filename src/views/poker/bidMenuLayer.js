@@ -22,6 +22,7 @@ var BidMenuLayer = cc.Layer.extend({
         liangButton.setPosition(winSize.width/2 + 50 , h);
         liangButton.setTag(BidMenuBtn.kCCBidMenu_Liang);
         liangButton.setVisible(false);
+        liangButton.setEnabled(false);
 
         var size  = liangButton.getContentSize();
         var liangStr = new cc.LabelTTF("亮3", "Arial", 24);
@@ -37,6 +38,7 @@ var BidMenuLayer = cc.Layer.extend({
         guziButton.setPosition(winSize.width/2 + 50, h);
         guziButton.setTag(BidMenuBtn.kCCBidMenu_Guzi);
         guziButton.setVisible(false);
+        //guziButton.setEnabled(false);
 
         size  = guziButton.getContentSize();
         var guziStr = new cc.LabelTTF("股子", "Arial", 24);

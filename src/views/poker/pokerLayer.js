@@ -129,7 +129,7 @@ var PokerLayer = cc.Layer.extend({
     showFanOutMenuLayerForCard:function(){
         //--显示可以操作的按钮
         if(this.m_pFanOutMenuLayer) {
-            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut());
+            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut({}));
         }
     },
 
@@ -459,7 +459,41 @@ cardRunAction:function(){
         }
     },
 
-    checkForFanOut:function(){
+    isHong3:function(vector){
+        var len = vector.length;
+
+        for(var i=0; i<len; i++){
+            if(vector[i]%100 != 16){
+                return false;
+            }
+        }
+        for(var i=0; i<len; i++){
+            if(vector[i] == 216 || vector[i] == 116){
+                return true;
+            }
+        }
+        return false;
+    },
+
+    isBlack3:function(vector){
+        var len = vector.length;
+        if(len == 0){
+            return true;
+        }
+
+        for(var i=0; i<len; i++){
+            if(vector[i]%100 != 16){
+                return false;
+            }
+        }
+        for(var i=0; i<len; i++){
+            if(vector[i] == 316 || vector[i] == 416){
+                return true;
+            }
+        }
+        return false;
+    },
+    checkForFanOut:function(call){
         this.m_pSelectedWillOutCards = [];
         var selectCardVector = [];
         var count = this.m_pSelfCardArray.length;
@@ -474,29 +508,14 @@ cardRunAction:function(){
              }
         }
 
+        if(cc.isFunction(call)){
+            console.log("---->checkForFanOut call is function");
+            return call(selectCardVector);
+        }
+        console.log("---->checkForFanOut call ");
         switch (gGameState){
             case ZGZ.GAME_STATE.TALK:
-            {
-                var len = selectCardVector.length;
-                if(len > 2){
-                    return false;
-                }
-                var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
-                if (identity == GAME.IDENTITY.HONG3) {
-                    for(var i=0; i<len; i++){
-                        if(selectCardVector[i] != 216 || selectCardVector[i] != 116){
-                            return false;
-                        }
-                    }
-                }else{
-                    for(var i=0; i<len; i++){
-                        if(selectCardVector[i] != 316 || selectCardVector[i] != 416){
-                            return false;
-                        }
-                    }
-                }
-                return true;
-            }
+
                 break;
             case ZGZ.GAME_STATE.PLAY:
 
@@ -627,16 +646,26 @@ cardRunAction:function(){
         switch (gGameState){
             case ZGZ.GAME_STATE.TALK:
             {
-                if(this.getParent().m_pBidMenuLayer)
-                    this.getParent().m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang, this.checkForFanOut());
+                if(this.getParent().m_pBidMenuLayer){
+                    var able;// = this.checkForFanOut();
+                    console.log("------>able:", able);
+                    var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
+                    if (identity == GAME.IDENTITY.HONG3) {
+                        able = this.checkForFanOut(this.isHong3);
+                        this.getParent().m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,able);
+                    }else{
+                        able = this.checkForFanOut(this.isBlack3);
+                        this.getParent().m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Guzi,able);
+                    }
 
+                }
             }
                 break;
             case ZGZ.GAME_STATE.PLAY:
             {
                 if(this.m_pFanOutMenuLayer){
-                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut());
-                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard());
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut({}));
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard({}));
                 }
             }
                 break;
