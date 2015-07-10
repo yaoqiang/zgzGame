@@ -101,8 +101,7 @@ var BidMenuLayer = cc.Layer.extend({
 
     setBtnEnabled:function(tag, isEnabled){
         var item = this.m_pMenu.getChildByTag(tag);
-        item.setEnable(isEnabled);
-
+        item.setEnabled(isEnabled);
     },
 
     setBtnVisible:function(tag, isVisible){
