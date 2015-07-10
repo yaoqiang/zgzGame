@@ -172,7 +172,7 @@ var GameLayer = cc.Layer.extend({
     addBidMenu:function(tag){
         if(this.m_pBidMenuLayer == null){
             this.m_pBidMenuLayer = new BidMenuLayer();
-            this.addChild(this.m_pBidMenuLayer);
+            this.addChild(this.m_pBidMenuLayer, 99);
             this.m_pBidMenuLayer.setCallback(this, this.bidMenuCallback);
         }
         this.m_pBidMenuLayer.setBtnVisible(tag, true);
@@ -192,10 +192,10 @@ var GameLayer = cc.Layer.extend({
     bidMenuCallback:function(tag){
         switch (tag){
             case BidMenuBtn.kCCBidMenu_Liang:
-                GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3, this.m_pTableLayer.m_pSelectedWillOutCards);
+                GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3, this.m_pPokerLayer.m_pSelectedWillOutCards);
                 break;
             case BidMenuBtn.kCCBidMenu_Guzi:
-                GameController.talk(gRoomId, gGameId, GAME.IDENTITY.GUZI, this.m_pTableLayer.m_pSelectedWillOutCards);
+                GameController.talk(gRoomId, gGameId, GAME.IDENTITY.GUZI, this.m_pPokerLayer.m_pSelectedWillOutCards);
                 break;
             case BidMenuBtn.kCCBidMenu_Bujiao:
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.UNKNOW, []);
