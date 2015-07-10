@@ -13,8 +13,8 @@ var BidMenuLayer = cc.Layer.extend({
     },
     init:function(){
         var winSize = cc.director.getWinSize();
-        var h = winSize.height*0.1;
-//��3
+        var h = winSize.height*0.6;
+//亮3
         var liangNormal = new cc.Sprite(res.anniu_png);
         var liangSelected = new cc.Sprite(res.anniu_png);
         var liangDisabled = new cc.Sprite(res.anniu_png);
@@ -24,12 +24,12 @@ var BidMenuLayer = cc.Layer.extend({
         liangButton.setVisible(false);
 
         var size  = liangButton.getContentSize();
-        var liangStr = new cc.LabelTTF("�� 3", "Arial", 24);
+        var liangStr = new cc.LabelTTF("亮3", "Arial", 24);
         liangStr.color = cc.color.YELLOW;
         liangStr.setPosition(size.width/2, size.height/2);
         liangButton.addChild(liangStr);
 
-//����
+//股子
         var guziNormal = new cc.Sprite(res.anniu_png);
         var guziSelected = new cc.Sprite(res.anniu_png);
         var guziDisabled = new cc.Sprite(res.anniu_png);
@@ -39,11 +39,11 @@ var BidMenuLayer = cc.Layer.extend({
         guziButton.setVisible(false);
 
         size  = guziButton.getContentSize();
-        var guziStr = new cc.LabelTTF("�� ��", "Arial", 24);
+        var guziStr = new cc.LabelTTF("股子", "Arial", 24);
         guziStr.color = cc.color.YELLOW;
         guziStr.setPosition(size.width/2, size.height/2);
         guziButton.addChild(guziStr);
-//����
+//不叫
 
         var bujiaoNormal = new cc.Sprite(res.anniu_png);
         var bujiaoSelected = new cc.Sprite(res.anniu_png);
@@ -53,7 +53,7 @@ var BidMenuLayer = cc.Layer.extend({
         bujiaoButton.setTag(BidMenuBtn.kCCBidMenu_Bujiao);
 
         size  = bujiaoButton.getContentSize();
-        var bujiaoStr = new cc.LabelTTF("�� ��", "Arial", 24);
+        var bujiaoStr = new cc.LabelTTF("不叫", "Arial", 24);
         bujiaoStr.color = cc.color.YELLOW;
         bujiaoStr.setPosition(size.width/2, size.height/2);
         bujiaoButton.addChild(bujiaoStr);
@@ -67,25 +67,37 @@ var BidMenuLayer = cc.Layer.extend({
     },
 
     onLiangButton:function(){
-        console.log("����");
-        if(this.m_targe && cc.isFunction(this.m_pCallBack)){
-            this.m_pCallBack.call(this.m_targe, BidMenuBtn.kCCBidMenu_Liang);
+        console.log("亮3");
+        console.log(this.m_pTarge, this.m_pCallback)
+
+        if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
+            console.log("亮3 callback");
+
+            this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Liang);
         }
         //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3);
     },
 
     onGuziButton:function(){
-        console.log("����");
-        if(this.m_targe && cc.isFunction(this.m_pCallBack)){
-            this.m_pCallBack.call(this.m_targe, BidMenuBtn.kCCBidMenu_Guzi);
+        console.log("股子");
+        console.log(this.m_pTarge, this.m_pCallback)
+
+        if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
+            console.log("股子 callback");
+
+            this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Guzi);
         }
         //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.GUZI, []);
     },
 
     onBujiaoButton:function(){
-        console.log("����");
-        if(this.m_targe && cc.isFunction(this.m_pCallBack)){
-            this.m_pCallBack.call(this.m_targe, BidMenuBtn.kCCBidMenu_Bujiao);
+        console.log("不叫");
+        console.log(this.m_pTarge, this.m_pCallback)
+
+        if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
+            console.log("不叫 callback");
+
+            this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Bujiao);
         }
         //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.UNKNOW, []);
     },
@@ -102,6 +114,7 @@ var BidMenuLayer = cc.Layer.extend({
     setBtnEnabled:function(tag, isEnabled){
         var item = this.m_pMenu.getChildByTag(tag);
         item.setEnabled(isEnabled);
+
     },
 
     setBtnVisible:function(tag, isVisible){
