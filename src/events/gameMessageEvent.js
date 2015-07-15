@@ -91,6 +91,7 @@ pomelo.on('onFan', function (data) {
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;
     }
+    cc.eventManager.dispatchCustomEvent("FanOutEvent", data);
     //actor: {uid: xx, actorNr: xx},
     //cardRecognization: utils.cards.CardRecognization (当前出牌牌型）, cards: 出牌，数组[]，为空时为不出
 

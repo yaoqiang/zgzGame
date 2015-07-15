@@ -98,30 +98,30 @@ GameController.talk = function (roomId, gameId, goal, append) {
 GameController.fan = function (roomId, gameId, cards) {
     cc.log("GameController.talk roomId:" +  roomId + "  gameId: "+gameId+ "  cards: "+cards);
     if (roomId == null || gameId == null || !_.isArray(cards)) {
-        cc.eventManager.dispatchCustomEvent("FanResponse", {code: 500, err: ''});
+        cc.eventManager.dispatchCustomEvent("FanOutResponse", {code: 500, err: ''});
         return;
     }
 
-    //牌型识别
-    var recogntition = cardUtil.recognitionCards(cards, gGameType, gActor.append);
-    //错误牌型
-    if (recogntition.cardSeries == CardLogic.CardSeriesCode.cardSeries_99) {
-        cc.eventManager.dispatchCustomEvent("FanResponse", {code: 500, err: '出牌不符合牌型规则'});
-        return;
-    }
-
-    if (!gActor.isBoss) {
-        if (!cardUtil.isCurrentBiggerThanLast(recogntition, gLastFanCardRecognization, gGameType, gActor.append)) {
-            cc.eventManager.dispatchCustomEvent("FanResponse", {code: 500, err: '当前出牌小于上手出牌'});
-            return;
-        }
-    }
-    else {
-        if (_.size(cards) == 0) {
-            cc.eventManager.dispatchCustomEvent("FanResponse", {code: 500, err: '当前玩家是上回合Boss, 不能不出'});
-            return;
-        }
-    }
+    ////牌型识别
+    //var recogntition = cardUtil.recognitionCards(cards, gGameType, gActor.append);
+    ////错误牌型
+    //if (recogntition.cardSeries == CardLogic.CardSeriesCode.cardSeries_99) {
+    //    cc.eventManager.dispatchCustomEvent("FanOutResponse", {code: 500, err: '出牌不符合牌型规则'});
+    //    return;
+    //}
+    //
+    //if (!gActor.isBoss) {
+    //    if (!cardUtil.isCurrentBiggerThanLast(recogntition, gLastFanCardRecognization, gGameType, gActor.append)) {
+    //        cc.eventManager.dispatchCustomEvent("FanOutResponse", {code: 500, err: '当前出牌小于上手出牌'});
+    //        return;
+    //    }
+    //}
+    //else {
+    //    if (_.size(cards) == 0) {
+    //        cc.eventManager.dispatchCustomEvent("FanOutResponse", {code: 500, err: '当前玩家是上回合Boss, 不能不出'});
+    //        return;
+    //    }
+    //}
 
     //自己出牌结果由response返回，其他玩家接受用onFan Event；
     pomelo.request(route.fan, {roomId: roomId, gameId:gameId, cards: cards, isTimeout: false}, function(data) {
@@ -130,7 +130,7 @@ GameController.fan = function (roomId, gameId, cards) {
             //出牌成功后，设置上手牌型；其他玩家的在onFan Event中设置
             gLastFanCardRecognization = recogntition;
             //出牌成功，处理出牌时牌局UI逻辑：自己出牌成功，中间显示出牌；
-            cc.eventManager.dispatchCustomEvent("FanResponse", data);
+            cc.eventManager.dispatchCustomEvent("FanOutResponse", data);
         }else if(data.code == 500){
             cc.log("----> fan fail");
         }

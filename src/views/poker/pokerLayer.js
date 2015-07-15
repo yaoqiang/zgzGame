@@ -493,6 +493,44 @@ cardRunAction:function(){
         }
         return false;
     },
+    isCanFanOut:function(vector){
+        var len = vector.length;
+        if(len == 0){
+            return false;
+        }
+
+        var cr1 = cardUtil.recognitionCards(vector, gGameType, gActor.append);//牌型分析
+        if(cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_99){
+            return false;
+        }
+
+        //var cr2 = cardUtil.recognitionCards(this.m_pFanOutCard, gGameType, gActor.append);//牌型分析
+        //if(cr2.cardSeries == CardLogic.CardSeriesCode.cardSeries_99 ){
+        //    return true;
+        //}
+        //
+        ////本次出牌大于上家出牌
+        //if(cardUtil.isCurrentBiggerThanLast (cr1, cr2, gGameType, gActor.append))
+        //{
+        //    return true;
+        //}
+        //return false;
+
+
+
+        if (!gActor.isBoss) {
+            if (cardUtil.isCurrentBiggerThanLast(cr1, cr2, gGameType, gActor.append)) {
+                return true;
+            }
+        }else {
+            if (_.size(cards) == 0) {
+                // '当前玩家是上回合Boss, 不能不出
+                return false;
+            }
+        }
+        return false;
+    },
+
     checkForFanOut:function(call){
         this.m_pSelectedWillOutCards = [];
         var selectCardVector = [];
@@ -512,16 +550,8 @@ cardRunAction:function(){
             console.log("---->checkForFanOut call is function");
             return call(selectCardVector);
         }
-        console.log("---->checkForFanOut call ");
-        switch (gGameState){
-            case ZGZ.GAME_STATE.TALK:
 
-                break;
-            case ZGZ.GAME_STATE.PLAY:
-
-                break;
-        }
-
+        return false;
 
     },
 
@@ -664,8 +694,8 @@ cardRunAction:function(){
             case ZGZ.GAME_STATE.PLAY:
             {
                 if(this.m_pFanOutMenuLayer){
-                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut({}));
-                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard({}));
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut(this.isCanFanOut));
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard(this.isCanFanOut));
                 }
             }
                 break;

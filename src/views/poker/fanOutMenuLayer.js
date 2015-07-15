@@ -20,6 +20,7 @@ var FanOutMenuLayer = cc.Layer.extend({
         var tishiDisabled = new cc.Sprite(res.anniu_png);
         var tishiButton = new cc.MenuItemSprite(tishiNormal, tishiSelected, tishiDisabled, this.onTishiButton, this);
         tishiButton.setPosition(winSize.width/2 - 50 , h);
+        tishiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Hint);
 
         var size  = tishiButton.getContentSize();
         var tishiStr = new cc.LabelTTF("�� ʾ", "Arial", 24);
@@ -33,6 +34,7 @@ var FanOutMenuLayer = cc.Layer.extend({
         var chupaiDisabled = new cc.Sprite(res.anniu_png);
         var chupaiButton = new cc.MenuItemSprite(chupaiNormal, chupaiSelected, chupaiDisabled, this.onChupaiButton, this);
         chupaiButton.setPosition(winSize.width/2 , h);
+        chupaiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_FanOut);
 
         size  = chupaiButton.getContentSize();
         var chupaiStr = new cc.LabelTTF("�� ��", "Arial", 24);
@@ -46,6 +48,7 @@ var FanOutMenuLayer = cc.Layer.extend({
         var buchuDisabled = new cc.Sprite(res.anniu_png);
         var buchuButton = new cc.MenuItemSprite(buchuNormal, buchuSelected, buchuDisabled, this.onBuchuButton, this);
         buchuButton.setPosition(winSize.width/2 + 50 , h);
+        buchuButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Pass);
 
         size  = buchuButton.getContentSize();
         var buchuStr = new cc.LabelTTF("�� ��", "Arial", 24);
@@ -63,17 +66,26 @@ var FanOutMenuLayer = cc.Layer.extend({
 
     onTishiButton:function(){
         console.log("�� ʾ");
-        //GameController.ready(gRoomId, gGameId);
+        if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
+            console.log("fanout tishi");
+            this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_Hint);
+        }
     },
 
     onChupaiButton:function(){
         console.log("�� ��");
-        //GameController.ready(gRoomId, gGameId);
+        if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
+            console.log("fanout chupai");
+            this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_FanOut);
+        }
     },
 
     onBuchuButton:function(){
         console.log("�� ��");
-        //GameController.ready(gRoomId, gGameId);
+        if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
+            console.log("fanout buchu");
+            this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_Pass);
+        }
     },
 
 
@@ -89,7 +101,10 @@ var FanOutMenuLayer = cc.Layer.extend({
         var item = this.m_pMenu.getChildByTag(tag);
         item.setEnable(isEnabled);
     },
-
+    setBtnVisible:function(tag, isVisible){
+        var item = this.m_pMenu.getChildByTag(tag);
+        item.setVisible(isVisible);
+    },
     onEnter:function(){
         this._super();
         console.log("FanOutMenuLayer onEnter");

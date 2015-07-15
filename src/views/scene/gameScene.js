@@ -205,7 +205,18 @@ var GameLayer = cc.Layer.extend({
     },
 
     fanOutCallback:function(tag){
-
+        //GameController.fan = function (roomId, gameId, cards)
+        switch (tag){
+            case FanOutMenuBtn.kCCFanOutMenu_Pass:
+                GameController.fan(gRoomId, gGameId, []);
+                break;
+            case FanOutMenuBtn.kCCFanOutMenu_FanOut:
+                GameController.fan(gRoomId, gGameId, this.m_pPokerLayer.m_pSelectedWillOutCards);
+                break;
+            case FanOutMenuBtn.kCCFanOutMenu_Hint:
+                GameController.fan(gRoomId, gGameId, this.m_pPokerLayer.m_pSelectedWillOutCards);
+                break;
+        }
     },
 
 
@@ -292,7 +303,7 @@ var GameLayer = cc.Layer.extend({
         
     },
 
-    fanEvent:function(data){
+    fanOutEvent:function(data){
 
     },
 
@@ -368,6 +379,11 @@ var GameLayer = cc.Layer.extend({
             selfPointer.onTalkCountdownEvent(event._userData);
         });
 
+        cc.eventManager.addCustomListener("FanOutEvent", function(event){
+            cc.log("---->game  FanOutEvent: ", event._userData);
+            selfPointer.fanOutEvent(event._userData);
+        });
+
     //response
         cc.eventManager.addCustomListener("ReadyResponse", function(event){
             cc.log("---->game  ReadyResponse: ", event._userData);
@@ -378,6 +394,12 @@ var GameLayer = cc.Layer.extend({
             cc.log("---->game  TalkResponse: ", event._userData);
             selfPointer.TalkResponse(event._userData);
         });
+
+        cc.eventManager.addCustomListener("FanOutResponse", function(event){
+            cc.log("---->game  FanOutResponse: ", event._userData);
+            selfPointer.TalkResponse(event._userData);
+        });
+
 
         //this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
         //this.m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,true);
@@ -396,7 +418,7 @@ var GameLayer = cc.Layer.extend({
         //response
         cc.eventManager.removeCustomListeners("ReadyResponse");
         cc.eventManager.removeCustomListeners("TalkResponse");
-
+        cc.eventManager.removeCustomListeners("FanOutResponse");
 
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
