@@ -13,6 +13,8 @@ var PokerCard = cc.Node.extend({
         this.cardSize = args.cardSize;
         this.oldPos = cc.p(0, 0);
 
+        this.cardScale = 1;
+
         this.setAnchorPoint(0.5,0.5);
         //-- 当前状态
         this.state = 0;
@@ -23,13 +25,20 @@ var PokerCard = cc.Node.extend({
         this.isOperation = true;
 
 
-        //this.init();
+        this.init();
     },
 
     init:function(){
         var winSize = cc.director.getWinSize();
         this._super();
 
+        if(this.cardSize == PokerCard_enum.kCCCardSizeSmall){
+            this.cardScale = 0.4;
+        }else if(this.cardSize == PokerCard_enum.kCCCardSizeNormal){
+            this.cardScale = 0.6;
+        }else if(this.cardSize == PokerCard_enum.kCCCardSizeLarge){
+            this.cardScale = 0.8;
+        }
 
     },
 
@@ -45,9 +54,10 @@ var PokerCard = cc.Node.extend({
             var frameName = "#Card_front.png";
 
             this.cardFrame = new cc.Sprite.create(frameName);
-
             var size = this.cardFrame.getContentSize();
-            this.setContentSize(size);
+            this.cardFrame.setScale(this.cardScale);
+            this.setContentSize(cc.size(size.width*this.cardScale, size.height*this.cardScale));
+
             this.cardFrame.setPosition(size.width / 2, size.height / 2);
             this.addChild(this.cardFrame, 0);
             this.frameName = frameName;

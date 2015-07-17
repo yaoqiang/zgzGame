@@ -131,9 +131,9 @@ var FivePeopleTableLayer = cc.Layer.extend({
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_Nr ==actorNr){
                 if(this.m_HDList[i].x < winSize.width/2 ){
-                    return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.LEFT};
+                    return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.LEFT};
                 }else{
-                    return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.RIGHT};
+                    return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.RIGHT};
                 }
             }
         }
@@ -150,13 +150,13 @@ var FivePeopleTableLayer = cc.Layer.extend({
                 break;
             }
         }
-
+        console.log("selfNr:", selfNr);
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_Nr ==actorNr){
+            if(this.m_HDList[i].m_Nr == actorNr){
                 if(this.m_HDList[i].x < winSize.width/2 ){
-                    return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.LEFT};
+                    return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.LEFT};
                 }else{
-                    return {x:this.m_HDList[i].x, y:this.m_HDList[i].y, mode:SHOW_MODE.RIGHT};
+                    return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.RIGHT};
                 }
             }
         }
@@ -164,10 +164,10 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
     showClock:function(actorNr, time){
         var showP = this.showClockPosition(actorNr);
-
+        console.log("showClock: actorNr: ", actorNr , "     showP:",showP);
         var x = showP.x;
         var y = showP.y;
-        var space = 30;
+        var space = 70;
 
         switch (showP.mode){
             case SHOW_MODE.LEFT:

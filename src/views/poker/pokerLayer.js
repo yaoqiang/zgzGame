@@ -391,6 +391,7 @@ cardRunAction:function(){
 
 
     setFanOutCards:function(cardsVector, actorNr){
+        this.m_pFanOutCard = cardsVector;
         this.hideFanOutCards(actorNr);
         var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
         var cardsArray = [];
@@ -404,7 +405,7 @@ cardRunAction:function(){
                 var cardPoint = cardValue % 100;
                 var pc = new PokerCard(cardFace, cardPoint, PokerCard.kCCCardSizeNormal);
                 pc.setCardPointImageScale(1.1);
-                pc.scale(ZySize.scale() * 0.6);
+                //pc.setScale(ZySize.scale() * 0.6);
                 this.addChild(pc);
                 cardsArray.push(pc);
             }
@@ -504,7 +505,7 @@ cardRunAction:function(){
             return false;
         }
 
-        //var cr2 = cardUtil.recognitionCards(this.m_pFanOutCard, gGameType, gActor.append);//牌型分析
+        var cr2 = cardUtil.recognitionCards(this.m_pFanOutCard, gGameType, gActor.append);//牌型分析
         //if(cr2.cardSeries == CardLogic.CardSeriesCode.cardSeries_99 ){
         //    return true;
         //}
@@ -736,6 +737,12 @@ cardRunAction:function(){
 
 
         //this.gameStart({properties:"测试", gameStatus:"牌型", currentHoldingCards:10});
+        var card = new PokerCard({cardPoint:10, cardFace:4, cardSize:PokerCard_enum.kCCCardSizeSmall});
+        card.isSelected = false;
+        card.setPosition(200, 100);
+        MDisplay.align(card, MDisplay.BOTTOM_LEFT, 0, HOLDING_CARD_BOTTOM);
+        this.addChild(card);
+        console.log("PokerCard size:",card.getContentSize());
     },
 
     onExit:function(){

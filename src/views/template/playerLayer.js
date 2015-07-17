@@ -194,7 +194,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pAvatarBg.setPosition(cc.p(this.m_position.x, this.m_position.y));
             this.m_pAvatarBg.anchorX = this.m_anchorX;
             this.m_pAvatarBg.anchorY = this.m_anchorY;
-            this.m_pAvatarBg.scale = ZGZ.SCALE * 0.5;
+            this.m_pAvatarBg.scale = ZGZ.SCALE * 0.4;
             this.addChild(this.m_pAvatarBg);
         }
     },

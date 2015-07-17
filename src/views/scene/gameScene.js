@@ -304,6 +304,10 @@ var GameLayer = cc.Layer.extend({
     },
 
     fanOutEvent:function(data){
+        cc.log("---->fanOutEvent:", data);
+
+       // this.m_pPokerLayer.setFanOutCards(data.cards, data.actor);
+
 
     },
 
@@ -343,11 +347,23 @@ var GameLayer = cc.Layer.extend({
         if(this.m_pTableLayer){
             this.m_pTableLayer.stopClock();
         }
+    },
 
+    FanOutResponse:function(data){
+        cc.log("FanOutResponse :", data);
+        var code = data.code;
+        if(code == 500){
+            cc.log("----> FanOutResponse fail");
+            return;
+        }
 
-
+        //this.m_pPokerLayer.setFanOutCards(data.cards, gActor.actorNr);
 
     },
+
+
+
+
 
 
     onEnter:function(){
@@ -397,12 +413,13 @@ var GameLayer = cc.Layer.extend({
 
         cc.eventManager.addCustomListener("FanOutResponse", function(event){
             cc.log("---->game  FanOutResponse: ", event._userData);
-            selfPointer.TalkResponse(event._userData);
+            selfPointer.FanOutResponse(event._userData);
         });
 
 
         //this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
         //this.m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,true);
+
     },
 
     onExit:function(){
