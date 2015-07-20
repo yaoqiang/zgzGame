@@ -58,7 +58,7 @@ pomelo.on('onTalk', function (data) {
     console.log('receive onTalk event.', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
-
+    //cc.eventManager.dispatchCustomEvent("TalkEvent", data);
 });
 
 /**
@@ -66,7 +66,7 @@ pomelo.on('onTalk', function (data) {
  */
 pomelo.on('onFanCountdown', function (data) {
     console.log('receive onFanCountdown event.', data);
-
+    console.log('lastFanCardRecognization:.', data.lastFanCardRecognization);
     gActor.isBoss = data.isBoss;
 
     //如果当前出牌玩家是上回合BOSS，则禁用或不显示“不出”按钮
@@ -75,7 +75,7 @@ pomelo.on('onFanCountdown', function (data) {
     }
     //actor: {uid: xx, actorNr: xx},isBoss: true/false（是否当前回合BOSS）,
     //lastFanCardRecognization: utils.cards.CardRecognization (上手牌型，如果是第一个出牌，则是null）, second: 倒计时时间
-
+    cc.eventManager.dispatchCustomEvent("FanCountdownEvent", data);
 });
 
 //pomelo.on('onFanTimeout', function (data) {
@@ -86,7 +86,7 @@ pomelo.on('onFanCountdown', function (data) {
  * 出牌消息，出牌者出牌时发送给其他玩家接受的消息；当前出牌者通过request/response得到出牌响应(gameController.fan)
  */
 pomelo.on('onFan', function (data) {
-    console.log('receive onTalk event.', data);
+    console.log('receive onFan event.', data);
     //如果有出牌，则设置全局变量上手牌型
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;

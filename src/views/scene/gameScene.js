@@ -160,10 +160,11 @@ var GameLayer = cc.Layer.extend({
     },
     removeFanOutMenu:function(){
         //删除fanout menu
+        console.log("--->removeFanOutMenu  1");
         if(this.m_pFanOutMenuLayer){
             this.m_pFanOutMenuLayer.removeFromParent(true);
             this.m_pFanOutMenuLayer = null;
-
+            console.log("--->removeFanOutMenu");
             if(this.m_pTableLayer){
                 this.m_pTableLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
             }
@@ -178,11 +179,12 @@ var GameLayer = cc.Layer.extend({
         this.m_pBidMenuLayer.setBtnVisible(tag, true);
     },
     addFanOutMenu:function(){
+        console.log("--->addFanOutMenu   1");
         if(this.m_pFanOutMenuLayer == null){
             this.m_pFanOutMenuLayer = new FanOutMenuLayer();
             this.addChild(this.m_pFanOutMenuLayer, 10);
             this.m_pFanOutMenuLayer.setCallback(this, this.fanOutCallback);
-
+            console.log("--->addFanOutMenu");
             if(this.m_pTableLayer){
                 this.m_pTableLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
             }
@@ -303,11 +305,40 @@ var GameLayer = cc.Layer.extend({
         
     },
 
+    TalkEvent:function(data){
+
+    },
+
+
     fanOutEvent:function(data){
         cc.log("---->fanOutEvent:", data);
 
        // this.m_pPokerLayer.setFanOutCards(data.cards, data.actor);
 
+
+    },
+
+    FanCountdownEvent:function(data){
+        cc.log("---->FanCountdownEvent:", data);
+        if(this.m_pTableLayer){
+            this.m_pTableLayer.stopClock();
+            this.removeFanOutMenu();
+        }
+
+        if (data.actor.uid == gPlayer.uid) {
+            this.addFanOutMenu();
+            if(data.isBoss){
+                if(this.m_pFanOutMenuLayer){
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, false);
+                }
+            }
+        }else {
+
+        }
+
+        if(this.m_pTableLayer){
+            this.m_pTableLayer.showClock(data.actor.actorNr, data.second);
+        }
 
     },
 
@@ -400,6 +431,16 @@ var GameLayer = cc.Layer.extend({
             selfPointer.fanOutEvent(event._userData);
         });
 
+        cc.eventManager.addCustomListener("FanCountdownEvent", function(event){
+            cc.log("---->game  FanCountdownEvent: ", event._userData);
+            selfPointer.FanCountdownEvent(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("TalkEvent", function(event){
+            cc.log("---->game  TalkEvent: ", event._userData);
+            selfPointer.TalkEvent(event._userData);
+        });
+
     //response
         cc.eventManager.addCustomListener("ReadyResponse", function(event){
             cc.log("---->game  ReadyResponse: ", event._userData);
@@ -419,7 +460,7 @@ var GameLayer = cc.Layer.extend({
 
         //this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
         //this.m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,true);
-
+        //this.addFanOutMenu();
     },
 
     onExit:function(){
@@ -430,7 +471,9 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeCustomListeners("ReadyEvent");
         cc.eventManager.removeCustomListeners("GameStartEvent");
         cc.eventManager.removeCustomListeners("onTalkCountdownEvent");
-
+        cc.eventManager.removeCustomListeners("FanOutEvent");
+        cc.eventManager.removeCustomListeners("FanCountdownEvent");
+        cc.eventManager.removeCustomListeners("TalkEvent");
 
         //response
         cc.eventManager.removeCustomListeners("ReadyResponse");

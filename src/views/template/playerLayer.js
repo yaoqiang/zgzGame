@@ -25,6 +25,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_pBlackImage = null;
         this.m_pGuziImage = null;
 
+        this.m_pFanOutCardVector = null;
         this.init();
     },
     init: function () {
@@ -50,8 +51,32 @@ var PlayerLayer = cc.Layer.extend({
         this.showNickName();
         this.showReady(false);
         this.removeIdentity();
+        this.clearFanoutCards();
        // this.visible = false;
     },
+
+    clearFanoutCards: function () {
+        if(this.m_pFanOutCardVector == null){
+            return;
+        }
+        var len = this.m_pFanOutCardVector.length;
+
+        for(var i=0; i<len; i++){
+            var card = this.m_pFanOutCardVector[i];
+            card.removeFromParent();
+        }
+        this.m_pFanOutCardVector = null;
+    },
+
+    setFanoutCards: function (array) {
+        this.clearFanoutCards();
+        var len = array.length;
+        if(len <= 0){
+            return;
+        }
+        this.m_pFanOutCardVector = array;
+    },
+
     redIdentity: function () {
         if(this.m_pRedImage == null){
             this.m_pRedImage = new cc.Sprite("#Card_hearts_red_1.png");

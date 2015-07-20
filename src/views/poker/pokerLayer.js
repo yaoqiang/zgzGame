@@ -29,7 +29,7 @@ var PokerLayer = cc.Layer.extend({
 //card define
 
         CARD_WIDTH_LARGE = ZySize.SCALE(120);
-        CARD_HEIGHT_LARGE = ZySize.SCALE(168);
+        CARD_HEIGHT_LARGE = ZySize.SCALE(200);//168
         CARD_WIDTH_NORMAL = ZySize.SCALE(80);
         CARD_HEIGHT_NORMAL = ZySize.SCALE(108);
         CARD_WIDTH_SMALL = ZySize.SCALE(44);
@@ -71,7 +71,7 @@ var PokerLayer = cc.Layer.extend({
          var showP = this.m_pTable.showCardPosition(actorNr);//获取显示起始位置、显示方式（靠左、靠右、居中）
          var x = showP.x;
          var y = showP.y;
-         var space = 20;
+         var space = 50;
 
          switch (showP.mode){
              case SHOW_MODE.LEFT:
@@ -427,7 +427,7 @@ cardRunAction:function(){
             this.updateSelfCardDisplay();
         }
 
-
+        actorHD.setFanoutCards(cardsArray)
     },
 
     clearCards:function(){
@@ -677,6 +677,7 @@ cardRunAction:function(){
         switch (gGameState){
             case ZGZ.GAME_STATE.TALK:
             {
+                console.log("ZGZ.GAME_STATE.TALK");
                 if(this.getParent().m_pBidMenuLayer){
                     var able;// = this.checkForFanOut();
                     console.log("------>able:", able);
@@ -694,6 +695,7 @@ cardRunAction:function(){
                 break;
             case ZGZ.GAME_STATE.PLAY:
             {
+                console.log("ZGZ.GAME_STATE.PLAY");
                 if(this.m_pFanOutMenuLayer){
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut(this.isCanFanOut));
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard(this.isCanFanOut));
@@ -735,14 +737,17 @@ cardRunAction:function(){
         });
         cc.eventManager.addListener(this._touchListener, this);
 
-
+//下面是测试代码
         //this.gameStart({properties:"测试", gameStatus:"牌型", currentHoldingCards:10});
-        var card = new PokerCard({cardPoint:10, cardFace:4, cardSize:PokerCard_enum.kCCCardSizeSmall});
-        card.isSelected = false;
-        card.setPosition(200, 100);
-        MDisplay.align(card, MDisplay.BOTTOM_LEFT, 0, HOLDING_CARD_BOTTOM);
-        this.addChild(card);
-        console.log("PokerCard size:",card.getContentSize());
+        //var card = new PokerCard({cardPoint:10, cardFace:4, cardSize:PokerCard_enum.kCCCardSizeSmall});
+        //card.isSelected = false;
+        //card.setPosition(200, 100);
+        //MDisplay.align(card, MDisplay.BOTTOM_LEFT, 0, HOLDING_CARD_BOTTOM);
+        //this.addChild(card);
+        //console.log("PokerCard size:",card.getContentSize());
+
+
+         //this.gameStart({properties:"测试", gameStatus:{currentHoldingCards:[18,113,212,112,111,410,310,109,408,105]}});
     },
 
     onExit:function(){
@@ -762,10 +767,10 @@ cardRunAction:function(){
         target.touchBegan(pos.x, pos.y);
 
 
-        var pc = target.m_pSelfCardArray[0];
-        var size = pc.getContentSize();
-        console.log(size);
-        console.log(target.m_tCardTouchableRect);
+        //var pc = target.m_pSelfCardArray[0];
+        //var size = pc.getContentSize();
+        //console.log(size);
+        //console.log(target.m_tCardTouchableRect);
 
 
         return true;

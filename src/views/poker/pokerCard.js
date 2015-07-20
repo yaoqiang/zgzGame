@@ -58,7 +58,8 @@ var PokerCard = cc.Node.extend({
             this.cardFrame.setScale(this.cardScale);
             this.setContentSize(cc.size(size.width*this.cardScale, size.height*this.cardScale));
 
-            this.cardFrame.setPosition(size.width / 2, size.height / 2);
+            var nodeSize = this.getContentSize();
+            this.cardFrame.setPosition(nodeSize.width / 2, nodeSize.height / 2);
             this.addChild(this.cardFrame, 0);
             this.frameName = frameName;
             this.setHitted(this.isHitted);
@@ -213,6 +214,7 @@ var PokerCard = cc.Node.extend({
             if (this.state != 0){
                 if (null == this.cardMask){
                     this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
+                    this.cardMask.setScale(this.cardScale);
                     this.cardMask.setPosition(this.cardFrame.getPosition());
                     this.cardMask.setColor(cc.color.BLACK);
                     this.cardMask.setOpacity(128);

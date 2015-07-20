@@ -130,7 +130,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_Nr ==actorNr){
-                if(this.m_HDList[i].x < winSize.width/2 ){
+                if(this.m_HDList[i].m_position.x < winSize.width/2 ){
                     return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.LEFT};
                 }else{
                     return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.RIGHT};
@@ -153,7 +153,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         console.log("selfNr:", selfNr);
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_Nr == actorNr){
-                if(this.m_HDList[i].x < winSize.width/2 ){
+                if(this.m_HDList[i].m_position.x < winSize.width/2 ){
                     return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.LEFT};
                 }else{
                     return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.RIGHT};
@@ -227,6 +227,25 @@ var FivePeopleTableLayer = cc.Layer.extend({
             }
         }
     },
+
+    isSelfHD:function(actorNr){
+        var winSize = cc.director.getWinSize();
+        var listlen =  this.m_HDList.length;
+        var i=0;
+        var selfNr;
+        for(i=0; i<listlen; i++){
+            if(this.m_HDList[i].m_uid == gPlayer.uid){
+                selfNr = this.m_HDList[i].m_Nr;
+                break;
+            }
+        }
+
+        if(selfNr == actorNr){
+            return true;
+        }
+        return false;
+    },
+
 
     onEnter:function(){
         this._super();
