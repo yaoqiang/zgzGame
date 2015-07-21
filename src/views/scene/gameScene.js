@@ -165,8 +165,8 @@ var GameLayer = cc.Layer.extend({
             this.m_pFanOutMenuLayer.removeFromParent(true);
             this.m_pFanOutMenuLayer = null;
             console.log("--->removeFanOutMenu");
-            if(this.m_pTableLayer){
-                this.m_pTableLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
+            if(this.m_pPokerLayer){
+                this.m_pPokerLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
             }
         }
     },
@@ -185,8 +185,8 @@ var GameLayer = cc.Layer.extend({
             this.addChild(this.m_pFanOutMenuLayer, 10);
             this.m_pFanOutMenuLayer.setCallback(this, this.fanOutCallback);
             console.log("--->addFanOutMenu");
-            if(this.m_pTableLayer){
-                this.m_pTableLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
+            if(this.m_pPokerLayer){
+                this.m_pPokerLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
             }
         }
     },

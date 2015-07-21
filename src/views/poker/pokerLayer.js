@@ -128,6 +128,7 @@ var PokerLayer = cc.Layer.extend({
 
     showFanOutMenuLayerForCard:function(){
         //--显示可以操作的按钮
+        console.log("showFanOutMenuLayerForCard");
         if(this.m_pFanOutMenuLayer) {
             this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut({}));
         }
@@ -384,7 +385,7 @@ cardRunAction:function(){
         }
         if(this.m_pFanOutMenuLayer) {
             this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
-            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, false);
+            //this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, false);
         }
     },
 
@@ -497,11 +498,16 @@ cardRunAction:function(){
     isCanFanOut:function(vector){
         var len = vector.length;
         if(len == 0){
+            console.log("------->isCanFanOut 1");
             return false;
         }
+        console.log("------->isCanFanOut vector:",vector);
+        console.log("------->isCanFanOut gGameType:",gGameType);
+        console.log("------->isCanFanOut gActor.append:",gActor.append);
 
         var cr1 = cardUtil.recognitionCards(vector, gGameType, gActor.append);//牌型分析
         if(cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_99){
+            console.log("------->isCanFanOut 2: ", cr1);
             return false;
         }
 
@@ -521,14 +527,17 @@ cardRunAction:function(){
 
         if (!gActor.isBoss) {
             if (cardUtil.isCurrentBiggerThanLast(cr1, cr2, gGameType, gActor.append)) {
+                console.log("------->isCanFanOut 3");
                 return true;
             }
         }else {
-            if (_.size(cards) == 0) {
+            if (_.size(vector) == 0) {
                 // '当前玩家是上回合Boss, 不能不出
+                console.log("------->isCanFanOut4");
                 return false;
             }
         }
+        console.log("------->isCanFanOut5");
         return false;
     },
 
@@ -699,6 +708,8 @@ cardRunAction:function(){
                 if(this.m_pFanOutMenuLayer){
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut(this.isCanFanOut));
                     //this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard(this.isCanFanOut));
+                }else{
+                    console.log("--->this.m_pFanOutMenuLayer == null");
                 }
             }
                 break;
