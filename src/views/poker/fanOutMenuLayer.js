@@ -1,6 +1,6 @@
 ﻿var FanOutMenuLayer = cc.Layer.extend({
     ctor: function(){
-        console.log('FanOutMenuLayer ctor');
+        //console.log('FanOutMenuLayer ctor');
         this._super();
         this.m_pTarge = null;
         this.m_pCallback = null;
@@ -110,12 +110,12 @@
     },
     onEnter:function(){
         this._super();
-        console.log("FanOutMenuLayer onEnter");
+        //console.log("FanOutMenuLayer onEnter");
     },
 
     onExit:function(){
         this._super();
-        console.log("FanOutMenuLayer onExit");
+       //console.log("FanOutMenuLayer onExit");
     }
 
 })

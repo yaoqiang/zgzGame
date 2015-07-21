@@ -320,6 +320,7 @@ var GameLayer = cc.Layer.extend({
 
     FanCountdownEvent:function(data){
         cc.log("---->FanCountdownEvent:", data);
+        gGameState = ZGZ.GAME_STATE.PLAY;
         if(this.m_pTableLayer){
             this.m_pTableLayer.stopClock();
             this.removeFanOutMenu();
@@ -332,6 +333,7 @@ var GameLayer = cc.Layer.extend({
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, false);
                 }
             }
+            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
         }else {
 
         }
