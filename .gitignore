@@ -5,3 +5,6 @@ reated by .ignore support plugin (hsz.mobi)
 /runtime
 /tools
 /.idea
+/.idea/*
+/.idea/workspace.xml
+/.idea/vcs.xml
