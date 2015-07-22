@@ -307,9 +307,23 @@ var GameLayer = cc.Layer.extend({
     },
 
     TalkEvent:function(data){
+        cc.log("---->TalkEvent:", data);
+        var uid = data.uid;
+        var actorNr = data.actorNr;
+        var goal = data.goal;
+        var append = data.append;
+        var share = data.share;
 
     },
 
+    TalkTimeoutEvent:function(data){
+        cc.log("---->TalkTimeoutEvent:", data);
+        //var uid = data.uid;
+        //var actorNr = data.actorNr;
+        //var cards = data.cards;
+        //var cardRecognization = data.cardRecognization;
+        //this.m_pPokerLayer.setFanOutCards(cards, actorNr);
+    },
 
     fanOutEvent:function(data){
         cc.log("---->fanOutEvent:", data);
@@ -372,12 +386,16 @@ var GameLayer = cc.Layer.extend({
     },
 
     TalkResponse:function(data){
-        cc.log("---->TalkResponse");
+        cc.log("---->TalkResponse:", data);
         var code = data.code;
         if(code == 500){
             cc.log("----> talk fail");
             return;
         }
+
+        var goal = data.goal;
+        var append = data.append;
+        var share = data.share;
 
         this.removeBidMenu();
 
@@ -447,6 +465,11 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.addCustomListener("TalkEvent", function(event){
             cc.log("---->game  TalkEvent: ", event._userData);
             selfPointer.TalkEvent(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("TalkTimeoutEvent", function(event){
+            cc.log("---->game  TalkTimeoutEvent: ", event._userData);
+            selfPointer.TalkTimeoutEvent(event._userData);
         });
 
     //response

@@ -58,7 +58,7 @@ pomelo.on('onTalk', function (data) {
     console.log('receive onTalk event.', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
-    //cc.eventManager.dispatchCustomEvent("TalkEvent", data);
+    cc.eventManager.dispatchCustomEvent("TalkEvent", data);
 });
 
 /**
