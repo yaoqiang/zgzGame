@@ -10,6 +10,7 @@ var PokerLayer = cc.Layer.extend({
         this.m_pBidMenuLayer = null;
 
         this.m_pSelfCardArray = [];    //--当前持有的纸牌
+        this.m_pSelfCardValueArray = [];    //--当前持有的纸牌
         this.m_pSelectedWillOutCards = [];   //--自己选中要出的牌
 
         this.m_pFanOutCard = [];   //--打出的牌，所有玩家打出、显示再牌桌中心。
@@ -35,7 +36,7 @@ var PokerLayer = cc.Layer.extend({
         CARD_WIDTH_SMALL = ZySize.SCALE(44);
         CARD_HEIGHT_SMALL = ZySize.SCALE(56);
 
-        HOLDING_CARD_BOTTOM = ZySize.SCALE(40);  //--相对屏幕底部边缘的留边宽度
+        HOLDING_CARD_BOTTOM = ZySize.SCALE(10);  //--相对屏幕底部边缘的留边宽度
         HOLDING_CARD_PADDING = ZySize.SCALE(20); //--相对屏幕左右边缘的留边宽度
 
         LARGE_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(52);//--卡片重叠时的最小可视宽度
@@ -64,22 +65,24 @@ var PokerLayer = cc.Layer.extend({
 
 //cardsArray--card对象数组，actorNr--编号
      showFanOutCards:function( cardsArray, actorNr ){
-         if(this.m_pActorHDList == null || this.m_pActorHDList.length == 0) return;
+         //if(this.m_pActorHDList == null || this.m_pActorHDList.length == 0) return;
          var len = cardsArray.length;
          if (len == 0) return;
 
          var showP = this.m_pTable.showCardPosition(actorNr);//获取显示起始位置、显示方式（靠左、靠右、居中）
+         console.log("showFanOutCards:", showP);
          var x = showP.x;
          var y = showP.y;
-         var space = 50;
-
+         var space = 25;
+         var star = 60;
          switch (showP.mode){
              case SHOW_MODE.LEFT:
              {
                  for(var i=0; i<len; i++){
                      var card = cardsArray[i];
-                     card.x = x + i*space;
-                     card.y = y;
+                     card.setPosition(x + star + i*space, y);
+                     //card.x = x + i*space;
+                     //card.y = y;
                  }
              }
                  break;
@@ -88,8 +91,9 @@ var PokerLayer = cc.Layer.extend({
                  var j=len-1;
                  for(var i=0; i<len; i++){
                      var card = cardsArray[i];
-                     card.x = x - (j-i)*space;
-                     card.y = y;
+                     card.setPosition(x - star - (j-i)*space, y);
+                     //card.x = x - (j-i)*space;
+                     //card.y = y;
                  }
              }
                  break;
@@ -98,8 +102,9 @@ var PokerLayer = cc.Layer.extend({
                  var j=len/2;
                  for(var i=0; i<len; i++){
                      var card = cardsArray[i];
-                     card.x = x + (i-j)*space;
-                     card.y = y;
+                     card.setPosition(x + (i-j)*space, y);
+                     //card.x = x + (i-j)*space;
+                     //card.y = y;
                  }
              }
                  break;
@@ -112,17 +117,28 @@ var PokerLayer = cc.Layer.extend({
      hideFanOutCards:function(actorNr){
          var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
 
-         var cardsArray = actorHD.fanOutCards();
+         //var cardsArray = actorHD.fanOutCards();
+         //
+         //if(cardsArray == null ||cardsArray.length == 0) return;
+         //
+         //for(var i = 0; i< cardsArray.length; i++){
+         //    var card = cardsArray[i];
+         //    card.setVisible(false);
+         //    card.removeFromParent();
+         //}
 
-         if(cardsArray == null ||cardsArray.length == 0) return;
+         actorHD.clearFanoutCards();// =null即可
+    },
 
-         for(var i = 0; i< cardsArray.length; i++){
-             var card = cardsArray[i];
-             card.setVisible(false);
-             card.removeFromParent();
-         }
+    hideAllActorFanOutCards:function(){
+        var len = this.m_pTable.m_HDList.length;
+        var actorNr;
+        for(actorNr=1; actorNr<=len; actorNr++){
+            var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
+            actorHD.clearFanoutCards();// =null即可
 
-         actorHD.clearfanOutCards();// =null即可
+        }
+
     },
 
 
@@ -190,7 +206,7 @@ var PokerLayer = cc.Layer.extend({
     updateSelfCardDisplay:function(){
         var winSize = cc.director.getWinSize();
         var len = this.m_pSelfCardArray.length;
-
+        console.log("---->updateSelfCardDisplay : ", len);
         if(len ==1){
             var pc = this.m_pSelfCardArray[0];
             pc.setVisible(true);
@@ -401,10 +417,10 @@ cardRunAction:function(){
         if (len > 0){
             for (var idx = 0; idx<len; idx++){
                 var cardValue = cardsVector[idx];
-
+                console.log("create fanOutCard Normal");
                 var cardFace = Math.floor(cardValue/100);
                 var cardPoint = cardValue % 100;
-                var pc = new PokerCard(cardFace, cardPoint, PokerCard.kCCCardSizeNormal);
+                var pc = new PokerCard({cardPoint:cardPoint, cardFace:cardFace, cardSize:PokerCard_enum.kCCCardSizeNormal});
                 pc.setCardPointImageScale(1.1);
                 //pc.setScale(ZySize.scale() * 0.6);
                 this.addChild(pc);
@@ -413,19 +429,49 @@ cardRunAction:function(){
             this.showFanOutCards(cardsArray, actorNr);
         }
 
+        //if (this.m_pTable.isSelfHD(actorNr)){
+        //    for (var i = 0; i<len; i++){
+        //        var cardValue = cardsVector[i];
+        //
+        //        for  (var idx = this.m_pSelfCardArray.length - 1; idx >= 0; idx--){
+        //            var pc = this.m_pSelfCardArray[i];
+        //            console.log("pc.cardValue:"+ pc.cardValue +",   cardValue" + cardValue);
+        //            if (pc.cardValue == cardValue ){
+        //                pc.removeFromParent();
+        //                this.m_pSelfCardArray.splice(idx,1);
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    console.log("this.m_pSelfCardArray:",this.m_pSelfCardArray.length);
+        //    this.updataSelfCardZoder();
+        //    this.updateSelfCardDisplay();
+        //}
+
         if (this.m_pTable.isSelfHD(actorNr)){
             for (var i = 0; i<len; i++){
                 var cardValue = cardsVector[i];
 
-                for  (var idx = this.m_pSelfCardArray.length - 1; idx == 0; idx--){
-                    var pc = this.m_pSelfCardArray[i];
-                    if (pc.cardValue == cardValue ){
-                        pc.removeFromParent();
-                        this.m_pSelfCardArray.splice(idx,1);
+                for  (var idx = this.m_pSelfCardValueArray.length - 1; idx >= 0; idx--){
+                    var value = this.m_pSelfCardValueArray[idx];
+                    console.log("pc.cardValue:"+ value +",   cardValue:" + cardValue);
+                    if (value == cardValue ){
+                        this.m_pSelfCardValueArray.splice(idx,1);
+                        break;
                     }
                 }
             }
-            this.updateSelfCardDisplay();
+
+            var HoldingCards = this.m_pSelfCardValueArray;
+            console.log("HoldingCards:", HoldingCards);
+            this.clearCards();
+            len = HoldingCards.length;
+            for (var i = 0; i<len; i++){
+                var card  = HoldingCards[i];
+                if (card > 0 ){
+                    this.insertSelfCard(card);
+                }
+            }
         }
 
         actorHD.setFanoutCards(cardsArray)
@@ -538,7 +584,7 @@ cardRunAction:function(){
             }
         }
         console.log("------->isCanFanOut5");
-        return false;
+        return true;
     },
 
     checkForFanOut:function(call){
@@ -589,6 +635,7 @@ cardRunAction:function(){
         console.log("properties:",data.properties);
         console.log("gameStatus:",data.gameStatus);
         var HoldingCards = data.gameStatus.currentHoldingCards;
+        this.m_pSelfCardValueArray = HoldingCards;
         //HoldingCards = [18,113,212,112,111,410,310,109,408,105];
         console.log("HoldingCards:",HoldingCards);
 
@@ -758,7 +805,8 @@ cardRunAction:function(){
         //console.log("PokerCard size:",card.getContentSize());
 
 
-         //this.gameStart({properties:"测试", gameStatus:{currentHoldingCards:[18,113,212,112,111,410,310,109,408,105]}});
+         //this.gameStart({properties:"测试", gameStatus:{currentHoldingCards:[18,113,212,112,111,410,310]}});
+         //this.setFanOutCards([18,113,212,112], 1);
     },
 
     onExit:function(){

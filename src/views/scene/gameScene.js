@@ -57,7 +57,7 @@ var GameLayer = cc.Layer.extend({
                 this.addChild(this.m_pTableLayer);
                 break;
         }
-        this.addPokerLayer();
+        this.addPokerLayer(this.m_pTableLayer);
         //刷新玩家信息
         this.updataActorHD();
         //gamen nenu
@@ -81,9 +81,10 @@ var GameLayer = cc.Layer.extend({
         this.addChild(this.m_pReadyMenu);
     },
 
-    addPokerLayer:function(){
+    addPokerLayer:function(tableLayer){
         this.m_pPokerLayer = new PokerLayer();
         this.addChild(this.m_pPokerLayer,0);
+        this.m_pPokerLayer.m_pTable = tableLayer;
     },
 
      updataActorHD:function(){
@@ -312,8 +313,11 @@ var GameLayer = cc.Layer.extend({
 
     fanOutEvent:function(data){
         cc.log("---->fanOutEvent:", data);
-
-       // this.m_pPokerLayer.setFanOutCards(data.cards, data.actor);
+        var uid = data.uid;
+        var actorNr = data.actorNr;
+        var cards = data.cards;
+        var cardRecognization = data.cardRecognization;
+       this.m_pPokerLayer.setFanOutCards(cards, actorNr);
 
 
     },
@@ -390,7 +394,9 @@ var GameLayer = cc.Layer.extend({
             return;
         }
 
-        //this.m_pPokerLayer.setFanOutCards(data.cards, gActor.actorNr);
+        var cards = data.cards;
+        var cardRecognization = data.cardRecognization;
+        this.m_pPokerLayer.setFanOutCards(cards, gActor.actorNr);
 
     },
 

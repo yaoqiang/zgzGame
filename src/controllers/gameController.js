@@ -128,7 +128,7 @@ GameController.fan = function (roomId, gameId, cards) {
         cc.log("fan :", data);
         if(data.code == 200){
             //出牌成功后，设置上手牌型；其他玩家的在onFan Event中设置
-            gLastFanCardRecognization = recogntition;
+            //gLastFanCardRecognization = recogntition;
             //出牌成功，处理出牌时牌局UI逻辑：自己出牌成功，中间显示出牌；
             cc.eventManager.dispatchCustomEvent("FanOutResponse", data);
         }else if(data.code == 500){

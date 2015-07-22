@@ -21,11 +21,11 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
         var leftP = 50;
         var rightP = 50;
-        var player1 = new PlayerLayer({index: 1, position: {x: leftP, y: 120}, anchor: {x: 0.5, y: 0.5}});
-        var player5 = new PlayerLayer({index: 5, position: {x: leftP, y: 220}, anchor: {x: 0.5, y: 0.5}});
-        var player4 = new PlayerLayer({index: 4, position: {x: leftP, y: 320}, anchor: {x: 0.5, y: 0.5}});
-        var player3 = new PlayerLayer({index: 3, position: {x: winSize.width-rightP, y: 220}, anchor: {x: 0.5, y: 0.5}});
-        var player2 = new PlayerLayer({index: 2, position: {x: winSize.width-rightP, y: 120}, anchor: {x: 0.5, y: 0.5}});
+        var player1 = new PlayerLayer({index: 1, position: {x: leftP, y: 120+50}, anchor: {x: 0.5, y: 0.5}});
+        var player5 = new PlayerLayer({index: 5, position: {x: leftP, y: 220+50}, anchor: {x: 0.5, y: 0.5}});
+        var player4 = new PlayerLayer({index: 4, position: {x: leftP, y: 320+50}, anchor: {x: 0.5, y: 0.5}});
+        var player3 = new PlayerLayer({index: 3, position: {x: winSize.width-rightP, y: 220+50}, anchor: {x: 0.5, y: 0.5}});
+        var player2 = new PlayerLayer({index: 2, position: {x: winSize.width-rightP, y: 120+50}, anchor: {x: 0.5, y: 0.5}});
 
 
         this.addChild(player1);
@@ -126,10 +126,10 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
 
         if(selfNr == actorNr){
-            return {x:winSize.width/2, y:100, mode:SHOW_MODE.CENTER};
+            return {x:winSize.width/2, y:winSize.height/2, mode:SHOW_MODE.CENTER};
         }
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_Nr ==actorNr){
+            if(this.m_HDList[i].m_Nr == actorNr){
                 if(this.m_HDList[i].m_position.x < winSize.width/2 ){
                     return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.LEFT};
                 }else{
@@ -222,14 +222,14 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var listlen =  this.m_HDList.length;
 
         for(i=0; i<listlen; i++){
-            if(this.m_HDList[i].m_actorNr ==actorNr){
+            if(this.m_HDList[i].m_Nr ==actorNr){
                 return this.m_HDList[i];
             }
         }
+        return null;
     },
 
     isSelfHD:function(actorNr){
-        var winSize = cc.director.getWinSize();
         var listlen =  this.m_HDList.length;
         var i=0;
         var selfNr;

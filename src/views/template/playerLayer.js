@@ -55,7 +55,7 @@ var PlayerLayer = cc.Layer.extend({
        // this.visible = false;
     },
 
-    clearFanoutCards: function () {
+    clearFanoutCards:function(){
         if(this.m_pFanOutCardVector == null){
             return;
         }
@@ -68,13 +68,16 @@ var PlayerLayer = cc.Layer.extend({
         this.m_pFanOutCardVector = null;
     },
 
-    setFanoutCards: function (array) {
+    setFanoutCards:function(array){
         this.clearFanoutCards();
         var len = array.length;
         if(len <= 0){
             return;
         }
         this.m_pFanOutCardVector = array;
+    },
+    fanOutCards: function () {
+        return this.m_pFanOutCardVector;
     },
 
     redIdentity: function () {
