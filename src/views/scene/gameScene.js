@@ -396,7 +396,7 @@ var GameLayer = cc.Layer.extend({
 
         var cards = data.cards;
         var cardRecognization = data.cardRecognization;
-        this.m_pPokerLayer.setFanOutCards(cards, gActor.actorNr);
+        //this.m_pPokerLayer.setFanOutCards(cards, gActor.actorNr);
 
     },
 
