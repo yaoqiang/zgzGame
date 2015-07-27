@@ -59,7 +59,7 @@ CardLogic.recognizeSeries = function(cards, type, liang3)
                         return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_6, null);
                     }
                 }
-                return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_1, tmp[0], cards);
+                return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_2, tmp[0], cards);
             }
             else
             {
@@ -214,7 +214,7 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
         {
             return false;
         }
-        else if (cr2.cardSeries == cr2.cardSeries) {
+        else if (cr1.cardSeries == cr2.cardSeries) {
             if (cr1.maxCardPoint > cr2.maxCardPoint)
             {
                 return true;
