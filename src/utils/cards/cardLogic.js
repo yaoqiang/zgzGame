@@ -161,13 +161,45 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
                                     return true;
                                 }
                             }
-                            return false;
+                            else {
+                                if (cr1.maxCardPoint > cr2.maxCardPoint)
+                                {
+                                    return true;
+                                }
+                                else
+                                {
+                                    return false;
+                                }
+                            }
                         }
                     }
                 }
 
             }
 
+            //判断4是否能打3
+            if (_.contains([117, 217, 317, 417], cr1.originalCard[0])) {
+                //6人平3可打；5人如果块3不亮也可打；
+                if (type == GAME.TYPE.FIVE || type == GAME.TYPE.SEVEN)
+                {
+                    if (cr2.originalCard[0] == 216) {
+                        return false;
+                    }
+                    if (cr2.originalCard[0] == 116) {
+                        if (type == GAME.TYPE.FIVE) {
+                            if (_.contains(liang3, 116)) return false;
+                        }
+                    }
+                    if (cr1.maxCardPoint > cr2.maxCardPoint)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
         }
         if (cr1.maxCardPoint > cr2.maxCardPoint)
         {
@@ -209,6 +241,7 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
     //如果是炸弹(3张相同牌）、如果是四轮车：炸弹和四轮车比较逻辑一样
     if (cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_3 || cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_4)
     {
+        console.log('cards reg => ', cr1.cardSeries, cr2.cardSeries)
         //如果上手牌型是比当前牌型大，返回false
         if (cr2.cardSeries > cr1.cardSeries)
         {
