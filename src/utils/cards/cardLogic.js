@@ -1,4 +1,3 @@
-
 var CardLogic = {}
 
 //牌面编号从5开始到4结束 5 6 7 8 9 10 J Q K A 2 3 4，最后是4，取值17
@@ -152,6 +151,9 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
                         //如果当前出牌是方块3
                         if (cr1.originalCard[0] == 116)
                         {
+                            console.log('fan card is 116', cr1.originalCard[0])
+                            console.log(liang3)
+                            console.log(_.contains(liang3, cr1.originalCard[0]))
                             //如果方块3亮了
                             if (_.contains(liang3, cr1.originalCard[0]))
                             {
@@ -174,7 +176,16 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
                         }
                     }
                 }
-
+                else {
+                    if (cr1.maxCardPoint > cr2.maxCardPoint)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
 
             //判断4是否能打3
@@ -188,8 +199,19 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
                     if (cr2.originalCard[0] == 116) {
                         if (type == GAME.TYPE.FIVE) {
                             if (_.contains(liang3, 116)) return false;
+                            return true;
                         }
                     }
+                    if (cr1.maxCardPoint > cr2.maxCardPoint)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else {
                     if (cr1.maxCardPoint > cr2.maxCardPoint)
                     {
                         return true;
