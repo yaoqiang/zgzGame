@@ -223,6 +223,35 @@ var GameLayer = cc.Layer.extend({
     },
 
 
+    recognitionIdentityWithNr:function(append, actorNr){
+        if(this.m_actorList == null){
+            return;
+        }
+        var isIdentity = false;
+        var identity = cardUtil.recognitionIdentity(append, gGameType);
+        if (identity == GAME.IDENTITY.HONG3) {
+            isIdentity = true;
+        }
+
+        var len = this.m_actorList.length;
+        for(var i=0; i<len; i++){
+            var　actor = this.m_actorList[i];
+            if(gActor.actorNr == actorNr){
+                gActor.identity = isIdentity;
+            }
+            if(actor.m_actorNr == actorNr){
+                actor.m_identity = isIdentity;
+                break;
+            }
+        }
+
+        var actorHD = this.m_pTableLayer.getActorHDWithNr(actorNr)
+        if(actorHD){
+            actorHD.m_identity = isIdentity;
+            actorHD.showIdentity(append);
+        }
+    },
+
 //event
     joinEvent: function (data) {
         this.addActorToList(data.actor);
@@ -285,11 +314,13 @@ var GameLayer = cc.Layer.extend({
             if (identity == GAME.IDENTITY.HONG3) {
                 cc.log('说话阶段-当前玩家是红3，显示“亮3”按钮')
                 this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
+                //gActor.identity = true;
             }
             else
             {
                 cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
                 this.addBidMenu(BidMenuBtn.kCCBidMenu_Guzi);
+                //gActor.identity = false;
             }
 
 
@@ -307,12 +338,23 @@ var GameLayer = cc.Layer.extend({
     },
 
     TalkEvent:function(data){
-        cc.log("---->TalkEvent:", data);
+        cc.log("----------------->TalkEvent:", data);
         var uid = data.uid;
         var actorNr = data.actorNr;
         var goal = data.goal;
         var append = data.append;
         var share = data.share;
+
+        this.recognitionIdentityWithNr(append, actorNr);
+    },
+
+    AfterTalk:function(data){
+        cc.log("----------------->AfterTalk:", data);
+        if(this.m_pTableLayer){
+            this.m_pTableLayer.stopClock();
+            this.m_pTableLayer.removeAllActorReady();
+        }
+        this.removeBidMenu();
 
     },
 
@@ -386,7 +428,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     TalkResponse:function(data){
-        cc.log("---->TalkResponse:", data);
+        cc.log("----------------->TalkResponse:", data);
         var code = data.code;
         if(code == 500){
             cc.log("----> talk fail");
@@ -398,6 +440,8 @@ var GameLayer = cc.Layer.extend({
         var share = data.share;
 
         this.removeBidMenu();
+
+        this.recognitionIdentityWithNr(append, gActor.actorNr);
 
         if(this.m_pTableLayer){
             this.m_pTableLayer.stopClock();
@@ -471,6 +515,12 @@ var GameLayer = cc.Layer.extend({
             cc.log("---->game  TalkTimeoutEvent: ", event._userData);
             selfPointer.TalkTimeoutEvent(event._userData);
         });
+
+        cc.eventManager.addCustomListener("AfterTalk", function(event){
+            cc.log("---->game  AfterTalk: ", event._userData);
+            selfPointer.AfterTalk(event._userData);
+        });
+
 
     //response
         cc.eventManager.addCustomListener("ReadyResponse", function(event){

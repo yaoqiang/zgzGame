@@ -20,7 +20,8 @@ var PlayerLayer = cc.Layer.extend({
         this.m_rank = 0;
         this.m_isready = false;
 
-
+        this.m_identity = false;
+        this.m_pIdentityArray = [];
         this.m_pRedImage = null;
         this.m_pBlackImage = null;
         this.m_pGuziImage = null;
@@ -52,6 +53,7 @@ var PlayerLayer = cc.Layer.extend({
         this.showReady(false);
         this.removeIdentity();
         this.clearFanoutCards();
+        this.removeIdentity();
        // this.visible = false;
     },
 
@@ -80,60 +82,67 @@ var PlayerLayer = cc.Layer.extend({
         return this.m_pFanOutCardVector;
     },
 
-    redIdentity: function () {
-        if(this.m_pRedImage == null){
-            this.m_pRedImage = new cc.Sprite("#Card_hearts_red_1.png");
-            this.m_pRedImage.setPosition(cc.p(0, 0));
-            this.m_pRedImage.anchorX = 0;
-            this.m_pRedImage.anchorY = 0;
-            this.m_pRedImage.scale = 0.5;
-            this.m_pAvatarBg.addChild(this.m_pRedImage, 1);
+    showIdentity: function (array) {
+        if(!cc.isArray(array)){
+            return;
         }
-    },
-    blackIdentity: function () {
-        if(this.m_pBlackImage == null){
-            this.m_pBlackImage = new cc.Sprite("#Card_hearts_black_1.png");
-            this.m_pBlackImage.setPosition(cc.p(20, 0));
-            this.m_pBlackImage.anchorX = 0;
-            this.m_pBlackImage.anchorY = 0;
-            this.m_pBlackImage.scale = 0.5;
-            this.m_pAvatarBg.addChild(this.m_pBlackImage, 1);
+        var size = this.m_pAvatarBg.getContentSize();
+
+        if(this.m_identity == false){
+            var lable = new cc.LabelTTF("谷子", "Arial", 28);
+            lable.setAnchorPoint(0.5, 1);
+            lable.setPosition(cc.p(size.width/2, size.height-1));
+            this.m_pAvatarBg.addChild(lable, 1);
+            this.m_pIdentityArray.push(lable);
+            return;
         }
-    },
-    guziIdentity: function () {
-        if(this.m_pGuziImage == null){
-            this.m_pGuziImage = new cc.LabelTTF("谷子", "Arial", 28);
-            var size = this.m_pAvatarBg.getContentSize();
-            this.m_pGuziImage.anchorX = 0.5;
-            this.m_pGuziImage.anchorY = 1;
-            this.m_pGuziImage.setPosition(cc.p(size.width/2, size.height));
-            this.m_pAvatarBg.addChild(this.m_pGuziImage, 1);
+
+        var x = 16;
+        var y = 0;
+        var len = array.length;
+        console.log("----->showIdentity array.length:", len);
+        for(var i=0; i< len; i++){
+            var cardFace = parseInt(array[i] / 100);
+            var cardPoint = array[i] % 100;
+            console.log("----->showIdentity cardFace:", cardFace, "      cardPoint:", cardPoint);
+            var bigFaceBuf = null;
+            if (cardFace == PokerCard_enum.kCCCardFaceClub && cardPoint == 16){
+                    bigFaceBuf = "#Card_Flower_black_1.png" ; //4
+            }else if (cardFace == PokerCard_enum.kCCCardFaceDiamond && cardPoint == 16){
+                    bigFaceBuf = "#Card_Square-piece_red_1.png" ; // 1
+            }else if (cardFace == PokerCard_enum.kCCCardFaceHeart && cardPoint == 16){
+                    bigFaceBuf = "#Card_hearts_red_1.png" ;  //  2
+            }else if (cardFace == PokerCard_enum.kCCCardFaceSpade && cardPoint == 16){
+                    bigFaceBuf = "#Card_hearts_black_1.png" ;  //  3
+            }
+            console.log("----->showIdentity bigFaceBuf:", bigFaceBuf);
+            if(bigFaceBuf){
+                var identityImage = new cc.Sprite(bigFaceBuf);
+                if(identityImage) {
+                    identityImage.setPosition(cc.p(x + i*30, size.height-1));
+                    identityImage.setAnchorPoint(0.5, 1);
+                    identityImage.setScale(0.5);
+                    this.m_pAvatarBg.addChild(identityImage, 1);
+                    this.m_pIdentityArray.push(identityImage);
+                }else{
+                    console.log("----->没创建成功", bigFaceBuf);
+                }
+
+            }
+
         }
-    },
-    removeGuziIdentity: function () {
-        if(this.m_pGuziImage){
-            this.m_pGuziImage.removeFromParent(true);
-            this.m_pGuziImage = null;
-        }
+
     },
 
-    removeRedIdentity: function () {
-        if(this.m_pRedImage){
-            this.m_pRedImage.removeFromParent(true);
-            this.m_pRedImage = null;
-        }
-    },
-    removeBlackIdentity: function () {
-        if(this.m_pBlackImage){
-            this.m_pBlackImage.removeFromParent(true);
-            this.m_pBlackImage = null;
-        }
-    },
     removeIdentity: function () {
-        this.removeRedIdentity();
-        this.removeBlackIdentity();
-        this.removeGuziIdentity();
+        var len = this.m_pIdentityArray.length;
+        for(var i =0; i<len; i++){
+            var identity = this.m_pIdentityArray[i];
+            identity.removeFromParent(true);
+        }
+        this.m_pIdentityArray = [];
     },
+
 
     fill: function () {
         

@@ -62,6 +62,16 @@ pomelo.on('onTalk', function (data) {
 });
 
 /**
+ * 接收说话消息，说话阶段结束
+ */
+pomelo.on('onAfterTalk', function (data) {
+    console.log('receive onAfterTalk event.', data);
+    //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
+
+    cc.eventManager.dispatchCustomEvent("AfterTalk", data);
+});
+
+/**
  * 出牌倒计时，
  */
 pomelo.on('onFanCountdown', function (data) {

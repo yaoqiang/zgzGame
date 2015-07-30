@@ -5,4 +5,5 @@ function Actor (params) {
     this.m_actorNr = params.actorNr;
     this.m_uid = params.uid;
     this.m_sid = params.sid;
+    this.m_identity = false;
 }

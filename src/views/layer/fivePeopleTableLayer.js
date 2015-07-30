@@ -113,6 +113,15 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
     },
 
+    removeAllActorReady: function () {
+        var listlen =  this.m_HDList.length;
+        var i=0;
+
+        for(i=0; i<listlen; i++){
+                this.m_HDList[i].showReady(false);
+        }
+    },
+
     showCardPosition:function(actorNr){
         var winSize = cc.director.getWinSize();
         var listlen =  this.m_HDList.length;
