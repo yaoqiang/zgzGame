@@ -89,12 +89,21 @@ var PlayerLayer = cc.Layer.extend({
         var size = this.m_pAvatarBg.getContentSize();
 
         if(this.m_identity == false){
+            var winSize = cc.director.getWinSize();
             var lable = new cc.LabelTTF("谷子", "Arial", 28);
-            lable.setAnchorPoint(0.5, 1);
-            lable.setPosition(cc.p(size.width/2, size.height-1));
+
+
             this.m_pAvatarBg.addChild(lable, 1);
             this.m_pIdentityArray.push(lable);
-            return;
+
+            if(this.m_position.x < winSize.width/2){
+                lable.setAnchorPoint(0, 1);
+                lable.setPosition(cc.p(size.width, size.height-1));
+            }else{
+                lable.setAnchorPoint(1, 1);
+                lable.setPosition(cc.p(0, size.height-1));
+            }
+           // return;
         }
 
         var x = 16;
