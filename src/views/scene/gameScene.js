@@ -195,6 +195,12 @@ var GameLayer = cc.Layer.extend({
     bidMenuCallback:function(tag){
         switch (tag){
             case BidMenuBtn.kCCBidMenu_Liang:
+                var identity = cardUtil.recognitionIdentity(this.m_pPokerLayer.m_pSelectedWillOutCards, gGameType);
+                if (identity == GAME.IDENTITY.HONG3) {
+
+                }else{
+                    return;
+                }
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3, this.m_pPokerLayer.m_pSelectedWillOutCards);
                 break;
             case BidMenuBtn.kCCBidMenu_Guzi:

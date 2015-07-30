@@ -33,6 +33,7 @@
         "src/views/template/modeStruct.js",
         "src/views/template/cueBox.js",
         "src/views/template/multiLabel.js",
+        "src/views/template/personTalk.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
