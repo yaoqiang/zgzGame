@@ -225,7 +225,55 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
 //闹钟 end
 
+//say
+    showSayPosition:function(actorNr){
+        var winSize = cc.director.getWinSize();
+        var listlen =  this.m_HDList.length;
+        var i=0;
+        var selfNr;
+        for(i=0; i<listlen; i++){
+            if(this.m_HDList[i].m_uid == gPlayer.uid){
+                selfNr = this.m_HDList[i].m_Nr;
+                break;
+            }
+        }
+        console.log("selfNr:", selfNr);
+        for(i=0; i<listlen; i++){
+            if(this.m_HDList[i].m_Nr == actorNr){
+                if(this.m_HDList[i].m_position.x < winSize.width/2 ){
+                    return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.LEFT};
+                }else{
+                    return {x:this.m_HDList[i].m_position.x, y:this.m_HDList[i].m_position.y, mode:SHOW_MODE.RIGHT};
+                }
+            }
+        }
+    },
 
+    showSay:function(text, actorNr){
+        var showP = this.showSayPosition(actorNr);
+        var x = showP.x;
+        var y = showP.y;
+        var space = 70;
+
+        switch (showP.mode){
+            case SHOW_MODE.LEFT:
+            {
+                x = showP.x + space;
+            }
+                break;
+            case SHOW_MODE.RIGHT:
+            {
+                x = showP.x - space;
+            }
+                break;
+        }
+
+
+            var say = new PersonTalk({note:text, direction:showP.mode, time:2});
+            say.setPosition(x,y);
+            this.addChild(say);
+    },
+//say end
 
     getActorHDWithNr:function(actorNr){
         var listlen =  this.m_HDList.length;

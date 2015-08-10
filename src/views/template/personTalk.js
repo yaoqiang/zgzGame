@@ -6,7 +6,7 @@ var PersonTalk = cc.Node.extend({
 //类变量
         this.m_note = args.note ? args.note:"";
         this.m_label = null;
-        this.m_direction = args.direction ? args.direction:1; //1:左方向，2：右方向
+        this.m_direction = args.direction==SHOW_MODE.RIGHT ? SHOW_MODE.RIGHT:SHOW_MODE.LEFT; //1:左方向，2：右方向
         this.m_time = args.time ? args.time:2;
 
 
@@ -20,7 +20,7 @@ var PersonTalk = cc.Node.extend({
         this.m_label = new cc.LabelTTF(this.m_note, "Arial", 24);
         this.m_label.color = cc.color(255, 255, 255);
 
-        if(this.m_direction == 1 ){
+        if(this.m_direction == SHOW_MODE.LEFT ){
             this.m_label.setAnchorPoint(0, 0.5);
         }else{
             this.m_label.setAnchorPoint(1, 0.5);

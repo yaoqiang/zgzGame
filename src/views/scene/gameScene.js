@@ -199,6 +199,7 @@ var GameLayer = cc.Layer.extend({
                 if (identity == GAME.IDENTITY.HONG3) {
 
                 }else{
+                    this.sayForTalk({append:null, actorNr:gActor.actorNr, text:"我有3"});
                     return;
                 }
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3, this.m_pPokerLayer.m_pSelectedWillOutCards);
@@ -256,6 +257,31 @@ var GameLayer = cc.Layer.extend({
             actorHD.m_identity = isIdentity;
             actorHD.showIdentity(append);
         }
+    },
+
+    sayForTalk:function(args){
+        if(this.m_actorList == null){
+            return;
+        }
+
+        var append = args.append;
+        var text = args.text? args.text : "" ;
+        var actorNr = args.actorNr;
+        var haveAppend = false;
+
+        if(append){
+            haveAppend = true;
+            //分析牌型
+            var identity = cardUtil.recognitionIdentity(append, gGameType);
+            if (identity == GAME.IDENTITY.HONG3) {
+                text = "亮3";
+            }else{
+                text = "谷子";
+            }
+        }
+
+        this.m_pTableLayer.showSay(text, actorNr);
+
     },
 
 //event
@@ -352,6 +378,7 @@ var GameLayer = cc.Layer.extend({
         var share = data.share;
 
         this.recognitionIdentityWithNr(append, actorNr);
+        this.sayForTalk({append:append, actorNr:actorNr});
     },
 
     AfterTalk:function(data){
@@ -448,6 +475,7 @@ var GameLayer = cc.Layer.extend({
         this.removeBidMenu();
 
         this.recognitionIdentityWithNr(append, gActor.actorNr);
+        this.sayForTalk({append:append, actorNr:gActor.actorNr});
 
         if(this.m_pTableLayer){
             this.m_pTableLayer.stopClock();
