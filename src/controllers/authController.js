@@ -37,6 +37,7 @@ AuthController.login = function(username, password)
                 if (data.code !== 200)
                 {
                     console.log('err.');
+                    prompt.fade(data.message);
                     return;
                 }
                 AuthController.init(data);

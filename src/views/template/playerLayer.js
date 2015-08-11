@@ -38,7 +38,7 @@ var PlayerLayer = cc.Layer.extend({
             var size = this.m_pAvatarBg.getContentSize();
             lable.setPosition(cc.p(size.width/2, size.height/2));
             this.m_pAvatarBg.addChild(lable, 1);
-;        }
+        }
     },
 
     clear:function(){
@@ -82,16 +82,20 @@ var PlayerLayer = cc.Layer.extend({
         return this.m_pFanOutCardVector;
     },
 
-    showIdentity: function (array) {
+    /**
+     *
+     * @param goal
+     * @param array
+     */
+    showIdentity: function (goal, array) {
         if(!cc.isArray(array)){
             return;
         }
         var size = this.m_pAvatarBg.getContentSize();
 
-        if(this.m_identity == false){
+        if(goal == GAME.IDENTITY.GUZI){
             var winSize = cc.director.getWinSize();
-            var lable = new cc.LabelTTF("谷子", "Arial", 28);
-
+            var lable = new cc.LabelTTF("股子", "Arial", 28);
 
             this.m_pAvatarBg.addChild(lable, 1);
             this.m_pIdentityArray.push(lable);
@@ -104,6 +108,21 @@ var PlayerLayer = cc.Layer.extend({
                 lable.setPosition(cc.p(0, size.height-1));
             }
            // return;
+        }
+        else if (goal == GAME.IDENTITY.UNKNOW) {
+            var winSize = cc.director.getWinSize();
+            var lable = new cc.LabelTTF("没话", "Arial", 28);
+
+            this.m_pAvatarBg.addChild(lable, 1);
+            this.m_pIdentityArray.push(lable);
+
+            if(this.m_position.x < winSize.width/2){
+                lable.setAnchorPoint(0, 1);
+                lable.setPosition(cc.p(size.width, size.height-1));
+            }else{
+                lable.setAnchorPoint(1, 1);
+                lable.setPosition(cc.p(0, size.height-1));
+            }
         }
 
         var x = 16;
@@ -204,7 +223,7 @@ var PlayerLayer = cc.Layer.extend({
 
     showActorPhoto:function(){
         if(this.m_avatar != -1){
-            var image = "#touxiang_0" + this.m_avatar + ".png";
+            var image = utils.getAvatar(this.m_avatar);
             console.log(image);
             if(this.m_pPhoto) {
                 this.removeChild(this.m_pPhoto);
@@ -258,6 +277,14 @@ var PlayerLayer = cc.Layer.extend({
         if (this.m_pReady) {
             this.m_pReady.setVisible(visible);
         }
+    },
+
+    onEnter:function(){
+        this._super();
+    },
+
+    onExit:function(){
+        this._super();
     }
 
 });

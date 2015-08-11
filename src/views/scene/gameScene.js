@@ -230,32 +230,32 @@ var GameLayer = cc.Layer.extend({
     },
 
 
-    recognitionIdentityWithNr:function(append, actorNr){
+    recognitionIdentityWithNr:function(goal, append, actorNr){
         if(this.m_actorList == null){
             return;
         }
         var isIdentity = false;
         var identity = cardUtil.recognitionIdentity(append, gGameType);
-        if (identity == GAME.IDENTITY.HONG3) {
-            isIdentity = true;
-        }
+        //if (identity == GAME.IDENTITY.HONG3) {
+        //    isIdentity = true;
+        //}
 
-        var len = this.m_actorList.length;
-        for(var i=0; i<len; i++){
-            var　actor = this.m_actorList[i];
-            if(gActor.actorNr == actorNr){
-                gActor.identity = isIdentity;
-            }
-            if(actor.m_actorNr == actorNr){
-                actor.m_identity = isIdentity;
-                break;
-            }
-        }
+        //var len = this.m_actorList.length;
+        //for(var i=0; i<len; i++){
+        //    var　actor = this.m_actorList[i];
+        //    if(gActor.actorNr == actorNr){
+        //        gActor.identity = isIdentity;
+        //    }
+        //    if(actor.m_actorNr == actorNr){
+        //        actor.m_identity = isIdentity;
+        //        break;
+        //    }
+        //}
 
         var actorHD = this.m_pTableLayer.getActorHDWithNr(actorNr)
         if(actorHD){
-            actorHD.m_identity = isIdentity;
-            actorHD.showIdentity(append);
+            actorHD.m_identity = identity;
+            actorHD.showIdentity(goal, append);
         }
     },
 
@@ -377,7 +377,8 @@ var GameLayer = cc.Layer.extend({
         var append = data.append;
         var share = data.share;
 
-        this.recognitionIdentityWithNr(append, actorNr);
+        this.recognitionIdentityWithNr(goal, append, actorNr);
+        this.updateShare(share);
         this.sayForTalk({append:append, actorNr:actorNr});
     },
 
@@ -474,12 +475,13 @@ var GameLayer = cc.Layer.extend({
 
         this.removeBidMenu();
 
-        this.recognitionIdentityWithNr(append, gActor.actorNr);
+        this.recognitionIdentityWithNr(goal, append, gActor.actorNr);
         this.sayForTalk({append:append, actorNr:gActor.actorNr});
 
         if(this.m_pTableLayer){
             this.m_pTableLayer.stopClock();
         }
+        this.updateShare(share);
     },
 
     FanOutResponse:function(data){
@@ -497,7 +499,11 @@ var GameLayer = cc.Layer.extend({
     },
 
 
+    updateShare: function (share) {
+        //var roomInfoLabel = new cc.LabelTTF("底注:"+this.m_pData.base, "Arial", 34);
+        //var gameShare = new cc.LabelTTF("股数:"+share, "Arial", 34);
 
+    },
 
 
 

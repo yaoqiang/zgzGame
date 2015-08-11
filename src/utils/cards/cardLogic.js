@@ -151,9 +151,6 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
                         //如果当前出牌是方块3
                         if (cr1.originalCard[0] == 116)
                         {
-                            console.log('fan card is 116', cr1.originalCard[0])
-                            console.log(liang3)
-                            console.log(_.contains(liang3, cr1.originalCard[0]))
                             //如果方块3亮了
                             if (_.contains(liang3, cr1.originalCard[0]))
                             {

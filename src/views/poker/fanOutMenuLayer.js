@@ -102,6 +102,8 @@
 
     setBtnEnabled:function(tag, isEnabled){
         var item = this.m_pMenu.getChildByTag(tag);
+        console.log('### isEnabled => ', isEnabled)
+
         item.setEnabled(isEnabled);
     },
     setBtnVisible:function(tag, isVisible){

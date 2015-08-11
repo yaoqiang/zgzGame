@@ -557,6 +557,7 @@ cardRunAction:function(){
             return false;
         }
 
+        console.log('### this.m_pFanOutCard => ', this.m_pFanOutCard);
         var cr2 = cardUtil.recognitionCards(this.m_pFanOutCard, gGameType, gActor.append);//牌型分析
         //if(cr2.cardSeries == CardLogic.CardSeriesCode.cardSeries_99 ){
         //    return true;
@@ -572,7 +573,7 @@ cardRunAction:function(){
 
 
         if (!gActor.isBoss) {
-            if (cardUtil.isCurrentBiggerThanLast(cr1, cr2, gGameType, gActor.append)) {
+            if (cardUtil.isCurrentBiggerThanLast(cr1, gLastFanCardRecognization, gGameType, gActor.append)) {
                 console.log("------->isCanFanOut 3");
                 return true;
             }
@@ -602,9 +603,13 @@ cardRunAction:function(){
              }
         }
 
+        console.log('### select cards => ', selectCardVector);
+
         if(cc.isFunction(call)){
             console.log("---->checkForFanOut call is function");
-            return call(selectCardVector);
+            var result = call(selectCardVector);
+            console.log('### => ...... ', result);
+            return result;
         }
 
         return false;
