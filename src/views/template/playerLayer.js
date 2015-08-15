@@ -46,7 +46,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_nickNname = "";
         this.m_avatar = -1;
 
-        if(this.m_pPhoto != null){
+        if(this.m_pPhoto != null && cc.sys.isObjectValid(this.m_pPhoto)){
             this.removeChild(this.m_pPhoto);
         }
         this.showNickName();
@@ -225,7 +225,7 @@ var PlayerLayer = cc.Layer.extend({
         if(this.m_avatar != -1){
             var image = utils.getAvatar(this.m_avatar);
             console.log(image);
-            if(this.m_pPhoto) {
+            if(this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
                 this.removeChild(this.m_pPhoto);
             }
 

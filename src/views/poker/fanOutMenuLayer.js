@@ -7,6 +7,10 @@
 
         this.m_pMenu = null;
 
+        this.m_pButtonFanOut = null;
+        this.m_pButtonPass = null;
+
+
 
         this.init();
 
@@ -14,28 +18,14 @@
     init:function(){
         var winSize = cc.director.getWinSize();
         var h = winSize.height*0.6;
-//提示
-        var tishiNormal = new cc.Sprite(res.anniu_png);
-        var tishiSelected = new cc.Sprite(res.anniu_png);
-        var tishiDisabled = new cc.Sprite(res.anniu_png);
-        tishiDisabled.setColor(cc.color(100,100,100,255));
-        var tishiButton = new cc.MenuItemSprite(tishiNormal, tishiSelected, tishiDisabled, this.onTishiButton, this);
-        tishiButton.setPosition(winSize.width/2 - 130 , h);
-        tishiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Hint);
-
-        var size  = tishiButton.getContentSize();
-        var tishiStr = new cc.LabelTTF("提 示", "Arial", 24);
-        tishiStr.color = cc.color.YELLOW;
-        tishiStr.setPosition(size.width/2, size.height/2);
-        tishiButton.addChild(tishiStr);
 
 //出牌
         var chupaiNormal = new cc.Sprite(res.anniu_png);
-        var chupaiSelected = new cc.Sprite(res.anniu_png);
-        var chupaiDisabled = new cc.Sprite(res.anniu_png);
-        chupaiDisabled.setColor(cc.color(100,100,100,255));
+        var chupaiSelected = new cc.Sprite(res.anniu2_png);
+        var chupaiDisabled = new cc.Sprite(res.anniu3_png);
+        //chupaiDisabled.setColor(cc.color(100,100,100,255));
         var chupaiButton = new cc.MenuItemSprite(chupaiNormal, chupaiSelected, chupaiDisabled, this.onChupaiButton, this);
-        chupaiButton.setPosition(winSize.width/2 , h);
+        chupaiButton.setPosition(winSize.width/2-60 , h);
         chupaiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_FanOut);
 
         size  = chupaiButton.getContentSize();
@@ -50,7 +40,7 @@
         var buchuDisabled = new cc.Sprite(res.anniu_png);
         buchuDisabled.setColor(cc.color(100,100,100,255));
         var buchuButton = new cc.MenuItemSprite(buchuNormal, buchuSelected, buchuDisabled, this.onBuchuButton, this);
-        buchuButton.setPosition(winSize.width/2 + 130 , h);
+        buchuButton.setPosition(winSize.width/2 + 60 , h);
         buchuButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Pass);
 
         size  = buchuButton.getContentSize();
@@ -61,10 +51,75 @@
 //menu
 
 
-        this.m_pMenu = new cc.Menu(tishiButton, chupaiButton,buchuButton);
-        this.m_pMenu.setPosition(0, 0);
-        this.addChild(this.m_pMenu);
+        //this.m_pMenu = new cc.Menu(chupaiButton,buchuButton);
+        //this.m_pMenu.setPosition(0, 0);
+        //this.addChild(this.m_pMenu);
 
+//UIButton
+        this.m_pButtonFanOut = new ccui.Button();
+        this.m_pButtonFanOut.setTouchEnabled(true);
+        this.m_pButtonFanOut.loadTextures(res.anniu_png, res.anniu2_png, res.anniu2_png);
+        this.m_pButtonFanOut.setTitleFontSize(20);
+        this.m_pButtonFanOut.setTitleText("出 牌");
+        this.m_pButtonFanOut.x = winSize.width/2 - 60;
+        this.m_pButtonFanOut.y =  h;
+        this.m_pButtonFanOut.addTouchEventListener(this.fanoutTouchEvent, this);
+        this.addChild(this.m_pButtonFanOut);
+
+        this.m_pButtonPass = new ccui.Button();
+        this.m_pButtonPass.setTouchEnabled(true);
+        this.m_pButtonPass.loadTextures(res.anniu_png, res.anniu2_png, res.anniu2_png);
+        this.m_pButtonPass.setTitleFontSize(20);
+        this.m_pButtonPass.setTitleText("不 出");
+        this.m_pButtonPass.x = winSize.width/2 + 60;
+        this.m_pButtonPass.y =  h;
+        this.m_pButtonPass.addTouchEventListener(this.buchuTouchEvent, this);
+        this.addChild(this.m_pButtonPass);
+    },
+
+    fanoutTouchEvent: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                this.onChupaiButton();
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+
+                break;
+
+            default:
+                break;
+        }
+    },
+    buchuTouchEvent: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                this.onBuchuButton();
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+
+                break;
+
+            default:
+                break;
+        }
     },
 
     onTishiButton:function(){
@@ -101,23 +156,79 @@
     },
 
     setBtnEnabled:function(tag, isEnabled){
-        var item = this.m_pMenu.getChildByTag(tag);
-        console.log('### isEnabled => ', isEnabled)
 
+        switch(tag){
+            case FanOutMenuBtn.kCCFanOutMenu_FanOut:
+                this.m_pButtonFanOut.setTouchEnabled(isEnabled);
+                break;
+
+            case FanOutMenuBtn.kCCFanOutMenu_Pass:
+                this.m_pButtonPass.setTouchEnabled(isEnabled);
+                break;
+        }
+
+        return;
+        var item = this.m_pMenu.getChildByTag(tag);
         item.setEnabled(isEnabled);
     },
     setBtnVisible:function(tag, isVisible){
+        switch(tag){
+            case FanOutMenuBtn.kCCFanOutMenu_FanOut:
+                this.m_pButtonFanOut.setVisible(isVisible);
+                break;
+
+            case FanOutMenuBtn.kCCFanOutMenu_Pass:
+                this.m_pButtonPass.setVisible(isVisible);
+                break;
+        }
+
+        return;
         var item = this.m_pMenu.getChildByTag(tag);
         item.setVisible(isVisible);
     },
     onEnter:function(){
         this._super();
-        //console.log("FanOutMenuLayer onEnter");
+        //this._touchListener = cc.EventListener.create({
+        //    event: cc.EventListener.TOUCH_ONE_BY_ONE,
+        //    swallowTouches: true,
+        //    onTouchBegan: this.onTouchBegan,
+        //    onTouchMoved: this.onTouchMoved,
+        //    onTouchEnded: this.onTouchEnded,
+        //    onTouchCancelled: this.onTouchCancelled
+        //});
+        //cc.eventManager.addListener(this._touchListener, this);
     },
 
     onExit:function(){
         this._super();
-       //console.log("FanOutMenuLayer onExit");
+        //cc.eventManager.removeListener(this._touchListener);
+    },
+
+    onTouchBegan:function(touch, event) {
+        var pos = touch.getLocation();
+        var id = touch.getID();
+        var target = event.getCurrentTarget();
+
+        return false;
+    },
+    onTouchMoved:function(touch, event) {
+        var pos = touch.getLocation();
+        var id = touch.getID();
+        var target = event.getCurrentTarget();
+
+    },
+    onTouchEnded:function(touch, event) {
+        var pos = touch.getLocation();
+        var id = touch.getID();
+        var target = event.getCurrentTarget();
+
+    },
+    onTouchCancelled:function(touch, event) {
+        var pos = touch.getLocation();
+        var id = touch.getID();
+        var target = event.getCurrentTarget();
+
     }
+
 
 })
