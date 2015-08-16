@@ -23,7 +23,11 @@ var res = {
     fireEffect_mp3 : 'res/music/fireEffect.mp3',
     fireEffect_wav : 'res/music/fireEffect.wav',
     buttonEffect1_wav : 'res/music/buttonEffect1.wav',
-    background_mp3 : 'res/music/background.mp3'
+    background_mp3 : 'res/music/background.mp3',
+
+
+    //dev
+    anniu2_png: 'res/anniu2_png'
 };
 
 var g_resources = [

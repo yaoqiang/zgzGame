@@ -22,7 +22,7 @@
 //出牌
         var chupaiNormal = new cc.Sprite(res.anniu_png);
         var chupaiSelected = new cc.Sprite(res.anniu2_png);
-        var chupaiDisabled = new cc.Sprite(res.anniu3_png);
+        var chupaiDisabled = new cc.Sprite(res.anniu2_png);
         //chupaiDisabled.setColor(cc.color(100,100,100,255));
         var chupaiButton = new cc.MenuItemSprite(chupaiNormal, chupaiSelected, chupaiDisabled, this.onChupaiButton, this);
         chupaiButton.setPosition(winSize.width/2-60 , h);
