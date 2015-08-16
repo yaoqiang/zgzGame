@@ -42,8 +42,8 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
     },
 
-    updataActorHD:function(args){
-        cc.log("---->updataActorHD:",args);
+    updateActorHD:function(args){
+        cc.log("---->updateActorHD:",args);
         var len = args.length;
         var listlen =  this.m_HDList.length;
         var i=0;

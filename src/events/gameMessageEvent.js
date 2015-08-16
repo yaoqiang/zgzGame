@@ -4,7 +4,7 @@ pomelo.on('onJoin', function (data) {
     console.log('receive join event.');
     console.log(data);
 
-    cc.eventManager.dispatchCustomEvent("JoinEvent", data);
+    cc.eventManager.dispatchCustomEvent("joinEvent", data);
 
 });
 
@@ -12,12 +12,12 @@ pomelo.on('onLeave', function (data) {
     console.log('---->receive onLeave event.');
     console.log(data);
 
-    cc.eventManager.dispatchCustomEvent("LeaveEvent", data);
+    cc.eventManager.dispatchCustomEvent("leaveEvent", data);
 });
 
 pomelo.on('onReady', function (data) {
     console.log('receive onReady event.');
-    cc.eventManager.dispatchCustomEvent("ReadyEvent", data);
+    cc.eventManager.dispatchCustomEvent("readyEvent", data);
 });
 
 
@@ -29,7 +29,7 @@ pomelo.on('onStart', function (data) {
     gActor.actorNr = data.actor.actorNr;
     gActor.uid = data.actor.uid;
     gActor.cards = data.actor.gameStatus.currentHoldingCards;
-    cc.eventManager.dispatchCustomEvent("GameStartEvent", data);
+    cc.eventManager.dispatchCustomEvent("gameStartEvent", data);
 });
 
 pomelo.on('onTalkCountdown', function (data) {
@@ -37,7 +37,7 @@ pomelo.on('onTalkCountdown', function (data) {
 
     console.log('data.actor.uid + gPlayer.uid => ', data.actor.uid, gPlayer.uid);
     console.log('data.actor.uid == gPlayer.uid => ', data.actor.uid == gPlayer.uid);
-    cc.eventManager.dispatchCustomEvent("onTalkCountdownEvent", data);
+    cc.eventManager.dispatchCustomEvent("talkCountdownEvent", data);
 
 
 });
@@ -58,7 +58,7 @@ pomelo.on('onTalk', function (data) {
     console.log('receive onTalk event.', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
-    cc.eventManager.dispatchCustomEvent("TalkEvent", data);
+    cc.eventManager.dispatchCustomEvent("talkEvent", data);
 });
 
 /**
@@ -68,7 +68,7 @@ pomelo.on('onAfterTalk', function (data) {
     console.log('receive onAfterTalk event.', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
-    cc.eventManager.dispatchCustomEvent("AfterTalk", data);
+    cc.eventManager.dispatchCustomEvent("afterTalk", data);
 });
 
 /**
@@ -85,7 +85,7 @@ pomelo.on('onFanCountdown', function (data) {
     }
     //actor: {uid: xx, actorNr: xx},isBoss: true/false（是否当前回合BOSS）,
     //lastFanCardRecognization: utils.cards.CardRecognization (上手牌型，如果是第一个出牌，则是null）, second: 倒计时时间
-    cc.eventManager.dispatchCustomEvent("FanCountdownEvent", data);
+    cc.eventManager.dispatchCustomEvent("fanCountdownEvent", data);
 });
 
 //pomelo.on('onFanTimeout', function (data) {
@@ -101,10 +101,66 @@ pomelo.on('onFan', function (data) {
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;
     }
-    cc.eventManager.dispatchCustomEvent("FanOutEvent", data);
+    cc.eventManager.dispatchCustomEvent("fanOutEvent", data);
     //actor: {uid: xx, actorNr: xx},
     //cardRecognization: utils.cards.CardRecognization (当前出牌牌型）, cards: 出牌，数组[]，为空时为不出
 
+});
+
+/**
+ * 托管
+ * {actor: {uid: xx, actorNr: xx}}
+ */
+pomelo.on('onTrusteeship', function (data) {
+    console.log('receive onTrusteeship event.');
+    cc.eventManager.dispatchCustomEvent("trusteeshipEvent", data);
+
+});
+
+/**
+ * 取消托管
+ * {actor: {uid: xx, actorNr: xx}}
+ */
+pomelo.on('onCancelTrusteeship', function (data) {
+    console.log('receive onCancelTrusteeship event.');
+    cc.eventManager.dispatchCustomEvent("cancelTrusteeshipEvent", data);
+});
+
+/**
+ * 结束
+ * {
+     game: {result: consts.GAME.RESULT.x, share: x},
+     details: [{uid:x, actorNr:x, actualIdentity:[], result: consts.GAME.ACTOR_RESULT.x, gold: x, roomId: game.roomId, rank: actor.gameStatus.rank}]
+   }
+ */
+pomelo.on('onOver', function (data) {
+    console.log('receive onOver event.');
+    cc.eventManager.dispatchCustomEvent("gameOverEvent", data);
+});
+
+/**
+ * 当红3在没亮3情况下，出黑3，规则定义不能骗人，通知其他玩家自己有红3
+ * {actor: {uid: xx, actorNr: xx}}
+ */
+pomelo.on('onFanWhenIsRed', function (data) {
+    console.log('receive onFanWhenIsRed event.');
+    cc.eventManager.dispatchCustomEvent("fanWhenIsRedEvent", data);
+});
+
+/**
+ * 当玩家出牌结束，通知所有人
+ * {
+        actor: {
+            uid: actor.uid,
+            actorNr: actor.actorNr,
+            rank: Int,
+            identity: consts.GAME.IDENTITY.x
+        }
+    }
+ */
+pomelo.on('onFanFinished', function (data) {
+    console.log('receive onFanFinished event.');
+    cc.eventManager.dispatchCustomEvent("fanFinishedEvent", data);
 });
 
 pomelo.on('onChat', function (data) {
@@ -115,10 +171,13 @@ pomelo.on('onBroadcast', function (data) {
     console.log('receive onBroadcast event.');
 });
 
+/**
+ * 自己金币变化
+ */
 pomelo.on('onGoldChange', function (data) {
     console.log('receive onGoldChange event.');
+    gPlayer.gold = data.gold;
 });
-
 
 pomelo.on('disconnect', function(reason) {
     console.log('disconnected..');

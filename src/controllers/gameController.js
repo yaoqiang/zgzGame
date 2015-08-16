@@ -67,10 +67,10 @@ GameController.ready = function (roomId, gameId)
     pomelo.request(route.ready, {roomId: roomId, gameId:gameId}, function(data) {
         cc.log("ready :", data);
         if(data.code == 200){
-            cc.eventManager.dispatchCustomEvent("ReadyResponse", data);
+            cc.eventManager.dispatchCustomEvent("readyResponse", data);
 
         }else if(data.code == 500){
-            cc.log("----> ready game fail");
+            cc.log("----> ready game fail", data.err);
         }
 
     });
@@ -80,7 +80,7 @@ GameController.talk = function (roomId, gameId, goal, append) {
     cc.log("GameController.talk roomId:" +  roomId + "  gameId: "+gameId+ "  goal: "+goal + "append: ", append);
     if (roomId == null || gameId == null || goal == null) {
         //参数错误，返回用户界面友好信息，比如“说话失败，请重试”
-        cc.eventManager.dispatchCustomEvent("TalkResponse", {code: 500});
+        cc.eventManager.dispatchCustomEvent("talkResponse", {code: 500});
     }
 
     pomelo.request(route.talk, {roomId: roomId, gameId:gameId, goal: goal, append: append}, function(data) {
@@ -88,9 +88,9 @@ GameController.talk = function (roomId, gameId, goal, append) {
         if(data.code == 200){
             gActor.append = append;
             //说话成功，此处使用callback处理，UI中设置参数包括回调function(data)，再处理说话时牌局UI逻辑
-            cc.eventManager.dispatchCustomEvent("TalkResponse", data);
+            cc.eventManager.dispatchCustomEvent("talkResponse", data);
         }else if(data.code == 500){
-            cc.log("----> talk fail");
+            cc.log("----> talk fail", data.err);
         }
     });
 };
@@ -98,7 +98,7 @@ GameController.talk = function (roomId, gameId, goal, append) {
 GameController.fan = function (roomId, gameId, cards) {
     cc.log("GameController.talk roomId:" +  roomId + "  gameId: "+gameId+ "  cards: "+cards);
     if (roomId == null || gameId == null || !_.isArray(cards)) {
-        cc.eventManager.dispatchCustomEvent("FanOutResponse", {code: 500, err: ''});
+        cc.eventManager.dispatchCustomEvent("fanOutResponse", {code: 500, err: ''});
         return;
     }
 
@@ -130,9 +130,9 @@ GameController.fan = function (roomId, gameId, cards) {
             //出牌成功后，设置上手牌型；其他玩家的在onFan Event中设置
             //gLastFanCardRecognization = recogntition;
             //出牌成功，处理出牌时牌局UI逻辑：自己出牌成功，中间显示出牌；
-            cc.eventManager.dispatchCustomEvent("FanOutResponse", data);
+            cc.eventManager.dispatchCustomEvent("fanOutResponse", data);
         }else if(data.code == 500){
-            cc.log("----> fan fail");
+            cc.log("----> fan fail", data.err);
         }
     });
 };

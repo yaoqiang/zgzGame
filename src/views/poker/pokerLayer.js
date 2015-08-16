@@ -686,26 +686,7 @@ cardRunAction:function(){
         }else {
 
         }
-
-
-
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     touchBegan:function(x, y){
         this.iaFanOut = this.isHaveSelectCars();
@@ -776,14 +757,6 @@ cardRunAction:function(){
             pc.setHitted(false);
         }
     },
-
-
-
-
-
-
-
-
 
 
     onEnter:function(){

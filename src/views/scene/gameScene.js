@@ -15,7 +15,7 @@ var GameScene = cc.Scene.extend({
 var GameLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args) {
-        console.log("GameLayer ctor : ",args);
+        console.log("GameLayer ctor : ", args);
         this._super();
         this.m_pData = args;
         this.m_type = args.lobbyId;
@@ -38,15 +38,14 @@ var GameLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
         //牌桌
         var bg = cc.Sprite.create("#beijing.png");
-        bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
+        bg.setPosition(cc.p(winSize.width / 2, winSize.height / 2));
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
         this.addChild(new HornSpriteForGame());
 
         //其他玩家
-        switch (this.m_type)
-        {
+        switch (this.m_type) {
             case ZGZ.GAME_TYPE.T1:
                 this.m_pTableLayer = new FivePeopleTableLayer();
                 this.addChild(this.m_pTableLayer);
@@ -59,7 +58,7 @@ var GameLayer = cc.Layer.extend({
         }
         this.addPokerLayer(this.m_pTableLayer);
         //刷新玩家信息
-        this.updataActorHD();
+        this.updateActorHD();
         //gamen nenu
         this.addMenu();
         this.addReadyMenu();
@@ -71,65 +70,64 @@ var GameLayer = cc.Layer.extend({
 
     },
 
-    addMenu:function(){
+    addMenu: function () {
         this.m_pGameNemu = new GameMenuLayer();
         this.addChild(this.m_pGameNemu);
 
     },
-    addReadyMenu:function(){
+    addReadyMenu: function () {
         this.m_pReadyMenu = new ReadyMenuLayer();
         this.addChild(this.m_pReadyMenu);
     },
 
-    addPokerLayer:function(tableLayer){
+    addPokerLayer: function (tableLayer) {
         this.m_pPokerLayer = new PokerLayer();
-        this.addChild(this.m_pPokerLayer,0);
+        this.addChild(this.m_pPokerLayer, 0);
         this.m_pPokerLayer.m_pTable = tableLayer;
     },
 
-     updataActorHD:function(){
-         //刷新头像
-         this.m_pTableLayer.updataActorHD(this.m_actorList);
-     },
+    updateActorHD: function () {
+        //刷新头像
+        this.m_pTableLayer.updateActorHD(this.m_actorList);
+    },
 
-    sortActor:function(){
+    sortActor: function () {
         //重新排列actor，从而改变他们现实的位置。
-        if(this.m_actorList == null){
+        if (this.m_actorList == null) {
             return;
         }
 
 
-
     },
 
-    addActorToList:function(actor){
+    addActorToList: function (actor) {
         console.log("addActorToList  : ", actor);
-        if(this.m_actorList){
+        if (this.m_actorList) {
             var actor = new Actor(actor);
             this.m_actorList.push(actor);
         }
     },
-    removeActorFromList:function(actor){
-        if(this.m_actorList){
+    removeActorFromList: function (actor) {
+        if (this.m_actorList) {
             var actor = new Actor(actor);
             //离开别人
-            for(var i=0; this.m_actorList.length; i++){
+            for (var i = 0; this.m_actorList.length; i++) {
                 var one = this.m_actorList[i];
-                if(actor.m_uid == one.m_uid){
+                if (actor.m_uid == one.m_uid) {
                     //this.m_actorList.delete(one);
-                    this.m_actorList.splice(i,1);
+                    this.m_actorList.splice(i, 1);
                     return;
                 }
             }
         }
     },
 //把join得到的actor数组重新整理，生成actor结构，push到
-    initAcrorList:function(actorArray){
+    initAcrorList: function (actorArray) {
         this.m_actorList = [];
 
         var len = actorArray.length;
 
-        for(var i=0; i < len; i++){
+        for (var i = 0; i < len; i++) {
             console.log(actorArray[i]);
             console.log(actorArray[i].properties);
             var actor = new Actor(actorArray[i]);
@@ -140,66 +138,66 @@ var GameLayer = cc.Layer.extend({
 
     selfLeave: function (actor) {
         var actor = new Actor(actor);
-        if(actor.m_uid == gPlayer.uid){
+        if (actor.m_uid == gPlayer.uid) {
             return true;
         }
         return false;
     },
 
-    clockCallback:function(){
+    clockCallback: function () {
         //删除bid，fanout menu
         this.removeBidMenu();
         this.removeFanOutMenu();
     },
 
-    removeBidMenu:function(){
+    removeBidMenu: function () {
         //删除bid
-        if(this.m_pBidMenuLayer){
+        if (this.m_pBidMenuLayer) {
             this.m_pBidMenuLayer.removeFromParent(true);
             this.m_pBidMenuLayer = null;
         }
     },
-    removeFanOutMenu:function(){
+    removeFanOutMenu: function () {
         //删除fanout menu
         console.log("--->removeFanOutMenu  1");
-        if(this.m_pFanOutMenuLayer){
+        if (this.m_pFanOutMenuLayer) {
             this.m_pFanOutMenuLayer.removeFromParent(true);
             this.m_pFanOutMenuLayer = null;
             console.log("--->removeFanOutMenu");
-            if(this.m_pPokerLayer){
+            if (this.m_pPokerLayer) {
                 this.m_pPokerLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
             }
         }
     },
-    addBidMenu:function(tag){
-        if(this.m_pBidMenuLayer == null){
+    addBidMenu: function (tag) {
+        if (this.m_pBidMenuLayer == null) {
             this.m_pBidMenuLayer = new BidMenuLayer();
             this.addChild(this.m_pBidMenuLayer, 10);
             this.m_pBidMenuLayer.setCallback(this, this.bidMenuCallback);
         }
         this.m_pBidMenuLayer.setBtnVisible(tag, true);
     },
-    addFanOutMenu:function(){
+    addFanOutMenu: function () {
         console.log("--->addFanOutMenu   1");
-        if(this.m_pFanOutMenuLayer == null){
+        if (this.m_pFanOutMenuLayer == null) {
             this.m_pFanOutMenuLayer = new FanOutMenuLayer();
             this.addChild(this.m_pFanOutMenuLayer, 10);
             this.m_pFanOutMenuLayer.setCallback(this, this.fanOutCallback);
             console.log("--->addFanOutMenu");
-            if(this.m_pPokerLayer){
+            if (this.m_pPokerLayer) {
                 this.m_pPokerLayer.m_pFanOutMenuLayer = this.m_pFanOutMenuLayer;
             }
         }
     },
 
-    bidMenuCallback:function(tag){
-        switch (tag){
+    bidMenuCallback: function (tag) {
+        switch (tag) {
             case BidMenuBtn.kCCBidMenu_Liang:
                 var identity = cardUtil.recognitionIdentity(this.m_pPokerLayer.m_pSelectedWillOutCards, gGameType);
                 if (identity == GAME.IDENTITY.HONG3) {
 
-                }else{
-                    this.sayForTalk({append:null, actorNr:gActor.actorNr, text:"我有3"});
+                } else {
+                    this.sayForTalk({append: null, actorNr: gActor.actorNr, text: "我有3"});
                     return;
                 }
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3, this.m_pPokerLayer.m_pSelectedWillOutCards);
@@ -214,9 +212,9 @@ var GameLayer = cc.Layer.extend({
 
     },
 
-    fanOutCallback:function(tag){
+    fanOutCallback: function (tag) {
         //GameController.fan = function (roomId, gameId, cards)
-        switch (tag){
+        switch (tag) {
             case FanOutMenuBtn.kCCFanOutMenu_Pass:
                 GameController.fan(gRoomId, gGameId, []);
                 break;
@@ -230,8 +228,8 @@ var GameLayer = cc.Layer.extend({
     },
 
 
-    recognitionIdentityWithNr:function(goal, append, actorNr){
-        if(this.m_actorList == null){
+    recognitionIdentityWithNr: function (goal, append, actorNr) {
+        if (this.m_actorList == null) {
             return;
         }
         var isIdentity = false;
@@ -253,30 +251,34 @@ var GameLayer = cc.Layer.extend({
         //}
 
         var actorHD = this.m_pTableLayer.getActorHDWithNr(actorNr)
-        if(actorHD){
+        if (actorHD) {
             actorHD.m_identity = identity;
             actorHD.showIdentity(goal, append);
         }
     },
 
-    sayForTalk:function(args){
-        if(this.m_actorList == null){
+    sayForTalk: function (args) {
+        if (this.m_actorList == null) {
             return;
         }
 
         var append = args.append;
-        var text = args.text? args.text : "" ;
+        var text = args.text ? args.text : "";
         var actorNr = args.actorNr;
         var haveAppend = false;
 
-        if(append){
+        if (append) {
             haveAppend = true;
             //分析牌型
-            var identity = cardUtil.recognitionIdentity(append, gGameType);
-            if (identity == GAME.IDENTITY.HONG3) {
+            //var identity = cardUtil.recognitionIdentity(append, gGameType);
+            if (args.goal == GAME.IDENTITY.HONG3) {
                 text = "亮3";
-            }else{
-                text = "谷子";
+            }
+            else if (args.goal == GAME.IDENTITY.GUZI) {
+                text = "股子"
+            }
+            else {
+                text = "没话";
             }
         }
 
@@ -287,30 +289,30 @@ var GameLayer = cc.Layer.extend({
 //event
     joinEvent: function (data) {
         this.addActorToList(data.actor);
-        this.updataActorHD();
+        this.updateActorHD();
     },
 
     leaveEvent: function (data) {
         console.log("leaveEvent :");
         console.log(data);
 
-        if(this.selfLeave(data.actor) == false){
+        if (this.selfLeave(data.actor) == false) {
             this.removeActorFromList(data.actor);
-            this.updataActorHD();
-        }else{
+            this.updateActorHD();
+        } else {
             GameController.enterLobby(gLobbyId);//回大厅
         }
     },
 
 
-    readyEvent:function (data) {
+    readyEvent: function (data) {
         console.log("readyEvent :");
         console.log(data);
         //var actor = new Actor(actor);
-       // this.m_pTableLayer.readyEvent(actor);
-        for(var i=0; this.m_actorList.length; i++){
+        // this.m_pTableLayer.readyEvent(actor);
+        for (var i = 0; this.m_actorList.length; i++) {
             var actor = this.m_actorList[i];
-            if(data.actorNr == actor.m_actorNr){
+            if (data.actorNr == actor.m_actorNr) {
                 actor.m_isReady = true;
                 this.m_pTableLayer.readyEvent(actor);
                 return;
@@ -318,23 +320,23 @@ var GameLayer = cc.Layer.extend({
         }
     },
 
-    gameStartEvent:function(data){
+    gameStartEvent: function (data) {
         console.log("gameStartEvent :");
         //console.log(data.actor);
         gGameState = ZGZ.GAME_STATE.TALK;
-        if(this.m_pPokerLayer){
+        if (this.m_pPokerLayer) {
             this.m_pPokerLayer.gameStart(data.actor);
         }
         console.log("gameStartEvent end");
     },
 
-    onTalkCountdownEvent:function(data){
+    talkCountdownEvent: function (data) {
         console.log("onTalkCountdown :");
         //如果说话倒计时是当前玩家
-        if(this.m_pPokerLayer){
+        if (this.m_pPokerLayer) {
             this.m_pPokerLayer.onTalkCountdown(data);
         }
-        if(this.m_pTableLayer){
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
         }
 
@@ -348,29 +350,28 @@ var GameLayer = cc.Layer.extend({
                 this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
                 //gActor.identity = true;
             }
-            else
-            {
+            else {
                 cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
                 this.addBidMenu(BidMenuBtn.kCCBidMenu_Guzi);
                 //gActor.identity = false;
             }
 
 
-        }else {
+        } else {
 
         }
-        if(this.m_pTableLayer){
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.showClock(data.actor.actorNr, data.second);
         }
 
     },
 
-    startEvent:function(data){
-        
+    startEvent: function (data) {
+
     },
 
-    TalkEvent:function(data){
-        cc.log("----------------->TalkEvent:", data);
+    talkEvent: function (data) {
+        cc.log("----------------->talkEvent:", data);
         var uid = data.uid;
         var actorNr = data.actorNr;
         var goal = data.goal;
@@ -379,12 +380,12 @@ var GameLayer = cc.Layer.extend({
 
         this.recognitionIdentityWithNr(goal, append, actorNr);
         this.updateShare(share);
-        this.sayForTalk({append:append, actorNr:actorNr});
+        this.sayForTalk({goal: goal, append: append, actorNr: actorNr});
     },
 
-    AfterTalk:function(data){
-        cc.log("----------------->AfterTalk:", data);
-        if(this.m_pTableLayer){
+    afterTalk: function (data) {
+        cc.log("----------------->afterTalk:", data);
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
             this.m_pTableLayer.removeAllActorReady();
         }
@@ -392,8 +393,8 @@ var GameLayer = cc.Layer.extend({
 
     },
 
-    TalkTimeoutEvent:function(data){
-        cc.log("---->TalkTimeoutEvent:", data);
+    talkTimeoutEvent: function (data) {
+        cc.log("---->talkTimeoutEvent:", data);
         //var uid = data.uid;
         //var actorNr = data.actorNr;
         //var cards = data.cards;
@@ -401,57 +402,68 @@ var GameLayer = cc.Layer.extend({
         //this.m_pPokerLayer.setFanOutCards(cards, actorNr);
     },
 
-    fanOutEvent:function(data){
+    fanOutEvent: function (data) {
         cc.log("---->fanOutEvent:", data);
         var uid = data.uid;
         var actorNr = data.actorNr;
         var cards = data.cards;
         var cardRecognization = data.cardRecognization;
-       this.m_pPokerLayer.setFanOutCards(cards, actorNr);
+        this.m_pPokerLayer.setFanOutCards(cards, actorNr);
 
 
     },
 
-    FanCountdownEvent:function(data){
-        cc.log("---->FanCountdownEvent:", data);
+    fanCountdownEvent: function (data) {
+        cc.log("---->fanCountdownEvent:", data);
         gGameState = ZGZ.GAME_STATE.PLAY;
-        if(this.m_pTableLayer){
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
             this.removeFanOutMenu();
         }
 
         if (data.actor.uid == gPlayer.uid) {
             this.addFanOutMenu();
-            if(data.isBoss){
-                if(this.m_pFanOutMenuLayer){
+            if (data.isBoss) {
+                if (this.m_pFanOutMenuLayer) {
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, false);
                 }
             }
             this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
-        }else {
+        } else {
 
         }
 
-        if(this.m_pTableLayer){
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.showClock(data.actor.actorNr, data.second);
         }
 
     },
 
-    overEvent:function(data){
-
+    /**
+     * 游戏结束
+     * @param data
+     */
+    overEvent: function (data) {
+        var sg = MaskLayer.create();
+        var label = new cc.LabelTTF(data, "Arial", 30);
+        label.color = cc.color.YELLOW;
+        label.setPosition(sg.width/2, sg.height/2);
+        this.addChild(sg);
     },
-////response
-    readyResponse:function(){
+
+    /**
+     * 准备响应
+     */
+    readyResponse: function () {
         cc.log("---->readyResponse");
         cc.log(this.m_actorList);
         this.m_pReadyMenu.removeFromParent(true);
         this.m_pReadyMenu = null;
         var actor;
-        for(var i=0; this.m_actorList.length; i++){
+        for (var i = 0; this.m_actorList.length; i++) {
             actor = this.m_actorList[i];
-            cc.log("---->gPlayer.id:"+ gPlayer.uid + "--actor.m_uid:"+actor.m_uid);
-            if(gPlayer.uid == actor.m_uid){
+            cc.log("---->gPlayer.id:" + gPlayer.uid + "--actor.m_uid:" + actor.m_uid);
+            if (gPlayer.uid == actor.m_uid) {
                 actor.m_isReady = true;
                 cc.log(actor);
                 this.m_pTableLayer.readyResponse(actor);
@@ -461,10 +473,15 @@ var GameLayer = cc.Layer.extend({
 
     },
 
-    TalkResponse:function(data){
+    /**
+     * 说话响应
+     * @param data
+     * @constructor
+     */
+    talkResponse: function (data) {
         cc.log("----------------->TalkResponse:", data);
         var code = data.code;
-        if(code == 500){
+        if (code == 500) {
             cc.log("----> talk fail");
             return;
         }
@@ -476,18 +493,23 @@ var GameLayer = cc.Layer.extend({
         this.removeBidMenu();
 
         this.recognitionIdentityWithNr(goal, append, gActor.actorNr);
-        this.sayForTalk({append:append, actorNr:gActor.actorNr});
+        this.sayForTalk({goal: goal, append: append, actorNr: gActor.actorNr});
 
-        if(this.m_pTableLayer){
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
         }
         this.updateShare(share);
     },
 
-    FanOutResponse:function(data){
+    /**
+     * 出牌响应
+     * @param data
+     * @constructor
+     */
+    fanOutResponse: function (data) {
         cc.log("FanOutResponse :", data);
         var code = data.code;
-        if(code == 500){
+        if (code == 500) {
             cc.log("----> FanOutResponse fail");
             return;
         }
@@ -499,6 +521,10 @@ var GameLayer = cc.Layer.extend({
     },
 
 
+    /**
+     * 更新股数
+     * @param share
+     */
     updateShare: function (share) {
         //var roomInfoLabel = new cc.LabelTTF("底注:"+this.m_pData.base, "Arial", 34);
         //var gameShare = new cc.LabelTTF("股数:"+share, "Arial", 34);
@@ -506,76 +532,80 @@ var GameLayer = cc.Layer.extend({
     },
 
 
-
-    onEnter:function(){
+    onEnter: function () {
         this._super();
         selfPointer = this;
         //event
-        cc.eventManager.addCustomListener("JoinEvent", function(event){
-            cc.log("---->game JoinEvent: ", event._userData);
+        cc.eventManager.addCustomListener("joinEvent", function (event) {
+            cc.log("---->game joinEvent: ", event._userData);
             selfPointer.joinEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("LeaveEvent", function(event){
-            cc.log("---->game  LeaveEvent: ", event._userData);
+        cc.eventManager.addCustomListener("leaveEvent", function (event) {
+            cc.log("---->game  leaveEvent: ", event._userData);
             selfPointer.leaveEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("ReadyEvent", function(event){
-            cc.log("---->game  ReadyEvent: ", event._userData);
+        cc.eventManager.addCustomListener("readyEvent", function (event) {
+            cc.log("---->game  readyEvent: ", event._userData);
             selfPointer.readyEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("GameStartEvent", function(event){
-            cc.log("---->game  GameStartEvent: ", event._userData);
+        cc.eventManager.addCustomListener("gameStartEvent", function (event) {
+            cc.log("---->game  gameStartEvent: ", event._userData);
             selfPointer.gameStartEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("onTalkCountdownEvent", function(event){
-            cc.log("---->game  onTalkCountdownEvent: ", event._userData);
-            selfPointer.onTalkCountdownEvent(event._userData);
+        cc.eventManager.addCustomListener("talkCountdownEvent", function (event) {
+            cc.log("---->game  talkCountdownEvent: ", event._userData);
+            selfPointer.talkCountdownEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("FanOutEvent", function(event){
-            cc.log("---->game  FanOutEvent: ", event._userData);
+        cc.eventManager.addCustomListener("fanOutEvent", function (event) {
+            cc.log("---->game  fanOutEvent: ", event._userData);
             selfPointer.fanOutEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("FanCountdownEvent", function(event){
-            cc.log("---->game  FanCountdownEvent: ", event._userData);
-            selfPointer.FanCountdownEvent(event._userData);
+        cc.eventManager.addCustomListener("fanCountdownEvent", function (event) {
+            cc.log("---->game  fanCountdownEvent: ", event._userData);
+            selfPointer.fanCountdownEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("TalkEvent", function(event){
-            cc.log("---->game  TalkEvent: ", event._userData);
-            selfPointer.TalkEvent(event._userData);
+        cc.eventManager.addCustomListener("talkEvent", function (event) {
+            cc.log("---->game  talkEvent: ", event._userData);
+            selfPointer.talkEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("TalkTimeoutEvent", function(event){
-            cc.log("---->game  TalkTimeoutEvent: ", event._userData);
-            selfPointer.TalkTimeoutEvent(event._userData);
+        cc.eventManager.addCustomListener("talkTimeoutEvent", function (event) {
+            cc.log("---->game  talkTimeoutEvent: ", event._userData);
+            selfPointer.talkTimeoutEvent(event._userData);
         });
 
-        cc.eventManager.addCustomListener("AfterTalk", function(event){
-            cc.log("---->game  AfterTalk: ", event._userData);
-            selfPointer.AfterTalk(event._userData);
+        cc.eventManager.addCustomListener("afterTalk", function (event) {
+            cc.log("---->game  afterTalk: ", event._userData);
+            selfPointer.afterTalk(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("gameOverEvent", function (event) {
+            cc.log("---->game  gameOverEvent: ", event._userData);
+            selfPointer.overEvent(event._userData);
         });
 
 
-    //response
-        cc.eventManager.addCustomListener("ReadyResponse", function(event){
-            cc.log("---->game  ReadyResponse: ", event._userData);
+        //response
+        cc.eventManager.addCustomListener("readyResponse", function (event) {
+            cc.log("---->game  readyResponse: ", event._userData);
             selfPointer.readyResponse();
         });
 
-        cc.eventManager.addCustomListener("TalkResponse", function(event){
-            cc.log("---->game  TalkResponse: ", event._userData);
-            selfPointer.TalkResponse(event._userData);
+        cc.eventManager.addCustomListener("talkResponse", function (event) {
+            cc.log("---->game  talkResponse: ", event._userData);
+            selfPointer.talkResponse(event._userData);
         });
 
-        cc.eventManager.addCustomListener("FanOutResponse", function(event){
-            cc.log("---->game  FanOutResponse: ", event._userData);
-            selfPointer.FanOutResponse(event._userData);
+        cc.eventManager.addCustomListener("fanOutResponse", function (event) {
+            cc.log("---->game  fanOutResponse: ", event._userData);
+            selfPointer.fanOutResponse(event._userData);
         });
 
 
@@ -584,27 +614,28 @@ var GameLayer = cc.Layer.extend({
         //this.addFanOutMenu();
     },
 
-    onExit:function(){
+    onExit: function () {
         this._super();
         //event
-        cc.eventManager.removeCustomListeners("JoinEvent");
-        cc.eventManager.removeCustomListeners("LeaveEvent");
-        cc.eventManager.removeCustomListeners("ReadyEvent");
-        cc.eventManager.removeCustomListeners("GameStartEvent");
-        cc.eventManager.removeCustomListeners("onTalkCountdownEvent");
-        cc.eventManager.removeCustomListeners("FanOutEvent");
-        cc.eventManager.removeCustomListeners("FanCountdownEvent");
-        cc.eventManager.removeCustomListeners("TalkEvent");
+        cc.eventManager.removeCustomListeners("joinEvent");
+        cc.eventManager.removeCustomListeners("leaveEvent");
+        cc.eventManager.removeCustomListeners("readyEvent");
+        cc.eventManager.removeCustomListeners("gameStartEvent");
+        cc.eventManager.removeCustomListeners("talkCountdownEvent");
+        cc.eventManager.removeCustomListeners("fanOutEvent");
+        cc.eventManager.removeCustomListeners("fanCountdownEvent");
+        cc.eventManager.removeCustomListeners("talkEvent");
+        cc.eventManager.removeCustomListeners("gameOverEvent");
 
         //response
-        cc.eventManager.removeCustomListeners("ReadyResponse");
-        cc.eventManager.removeCustomListeners("TalkResponse");
-        cc.eventManager.removeCustomListeners("FanOutResponse");
+        cc.eventManager.removeCustomListeners("readyResponse");
+        cc.eventManager.removeCustomListeners("talkResponse");
+        cc.eventManager.removeCustomListeners("fanOutResponse");
 
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
     }
-    
-    
+
+
 });

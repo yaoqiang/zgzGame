@@ -112,7 +112,7 @@ var CueBox = cc.Layer.extend({
         this.removeFromParent(true);
     },
 
-    updataActorHD:function(args){
+    updateActorHD:function(args){
 
     },
 
