@@ -444,7 +444,7 @@ var GameLayer = cc.Layer.extend({
      * @param data
      */
     overEvent: function (data) {
-        var sg = MaskLayer.create();
+        var sg = new MaskLayer(true);
         var label = new cc.LabelTTF(data, "Arial", 30);
         label.color = cc.color.YELLOW;
         label.setPosition(sg.width/2, sg.height/2);

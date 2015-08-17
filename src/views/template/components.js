@@ -42,10 +42,9 @@ var HornSpriteForGame = cc.Sprite.extend({
  * 遮罩层
  * 这里要把swallowTouches设置为true，这样onTouchBegan返回true才能够吞噬触摸，不继续往优先级更低的层传递，从而实现遮挡层。
  * 调用方法：
- * var maskLayer = MaskLayer.create();
+ * var maskLayer = new MaskLayer();
  * this.addChild(maskLayer, 11);
  * _opt 默认显示半透明背景
- * Created by Young on 2015/6/5.
  */
 var MaskLayer = cc.LayerColor.extend({
     _listener: null,
@@ -93,10 +92,34 @@ var MaskLayer = cc.LayerColor.extend({
     }
 });
 
-MaskLayer.create = function (opt) {
-    var sg = new MaskLayer(opt);
-    if (sg && sg.init()) {
-        return sg;
+
+var Alert = cc.Layer.extend({
+    ctor:function(msg, callback) {
+        var winSize = cc.director.getWinSize();
+        var backgroundChild, labelChild, closeChild, closeMenuItem;
+        var menu;
+
+        this._super();
+
+        backgroundChild = new cc.LayerColor(cc.color(50, 50, 50, 255));
+
+        labelChild = new cc.LabelTTF(msg, "Arial", 15);
+
+        backgroundChild.width = labelChild.getContentSize().width + (winSize.width / 15);
+        backgroundChild.height = labelChild.getContentSize().height + (winSize.height / 15);
+        backgroundChild.setPosition(cc.p(backgroundChild.width / -2, backgroundChild.height / -2));
+
+        closeChild = new cc.LabelTTF("X", "Arial", 10);
+        closeChild.setColor(cc.color(200, 200, 200, 255));
+        closeMenuItem = new cc.MenuItemLabel(closeChild, callback, this);
+
+        menu = new cc.Menu(closeMenuItem);
+        menu.setPosition((backgroundChild.width / 2) - 10, (backgroundChild.height / 2) - 10);
+
+        this.addChild(backgroundChild);
+        this.addChild(labelChild);
+        this.addChild(menu);
+
+        this.setPosition(winSize.width / 2, winSize.height / 2);
     }
-    return null;
-};
+});
