@@ -30,7 +30,7 @@ var PokerLayer = cc.Layer.extend({
 //card define
 
         CARD_WIDTH_LARGE = ZySize.SCALE(120);
-        CARD_HEIGHT_LARGE = ZySize.SCALE(200);//168
+        CARD_HEIGHT_LARGE = ZySize.SCALE(180);//可点击的高度
         CARD_WIDTH_NORMAL = ZySize.SCALE(80);
         CARD_HEIGHT_NORMAL = ZySize.SCALE(108);
         CARD_WIDTH_SMALL = ZySize.SCALE(44);
@@ -74,7 +74,7 @@ var PokerLayer = cc.Layer.extend({
          var x = showP.x;
          var y = showP.y;
          var space = 25;
-         var star = 60;
+         var star = 100;//60;
          switch (showP.mode){
              case SHOW_MODE.LEFT:
              {
@@ -116,18 +116,7 @@ var PokerLayer = cc.Layer.extend({
 
      hideFanOutCards:function(actorNr){
          var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
-
-         //var cardsArray = actorHD.fanOutCards();
-         //
-         //if(cardsArray == null ||cardsArray.length == 0) return;
-         //
-         //for(var i = 0; i< cardsArray.length; i++){
-         //    var card = cardsArray[i];
-         //    card.setVisible(false);
-         //    card.removeFromParent();
-         //}
-
-         actorHD.clearFanoutCards();// =null即可
+         actorHD.clearFanoutCards();
     },
 
     hideAllActorFanOutCards:function(){
@@ -135,10 +124,8 @@ var PokerLayer = cc.Layer.extend({
         var actorNr;
         for(actorNr=1; actorNr<=len; actorNr++){
             var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
-            actorHD.clearFanoutCards();// =null即可
-
+            actorHD.clearFanoutCards();
         }
-
     },
 
 
@@ -408,12 +395,17 @@ cardRunAction:function(){
 
 
     setFanOutCards:function(cardsVector, actorNr){
+        var len = cardsVector.length;
+        if(len == 0){
+            return;
+        }
+
         this.m_pFanOutCard = cardsVector;
-        this.hideFanOutCards(actorNr);
+        //this.hideFanOutCards(actorNr);
+        this.hideAllActorFanOutCards();
         var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
         var cardsArray = [];
 
-        var len = cardsVector.length;
         if (len > 0){
             for (var idx = 0; idx<len; idx++){
                 var cardValue = cardsVector[idx];
@@ -783,7 +775,7 @@ cardRunAction:function(){
         //console.log("PokerCard size:",card.getContentSize());
 
 
-         //this.gameStart({properties:"测试", gameStatus:{currentHoldingCards:[18,113,212,112,111,410,310]}});
+         //this.gameStart({properties:"测试", gameStatus:{currentHoldingCards:[18,113,212,112,111,410,310,113,212,112]}});
          //this.setFanOutCards([18,113,212,112], 1);
     },
 

@@ -13,7 +13,7 @@ var BidMenuLayer = cc.Layer.extend({
     },
     init:function(){
         var winSize = cc.director.getWinSize();
-        var h = winSize.height*0.6;
+        var h = winSize.height*0.5;
 //亮3
         var liangNormal = new cc.Sprite(res.anniu_png);
         var liangSelected = new cc.Sprite(res.anniu_png);

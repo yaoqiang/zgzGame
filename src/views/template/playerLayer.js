@@ -20,6 +20,8 @@ var PlayerLayer = cc.Layer.extend({
         this.m_rank = 0;
         this.m_isready = false;
 
+        this.bgScale = ZGZ.SCALE * 0.4;
+
         this.m_identity = false;
         this.m_pIdentityArray = [];
         this.m_pRedImage = null;
@@ -147,8 +149,10 @@ var PlayerLayer = cc.Layer.extend({
             if(bigFaceBuf){
                 var identityImage = new cc.Sprite(bigFaceBuf);
                 if(identityImage) {
-                    identityImage.setPosition(cc.p(x + i*30, size.height-1));
-                    identityImage.setAnchorPoint(0.5, 1);
+                    var xx = (1-this.m_anchorX)*size.width;//*this.bgScale;
+                    var yy = (1-this.m_anchorY)*size.height;//*this.bgScale;
+                    identityImage.setPosition(cc.p(size.width - 0, size.height-i*40));
+                    identityImage.setAnchorPoint(0, 1);
                     identityImage.setScale(0.5);
                     this.m_pAvatarBg.addChild(identityImage, 1);
                     this.m_pIdentityArray.push(identityImage);
@@ -241,13 +245,26 @@ var PlayerLayer = cc.Layer.extend({
     },
 
     showNickName:function(){
+        //if(this.m_pName == null){
+        //    this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 28);
+        //    var size = this.m_pAvatarBg.getContentSize();
+        //    this.m_pName.anchorX = 0.5;
+        //    this.m_pName.anchorY = 0;
+        //    this.m_pName.setPosition(cc.p(size.width/2, size.height + 1));
+        //    this.m_pAvatarBg.addChild(this.m_pName, 1);
+        //}else{
+        //    this.m_pName.setString(this.m_nickNname);
+        //}
+
         if(this.m_pName == null){
-            this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 28);
+            this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 12);
             var size = this.m_pAvatarBg.getContentSize();
             this.m_pName.anchorX = 0.5;
             this.m_pName.anchorY = 0;
-            this.m_pName.setPosition(cc.p(size.width/2, size.height + 1));
-            this.m_pAvatarBg.addChild(this.m_pName, 1);
+            var xx = (1-this.m_anchorX - 0.5)*size.width*this.bgScale;
+            var yy = (1-this.m_anchorY)*size.height*this.bgScale;
+            this.m_pName.setPosition(cc.p(this.m_position.x + xx, this.m_position.y + yy));
+            this.addChild(this.m_pName, 1);
         }else{
             this.m_pName.setString(this.m_nickNname);
         }
@@ -259,7 +276,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pAvatarBg.setPosition(cc.p(this.m_position.x, this.m_position.y));
             this.m_pAvatarBg.anchorX = this.m_anchorX;
             this.m_pAvatarBg.anchorY = this.m_anchorY;
-            this.m_pAvatarBg.scale = ZGZ.SCALE * 0.4;
+            this.m_pAvatarBg.scale = this.bgScale;
             this.addChild(this.m_pAvatarBg);
         }
     },

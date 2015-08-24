@@ -437,6 +437,14 @@ var GameLayer = cc.Layer.extend({
             this.m_pTableLayer.showClock(data.actor.actorNr, data.second);
         }
 
+        if (this.m_pPokerLayer) {
+            if (data.isBoss) {
+                this.m_pPokerLayer.hideAllActorFanOutCards();
+            }else{
+                this.m_pPokerLayer.hideFanOutCards(data.actor.actorNr);
+            }
+        }
+
     },
 
     /**

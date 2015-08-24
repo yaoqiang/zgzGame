@@ -37,7 +37,7 @@ var PokerCard = cc.Node.extend({
         }else if(this.cardSize == PokerCard_enum.kCCCardSizeNormal){
             this.cardScale = 0.4;
         }else if(this.cardSize == PokerCard_enum.kCCCardSizeLarge){
-            this.cardScale = 0.8;
+            this.cardScale = 0.7;
         }
 
     },

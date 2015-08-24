@@ -17,7 +17,7 @@
     },
     init:function(){
         var winSize = cc.director.getWinSize();
-        var h = winSize.height*0.6;
+        var h = winSize.height*0.5;
 
 //出牌
         var chupaiNormal = new cc.Sprite(res.anniu_png);
