@@ -87,9 +87,10 @@ GameController.talk = function (roomId, gameId, goal, append) {
         cc.log("talk :", data);
         if(data.code == 200){
             gActor.append = append;
+            //改为Event处理本人说话响应
             //说话成功，此处使用callback处理，UI中设置参数包括回调function(data)，再处理说话时牌局UI逻辑
-            cc.eventManager.dispatchCustomEvent("talkResponse", data);
-        }else if(data.code == 500){
+            //cc.eventManager.dispatchCustomEvent("talkResponse", data);
+        } else if(data.code == 500){
             cc.log("----> talk fail", data.err);
         }
     });

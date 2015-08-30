@@ -303,6 +303,18 @@ var FivePeopleTableLayer = cc.Layer.extend({
         return false;
     },
 
+    fanFinishedEvent: function (actorNr, rank, id) {
+        var listlen =  this.m_HDList.length;
+        var i=0;
+
+        for(i=0; i<listlen; i++){
+            if(this.m_HDList[i].m_Nr == actorNr){
+                this.m_HDList[i].setRank(rank, true);
+                return;
+            }
+        }
+    },
+
 
     onEnter:function(){
         this._super();

@@ -2,7 +2,6 @@ var HeaderLayer = cc.Layer.extend({
     ctor: function(args){
         this._super();
 
-
         var size = cc.director.getWinSize();
 
         //左侧
@@ -78,12 +77,6 @@ var HeaderLayer = cc.Layer.extend({
         shoppingCar.setScale(0.9);
         rightTopBg.addChild(shoppingCar);
 
-//        var help = cc.Sprite.create("#wenhao.png");
-//        help.setAnchorPoint(cc.p(0, 0.5));
-//        help.setPosition(100, rightTopBg.height/2);
-//        help.setScale(0.9);
-//        rightTopBg.addChild(help);
-
         // create help button sprite
         var helpNormal = new cc.Sprite("#wenhao.png");
         helpNormal.attr({scale:0.9});
@@ -116,6 +109,16 @@ var HeaderLayer = cc.Layer.extend({
         title.setAnchorPoint(0.5, 0);
         title.setPosition(middleBg.width/2, 30);
         middleBg.addChild(title);
+
+        var leftIcon = new cc.Sprite("#mianban_04_2.png");
+        leftIcon.setAnchorPoint(0, 1);
+        leftIcon.setPosition(-10, 100);
+        middleBg.addChild(leftIcon);
+        var rightIcon = new cc.Sprite("#mianban_04_3.png");
+        rightIcon.setAnchorPoint(1, 1);
+        rightIcon.setPosition(middleBg.getContentSize().width + 12, 100);
+        middleBg.addChild(rightIcon);
+
     },
     
     profile: function () {
@@ -127,13 +130,23 @@ var HeaderLayer = cc.Layer.extend({
      */
     onHelpButton:function(){
         console.log('help.')
-        var scene = new cc.Scene();
-        var sg = new MaskLayer(true)
-        var title = new cc.LabelTTF('大同扎股子', "Arial", 34);
-        title.setColor(cc.color.YELLOW);
-        title.setPosition(sg.width/2, sg.height/2);
-        sg.addChild(title);
-        this.addChild(sg);
+        var data = {};
+        data.game = {};
+        data.game.result = GAME.RESULT.RED_WIN;
+        data.game.share = 2;
+
+        data.details = [];
+        data.details.push({actorAvatar:1, actorName:'你说啥我说啥', actualIdentity:[1, 2], result: GAME.ACTOR_RESULT.WIN, gold: 600, roomId: 1, rank: 1})
+        data.details.push({actorAvatar:2, actorName:'B', actualIdentity:[0], result: GAME.ACTOR_RESULT.WIN, gold: 300, roomId: 1})
+        data.details.push({actorAvatar:3, actorName:'C', actualIdentity:[0], result: GAME.ACTOR_RESULT.LOSE, gold: 300, roomId: 1})
+        data.details.push({actorAvatar:4, actorName:'D', actualIdentity:[0], result: GAME.ACTOR_RESULT.LOSE, gold: 300, roomId: 1})
+        data.details.push({actorAvatar:5, actorName:'E', actualIdentity:[0], result: GAME.ACTOR_RESULT.LOSE, gold: 300, roomId: 1})
+        var self = this;
+        this.m_test = new BalanceLayer(data, {ready: function () {
+            self.ready();
+        }});
+        this.addChild(this.m_test);
+        console.log('this = ', this)
 
 
         //var alert = new csAlert('this is alert!', function() {
@@ -145,6 +158,23 @@ var HeaderLayer = cc.Layer.extend({
 
         //scene.addChild(new HelpLayer());
         //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+    },
+
+    ready: function () {
+        if (this.m_test) {
+            this.m_test.removeFromParent(true)
+            this.m_test = null;
+        }
+    },
+
+    onEnter: function () {
+        this._super();
+        //cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
+    },
+
+    onExit: function () {
+        this._super();
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
     }
 
 })

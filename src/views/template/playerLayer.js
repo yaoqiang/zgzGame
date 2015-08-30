@@ -6,6 +6,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_pPhoto = null;
         this.m_pName = null;
         this.m_pReady = null;
+        this.rankS = null;
 
         this.m_index = params.index;
         this.m_position = params.position;
@@ -36,10 +37,10 @@ var PlayerLayer = cc.Layer.extend({
         this.showNickName();
 
         if(true){
-            var lable = new cc.LabelTTF(""+this.m_index, "Arial", 32);
+            var label = new cc.LabelTTF(""+this.m_index, "Arial", 32);
             var size = this.m_pAvatarBg.getContentSize();
-            lable.setPosition(cc.p(size.width/2, size.height/2));
-            this.m_pAvatarBg.addChild(lable, 1);
+            label.setPosition(cc.p(size.width/2, size.height/2));
+            this.m_pAvatarBg.addChild(label, 1);
         }
     },
 
@@ -56,6 +57,8 @@ var PlayerLayer = cc.Layer.extend({
         this.removeIdentity();
         this.clearFanoutCards();
         this.removeIdentity();
+
+        this.setRank("", false);
        // this.visible = false;
     },
 
@@ -97,33 +100,33 @@ var PlayerLayer = cc.Layer.extend({
 
         if(goal == GAME.IDENTITY.GUZI){
             var winSize = cc.director.getWinSize();
-            var lable = new cc.LabelTTF("股子", "Arial", 28);
+            var label = new cc.LabelTTF("股子", "Arial", 28);
 
-            this.m_pAvatarBg.addChild(lable, 1);
-            this.m_pIdentityArray.push(lable);
+            this.m_pAvatarBg.addChild(label, 1);
+            this.m_pIdentityArray.push(label);
 
             if(this.m_position.x < winSize.width/2){
-                lable.setAnchorPoint(0, 1);
-                lable.setPosition(cc.p(size.width, size.height-1));
+                label.setAnchorPoint(0, 1);
+                label.setPosition(cc.p(size.width, size.height-1));
             }else{
-                lable.setAnchorPoint(1, 1);
-                lable.setPosition(cc.p(0, size.height-1));
+                label.setAnchorPoint(1, 1);
+                label.setPosition(cc.p(0, size.height-1));
             }
            // return;
         }
         else if (goal == GAME.IDENTITY.UNKNOW) {
             var winSize = cc.director.getWinSize();
-            var lable = new cc.LabelTTF("没话", "Arial", 28);
+            var label = new cc.LabelTTF("没话", "Arial", 28);
 
-            this.m_pAvatarBg.addChild(lable, 1);
-            this.m_pIdentityArray.push(lable);
+            this.m_pAvatarBg.addChild(label, 1);
+            this.m_pIdentityArray.push(label);
 
             if(this.m_position.x < winSize.width/2){
-                lable.setAnchorPoint(0, 1);
-                lable.setPosition(cc.p(size.width, size.height-1));
+                label.setAnchorPoint(0, 1);
+                label.setPosition(cc.p(size.width, size.height-1));
             }else{
-                lable.setAnchorPoint(1, 1);
-                lable.setPosition(cc.p(0, size.height-1));
+                label.setAnchorPoint(1, 1);
+                label.setPosition(cc.p(0, size.height-1));
             }
         }
 
@@ -284,7 +287,7 @@ var PlayerLayer = cc.Layer.extend({
     showReady:function(visible) {
         this.m_isready = visible;
         if (this.m_pReady == null) {
-            this.m_pReady = new cc.LabelTTF("ready", "Arial", 30);
+            this.m_pReady = new cc.Sprite("#zhunbei2.png");
             var size = this.m_pAvatarBg.getContentSize();
             this.m_pReady.anchorX = 0.5;
             this.m_pReady.anchorY = 1;
@@ -294,6 +297,58 @@ var PlayerLayer = cc.Layer.extend({
         if (this.m_pReady) {
             this.m_pReady.setVisible(visible);
         }
+    },
+
+    /**
+     * 当初完牌后，设置名次
+     * @param rank
+     * @param visible
+     */
+    setRank: function (rank, visible) {
+        var size = this.m_pAvatarBg.getContentSize();
+        var winSize = cc.director.getWinSize();
+        if (visible)
+        {
+            var rankPng = "";
+            switch (parseInt(rank)) {
+                case 1:
+                    rankPng = "#shuzi2_01.png";
+                    break;
+                case 2:
+                    rankPng = "#shuzi2_02.png";
+                    break;
+                case 3:
+                    rankPng = "#shuzi2_03.png";
+                    break;
+                case 4:
+                    rankPng = "#shuzi2_04.png";
+                    break;
+                case 5:
+                    rankPng = "#shuzi2_05.png";
+                    break;
+                case 6:
+                    rankPng = "#shuzi2_06.png";
+                    break;
+
+            }
+
+            this.rankS = new cc.Sprite(rankPng);
+            this.rankS.scale = 5;
+            if(this.m_position.x < winSize.width/2){
+                this.rankS.setAnchorPoint(0, 1);
+                this.rankS.setPosition(cc.p(size.width + 60, size.height-1));
+            }else{
+                this.rankS.setAnchorPoint(1, 1);
+                this.rankS.setPosition(cc.p(0 - 60, size.height-1));
+            }
+
+            this.m_pAvatarBg.addChild(this.rankS, 10);
+        }
+        else {
+            if (this.rankS) this.rankS.removeFromParent(true);
+        }
+
+
     },
 
     onEnter:function(){

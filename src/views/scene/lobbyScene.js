@@ -2,11 +2,8 @@ var LobbyScene = cc.Scene.extend({
     lobbyTitle: ['扎股子-五人', '扎股子-七人'],
     ctor: function (data, lobbyId) {
         this._super();
-
         cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
         cc.spriteFrameCache.addSpriteFrames(res.other_plist, res.other_png);
-
-
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId]});
         this.addChild(headerLayer, 1);
@@ -14,10 +11,23 @@ var LobbyScene = cc.Scene.extend({
         var lobbyLayer = new LobbyLayer(data);
         this.addChild(lobbyLayer);
     }
+
+
 });
 
 
 var LobbyLayer = cc.Layer.extend({
+    onEnter: function () {
+        this._super();
+
+    },
+
+    onExit: function () {
+        this._super();
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.room_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
+    },
+
     ctor: function (data) {
         this._super();
         this.addChild(new HornSprite());

@@ -36,8 +36,8 @@
 //不出
 
         var buchuNormal = new cc.Sprite(res.anniu_png);
-        var buchuSelected = new cc.Sprite(res.anniu_png);
-        var buchuDisabled = new cc.Sprite(res.anniu_png);
+        var buchuSelected = new cc.Sprite(res.anniu2_png);
+        var buchuDisabled = new cc.Sprite(res.anniu2_png);
         buchuDisabled.setColor(cc.color(100,100,100,255));
         var buchuButton = new cc.MenuItemSprite(buchuNormal, buchuSelected, buchuDisabled, this.onBuchuButton, this);
         buchuButton.setPosition(winSize.width/2 + 60 , h);

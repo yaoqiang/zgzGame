@@ -9,7 +9,6 @@ var res = {
     index_png : "res/index.png",
     room_png : "res/room.png",
     game_png : "res/game.png",
-    anniu_png : "res/anniu.png",
     card_png : "res/card.png",
     //plist
     common_plist: "res/common.plist",
@@ -20,14 +19,10 @@ var res = {
     game_plist : "res/game.plist",
     card_plist : "res/card.plist",
     //effect
-    fireEffect_mp3 : 'res/music/fireEffect.mp3',
-    fireEffect_wav : 'res/music/fireEffect.wav',
-    buttonEffect1_wav : 'res/music/buttonEffect1.wav',
-    background_mp3 : 'res/music/background.mp3',
-
 
     //dev
-    anniu2_png: 'res/anniu2_png'
+    anniu_png : "res/anniu.png",
+    anniu2_png: 'res/anniu2.png'
 };
 
 var g_resources = [
@@ -57,6 +52,5 @@ var g_resources = [
     //bgm
 
     //effect
-    res.fireEffect_wav,
-    res.fireEffect_mp3
+
 ];

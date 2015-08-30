@@ -19,6 +19,7 @@ var GameLayer = cc.Layer.extend({
         this._super();
         this.m_pData = args;
         this.m_type = args.lobbyId;
+        this.base = args.base;
         gLobbyId = args.lobbyId;
         gGameId = args.gameId;
         this.m_pTableLayer = null;
@@ -42,7 +43,14 @@ var GameLayer = cc.Layer.extend({
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
-        this.addChild(new HornSpriteForGame());
+        //this.addChild(new HornSpriteForGame());
+
+        //房间底注
+        var baseLabel = new cc.LabelTTF("底注: "+this.base, "Arial", 32);
+        baseLabel.color = cc.color.YELLOW;
+        baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180)
+        this.addChild(baseLabel);
+        //喊话股数
 
         //其他玩家
         switch (this.m_type) {
@@ -194,12 +202,6 @@ var GameLayer = cc.Layer.extend({
         switch (tag) {
             case BidMenuBtn.kCCBidMenu_Liang:
                 var identity = cardUtil.recognitionIdentity(this.m_pPokerLayer.m_pSelectedWillOutCards, gGameType);
-                if (identity == GAME.IDENTITY.HONG3) {
-
-                } else {
-                    this.sayForTalk({append: null, actorNr: gActor.actorNr, text: "我有3"});
-                    return;
-                }
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.HONG3, this.m_pPokerLayer.m_pSelectedWillOutCards);
                 break;
             case BidMenuBtn.kCCBidMenu_Guzi:
@@ -379,6 +381,11 @@ var GameLayer = cc.Layer.extend({
         var share = data.share;
 
         this.recognitionIdentityWithNr(goal, append, actorNr);
+        this.removeBidMenu();
+
+        if (this.m_pTableLayer) {
+            this.m_pTableLayer.stopClock();
+        }
         this.updateShare(share);
         this.sayForTalk({goal: goal, append: append, actorNr: actorNr});
     },
@@ -448,15 +455,50 @@ var GameLayer = cc.Layer.extend({
     },
 
     /**
+     *3家没有亮3,先出黑3,为防止骗人,通知他人. 调用sayForTalk: "我有3"
+     * @param data {actor: {uid: xx, actorNr: xx}}
+     */
+    fanWhenIsRedEvent: function (data) {
+        var actor = data.actor;
+        this.sayForTalk({append: null, actorNr: actor.actorNr, text: "我有3"});
+    },
+
+    /**
+     * 当玩家除完手牌，标识玩家名次和身份
+     * @param data {actor: {uid: xx, actorNr: xx, rank: xx, identity: xx}}
+     */
+    fanFinishedEvent: function (data) {
+        var actor = data.actor;
+        this.m_pTableLayer.fanFinishedEvent(actor.actorNr, actor.rank, actor.identity);
+    },
+
+    /**
      * 游戏结束
      * @param data
      */
     overEvent: function (data) {
-        var sg = new MaskLayer(true);
-        var label = new cc.LabelTTF(data, "Arial", 30);
-        label.color = cc.color.YELLOW;
-        label.setPosition(sg.width/2, sg.height/2);
-        this.addChild(sg);
+        var self = this;
+        this.removeFanOutMenu();
+        if (this.m_pPokerLayer)
+        {
+            this.m_pPokerLayer.clearCards();
+        }
+
+        if (this.m_pTableLayer)
+        {
+            this.m_pTableLayer.stopClock();
+        }
+        this.balanceLayer = new BalanceLayer(data,
+            {
+                ready: function () {
+                    if (self.balanceLayer) self.balanceLayer.removeFromParent(true);
+                    GameController.ready(gRoomId, gGameId);
+                },
+                leave: function () {
+                    GameController.leave(gRoomId);
+                }
+        });
+        this.addChild(this.balanceLayer);
     },
 
     /**
@@ -598,6 +640,18 @@ var GameLayer = cc.Layer.extend({
             cc.log("---->game  gameOverEvent: ", event._userData);
             selfPointer.overEvent(event._userData);
         });
+
+        cc.eventManager.addCustomListener("fanFinishedEvent", function (event) {
+            cc.log("---->game  fanFinishedEvent: ", event._userData);
+            selfPointer.fanFinishedEvent(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("fanWhenIsRedEvent", function (event) {
+            cc.log("---->game  fanWhenIsRedEvent: ", event._userData);
+            selfPointer.fanWhenIsRedEvent(event._userData);
+        });
+
+
 
 
         //response
