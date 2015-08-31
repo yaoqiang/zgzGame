@@ -524,11 +524,13 @@ var GameLayer = cc.Layer.extend({
     },
 
     /**
+     * 废弃，依赖Event处理
      * 说话响应
      * @param data
      * @constructor
      */
     talkResponse: function (data) {
+        /*
         cc.log("----------------->TalkResponse:", data);
         var code = data.code;
         if (code == 500) {
@@ -549,6 +551,7 @@ var GameLayer = cc.Layer.extend({
             this.m_pTableLayer.stopClock();
         }
         this.updateShare(share);
+        */
     },
 
     /**

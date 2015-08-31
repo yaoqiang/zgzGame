@@ -21,6 +21,11 @@ var IndexScene = cc.Scene.extend({
         var indexLayer = new IndexLayer();
         this.addChild(indexLayer);
 
+    },
+
+    onExit: function () {
+        this._super();
+
     }
 
 });
@@ -135,5 +140,16 @@ var IndexLayer = cc.Layer.extend({
     onLobbyIconClicked: function(node, lobbyId)
     {
         GameController.enterLobby(lobbyId);
+    },
+
+    onEnter: function () {
+        this._super();
+    },
+
+    onExit: function () {
+        this._super();
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_png);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_png);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
     }
 });

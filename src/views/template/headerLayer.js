@@ -130,23 +130,7 @@ var HeaderLayer = cc.Layer.extend({
      */
     onHelpButton:function(){
         console.log('help.')
-        var data = {};
-        data.game = {};
-        data.game.result = GAME.RESULT.RED_WIN;
-        data.game.share = 2;
 
-        data.details = [];
-        data.details.push({actorAvatar:1, actorName:'你说啥我说啥', actualIdentity:[1, 2], result: GAME.ACTOR_RESULT.WIN, gold: 600, roomId: 1, rank: 1})
-        data.details.push({actorAvatar:2, actorName:'B', actualIdentity:[0], result: GAME.ACTOR_RESULT.WIN, gold: 300, roomId: 1})
-        data.details.push({actorAvatar:3, actorName:'C', actualIdentity:[0], result: GAME.ACTOR_RESULT.LOSE, gold: 300, roomId: 1})
-        data.details.push({actorAvatar:4, actorName:'D', actualIdentity:[0], result: GAME.ACTOR_RESULT.LOSE, gold: 300, roomId: 1})
-        data.details.push({actorAvatar:5, actorName:'E', actualIdentity:[0], result: GAME.ACTOR_RESULT.LOSE, gold: 300, roomId: 1})
-        var self = this;
-        this.m_test = new BalanceLayer(data, {ready: function () {
-            self.ready();
-        }});
-        this.addChild(this.m_test);
-        console.log('this = ', this)
 
 
         //var alert = new csAlert('this is alert!', function() {
@@ -158,13 +142,6 @@ var HeaderLayer = cc.Layer.extend({
 
         //scene.addChild(new HelpLayer());
         //cc.director.runScene(new cc.TransitionFade(1.2, scene));
-    },
-
-    ready: function () {
-        if (this.m_test) {
-            this.m_test.removeFromParent(true)
-            this.m_test = null;
-        }
     },
 
     onEnter: function () {
