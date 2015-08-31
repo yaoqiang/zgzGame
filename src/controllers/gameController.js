@@ -35,10 +35,11 @@ GameController.leave = function (roomId, lobbyId)
     pomelo.request(route.leave, {roomId: roomId}, function(data) {
         cc.log("leave :", data);
         if(data.code == 200){
-            GameController.enterLobby(gLobbyId);
+            //改为在leaveEvent事件处理离开动作
+            //GameController.enterLobby(gLobbyId);
 
         }else if(data.code == 500){
-            cc.log("----> join game fail");
+            cc.log("----> leave game fail");
         }
 
     });
