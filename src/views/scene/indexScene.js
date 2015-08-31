@@ -10,6 +10,9 @@ var IndexScene = cc.Scene.extend({
 
         cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
         cc.spriteFrameCache.addSpriteFrames(res.index_plist, res.index_png);
+        cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
+        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+        cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
         cc.spriteFrameCache.addSpriteFrames(res.other_plist, res.other_png);
 
 
@@ -148,8 +151,8 @@ var IndexLayer = cc.Layer.extend({
 
     onExit: function () {
         this._super();
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_png);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_png);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_png);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_png);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
     }
 });

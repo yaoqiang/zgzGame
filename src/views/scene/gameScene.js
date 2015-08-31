@@ -1,9 +1,9 @@
 var GameScene = cc.Scene.extend({
     ctor: function (args) {
         this._super();
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
-        cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
 
         var layer = new GameLayer(args);
         this.addChild(layer);
@@ -697,9 +697,9 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeCustomListeners("talkResponse");
         cc.eventManager.removeCustomListeners("fanOutResponse");
 
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
     }
 
 

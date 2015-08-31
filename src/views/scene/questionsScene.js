@@ -2,9 +2,9 @@ var QuestionsScene = cc.Scene.extend({
     ctor: function () {
         this._super();
 
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist, res.login_png);
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.login_plist, res.login_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
 
         var layer = new QuestionsLayer();
         this.addChild(layer);

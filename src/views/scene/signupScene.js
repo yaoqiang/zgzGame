@@ -14,7 +14,7 @@ var SignupLayer = cc.Layer.extend({
         this._super();
         var size = cc.director.getWinSize();
 
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist, res.login_png);
+        //cc.spriteFrameCache.addSpriteFrames(res.login_plist, res.login_png);
 
         var bg = cc.Sprite.create("#mianban.png");
         bg.scale = 1.2;
