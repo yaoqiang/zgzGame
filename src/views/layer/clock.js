@@ -22,6 +22,7 @@ var Clock = cc.Node.extend({
 
         this.m_pClockImage = new cc.Sprite.create("#naozhong.png");
         var size = this.m_pClockImage.getContentSize();
+        this.m_pClockImage.setScale(0.8);
         this.m_pClockImage.setPosition(0, 0);
         this.addChild(this.m_pClockImage, 0);
 
