@@ -315,6 +315,16 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
     },
 
+    trusteeshipEvent: function (actorNr) {
+        var player = _.findWhere(this.m_HDList, {m_Nr: actorNr});
+        player.changeActorPhoto("#jiqiren_icon.png");
+    },
+
+    cancelTrusteeshipEvent: function (actorNr) {
+        var player = _.findWhere(this.m_HDList, {m_Nr: actorNr});
+        player.changeActorPhoto(utils.getAvatar(player.m_avatar));
+    },
+
 
     onEnter:function(){
         this._super();

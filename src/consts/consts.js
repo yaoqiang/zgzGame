@@ -6,6 +6,7 @@ var route = {
     talk: 'game.gameHandler.talk',
     fan: 'game.gameHandler.fan',
     trusteeship: 'game.gameHandler.trusteeship',
+    cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',
     chat: 'game.gameHandler.chat'
 }
 
@@ -13,34 +14,41 @@ var route = {
 var ERR_CODE = {
     JOIN: {
         IN_GAME: 1,   //在其他牌桌
-            TOO_POOR: 2,
-            TOO_RICH: 3,
-            ERR: 4    //参数错误等
+        TOO_POOR: 2,
+        TOO_RICH: 3,
+        ERR: 4    //参数错误等
     },
     READY: {
         NOT_INT_GAME: 1,
-            ALREADY_READY: 2,
-            ERR: 3
+        ALREADY_READY: 2,
+        ERR: 3
     },
     TALK: {
         LIANG3_WITHOUT3: 1, //没3 亮3（非法操作）
-            GUZI_WITH3: 2,   //有3 扎股子,
-            NOT_IN_GAME: 3,
-            ERR: 4
+        GUZI_WITH3: 2,   //有3 扎股子,
+        NOT_IN_GAME: 3,
+        ERR: 4
     },
     LEAVE: {
         NOT_IN_GAME: 1,
-            GAMING: 2,
-            ERR: 3
+        GAMING: 2,
+        ERR: 3
     },
     FAN: {
         WITHOUT_CARDS: 1,
-            NOT_BIGGER: 2,
-            MUST_BE_FIVE: 3,
-            ERR: 4
+        NOT_BIGGER: 2,
+        MUST_BE_FIVE: 3,
+        ERR: 4
     },
     SETTLE: {
         ERR: 1
+    },
+    TRUSTEESHIP: {
+        NOT_IN_GAME: 1,
+        ALREADY_TRUSTEESHIP: 2,
+        ALREADY_CANCELED_TRUSTEESHIP: 3,
+        NOT_GAMING: 4,
+        ERR: 5
     }
 }
 var MESSAGE = {

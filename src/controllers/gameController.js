@@ -138,3 +138,36 @@ GameController.fan = function (roomId, gameId, cards) {
         }
     });
 };
+
+GameController.trusteeship = function (roomId, gameId) {
+    if (roomId == null || gameId == null) {
+        cc.eventManager.dispatchCustomEvent("trusteeshipResponse", {code: 500, err: ''});
+        return;
+    }
+    pomelo.request(route.trusteeship, {roomId: roomId, gameId:gameId}, function(data) {
+        cc.log("trusteeship :", data);
+        if(data.code == 200){
+            //由Event处理成功事件
+        } else if(data.code == 500){
+            cc.log("----> trusteeship fail", data.err);
+            cc.eventManager.dispatchCustomEvent("trusteeshipResponse", {code: 500, err: data.err});
+        }
+    });
+}
+
+GameController.cancelTrusteeship = function (roomId, gameId) {
+    if (roomId == null || gameId == null) {
+        cc.eventManager.dispatchCustomEvent("cancelTrusteeship", {code: 500, err: ''});
+        return;
+    }
+
+    pomelo.request(route.cancelTrusteeship, {roomId: roomId, gameId:gameId}, function(data) {
+        cc.log("cancelTrusteeship :", data);
+        if(data.code == 200){
+            //由Event处理成功事件
+        } else if(data.code == 500){
+            cc.log("----> cancelTrusteeship fail", data.err);
+            cc.eventManager.dispatchCustomEvent("cancelTrusteeshipResponse", {code: 500, err: data.err});
+        }
+    });
+}

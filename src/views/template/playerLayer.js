@@ -247,6 +247,20 @@ var PlayerLayer = cc.Layer.extend({
         }
     },
 
+    changeActorPhoto: function (image) {
+        if (this.m_pPhoto) {
+            this.m_pPhoto.removeFromParent(true);
+        }
+        this.m_pPhoto = new cc.Sprite(image);
+        if(this.m_pPhoto){
+            this.m_pPhoto.setPosition(cc.p(this.m_position.x, this.m_position.y));
+            this.m_pPhoto.anchorX = this.m_anchorX;
+            this.m_pPhoto.anchorY = this.m_anchorY;
+            this.m_pPhoto.scale = ZGZ.SCALE * 0.5;
+            this.addChild(this.m_pPhoto);
+        }
+    },
+
     showNickName:function(){
         //if(this.m_pName == null){
         //    this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 28);
