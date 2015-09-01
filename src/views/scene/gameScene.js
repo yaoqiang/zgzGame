@@ -48,9 +48,21 @@ var GameLayer = cc.Layer.extend({
         //房间底注
         var baseLabel = new cc.LabelTTF("底注: "+this.base, "Arial", 32);
         baseLabel.color = cc.color.YELLOW;
-        baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180)
+        baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180);
         this.addChild(baseLabel);
         //喊话股数
+
+        //按钮操作区域（可做成工具tip弹出方式）
+        var sTrusteeship = new cc.MenuItemSprite(
+            new cc.Sprite("#jiqiren_icon.png"),
+            new cc.Sprite("#jiqiren_icon.png"),
+            this.trusteeship,
+            this
+        );
+        var trusteeshipMenu = new cc.Menu(sTrusteeship);
+        trusteeshipMenu.setPosition(winSize.width / 2 + 220, winSize.height / 2 + 80);
+        trusteeshipMenu.scale = 0.7
+        this.addChild(trusteeshipMenu);
 
         //其他玩家
         switch (this.m_type) {
@@ -472,6 +484,45 @@ var GameLayer = cc.Layer.extend({
         this.m_pTableLayer.fanFinishedEvent(actor.actorNr, actor.rank, actor.identity);
     },
 
+    trusteeshipEvent: function (data) {
+        var winSize = cc.director.getWinSize();
+        var actor = data.actor;
+        this.m_pTableLayer.trusteeshipEvent(actor.actorNr);
+        if (actor.uid == gPlayer.uid) {
+            this.trusteeshipMask = new MaskLayer(true);
+            var sCancelTrusteeship = new cc.MenuItemSprite(
+                new cc.Sprite("#quxiaotuoguan.png"),
+                new cc.Sprite("#quxiaotuoguan.png"),
+                this.cancelTrusteeship,
+                this
+            );
+            var cancelTrusteeshipMenu = new cc.Menu(sCancelTrusteeship);
+            cancelTrusteeshipMenu.setPosition(winSize.width / 2 - 200, 100);
+            cancelTrusteeshipMenu.scale = 0.6;
+            this.trusteeshipMask.addChild(cancelTrusteeshipMenu);
+            this.addChild(this.trusteeshipMask);
+        }
+    },
+
+    cancelTrusteeshipEvent: function (data) {
+        var winSize = cc.director.getWinSize();
+        var actor = data.actor;
+        this.m_pTableLayer.cancelTrusteeshipEvent(actor.actorNr);
+        if (actor.uid == gPlayer.uid) {
+            if (this.trusteeshipMask) {
+                this.trusteeshipMask.removeFromParent(true)
+            }
+        }
+    },
+
+    trusteeship: function () {
+        GameController.trusteeship(gRoomId, gGameId);
+    },
+
+    cancelTrusteeship: function () {
+        GameController.cancelTrusteeship(gRoomId, gGameId);
+    },
+
     /**
      * 游戏结束
      * @param data
@@ -573,6 +624,14 @@ var GameLayer = cc.Layer.extend({
 
     },
 
+    trusteeshipResponse: function (data) {
+
+    },
+
+    cancelTrusteeshipResponse: function (data) {
+
+    },
+
 
     /**
      * 更新股数
@@ -654,6 +713,16 @@ var GameLayer = cc.Layer.extend({
             selfPointer.fanWhenIsRedEvent(event._userData);
         });
 
+        cc.eventManager.addCustomListener("trusteeshipEvent", function (event) {
+            cc.log("---->game  trusteeshipEvent: ", event._userData);
+            selfPointer.trusteeshipEvent(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("cancelTrusteeshipEvent", function (event) {
+            cc.log("---->game  cancelTrusteeshipEvent: ", event._userData);
+            selfPointer.cancelTrusteeshipEvent(event._userData);
+        });
+
 
 
 
@@ -671,6 +740,16 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.addCustomListener("fanOutResponse", function (event) {
             cc.log("---->game  fanOutResponse: ", event._userData);
             selfPointer.fanOutResponse(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("trusteeshipResponse", function (event) {
+            cc.log("---->game  trusteeshipResponse: ", event._userData);
+            selfPointer.trusteeshipResponse(event._userData);
+        });
+
+        cc.eventManager.addCustomListener("cancelTrusteeshipResponse", function (event) {
+            cc.log("---->game  cancelTrusteeshipResponse: ", event._userData);
+            selfPointer.cancelTrusteeshipResponse(event._userData);
         });
 
 
@@ -691,6 +770,10 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeCustomListeners("fanCountdownEvent");
         cc.eventManager.removeCustomListeners("talkEvent");
         cc.eventManager.removeCustomListeners("gameOverEvent");
+        cc.eventManager.removeCustomListeners("fanFinishedEvent");
+        cc.eventManager.removeCustomListeners("fanWhenIsRedEvent");
+        cc.eventManager.removeCustomListeners("trusteeshipEvent");
+        cc.eventManager.removeCustomListeners("cancelTrusteeshipEvent");
 
         //response
         cc.eventManager.removeCustomListeners("readyResponse");
