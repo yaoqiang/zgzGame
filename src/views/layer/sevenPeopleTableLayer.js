@@ -9,15 +9,15 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         leftTopBg.setContentSize(cc.size(250, 80));
         this.addChild(leftTopBg);
 
-        var avatarBg = cc.Sprite.create("#touxiangkuang_index.png");
+        var avatarBg = new cc.Sprite("#touxiangkuang_index.png");
         avatarBg.setScale(0.65);
         avatarBg.setAnchorPoint(cc.p(0, 1));
         avatarBg.setPosition(15, 70);
         leftTopBg.addChild(avatarBg);
 
-        var avatar = cc.MenuItemSprite.create(
-            cc.Sprite.create(utils.getAvatar(gPlayer.avatar)),
-            cc.Sprite.create(utils.getAvatar(gPlayer.avatar)),
+        var avatar = new cc.MenuItemSprite(
+            new cc.Sprite(utils.getAvatar(gPlayer.avatar)),
+            new cc.Sprite(utils.getAvatar(gPlayer.avatar)),
             this.profile,
             this
         );
@@ -50,7 +50,7 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         gold.setPosition(110, 10);
         goldBg.addChild(gold);
 
-        var goldIcon = cc.Sprite.create("#additional_coins.png");
+        var goldIcon = new cc.Sprite("#additional_coins.png");
         goldIcon.setScale(0.5);
         goldIcon.setAnchorPoint(cc.p(0, 1));
         goldIcon.setPosition(0-5, 28);
@@ -65,17 +65,11 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         rightTopBg.setContentSize(cc.size(250, 80));
         this.addChild(rightTopBg);
 
-        var shoppingCar = cc.Sprite.create("#shangcheng_icon.png");
+        var shoppingCar = new cc.Sprite("#shangcheng_icon.png");
         shoppingCar.setAnchorPoint(cc.p(0, 0.5));
         shoppingCar.setPosition(30, rightTopBg.height/2);
         shoppingCar.setScale(0.9);
         rightTopBg.addChild(shoppingCar);
-
-//        var help = cc.Sprite.create("#wenhao.png");
-//        help.setAnchorPoint(cc.p(0, 0.5));
-//        help.setPosition(100, rightTopBg.height/2);
-//        help.setScale(0.9);
-//        rightTopBg.addChild(help);
 
         // create help button sprite
         var helpNormal = new cc.Sprite("#wenhao.png");
@@ -90,14 +84,14 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         menu.setPosition(125, rightTopBg.height/2);
         rightTopBg.addChild(menu);
 
-        var setting = cc.Sprite.create("#shezhi_icon.png");
+        var setting = new cc.Sprite("#shezhi_icon.png");
         setting.setAnchorPoint(cc.p(0, 0.5));
         setting.setPosition(170, rightTopBg.height/2);
         setting.setScale(0.9);
         rightTopBg.addChild(setting);
 
         //中间
-        var middleBg = cc.Sprite.create("#mianban_04.png");
+        var middleBg = new cc.Sprite("#mianban_04.png");
         middleBg.setScaleX(1);
         middleBg.setScaleY(0.8);
         middleBg.setAnchorPoint(cc.p(0.5, 1));

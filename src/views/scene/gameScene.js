@@ -38,7 +38,7 @@ var GameLayer = cc.Layer.extend({
     init: function () {
         var winSize = cc.director.getWinSize();
         //牌桌
-        var bg = cc.Sprite.create("#beijing.png");
+        var bg = new cc.Sprite("#beijing.png");
         bg.setPosition(cc.p(winSize.width / 2, winSize.height / 2));
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
@@ -62,7 +62,7 @@ var GameLayer = cc.Layer.extend({
         var trusteeshipMenu = new cc.Menu(sTrusteeship);
         trusteeshipMenu.setPosition(winSize.width / 2 + 220, winSize.height / 2 + 80);
         trusteeshipMenu.scale = 0.7
-        this.addChild(trusteeshipMenu);
+        this.addChild(trusteeshipMenu, 99);
 
         //其他玩家
         switch (this.m_type) {
@@ -538,7 +538,10 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pTableLayer)
         {
             this.m_pTableLayer.stopClock();
+            this.m_pTableLayer.updateActorHD();
         }
+
+        if (this.trusteeshipMask) this.trusteeshipMask.removeFromParent(true);
         this.balanceLayer = new BalanceLayer(data,
             {
                 ready: function () {
@@ -558,7 +561,7 @@ var GameLayer = cc.Layer.extend({
     readyResponse: function () {
         cc.log("---->readyResponse");
         cc.log(this.m_actorList);
-        this.m_pReadyMenu.removeFromParent(true);
+        if (this.m_pReadyMenu) this.m_pReadyMenu.removeFromParent(true);
         this.m_pReadyMenu = null;
         var actor;
         for (var i = 0; this.m_actorList.length; i++) {

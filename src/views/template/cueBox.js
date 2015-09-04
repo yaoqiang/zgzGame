@@ -32,7 +32,7 @@ var CueBox = cc.Layer.extend({
         var layer1 = new cc.LayerColor(cc.color(255, 255, 255, 80));
         this.addChild(layer1);
 
-        var bg = new cc.Sprite.create(res.noteBg);//cc.Scale9Sprite(res.noteBg, cc.rect(95, 70, 4, 4));
+        var bg = new cc.Sprite(res.noteBg);//cc.Scale9Sprite(res.noteBg, cc.rect(95, 70, 4, 4));
         //bg.width = 600;
         //bg.height = 400;
         bg.x = winSize.width/2;

@@ -315,6 +315,15 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
     },
 
+    clearAllRank: function () {
+        var listlen =  this.m_HDList.length;
+        var i=0;
+
+        for(i=0; i<listlen; i++){
+            this.m_HDList[i].setRank("", false);
+        }
+    },
+
     trusteeshipEvent: function (actorNr) {
         var player = _.findWhere(this.m_HDList, {m_Nr: actorNr});
         player.changeActorPhoto("#jiqiren_icon.png");

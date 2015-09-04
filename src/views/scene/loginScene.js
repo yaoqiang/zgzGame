@@ -23,20 +23,19 @@ var LoginLayer = cc.Layer.extend({
         var size = cc.director.getWinSize();
 
 
-        var bg = cc.Sprite.create("#mianban.png");
+        var bg = new cc.Sprite("#mianban.png");
 //        bg.setAnchorPoint(cc.p(0, 0));
         bg.scale = 1.2;
         bg.setPosition(size.width/2, size.height/2);
         this.addChild(bg);
 
-        //var logo = cc.Sprite.create("#game_logo.png");
         var logo = new cc.LabelTTF("豆面扎股子", "AmericanTypewriter", 42);
         logo.setColor(cc.color.YELLOW);
         logo.setPosition(bg.width/2, 350);
         bg.addChild(logo);
 
         var blockSize = cc.size(180, 30);
-        this.name = cc.EditBox.create(blockSize, cc.Scale9Sprite.createWithSpriteFrameName("shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.name = new cc.EditBox(blockSize, cc.Scale9Sprite.createWithSpriteFrameName("shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.name.setPlaceHolder('请输入账号');
         this.name.setFontColor(cc.color.BLACK);
         this.name.setPosition(cc.p(bg.width/2, 250));
@@ -89,17 +88,17 @@ var LoginLayer = cc.Layer.extend({
 
 
         //other.
-        var left = cc.Sprite.create("#puke1.png");
+        var left = new cc.Sprite("#puke1.png");
         left.setPosition(cc.p(bg.width/2 + 230, 220));
         left.setScale(0.45);
         bg.addChild(left);
 
-        var right = cc.Sprite.create("#puke2.png");
+        var right = new cc.Sprite("#puke2.png");
         right.setPosition(cc.p(bg.width/2 - 230, 220));
         right.setScale(0.45);
         bg.addChild(right);
 
-        var right2 = cc.Sprite.create("#juese01.png");
+        var right2 = new cc.Sprite("#juese01.png");
         right2.setPosition(cc.p(bg.width/2 - 170, 220));
         right2.setScale(0.65);
         bg.addChild(right2);

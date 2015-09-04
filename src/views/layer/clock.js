@@ -20,7 +20,7 @@ var Clock = cc.Node.extend({
         this.m_pCallBack = args.callback;
         this.m_targe= args.targe;
 
-        this.m_pClockImage = new cc.Sprite.create("#naozhong.png");
+        this.m_pClockImage = new cc.Sprite("#naozhong.png");
         var size = this.m_pClockImage.getContentSize();
         this.m_pClockImage.setPosition(0, 0);
         this.addChild(this.m_pClockImage, 0);
