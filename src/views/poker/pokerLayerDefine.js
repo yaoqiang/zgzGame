@@ -69,7 +69,7 @@ var FanOutMenuBtn =  {
 
 var BidMenuBtn =  {
     kCCBidMenu_Liang : 1, //--红三
-    kCCBidMenu_Guzi : 2,//--骨子
+    kCCBidMenu_Guzi : 2,//--股子
     kCCBidMenu_Bujiao : 3 //--不叫
 };
 

@@ -300,6 +300,12 @@ var GameLayer = cc.Layer.extend({
 
     },
 
+    cancelReadyWhenOver: function () {
+        _.map(this.m_actorList, function (actor) {
+            actor.m_isReady = false;
+        });
+    },
+
 //event
     joinEvent: function (data) {
         this.addActorToList(data.actor);
@@ -395,6 +401,11 @@ var GameLayer = cc.Layer.extend({
         this.recognitionIdentityWithNr(goal, append, actorNr);
         this.removeBidMenu();
 
+        //如果是亮3操作，说话结束后把亮的牌收回
+        if (this.m_pPokerLayer) {
+            this.m_pPokerLayer.resetSelectedCards(data.actor);
+        }
+
         if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
         }
@@ -467,12 +478,12 @@ var GameLayer = cc.Layer.extend({
     },
 
     /**
-     *3家没有亮3,先出黑3,为防止骗人,通知他人. 调用sayForTalk: "我有3"
+     *3家没有亮3,先出黑3,为防止骗人,通知他人. 调用sayForTalk: "有3"
      * @param data {actor: {uid: xx, actorNr: xx}}
      */
     fanWhenIsRedEvent: function (data) {
         var actor = data.actor;
-        this.sayForTalk({append: null, actorNr: actor.actorNr, text: "我有3"});
+        this.sayForTalk({append: null, actorNr: actor.actorNr, text: "有3"});
     },
 
     /**
@@ -530,6 +541,8 @@ var GameLayer = cc.Layer.extend({
     overEvent: function (data) {
         var self = this;
         this.removeFanOutMenu();
+        this.cancelReadyWhenOver();
+
         if (this.m_pPokerLayer)
         {
             this.m_pPokerLayer.clearCards();
@@ -538,7 +551,6 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pTableLayer)
         {
             this.m_pTableLayer.stopClock();
-            this.m_pTableLayer.updateActorHD();
         }
 
         if (this.trusteeshipMask) this.trusteeshipMask.removeFromParent(true);
@@ -546,6 +558,7 @@ var GameLayer = cc.Layer.extend({
             {
                 ready: function () {
                     if (self.balanceLayer) self.balanceLayer.removeFromParent(true);
+                    if (self.m_pTableLayer) self.m_pTableLayer.updateActorHD(self.m_actorList);
                     GameController.ready(gRoomId, gGameId);
                 },
                 leave: function () {
