@@ -20,34 +20,39 @@
         var h = winSize.height*0.5;
 
 //出牌
-        var chupaiNormal = new cc.Sprite(res.anniu_png);
-        var chupaiSelected = new cc.Sprite(res.anniu2_png);
-        var chupaiDisabled = new cc.Sprite(res.anniu2_png);
-        //chupaiDisabled.setColor(cc.color(100,100,100,255));
-        var chupaiButton = new cc.MenuItemSprite(chupaiNormal, chupaiSelected, chupaiDisabled, this.onChupaiButton, this);
-        chupaiButton.setPosition(winSize.width/2-60 , h);
-        chupaiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_FanOut);
+        if(false){
+            var chupaiNormal = new cc.Sprite(res.anniu_png);
+            var chupaiSelected = new cc.Sprite(res.anniu2_png);
+            var chupaiDisabled = new cc.Sprite(res.anniu2_png);
+            //chupaiDisabled.setColor(cc.color(100,100,100,255));
+            var chupaiButton = new cc.MenuItemSprite(chupaiNormal, chupaiSelected, chupaiDisabled, this.onChupaiButton, this);
+            chupaiButton.setPosition(winSize.width/2-60 , h);
+            chupaiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_FanOut);
 
-        size  = chupaiButton.getContentSize();
-        var chupaiStr = new cc.LabelTTF("出 牌", "Arial", 24);
-        chupaiStr.color = cc.color.YELLOW;
-        chupaiStr.setPosition(size.width/2, size.height/2);
-        chupaiButton.addChild(chupaiStr);
+            size  = chupaiButton.getContentSize();
+            var chupaiStr = new cc.LabelTTF("出 牌", "Arial", 24);
+            chupaiStr.color = cc.color.YELLOW;
+            chupaiStr.setPosition(size.width/2, size.height/2);
+            chupaiButton.addChild(chupaiStr);
+        }
+
 //不出
+        if(false){
+            var buchuNormal = new cc.Sprite(res.anniu_png);
+            var buchuSelected = new cc.Sprite(res.anniu2_png);
+            var buchuDisabled = new cc.Sprite(res.anniu2_png);
+            buchuDisabled.setColor(cc.color(100,100,100,255));
+            var buchuButton = new cc.MenuItemSprite(buchuNormal, buchuSelected, buchuDisabled, this.onBuchuButton, this);
+            buchuButton.setPosition(winSize.width/2 + 60 , h);
+            buchuButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Pass);
 
-        var buchuNormal = new cc.Sprite(res.anniu_png);
-        var buchuSelected = new cc.Sprite(res.anniu2_png);
-        var buchuDisabled = new cc.Sprite(res.anniu2_png);
-        buchuDisabled.setColor(cc.color(100,100,100,255));
-        var buchuButton = new cc.MenuItemSprite(buchuNormal, buchuSelected, buchuDisabled, this.onBuchuButton, this);
-        buchuButton.setPosition(winSize.width/2 + 60 , h);
-        buchuButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Pass);
+            size  = buchuButton.getContentSize();
+            var buchuStr = new cc.LabelTTF("不 出", "Arial", 24);
+            buchuStr.color = cc.color.YELLOW;
+            buchuStr.setPosition(size.width/2, size.height/2);
+            buchuButton.addChild(buchuStr);
+        }
 
-        size  = buchuButton.getContentSize();
-        var buchuStr = new cc.LabelTTF("不 出", "Arial", 24);
-        buchuStr.color = cc.color.YELLOW;
-        buchuStr.setPosition(size.width/2, size.height/2);
-        buchuButton.addChild(buchuStr);
 //menu
 
 
@@ -164,6 +169,7 @@
 
             case FanOutMenuBtn.kCCFanOutMenu_Pass:
                 this.m_pButtonPass.setTouchEnabled(isEnabled);
+                console.log("FanOutMenuBtn.kCCFanOutMenu_Pass: ", isEnabled);
                 break;
         }
 

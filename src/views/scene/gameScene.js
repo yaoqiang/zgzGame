@@ -442,11 +442,20 @@ var GameLayer = cc.Layer.extend({
 
         if (data.actor.uid == gPlayer.uid) {
             this.addFanOutMenu();
-            if (data.isBoss) {
-                if (this.m_pFanOutMenuLayer) {
-                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, false);
-                }
+            var boss = data.isBoss;
+            cc.log("---->fanCountdownEvent   boss:", !boss);
+            if (this.m_pFanOutMenuLayer) {
+                this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, !boss);
             }
+            //if (data.isBoss) {
+            //    if (this.m_pFanOutMenuLayer) {
+            //        this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, false);
+            //    }
+            //}else{
+            //    if (this.m_pFanOutMenuLayer) {
+            //        this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
+            //    }
+            //}
             this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
         } else {
 
