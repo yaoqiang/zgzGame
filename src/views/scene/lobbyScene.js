@@ -35,7 +35,7 @@ var LobbyLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
 
         //background
-        var bg = cc.Sprite.create("#beijing.png");
+        var bg = new cc.Sprite("#beijing.png");
         bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
@@ -97,12 +97,6 @@ var LobbyLayer = cc.Layer.extend({
 
         }
 
-        //var back = cc.Sprite.create("#btn_fanhui.png");
-        //back.setAnchorPoint(cc.p(0, 0));
-        //back.setPosition(cc.p(0, 0));
-        //back.scale = ZGZ.SCALE * 0.7
-        //this.addChild(back);
-
         var back = new cc.MenuItemImage(
             "#btn_fanhui.png",
             "#btn_fanhui.png",
@@ -120,25 +114,25 @@ var LobbyLayer = cc.Layer.extend({
         this.addChild(backMenu);
 
         //template
-        var mission = cc.Sprite.create("#renwu.png");
+        var mission = new cc.Sprite("#renwu.png");
         mission.setAnchorPoint(cc.p(0, 0));
         mission.setPosition(cc.p(120, 10));
         mission.scale = ZGZ.SCALE * 1
         this.addChild(mission);
 
-        var rank = cc.Sprite.create("#paihang.png");
+        var rank = new cc.Sprite("#paihang.png");
         rank.setAnchorPoint(cc.p(0, 0));
         rank.setPosition(cc.p(240, 10));
         rank.scale = ZGZ.SCALE * 1
         this.addChild(rank);
 
-        var exchange = cc.Sprite.create("#duihuan.png");
+        var exchange = new cc.Sprite("#duihuan.png");
         exchange.setAnchorPoint(cc.p(0, 0));
         exchange.setPosition(cc.p(360, 10));
         exchange.scale = ZGZ.SCALE * 1
         this.addChild(exchange);
 
-        var message = cc.Sprite.create("#tongzhi.png");
+        var message = new cc.Sprite("#tongzhi.png");
         message.setAnchorPoint(cc.p(0, 0));
         message.setPosition(cc.p(480, 10));
         message.scale = ZGZ.SCALE * 1
@@ -147,7 +141,7 @@ var LobbyLayer = cc.Layer.extend({
 
 
 
-        var quickStart = cc.Sprite.create("#kuaisuyouxi.png");
+        var quickStart = new cc.Sprite("#kuaisuyouxi.png");
         quickStart.setAnchorPoint(cc.p(1, 0));
         quickStart.setPosition(cc.p(winSize.width, 0));
         quickStart.scale = ZGZ.SCALE * 0.6

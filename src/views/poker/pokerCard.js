@@ -53,7 +53,7 @@ var PokerCard = cc.Node.extend({
             var pading = 5;
             var frameName = "#Card_front.png";
 
-            this.cardFrame = new cc.Sprite.create(frameName);
+            this.cardFrame = new cc.Sprite(frameName);
             var size = this.cardFrame.getContentSize();
             this.cardFrame.setScale(this.cardScale);
             this.setContentSize(cc.size(size.width*this.cardScale, size.height*this.cardScale));
@@ -101,7 +101,7 @@ var PokerCard = cc.Node.extend({
                 pointbuf = "Card_" + this.cardPoint + "_" + colorStr + ".png";
             }
 
-            this.cardPointImage = new cc.Sprite.create("#"+pointbuf);//display.newSprite("#"..pointbuf)
+            this.cardPointImage = new cc.Sprite("#"+pointbuf);//display.newSprite("#"..pointbuf)
 
             if (this.cardPoint == 18 || this.cardPoint == 19){
                 this.cardPointImage.setAnchorPoint(0,1);
@@ -165,13 +165,13 @@ var PokerCard = cc.Node.extend({
                 }
 
                 if (this.cardSize != PokerCard_enum.kCCCardSizeSmall ){
-                    var sp = new cc.Sprite.create("#"+smallFaceBuf);
+                    var sp = new cc.Sprite("#"+smallFaceBuf);
                     sp.scale = 0.5;
                     MDisplay.align(sp, MDisplay.CENTER, 27, size.height - 35 - this.cardPointImage.getContentSize().height);
                     this.cardFrame.addChild(sp);
                 }
                 if (bigFaceBuf) {
-                    sp = new cc.Sprite.create("#"+bigFaceBuf);//display.newSprite("#"+bigFaceBuf);
+                    sp = new cc.Sprite("#"+bigFaceBuf);//display.newSprite("#"+bigFaceBuf);
                     MDisplay.align(sp, MDisplay.BOTTOM_RIGHT, size.width - pading, pading);
                     this.cardFrame.addChild(sp);
 
@@ -184,13 +184,13 @@ var PokerCard = cc.Node.extend({
                     smallFaceBuf = "Card_JOKER_red.png";
                 }
                 if (smallFaceBuf) {
-                    var sp = new cc.Sprite.create("#"+smallFaceBuf);//display.newSprite("#"+smallFaceBuf);
+                    var sp = new cc.Sprite("#"+smallFaceBuf);//display.newSprite("#"+smallFaceBuf);
                     MDisplay.align(sp, MDisplay.LEFT_TOP, pading + 5, size.height - pading);
                     this.cardFrame.addChild(sp);
                 }
             }
             if (this.cardFace == 6) {
-                var sp = new cc.Sprite.create("#Card_back.png");
+                var sp = new cc.Sprite("#Card_back.png");
                 sp.setPosition(size.width / 2, size.height / 2);
                 this.cardFrame.addChild(sp);
             }
@@ -213,7 +213,7 @@ var PokerCard = cc.Node.extend({
         if (this.isHitted){
             if (this.state != 0){
                 if (null == this.cardMask){
-                    this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
+                    this.cardMask = new cc.Sprite(this.frameName);//display.newSprite(self.frameName)
                     this.cardMask.setScale(this.cardScale);
                     this.cardMask.setPosition(this.cardFrame.getPosition());
                     this.cardMask.setColor(cc.color.BLACK);
@@ -235,7 +235,7 @@ var PokerCard = cc.Node.extend({
         this.isOperation = operation;
         if (!this.isOperation){
             if(null == this.cardMask){
-                this.cardMask = new cc.Sprite.create(this.frameName);//display.newSprite(self.frameName)
+                this.cardMask = new cc.Sprite(this.frameName);//display.newSprite(self.frameName)
                 this.cardMask.setPosition(this.cardFrame.getPosition());
                 this.cardMask.setColor(cc.color.BLACK);
                 this.cardMask.setOpacity(128);

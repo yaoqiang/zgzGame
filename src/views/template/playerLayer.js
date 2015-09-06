@@ -56,7 +56,6 @@ var PlayerLayer = cc.Layer.extend({
         this.showReady(false);
         this.removeIdentity();
         this.clearFanoutCards();
-        this.removeIdentity();
 
         this.setRank("", false);
        // this.visible = false;
@@ -100,7 +99,7 @@ var PlayerLayer = cc.Layer.extend({
 
         if(goal == GAME.IDENTITY.GUZI){
             var winSize = cc.director.getWinSize();
-            var label = new cc.LabelTTF("股子", "Arial", 28);
+            var label = new cc.LabelTTF("股", "Arial", 28);
 
             this.m_pAvatarBg.addChild(label, 1);
             this.m_pIdentityArray.push(label);
@@ -116,7 +115,7 @@ var PlayerLayer = cc.Layer.extend({
         }
         else if (goal == GAME.IDENTITY.UNKNOW) {
             var winSize = cc.director.getWinSize();
-            var label = new cc.LabelTTF("没话", "Arial", 28);
+            var label = new cc.LabelTTF("", "Arial", 28);
 
             this.m_pAvatarBg.addChild(label, 1);
             this.m_pIdentityArray.push(label);

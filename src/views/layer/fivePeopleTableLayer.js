@@ -253,7 +253,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var showP = this.showSayPosition(actorNr);
         var x = showP.x;
         var y = showP.y;
-        var space = 70;
+        var space = 120;
 
         switch (showP.mode){
             case SHOW_MODE.LEFT:
@@ -315,6 +315,15 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
     },
 
+    clearAllRank: function () {
+        var listlen =  this.m_HDList.length;
+        var i=0;
+
+        for(i=0; i<listlen; i++){
+            this.m_HDList[i].setRank("", false);
+        }
+    },
+
     trusteeshipEvent: function (actorNr) {
         var player = _.findWhere(this.m_HDList, {m_Nr: actorNr});
         player.changeActorPhoto("#jiqiren_icon.png");
@@ -324,7 +333,6 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var player = _.findWhere(this.m_HDList, {m_Nr: actorNr});
         player.changeActorPhoto(utils.getAvatar(player.m_avatar));
     },
-
 
     onEnter:function(){
         this._super();

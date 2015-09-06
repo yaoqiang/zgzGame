@@ -188,3 +188,8 @@ pomelo.on('onKick', function (data) {
     console.log('onKick..');
     console.log(data);
 });
+
+pomelo.on('heartbeat timeout', function (data) {
+    console.log('heartbeat timeout..');
+    console.log(data);
+})
