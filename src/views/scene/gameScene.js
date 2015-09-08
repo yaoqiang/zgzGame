@@ -4,7 +4,7 @@ var GameScene = cc.Scene.extend({
         //cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
         //cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
         //cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
-
+        gGameSenceCompleted = false;
         var layer = new GameLayer(args);
         this.addChild(layer);
 
@@ -781,9 +781,13 @@ var GameLayer = cc.Layer.extend({
         //this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
         //this.m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,true);
         //this.addFanOutMenu();
+
+        gGameSenceCompleted = true;
+        EventQueue.dispatchEventFromQueue();
     },
 
     onExit: function () {
+        gGameSenceCompleted = false;
         this._super();
         //event
         cc.eventManager.removeCustomListeners("joinEvent");

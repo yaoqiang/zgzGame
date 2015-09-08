@@ -6,7 +6,7 @@ var loadingLayer = function (data, opt) {
 
     var bg = new cc.Sprite("");
     bg.setPosition(x, y);
-    bg.scale = 0.5;
+    bg.scale = 1;
     sg.addChild(bg);
 
     var label = new cc.LabelTTF(resultTxt, "Arial", 34);
