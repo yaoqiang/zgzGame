@@ -35,6 +35,8 @@
         "src/views/template/multiLabel.js",
         "src/views/template/personTalk.js",
         "src/views/template/balanceLayer.js",
+        "src/views/template/eventQueue.js",
+        "src/views/template/smallWidget.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
