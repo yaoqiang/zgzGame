@@ -112,8 +112,8 @@ var BalanceLayer = function (data, opt) {
     y -= 110;
 
     var sReady = new cc.MenuItemSprite(
-        new cc.Sprite("#003_lv.png"),
-        new cc.Sprite("#003_lv.png"),
+        new cc.Sprite("#common_btn_lv.png"),
+        new cc.Sprite("#common_btn_lv.png"),
         opt.ready,
         this
     );
@@ -128,8 +128,8 @@ var BalanceLayer = function (data, opt) {
     sg.addChild(readyMenu);
 
     var sLeave = new cc.MenuItemSprite(
-        new cc.Sprite("#003_lv.png"),
-        new cc.Sprite("#003_lv.png"),
+        new cc.Sprite("#common_btn_lv.png"),
+        new cc.Sprite("#common_btn_lv.png"),
         opt.leave,
         this
     );

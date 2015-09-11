@@ -10,25 +10,22 @@
         this.m_pButtonFanOut = null;
         this.m_pButtonPass = null;
 
-
-
         this.init();
 
     },
     init:function(){
         var winSize = cc.director.getWinSize();
-        var h = winSize.height*0.5;
+        var h = winSize.height*0.5 - 50;
 
 //出牌
         if(false){
-            var chupaiNormal = new cc.Sprite(res.anniu_png);
-            var chupaiSelected = new cc.Sprite(res.anniu2_png);
-            var chupaiDisabled = new cc.Sprite(res.anniu2_png);
+            var chupaiNormal = new cc.Sprite("#common_btn_lan.png");
+            var chupaiSelected = new cc.Sprite("#common_btn_lan.png");
+            var chupaiDisabled = new cc.Sprite("#common_btn_lan.png");
             //chupaiDisabled.setColor(cc.color(100,100,100,255));
             var chupaiButton = new cc.MenuItemSprite(chupaiNormal, chupaiSelected, chupaiDisabled, this.onChupaiButton, this);
             chupaiButton.setPosition(winSize.width/2-60 , h);
             chupaiButton.setTag(FanOutMenuBtn.kCCFanOutMenu_FanOut);
-
             size  = chupaiButton.getContentSize();
             var chupaiStr = new cc.LabelTTF("出 牌", "Arial", 24);
             chupaiStr.color = cc.color.YELLOW;
@@ -38,14 +35,13 @@
 
 //不出
         if(false){
-            var buchuNormal = new cc.Sprite(res.anniu_png);
-            var buchuSelected = new cc.Sprite(res.anniu2_png);
-            var buchuDisabled = new cc.Sprite(res.anniu2_png);
+            var buchuNormal = new cc.Sprite("#common_btn_lan.png");
+            var buchuSelected = new cc.Sprite("#common_btn_lan.png");
+            var buchuDisabled = new cc.Sprite("#common_btn_lan.png");
             buchuDisabled.setColor(cc.color(100,100,100,255));
             var buchuButton = new cc.MenuItemSprite(buchuNormal, buchuSelected, buchuDisabled, this.onBuchuButton, this);
             buchuButton.setPosition(winSize.width/2 + 60 , h);
             buchuButton.setTag(FanOutMenuBtn.kCCFanOutMenu_Pass);
-
             size  = buchuButton.getContentSize();
             var buchuStr = new cc.LabelTTF("不 出", "Arial", 24);
             buchuStr.color = cc.color.YELLOW;
@@ -63,22 +59,24 @@
 //UIButton
         this.m_pButtonFanOut = new ccui.Button();
         this.m_pButtonFanOut.setTouchEnabled(true);
-        this.m_pButtonFanOut.loadTextures(res.anniu_png, res.anniu2_png, res.anniu2_png);
-        this.m_pButtonFanOut.setTitleFontSize(20);
+        this.m_pButtonFanOut.loadTextures("common_btn_huang.png", "common_btn_huang.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.m_pButtonFanOut.setTitleFontSize(30);
         this.m_pButtonFanOut.setTitleText("出 牌");
-        this.m_pButtonFanOut.x = winSize.width/2 - 60;
+        this.m_pButtonFanOut.x = winSize.width/2 - 70;
         this.m_pButtonFanOut.y =  h;
         this.m_pButtonFanOut.addTouchEventListener(this.fanoutTouchEvent, this);
+        this.m_pButtonFanOut.scale = 0.6
         this.addChild(this.m_pButtonFanOut);
 
         this.m_pButtonPass = new ccui.Button();
         this.m_pButtonPass.setTouchEnabled(true);
-        this.m_pButtonPass.loadTextures(res.anniu_png, res.anniu2_png, res.anniu2_png);
-        this.m_pButtonPass.setTitleFontSize(20);
+        this.m_pButtonPass.loadTextures("common_btn_huang.png", "common_btn_huang.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.m_pButtonPass.setTitleFontSize(30);
         this.m_pButtonPass.setTitleText("不 出");
-        this.m_pButtonPass.x = winSize.width/2 + 60;
+        this.m_pButtonPass.x = winSize.width/2 + 70;
         this.m_pButtonPass.y =  h;
         this.m_pButtonPass.addTouchEventListener(this.buchuTouchEvent, this);
+        this.m_pButtonPass.scale = 0.6
         this.addChild(this.m_pButtonPass);
     },
 

@@ -326,7 +326,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
     trusteeshipEvent: function (actorNr) {
         var player = _.findWhere(this.m_HDList, {m_Nr: actorNr});
-        player.changeActorPhoto("#jiqiren_icon.png");
+        player.changeActorPhoto("#game_jiqiren_3.png");
     },
 
     cancelTrusteeshipEvent: function (actorNr) {

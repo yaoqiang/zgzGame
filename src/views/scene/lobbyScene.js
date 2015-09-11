@@ -2,8 +2,9 @@ var LobbyScene = cc.Scene.extend({
     lobbyTitle: ['扎股子-五人', '扎股子-七人'],
     ctor: function (data, lobbyId) {
         this._super();
-        //cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
-        //cc.spriteFrameCache.addSpriteFrames(res.other_plist, res.other_png);
+
+        cc.spriteFrameCache.addSpriteFrames(res.room_plist);
+
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId]});
         this.addChild(headerLayer, 1);
@@ -35,8 +36,8 @@ var LobbyLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
 
         //background
-        var bg = new cc.Sprite("#beijing.png");
-        bg.setPosition(cc.p(winSize.width/2, winSize.height/2));
+        var bg = new cc.Sprite("#common_bg_beijing.png");
+        bg.setPosition(winSize.width/2, winSize.height/2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
@@ -48,7 +49,7 @@ var LobbyLayer = cc.Layer.extend({
             var button = new ccui.Button();
             button.room = room;
             button.setTouchEnabled(true);
-            button.loadTextures("room_bg.png", "room_bg2.png", "", ccui.Widget.PLIST_TEXTURE);
+            button.loadTextures("room_diban.png", "room_diban2.png", "", ccui.Widget.PLIST_TEXTURE);
             button.x = winSize.width / 2.0 + width;
             button.y = height;
             button.scaleX = 0.85;
@@ -57,31 +58,31 @@ var LobbyLayer = cc.Layer.extend({
 
             var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 22);
             title.setColor(cc.color.YELLOW);
-            title.setPosition(cc.p(button.width / 2, button.height / 2 + 25));
+            title.setPosition(button.width / 2, button.height / 2 + 25);
             button.addChild(title);
 
             var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 20);
             onlineCounterLabel.setColor(cc.color.WHITE);
             onlineCounterLabel.setAnchorPoint(0, 0);
-            onlineCounterLabel.setPosition(cc.p(20, button.height / 2 - 30));
+            onlineCounterLabel.setPosition(20, button.height / 2 - 30);
             button.addChild(onlineCounterLabel);
 
             var onlineCounterValue = new cc.LabelTTF("999", "AmericanTypewriter", 22);
             onlineCounterValue.setColor(cc.color.WHITE);
             onlineCounterValue.setAnchorPoint(0, 0);
-            onlineCounterValue.setPosition(cc.p(onlineCounterLabel.width+10, button.height / 2 - 30));
+            onlineCounterValue.setPosition(onlineCounterLabel.width+10, button.height / 2 - 30);
             button.addChild(onlineCounterValue);
 
             var baseLabel = new cc.LabelTTF("底注：", "AmericanTypewriter", 20);
             baseLabel.setColor(cc.color.WHITE);
             baseLabel.setAnchorPoint(0, 0);
-            baseLabel.setPosition(cc.p(button.width / 2, button.height / 2 - 30));
+            baseLabel.setPosition(button.width / 2, button.height / 2 - 30);
             button.addChild(baseLabel);
 
             var baseValue = new cc.LabelTTF(room.base, "AmericanTypewriter", 22);
             baseValue.setColor(cc.color.YELLOW);
             baseValue.setAnchorPoint(0, 0);
-            baseValue.setPosition(cc.p(button.width / 2 + baseLabel.width+10, button.height / 2 - 30));
+            baseValue.setPosition(button.width / 2 + baseLabel.width+10, button.height / 2 - 30);
             button.addChild(baseValue);
 
             if (i%2 == 0)
@@ -98,8 +99,8 @@ var LobbyLayer = cc.Layer.extend({
         }
 
         var back = new cc.MenuItemImage(
-            "#btn_fanhui.png",
-            "#btn_fanhui.png",
+            "#index_tanchu.png",
+            "#index_tanchu.png",
             function () {
                 var scene = new IndexScene();
                 cc.director.runScene(new cc.TransitionFade(1.2, scene));
@@ -114,36 +115,36 @@ var LobbyLayer = cc.Layer.extend({
         this.addChild(backMenu);
 
         //template
-        var mission = new cc.Sprite("#renwu.png");
-        mission.setAnchorPoint(cc.p(0, 0));
-        mission.setPosition(cc.p(120, 10));
+        var mission = new cc.Sprite("#index_renwu.png");
+        mission.setAnchorPoint(0, 0);
+        mission.setPosition(120, 10);
         mission.scale = ZGZ.SCALE * 1
         this.addChild(mission);
 
-        var rank = new cc.Sprite("#paihang.png");
-        rank.setAnchorPoint(cc.p(0, 0));
-        rank.setPosition(cc.p(240, 10));
+        var rank = new cc.Sprite("#index_paihang.png");
+        rank.setAnchorPoint(0, 0);
+        rank.setPosition(240, 10);
         rank.scale = ZGZ.SCALE * 1
         this.addChild(rank);
 
-        var exchange = new cc.Sprite("#duihuan.png");
-        exchange.setAnchorPoint(cc.p(0, 0));
-        exchange.setPosition(cc.p(360, 10));
+        var exchange = new cc.Sprite("#index_duihuan.png");
+        exchange.setAnchorPoint(0, 0);
+        exchange.setPosition(360, 10);
         exchange.scale = ZGZ.SCALE * 1
         this.addChild(exchange);
 
-        var message = new cc.Sprite("#tongzhi.png");
-        message.setAnchorPoint(cc.p(0, 0));
-        message.setPosition(cc.p(480, 10));
+        var message = new cc.Sprite("#index_tongzhi.png");
+        message.setAnchorPoint(0, 0);
+        message.setPosition(480, 10);
         message.scale = ZGZ.SCALE * 1
         this.addChild(message);
 
 
 
 
-        var quickStart = new cc.Sprite("#kuaisuyouxi.png");
-        quickStart.setAnchorPoint(cc.p(1, 0));
-        quickStart.setPosition(cc.p(winSize.width, 0));
+        var quickStart = new cc.Sprite("#index_kuaisuyouxi.png");
+        quickStart.setAnchorPoint(1, 0);
+        quickStart.setPosition(winSize.width, 0);
         quickStart.scale = ZGZ.SCALE * 0.6
         this.addChild(quickStart);
 

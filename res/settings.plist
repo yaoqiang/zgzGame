@@ -4,122 +4,135 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>btn_fanhui.png</key>
+            <key>settings_jiantou.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{134,126},{116,102}}</string>
+                <string>{{60,94},{50,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{116,102}}</string>
+                <string>{{0,0},{50,36}}</string>
                 <key>sourceSize</key>
-                <string>{116,102}</string>
+                <string>{50,36}</string>
             </dict>
-            <key>duihuan.png</key>
+            <key>settings_kaiguan.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{198,230},{78,32}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{78,32}}</string>
-                <key>sourceSize</key>
-                <string>{78,32}</string>
-            </dict>
-            <key>kuaisuyouxi.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{126,130}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{126,130}}</string>
-                <key>sourceSize</key>
-                <string>{126,130}</string>
-            </dict>
-            <key>mianban_04_2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{134,2},{122,120}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{122,120}}</string>
-                <key>sourceSize</key>
-                <string>{122,120}</string>
-            </dict>
-            <key>mianban_04_3.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,130},{62,114}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{62,114}}</string>
-                <key>sourceSize</key>
-                <string>{62,114}</string>
-            </dict>
-            <key>paihang.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{118,230},{78,32}}</string>
+                <string>{{2,144},{44,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{78,32}}</string>
+                <string>{{0,0},{44,44}}</string>
                 <key>sourceSize</key>
-                <string>{78,32}</string>
+                <string>{44,44}</string>
             </dict>
-            <key>renwu.png</key>
+            <key>settings_kaiguan_guanbi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,266},{78,32}}</string>
+                <string>{{2,2},{80,24}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{78,32}}</string>
+                <string>{{0,0},{80,24}}</string>
                 <key>sourceSize</key>
-                <string>{78,32}</string>
+                <string>{80,24}</string>
             </dict>
-            <key>tongzhi.png</key>
+            <key>settings_kaiguan_kaiqi.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{84,194},{78,32}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{78,32}}</string>
-                <key>sourceSize</key>
-                <string>{78,32}</string>
-            </dict>
-            <key>youjian_icon.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,194},{80,70}}</string>
+                <string>{{2,28},{80,22}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,5},{80,70}}</string>
+                <string>{{0,1},{80,22}}</string>
                 <key>sourceSize</key>
-                <string>{80,80}</string>
+                <string>{80,24}</string>
+            </dict>
+            <key>settings_kaiguan_mask.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{80,24}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,24}}</string>
+                <key>sourceSize</key>
+                <string>{80,24}</string>
+            </dict>
+            <key>settings_shengyin_anning.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{48,132},{44,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{44,44}}</string>
+                <key>sourceSize</key>
+                <string>{44,44}</string>
+            </dict>
+            <key>settings_shengyin_guan.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{84,48},{38,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{38,44}}</string>
+                <key>sourceSize</key>
+                <string>{38,44}</string>
+            </dict>
+            <key>settings_shengyin_kai.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,52},{56,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{56,44}}</string>
+                <key>sourceSize</key>
+                <string>{56,44}</string>
+            </dict>
+            <key>settings_taiyang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,98},{44,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{44,44}}</string>
+                <key>sourceSize</key>
+                <string>{44,44}</string>
+            </dict>
+            <key>settings_yueliang.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{84,2},{42,44}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{42,44}}</string>
+                <key>sourceSize</key>
+                <string>{42,44}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -127,13 +140,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>other.png</string>
+            <string>settings.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e79b8ca02f0f95c0dcc43af41b032273:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:4f51b217b606209f3f0bcbbedd262774:1/1$</string>
             <key>textureFileName</key>
-            <string>other.png</string>
+            <string>settings.png</string>
         </dict>
     </dict>
 </plist>

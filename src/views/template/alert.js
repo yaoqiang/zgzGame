@@ -7,7 +7,7 @@ prompt.fade = function (txt, opts) {
 
     label1.color = opts && opts.color || cc.color.YELLOW;
 
-    var topBox = new cc.Sprite('#shangfangtishi.png');
+    var topBox = new cc.Sprite('#common_bg_shangfangtishi.png');
     topBox.setScale(0.8);
     topBox.setAnchorPoint(0.5, 0);
     topBox.setPosition(s.width/2, s.height);

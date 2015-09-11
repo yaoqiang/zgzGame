@@ -1,9 +1,10 @@
 var GameScene = cc.Scene.extend({
     ctor: function (args) {
         this._super();
-        //cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
-        //cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
-        //cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
+
+        cc.spriteFrameCache.addSpriteFrames(res.game_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
+
         gGameSenceCompleted = false;
         var layer = new GameLayer(args);
         this.addChild(layer);
@@ -38,8 +39,8 @@ var GameLayer = cc.Layer.extend({
     init: function () {
         var winSize = cc.director.getWinSize();
         //牌桌
-        var bg = new cc.Sprite("#beijing.png");
-        bg.setPosition(cc.p(winSize.width / 2, winSize.height / 2));
+        var bg = new cc.Sprite("#common_bg_beijing.png");
+        bg.setPosition(winSize.width / 2, winSize.height / 2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
@@ -54,8 +55,8 @@ var GameLayer = cc.Layer.extend({
 
         //按钮操作区域（可做成工具tip弹出方式）
         var sTrusteeship = new cc.MenuItemSprite(
-            new cc.Sprite("#jiqiren_icon.png"),
-            new cc.Sprite("#jiqiren_icon.png"),
+            new cc.Sprite("#game_icon_jiqiren_1.png"),
+            new cc.Sprite("#game_icon_jiqiren_2.png"),
             this.trusteeship,
             this
         );
@@ -511,13 +512,13 @@ var GameLayer = cc.Layer.extend({
         if (actor.uid == gPlayer.uid) {
             this.trusteeshipMask = new MaskLayer(true);
             var sCancelTrusteeship = new cc.MenuItemSprite(
-                new cc.Sprite("#quxiaotuoguan.png"),
-                new cc.Sprite("#quxiaotuoguan.png"),
+                new cc.Sprite("#game_btn_quxiaotuoguan.png"),
+                new cc.Sprite("#game_btn_quxiaotuoguan.png"),
                 this.cancelTrusteeship,
                 this
             );
             var cancelTrusteeshipMenu = new cc.Menu(sCancelTrusteeship);
-            cancelTrusteeshipMenu.setPosition(winSize.width / 2 - 200, 100);
+            cancelTrusteeshipMenu.setPosition(winSize.width / 2 - 190, 100);
             cancelTrusteeshipMenu.scale = 0.6;
             this.trusteeshipMask.addChild(cancelTrusteeshipMenu);
             this.addChild(this.trusteeshipMask);

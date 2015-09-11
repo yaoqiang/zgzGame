@@ -8,13 +8,8 @@ var IndexScene = cc.Scene.extend({
     ctor: function () {
         this._super();
 
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist, res.common_png);
-        cc.spriteFrameCache.addSpriteFrames(res.index_plist, res.index_png);
-        cc.spriteFrameCache.addSpriteFrames(res.room_plist, res.room_png);
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist, res.game_png);
-        cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
-        cc.spriteFrameCache.addSpriteFrames(res.other_plist, res.other_png);
-
+        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
 
         //header
         var headerLayer = new HeaderLayer();
@@ -42,32 +37,33 @@ var IndexLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
 
         //background
-        var bg = new cc.Sprite("#beijing.png");
+        var bg = new cc.Sprite("#common_bg_beijing.png");
         bg.setPosition(winSize.width/2, winSize.height/2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
         this.addChild(new HornSprite());
 
-        var normal = new cc.Sprite("#mianban_05.png", cc.rect(0, 0, 126, 138));
-        var selected = new cc.Sprite("#mianban_05.png", cc.rect(0, 33, 126, 138));
-        var disabled = new cc.Sprite("#mianban_05.png", cc.rect(0, 33*2, 126, 138));
+        var normal = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 0, 126, 138));
+        var selected = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 33, 126, 138));
+        var disabled = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 33*2, 126, 138));
 
-        var normal2 = new cc.Sprite("#mianban_05.png", cc.rect(0, 0, 126, 138));
-        var selected2 = new cc.Sprite("#mianban_05.png", cc.rect(0, 33, 126, 138));
-        var disabled2 = new cc.Sprite("#mianban_05.png", cc.rect(0, 33*2, 126, 138));
+        var normal2 = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 0, 126, 138));
+        var selected2 = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 33, 126, 138));
+        var disabled2 = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 33*2, 126, 138));
 
         //五人场
         var lobbyOf5 = new cc.MenuItemSprite(normal, selected, disabled, this.onMenuCallback, this);
-        this.lobbyOf5Icon = new cc.Sprite("#renwu_02.png");
-        this.lobbyOf5Icon.scale = 0.9;
-        this.lobbyOf5Icon.setPosition(lobbyOf5.width/2, lobbyOf5.height/2+30);
-        lobbyOf5.addChild(this.lobbyOf5Icon);
+        //TODO need new icon
+        //this.lobbyOf5Icon = new cc.Sprite("#renwu_02.png");
+        //this.lobbyOf5Icon.scale = 0.9;
+        //this.lobbyOf5Icon.setPosition(lobbyOf5.width/2, lobbyOf5.height/2+30);
+        //lobbyOf5.addChild(this.lobbyOf5Icon);
         lobbyOf5.setScale(0.75);
 
 
         //label
-        var labelBg = new cc.Sprite("#mianban_08.png");
+        var labelBg = new cc.Sprite("#index_mianban_08.png");
         labelBg.setPosition(lobbyOf5.width/2, lobbyOf5.height/2 - 110);
         labelBg.scale = 0.8;
         var label = new cc.LabelTTF("五人场", "Arial", 30);
@@ -153,6 +149,5 @@ var IndexLayer = cc.Layer.extend({
         this._super();
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_png);
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_png);
-        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
     }
 });

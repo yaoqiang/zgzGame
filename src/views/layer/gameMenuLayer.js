@@ -8,12 +8,13 @@ var GameMenuLayer = cc.Layer.extend({
     init:function(){
         var winSize = cc.director.getWinSize();
 
-        var backNormal = new cc.Sprite("#jianou.png");
-        var backSelected = new cc.Sprite("#jianou.png");
-        var backDisabled = new cc.Sprite("#jianou.png");
-        var helpButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackButton, this);
-        var menu = new cc.Menu(helpButton);
-        menu.setPosition(20, winSize.height-30);
+        var backNormal = new cc.Sprite("#index_tanchu.png");
+        var backSelected = new cc.Sprite("#index_tanchu.png");
+        var backDisabled = new cc.Sprite("#index_tanchu.png");
+        var leaveButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackButton, this);
+        leaveButton.scale = 0.4
+        var menu = new cc.Menu(leaveButton);
+        menu.setPosition(30, winSize.height-30);
         this.addChild(menu);
 
     },

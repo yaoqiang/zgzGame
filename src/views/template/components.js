@@ -4,11 +4,11 @@ var HornSprite = cc.Sprite.extend({
         this._super();
         var winSize = cc.director.getWinSize();
         //horn background
-        var hornBg = new cc.Sprite("#laba_tiao.png");
+        var hornBg = new cc.Sprite("#common_bg_laba.png");
         hornBg.setScale(0.8);
         hornBg.setPosition(winSize.width / 2, winSize.height - 110);
         //horn icon
-        var hornIcon = new cc.Sprite("#laba_icon.png");
+        var hornIcon = new cc.Sprite("#common_icon_laba_2.png");
         hornIcon.setAnchorPoint(0, 0);
         hornIcon.setPosition(10, 8);
         hornBg.addChild(hornIcon);
@@ -23,11 +23,11 @@ var HornSpriteForGame = cc.Sprite.extend({
         this._super();
         var winSize = cc.director.getWinSize();
         //horn background
-        var hornBg = new cc.Sprite("#laba_tiao.png");
+        var hornBg = new cc.Sprite("#common_bg_laba.png");
         hornBg.setScale(0.7);
         hornBg.setPosition(winSize.width / 2, winSize.height - 35);
         //horn icon
-        var hornIcon = new cc.Sprite("#laba_icon.png");
+        var hornIcon = new cc.Sprite("#common_icon_laba_2.png");
         hornIcon.setAnchorPoint(0, 0);
         hornIcon.setPosition(10, 8);
         hornBg.addChild(hornIcon);
@@ -107,7 +107,7 @@ var Alert = cc.Layer.extend({
 
         backgroundChild.width = labelChild.getContentSize().width + (winSize.width / 15);
         backgroundChild.height = labelChild.getContentSize().height + (winSize.height / 15);
-        backgroundChild.setPosition(cc.p(backgroundChild.width / -2, backgroundChild.height / -2));
+        backgroundChild.setPosition(backgroundChild.width / -2, backgroundChild.height / -2);
 
         closeChild = new cc.LabelTTF("X", "Arial", 10);
         closeChild.setColor(cc.color(200, 200, 200, 255));

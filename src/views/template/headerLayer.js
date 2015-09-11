@@ -5,14 +5,13 @@ var HeaderLayer = cc.Layer.extend({
         var size = cc.director.getWinSize();
 
         //左侧
-        var leftTopBg = new cc.Scale9Sprite();
-        leftTopBg.initWithSpriteFrameName("mianban_01.png", cc.rect(17, 14, 27, 26))
+        var leftTopBg = new cc.Node();
         leftTopBg.setPosition(0, size.height);
         leftTopBg.setAnchorPoint(0, 1);
         leftTopBg.setContentSize(250, 80);
         this.addChild(leftTopBg);
 
-        var avatarBg = new cc.Sprite("#touxiangkuang_index.png");
+        var avatarBg = new cc.Node();
         avatarBg.setScale(0.65);
         avatarBg.setAnchorPoint(0, 1);
         avatarBg.setPosition(15, 70);
@@ -26,12 +25,11 @@ var HeaderLayer = cc.Layer.extend({
         );
 
         var avatarMenu = new cc.Menu(avatar);
-        avatarMenu.setPosition(-18, 8);
+        avatarMenu.setPosition(-18, -70);
         avatarMenu.setScale(0.85);
         avatarBg.addChild(avatarMenu);
 
-        var nickBg = new cc.Scale9Sprite();
-        nickBg.initWithSpriteFrameName("shuzidikuang.png", cc.rect(6, 5, 11, 7));
+        var nickBg = new cc.Scale9Sprite("index_bg_gold.png", cc.rect(6, 5, 11, 7));
         nickBg.setAnchorPoint(0, 1);
         nickBg.setContentSize(130, 25);
         nickBg.setPosition(86, 70);
@@ -42,8 +40,7 @@ var HeaderLayer = cc.Layer.extend({
         nickName.setAnchorPoint(1, 0.5);
         nickBg.addChild(nickName);
 
-        var goldBg = new cc.Scale9Sprite();
-        goldBg.initWithSpriteFrameName("shuzidikuang.png", cc.rect(6, 5, 11, 7));
+        var goldBg = new cc.Scale9Sprite("index_bg_gold.png", cc.rect(6, 5, 11, 7));
         goldBg.setAnchorPoint(0, 1);
         goldBg.setContentSize(130, 25);
         goldBg.setPosition(86, 40);
@@ -55,34 +52,33 @@ var HeaderLayer = cc.Layer.extend({
         gold.setPosition(110, 10);
         goldBg.addChild(gold);
 
-        var goldIcon = new cc.Sprite("#additional_coins.png");
+        var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
         goldIcon.setScale(0.5);
-        goldIcon.setAnchorPoint(cc.p(0, 1));
+        goldIcon.setAnchorPoint(0, 1);
         goldIcon.setPosition(0-5, 28);
         goldBg.addChild(goldIcon);
 
 
 
         //右上侧
-        var rightTopBg = new cc.Scale9Sprite();
-        rightTopBg.initWithSpriteFrameName("mianban_01.png", cc.rect(17, 14, 27, 26));
+        var rightTopBg = new cc.Node();
         rightTopBg.setPosition(size.width, size.height);
         rightTopBg.setAnchorPoint(1, 1);
         rightTopBg.setContentSize(250, 80);
         this.addChild(rightTopBg);
 
-        var shoppingCar = new cc.Sprite("#shangcheng_icon.png");
+        var shoppingCar = new cc.Sprite("#index_shangcheng_icon.png");
         shoppingCar.setAnchorPoint(0, 0.5);
         shoppingCar.setPosition(30, rightTopBg.height/2);
         shoppingCar.setScale(0.9);
         rightTopBg.addChild(shoppingCar);
 
         // create help button sprite
-        var helpNormal = new cc.Sprite("#wenhao.png");
+        var helpNormal = new cc.Sprite("#index_wenhao.png");
         helpNormal.attr({scale:0.9});
-        var helpSelected = new cc.Sprite("#wenhao.png");
+        var helpSelected = new cc.Sprite("#index_wenhao.png");
         helpSelected.attr({scale:1});
-        var helpDisabled = new cc.Sprite("#wenhao.png");
+        var helpDisabled = new cc.Sprite("#index_wenhao.png");
 
         // create help button and added it to header
         var helpButton = new cc.MenuItemSprite(helpNormal, helpSelected, helpDisabled, this.onHelpButton, this);
@@ -90,14 +86,14 @@ var HeaderLayer = cc.Layer.extend({
         menu.setPosition(125, rightTopBg.height/2);
         rightTopBg.addChild(menu);
 
-        var setting = new cc.Sprite("#shezhi_icon.png");
+        var setting = new cc.Sprite("#index_shezhi_icon.png");
         setting.setAnchorPoint(0, 0.5);
         setting.setPosition(170, rightTopBg.height/2);
         setting.setScale(0.9);
         rightTopBg.addChild(setting);
 
         //中间
-        var middleBg = new cc.Sprite("#mianban_04.png");
+        var middleBg = new cc.Sprite("#index_mianban_04.png");
         middleBg.setScaleX(1);
         middleBg.setScaleY(0.8);
         middleBg.setAnchorPoint(0.5, 1);
@@ -110,13 +106,13 @@ var HeaderLayer = cc.Layer.extend({
         title.setPosition(middleBg.width/2, 30);
         middleBg.addChild(title);
 
-        var leftIcon = new cc.Sprite("#mianban_04_2.png");
+        var leftIcon = new cc.Sprite("#index_mianban_04_2.png");
         leftIcon.setAnchorPoint(0, 1);
-        leftIcon.setPosition(-10, 100);
+        leftIcon.setPosition(-12, 100);
         middleBg.addChild(leftIcon);
-        var rightIcon = new cc.Sprite("#mianban_04_3.png");
+        var rightIcon = new cc.Sprite("#index_mianban_04_3.png");
         rightIcon.setAnchorPoint(1, 1);
-        rightIcon.setPosition(middleBg.getContentSize().width + 12, 100);
+        rightIcon.setPosition(middleBg.getContentSize().width + 14, 100);
         middleBg.addChild(rightIcon);
 
     },

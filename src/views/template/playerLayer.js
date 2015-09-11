@@ -36,12 +36,12 @@ var PlayerLayer = cc.Layer.extend({
         this.addActorPhotoBg();
         this.showNickName();
 
-        if(true){
-            var label = new cc.LabelTTF(""+this.m_index, "Arial", 32);
-            var size = this.m_pAvatarBg.getContentSize();
-            label.setPosition(cc.p(size.width/2, size.height/2));
-            this.m_pAvatarBg.addChild(label, 1);
-        }
+        //if(true){
+        //    var label = new cc.LabelTTF(""+this.m_index, "Arial", 32);
+        //    var size = this.m_pAvatarBg.getContentSize();
+        //    label.setPosition(size.width/2, size.height/2);
+        //    this.m_pAvatarBg.addChild(label, 1);
+        //}
     },
 
     clear:function(){
@@ -106,10 +106,10 @@ var PlayerLayer = cc.Layer.extend({
 
             if(this.m_position.x < winSize.width/2){
                 label.setAnchorPoint(0, 1);
-                label.setPosition(cc.p(size.width, size.height-1));
+                label.setPosition(size.width, size.height-1);
             }else{
                 label.setAnchorPoint(1, 1);
-                label.setPosition(cc.p(0, size.height-1));
+                label.setPosition(0, size.height-1);
             }
            // return;
         }
@@ -122,10 +122,10 @@ var PlayerLayer = cc.Layer.extend({
 
             if(this.m_position.x < winSize.width/2){
                 label.setAnchorPoint(0, 1);
-                label.setPosition(cc.p(size.width, size.height-1));
+                label.setPosition(size.width, size.height-1);
             }else{
                 label.setAnchorPoint(1, 1);
-                label.setPosition(cc.p(0, size.height-1));
+                label.setPosition(0, size.height-1);
             }
         }
 
@@ -237,7 +237,7 @@ var PlayerLayer = cc.Layer.extend({
 
             this.m_pPhoto = new cc.Sprite(image);
             if(this.m_pPhoto){
-                this.m_pPhoto.setPosition(cc.p(this.m_position.x, this.m_position.y));
+                this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
                 this.m_pPhoto.anchorX = this.m_anchorX;
                 this.m_pPhoto.anchorY = this.m_anchorY;
                 this.m_pPhoto.scale = ZGZ.SCALE * 0.5;
@@ -252,7 +252,7 @@ var PlayerLayer = cc.Layer.extend({
         }
         this.m_pPhoto = new cc.Sprite(image);
         if(this.m_pPhoto){
-            this.m_pPhoto.setPosition(cc.p(this.m_position.x, this.m_position.y));
+            this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
             this.m_pPhoto.anchorX = this.m_anchorX;
             this.m_pPhoto.anchorY = this.m_anchorY;
             this.m_pPhoto.scale = ZGZ.SCALE * 0.5;
@@ -278,8 +278,8 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pName.anchorX = 0.5;
             this.m_pName.anchorY = 0;
             var xx = (1-this.m_anchorX - 0.5)*size.width*this.bgScale;
-            var yy = (1-this.m_anchorY)*size.height*this.bgScale;
-            this.m_pName.setPosition(cc.p(this.m_position.x + xx, this.m_position.y + yy));
+            var yy = (1-this.m_anchorY)*size.height*this.bgScale*1.2;
+            this.m_pName.setPosition(this.m_position.x + xx, this.m_position.y + yy);
             this.addChild(this.m_pName, 1);
         }else{
             this.m_pName.setString(this.m_nickNname);
@@ -288,11 +288,11 @@ var PlayerLayer = cc.Layer.extend({
 
     addActorPhotoBg:function(){
         if(this.m_photoId == null){
-            this.m_pAvatarBg = new cc.Sprite("#touxiangkuang.png");
-            this.m_pAvatarBg.setPosition(cc.p(this.m_position.x, this.m_position.y));
+            this.m_pAvatarBg = new cc.Sprite("#game_bg_avatar.png");
+            this.m_pAvatarBg.setPosition(this.m_position.x, this.m_position.y);
             this.m_pAvatarBg.anchorX = this.m_anchorX;
             this.m_pAvatarBg.anchorY = this.m_anchorY;
-            this.m_pAvatarBg.scale = this.bgScale;
+            this.m_pAvatarBg.scale = this.bgScale * 1.2;
             this.addChild(this.m_pAvatarBg);
         }
     },
@@ -300,11 +300,11 @@ var PlayerLayer = cc.Layer.extend({
     showReady:function(visible) {
         this.m_isready = visible;
         if (this.m_pReady == null) {
-            this.m_pReady = new cc.Sprite("#zhunbei2.png");
+            this.m_pReady = new cc.Sprite("#game_zhunbei_2.png");
             var size = this.m_pAvatarBg.getContentSize();
             this.m_pReady.anchorX = 0.5;
             this.m_pReady.anchorY = 1;
-            this.m_pReady.setPosition(cc.p(size.width / 2, 0));
+            this.m_pReady.setPosition(size.width / 2, 0);
             this.m_pAvatarBg.addChild(this.m_pReady, 1);
         }
         if (this.m_pReady) {
@@ -325,22 +325,22 @@ var PlayerLayer = cc.Layer.extend({
             var rankPng = "";
             switch (parseInt(rank)) {
                 case 1:
-                    rankPng = "#shuzi2_01.png";
+                    rankPng = "#game_shuzi2_01.png";
                     break;
                 case 2:
-                    rankPng = "#shuzi2_02.png";
+                    rankPng = "#game_shuzi2_02.png";
                     break;
                 case 3:
-                    rankPng = "#shuzi2_03.png";
+                    rankPng = "#game_shuzi2_03.png";
                     break;
                 case 4:
-                    rankPng = "#shuzi2_04.png";
+                    rankPng = "#game_shuzi2_04.png";
                     break;
                 case 5:
-                    rankPng = "#shuzi2_05.png";
+                    rankPng = "#game_shuzi2_05.png";
                     break;
                 case 6:
-                    rankPng = "#shuzi2_06.png";
+                    rankPng = "#game_shuzi2_06.png";
                     break;
 
             }
@@ -349,10 +349,10 @@ var PlayerLayer = cc.Layer.extend({
             this.rankS.scale = 5;
             if(this.m_position.x < winSize.width/2){
                 this.rankS.setAnchorPoint(0, 1);
-                this.rankS.setPosition(cc.p(size.width + 60, size.height-1));
+                this.rankS.setPosition(size.width + 60, size.height-1);
             }else{
                 this.rankS.setAnchorPoint(1, 1);
-                this.rankS.setPosition(cc.p(0 - 60, size.height-1));
+                this.rankS.setPosition(0 - 60, size.height-1);
             }
 
             this.m_pAvatarBg.addChild(this.rankS, 10);

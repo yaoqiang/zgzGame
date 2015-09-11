@@ -13,50 +13,54 @@ var BidMenuLayer = cc.Layer.extend({
     },
     init:function(){
         var winSize = cc.director.getWinSize();
-        var h = winSize.height*0.5;
+        var h = winSize.height*0.5-50;
 //亮3
-        var liangNormal = new cc.Sprite(res.anniu_png);
-        var liangSelected = new cc.Sprite(res.anniu_png);
-        var liangDisabled = new cc.Sprite(res.anniu_png);
+        var liangNormal = new cc.Sprite("#common_btn_huang.png");
+        var liangSelected = new cc.Sprite("#common_btn_huang.png");
+        var liangDisabled = new cc.Sprite("#common_btn_huang.png");
         var liangButton = new cc.MenuItemSprite(liangNormal, liangSelected, liangDisabled, this.onLiangButton, this);
         liangButton.setPosition(winSize.width/2 + 50 , h);
         liangButton.setTag(BidMenuBtn.kCCBidMenu_Liang);
         liangButton.setVisible(false);
         liangButton.setEnabled(false);
+        liangButton.scale = 0.5
 
         var size  = liangButton.getContentSize();
-        var liangStr = new cc.LabelTTF("亮3", "Arial", 24);
-        liangStr.color = cc.color.YELLOW;
+        var liangStr = new cc.LabelTTF("亮3", "Arial", 30);
+        //liangStr.color = cc.color.YELLOW;
         liangStr.setPosition(size.width/2, size.height/2);
         liangButton.addChild(liangStr);
 
 //股子
-        var guziNormal = new cc.Sprite(res.anniu_png);
-        var guziSelected = new cc.Sprite(res.anniu_png);
-        var guziDisabled = new cc.Sprite(res.anniu_png);
+        var guziNormal = new cc.Sprite("#common_btn_huang.png");
+        var guziSelected = new cc.Sprite("#common_btn_huang.png");
+        var guziDisabled = new cc.Sprite("#common_btn_huang.png");
         var guziButton = new cc.MenuItemSprite(guziNormal, guziSelected, guziDisabled, this.onGuziButton, this);
         guziButton.setPosition(winSize.width/2 + 50, h);
         guziButton.setTag(BidMenuBtn.kCCBidMenu_Guzi);
         guziButton.setVisible(false);
         //guziButton.setEnabled(false);
+        guziButton.scale = 0.5
 
         size  = guziButton.getContentSize();
-        var guziStr = new cc.LabelTTF("股子", "Arial", 24);
-        guziStr.color = cc.color.YELLOW;
+        var guziStr = new cc.LabelTTF("股子", "Arial", 30);
+        //guziStr.color = cc.color.YELLOW;
         guziStr.setPosition(size.width/2, size.height/2);
         guziButton.addChild(guziStr);
 //不叫
 
-        var bujiaoNormal = new cc.Sprite(res.anniu_png);
-        var bujiaoSelected = new cc.Sprite(res.anniu_png);
-        var bujiaoDisabled = new cc.Sprite(res.anniu_png);
+        var bujiaoNormal = new cc.Sprite("#common_btn_huang.png");
+        var bujiaoSelected = new cc.Sprite("#common_btn_huang.png");
+        var bujiaoDisabled = new cc.Sprite("#common_btn_huang.png");
         var bujiaoButton = new cc.MenuItemSprite(bujiaoNormal, bujiaoSelected, bujiaoDisabled, this.onBujiaoButton, this);
         bujiaoButton.setPosition(winSize.width/2 - 50 , h);
         bujiaoButton.setTag(BidMenuBtn.kCCBidMenu_Bujiao);
 
+        bujiaoButton.scale = 0.5
+
         size  = bujiaoButton.getContentSize();
-        var bujiaoStr = new cc.LabelTTF("不叫", "Arial", 24);
-        bujiaoStr.color = cc.color.YELLOW;
+        var bujiaoStr = new cc.LabelTTF("不叫", "Arial", 30);
+        //bujiaoStr.color = cc.color.YELLOW;
         bujiaoStr.setPosition(size.width/2, size.height/2);
         bujiaoButton.addChild(bujiaoStr);
 //menu
