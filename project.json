@@ -25,7 +25,6 @@
         "src/utils/cardUtil.js",
         "src/events/gameMessageEvent.js",
 
-        "src/views/template/alert.js",
         "src/views/template/headerLayer.js",
         "src/views/template/components.js",
         "src/views/template/HelpLayer.js",
