@@ -123,3 +123,64 @@ var Alert = cc.Layer.extend({
         this.setPosition(winSize.width / 2, winSize.height / 2);
     }
 });
+
+
+
+//////////////////////////////////////
+//
+var prompt = function(){
+}
+
+/**
+ * 上方弹出提示
+ * @param txt
+ * @param opts
+ */
+prompt.fade = function (txt, opts) {
+    var s = cc.director.getWinSize();
+    var label1 = new cc.LabelTTF(txt, "Arial", 28);
+
+    label1.color = opts && opts.color || cc.color.YELLOW;
+
+    var topBox = new cc.Sprite('#common_bg_shangfangtishi.png');
+    topBox.setScale(0.8);
+    topBox.setAnchorPoint(0.5, 0);
+    topBox.setPosition(s.width/2, s.height);
+    cc.director.getRunningScene().addChild(topBox);
+
+    label1.setPosition(topBox.width/2, topBox.height/2 - 12);
+    topBox.addChild(label1);
+    var moveDown = cc.moveBy(opts && opts.duration || 2, cc.p(0, -50));
+    var moveBack = moveDown.reverse();
+
+    topBox.runAction(cc.sequence(moveDown, moveBack));
+
+}
+
+/**
+ * 屏幕中心弹出提示
+ */
+prompt.fadeMiddle = cc.Layer.extend({
+    ctor: function (txt, opts) {
+        this._super();
+        var winSize = cc.director.getWinSize();
+        var backgroundChild = new cc.LayerColor(cc.color(50, 50, 50, 255));
+
+        var labelChild = new cc.LabelTTF(txt, "Arial", 15);
+
+        backgroundChild.width = labelChild.getContentSize().width + (winSize.width / 15);
+        backgroundChild.height = labelChild.getContentSize().height + (winSize.height / 15);
+        backgroundChild.setPosition(backgroundChild.width / -2, backgroundChild.height / -2);
+
+        this.setPosition(winSize.width / 2, winSize.height / 2);
+
+        cc.director.getRunningScene().addChild(backgroundChild);
+        cc.director.getRunningScene().addChild(labelChild);
+
+
+        this.scheduleOnce(this.updateTime, opts && opts.time || 2);
+    },
+    updateTime: function () {
+        this.removeFromParent(true);
+    }
+});

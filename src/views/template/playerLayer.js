@@ -155,7 +155,7 @@ var PlayerLayer = cc.Layer.extend({
                     var yy = (1-this.m_anchorY)*size.height;//*this.bgScale;
                     identityImage.setPosition(cc.p(size.width - 0, size.height-i*40));
                     identityImage.setAnchorPoint(0, 1);
-                    identityImage.setScale(0.5);
+                    identityImage.setScale(0.4);
                     this.m_pAvatarBg.addChild(identityImage, 1);
                     this.m_pIdentityArray.push(identityImage);
                 }else{

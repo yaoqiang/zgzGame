@@ -13,48 +13,86 @@ var route = {
 
 var ERR_CODE = {
     JOIN: {
-        IN_GAME: 1,   //在其他牌桌
-        TOO_POOR: 2,
-        TOO_RICH: 3,
-        ERR: 4    //参数错误等
+        IN_GAME: 1001,   //在其他牌桌
+        TOO_POOR: 1002,
+        TOO_RICH: 1003,
+        ERR: 1004    //参数错误等
     },
     READY: {
-        NOT_INT_GAME: 1,
-        ALREADY_READY: 2,
-        ERR: 3
+        NOT_INT_GAME: 2001,
+        ALREADY_READY: 2002,
+        ERR: 2003
     },
     TALK: {
-        LIANG3_WITHOUT3: 1, //没3 亮3（非法操作）
-        GUZI_WITH3: 2,   //有3 扎股子,
-        NOT_IN_GAME: 3,
-        ERR: 4
+        LIANG3_WITHOUT3: 3001, //没3 亮3（非法操作）
+        GUZI_WITH3: 3002,   //有3 扎股子,
+        NOT_IN_GAME: 3003,
+        ERR: 3004
     },
     LEAVE: {
-        NOT_IN_GAME: 1,
-        GAMING: 2,
-        ERR: 3
+        NOT_IN_GAME: 4001,
+        GAMING: 4002,
+        ERR: 4003
     },
     FAN: {
-        WITHOUT_CARDS: 1,
-        NOT_BIGGER: 2,
-        MUST_BE_FIVE: 3,
-        ERR: 4
+        WITHOUT_CARDS: 5001,
+        NOT_BIGGER: 5002,
+        MUST_BE_FIVE: 5003,
+        ERR: 5004
     },
     SETTLE: {
-        ERR: 1
+        ERR: 6001
     },
     TRUSTEESHIP: {
-        NOT_IN_GAME: 1,
-        ALREADY_TRUSTEESHIP: 2,
-        ALREADY_CANCELED_TRUSTEESHIP: 3,
-        NOT_GAMING: 4,
-        ERR: 5
+        NOT_IN_GAME: 7001,
+        ALREADY_TRUSTEESHIP: 7002,
+        ALREADY_CANCELED_TRUSTEESHIP: 7003,
+        NOT_GAMING: 7004,
+        ERR: 7005
     }
 }
+
+var ERR_MESSAGE = {
+    getMessage: function (code) {
+        return ERR_MESSAGE[code]
+    },
+    1001: "您已在游戏中, 无法加入",   //在其他牌桌
+    1002: "您的金币不足, 无法加入",
+    1003: "您的金币太多了, 请前往高倍区",
+    1004: "系统错误, 请联系管理员",    //参数错误等
+
+    2001: "您没有在牌桌中, 请重新加入",
+    2002: "您已准备",
+    2003: "系统错误, 请联系管理员",
+
+    3001: "您没有红3, 不能进行亮3操作", //没3 亮3（非法操作）
+    3002: "您有红3, 不能叫股子",   //有3 扎股子,
+    3003: "您不在游戏中, 不能说话",
+    3004: "系统错误, 请联系管理员",    //参数错误等
+
+    4001: "您已成功离开牌桌",
+    4002: "游戏中, 无法离开",
+    4003: "系统错误, 请联系管理员",    //参数错误等
+
+    5001: "没有该手牌, 请检查",
+    5002: "不能大过上手牌, 请检查",
+    5003: "必须出所有5",
+    5004: "系统错误, 请联系管理员",    //参数错误等
+
+    6001: "系统错误, 请联系管理员",    //参数错误等
+
+    7001: "您没有在牌桌中, 无法托管",
+    7002: "您已托管成功",
+    7003: "您不在托管状态",
+    7004: "游戏还未开始, 无法托管",
+    7005: "系统错误, 请联系管理员"    //参数错误等
+}
+
+
 var MESSAGE = {
     RES: 200,
-        ERR: 500,
-        PUSH: 600
+    ERR: 500,
+    PUSH: 600
 }
 var EVENT = {
     CHAT: 'onChat',
