@@ -202,7 +202,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
     },
     stopClock:function() {
-        if (this.m_pClock) {
+        if (this.m_pClock && cc.sys.isObjectValid(this.m_pClock)) {
             this.m_pClock.removeFromParent(true);
             this.m_pClock = null;
         }

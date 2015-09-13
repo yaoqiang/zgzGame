@@ -173,7 +173,7 @@ var GameLayer = cc.Layer.extend({
 
     removeBidMenu: function () {
         //删除bid
-        if (this.m_pBidMenuLayer) {
+        if (this.m_pBidMenuLayer && cc.sys.isObjectValid(this.m_pBidMenuLayer)) {
             this.m_pBidMenuLayer.removeFromParent(true);
             this.m_pBidMenuLayer = null;
         }
@@ -181,7 +181,7 @@ var GameLayer = cc.Layer.extend({
     removeFanOutMenu: function () {
         //删除fanout menu
         console.log("--->removeFanOutMenu  1");
-        if (this.m_pFanOutMenuLayer) {
+        if (this.m_pFanOutMenuLayer && cc.sys.isObjectValid(this.m_pFanOutMenuLayer)) {
             this.m_pFanOutMenuLayer.removeFromParent(true);
             this.m_pFanOutMenuLayer = null;
             console.log("--->removeFanOutMenu");
@@ -347,9 +347,6 @@ var GameLayer = cc.Layer.extend({
         gGameState = ZGZ.GAME_STATE.TALK;
         if (this.m_pPokerLayer) {
             this.m_pPokerLayer.gameStart(data.actor);
-        }
-        if (this.m_pTableLayer) {
-            this.m_pTableLayer.removeAllActorReady();
         }
         console.log("gameStartEvent end");
     },
@@ -533,7 +530,7 @@ var GameLayer = cc.Layer.extend({
         var actor = data.actor;
         this.m_pTableLayer.cancelTrusteeshipEvent(actor.actorNr);
         if (actor.uid == gPlayer.uid) {
-            if (this.trusteeshipMask) {
+            if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)) {
                 this.trusteeshipMask.removeFromParent(true)
             }
         }
@@ -566,11 +563,11 @@ var GameLayer = cc.Layer.extend({
             this.m_pTableLayer.stopClock();
         }
 
-        if (this.trusteeshipMask) this.trusteeshipMask.removeFromParent(true);
+        if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)) this.trusteeshipMask.removeFromParent(true);
         this.balanceLayer = new BalanceLayer(data,
             {
                 ready: function () {
-                    if (self.balanceLayer) self.balanceLayer.removeFromParent(true);
+                    if (self.balanceLayer && cc.sys.isObjectValid(self.balanceLayer)) self.balanceLayer.removeFromParent(true);
                     if (self.m_pTableLayer) self.m_pTableLayer.updateActorHD(self.m_actorList);
                     GameController.ready(gRoomId, gGameId);
                 },
@@ -587,7 +584,7 @@ var GameLayer = cc.Layer.extend({
     readyResponse: function () {
         cc.log("---->readyResponse");
         cc.log(this.m_actorList);
-        if (this.m_pReadyMenu) this.m_pReadyMenu.removeFromParent(true);
+        if (this.m_pReadyMenu && cc.sys.isObjectValid(this.m_pReadyMenu)) this.m_pReadyMenu.removeFromParent(true);
         this.m_pReadyMenu = null;
         var actor;
         for (var i = 0; this.m_actorList.length; i++) {

@@ -247,7 +247,7 @@ var PlayerLayer = cc.Layer.extend({
     },
 
     changeActorPhoto: function (image) {
-        if (this.m_pPhoto) {
+        if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
             this.m_pPhoto.removeFromParent(true);
         }
         this.m_pPhoto = new cc.Sprite(image);
@@ -358,7 +358,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pAvatarBg.addChild(this.rankS, 10);
         }
         else {
-            if (this.rankS) this.rankS.removeFromParent(true);
+            if (this.rankS && cc.sys.isObjectValid(this.rankS)) this.rankS.removeFromParent(true);
         }
 
 
