@@ -20,7 +20,7 @@ GameController.join = function (roomId, lobbyId)
 
         } else if(data.code == 500){
             cc.log("----> join game fail");
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
         }
 
     });
@@ -41,7 +41,7 @@ GameController.leave = function (roomId, lobbyId)
 
         }else if(data.code == 500){
             cc.log("----> leave game fail");
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
         }
 
     });
@@ -74,7 +74,7 @@ GameController.ready = function (roomId, gameId)
 
         }else if(data.code == 500){
             cc.log("----> ready game fail", data.err);
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
         }
 
     });
@@ -96,7 +96,7 @@ GameController.talk = function (roomId, gameId, goal, append) {
             //cc.eventManager.dispatchCustomEvent("talkResponse", data);
         } else if(data.code == 500){
             cc.log("----> talk fail", data.err);
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
         }
     });
 };
@@ -139,7 +139,7 @@ GameController.fan = function (roomId, gameId, cards) {
             cc.eventManager.dispatchCustomEvent("fanOutResponse", data);
         }else if(data.code == 500){
             cc.log("----> fan fail", data.err);
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
         }
     });
 };
@@ -155,7 +155,7 @@ GameController.trusteeship = function (roomId, gameId) {
             //由Event处理成功事件
         } else if(data.code == 500){
             cc.log("----> trusteeship fail", data.err);
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
             cc.eventManager.dispatchCustomEvent("trusteeshipResponse", {code: 500, err: data.err});
         }
     });
@@ -173,7 +173,7 @@ GameController.cancelTrusteeship = function (roomId, gameId) {
             //由Event处理成功事件
         } else if(data.code == 500){
             cc.log("----> cancelTrusteeship fail", data.err);
-            prompt.fade(ERR_MESSAGE.getMessage(data.err));
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
             cc.eventManager.dispatchCustomEvent("cancelTrusteeshipResponse", {code: 500, err: data.err});
         }
     });
