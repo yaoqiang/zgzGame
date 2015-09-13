@@ -348,6 +348,9 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pPokerLayer) {
             this.m_pPokerLayer.gameStart(data.actor);
         }
+        if (this.m_pTableLayer) {
+            this.m_pTableLayer.removeAllActorReady();
+        }
         console.log("gameStartEvent end");
     },
 
