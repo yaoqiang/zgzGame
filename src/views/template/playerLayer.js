@@ -273,8 +273,9 @@ var PlayerLayer = cc.Layer.extend({
         //}
 
         if(this.m_pName == null){
-            this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 12);
+            this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 13);
             var size = this.m_pAvatarBg.getContentSize();
+            this.m_pName.color = cc.color(255,255,255,255);
             this.m_pName.anchorX = 0.5;
             this.m_pName.anchorY = 0;
             var xx = (1-this.m_anchorX - 0.5)*size.width*this.bgScale;

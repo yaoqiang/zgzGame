@@ -31,6 +31,8 @@ var GameLayer = cc.Layer.extend({
         this.m_pFanOutMenuLayer = null;
         this.m_pBidMenuLayer = null;
 
+        this.trusteeshipMask = null;
+
         this.initAcrorList(args.actors);
 
         this.init();
@@ -348,6 +350,9 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pPokerLayer) {
             this.m_pPokerLayer.gameStart(data.actor);
         }
+        if (this.m_pTableLayer) {
+            this.m_pTableLayer.removeAllActorReady();
+        }
         console.log("gameStartEvent end");
     },
 
@@ -357,6 +362,7 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pPokerLayer) {
             this.m_pPokerLayer.onTalkCountdown(data);
         }
+
         if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
         }
@@ -416,10 +422,10 @@ var GameLayer = cc.Layer.extend({
 
     afterTalk: function (data) {
         cc.log("----------------->afterTalk:", data);
-        if (this.m_pTableLayer) {
-            this.m_pTableLayer.stopClock();
-            this.m_pTableLayer.removeAllActorReady();
-        }
+        //if (this.m_pTableLayer) {
+        //    this.m_pTableLayer.stopClock();
+        //    this.m_pTableLayer.removeAllActorReady();
+        //}
         this.removeBidMenu();
 
     },
@@ -510,18 +516,21 @@ var GameLayer = cc.Layer.extend({
         var actor = data.actor;
         this.m_pTableLayer.trusteeshipEvent(actor.actorNr);
         if (actor.uid == gPlayer.uid) {
-            this.trusteeshipMask = new MaskLayer(true);
-            var sCancelTrusteeship = new cc.MenuItemSprite(
-                new cc.Sprite("#game_btn_quxiaotuoguan.png"),
-                new cc.Sprite("#game_btn_quxiaotuoguan.png"),
-                this.cancelTrusteeship,
-                this
-            );
-            var cancelTrusteeshipMenu = new cc.Menu(sCancelTrusteeship);
-            cancelTrusteeshipMenu.setPosition(winSize.width / 2 - 190, 100);
-            cancelTrusteeshipMenu.scale = 0.6;
-            this.trusteeshipMask.addChild(cancelTrusteeshipMenu);
-            this.addChild(this.trusteeshipMask);
+            if(this.trusteeshipMask == null){
+                this.trusteeshipMask = new MaskLayer(true);
+                var sCancelTrusteeship = new cc.MenuItemSprite(
+                    new cc.Sprite("#game_btn_quxiaotuoguan.png"),
+                    new cc.Sprite("#game_btn_quxiaotuoguan.png"),
+                    this.cancelTrusteeship,
+                    this
+                );
+                var cancelTrusteeshipMenu = new cc.Menu(sCancelTrusteeship);
+                cancelTrusteeshipMenu.setPosition(winSize.width / 2 - 190, 100);
+                cancelTrusteeshipMenu.scale = 0.6;
+                this.trusteeshipMask.addChild(cancelTrusteeshipMenu);
+                this.addChild(this.trusteeshipMask);
+                console.log("删添加一个托管");
+            }
         }
     },
 
@@ -531,7 +540,9 @@ var GameLayer = cc.Layer.extend({
         this.m_pTableLayer.cancelTrusteeshipEvent(actor.actorNr);
         if (actor.uid == gPlayer.uid) {
             if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)) {
-                this.trusteeshipMask.removeFromParent(true)
+                this.trusteeshipMask.removeFromParent(true);
+                this.trusteeshipMask = null;
+                console.log("删除一个托管");
             }
         }
     },
@@ -563,7 +574,11 @@ var GameLayer = cc.Layer.extend({
             this.m_pTableLayer.stopClock();
         }
 
-        if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)) this.trusteeshipMask.removeFromParent(true);
+        if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)){
+            this.trusteeshipMask.removeFromParent(true);
+            this.trusteeshipMask = null;
+        }
+
         this.balanceLayer = new BalanceLayer(data,
             {
                 ready: function () {

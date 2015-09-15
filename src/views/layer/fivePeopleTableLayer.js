@@ -22,9 +22,9 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var leftP = 50;
         var rightP = 50;
         var player1 = new PlayerLayer({index: 1, position: {x: leftP, y: 120+50}, anchor: {x: 0.5, y: 0.5}});
-        var player5 = new PlayerLayer({index: 5, position: {x: leftP, y: 220+50}, anchor: {x: 0.5, y: 0.5}});
-        var player4 = new PlayerLayer({index: 4, position: {x: leftP, y: 320+50}, anchor: {x: 0.5, y: 0.5}});
-        var player3 = new PlayerLayer({index: 3, position: {x: winSize.width-rightP, y: 220+50}, anchor: {x: 0.5, y: 0.5}});
+        var player5 = new PlayerLayer({index: 5, position: {x: leftP, y: 210+50}, anchor: {x: 0.5, y: 0.5}});
+        var player4 = new PlayerLayer({index: 4, position: {x: leftP, y: 300+50}, anchor: {x: 0.5, y: 0.5}});
+        var player3 = new PlayerLayer({index: 3, position: {x: winSize.width-rightP, y: 210+50}, anchor: {x: 0.5, y: 0.5}});
         var player2 = new PlayerLayer({index: 2, position: {x: winSize.width-rightP, y: 120+50}, anchor: {x: 0.5, y: 0.5}});
 
 
