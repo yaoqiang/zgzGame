@@ -802,7 +802,6 @@ var GameLayer = cc.Layer.extend({
         gGameSenceCompleted = true;
         EventQueue.dispatchEventFromQueue();
 
-        //this.m_pTableLayer.showSay("粮食", 1);
     },
 
     onExit: function () {

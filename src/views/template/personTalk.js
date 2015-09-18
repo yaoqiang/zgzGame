@@ -18,9 +18,9 @@ var PersonTalk = cc.Node.extend({
         var winSize = cc.director.getWinSize();
         this._super();
 
-
+        var offect = 6;
         //text
-        this.m_label = new cc.LabelTTF(this.m_note, "Arial", 24);
+        this.m_label = new cc.LabelTTF(this.m_note, "Arial", 20);
         this.m_label.color = cc.color(255, 255, 255);
 
         if(this.m_direction == SHOW_MODE.LEFT ){
@@ -31,31 +31,29 @@ var PersonTalk = cc.Node.extend({
         this.addChild(this.m_label, 1);
         var labelSize = this.m_label.getContentSize();
         //bg
-        var bgImage =  "#game_qipao04.png";
+        var bgImage =  "game_qipao04.png";
         if(this.m_direction == SHOW_MODE.LEFT){
-            bgImage = "#game_qipao03_2.png";
+            bgImage = "game_qipao03_2.png";
         }
         console.log("-------->bgImage:", bgImage);
         this.m_pBg = new cc.Scale9Sprite(bgImage, cc.rect(10, 10, 4, 4));
         if(this.m_pBg){
-            this.m_pBg.width = labelSize.width>48? labelSize.width:48;
-            this.m_pBg.height = labelSize.height>48? labelSize.height:48;
-            this.m_pBg.x = -4;
+            this.m_pBg.width = labelSize.width>48-offect*2? labelSize.width+offect*2 : 48;
+            this.m_pBg.height = labelSize.height>48-offect*2? labelSize.height+offect*2 : 48;
             this.m_pBg.y = 0;
             if(this.m_direction == SHOW_MODE.LEFT ){
+                this.m_pBg.x = -offect;
                 this.m_pBg.setAnchorPoint(0, 0.5);
             }else{
+                this.m_pBg.x = offect;
                 this.m_pBg.setAnchorPoint(1, 0.5);
             }
+            this.m_pBg.opacity = 100;
             this.addChild(this.m_pBg, 0);
             console.log("-------->m_pBg:");
         }
-//
-//        this.cardFrame = new cc.Sprite(bgImage);
-//        this.addChild(this.cardFrame, 0);
 
         this.scheduleOnce(this.updateTime, this.m_time);
-
     },
     updateTime:function(dt){
         this.removeFromParent(true);
