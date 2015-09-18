@@ -348,6 +348,7 @@ var GameLayer = cc.Layer.extend({
         //console.log(data.actor);
         gGameState = ZGZ.GAME_STATE.TALK;
         if (this.m_pPokerLayer) {
+            this.m_pPokerLayer.clearSelectedWillOutCards();
             this.m_pPokerLayer.gameStart(data.actor);
         }
         if (this.m_pTableLayer) {
@@ -800,6 +801,8 @@ var GameLayer = cc.Layer.extend({
 
         gGameSenceCompleted = true;
         EventQueue.dispatchEventFromQueue();
+
+        //this.m_pTableLayer.showSay("粮食", 1);
     },
 
     onExit: function () {

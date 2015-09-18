@@ -12,7 +12,7 @@ EventQueue.addEventToQueue = function (eventName, optionalUserData) {
 
 EventQueue.dispatchEventFromQueue = function () {
     for (var i in gCache) {
-        cc.eventManager.dispatchCustomEvent(i.event, i.data);
+        cc.eventManager.dispatchCustomEvent(gCache[i].event, gCache[i].data);
     }
     EventQueue.clearCache();
 };

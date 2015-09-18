@@ -580,6 +580,10 @@ var PokerLayer = cc.Layer.extend({
         return true;
     },
 
+    clearSelectedWillOutCards: function () {
+        this.m_pSelectedWillOutCards = [];
+    },
+
     checkForFanOut: function (call) {
         this.m_pSelectedWillOutCards = [];
         var selectCardVector = [];

@@ -268,10 +268,10 @@ var FivePeopleTableLayer = cc.Layer.extend({
                 break;
         }
 
-
-            var say = new PersonTalk({note:text, direction:showP.mode, time:2});
-            say.setPosition(x,y);
-            this.addChild(say);
+        var say = new PersonTalk({note:text, direction:showP.mode, time:2});
+        say.setPosition(x,y);
+        this.addChild(say);
+        console.log("-------------------->showSay:", text);
     },
 //say end
 
