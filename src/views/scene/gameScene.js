@@ -333,6 +333,12 @@ var GameLayer = cc.Layer.extend({
         console.log(data);
         //var actor = new Actor(actor);
         // this.m_pTableLayer.readyEvent(actor);
+        if (gPlayer.uid == data.uid) {
+            if (this.m_pReadyMenu && cc.sys.isObjectValid(this.m_pReadyMenu)) {
+                this.m_pReadyMenu.removeFromParent(true);
+                this.m_pReadyMenu = null;
+            }
+        }
         for (var i = 0; this.m_actorList.length; i++) {
             var actor = this.m_actorList[i];
             if (data.actorNr == actor.m_actorNr) {
@@ -600,8 +606,10 @@ var GameLayer = cc.Layer.extend({
     readyResponse: function () {
         cc.log("---->readyResponse");
         cc.log(this.m_actorList);
-        if (this.m_pReadyMenu && cc.sys.isObjectValid(this.m_pReadyMenu)) this.m_pReadyMenu.removeFromParent(true);
-        this.m_pReadyMenu = null;
+        if (this.m_pReadyMenu && cc.sys.isObjectValid(this.m_pReadyMenu)) {
+            this.m_pReadyMenu.removeFromParent(true);
+            this.m_pReadyMenu = null;
+        }
         var actor;
         for (var i = 0; this.m_actorList.length; i++) {
             actor = this.m_actorList[i];

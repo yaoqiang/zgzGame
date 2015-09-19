@@ -70,7 +70,8 @@ GameController.ready = function (roomId, gameId)
     pomelo.request(route.ready, {roomId: roomId, gameId:gameId}, function(data) {
         cc.log("ready :", data);
         if(data.code == 200){
-            cc.eventManager.dispatchCustomEvent("readyResponse", data);
+            //改为由Event处理：防止响应比Event到达慢造成的UI不同步
+            //cc.eventManager.dispatchCustomEvent("readyResponse", data);
 
         }else if(data.code == 500){
             cc.log("----> ready game fail", data.err);
