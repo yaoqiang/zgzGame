@@ -51,6 +51,7 @@
         "src/views/layer/gameMenuLayer.js",
         "src/views/layer/readyMenuLayer.js",
         "src/views/layer/clock.js",
+        "src/views/layer/indexScrollLayer.js",
 
 
         "src/views/poker/pokerLayer.js",

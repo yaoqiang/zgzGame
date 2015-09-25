@@ -34,6 +34,11 @@ var LobbyLayer = cc.Layer.extend({
         this.addChild(new HornSprite());
 
         var winSize = cc.director.getWinSize();
+        this.m_pScrollView = null;
+        this.m_nScrollWidth =  winSize.width;
+        this.m_nScrollHeight =  winSize.height;
+        this.m_nScrollX =  0;
+        this.m_nScrollY =  80;
 
         //background
         var bg = new cc.Sprite("#common_bg_beijing.png");
@@ -41,63 +46,67 @@ var LobbyLayer = cc.Layer.extend({
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
+        // Create the scrollview
+        //
+        var cellH = 130;
+        var btnH = 104;
+        var sH = (cellH - btnH)/2;
+        var sY = cellH/2;
+        var dataLen = data.rooms.length;
+        var containerH = ((dataLen-dataLen%2)/2 + dataLen%2)*cellH;
+        this.m_nScrollHeight =  270;
+        containerH = this.m_nScrollHeight > containerH ? this.m_nScrollHeight : containerH;
+        //
+        this.m_pScrollView = new ccui.ScrollView();
+        this.m_pScrollView.setAnchorPoint(0,0);
+        this.m_pScrollView.setDirection(ccui.ScrollView.DIR_VERTICAL);
+        this.m_pScrollView.setTouchEnabled(true);
+        this.m_pScrollView.setBounceEnabled(true);
+        this.m_pScrollView.setContentSize(cc.size(this.m_nScrollWidth, this.m_nScrollHeight));
+        var scrollViewRect = this.m_pScrollView.getContentSize();
+        this.m_pScrollView.setInnerContainerSize(cc.size(scrollViewRect.width, containerH));
 
-        var width=-200, height=250;
+        this.m_pScrollView.x = this.m_nScrollX;
+        this.m_pScrollView.y = this.m_nScrollY;
+        this.m_pScrollView.scrollToPercentBothDirection(cc.p(50, 50), 1, true);
+        this.addChild(this.m_pScrollView);
+
+
+
+        var line = new cc.LabelTTF("..------------------------------", "Arial", 24);
+        line.color = cc.color.YELLOW;
+        line.setPosition(this.m_nScrollWidth/2, this.m_nScrollHeight-2);
+        this.m_pScrollView.addChild(line);
+
+        line = new cc.LabelTTF("------------------------------..", "Arial", 24);
+        line.color = cc.color.YELLOW;
+        line.setPosition(this.m_nScrollWidth/2, 0);
+        this.m_pScrollView.addChild(line);
+
+
+        var width = -200, height = containerH - cellH/2;
         for (var i = 1; i <= data.rooms.length; i++)
         {
             var room = data.rooms[i-1];
-            var button = new ccui.Button();
-            button.room = room;
-            button.setTouchEnabled(true);
-            button.loadTextures("room_diban.png", "room_diban2.png", "", ccui.Widget.PLIST_TEXTURE);
-            button.x = winSize.width / 2.0 + width;
-            button.y = height;
-            button.scaleX = 0.85;
-            button.addTouchEventListener(this.touchEvent, this);
-            this.addChild(button);
+            this.m_pScrollView.addChild(this.createButton (room, "", "", width, height, i));
 
-            var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 22);
-            title.setColor(cc.color.YELLOW);
-            title.setPosition(button.width / 2, button.height / 2 + 25);
-            button.addChild(title);
-
-            var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 20);
-            onlineCounterLabel.setColor(cc.color.WHITE);
-            onlineCounterLabel.setAnchorPoint(0, 0);
-            onlineCounterLabel.setPosition(20, button.height / 2 - 30);
-            button.addChild(onlineCounterLabel);
-
-            var onlineCounterValue = new cc.LabelTTF("999", "AmericanTypewriter", 22);
-            onlineCounterValue.setColor(cc.color.WHITE);
-            onlineCounterValue.setAnchorPoint(0, 0);
-            onlineCounterValue.setPosition(onlineCounterLabel.width+10, button.height / 2 - 30);
-            button.addChild(onlineCounterValue);
-
-            var baseLabel = new cc.LabelTTF("底注：", "AmericanTypewriter", 20);
-            baseLabel.setColor(cc.color.WHITE);
-            baseLabel.setAnchorPoint(0, 0);
-            baseLabel.setPosition(button.width / 2, button.height / 2 - 30);
-            button.addChild(baseLabel);
-
-            var baseValue = new cc.LabelTTF(room.base, "AmericanTypewriter", 22);
-            baseValue.setColor(cc.color.YELLOW);
-            baseValue.setAnchorPoint(0, 0);
-            baseValue.setPosition(button.width / 2 + baseLabel.width+10, button.height / 2 - 30);
-            button.addChild(baseValue);
-
-            if (i%2 == 0)
-            {
+            if (i%2 == 0){
                 width = -200;
-                height -= 120;
-            }
-            else
-            {
+                height -= cellH;
+            } else{
                 width += 400;
             }
-
-
         }
 
+        this.addMenu();
+
+        return true;
+
+
+    },
+
+    addMenu:function () {
+        var winSize = cc.director.getWinSize();
         var back = new cc.MenuItemImage(
             "#index_tanchu.png",
             "#index_tanchu.png",
@@ -147,11 +156,51 @@ var LobbyLayer = cc.Layer.extend({
         quickStart.setPosition(winSize.width, 0);
         quickStart.scale = ZGZ.SCALE * 0.6
         this.addChild(quickStart);
-
-        return true;
-
-
     },
+
+    createButton:function (room, lobbyStr, numStr, x, y, tag) {
+        var winSize = cc.director.getWinSize();
+        var button = new ccui.Button();
+        button.room = room;
+        button.setTouchEnabled(true);
+        button.loadTextures("room_diban.png", "room_diban2.png", "", ccui.Widget.PLIST_TEXTURE);
+        button.x = winSize.width / 2.0 + x;
+        button.y = y;
+        button.scaleX = 0.85;
+        button.addTouchEventListener(this.touchEvent, this);
+
+        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 22);
+        title.setColor(cc.color.YELLOW);
+        title.setPosition(button.width / 2, button.height / 2 + 25);
+        button.addChild(title);
+
+        var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 20);
+        onlineCounterLabel.setColor(cc.color.WHITE);
+        onlineCounterLabel.setAnchorPoint(0, 0);
+        onlineCounterLabel.setPosition(20, button.height / 2 - 30);
+        button.addChild(onlineCounterLabel);
+
+        var onlineCounterValue = new cc.LabelTTF("999", "AmericanTypewriter", 22);
+        onlineCounterValue.setColor(cc.color.WHITE);
+        onlineCounterValue.setAnchorPoint(0, 0);
+        onlineCounterValue.setPosition(onlineCounterLabel.width+10, button.height / 2 - 30);
+        button.addChild(onlineCounterValue);
+
+        var baseLabel = new cc.LabelTTF("底注：", "AmericanTypewriter", 20);
+        baseLabel.setColor(cc.color.WHITE);
+        baseLabel.setAnchorPoint(0, 0);
+        baseLabel.setPosition(button.width / 2, button.height / 2 - 30);
+        button.addChild(baseLabel);
+
+        var baseValue = new cc.LabelTTF(room.base, "AmericanTypewriter", 22);
+        baseValue.setColor(cc.color.YELLOW);
+        baseValue.setAnchorPoint(0, 0);
+        baseValue.setPosition(button.width / 2 + baseLabel.width+10, button.height / 2 - 30);
+        button.addChild(baseValue);
+
+        return button;
+    },
+
     touchEvent: function (sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:

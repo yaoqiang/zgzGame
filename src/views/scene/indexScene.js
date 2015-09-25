@@ -2,7 +2,8 @@ var IndexScene = cc.Scene.extend({
     onEnter: function () {
 
         this._super();
-
+        //var pLayer = new lobbyTableLayer({});
+        //this.addChild(pLayer);
     },
 
     ctor: function () {
@@ -42,7 +43,9 @@ var IndexLayer = cc.Layer.extend({
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
-        this.addChild(new HornSprite());
+
+        this.init();
+        return ;
 
         var normal = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 0, 126, 138));
         var selected = new cc.Sprite("#index_mianban_05.png", cc.rect(0, 33, 126, 138));
@@ -116,9 +119,16 @@ var IndexLayer = cc.Layer.extend({
         this.addChild(this.lobbyMenu);
 
 
-        return true;
+       // return true;
     },
-
+    init:function () {
+        console.log("------->init");
+        var winSize = cc.director.getWinSize();
+        this.addChild(new HornSprite());
+        this.addChild(new createIndexScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
+        //this.addChild(new createLobbyScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
+        //this.addChild(new createLobbyTableLayer({width:winSize.width, height:300, x:0, y:0, cwidth:winSize.width-20, cheight:40}), 100);
+    },
     onMenuCallback: function () {
         this.lobbyMenu.enabled = false;
         //this.scheduleOnce(function () {
@@ -143,6 +153,7 @@ var IndexLayer = cc.Layer.extend({
 
     onEnter: function () {
         this._super();
+
     },
 
     onExit: function () {
