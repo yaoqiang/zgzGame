@@ -1,23 +1,21 @@
 var pomelo = window.pomelo;
 
 pomelo.on('onJoin', function (data) {
-    console.log('receive join event.');
-    console.log(data);
+    console.log('receive join event -> ', data);
 
     //cc.eventManager.dispatchCustomEvent("joinEvent", data);
     EventQueue.dispatchCustomEvent("joinEvent", data);
 });
 
 pomelo.on('onLeave', function (data) {
-    console.log('---->receive onLeave event.');
-    console.log(data);
+    console.log('---->receive onLeave event -> ', data);
 
     //cc.eventManager.dispatchCustomEvent("leaveEvent", data);
     EventQueue.dispatchCustomEvent("leaveEvent", data);
 });
 
 pomelo.on('onReady', function (data) {
-    console.log('receive onReady event.');
+    console.log('receive onReady event ->', data);
     //cc.eventManager.dispatchCustomEvent("readyEvent", data);
     EventQueue.dispatchCustomEvent("readyEvent", data);
 });
@@ -25,8 +23,7 @@ pomelo.on('onReady', function (data) {
 
 
 pomelo.on('onStart', function (data) {
-    console.log('receive onStart event.');
-    console.log(data);
+    console.log('receive onStart event -> ', data);
     //赋值当前玩家actor全局变量
     gActor.actorNr = data.actor.actorNr;
     gActor.uid = data.actor.uid;
@@ -36,10 +33,8 @@ pomelo.on('onStart', function (data) {
 });
 
 pomelo.on('onTalkCountdown', function (data) {
-    console.log('receive onTalkCountdown event.', data);
+    console.log('receive onTalkCountdown event -> ', data);
 
-    console.log('data.actor.uid + gPlayer.uid => ', data.actor.uid, gPlayer.uid);
-    console.log('data.actor.uid == gPlayer.uid => ', data.actor.uid == gPlayer.uid);
     //cc.eventManager.dispatchCustomEvent("talkCountdownEvent", data);
     EventQueue.dispatchCustomEvent("talkCountdownEvent", data);
 });
@@ -49,7 +44,7 @@ pomelo.on('onTalkCountdown', function (data) {
  * 服务器端会触发下一个talkCountdown事件，如果说话结束，会触发出牌onFanCountdown，如果没人说话，会重新开始onStart
  */
 pomelo.on('onTalkTimeout', function (data) {
-    console.log('onTalkTimeout.', data);
+    console.log('onTalkTimeout -> ', data);
 
 });
 
@@ -57,7 +52,7 @@ pomelo.on('onTalkTimeout', function (data) {
  * 接收说话消息，处理说话成功UI逻辑；自己说话通过response响应
  */
 pomelo.on('onTalk', function (data) {
-    console.log('receive onTalk event.', data);
+    console.log('receive onTalk event -> ', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
     //cc.eventManager.dispatchCustomEvent("talkEvent", data);
@@ -68,7 +63,7 @@ pomelo.on('onTalk', function (data) {
  * 接收说话消息，说话阶段结束
  */
 pomelo.on('onAfterTalk', function (data) {
-    console.log('receive onAfterTalk event.', data);
+    console.log('receive onAfterTalk event -> ', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
     //cc.eventManager.dispatchCustomEvent("afterTalk", data);
@@ -79,8 +74,7 @@ pomelo.on('onAfterTalk', function (data) {
  * 出牌倒计时，
  */
 pomelo.on('onFanCountdown', function (data) {
-    console.log('receive onFanCountdown event.', data);
-    console.log('lastFanCardRecognization:.', data.lastFanCardRecognization);
+    console.log('receive onFanCountdown event -> ', data);
     gActor.isBoss = data.isBoss;
 
     //如果当前出牌玩家是上回合BOSS，则禁用或不显示“不出”按钮
@@ -101,7 +95,7 @@ pomelo.on('onFanCountdown', function (data) {
  * 出牌消息，出牌者出牌时发送给其他玩家接受的消息；当前出牌者通过request/response得到出牌响应(gameController.fan)
  */
 pomelo.on('onFan', function (data) {
-    console.log('receive onFan event.', data);
+    console.log('receive onFan event -> ', data);
     //如果有出牌，则设置全局变量上手牌型
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;
@@ -118,7 +112,7 @@ pomelo.on('onFan', function (data) {
  * {actor: {uid: xx, actorNr: xx}}
  */
 pomelo.on('onTrusteeship', function (data) {
-    console.log('receive onTrusteeship event.');
+    console.log('receive onTrusteeship event -> ', data);
     //cc.eventManager.dispatchCustomEvent("trusteeshipEvent", data);
     EventQueue.dispatchCustomEvent("trusteeshipEvent", data);
 });
@@ -128,7 +122,7 @@ pomelo.on('onTrusteeship', function (data) {
  * {actor: {uid: xx, actorNr: xx}}
  */
 pomelo.on('onCancelTrusteeship', function (data) {
-    console.log('receive onCancelTrusteeship event.');
+    console.log('receive onCancelTrusteeship event -> ', data);
     //cc.eventManager.dispatchCustomEvent("cancelTrusteeshipEvent", data);
     EventQueue.dispatchCustomEvent("cancelTrusteeshipEvent", data);
 });
@@ -141,7 +135,7 @@ pomelo.on('onCancelTrusteeship', function (data) {
    }
  */
 pomelo.on('onOver', function (data) {
-    console.log('receive onOver event.');
+    console.log('receive onOver event -> ', data);
     //cc.eventManager.dispatchCustomEvent("gameOverEvent", data);
     EventQueue.dispatchCustomEvent("gameOverEvent", data);
 });
@@ -173,6 +167,10 @@ pomelo.on('onFanFinished', function (data) {
     EventQueue.dispatchCustomEvent("fanFinishedEvent", data);
 });
 
+pomelo.on('onBackToGame', function (data) {
+    console.log('receive onBackToGame event.', data)
+});
+
 pomelo.on('onChat', function (data) {
     console.log('receive onChat event.');
 });
@@ -189,17 +187,3 @@ pomelo.on('onGoldChange', function (data) {
     gPlayer.gold = data.gold;
 });
 
-pomelo.on('disconnect', function(reason) {
-    console.log('disconnected..');
-    console.log(reason);
-});
-
-pomelo.on('onKick', function (data) {
-    console.log('onKick..');
-    console.log(data);
-});
-
-pomelo.on('heartbeat timeout', function (data) {
-    console.log('heartbeat timeout..');
-    console.log(data);
-})

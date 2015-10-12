@@ -1,7 +1,7 @@
 var gGameSvrAddr = {
     //host: '192.243.119.61',
     host: '101.200.173.252',
-     //host: '127.0.0.1',
+    //host: '127.0.0.1',
     port: 3014
 };
 
@@ -11,6 +11,9 @@ var gWebSvrAddr = {
     //host: 'http://127.0.0.1',
     port: '3001'
 }
+
+//网络状态, 0=正常, 其他失败
+var gNetworkState = 0;
 
 var gPlayer = {};
 var gLobbyId = 0;
