@@ -1,20 +1,20 @@
 var pomelo = window.pomelo;
 
-pomelo.on('onJoin', function (data) {
+pomelo.on(gameEvents.JOIN, function (data) {
     console.log('receive join event -> ', data);
 
     //cc.eventManager.dispatchCustomEvent("joinEvent", data);
     EventQueue.dispatchCustomEvent("joinEvent", data);
 });
 
-pomelo.on('onLeave', function (data) {
+pomelo.on(gameEvents.LEAVE, function (data) {
     console.log('---->receive onLeave event -> ', data);
 
     //cc.eventManager.dispatchCustomEvent("leaveEvent", data);
     EventQueue.dispatchCustomEvent("leaveEvent", data);
 });
 
-pomelo.on('onReady', function (data) {
+pomelo.on(gameEvents.READY, function (data) {
     console.log('receive onReady event ->', data);
     //cc.eventManager.dispatchCustomEvent("readyEvent", data);
     EventQueue.dispatchCustomEvent("readyEvent", data);
@@ -22,7 +22,7 @@ pomelo.on('onReady', function (data) {
 
 
 
-pomelo.on('onStart', function (data) {
+pomelo.on(gameEvents.START, function (data) {
     console.log('receive onStart event -> ', data);
     //赋值当前玩家actor全局变量
     gActor.actorNr = data.actor.actorNr;
@@ -32,7 +32,7 @@ pomelo.on('onStart', function (data) {
     EventQueue.dispatchCustomEvent("gameStartEvent", data);
 });
 
-pomelo.on('onTalkCountdown', function (data) {
+pomelo.on(gameEvents.TALK_COUNTDOWN, function (data) {
     console.log('receive onTalkCountdown event -> ', data);
 
     //cc.eventManager.dispatchCustomEvent("talkCountdownEvent", data);
@@ -42,16 +42,18 @@ pomelo.on('onTalkCountdown', function (data) {
 /**
  * 说话超时，代表没说话，UI逻辑倒计时结束，当前说话玩家面前Talk Menu消失;其他玩家UI显示当前玩家倒计时icon结束；
  * 服务器端会触发下一个talkCountdown事件，如果说话结束，会触发出牌onFanCountdown，如果没人说话，会重新开始onStart
+ *
+ * 注:现在不在接受此消息, 由服务器直接处理说话消息, 即发送超时说话玩家为没话
  */
-pomelo.on('onTalkTimeout', function (data) {
-    console.log('onTalkTimeout -> ', data);
+pomelo.on(gameEvents.TALK_COUNTDOWN_TIMEOUT, function (data) {
+    //console.log('onTalkTimeout -> ', data);
 
 });
 
 /**
  * 接收说话消息，处理说话成功UI逻辑；自己说话通过response响应
  */
-pomelo.on('onTalk', function (data) {
+pomelo.on(gameEvents.TALK, function (data) {
     console.log('receive onTalk event -> ', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
@@ -62,7 +64,7 @@ pomelo.on('onTalk', function (data) {
 /**
  * 接收说话消息，说话阶段结束
  */
-pomelo.on('onAfterTalk', function (data) {
+pomelo.on(gameEvents.AFTER_TALK, function (data) {
     console.log('receive onAfterTalk event -> ', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
@@ -73,7 +75,7 @@ pomelo.on('onAfterTalk', function (data) {
 /**
  * 出牌倒计时，
  */
-pomelo.on('onFanCountdown', function (data) {
+pomelo.on(gameEvents.FAN_COUNTDOWN, function (data) {
     console.log('receive onFanCountdown event -> ', data);
     gActor.isBoss = data.isBoss;
 
@@ -94,7 +96,7 @@ pomelo.on('onFanCountdown', function (data) {
 /**
  * 出牌消息，出牌者出牌时发送给其他玩家接受的消息；当前出牌者通过request/response得到出牌响应(gameController.fan)
  */
-pomelo.on('onFan', function (data) {
+pomelo.on(gameEvents.FAN, function (data) {
     console.log('receive onFan event -> ', data);
     //如果有出牌，则设置全局变量上手牌型
     if (data.cardRecognization) {
@@ -111,7 +113,7 @@ pomelo.on('onFan', function (data) {
  * 托管
  * {actor: {uid: xx, actorNr: xx}}
  */
-pomelo.on('onTrusteeship', function (data) {
+pomelo.on(gameEvents.TRUSTEESHIP, function (data) {
     console.log('receive onTrusteeship event -> ', data);
     //cc.eventManager.dispatchCustomEvent("trusteeshipEvent", data);
     EventQueue.dispatchCustomEvent("trusteeshipEvent", data);
@@ -121,7 +123,7 @@ pomelo.on('onTrusteeship', function (data) {
  * 取消托管
  * {actor: {uid: xx, actorNr: xx}}
  */
-pomelo.on('onCancelTrusteeship', function (data) {
+pomelo.on(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
     console.log('receive onCancelTrusteeship event -> ', data);
     //cc.eventManager.dispatchCustomEvent("cancelTrusteeshipEvent", data);
     EventQueue.dispatchCustomEvent("cancelTrusteeshipEvent", data);
@@ -134,7 +136,7 @@ pomelo.on('onCancelTrusteeship', function (data) {
      details: [{uid:x, actorNr:x, actualIdentity:[], result: consts.GAME.ACTOR_RESULT.x, gold: x, roomId: game.roomId, rank: actor.gameStatus.rank}]
    }
  */
-pomelo.on('onOver', function (data) {
+pomelo.on(gameEvents.OVER, function (data) {
     console.log('receive onOver event -> ', data);
     //cc.eventManager.dispatchCustomEvent("gameOverEvent", data);
     EventQueue.dispatchCustomEvent("gameOverEvent", data);
@@ -144,7 +146,7 @@ pomelo.on('onOver', function (data) {
  * 当红3在没亮3情况下，出黑3，规则定义不能骗人，通知其他玩家自己有红3
  * {actor: {uid: xx, actorNr: xx}}
  */
-pomelo.on('onFanWhenIsRed', function (data) {
+pomelo.on(gameEvents.FAN_WHEN_IS_RED, function (data) {
     console.log('receive onFanWhenIsRed event.');
     //cc.eventManager.dispatchCustomEvent("fanWhenIsRedEvent", data);
     EventQueue.dispatchCustomEvent("fanWhenIsRedEvent", data);
@@ -161,28 +163,28 @@ pomelo.on('onFanWhenIsRed', function (data) {
         }
     }
  */
-pomelo.on('onFanFinished', function (data) {
+pomelo.on(gameEvents.FAN_FINISHED, function (data) {
     console.log('receive onFanFinished event.');
     //cc.eventManager.dispatchCustomEvent("fanFinishedEvent", data);
     EventQueue.dispatchCustomEvent("fanFinishedEvent", data);
 });
 
-pomelo.on('onBackToGame', function (data) {
+pomelo.on(gameEvents.BACK_TO_GAME, function (data) {
     console.log('receive onBackToGame event.', data)
 });
 
-pomelo.on('onChat', function (data) {
+pomelo.on(gameEvents.CHAT, function (data) {
     console.log('receive onChat event.');
 });
 
-pomelo.on('onBroadcast', function (data) {
+pomelo.on(gameEvents.BROADCAST, function (data) {
     console.log('receive onBroadcast event.');
 });
 
 /**
  * 自己金币变化
  */
-pomelo.on('onGoldChange', function (data) {
+pomelo.on(gameEvents.GOLD_CHANGE, function (data) {
     console.log('receive onGoldChange event.');
     gPlayer.gold = data.gold;
 });

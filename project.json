@@ -18,6 +18,8 @@
         "src/globals.js",
         "src/utils/network.js",
         "src/consts/consts.js",
+        "src/consts/routes.js",
+        "src/consts/gameEvents.js",
         "src/utils/utils.js",
         "src/events/gameMessageEvent.js",
         "src/events/baseEvent.js",
