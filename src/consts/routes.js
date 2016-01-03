@@ -7,5 +7,7 @@ var route = {
     fan: 'game.gameHandler.fan',
     trusteeship: 'game.gameHandler.trusteeship',
     cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',
-    chat: 'game.gameHandler.chat'
+    chat: 'game.gameHandler.chat',
+    getCheckInGrant: 'game.gameHandler.getCheckInGrant',
+    getBankruptcyGrant: 'game.gameHandler.getBankruptcyGrant'
 }
