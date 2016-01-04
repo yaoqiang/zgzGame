@@ -9,5 +9,8 @@ var route = {
     cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',
     chat: 'game.gameHandler.chat',
     getCheckInGrant: 'game.gameHandler.getCheckInGrant',
-    getBankruptcyGrant: 'game.gameHandler.getBankruptcyGrant'
+    getBankruptcyGrant: 'game.gameHandler.getBankruptcyGrant',
+    getDailyTaskList: 'game.gameHandler.getDailyTaskList',
+    getForeverTaskList: 'game.gameHandler.getForeverTaskList',
+    getTaskGrant: 'game.gameHandler.getTaskGrant',
 }
