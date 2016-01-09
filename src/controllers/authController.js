@@ -8,7 +8,7 @@ AuthController.login = function(username, password)
 
     Network.post({
         action : 'login',
-        args : "username="+username+"&password="+password,
+        args : {username: username, password: password},
         onSuccess : function(result) {
 
             if (result.code == 1001)

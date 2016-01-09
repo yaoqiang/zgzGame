@@ -99,7 +99,7 @@ var SignupLayer = cc.Layer.extend({
         Network.post({
             type: 'post',
             action: 'register',
-            args : "username="+username+"&password="+password,
+            args : {username: username, password: password},
             onSuccess : function(result) {
 
                 if (result.code === 200)
