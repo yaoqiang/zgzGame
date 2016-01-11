@@ -9,9 +9,7 @@ var GameController = GameController || {};
 GameController.join = function (roomId, lobbyId) {
     cc.log("GameController.join roomId:", roomId);
     gRoomId = roomId;
-    pomelo.request(route.getTaskGrant, {taskId: 100001}, function (data) {
-        console.log('###getTaskGrant => ', data);
-    });
+
     pomelo.request(route.join, {roomId: roomId}, function (data) {
         cc.log("join :", data);
         if (data.code == 200) {

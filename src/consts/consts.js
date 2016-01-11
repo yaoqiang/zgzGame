@@ -2,6 +2,10 @@
 
 
 var ERR_CODE = {
+    SYS: {
+        PARAMETER_ERR: 1,
+        SYS_ERR: 2
+    },
     JOIN: {
         IN_GAME: 1001,   //在其他牌桌
         TOO_POOR: 1002,
@@ -44,8 +48,32 @@ var ERR_CODE = {
         ALREADY_CANCELED_TRUSTEESHIP: 7003,
         NOT_GAMING: 7004,
         ERR: 7005
+    },
+    CHECK_IN: {
+        ALREADY_CHECK_IN: 8001,
+        ERR: 8002
+    },
+    BANKRUPTCY_GRANT: {
+        ALREADY_GRANT: 9001,
+        MORE_MONEY: 9002,
+        ERR: 9003
+    },
+    TASK_GRANT: {
+        ALREADY_GRANT: 9101,
+        ERR: 9102
+    },
+    EXCHANGE: {
+        YUANBAO_NOT_ENOUGH: 9201,
+        INVENTORY_NOT_ENOUGH: 9202,
+        ITEM_OFFLINE: 9203,
+        NOT_BLANK_MOBILE: 9204,
+        NOT_BLANK_CONTACT: 9205,
+        NOT_BLANK_ADDRESS: 9206,
+        INVALID_MOBILE: 9207,
+        ERR: 9208,
+        NEED_CUSTOMER: 9209
     }
-}
+};
 
 var ERR_MESSAGE = {
     getMessage: function (code) {
@@ -85,7 +113,27 @@ var ERR_MESSAGE = {
     7002: "您已托管成功",
     7003: "您不在托管状态",
     7004: "游戏还未开始, 无法托管",
-    7005: "系统错误, 请联系管理员"    //参数错误等
+    7005: "系统错误, 请联系管理员",    //参数错误等
+
+    8001: "玩家已签到",
+    8002: "签到失败",
+
+    9001: "已领取今日补助",
+    9002: "金币超出领取最低限制",
+    9003: "领取补助失败",
+
+    9101: "已领取任务奖励",
+    9102: "领取任务奖励失败",
+
+    9201: "元宝不足",
+    9202: "库存不足",
+    9203: "兑换物品已下线",
+    9204: "请填写手机号码",
+    9205: "请填写联系人",
+    9206: "请填写收件地址",
+    9207: "手机号码无效",
+    9208: "兑换失败",
+    9209: "兑换失败, 请联系客服"
 }
 
 
