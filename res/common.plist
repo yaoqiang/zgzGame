@@ -1031,6 +1031,32 @@
                 <key>sourceSize</key>
                 <string>{178,148}</string>
             </dict>
+            <key>white_line.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2044,50},{2,2}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{2,2}}</string>
+                <key>sourceSize</key>
+                <string>{2,2}</string>
+            </dict>
+            <key>yellowline.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2044,46},{2,2}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{2,2}}</string>
+                <key>sourceSize</key>
+                <string>{2,2}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -1041,7 +1067,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7982396cef3aa4d15881b1ab43a2129f:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:354cc5d3e6d1d924b4535b6f62dfb14c:1/1$</string>
             <key>textureFileName</key>
             <string>common.png</string>
         </dict>
