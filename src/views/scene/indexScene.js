@@ -122,10 +122,10 @@ var IndexLayer = cc.Layer.extend({
        // return true;
     },
     init:function () {
-        console.log("------->init");
+        console.log("---|---->init");
         var winSize = cc.director.getWinSize();
         this.addChild(new HornSprite());
-        this.addChild(new createIndexScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
+        this.addChild(createIndexScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
         //this.addChild(new createLobbyScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
         //this.addChild(new createLobbyTableLayer({width:winSize.width, height:300, x:0, y:0, cwidth:winSize.width-20, cheight:40}), 100);
     },
