@@ -42,7 +42,7 @@
         "src/views/template/eventQueue.js",
         "src/views/template/smallWidget.js",
 
-        "src/views/template/inboxTabLayer.js",
+        "src/views/template/profileTabLayer.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
