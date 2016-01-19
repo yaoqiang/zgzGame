@@ -65,5 +65,5 @@ var lobbyName = [
     "七人场"
 ];
 
-
+TAG_MENU = 100;
 
