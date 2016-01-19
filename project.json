@@ -31,8 +31,8 @@
 
 
         "src/views/template/headerLayer.js",
+        "src/views/template/hornLayer.js",
         "src/views/template/components.js",
-        "src/views/template/HelpLayer.js",
         "src/views/template/playerLayer.js",
         "src/views/template/modeStruct.js",
         "src/views/template/cueBox.js",
@@ -42,11 +42,14 @@
         "src/views/template/eventQueue.js",
         "src/views/template/smallWidget.js",
 
+        "src/views/template/inboxTabLayer.js",
+
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
         "src/views/scene/indexScene.js",
         "src/views/scene/lobbyScene.js",
         "src/views/scene/gameScene.js",
+        "src/views/scene/profileScene.js",
 
         "src/controllers/authController.js",
         "src/controllers/gameController.js",

@@ -108,8 +108,8 @@ var LobbyLayer = cc.Layer.extend({
     addMenu:function () {
         var winSize = cc.director.getWinSize();
         var back = new cc.MenuItemImage(
-            "#index_tanchu.png",
-            "#index_tanchu.png",
+            "#back_btn.png",
+            "#back_btn.png",
             function () {
                 var scene = new IndexScene();
                 cc.director.runScene(new cc.TransitionFade(1.2, scene));
