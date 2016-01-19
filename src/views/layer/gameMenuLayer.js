@@ -8,9 +8,9 @@ var GameMenuLayer = cc.Layer.extend({
     init:function(){
         var winSize = cc.director.getWinSize();
 
-        var backNormal = new cc.Sprite("#index_tanchu.png");
-        var backSelected = new cc.Sprite("#index_tanchu.png");
-        var backDisabled = new cc.Sprite("#index_tanchu.png");
+        var backNormal = new cc.Sprite("#back_btn.png");
+        var backSelected = new cc.Sprite("#back_btn.png");
+        var backDisabled = new cc.Sprite("#back_btn.png");
         var leaveButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackButton, this);
         leaveButton.scale = 0.4
         var menu = new cc.Menu(leaveButton);

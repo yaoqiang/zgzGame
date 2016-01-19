@@ -26,5 +26,7 @@ var route = {
     getRankingList: 'game.gameHandler.getRankingList',  //获取排行榜
 
     requestCharges: 'game.gameHandle.requestCharges',   //请求创建ping++的支付charge
-    sendPaymentResult: 'game.gameHandle.sendPaymentResult' //发送支付结果, for IAP
+    sendPaymentResult: 'game.gameHandle.sendPaymentResult', //发送支付结果, for IAP
+
+    getTopOfAppReleaseRecord: 'game.gameHandle.getTopOfAppReleaseRecord'    //获取最新发布的版本及信息
 }

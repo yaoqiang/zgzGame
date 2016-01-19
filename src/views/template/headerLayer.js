@@ -119,6 +119,8 @@ var HeaderLayer = cc.Layer.extend({
     
     profile: function () {
         console.log('profile clicked.');
+        var scene = new ProfileScene();
+        cc.director.runScene(new cc.TransitionSlideInT(2, scene));
     },
 
     /**
