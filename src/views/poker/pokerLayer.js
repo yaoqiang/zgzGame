@@ -638,7 +638,7 @@ var PokerLayer = cc.Layer.extend({
         var HoldingCards = data.gameStatus.currentHoldingCards;
         this.m_pSelfCardValueArray = HoldingCards;
         //HoldingCards = [18,113,212,112,111,410,310,109,408,105];
-        console.log("HoldingCards:", HoldingCards);
+        console.log("--->HoldingCards:", HoldingCards);
 
 
         var len;

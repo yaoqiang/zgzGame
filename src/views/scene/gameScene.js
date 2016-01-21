@@ -1,12 +1,12 @@
 var GameScene = cc.Scene.extend({
-    ctor: function (args) {
+    ctor: function (args, isBackGame) {
         this._super();
 
         cc.spriteFrameCache.addSpriteFrames(res.game_plist);
         cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
 
         gGameSenceCompleted = false;
-        var layer = new GameLayer(args);
+        var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
 
     }
@@ -15,14 +15,9 @@ var GameScene = cc.Scene.extend({
 
 var GameLayer = cc.Layer.extend({
     sprite: null,
-    ctor: function (args) {
-        console.log("GameLayer ctor : ", args);
+    ctor: function (args, isBackGame) {
         this._super();
         this.m_pData = args;
-        this.m_type = args.lobbyId;
-        this.base = args.base;
-        gLobbyId = args.lobbyId;
-        gGameId = args.gameId;
         this.m_pTableLayer = null;
         this.m_pPokerLayer = null;
         this.m_pGameNemu = null;
@@ -30,31 +25,114 @@ var GameLayer = cc.Layer.extend({
         this.m_pClock = null;
         this.m_pFanOutMenuLayer = null;
         this.m_pBidMenuLayer = null;
-
         this.trusteeshipMask = null;
 
-        this.initAcrorList(args.actors);
+        if(isBackGame){
+            var game = args.game;
+            var actors = args.actors;
+            var gameLogic = args.gameLogic;
 
-        this.init();
+            this.m_type = game.gameType;
+            this.base = game.base;
+            gLobbyId = game.lobbyId;
+            gGameId = game.gameId;
+            gRoomId = game.roomId;
+            this.initAcrorList(args.actors);
+            this.backGameInit(args);
+
+        }else{
+            this.m_type = args.gameType;
+            this.base = args.base;
+            gLobbyId = args.lobbyId;
+            gGameId = args.gameId;
+            this.initAcrorList(args.actors);
+            this.init();
+        }
+
+    },
+
+    backGameInit: function (args) {
+        //背景
+        this.addBg();
+        //房间底注
+        this.addBaseOdds();
+        this.addTrusteeshipMenu();
+        //创建牌桌
+        this.createTable();
+        //刷新玩家信息
+        this.updateActorHD();
+        //gamen nenu
+        this.addMenu();
+//处理托管玩家--头像
+
+
+//更新纸牌
+        var actors = args.actors;
+        var len = actors.length;
+        for (var i = 0; i < len; i++) {
+            var cards = actors[i].holdingCards;
+            if (cards.length > 0) {
+                break;
+            }
+        }
+        var self = args.actors[i];
+        var data = {actor:{gameStatus:{currentHoldingCards:self.holdingCards, append:self.append}}};
+        this.gameStartEvent(data);
+//////判断阶段
+        var gameLogic = args.gameLogic;
+        var currentFanActor = gameLogic.currentFanActor;
+        var currentTalker = gameLogic.currentTalker;
+        var currentPhase = gameLogic.currentPhase;
+        var lastFanActor = gameLogic.lastFanActor;
+        var lastFanCarRecongnization = gameLogic.lastFanCarRecongnization;
+        var share = gameLogic.share;
+
+        if(currentTalker.actorNr){
+            console.log("回到游戏，说话阶段");
+            this.talkCountdownEvent({actor: {actorNr:currentTalker.actorNr, uid:currentTalker.uid}, second: 15});
+        }else{
+            console.log("回到游戏，打牌阶段");
+        }
     },
 
     init: function () {
+        //背景
+        this.addBg();
+        //房间底注
+        this.addBaseOdds();
+        //喊话股数
+
+        //按钮操作区域（可做成工具tip弹出方式）
+        this.addTrusteeshipMenu();
+
+        //创建牌桌
+        this.createTable();
+        //刷新玩家信息
+        this.updateActorHD();
+        //gamen nenu
+        this.addMenu();
+        this.addReadyMenu();
+
+    },
+
+    addBg: function () {
         var winSize = cc.director.getWinSize();
         //牌桌
         var bg = new cc.Sprite("#common_bg_beijing.png");
         bg.setPosition(winSize.width / 2, winSize.height / 2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
-
-        //this.addChild(new HornSpriteForGame());
-
+    },
+    addBaseOdds: function () {
+        var winSize = cc.director.getWinSize();
         //房间底注
-        var baseLabel = new cc.LabelTTF("底注: "+this.base, "Arial", 32);
+        var baseLabel = new cc.LabelTTF("底注: " + this.base, "Arial", 32);
         baseLabel.color = cc.color.YELLOW;
         baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180);
         this.addChild(baseLabel);
-        //喊话股数
-
+    },
+    addTrusteeshipMenu: function () {
+        var winSize = cc.director.getWinSize();
         //按钮操作区域（可做成工具tip弹出方式）
         var sTrusteeship = new cc.MenuItemSprite(
             new cc.Sprite("#game_icon_jiqiren_1.png"),
@@ -66,9 +144,9 @@ var GameLayer = cc.Layer.extend({
         trusteeshipMenu.setPosition(winSize.width / 2 + 220, winSize.height / 2 + 80);
         trusteeshipMenu.scale = 0.7
         this.addChild(trusteeshipMenu, 99);
-
-        //其他玩家
-        switch (this.m_type) {
+    },
+    createTable: function () {
+       switch (this.m_type) {
             case ZGZ.GAME_TYPE.T1:
                 this.m_pTableLayer = new FivePeopleTableLayer();
                 this.addChild(this.m_pTableLayer);
@@ -80,19 +158,7 @@ var GameLayer = cc.Layer.extend({
                 break;
         }
         this.addPokerLayer(this.m_pTableLayer);
-        //刷新玩家信息
-        this.updateActorHD();
-        //gamen nenu
-        this.addMenu();
-        this.addReadyMenu();
-
-        //var card = new PokerCard({cardPoint:10, cardFace:4, cardSize:PokerCard_enum.kCCCardSizeLarge});
-        //card.x = winSize.width/2-70;
-        //card.y = winSize.height/2;
-        //this.addChild(card);
-
     },
-
     addMenu: function () {
         this.m_pGameNemu = new GameMenuLayer();
         this.addChild(this.m_pGameNemu);
@@ -351,7 +417,7 @@ var GameLayer = cc.Layer.extend({
 
     gameStartEvent: function (data) {
         console.log("gameStartEvent :");
-        //console.log(data.actor);
+        console.log(data);
         gGameState = ZGZ.GAME_STATE.TALK;
         if (this.m_pPokerLayer) {
             this.m_pPokerLayer.clearSelectedWillOutCards();
