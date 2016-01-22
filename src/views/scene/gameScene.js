@@ -64,11 +64,15 @@ var GameLayer = cc.Layer.extend({
         //gamen nenu
         this.addMenu();
 //处理托管玩家--头像
-
-
-//更新纸牌
         var actors = args.actors;
         var len = actors.length;
+        for (var i = 0; i < len; i++) {
+            if(actors[i].isTrusteeship){
+                this.trusteeshipEvent({actor:{actorNr:actors[i].actorNr, uid:actors[i].uid}});
+            }
+        }
+
+//更新纸牌
         for (var i = 0; i < len; i++) {
             var cards = actors[i].holdingCards;
             if (cards.length > 0) {
@@ -76,6 +80,10 @@ var GameLayer = cc.Layer.extend({
             }
         }
         var self = args.actors[i];
+        gActor.actorNr = self.actorNr;
+        gActor.uid = self.uid;
+        gActor.cards = self.holdingCards;
+
         var data = {actor:{gameStatus:{currentHoldingCards:self.holdingCards, append:self.append}}};
         this.gameStartEvent(data);
 //////判断阶段
@@ -84,7 +92,7 @@ var GameLayer = cc.Layer.extend({
         var currentTalker = gameLogic.currentTalker;
         var currentPhase = gameLogic.currentPhase;
         var lastFanActor = gameLogic.lastFanActor;
-        var lastFanCarRecongnization = gameLogic.lastFanCarRecongnization;
+        var lastFanCardRecongnization = gameLogic.lastFanCardRecognization;
         var share = gameLogic.share;
 
         if(currentTalker.actorNr){
@@ -92,7 +100,23 @@ var GameLayer = cc.Layer.extend({
             this.talkCountdownEvent({actor: {actorNr:currentTalker.actorNr, uid:currentTalker.uid}, second: 15});
         }else{
             console.log("回到游戏，打牌阶段");
+            this.fanOutEvent({actorNr:lastFanActor.actorNr, uid:lastFanActor.uid, cards:lastFanCardRecongnization.originalCard});
+
+            var actor = {actorNr:currentFanActor.actorNr, uid:currentFanActor.uid};
+            var isBoss = false;
+            var second = 15;
+            gActor.isBoss = isBoss;
+            gLastFanCardRecognization = lastFanCardRecongnization.originalCard;
+            this.fanCountdownEvent({actor:actor, isBoss:isBoss, second:second});
         }
+//谷子 倍数
+        var actors = args.actors;
+        var len = actors.length;
+        for (var i = 0; i < len; i++) {
+            this.talkEvent({actorNr:actors[i].actorNr, uid:actors[i].uid, append:actors[i].append, share:share, goal:share});
+        }
+
+
     },
 
     init: function () {
