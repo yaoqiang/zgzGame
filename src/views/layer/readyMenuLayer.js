@@ -12,14 +12,14 @@ var ReadyMenuLayer = cc.Layer.extend({
         var readySelected = new cc.Sprite("#common_btn_huang.png");
         var readyDisabled = new cc.Sprite("#common_btn_huang.png");
         var readyButton = new cc.MenuItemSprite(readyNormal, readySelected, readyDisabled, this.onReadyButton, this);
-        readyButton.setPosition(winSize.width/2, winSize.height/2);
+        readyButton.setPosition(winSize.width/2, winSize.height/2 - 50);
         var butsize  = readyButton.getContentSize();
         var readyStr = new cc.LabelTTF("准备", "Arial", 30);
         //readyStr.color = cc.color.BLUE;
         readyStr.setPosition(butsize.width/2, butsize.height/2);
         readyButton.addChild(readyStr);
 
-        readyButton.scale = 0.5
+        readyButton.scale = 0.8
 
         var menu = new cc.Menu(readyButton);
         menu.setPosition(0,0);

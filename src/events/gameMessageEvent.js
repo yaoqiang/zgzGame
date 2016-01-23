@@ -76,7 +76,7 @@ pomelo.on(gameEvents.AFTER_TALK, function (data) {
  * 出牌倒计时，
  */
 pomelo.on(gameEvents.FAN_COUNTDOWN, function (data) {
-    console.log('receive onFanCountdown event -> ', data);
+    //console.log('receive onFanCountdown event -> ', data);
     gActor.isBoss = data.isBoss;
 
     //如果当前出牌玩家是上回合BOSS，则禁用或不显示“不出”按钮
@@ -97,7 +97,7 @@ pomelo.on(gameEvents.FAN_COUNTDOWN, function (data) {
  * 出牌消息，出牌者出牌时发送给其他玩家接受的消息；当前出牌者通过request/response得到出牌响应(gameController.fan)
  */
 pomelo.on(gameEvents.FAN, function (data) {
-    console.log('receive onFan event -> ', data);
+    //console.log('receive onFan event -> ', data);
     //如果有出牌，则设置全局变量上手牌型
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;
@@ -164,7 +164,7 @@ pomelo.on(gameEvents.FAN_WHEN_IS_RED, function (data) {
     }
  */
 pomelo.on(gameEvents.FAN_FINISHED, function (data) {
-    console.log('receive onFanFinished event.');
+    console.log('receive onFanFinished event.', data);
     //cc.eventManager.dispatchCustomEvent("fanFinishedEvent", data);
     EventQueue.dispatchCustomEvent("fanFinishedEvent", data);
 });

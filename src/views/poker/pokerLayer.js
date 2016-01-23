@@ -635,18 +635,18 @@ var PokerLayer = cc.Layer.extend({
         //console.log("actor:", data);
         //console.log("properties:", data.properties);
         //console.log("gameStatus:", data.gameStatus);
-        var HoldingCards = data.gameStatus.currentHoldingCards;
-        this.m_pSelfCardValueArray = HoldingCards;
-        //HoldingCards = [18,113,212,112,111,410,310,109,408,105];
-        //console.log("--->HoldingCards:", HoldingCards);
+        var holdingCards = data.gameStatus.currentHoldingCards;
+        this.m_pSelfCardValueArray = holdingCards;
+        //holdingCards = [18,113,212,112,111,410,310,109,408,105];
+        //console.log("--->HoldingCards:", holdingCards);
 
 
         var len;
 
         this.clearCards();
-        len = HoldingCards.length;
+        len = holdingCards.length;
         for (var i = 0; i < len; i++) {
-            var card = HoldingCards[i];
+            var card = holdingCards[i];
             if (card > 0) {
                 this.insertSelfCard(card);
             }

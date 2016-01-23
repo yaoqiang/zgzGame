@@ -314,7 +314,7 @@ var PlayerLayer = cc.Layer.extend({
     },
 
     /**
-     * 当初完牌后，设置名次
+     * 当出完牌后，设置本局名次
      * @param rank
      * @param visible
      */

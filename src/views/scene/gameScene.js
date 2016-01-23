@@ -27,7 +27,7 @@ var GameLayer = cc.Layer.extend({
         this.m_pBidMenuLayer = null;
         this.trusteeshipMask = null;
 
-        if(isBackGame){
+        if (isBackGame) {
             var game = args.game;
             var actors = args.actors;
             var gameLogic = args.gameLogic;
@@ -37,15 +37,15 @@ var GameLayer = cc.Layer.extend({
             gLobbyId = game.lobbyId;
             gGameId = game.gameId;
             gRoomId = game.roomId;
-            this.initAcrorList(args.actors);
+            this.initActorList(args.actors);
             this.backGameInit(args);
 
-        }else{
+        } else {
             this.m_type = args.gameType;
             this.base = args.base;
             gLobbyId = args.lobbyId;
             gGameId = args.gameId;
-            this.initAcrorList(args.actors);
+            this.initActorList(args.actors);
             this.init();
         }
 
@@ -63,28 +63,23 @@ var GameLayer = cc.Layer.extend({
         this.updateActorHD();
         //gamen nenu
         this.addMenu();
-//处理托管玩家--头像
-        var actors = args.actors;
-        var len = actors.length;
-        for (var i = 0; i < len; i++) {
-            if(actors[i].isTrusteeship){
-                this.trusteeshipEvent({actor:{actorNr:actors[i].actorNr, uid:actors[i].uid}});
-            }
-        }
+
 
 //更新纸牌
-        for (var i = 0; i < len; i++) {
-            var cards = actors[i].currentHoldingCards;
-            if (cards.length > 0) {
-                break;
-            }
-        }
-        var self = args.actors[i];
+//        for (var i = 0; i < len; i++) {
+//            var cards = actors[i].currentHoldingCards;
+//            if (cards.length > 0) {
+//                break;
+//            }
+//        }
+        var selfIndex = _.findIndex(args.actors, {uid: gPlayer.uid});
+        var self = args.actors[selfIndex];
         gActor.actorNr = self.actorNr;
         gActor.uid = self.uid;
         gActor.cards = self.currentHoldingCards;
 
-        var data = {actor:{gameStatus:{currentHoldingCards:self.currentHoldingCards, append:self.append}}};
+        var state = args.gameLogic.currentPhase == 1 ? ZGZ.GAME_STATE.TALK : ZGZ.GAME_STATE.PLAY;
+        var data = {actor: {gameStatus: {currentHoldingCards: self.currentHoldingCards, append: self.append}}, state: state};
         this.gameStartEvent(data);
 //////判断阶段
         var gameLogic = args.gameLogic;
@@ -95,27 +90,60 @@ var GameLayer = cc.Layer.extend({
         var lastFanCardRecongnization = gameLogic.lastFanCardRecognization;
         var share = gameLogic.share;
 
-        if(currentTalker.actorNr){
-            console.log("-----------------回到游戏，说话阶段-------------");
-            this.talkCountdownEvent({actor: {actorNr:currentTalker.actorNr, uid:currentTalker.uid}, second: 15});
-        }else{
-            console.log("回到游戏，打牌阶段");
-            this.fanOutEvent({actorNr:lastFanActor.actorNr, uid:lastFanActor.uid, cards:lastFanCardRecongnization.originalCard});
+        //
+        if (state == ZGZ.GAME_STATE.TALK) {
+            console.log("-----------------回到游戏，说话阶段-----------------");
+            this.talkCountdownEvent({actor: {actorNr: currentTalker.actorNr, uid: currentTalker.uid}, second: 15});
+        } else {
+            console.log("-----------------回到游戏，打牌阶段-----------------");
+            this.fanOutEvent({
+                actorNr: lastFanActor.actorNr,
+                uid: lastFanActor.uid,
+                cards: lastFanCardRecongnization.originalCard
+            });
 
-            var actor = {actorNr:currentFanActor.actorNr, uid:currentFanActor.uid};
+            var actor = {actorNr: currentFanActor.actorNr, uid: currentFanActor.uid};
             var isBoss = false;
             var second = 15;
             gActor.isBoss = isBoss;
             gLastFanCardRecognization = lastFanCardRecongnization.originalCard;
-            this.fanCountdownEvent({actor:actor, isBoss:isBoss, second:second});
+            this.fanCountdownEvent({actor: actor, isBoss: isBoss, second: second});
         }
-//谷子 倍数
+        //处理说话显示和牌局名次
+        var actors = args.actors;
+        var len = actors.length;
+        if (state == ZGZ.GAME_STATE.PLAY) {
+            for (var i = 0; i < len; i++) {
+                //说话情况
+                this.talkEvent({
+                    actorNr: actors[i].actorNr,
+                    uid: actors[i].uid,
+                    append: actors[i].append,
+                    share: share,
+                    goal: actors[i].identity
+                });
+                //牌局名次
+                if (!!actors[i].rank) {
+                    this.fanFinishedEvent({
+                        actor: {
+                            actorNr: actors[i].actorNr,
+                            rank: actors[i].rank,
+                            identity: actors[i].identity
+                        }
+                    })
+                }
+
+            }
+        }
+
+        //处理托管玩家--头像, 放到最后, 否则如果玩家托管, 托管层会遮挡其他元素
         var actors = args.actors;
         var len = actors.length;
         for (var i = 0; i < len; i++) {
-            this.talkEvent({actorNr:actors[i].actorNr, uid:actors[i].uid, append:actors[i].append, share:share, goal:share});
+            if (actors[i].isTrusteeship) {
+                this.trusteeshipEvent({actor: {actorNr: actors[i].actorNr, uid: actors[i].uid}});
+            }
         }
-
 
     },
 
@@ -133,7 +161,7 @@ var GameLayer = cc.Layer.extend({
         this.createTable();
         //刷新玩家信息
         this.updateActorHD();
-        //gamen nenu
+        //game menu
         this.addMenu();
         this.addReadyMenu();
 
@@ -170,7 +198,7 @@ var GameLayer = cc.Layer.extend({
         this.addChild(trusteeshipMenu, 99);
     },
     createTable: function () {
-       switch (this.m_type) {
+        switch (this.m_type) {
             case ZGZ.GAME_TYPE.T1:
                 this.m_pTableLayer = new FivePeopleTableLayer();
                 this.addChild(this.m_pTableLayer);
@@ -235,7 +263,7 @@ var GameLayer = cc.Layer.extend({
         }
     },
 //把join得到的actor数组重新整理，生成actor结构，push到
-    initAcrorList: function (actorArray) {
+    initActorList: function (actorArray) {
         this.m_actorList = [];
 
         var len = actorArray.length;
@@ -438,7 +466,8 @@ var GameLayer = cc.Layer.extend({
     gameStartEvent: function (data) {
         //console.log("gameStartEvent :");
         //console.log(data);
-        gGameState = ZGZ.GAME_STATE.TALK;
+        gGameState = data.state || ZGZ.GAME_STATE.TALK;
+
         if (this.m_pPokerLayer) {
             this.m_pPokerLayer.clearSelectedWillOutCards();
             this.m_pPokerLayer.gameStart(data.actor);
@@ -510,7 +539,10 @@ var GameLayer = cc.Layer.extend({
             this.m_pTableLayer.stopClock();
         }
         this.updateShare(share);
-        this.sayForTalk({goal: goal, append: append, actorNr: actorNr});
+        //如果是说话环节, 显示说话气泡; 因重回游戏也调用此函数
+        if (gGameState == ZGZ.GAME_STATE.TALK) {
+            this.sayForTalk({goal: goal, append: append, actorNr: actorNr});
+        }
     },
 
     afterTalk: function (data) {
@@ -579,7 +611,7 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pPokerLayer) {
             if (data.isBoss) {
                 this.m_pPokerLayer.hideAllActorFanOutCards();
-            }else{
+            } else {
                 this.m_pPokerLayer.hideFanOutCards(data.actor.actorNr);
             }
         }
@@ -609,7 +641,7 @@ var GameLayer = cc.Layer.extend({
         var actor = data.actor;
         this.m_pTableLayer.trusteeshipEvent(actor.actorNr);
         if (actor.uid == gPlayer.uid) {
-            if(this.trusteeshipMask == null){
+            if (this.trusteeshipMask == null) {
                 this.trusteeshipMask = new MaskLayer(true);
                 var sCancelTrusteeship = new cc.MenuItemSprite(
                     new cc.Sprite("#game_btn_quxiaotuoguan.png"),
@@ -657,17 +689,15 @@ var GameLayer = cc.Layer.extend({
         this.removeFanOutMenu();
         this.cancelReadyWhenOver();
 
-        if (this.m_pPokerLayer)
-        {
+        if (this.m_pPokerLayer) {
             this.m_pPokerLayer.clearCards();
         }
 
-        if (this.m_pTableLayer)
-        {
+        if (this.m_pTableLayer) {
             this.m_pTableLayer.stopClock();
         }
 
-        if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)){
+        if (this.trusteeshipMask && cc.sys.isObjectValid(this.trusteeshipMask)) {
             this.trusteeshipMask.removeFromParent(true);
             this.trusteeshipMask = null;
         }
@@ -682,7 +712,7 @@ var GameLayer = cc.Layer.extend({
                 leave: function () {
                     GameController.leave(gRoomId);
                 }
-        });
+            });
         this.addChild(this.balanceLayer);
     },
 
@@ -718,27 +748,27 @@ var GameLayer = cc.Layer.extend({
      */
     talkResponse: function (data) {
         /*
-        cc.log("----------------->TalkResponse:", data);
-        var code = data.code;
-        if (code == 500) {
-            cc.log("----> talk fail");
-            return;
-        }
+         cc.log("----------------->TalkResponse:", data);
+         var code = data.code;
+         if (code == 500) {
+         cc.log("----> talk fail");
+         return;
+         }
 
-        var goal = data.goal;
-        var append = data.append;
-        var share = data.share;
+         var goal = data.goal;
+         var append = data.append;
+         var share = data.share;
 
-        this.removeBidMenu();
+         this.removeBidMenu();
 
-        this.recognitionIdentityWithNr(goal, append, gActor.actorNr);
-        this.sayForTalk({goal: goal, append: append, actorNr: gActor.actorNr});
+         this.recognitionIdentityWithNr(goal, append, gActor.actorNr);
+         this.sayForTalk({goal: goal, append: append, actorNr: gActor.actorNr});
 
-        if (this.m_pTableLayer) {
-            this.m_pTableLayer.stopClock();
-        }
-        this.updateShare(share);
-        */
+         if (this.m_pTableLayer) {
+         this.m_pTableLayer.stopClock();
+         }
+         this.updateShare(share);
+         */
     },
 
     /**
@@ -858,8 +888,6 @@ var GameLayer = cc.Layer.extend({
             //cc.log("---->game  cancelTrusteeshipEvent: ", event._userData);
             selfPointer.cancelTrusteeshipEvent(event._userData);
         });
-
-
 
 
         //response
