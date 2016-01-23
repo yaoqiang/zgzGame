@@ -212,7 +212,7 @@ var LobbyLayer = cc.Layer.extend({
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
-                console.log("Touch Up");
+                //console.log("Touch Up");
                 GameController.join(sender.room.id);
                 break;
 

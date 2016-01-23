@@ -35,7 +35,7 @@ var PersonTalk = cc.Node.extend({
         if(this.m_direction == SHOW_MODE.LEFT){
             bgImage = "game_qipao03_2.png";
         }
-        console.log("-------->bgImage:", bgImage);
+        //console.log("-------->bgImage:", bgImage);
         this.m_pBg = new cc.Scale9Sprite(bgImage, cc.rect(10, 10, 4, 4));
         if(this.m_pBg){
             this.m_pBg.width = labelSize.width>48-offect*2? labelSize.width+offect*2 : 48;
@@ -50,7 +50,7 @@ var PersonTalk = cc.Node.extend({
             }
             this.m_pBg.opacity = 100;
             this.addChild(this.m_pBg, 0);
-            console.log("-------->m_pBg:");
+            //console.log("-------->m_pBg:");
         }
 
         this.scheduleOnce(this.updateTime, this.m_time);

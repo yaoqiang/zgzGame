@@ -122,7 +122,7 @@ var IndexLayer = cc.Layer.extend({
        // return true;
     },
     init:function () {
-        console.log("---|---->init");
+        //console.log("---|---->init");
         var winSize = cc.director.getWinSize();
         this.addChild(new HornSprite());
         this.addChild(createIndexScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);

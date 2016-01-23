@@ -6,7 +6,7 @@ var CueBox = cc.Layer.extend({
     },
 
     init:function(args){
-        console.log(args);
+        //console.log(args);
         var winSize = cc.director.getWinSize();
 
         this.m_note = args.note;
@@ -39,7 +39,7 @@ var CueBox = cc.Layer.extend({
         bg.y = winSize.height/2;
         this.addChild(bg);
         if(bg){
-            console.log("----->bg  " + winSize.width + "   " +  winSize.height);
+            //console.log("----->bg  " + winSize.width + "   " +  winSize.height);
         }
 
         this.m_label = new cc.LabelTTF(this.m_note, "Arial", 24);
@@ -64,12 +64,12 @@ var CueBox = cc.Layer.extend({
         var itemOk = null;
         var itemCancel = null;
         if(isOk){
-            console.log("noteLayer isOk");
+            //console.log("noteLayer isOk");
             itemOk = new cc.MenuItemImage(res.buttonN, res.buttonS, this.onOkCallback, this);
             this.m_menu.addChild(itemOk);
         }
         if(isCancel){
-            console.log("noteLayer isCancel");
+            //console.log("noteLayer isCancel");
             itemCancel = new cc.MenuItemImage(res.buttonN, res.buttonS, this.onCancelCallback, this);
             this.m_menu.addChild(itemCancel);
         }
@@ -93,14 +93,14 @@ var CueBox = cc.Layer.extend({
     },
 
     onOkCallback:function () {
-        console.log("noteLayer onOkCallback");
+        //console.log("noteLayer onOkCallback");
         if (this.m_targe && cc.isFunction(this.m_okCallBack)) {
             this.m_okCallBack.call(this.m_targe, this)
         }
         this.removeFromParent(true);
     },
     onCancelCallback:function () {
-        console.log("noteLayer onCancelCallback");
+        //console.log("noteLayer onCancelCallback");
         if (this.m_targe && cc.isFunction(this.m_cancelCallBack)) {
             this.m_cancelCallBack.call(this.m_targe, this)
         }
@@ -108,7 +108,7 @@ var CueBox = cc.Layer.extend({
     },
 
     onExitCallback:function () {
-        console.log("noteLayer onExitCallback");
+        //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     },
 
@@ -117,7 +117,7 @@ var CueBox = cc.Layer.extend({
     },
 
     onEnter: function() {
-        console.log("NoteLayer onEnter");
+        //console.log("NoteLayer onEnter");
         this._super();
         this._touchListener = cc.EventListener.create({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -131,7 +131,7 @@ var CueBox = cc.Layer.extend({
     },
 
     onExit: function() {
-        console.log("NoteLayer onExit");
+        //console.log("NoteLayer onExit");
         this._super();
         cc.eventManager.removeListener(this._touchListener);
     },

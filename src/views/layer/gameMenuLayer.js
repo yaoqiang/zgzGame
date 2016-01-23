@@ -1,6 +1,6 @@
 var GameMenuLayer = cc.Layer.extend({
     ctor: function(){
-        console.log('GameMenuLayer ctor');
+        //console.log('GameMenuLayer ctor');
         this._super();
         this.init();
 
@@ -20,17 +20,17 @@ var GameMenuLayer = cc.Layer.extend({
     },
 
     onBackButton:function(){
-        console.log("GameMenuLayer onBackButton:" + gRoomId);
+        //console.log("GameMenuLayer onBackButton:" + gRoomId);
         GameController.leave(gRoomId);
     },
     onEnter:function(){
         this._super();
-        console.log("GameMenuLayer onEnter");
+        //console.log("GameMenuLayer onEnter");
     },
 
     onExit:function(){
         this._super();
-        console.log("GameMenuLayer onExit");
+        //console.log("GameMenuLayer onExit");
     }
 
 })

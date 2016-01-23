@@ -104,7 +104,7 @@ var SignupLayer = cc.Layer.extend({
 
                 if (result.code === 200)
                 {
-                    console.log('注册成功');
+                    //console.log('注册成功');
 
                     prompt.fade('您已成功注册，请使用您的账号登录');
 
@@ -112,14 +112,14 @@ var SignupLayer = cc.Layer.extend({
                 }
                 else
                 {
-                    console.log('用户名已存在');
+                    //console.log('用户名已存在');
                     prompt.fade('用户名已存在，请更换其他用户名');
                 }
 
             },
 
             onError : function() {
-                console.log("error");
+                //console.log("error");
             }
         });
 

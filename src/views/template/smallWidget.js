@@ -8,12 +8,12 @@ var loadingNode = cc.Node.extend({
     },
     onEnter:function(){
         this._super();
-        console.log("loadingNode onEnter");
+        //console.log("loadingNode onEnter");
 
     },
     onExit:function(){
         this._super();
-        console.log("loadingNode onEnter");
+        //console.log("loadingNode onEnter");
 
     },
 
@@ -69,13 +69,13 @@ var AlertBoxNode = cc.Node.extend({
     },
     onEnter:function(){
         this._super();
-        console.log("AlertBoxNode onEnter");
+        //console.log("AlertBoxNode onEnter");
         //cc.spriteFrameCache.addSpriteFrames(res.common_plist);
     },
     onExit:function(){
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
         this._super();
-        console.log("AlertBoxNode onEnter");
+        //console.log("AlertBoxNode onEnter");
     },
 
     init:function(args){
@@ -130,14 +130,14 @@ var AlertBoxNode = cc.Node.extend({
 
     },
     onOkCallback:function () {
-        console.log("noteLayer onOkCallback");
+        //console.log("noteLayer onOkCallback");
         if (this.m_targe && cc.isFunction(this.m_callback)) {
             this.m_callback.call(this.m_targe, this)
         }
         this.removeFromParent(true);
     },
     onExitCallback:function () {
-        console.log("noteLayer onExitCallback");
+        //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }
 });

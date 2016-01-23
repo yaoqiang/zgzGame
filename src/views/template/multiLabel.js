@@ -25,7 +25,7 @@ var CustomTableViewCell = cc.TableViewCell.extend({
 var MultiLabel = cc.Layer.extend({
 
     ctor: function(args){
-        console.log(args);
+        //console.log(args);
         this._super();
         this.m_List = [];
 
@@ -65,7 +65,7 @@ var MultiLabel = cc.Layer.extend({
     },
 
     analyze:function(content){
-        console.log("analyze begin");
+        //console.log("analyze begin");
         var winSize = cc.director.getWinSize();
         var len = content.length;
 
@@ -101,7 +101,7 @@ var MultiLabel = cc.Layer.extend({
                 var one = textTable[j];
                 while(true){
                     var labelStr = one.substr(p+idx, 1);
-                    console.log("labelStr: " + labelStr);
+                    //console.log("labelStr: " + labelStr);
                     if(labelStr == null || labelStr == ""){
 
                         p  = 0;
@@ -147,8 +147,8 @@ var MultiLabel = cc.Layer.extend({
                 }
             }
         }
-        console.log("analyze end");
-        console.log(this.m_List);
+        //console.log("analyze end");
+        //console.log(this.m_List);
     },
 
 
@@ -160,7 +160,7 @@ var MultiLabel = cc.Layer.extend({
     },
 
     tableCellTouched:function (table, cell) {
-        cc.log("cell touched at index: " + cell.getIdx());
+        //cc.log("cell touched at index: " + cell.getIdx());
     },
 
     tableCellSizeForIndex:function (table, idx) {
@@ -220,7 +220,7 @@ var MultiLabel = cc.Layer.extend({
     },
 
     onEnter: function() {
-        console.log("MultiLabel onEnter");
+        //console.log("MultiLabel onEnter");
         this._super();
         this._touchListener = cc.EventListener.create({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -234,7 +234,7 @@ var MultiLabel = cc.Layer.extend({
     },
 
     onExit: function() {
-        console.log("MultiLabel onExit");
+        //console.log("MultiLabel onExit");
         this._super();
         cc.eventManager.removeListener(this._touchListener);
     },
@@ -242,7 +242,7 @@ var MultiLabel = cc.Layer.extend({
     onTouchBegan:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        cc.log("MultiLabel onTouchBegan at: " + pos.x + " " + pos.y);
+        //cc.log("MultiLabel onTouchBegan at: " + pos.x + " " + pos.y);
         var winSize = cc.director.getWinSize();
         if( pos.x < winSize.width/2) {
 
@@ -253,19 +253,19 @@ var MultiLabel = cc.Layer.extend({
     onTouchMoved:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        cc.log("MultiLabel onTouchMoved");
+        //cc.log("MultiLabel onTouchMoved");
         //event.getCurrentTarget().update_id(id,pos);
     },
     onTouchEnded:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        cc.log("MultiLabel onTouchEnded at: " + pos.x + " " + pos.y);
+        //cc.log("MultiLabel onTouchEnded at: " + pos.x + " " + pos.y);
         //event.getCurrentTarget().release_id(id,pos);
     },
     onTouchCancelled:function(touch, event) {
         var pos = touch.getLocation();
         var id = touch.getID();
-        cc.log("MultiLabel onTouchCancelled");
+        //cc.log("MultiLabel onTouchCancelled");
         //event.getCurrentTarget().update_id(id,pos);
     }
 

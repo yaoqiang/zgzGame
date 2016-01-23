@@ -47,7 +47,7 @@ var PokerCard = cc.Node.extend({
     },
 
     updatePokerImage:function(){
-        console.log("PokerCard updatePokerImage begin");
+        //console.log("PokerCard updatePokerImage begin");
         if(0 == this.state){
             this.state = 1;
             var pading = 5;
@@ -196,7 +196,7 @@ var PokerCard = cc.Node.extend({
             }
 
         }
-        console.log("PokerCard updatePokerImage end");
+        //console.log("PokerCard updatePokerImage end");
     },
 
     setCardPointImageScale:function(scale){
@@ -281,14 +281,14 @@ var PokerCard = cc.Node.extend({
 
     onEnter:function(){
         this._super();
-        console.log("PokerCard onEnter");
+        //console.log("PokerCard onEnter");
 
         this.updatePokerImage();
     },
 
     onExit:function(){
         this._super();
-        console.log("PokerCard onExit");
+        //console.log("PokerCard onExit");
     }
 
 })

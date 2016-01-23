@@ -132,11 +132,11 @@ var PlayerLayer = cc.Layer.extend({
         var x = 16;
         var y = 0;
         var len = array.length;
-        console.log("----->showIdentity array.length:", len);
+        //console.log("----->showIdentity array.length:", len);
         for(var i=0; i< len; i++){
             var cardFace = parseInt(array[i] / 100);
             var cardPoint = array[i] % 100;
-            console.log("----->showIdentity cardFace:", cardFace, "      cardPoint:", cardPoint);
+            //console.log("----->showIdentity cardFace:", cardFace, "      cardPoint:", cardPoint);
             var bigFaceBuf = null;
             if (cardFace == PokerCard_enum.kCCCardFaceClub && cardPoint == 16){
                     bigFaceBuf = "#Card_Flower_black_1.png" ; //4
@@ -147,7 +147,7 @@ var PlayerLayer = cc.Layer.extend({
             }else if (cardFace == PokerCard_enum.kCCCardFaceSpade && cardPoint == 16){
                     bigFaceBuf = "#Card_hearts_black_1.png" ;  //  3
             }
-            console.log("----->showIdentity bigFaceBuf:", bigFaceBuf);
+            //console.log("----->showIdentity bigFaceBuf:", bigFaceBuf);
             if(bigFaceBuf){
                 var identityImage = new cc.Sprite(bigFaceBuf);
                 if(identityImage) {
@@ -159,7 +159,7 @@ var PlayerLayer = cc.Layer.extend({
                     this.m_pAvatarBg.addChild(identityImage, 1);
                     this.m_pIdentityArray.push(identityImage);
                 }else{
-                    console.log("----->没创建成功", bigFaceBuf);
+                    //console.log("----->没创建成功", bigFaceBuf);
                 }
 
             }
@@ -211,8 +211,8 @@ var PlayerLayer = cc.Layer.extend({
     },
 
     updata: function (args) {
-        console.log("PlayerLayer updata");
-        console.log(args);
+        //console.log("PlayerLayer updata");
+        //console.log(args);
         var properties = args.m_properties;
 
         this.m_uid = args.m_uid;
@@ -230,7 +230,7 @@ var PlayerLayer = cc.Layer.extend({
     showActorPhoto:function(){
         if(this.m_avatar != -1){
             var image = utils.getAvatar(this.m_avatar);
-            console.log(image);
+            //console.log(image);
             if(this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
                 this.removeChild(this.m_pPhoto);
             }

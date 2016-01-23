@@ -59,13 +59,13 @@ var Clock = cc.Node.extend({
 
     onEnter:function(){
         this._super();
-        console.log("Clock onEnter");
+        //console.log("Clock onEnter");
 
     },
 
     onExit:function(){
         this._super();
-        console.log("Clock onEnter");
+        //console.log("Clock onEnter");
 
     }
 

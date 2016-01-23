@@ -126,25 +126,25 @@
     },
 
     onTishiButton:function(){
-        console.log("提示");
+        //console.log("提示");
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
-            console.log("fanout tishi");
+            //console.log("fanout tishi");
             this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_Hint);
         }
     },
 
     onChupaiButton:function(){
-        console.log("出牌");
+        //console.log("出牌");
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
-            console.log("fanout chupai");
+            //console.log("fanout chupai");
             this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_FanOut);
         }
     },
 
     onBuchuButton:function(){
-        console.log("不出");
+        //console.log("不出");
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
-            console.log("fanout buchu");
+            //console.log("fanout buchu");
             this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_Pass);
         }
     },
@@ -167,7 +167,7 @@
 
             case FanOutMenuBtn.kCCFanOutMenu_Pass:
                 this.m_pButtonPass.setTouchEnabled(isEnabled);
-                console.log("FanOutMenuBtn.kCCFanOutMenu_Pass: ", isEnabled);
+                //console.log("FanOutMenuBtn.kCCFanOutMenu_Pass: ", isEnabled);
                 break;
         }
 

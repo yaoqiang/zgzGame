@@ -260,7 +260,7 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
     //如果是炸弹(3张相同牌）、如果是四轮车：炸弹和四轮车比较逻辑一样
     if (cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_3 || cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_4)
     {
-        console.log('cards reg => ', cr1.cardSeries, cr2.cardSeries)
+        //console.log('cards reg => ', cr1.cardSeries, cr2.cardSeries)
         //如果上手牌型是比当前牌型大，返回false
         if (cr2.cardSeries > cr1.cardSeries)
         {

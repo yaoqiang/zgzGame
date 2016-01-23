@@ -127,7 +127,7 @@ var HeaderLayer = cc.Layer.extend({
      * When click the help button(?) on right side of top screen.
      */
     onHelpButton:function(){
-        console.log('help.')
+        //console.log('help.')
 
 
 

@@ -1,7 +1,7 @@
 var PokerLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
-        cc.log("---->PokerLayer:ctor");
+        //cc.log("---->PokerLayer:ctor");
 //类变量
         this.m_pActorHDList = null;
         this.m_pTable = null;
@@ -56,7 +56,7 @@ var PokerLayer = cc.Layer.extend({
 
     init: function () {
         this._super();
-        cc.log("---->PokerLayer:init");
+        //cc.log("---->PokerLayer:init");
         var winSize = cc.director.getWinSize();
 
 
@@ -69,7 +69,7 @@ var PokerLayer = cc.Layer.extend({
         if (len == 0) return;
 
         var showP = this.m_pTable.showCardPosition(actorNr);//获取显示起始位置、显示方式（靠左、靠右、居中）
-        console.log("showFanOutCards:", showP);
+        //console.log("showFanOutCards:", showP);
         var x = showP.x;
         var y = showP.y;
         var space = 25;
@@ -129,7 +129,7 @@ var PokerLayer = cc.Layer.extend({
 
     showFanOutMenuLayerForCard: function () {
         //--显示可以操作的按钮
-        console.log("showFanOutMenuLayerForCard");
+        //console.log("showFanOutMenuLayerForCard");
         if (this.m_pFanOutMenuLayer) {
             this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut({}));
         }
@@ -179,7 +179,7 @@ var PokerLayer = cc.Layer.extend({
     updataSelfCardZoder: function () {
         var zOrder = 1;
         var len = this.m_pSelfCardArray.length;
-        console.log("updataSelfCardZoder:  " + len);
+        //console.log("updataSelfCardZoder:  " + len);
         for (var i = 0; i < len; i++) {
             var card = this.m_pSelfCardArray[i];
             this.reorderChild(card, zOrder);
@@ -191,7 +191,7 @@ var PokerLayer = cc.Layer.extend({
     updateSelfCardDisplay: function () {
         var winSize = cc.director.getWinSize();
         var len = this.m_pSelfCardArray.length;
-        console.log("---->updateSelfCardDisplay : ", len);
+        //console.log("---->updateSelfCardDisplay : ", len);
         if (len == 1) {
             var pc = this.m_pSelfCardArray[0];
             pc.setVisible(true);
@@ -406,7 +406,7 @@ var PokerLayer = cc.Layer.extend({
         if (len > 0) {
             for (var idx = 0; idx < len; idx++) {
                 var cardValue = cardsVector[idx];
-                console.log("create fanOutCard Normal");
+                //console.log("create fanOutCard Normal");
                 var cardFace = Math.floor(cardValue / 100);
                 var cardPoint = cardValue % 100;
                 var pc = new PokerCard({
@@ -447,7 +447,7 @@ var PokerLayer = cc.Layer.extend({
 
                 for (var idx = this.m_pSelfCardValueArray.length - 1; idx >= 0; idx--) {
                     var value = this.m_pSelfCardValueArray[idx];
-                    console.log("pc.cardValue:" + value + ",   cardValue:" + cardValue);
+                    //console.log("pc.cardValue:" + value + ",   cardValue:" + cardValue);
                     if (value == cardValue) {
                         this.m_pSelfCardValueArray.splice(idx, 1);
                         break;
@@ -456,7 +456,7 @@ var PokerLayer = cc.Layer.extend({
             }
 
             var HoldingCards = this.m_pSelfCardValueArray;
-            console.log("HoldingCards:", HoldingCards);
+            //console.log("HoldingCards:", HoldingCards);
             this.clearCards();
             len = HoldingCards.length;
             for (var i = 0; i < len; i++) {
@@ -477,7 +477,7 @@ var PokerLayer = cc.Layer.extend({
             pc.removeFromParent();
         }
         this.m_pSelfCardArray = [];
-        console.log("-------->clearCards:", this.m_pSelfCardArray);
+        //console.log("-------->clearCards:", this.m_pSelfCardArray);
     },
 
 
@@ -537,20 +537,20 @@ var PokerLayer = cc.Layer.extend({
     isCanFanOut: function (vector) {
         var len = vector.length;
         if (len == 0) {
-            console.log("------->isCanFanOut 1");
+            //console.log("------->isCanFanOut 1");
             return false;
         }
-        console.log("------->isCanFanOut vector:", vector);
-        console.log("------->isCanFanOut gGameType:", gGameType);
-        console.log("------->isCanFanOut gActor.append:", gActor.append);
+        //console.log("------->isCanFanOut vector:", vector);
+        //console.log("------->isCanFanOut gGameType:", gGameType);
+        //console.log("------->isCanFanOut gActor.append:", gActor.append);
 
         var cr1 = cardUtil.recognitionCards(vector, gGameType, gActor.append);//牌型分析
         if (cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_99) {
-            console.log("------->isCanFanOut 2: ", cr1);
+            //console.log("------->isCanFanOut 2: ", cr1);
             return false;
         }
 
-        console.log('### this.m_pFanOutCard => ', this.m_pFanOutCard);
+        //console.log('### this.m_pFanOutCard => ', this.m_pFanOutCard);
         var cr2 = cardUtil.recognitionCards(this.m_pFanOutCard, gGameType, gActor.append);//牌型分析
         //if(cr2.cardSeries == CardLogic.CardSeriesCode.cardSeries_99 ){
         //    return true;
@@ -566,17 +566,17 @@ var PokerLayer = cc.Layer.extend({
 
         if (!gActor.isBoss) {
             if (cardUtil.isCurrentBiggerThanLast(cr1, gLastFanCardRecognization, gGameType, gActor.append)) {
-                console.log("------->isCanFanOut 3");
+                //console.log("------->isCanFanOut 3");
                 return true;
             }
         } else {
             if (_.size(vector) == 0) {
                 // '当前玩家是上回合Boss, 不能不出
-                console.log("------->isCanFanOut4");
+                //console.log("------->isCanFanOut4");
                 return false;
             }
         }
-        console.log("------->isCanFanOut5");
+        //console.log("------->isCanFanOut5");
         return true;
     },
 
@@ -599,12 +599,12 @@ var PokerLayer = cc.Layer.extend({
             }
         }
 
-        console.log('### select cards => ', selectCardVector);
+        //console.log('### select cards => ', selectCardVector);
 
         if (cc.isFunction(call)) {
-            console.log("---->checkForFanOut call is function");
+            //console.log("---->checkForFanOut call is function");
             var result = call(selectCardVector);
-            console.log('### => ...... ', result);
+            //console.log('### => ...... ', result);
             return result;
         }
 
@@ -632,13 +632,13 @@ var PokerLayer = cc.Layer.extend({
 
 
     gameStart: function (data) {
-        console.log("actor:", data);
-        console.log("properties:", data.properties);
-        console.log("gameStatus:", data.gameStatus);
+        //console.log("actor:", data);
+        //console.log("properties:", data.properties);
+        //console.log("gameStatus:", data.gameStatus);
         var HoldingCards = data.gameStatus.currentHoldingCards;
         this.m_pSelfCardValueArray = HoldingCards;
         //HoldingCards = [18,113,212,112,111,410,310,109,408,105];
-        console.log("--->HoldingCards:", HoldingCards);
+        //console.log("--->HoldingCards:", HoldingCards);
 
 
         var len;
@@ -673,10 +673,10 @@ var PokerLayer = cc.Layer.extend({
             var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
             //如果是红3，显示亮3说话按钮
             if (identity == GAME.IDENTITY.HONG3) {
-                cc.log('说话阶段-当前玩家是红3，显示“亮3”按钮')
+                //cc.log('说话阶段-当前玩家是红3，显示“亮3”按钮')
             }
             else {
-                cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
+                //cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
             }
         } else {
 
@@ -714,10 +714,10 @@ var PokerLayer = cc.Layer.extend({
         switch (gGameState) {
             case ZGZ.GAME_STATE.TALK:
             {
-                console.log("ZGZ.GAME_STATE.TALK");
+                //console.log("ZGZ.GAME_STATE.TALK");
                 if (this.getParent().m_pBidMenuLayer) {
                     var able;// = this.checkForFanOut();
-                    console.log("------>able:", able);
+                    //console.log("------>able:", able);
                     var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
                     if (identity == GAME.IDENTITY.HONG3) {
                         able = this.checkForFanOut(this.isHong3);
@@ -732,12 +732,12 @@ var PokerLayer = cc.Layer.extend({
                 break;
             case ZGZ.GAME_STATE.PLAY:
             {
-                console.log("ZGZ.GAME_STATE.PLAY");
+                //console.log("ZGZ.GAME_STATE.PLAY");
                 if (this.m_pFanOutMenuLayer) {
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut(this.isCanFanOut));
                     //this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard(this.isCanFanOut));
                 } else {
-                    console.log("--->this.m_pFanOutMenuLayer == null");
+                    //console.log("--->this.m_pFanOutMenuLayer == null");
                 }
             }
                 break;
@@ -756,7 +756,7 @@ var PokerLayer = cc.Layer.extend({
 
     onEnter: function () {
         this._super();
-        console.log("PokerLayer onEnter");
+        //console.log("PokerLayer onEnter");
 
         this._touchListener = cc.EventListener.create({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
@@ -784,7 +784,7 @@ var PokerLayer = cc.Layer.extend({
 
     onExit: function () {
         this._super();
-        console.log("PokerLayer onExit");
+        //console.log("PokerLayer onExit");
         cc.eventManager.removeListener(this._touchListener);
     },
 
@@ -793,9 +793,9 @@ var PokerLayer = cc.Layer.extend({
         var id = touch.getID();
         var target = event.getCurrentTarget();
 
-        cc.log("PokerLayer this.m_bIsOperation: " + target.m_bIsOperation);
+        //cc.log("PokerLayer this.m_bIsOperation: " + target.m_bIsOperation);
         //if (!this.m_bIsOperation) return false;
-        cc.log("PokerLayer onTouchBegan at: " + pos.x + " " + pos.y);
+        //cc.log("PokerLayer onTouchBegan at: " + pos.x + " " + pos.y);
         target.touchBegan(pos.x, pos.y);
 
 
@@ -819,7 +819,7 @@ var PokerLayer = cc.Layer.extend({
         var id = touch.getID();
         var target = event.getCurrentTarget();
 
-        cc.log("PokerLayer onTouchEnded at: " + pos.x + " " + pos.y);
+        //cc.log("PokerLayer onTouchEnded at: " + pos.x + " " + pos.y);
         //event.getCurrentTarget().release_id(id,pos);
         target.touchEnded(pos.x, pos.y);
     },

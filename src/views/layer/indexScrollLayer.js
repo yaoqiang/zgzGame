@@ -105,12 +105,12 @@ var indexScrollLayer = cc.Layer.extend({
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
                 if(sender.tag == 5){
-                    console.log("------->5");
+                    //console.log("------->5");
                     GameController.enterLobby(0);
                 }else if(sender.tag == 6){
-                    console.log("------->6");
+                    //console.log("------->6");
                 }else if(sender.tag == 7){
-                    console.log("------->7");
+                    //console.log("------->7");
                 }
                 break;
         }

@@ -43,7 +43,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
     },
 
     updateActorHD:function(args){
-        cc.log("---->updateActorHD:",args);
+        //cc.log("---->updateActorHD:",args);
         var len = args.length;
         var listlen =  this.m_HDList.length;
         var i=0;
@@ -159,7 +159,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
                 break;
             }
         }
-        console.log("selfNr:", selfNr);
+        //console.log("selfNr:", selfNr);
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_Nr == actorNr){
                 if(this.m_HDList[i].m_position.x < winSize.width/2 ){
@@ -173,7 +173,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
     showClock:function(actorNr, time){
         var showP = this.showClockPosition(actorNr);
-        console.log("showClock: actorNr: ", actorNr , "     showP:",showP);
+        //console.log("showClock: actorNr: ", actorNr , "     showP:",showP);
         var x = showP.x;
         var y = showP.y;
         var space = 80;
@@ -237,7 +237,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
                 break;
             }
         }
-        console.log("selfNr:", selfNr);
+        //console.log("selfNr:", selfNr);
         for(i=0; i<listlen; i++){
             if(this.m_HDList[i].m_Nr == actorNr){
                 if(this.m_HDList[i].m_position.x < winSize.width/2 ){
@@ -271,7 +271,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var say = new PersonTalk({note:text, direction:showP.mode, time:2});
         say.setPosition(x,y);
         this.addChild(say);
-        console.log("-------------------->showSay:", text);
+        //console.log("-------------------->showSay:", text);
     },
 //say end
 
@@ -336,12 +336,12 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
     onEnter:function(){
         this._super();
-        console.log("FivePeopleTableLayer onEnter");
+        //console.log("FivePeopleTableLayer onEnter");
     },
 
     onExit:function(){
         this._super();
-        console.log("FivePeopleTableLayer onEnter");
+        //console.log("FivePeopleTableLayer onEnter");
     }
 
 

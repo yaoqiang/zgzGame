@@ -8,7 +8,7 @@ pomelo.on(gameEvents.JOIN, function (data) {
 });
 
 pomelo.on(gameEvents.LEAVE, function (data) {
-    console.log('---->receive onLeave event -> ', data);
+    console.log('receive onLeave event -> ', data);
 
     //cc.eventManager.dispatchCustomEvent("leaveEvent", data);
     EventQueue.dispatchCustomEvent("leaveEvent", data);

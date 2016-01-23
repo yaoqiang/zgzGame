@@ -200,7 +200,7 @@ var ProfileLayer = cc.Layer.extend({
 
         this.addChild(percentLabel);
 
-        var percentStr = (gPlayer.winNr / gPlayer.loseNr).toFixed(2);
+        var percentStr = (gPlayer.winNr / (gPlayer.loseNr + gPlayer.winNr)).toFixed(2) * 100;
 
         var percentValue = new cc.LabelTTF((percentStr == 'NaN' ? '0' : percentStr) + "%", "Arial Black", 18);
         percentValue.setPosition(winSize.width/2 + 10, winSize.height/2 - 40);
@@ -312,6 +312,9 @@ var ProfileLayer = cc.Layer.extend({
         this.onGenderChecked('FEMALE');
     },
 
+    /**
+     *
+     */
     initGenderCheckbox: function () {
         var winSize = cc.director.getWinSize();
 

@@ -106,7 +106,7 @@ var SevenPeopleTableLayer = cc.Layer.extend({
     },
     
     profile: function () {
-        console.log('profile clicked.');
+        //console.log('profile clicked.');
     },
 
     /**

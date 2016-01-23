@@ -1,6 +1,6 @@
 var BidMenuLayer = cc.Layer.extend({
     ctor: function(){
-        console.log('BidMenuLayer ctor');
+        //console.log('BidMenuLayer ctor');
         this._super();
 
         this.m_pTarge = null;
@@ -73,11 +73,11 @@ var BidMenuLayer = cc.Layer.extend({
     },
 
     onLiangButton:function(){
-        console.log("亮3");
-        console.log(this.m_pTarge, this.m_pCallback)
+        //console.log("亮3");
+        //console.log(this.m_pTarge, this.m_pCallback)
 
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
-            console.log("亮3 callback");
+            //console.log("亮3 callback");
 
             this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Liang);
         }
@@ -85,11 +85,11 @@ var BidMenuLayer = cc.Layer.extend({
     },
 
     onGuziButton:function(){
-        console.log("股子");
-        console.log(this.m_pTarge, this.m_pCallback)
+        //console.log("股子");
+        //console.log(this.m_pTarge, this.m_pCallback)
 
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
-            console.log("股子 callback");
+            //console.log("股子 callback");
 
             this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Guzi);
         }
@@ -97,11 +97,11 @@ var BidMenuLayer = cc.Layer.extend({
     },
 
     onBujiaoButton:function(){
-        console.log("不叫");
-        console.log(this.m_pTarge, this.m_pCallback)
+        //console.log("不叫");
+        //console.log(this.m_pTarge, this.m_pCallback)
 
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
-            console.log("不叫 callback");
+            //console.log("不叫 callback");
 
             this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Bujiao);
         }
@@ -130,12 +130,12 @@ var BidMenuLayer = cc.Layer.extend({
 
     onEnter:function(){
         this._super();
-        console.log("BidMenuLayer onEnter");
+        //console.log("BidMenuLayer onEnter");
     },
 
     onExit:function(){
         this._super();
-        console.log("BidMenuLayer onExit");
+        //console.log("BidMenuLayer onExit");
     }
 
 })

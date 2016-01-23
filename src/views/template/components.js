@@ -41,13 +41,13 @@ var MaskLayer = cc.LayerColor.extend({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: true,
             onTouchBegan: function (touch, event) {
-                console.log("---------");
+                //console.log("---------");
                 return true;
             }
         });
         cc.eventManager.addListener(listener, this);
         this._listener = listener;
-        console.log("---------onEnter");
+        //console.log("---------onEnter");
     },
 
     onExit: function () {

@@ -60,7 +60,7 @@ var lobbyTableLayer = cc.Layer.extend({
     },
 
     tableCellTouched:function (table, cell) {
-        cc.log("cell touched at index: " + cell.getIdx());
+        //cc.log("cell touched at index: " + cell.getIdx());
     },
 
     tableCellSizeForIndex:function (table, idx) {

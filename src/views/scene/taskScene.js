@@ -40,7 +40,7 @@ var TaskLayer = cc.Layer.extend({
 
     },
     init:function () {
-        console.log("------->TaskLayer init");
+        //console.log("------->TaskLayer init");
         var winSize = cc.director.getWinSize();
         this.addChild(new HornSprite());
         this.addChild(createIndexScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
