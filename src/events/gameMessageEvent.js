@@ -170,7 +170,9 @@ pomelo.on(gameEvents.FAN_FINISHED, function (data) {
 });
 
 pomelo.on(gameEvents.BACK_TO_GAME, function (data) {
-    console.log('receive onBackToGame event.', data)
+    console.log('receive onBackToGame event.', data);
+    var scene = new GameScene(data, true);
+    cc.director.runScene(scene);
 });
 
 pomelo.on(gameEvents.CHAT, function (data) {

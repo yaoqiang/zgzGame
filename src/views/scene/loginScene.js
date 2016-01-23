@@ -6,6 +6,7 @@ var LoginScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
         var layer = new LoginLayer();
         this.addChild(layer);
+
     }
 
 });
@@ -40,7 +41,7 @@ var LoginLayer = cc.Layer.extend({
         this.name.setFontColor(cc.color.BLACK);
         this.name.setPosition(bg.width/2, 250);
         this.name.setDelegate(this);
-        bg.addChild(this.name);
+        bg.addChild(this.name,0);
 
         this.pwd = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.pwd.setPlaceHolder('请输入密码');
@@ -50,7 +51,7 @@ var LoginLayer = cc.Layer.extend({
         this.pwd.setFontColor(cc.color.BLACK);
         this.pwd.setPosition(bg.width/2, 200);
         this.pwd.setDelegate(this);
-        bg.addChild(this.pwd);
+        bg.addChild(this.pwd,0);
 
         //登录
         this.btnLogin = new cc.MenuItemImage(
@@ -102,7 +103,6 @@ var LoginLayer = cc.Layer.extend({
         right2.setPosition(bg.width/2 - 170, 220);
         right2.setScale(0.65);
         bg.addChild(right2);
-
 
         return true;
 

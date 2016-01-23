@@ -143,5 +143,5 @@ var AlertBoxNode = cc.Node.extend({
 });
 var AlertBox = function (msg, callback,targe) {
     var box = new AlertBoxNode(msg, callback,targe);
-    return box;
+    cc.director.getRunningScene().addChild(box);
 };

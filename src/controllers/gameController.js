@@ -15,7 +15,7 @@ GameController.join = function (roomId, lobbyId) {
         if (data.code == 200) {
             gGameType = data.gameType;
 
-            var scene = new GameScene(data);
+            var scene = new GameScene(data, false);
             cc.director.runScene(new cc.TransitionFade(1.2, scene));
 
         } else if (data.code == 500) {
