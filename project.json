@@ -22,6 +22,7 @@
         "src/consts/routes.js",
         "src/consts/gameEvents.js",
         "src/utils/utils.js",
+        "src/utils/numeral.js",
         "src/events/gameMessageEvent.js",
         "src/events/baseEvent.js",
         "src/utils/cards/cardRecognization.js",
@@ -53,6 +54,7 @@
 
         "src/controllers/authController.js",
         "src/controllers/gameController.js",
+        "src/controllers/universalController.js",
 
         "src/views/layer/fivePeopleTableLayer.js",
         "src/views/layer/sevenPeopleTableLayer.js",

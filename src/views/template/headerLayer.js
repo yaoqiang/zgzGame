@@ -2,6 +2,7 @@ var HeaderLayer = cc.Layer.extend({
     ctor: function(args){
         this._super();
 
+        this.args = args;
         var size = cc.director.getWinSize();
 
         //左侧
@@ -118,9 +119,8 @@ var HeaderLayer = cc.Layer.extend({
     },
     
     profile: function () {
-        console.log('profile clicked.');
-        var scene = new ProfileScene();
-        cc.director.runScene(new cc.TransitionSlideInT(2, scene));
+        var scene = new ProfileScene(this.args);
+        cc.director.runScene(new cc.TransitionFade(2, scene));
     },
 
     /**

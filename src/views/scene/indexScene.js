@@ -13,7 +13,7 @@ var IndexScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
 
         //header
-        var headerLayer = new HeaderLayer();
+        var headerLayer = new HeaderLayer({lobby: undefined});
         this.addChild(headerLayer, 1);
 
 

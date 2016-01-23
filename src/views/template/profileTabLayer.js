@@ -1,17 +1,25 @@
-var InboxTabLayer = cc.Layer.extend({
+var ProfileTabLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
 
         this.lobbyId = args.lobbyId;
+        //0: profile selected, 1: bag selected
         this.selected = args.selected || 0;
 
+        this.args = args;
+
         var winSize = cc.director.getWinSize();
+
+        var bg = new cc.Sprite("#deep_bg_big.png");
+        bg.setPosition(winSize.width/2, winSize.height);
+        bg.scaleX = 2
+        this.addChild(bg);
 
         var backNormal = new cc.Sprite("#back_btn.png");
         var backSelected = new cc.Sprite("#back_btn.png");
         var backDisabled = new cc.Sprite("#back_btn.png");
         var leaveButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackButton, this);
-        leaveButton.scale = 0.5
+        leaveButton.scale = 0.7
         var menu = new cc.Menu(leaveButton);
         menu.setPosition(30, winSize.height - 30);
         this.addChild(menu);
@@ -37,7 +45,7 @@ var InboxTabLayer = cc.Layer.extend({
         }
 
         var separatorSprite = new cc.Sprite("#separator.png");
-        separatorSprite.setPosition(winSize.width - 150, winSize.height - 30);
+        separatorSprite.setPosition(winSize.width - 155, winSize.height - 30);
         this.addChild(separatorSprite);
 
         //
@@ -58,7 +66,28 @@ var InboxTabLayer = cc.Layer.extend({
     
     onTabChange: function (index) {
         if (this.selected == index) return;
-        this.selectedSprite.removeFromParent(true);
+        if (this.selectedSprite) {
+            this.selectedSprite.removeFromParent(true);
+            this.selectedSprite = null;
+        }
+
+        this.selected = index;
+
+        //
+        this.selectedSprite = new cc.Sprite("#tab_selected_bg.png");
+        this.selectedSprite.scale = 0.7;
+        var winSize = cc.director.getWinSize();
+        //
+        if (this.selected == 0) {
+            this.selectedSprite.setPosition(winSize.width - 250, winSize.height - 30);
+        }
+
+        if (this.selected == 1) {
+            this.selectedSprite.setPosition(winSize.width - 70, winSize.height - 30);
+        }
+        this.addChild(this.selectedSprite);
+
+        this.args.callback.call(null, index);
 
     },
 
@@ -71,22 +100,23 @@ var InboxTabLayer = cc.Layer.extend({
     },
 
 
-    onEnter: function () {
-        this._super();
-    },
-
-    onExit: function () {
-        this._super();
-    },
-
     onBackButton: function () {
         if (this.lobbyId) {
             GameController.enterLobby(this.lobbyId);
         }
         else {
             var scene = new IndexScene();
-            cc.director.runScene(new cc.TransitionSlideInB(2, scene));
+            cc.director.runScene(new cc.TransitionFade(2, scene));
         }
     },
+
+
+    onEnter: function () {
+        this._super();
+    },
+
+    onExit: function () {
+        this._super();
+    }
 
 });

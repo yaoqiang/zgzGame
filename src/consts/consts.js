@@ -77,7 +77,7 @@ var ERR_CODE = {
 
 var ERR_MESSAGE = {
     getMessage: function (code) {
-        return ERR_MESSAGE[code]
+        return ERR_MESSAGE[code] == undefined ? '操作失败' : ERR_MESSAGE[code];
     },
     1001: "您已在游戏中, 无法加入",   //在其他牌桌
     1002: "您的金币不足, 无法加入",

@@ -6,7 +6,7 @@ var LobbyScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.room_plist);
 
         //header
-        var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId]});
+        var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobby: lobbyId});
         this.addChild(headerLayer, 1);
 
         var lobbyLayer = new LobbyLayer(data);
