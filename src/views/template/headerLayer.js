@@ -1,5 +1,5 @@
 var HeaderLayer = cc.Layer.extend({
-    ctor: function(args){
+    ctor: function (args) {
         this._super();
 
         this.args = args;
@@ -25,7 +25,14 @@ var HeaderLayer = cc.Layer.extend({
             this
         );
 
-        var avatarMenu = new cc.Menu(avatar);
+        var avatarSetting = new cc.MenuItemImage("#head_set.png", "#head_set.png",
+            this.profile,
+            this
+        );
+
+        avatarSetting.setPosition(0, -5);
+
+        var avatarMenu = new cc.Menu(avatar, avatarSetting);
         avatarMenu.setPosition(-18, -70);
         avatarMenu.setScale(0.85);
         avatarBg.addChild(avatarMenu);
@@ -47,18 +54,17 @@ var HeaderLayer = cc.Layer.extend({
         goldBg.setPosition(86, 40);
         leftTopBg.addChild(goldBg);
 
-        var gold = new cc.LabelTTF(gPlayer.gold || '0', "Arial", 14);
-        gold.setColor(cc.color.YELLOW);
-        gold.setAnchorPoint(1, 0.5);
-        gold.setPosition(110, 10);
-        goldBg.addChild(gold);
+        this.gold = new cc.LabelTTF(zgzNumeral(gPlayer.gold).format('0,0'), "Arial", 14);
+        this.gold.setColor(cc.color.YELLOW);
+        this.gold.setAnchorPoint(1, 0.5);
+        this.gold.setPosition(110, 10);
+        goldBg.addChild(this.gold);
 
         var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
         goldIcon.setScale(0.5);
         goldIcon.setAnchorPoint(0, 1);
-        goldIcon.setPosition(0-5, 28);
+        goldIcon.setPosition(0 - 5, 28);
         goldBg.addChild(goldIcon);
-
 
 
         //右上侧
@@ -68,28 +74,30 @@ var HeaderLayer = cc.Layer.extend({
         rightTopBg.setContentSize(250, 80);
         this.addChild(rightTopBg);
 
-        var shoppingCar = new cc.Sprite("#index_shangcheng_icon.png");
-        shoppingCar.setAnchorPoint(0, 0.5);
-        shoppingCar.setPosition(30, rightTopBg.height/2);
-        shoppingCar.setScale(0.9);
-        rightTopBg.addChild(shoppingCar);
 
         // create help button sprite
-        var doNormal = new cc.Sprite("#index_wenhao.png");
-        doNormal.attr({scale:0.9});
-        var doSelected = new cc.Sprite("#index_wenhao.png");
-        doSelected.attr({scale:1});
-        var doDisabled = new cc.Sprite("#index_wenhao.png");
+        var doNormal = new cc.Sprite("#index_huodong.png");
+        doNormal.attr({scale: 0.9});
+        var doSelected = new cc.Sprite("#index_huodong.png");
+        doSelected.attr({scale: 1});
+        var doDisabled = new cc.Sprite("#index_huodong.png");
 
         // create help button and added it to header
         var doButton = new cc.MenuItemSprite(doNormal, doSelected, doDisabled, this.onDoButton, this);
         var menu = new cc.Menu(doButton);
-        menu.setPosition(125, rightTopBg.height/2);
+        menu.setPosition(55, rightTopBg.height / 2 + 3);
         rightTopBg.addChild(menu);
+
+        //商店
+        var shoppingCar = new cc.Sprite("#index_shangcheng_icon.png");
+        shoppingCar.setAnchorPoint(0, 0.5);
+        shoppingCar.setPosition(95, rightTopBg.height / 2);
+        shoppingCar.setScale(0.9);
+        rightTopBg.addChild(shoppingCar);
 
         var setting = new cc.Sprite("#index_shezhi_icon.png");
         setting.setAnchorPoint(0, 0.5);
-        setting.setPosition(170, rightTopBg.height/2);
+        setting.setPosition(170, rightTopBg.height / 2);
         setting.setScale(0.9);
         rightTopBg.addChild(setting);
 
@@ -98,13 +106,13 @@ var HeaderLayer = cc.Layer.extend({
         middleBg.setScaleX(1);
         middleBg.setScaleY(0.8);
         middleBg.setAnchorPoint(0.5, 1);
-        middleBg.setPosition(size.width/2, size.height);
+        middleBg.setPosition(size.width / 2, size.height);
         this.addChild(middleBg);
 
         var title = new cc.LabelTTF(args && args.title || '大同扎股子', "Arial", 34);
         title.setColor(cc.color.YELLOW);
         title.setAnchorPoint(0.5, 0);
-        title.setPosition(middleBg.width/2, 30);
+        title.setPosition(middleBg.width / 2, 30);
         middleBg.addChild(title);
 
         var leftIcon = new cc.Sprite("#index_mianban_04_2.png");
@@ -117,28 +125,44 @@ var HeaderLayer = cc.Layer.extend({
         middleBg.addChild(rightIcon);
 
     },
-    
+
     profile: function () {
         var scene = new ProfileScene(this.args);
-        cc.director.runScene(new cc.TransitionFade(2, scene));
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
     /**
      * When click the help button(?) on right side of top screen.
      */
-    onDoButton:function(){
+    onDoButton: function () {
 
-        var box = new DailyTodoLayer();
-        this.addChild(box);
+        var self = this;
+        UniversalController.getDailyTodoInfo(function (data) {
+            var box = new DailyTodoLayer(data);
+
+            self.addChild(box);
+        })
+
+
 
     },
 
     onEnter: function () {
         this._super();
+
+        var self = this;
+
+        cc.eventManager.addCustomListener(gameEvents.GOLD_CHANGE, function (data) {
+            self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+        });
+
+        EventQueue.dispatchEventFromQueue();
     },
 
     onExit: function () {
         this._super();
+
+        cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 
 })

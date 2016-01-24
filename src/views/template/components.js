@@ -110,7 +110,7 @@ prompt.fade = function (txt, opts) {
     topBox.setScale(0.8);
     topBox.setAnchorPoint(0.5, 0);
     topBox.setPosition(winSize.width/2, winSize.height);
-    cc.director.getRunningScene().addChild(topBox);
+    cc.director.getRunningScene().addChild(topBox, 100);
 
     label1.setPosition(topBox.width/2, topBox.height/2 - 12);
     topBox.addChild(label1);
@@ -132,7 +132,7 @@ prompt.fadeMiddle = function (txt, duration) {
     toast.set({text : txt,
         backgroundColor : cc.color(50, 50, 50, 255),
         fontFillColor : cc.color(255, 255, 255, 255),
-        fontSize : 15,
+        fontSize : 18,
         fontName : "Arial",
         duration : duration || 2,
         position : cc.p(winSize.width / 2, winSize.height / 2)});
@@ -291,7 +291,7 @@ var Toast = cc.Layer.extend({
             _backgroundImage.runAction(childSequenceAction.clone());
         }
 
-        parent.addChild(this);
+        parent.addChild(this, 100);
         this.runAction(toastSequenceAction);
     }
 });

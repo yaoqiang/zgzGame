@@ -1,5 +1,5 @@
 var LobbyScene = cc.Scene.extend({
-    lobbyTitle: ['扎股子-五人', '扎股子-七人'],
+    lobbyTitle: ['扎股子-五人', '扎股子-六人', '扎股子-七人'],
     ctor: function (data, lobbyId) {
         this._super();
 

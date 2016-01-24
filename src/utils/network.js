@@ -3,7 +3,7 @@ var pomelo = window.pomelo;
  * http请求
  */
 var Network = {
-    url: gWebSvrAddr.host.concat(':').concat(gWebSvrAddr.port).concat('/'),
+    url: "http://" + gWebSvrAddr.host.concat(':').concat(gWebSvrAddr.port).concat('/'),
     get: function (params) {
     },
     post: function (params) {

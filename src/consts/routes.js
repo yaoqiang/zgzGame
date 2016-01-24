@@ -14,6 +14,9 @@ var route = {
     cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',    //取消托管
 
     chat: 'game.gameHandler.chat',  //房间内聊天
+
+
+    getDailyTodoInfo: 'game.gameHandler.getDailyTodoInfo',  //获取每日必做信息
     getCheckInGrant: 'game.gameHandler.getCheckInGrant',    //签到
     getBankruptcyGrant: 'game.gameHandler.getBankruptcyGrant',  //领取破产补助
     getDailyTaskList: 'game.gameHandler.getDailyTaskList',  //获取每日任务列表

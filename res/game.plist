@@ -46,7 +46,7 @@
             <key>game_bg_avatar.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{925,501},{94,96}}</string>
+                <string>{{925,562},{94,96}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -488,7 +488,7 @@
             <key>game_icon_likai.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{935,435},{64,64}}</string>
+                <string>{{935,496},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -1265,6 +1265,19 @@
                 <key>sourceSize</key>
                 <string>{90,48}</string>
             </dict>
+            <key>icon_duogongneng.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{935,438},{56,87}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{56,87}}</string>
+                <key>sourceSize</key>
+                <string>{56,87}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -1275,7 +1288,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:bfb3e5b6b2a70230b2d4dc4a3912d56e:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:1bc129f8efcdf0f8899994449ecdda86:1/1$</string>
             <key>textureFileName</key>
             <string>game.png</string>
         </dict>

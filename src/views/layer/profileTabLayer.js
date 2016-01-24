@@ -105,8 +105,7 @@ var ProfileTabLayer = cc.Layer.extend({
             GameController.enterLobby(this.lobbyId);
         }
         else {
-            var scene = new IndexScene();
-            cc.director.runScene(new cc.TransitionFade(2, scene));
+            UniversalController.enterIndex();
         }
     },
 

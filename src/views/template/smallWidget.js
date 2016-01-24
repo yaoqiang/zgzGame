@@ -57,7 +57,6 @@ var AlertBoxNode = cc.Node.extend({
         this.m_targe = targe;
         this.m_callback = callback;
 
-
         this.m_pLable = null;
         this.m_nIdx = 0;
         this.m_bRun = false;
@@ -182,21 +181,14 @@ var DialogWithModeNode = cc.Node.extend({
         var winSize = cc.director.getWinSize();
 
         var bgString = "#dialog_bg_middle.png";
-        if (this.mode == 'middle') {
-            bgString = "#dialog_bg_middle.png";
-        }
-        else  if (this.mode == 'small') {
-            bgString = "#dialog_bg_small.png";
-        }
 
-        // var bg = new cc.Sprite("#common_box_1.png");
-        var bg = new cc.Sprite(bgString);
-        bg.x = winSize.width / 2.0;
-        bg.y = winSize.height / 2.0;
-        bg.scale = 0.55;
-        this.addChild(bg);
+        this.bg = new cc.Sprite(bgString);
+        this.bg.x = winSize.width / 2.0;
+        this.bg.y = winSize.height / 2.0;
+        this.bg.scale = 0.55;
+        this.addChild(this.bg);
 
-        var bgActualSize = bg.getBoundingBox();
+        var bgActualSize = this.bg.getBoundingBox();
 
 
         this.m_pLable = new cc.LabelTTF(this.m_msg, "AmericanTypewriter", 26);

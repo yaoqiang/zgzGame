@@ -36,3 +36,22 @@ UniversalController.updateProfile = function (nickName, gender, avatar) {
 
     });
 }
+
+UniversalController.getDailyTodoInfo = function (cb) {
+    pomelo.request(route.getDailyTodoInfo, {}, function (data) {
+        cb(data);
+    });
+}
+
+UniversalController.getCheckInGrant = function (cb) {
+    pomelo.request(route.getCheckInGrant, {}, function (data) {
+        cb(data);
+    });
+}
+
+UniversalController.getBankruptcyGrant = function (cb) {
+    pomelo.request(route.getBankruptcyGrant, {}, function (data) {
+        cb(data);
+    });
+}
+

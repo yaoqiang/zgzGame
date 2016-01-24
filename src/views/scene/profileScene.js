@@ -110,16 +110,6 @@ var ProfileLayer = cc.Layer.extend({
         nickNameLabel.setPosition(winSize.width/2 - 60, winSize.height/2 + 80);
         nickNameLabel.color =  cc.color.WHITE;
 
-        //暂注掉
-        //this.nickNameValue = new ccui.TextField(gPlayer.nickName, "AmericanTypewriter", 24);
-        //this.nickNameValue.setAnchorPoint(0, 0.5);
-        //this.nickNameValue.setTextColor(cc.color.WHITE);
-        //this.nickNameValue.setPlaceHolderColor(cc.color.WHITE);
-        //this.nickNameValue.setTextColor(cc.color.WHITE);
-        //this.nickNameValue.setString(gPlayer.nickName);
-        //this.nickNameValue.setPosition(winSize.width/2, winSize.height/2 + 80);
-        //this.nickNameValue.setMaxLengthEnabled(true);
-        //this.nickNameValue.setMaxLength(6);
 
         var blockSize = cc.size(180, 30);
         this.nickNameValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
@@ -200,9 +190,14 @@ var ProfileLayer = cc.Layer.extend({
 
         this.addChild(percentLabel);
 
-        var percentStr = (gPlayer.winNr / (gPlayer.loseNr + gPlayer.winNr)).toFixed(2) * 100;
 
-        var percentValue = new cc.LabelTTF((percentStr == 'NaN' ? '0' : percentStr) + "%", "AmericanTypewriter", 18);
+        var totalBattle = gPlayer.loseNr + gPlayer.winNr;
+
+        var percentStr = (gPlayer.winNr / totalBattle).toFixed(2) * 100;
+
+        if (totalBattle == 0) percentStr = "0"
+
+        var percentValue = new cc.LabelTTF(percentStr + "%", "AmericanTypewriter", 18);
         percentValue.setPosition(winSize.width/2 + 10, winSize.height/2 - 40);
         percentValue.setAnchorPoint(0, 0.5);
         this.addChild(percentValue);
