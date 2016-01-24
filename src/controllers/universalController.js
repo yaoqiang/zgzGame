@@ -5,6 +5,13 @@ var UniversalController = function()
 
 }
 
+UniversalController.enterIndex = function () {
+    pomelo.request(route.enterIndex, {}, function (lobbyData) {
+        var indexScene = new IndexScene(lobbyData.onlineLobby);
+        cc.director.runScene(new cc.TransitionFade(1.2, indexScene));
+    });
+}
+
 UniversalController.updateProfile = function (nickName, gender, avatar) {
 
     if (nickName.length < 2 || nickName.length > 6) {

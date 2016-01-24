@@ -75,15 +75,15 @@ var HeaderLayer = cc.Layer.extend({
         rightTopBg.addChild(shoppingCar);
 
         // create help button sprite
-        var helpNormal = new cc.Sprite("#index_wenhao.png");
-        helpNormal.attr({scale:0.9});
-        var helpSelected = new cc.Sprite("#index_wenhao.png");
-        helpSelected.attr({scale:1});
-        var helpDisabled = new cc.Sprite("#index_wenhao.png");
+        var doNormal = new cc.Sprite("#index_wenhao.png");
+        doNormal.attr({scale:0.9});
+        var doSelected = new cc.Sprite("#index_wenhao.png");
+        doSelected.attr({scale:1});
+        var doDisabled = new cc.Sprite("#index_wenhao.png");
 
         // create help button and added it to header
-        var helpButton = new cc.MenuItemSprite(helpNormal, helpSelected, helpDisabled, this.onHelpButton, this);
-        var menu = new cc.Menu(helpButton);
+        var doButton = new cc.MenuItemSprite(doNormal, doSelected, doDisabled, this.onDoButton, this);
+        var menu = new cc.Menu(doButton);
         menu.setPosition(125, rightTopBg.height/2);
         rightTopBg.addChild(menu);
 
@@ -126,30 +126,19 @@ var HeaderLayer = cc.Layer.extend({
     /**
      * When click the help button(?) on right side of top screen.
      */
-    onHelpButton:function(){
-        //console.log('help.')
+    onDoButton:function(){
 
+        var box = new DailyTodoLayer();
+        this.addChild(box);
 
-
-        //var alert = new csAlert('this is alert!', function() {
-        //    this.removeFromParent();
-        //});
-        //
-        //this.addChild(alert);
-
-
-        //scene.addChild(new HelpLayer());
-        //cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
     onEnter: function () {
         this._super();
-        //cc.spriteFrameCache.addSpriteFrames(res.card_plist, res.card_png);
     },
 
     onExit: function () {
         this._super();
-        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
     }
 
 })

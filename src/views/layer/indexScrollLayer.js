@@ -14,6 +14,9 @@ var indexScrollLayer = cc.Layer.extend({
         this.m_nScrollHeight = data.height? data.height : winSize.height;
         this.m_nScrollX = data.x? data.x : 0;
         this.m_nScrollY = data.y? data.y : 0;
+
+
+        this.lobbyData = data.lobbyData;
         //
         this.init();
     },
@@ -39,30 +42,30 @@ var indexScrollLayer = cc.Layer.extend({
             var line = new cc.LabelTTF("------------------------------", "Arial", 24);
             line.color = cc.color.YELLOW;
             line.setPosition(this.m_nScrollWidth/2, this.m_nScrollHeight-2);
-            this.m_pScrollView.addChild(line);
+            //this.m_pScrollView.addChild(line);
 
              line = new cc.LabelTTF("------------------------------", "Arial", 24);
             line.color = cc.color.YELLOW;
             line.setPosition(this.m_nScrollWidth/2, 0);
-            this.m_pScrollView.addChild(line);
+            //this.m_pScrollView.addChild(line);
 
             //this.m_pScrollView.setInnerContainerSize(cc.size(innerWidth, innerHeight));
 
             var cellWidth = this.m_pScrollView.getInnerContainerSize().width/3;
             var lobbyStr = "五人场";
-            var onLineNumStr = "在线:9999";
+            var onLineNumStr = "在线:"+this.lobbyData[0].online;
             var bunX = cellWidth / 2;
             var bunY = this.m_pScrollView.getInnerContainerSize().height / 2 + 40;
             this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 5));
 
             lobbyStr = "六人场";
-            onLineNumStr = "在线:9999";
+            onLineNumStr = "在线:"+this.lobbyData[1].online;
             bunX = cellWidth / 2 + cellWidth;
             //bunY = this.m_pScrollView.getInnerContainerSize().height / 2;
             this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 6));
 
             lobbyStr = "七人场";
-            onLineNumStr = "在线:9999";
+            onLineNumStr = "在线:"+this.lobbyData[2].online;
             bunX = cellWidth / 2 + 2*cellWidth;
             //bunY = this.m_pScrollView.getInnerContainerSize().height / 2;
             this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 7));

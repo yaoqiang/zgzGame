@@ -40,7 +40,15 @@ AuthController.login = function(username, password)
                     prompt.fade(data.message);
                     return;
                 }
-                AuthController.init(data);
+
+                //初始化全局变量gPlayer;
+                gPlayer = data.player;
+                console.log("gPlayer => ", gPlayer);
+
+
+                //进入Index
+                UniversalController.enterIndex();
+
             });
 
         },
@@ -53,12 +61,5 @@ AuthController.login = function(username, password)
 }
 
 
-AuthController.init = function (data) {
-    gPlayer = data.player;
-    console.log("gPlayer:", gPlayer);
-    var indexScene = new IndexScene();
-    cc.director.runScene(new cc.TransitionFade(1.2, indexScene));
-
-}
 
 

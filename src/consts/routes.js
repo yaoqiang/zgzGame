@@ -1,5 +1,9 @@
 var route = {
-    enterLobby: 'connector.entryHandler.enterLobby',    //进入大厅
+    queryEntry: 'gate.gateHandler.queryEntry',    //search gate server
+    enter: 'connector.entryHandler.enter',    //进入游戏
+    enterIndex: 'connector.entryHandler.enterIndex',    //进入index
+    enterLobby: 'connector.entryHandler.enterLobby',    //进入lobby
+
 
     join: 'game.gameHandler.join',  //加入游戏
     leave: 'game.gameHandler.leave',    //离开游戏

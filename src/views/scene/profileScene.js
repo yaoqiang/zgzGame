@@ -106,12 +106,12 @@ var ProfileLayer = cc.Layer.extend({
         this.addChild(modifyBg);
 
         //
-        var nickNameLabel = new cc.LabelTTF("昵称:", "Arial Black", 18);
-        nickNameLabel.setPosition(winSize.width/2 - 50, winSize.height/2 + 80);
+        var nickNameLabel = new cc.LabelTTF("昵  称:", "AmericanTypewriter", 18);
+        nickNameLabel.setPosition(winSize.width/2 - 60, winSize.height/2 + 80);
         nickNameLabel.color =  cc.color.WHITE;
 
         //暂注掉
-        //this.nickNameValue = new ccui.TextField(gPlayer.nickName, "Arial Black", 24);
+        //this.nickNameValue = new ccui.TextField(gPlayer.nickName, "AmericanTypewriter", 24);
         //this.nickNameValue.setAnchorPoint(0, 0.5);
         //this.nickNameValue.setTextColor(cc.color.WHITE);
         //this.nickNameValue.setPlaceHolderColor(cc.color.WHITE);
@@ -134,19 +134,19 @@ var ProfileLayer = cc.Layer.extend({
         this.addChild(nickNameLabel);
 
         //
-        var genderLabel = new cc.LabelTTF("性别:", "Arial Black", 18);
-        genderLabel.setPosition(winSize.width/2 - 50, winSize.height/2 + 40);
+        var genderLabel = new cc.LabelTTF("性  别:", "AmericanTypewriter", 18);
+        genderLabel.setPosition(winSize.width/2 - 60, winSize.height/2 + 40);
         genderLabel.color =  cc.color.WHITE;
         this.addChild(genderLabel);
 
 
-        var maleLabel = new cc.LabelTTF("男", "Arial Black", 16);
+        var maleLabel = new cc.LabelTTF("男", "AmericanTypewriter", 16);
         maleLabel.setPosition(winSize.width/2 + 20, winSize.height/2 + 40);
         maleLabel.color =  cc.color.WHITE;
         this.addChild(maleLabel);
 
 
-        var femaleLabel = new cc.LabelTTF("女", "Arial Black", 16);
+        var femaleLabel = new cc.LabelTTF("女", "AmericanTypewriter", 16);
         femaleLabel.setPosition(winSize.width/2 + 100, winSize.height/2 + 40);
         femaleLabel.color =  cc.color.WHITE;
         this.addChild(femaleLabel);
@@ -173,8 +173,8 @@ var ProfileLayer = cc.Layer.extend({
 
 
         //
-        var goldLabel = new cc.LabelTTF("金币:", "Arial Black", 18);
-        goldLabel.setPosition(winSize.width/2 - 50, winSize.height/2);
+        var goldLabel = new cc.LabelTTF("金  币:", "AmericanTypewriter", 18);
+        goldLabel.setPosition(winSize.width/2 - 60, winSize.height/2);
         goldLabel.color =  cc.color.WHITE;
 
         this.addChild(goldLabel);
@@ -185,7 +185,7 @@ var ProfileLayer = cc.Layer.extend({
         goldIcon.setAnchorPoint(0, 0.5);
         this.addChild(goldIcon);
 
-        var goldValue = new cc.LabelTTF(zgzNumeral(gPlayer.gold).format('0,0'), "Arial Black", 20);
+        var goldValue = new cc.LabelTTF(zgzNumeral(gPlayer.gold).format('0,0'), "AmericanTypewriter", 20);
         goldValue.setPosition(winSize.width/2 + 40, winSize.height/2);
         goldValue.color =  cc.color.YELLOW;
         goldValue.setAnchorPoint(0, 0.5);
@@ -194,75 +194,75 @@ var ProfileLayer = cc.Layer.extend({
 
 
         //胜率
-        var percentLabel = new cc.LabelTTF("胜率:", "Arial Black", 18);
-        percentLabel.setPosition(winSize.width/2 - 50, winSize.height/2 - 40);
+        var percentLabel = new cc.LabelTTF("胜  率:", "AmericanTypewriter", 18);
+        percentLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 40);
         percentLabel.color =  cc.color.WHITE;
 
         this.addChild(percentLabel);
 
         var percentStr = (gPlayer.winNr / (gPlayer.loseNr + gPlayer.winNr)).toFixed(2) * 100;
 
-        var percentValue = new cc.LabelTTF((percentStr == 'NaN' ? '0' : percentStr) + "%", "Arial Black", 18);
+        var percentValue = new cc.LabelTTF((percentStr == 'NaN' ? '0' : percentStr) + "%", "AmericanTypewriter", 18);
         percentValue.setPosition(winSize.width/2 + 10, winSize.height/2 - 40);
         percentValue.setAnchorPoint(0, 0.5);
         this.addChild(percentValue);
 
         //win
-        var winNrLabel = new cc.LabelTTF("胜:", "Arial Black", 18);
+        var winNrLabel = new cc.LabelTTF("胜:", "AmericanTypewriter", 18);
         winNrLabel.setPosition(winSize.width/2 + 90, winSize.height/2 - 40);
-        winNrLabel.color =  cc.color(255, 255, 0);
+        winNrLabel.color =  cc.color.WHITE;
         winNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(winNrLabel);
 
-        var winNrValueLabel = new cc.LabelTTF(gPlayer.winNr.toString(), "Arial Black", 18);
+        var winNrValueLabel = new cc.LabelTTF(gPlayer.winNr.toString(), "AmericanTypewriter", 18);
         winNrValueLabel.setPosition(winSize.width/2 + 120, winSize.height/2 - 40);
-        winNrValueLabel.color =  cc.color(255, 255, 0);
+        winNrValueLabel.color =  cc.color.WHITE;
         winNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(winNrValueLabel);
 
         //tie
-        var tieNrLabel = new cc.LabelTTF("平:", "Arial Black", 18);
+        var tieNrLabel = new cc.LabelTTF("平:", "AmericanTypewriter", 18);
         tieNrLabel.setPosition(winSize.width/2 + 170, winSize.height/2 - 40);
-        tieNrLabel.color =  cc.color(255, 255, 0);
+        tieNrLabel.color =  cc.color.WHITE;
         tieNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(tieNrLabel);
 
-        var tieNrValueLabel = new cc.LabelTTF(gPlayer.tieNr.toString(), "Arial Black", 18);
+        var tieNrValueLabel = new cc.LabelTTF(gPlayer.tieNr.toString(), "AmericanTypewriter", 18);
         tieNrValueLabel.setPosition(winSize.width/2 + 200, winSize.height/2 - 40);
-        tieNrValueLabel.color =  cc.color(255, 255, 0)
+        tieNrValueLabel.color =  cc.color.WHITE
         tieNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(tieNrValueLabel);
 
         //lose
-        var loseNrLabel = new cc.LabelTTF("负:", "Arial Black", 18);
+        var loseNrLabel = new cc.LabelTTF("负:", "AmericanTypewriter", 18);
         loseNrLabel.setPosition(winSize.width/2 + 250, winSize.height/2 - 40);
-        loseNrLabel.color =  cc.color(255, 255, 0);
+        loseNrLabel.color =  cc.color.WHITE;
         loseNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(loseNrLabel);
 
-        var loseNrValueLabel = new cc.LabelTTF(gPlayer.loseNr.toString(), "Arial Black", 18);
+        var loseNrValueLabel = new cc.LabelTTF(gPlayer.loseNr.toString(), "AmericanTypewriter", 18);
         loseNrValueLabel.setPosition(winSize.width/2 + 280, winSize.height/2 - 40);
-        loseNrValueLabel.color =  cc.color(255, 255, 0);
+        loseNrValueLabel.color =  cc.color.WHITE;
         loseNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(loseNrValueLabel);
 
 
 
         //
-        var meetingTimeLabel = new cc.LabelTTF("开会:", "Arial Black", 18);
-        meetingTimeLabel.setPosition(winSize.width/2 - 50, winSize.height/2 - 80);
+        var meetingTimeLabel = new cc.LabelTTF("开  会:", "AmericanTypewriter", 18);
+        meetingTimeLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 80);
         meetingTimeLabel.color =  cc.color.WHITE;
 
         this.addChild(meetingTimeLabel);
 
-        var meetingTimeValueLabel = new cc.LabelTTF(gPlayer.meetingTimes.toString(), "Arial Black", 18);
+        var meetingTimeValueLabel = new cc.LabelTTF(gPlayer.meetingTimes.toString(), "AmericanTypewriter", 18);
         meetingTimeValueLabel.setPosition(winSize.width/2 + 10, winSize.height/2 - 80);
         meetingTimeValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(meetingTimeValueLabel);
 
         //
-        var ingotLabel = new cc.LabelTTF("元宝:", "Arial Black", 18);
-        ingotLabel.setPosition(winSize.width/2 - 50, winSize.height/2 - 120);
+        var ingotLabel = new cc.LabelTTF("元  宝:", "AmericanTypewriter", 18);
+        ingotLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 120);
         ingotLabel.color =  cc.color.WHITE;
 
         this.addChild(ingotLabel);
@@ -273,7 +273,7 @@ var ProfileLayer = cc.Layer.extend({
         ingotIcon.setAnchorPoint(0, 0.5);
         this.addChild(ingotIcon);
 
-        var ingotValue = new cc.LabelTTF(gPlayer.fragment.toString(), "Arial Black", 20);
+        var ingotValue = new cc.LabelTTF(gPlayer.fragment.toString(), "AmericanTypewriter", 20);
         ingotValue.setPosition(winSize.width/2 + 40, winSize.height/2 - 120);
         ingotValue.color =  cc.color.YELLOW;
         ingotValue.setAnchorPoint(0, 0.5);

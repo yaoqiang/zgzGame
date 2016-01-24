@@ -145,3 +145,86 @@ var AlertBox = function (msg, callback,targe) {
     var box = new AlertBoxNode(msg, callback,targe);
     cc.director.getRunningScene().addChild(box);
 };
+
+var DialogWithModeNode = cc.Node.extend({
+    ctor: function (title, mode, callback) {
+        this._super();
+//类变量
+        this.m_callback = callback;
+
+        this.mode = mode;
+        this.m_msg = title;
+
+        this.m_bRun = false;
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+
+        this.init({});
+    },
+    onEnter:function(){
+        this._super();
+        //console.log("AlertBoxNode onEnter");
+        //cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+    },
+    onExit:function(){
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
+        this._super();
+        //console.log("AlertBoxNode onEnter");
+    },
+
+    init:function(args){
+        if(this.m_bRun) return;
+        this.m_bRun = true;
+
+        this._super();
+        var sg = new MaskLayer(false);
+        this.addChild(sg);
+
+        var winSize = cc.director.getWinSize();
+
+        var bgString = "#dialog_bg_middle.png";
+        if (this.mode == 'middle') {
+            bgString = "#dialog_bg_middle.png";
+        }
+        else  if (this.mode == 'small') {
+            bgString = "#dialog_bg_small.png";
+        }
+
+        // var bg = new cc.Sprite("#common_box_1.png");
+        var bg = new cc.Sprite(bgString);
+        bg.x = winSize.width / 2.0;
+        bg.y = winSize.height / 2.0;
+        bg.scale = 0.55;
+        this.addChild(bg);
+
+        var bgActualSize = bg.getBoundingBox();
+
+
+        this.m_pLable = new cc.LabelTTF(this.m_msg, "AmericanTypewriter", 26);
+        this.m_pLable.color = cc.color.WHITE;
+        //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
+        this.m_pLable.setPosition(winSize.width/2, winSize.height/2 + bgActualSize.height/2 - 22);
+        this.addChild(this.m_pLable);
+
+        //close
+        var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
+        closeItem.setScale(0.65);
+        closeItem.x = winSize.width/2 + bgActualSize.width/2 - 8;
+        closeItem.y = winSize.height/2 + bgActualSize.height/2 - 8;
+        this.m_menu = new cc.Menu(closeItem);
+        this.m_menu.tag = TAG_MENU;
+        this.m_menu.x = 0;
+        this.m_menu.y = 0;
+        this.addChild(this.m_menu, 1);
+        // menu end
+
+    },
+
+    onExitCallback:function () {
+        //console.log("noteLayer onExitCallback");
+        this.removeFromParent(true);
+    }
+});
+var DialogWithMode = function (title, mode, callback) {
+    var box = new DialogWithModeNode(title, mode, callback);
+    return box;
+};

@@ -73,22 +73,22 @@ var LobbyLayer = cc.Layer.extend({
 
 
 
-        var line = new cc.LabelTTF("..------------------------------", "Arial", 24);
-        line.color = cc.color.YELLOW;
-        line.setPosition(this.m_nScrollWidth/2, this.m_nScrollHeight-2);
-        this.m_pScrollView.addChild(line);
+        //var line = new cc.LabelTTF("..------------------------------", "Arial", 24);
+        //line.color = cc.color.YELLOW;
+        //line.setPosition(this.m_nScrollWidth/2, this.m_nScrollHeight-2);
+        //this.m_pScrollView.addChild(line);
 
-        line = new cc.LabelTTF("------------------------------..", "Arial", 24);
-        line.color = cc.color.YELLOW;
-        line.setPosition(this.m_nScrollWidth/2, 0);
-        this.m_pScrollView.addChild(line);
+        //line = new cc.LabelTTF("------------------------------..", "Arial", 24);
+        //line.color = cc.color.YELLOW;
+        //line.setPosition(this.m_nScrollWidth/2, 0);
+        //this.m_pScrollView.addChild(line);
 
 
         var width = -200, height = containerH - cellH/2;
         for (var i = 1; i <= data.rooms.length; i++)
         {
             var room = data.rooms[i-1];
-            this.m_pScrollView.addChild(this.createButton (room, "", "", width, height, i));
+            this.m_pScrollView.addChild(this.createButton(room, "", room.online.toString(), width, height, i));
 
             if (i%2 == 0){
                 width = -200;
@@ -107,46 +107,25 @@ var LobbyLayer = cc.Layer.extend({
 
     addMenu:function () {
         var winSize = cc.director.getWinSize();
+        //返回按钮
         var back = new cc.MenuItemImage(
             "#back_btn.png",
             "#back_btn.png",
             function () {
-                var scene = new IndexScene();
-                cc.director.runScene(new cc.TransitionFade(1.2, scene));
+                UniversalController.enterIndex();
             },
             this
         );
         back.setAnchorPoint(0, 0);
         var backMenu = new cc.Menu(back);
         backMenu.setAnchorPoint(0, 0);
-        backMenu.setPosition(0, 0);
+        backMenu.setPosition(5, 5);
         backMenu.scale = ZGZ.SCALE * 0.7;
         this.addChild(backMenu);
 
         //template
-        var mission = new cc.Sprite("#index_renwu.png");
-        mission.setAnchorPoint(0, 0);
-        mission.setPosition(120, 10);
-        mission.scale = ZGZ.SCALE * 1
-        this.addChild(mission);
-
-        var rank = new cc.Sprite("#index_paihang.png");
-        rank.setAnchorPoint(0, 0);
-        rank.setPosition(240, 10);
-        rank.scale = ZGZ.SCALE * 1
-        this.addChild(rank);
-
-        var exchange = new cc.Sprite("#index_duihuan.png");
-        exchange.setAnchorPoint(0, 0);
-        exchange.setPosition(360, 10);
-        exchange.scale = ZGZ.SCALE * 1
-        this.addChild(exchange);
-
-        var message = new cc.Sprite("#index_tongzhi.png");
-        message.setAnchorPoint(0, 0);
-        message.setPosition(480, 10);
-        message.scale = ZGZ.SCALE * 1
-        this.addChild(message);
+        var bottomBtnLayer = new BottomBtnLayer();
+        this.addChild(bottomBtnLayer);
 
 
 
@@ -180,7 +159,7 @@ var LobbyLayer = cc.Layer.extend({
         onlineCounterLabel.setPosition(20, button.height / 2 - 30);
         button.addChild(onlineCounterLabel);
 
-        var onlineCounterValue = new cc.LabelTTF("999", "AmericanTypewriter", 22);
+        var onlineCounterValue = new cc.LabelTTF(numStr, "AmericanTypewriter", 22);
         onlineCounterValue.setColor(cc.color.WHITE);
         onlineCounterValue.setAnchorPoint(0, 0);
         onlineCounterValue.setPosition(onlineCounterLabel.width+10, button.height / 2 - 30);
