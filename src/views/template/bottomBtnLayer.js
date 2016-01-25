@@ -27,7 +27,10 @@ var BottomBtnLayer = cc.Layer.extend({
     },
 
     onTaskBtnClick: function () {
-
+        UniversalController.getDailyTaskList(function (data) {
+            var scene = new TaskScene({selected: 0, data: data});
+            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        });
     },
 
     onRankBtnClick: function () {

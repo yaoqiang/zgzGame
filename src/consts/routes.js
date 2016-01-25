@@ -28,6 +28,7 @@ var route = {
     getMyItemList: 'game.gameHandler.getMyItemList',    //获取我的背包物品
 
     getExchangeList: 'game.gameHandler.getExchangeList',    //获取兑换列表
+    getMyExchangeRecordList: 'game.gameHandler.getMyExchangeRecordList',    //获取兑换列表
     exchange: 'game.gameHandler.exchange',  //兑换
 
     getRankingList: 'game.gameHandler.getRankingList',  //获取排行榜

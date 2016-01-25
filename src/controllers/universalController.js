@@ -37,21 +37,135 @@ UniversalController.updateProfile = function (nickName, gender, avatar) {
     });
 }
 
+/**
+ * 获取每日必做的状态
+ * @param cb
+ */
 UniversalController.getDailyTodoInfo = function (cb) {
     pomelo.request(route.getDailyTodoInfo, {}, function (data) {
         cb(data);
     });
 }
 
+/**
+ * 签到
+ * @param cb
+ */
 UniversalController.getCheckInGrant = function (cb) {
     pomelo.request(route.getCheckInGrant, {}, function (data) {
         cb(data);
     });
 }
 
+/**
+ * 领取破产补助
+ * @param cb
+ */
 UniversalController.getBankruptcyGrant = function (cb) {
     pomelo.request(route.getBankruptcyGrant, {}, function (data) {
         cb(data);
     });
 }
 
+/**
+ * 获取每日任务列表
+ * @param cb
+ */
+UniversalController.getDailyTaskList = function (cb) {
+    pomelo.request(route.getDailyTaskList, {}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 获取成长任务列表
+ * @param cb
+ */
+UniversalController.getForeverTaskList = function (cb) {
+    pomelo.request(route.getForeverTaskList, {}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 领取任务奖励
+ * @param taskId
+ * @param cb
+ */
+UniversalController.getTaskGrant = function (taskId, cb) {
+    pomelo.request(route.getTaskGrant, {taskId: taskId}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 获取兑换列表
+ * @param cb
+ */
+UniversalController.getExchangeList = function (cb) {
+    pomelo.request(route.getExchangeList, {}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 获取我的兑换记录
+ * @param cb
+ */
+UniversalController.getMyExchangeRecordList = function (cb) {
+    pomelo.request(route.getMyExchangeRecordList, {}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 兑换
+ * @param exchangeId
+ * @param mobile
+ * @param count
+ * @param contact
+ * @param address
+ * @param cb
+ */
+UniversalController.exchange = function (exchangeId, mobile, count, contact, address, cb) {
+    pomelo.request(route.exchange, {exchangeId: exchangeId, mobile: mobile, count: count, contact: contact, address: address}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 获取商城列表
+ * @param cb
+ */
+UniversalController.getShopList = function (cb) {
+    pomelo.request(route.getShopList, {device: 'ios'}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 获取排行榜列表
+ * @param type
+ * @param cb
+ */
+UniversalController.getRankingList = function (type, cb) {
+    pomelo.request(route.getRankingList, {type: 1}, function (data) {
+        cb(data);
+    });
+}
+
+/**
+ * 支付
+ */
+UniversalController.payment = function () {
+    
+}
+
+/**
+ * 获取最新版本信息
+ */
+UniversalController.getTopOfAppReleaseRecord = function () {
+    pomelo.request(route.getTopOfAppReleaseRecord, {}, function (data) {
+        cb(data);
+    });
+}

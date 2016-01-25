@@ -20,6 +20,10 @@ var IndexScene = cc.Scene.extend({
         var indexLayer = new IndexLayer(lobbyData);
         this.addChild(indexLayer);
 
+        //template
+        var bottomBtnLayer = new BottomBtnLayer();
+        this.addChild(bottomBtnLayer);
+
     },
 
     onExit: function () {
@@ -42,11 +46,6 @@ var IndexLayer = cc.Layer.extend({
         bg.setPosition(winSize.width/2, winSize.height/2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
-
-        //template
-        var bottomBtnLayer = new BottomBtnLayer();
-        this.addChild(bottomBtnLayer);
-
 
         this.init(lobbyData);
         return ;

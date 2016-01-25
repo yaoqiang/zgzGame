@@ -58,6 +58,7 @@
         "src/controllers/universalController.js",
 
         "src/views/layer/profileTabLayer.js",
+        "src/views/layer/taskTabLayer.js",
 
         "src/views/layer/fivePeopleTableLayer.js",
         "src/views/layer/sevenPeopleTableLayer.js",
