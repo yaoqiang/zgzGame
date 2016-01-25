@@ -189,6 +189,6 @@ pomelo.on(gameEvents.BROADCAST, function (data) {
 pomelo.on(gameEvents.GOLD_CHANGE, function (data) {
     console.log('receive onGoldChange event.');
     gPlayer.gold = data.gold;
-    EventQueue.dispatchCustomEvent(gameEvents.GOLD_CHANGE, data);
+    EventQueue.dispatchCustomEvent("onGoldChange", data);
 });
 

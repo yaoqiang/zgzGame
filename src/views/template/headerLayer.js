@@ -152,17 +152,16 @@ var HeaderLayer = cc.Layer.extend({
 
         var self = this;
 
-        cc.eventManager.addCustomListener(gameEvents.GOLD_CHANGE, function (data) {
+        this.onGoldChangeListener = cc.eventManager.addCustomListener("onGoldChange", function (data) {
             self.gold.setString(zgzNumeral(data.gold).format('0,0'))
         });
 
-        EventQueue.dispatchEventFromQueue();
     },
 
     onExit: function () {
         this._super();
 
-        cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
+        cc.eventManager.removeListener(this.onGoldChangeListener);
     }
 
 })
