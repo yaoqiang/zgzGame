@@ -119,34 +119,98 @@ var DailyTaskLayer = cc.Layer.extend({
     tableCellAtIndex:function (table, idx) {
         var strValue = idx.toFixed(0);
         var cell = table.dequeueCell();
-        var label;
         if (!cell) {
             cell = new CustomTableViewCell();
         }
         cell.removeAllChildren(true);
         var taskList = this.data.taskList;
+        var oneTask = taskList[idx];
 
-        var desc = new cc.LabelTTF(taskList[idx].desc, "Arial", 24);
-        desc.color = cc.color.YELLOW;
-        desc.anchorX = 0;
-        desc.anchorY = 0.5;
-        desc.setPosition(10, this.m_nCelleHeight/2);
-        cell.addChild(desc);
+        var xx = 5;
+//bg
+        var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
+        bg.width = this.m_nCellWidth;
+        bg.height = this.m_nCelleHeight;
+        bg.setPosition(this.m_nCellWidth/2, this.m_nCelleHeight/2);
+        cell.addChild(bg);
+//图标
+        var type = oneTask.type;
+        if(type == "battle"){
+            var iconImage = "#task_Quest_1.png";
+        }else if(type == "win"){
+            var iconImage = "#task_Quest_2.png";
+        }else{//meeting
+            var iconImage = "#task_Quest_2.png";
+        }
+        var icon = new cc.Sprite(iconImage);
+        icon.setPosition(xx, this.m_nCelleHeight/2);
+        icon.setAnchorPoint(0, 0.5);
+        icon.scale = ZGZ.SCALE * 1;
+        cell.addChild(icon);
+        var iconSize = icon.getBoundingBox();
+        xx = xx + iconSize.width +5;
+//任务名称
+        var name = oneTask.name;
+        var taskname = new cc.LabelTTF(name, "Arial", 24);
+        taskname.color = cc.color.YELLOW;
+        taskname.setAnchorPoint(0, 0);
+        taskname.setPosition(xx, this.m_nCelleHeight/2 + 4);
+        cell.addChild(taskname);
+        var nameSize = taskname.getContentSize();
+//任务简介
+        var desc = oneTask.desc;
+        var descText = new cc.LabelTTF(desc, "Arial", 20);
+        descText.color = cc.color.YELLOW;
+        descText.setAnchorPoint(0, 1);
+        descText.setPosition(xx, this.m_nCelleHeight/2 - 6);
+        cell.addChild(descText);
+//任务进度
 
-        var line = new cc.LabelTTF("------------------------------", "Arial", 24);
-        line.color = cc.color.YELLOW;
-        line.anchorX = 0.5;
-        line.anchorY = 0;
-        line.setPosition(this.m_nCellWidth/2, 0);
-        cell.addChild(line);
+//menu
+        var finished = oneTask.finished;
+        xx = this.m_nCellWidth-20;
+        if(finished){
+            var finishedText = new cc.LabelTTF("任务完成", "Arial", 24);
+            finishedText.color = cc.color.YELLOW;
+            finishedText.setAnchorPoint(1, 0.5);
+            finishedText.setPosition(xx, this.m_nCelleHeight/2 );
+            cell.addChild(finishedText);
+        }else{
+            var Item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBackk, this);
+            Item.setPosition(xx, this.m_nCelleHeight/2);
+            Item.setAnchorPoint(1, 0.5);
+            Item.scale = ZGZ.SCALE * 0.7;
+            Item.tag = idx;
+            var ItemSize = Item.getContentSize();
 
-        label = new cc.LabelTTF(strValue, "Helvetica", 20.0);
-        label.x = 0;
-        label.y = 0;
-        label.anchorX = 0;
-        label.anchorY = 0;
-        label.tag = 123;
-        cell.addChild(label);
+            var text = new cc.LabelTTF("去做任务", "Arial", 30);
+            text.color = cc.color.YELLOW;
+            text.setAnchorPoint(0.5, 0.5);
+            text.setPosition(ItemSize.width/2, ItemSize.height/2 );
+            Item.addChild(text);
+
+            var menu = new cc.Menu(Item);
+            menu.setPosition(0, 0);
+            cell.addChild(menu);
+        }
+
+//任务奖励
+        var grant = oneTask.grant;
+        xx = this.m_nCellWidth - 300;
+        var jiangImage = new cc.Sprite("#task_jiang.png");
+        jiangImage.setPosition(xx, this.m_nCelleHeight/2);
+        jiangImage.setAnchorPoint(0, 0.5);
+        jiangImage.scale = ZGZ.SCALE * 1;
+        cell.addChild(jiangImage);
+        var jiangSize = jiangImage.getBoundingBox();
+        xx = xx + jiangSize.width + 3;
+
+        var jiangText = new cc.LabelTTF(grant, "Arial", 24);
+        jiangText.color = cc.color.YELLOW;
+        jiangText.setAnchorPoint(0, 0.5);
+        jiangText.setPosition(xx, this.m_nCelleHeight/2 );
+        cell.addChild(jiangText);
+
 
         return cell;
     },
@@ -154,7 +218,10 @@ var DailyTaskLayer = cc.Layer.extend({
     numberOfCellsInTableView:function (table) {
         return this.m_nCelleNum;
     },
-
+    onCallBackk: function (sender) {
+        var tag = sender.tag;
+        console.log("----->tag:"+tag);
+    },
     onEnter: function () {
         this._super();
 
