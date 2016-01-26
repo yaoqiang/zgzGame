@@ -45,6 +45,8 @@ AuthController.login = function(username, password)
                 gPlayer = data.player;
                 console.log("gPlayer => ", gPlayer);
 
+                //如果是断线重回游戏, 则不需要自动进入大厅;
+                if (data.isBackGame) return;
 
                 //进入Index
                 UniversalController.enterIndex();
