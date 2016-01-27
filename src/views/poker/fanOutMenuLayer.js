@@ -57,27 +57,31 @@
         //this.addChild(this.m_pMenu);
 
 //UIButton
-        this.m_pButtonFanOut = new ccui.Button();
-        this.m_pButtonFanOut.setTouchEnabled(true);
-        this.m_pButtonFanOut.loadTextures("common_btn_huang.png", "common_btn_huang.png", "", ccui.Widget.PLIST_TEXTURE);
-        this.m_pButtonFanOut.setTitleFontSize(30);
-        this.m_pButtonFanOut.setTitleText("出 牌");
-        this.m_pButtonFanOut.x = winSize.width/2 - 70;
-        this.m_pButtonFanOut.y =  h;
-        this.m_pButtonFanOut.addTouchEventListener(this.fanoutTouchEvent, this);
-        this.m_pButtonFanOut.scale = 0.6
-        this.addChild(this.m_pButtonFanOut);
 
         this.m_pButtonPass = new ccui.Button();
         this.m_pButtonPass.setTouchEnabled(true);
         this.m_pButtonPass.loadTextures("common_btn_huang.png", "common_btn_huang.png", "", ccui.Widget.PLIST_TEXTURE);
         this.m_pButtonPass.setTitleFontSize(30);
         this.m_pButtonPass.setTitleText("不 出");
-        this.m_pButtonPass.x = winSize.width/2 + 70;
+        this.m_pButtonPass.x = winSize.width/2 - 70;
         this.m_pButtonPass.y =  h;
         this.m_pButtonPass.addTouchEventListener(this.buchuTouchEvent, this);
         this.m_pButtonPass.scale = 0.6
         this.addChild(this.m_pButtonPass);
+
+
+        this.m_pButtonFanOut = new ccui.Button();
+        this.m_pButtonFanOut.setTouchEnabled(true);
+        this.m_pButtonFanOut.loadTextures("common_btn_huang.png", "common_btn_huang.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.m_pButtonFanOut.setTitleFontSize(30);
+        this.m_pButtonFanOut.setTitleText("出 牌");
+        this.m_pButtonFanOut.x = winSize.width/2 + 70;
+        this.m_pButtonFanOut.y =  h;
+        this.m_pButtonFanOut.addTouchEventListener(this.fanoutTouchEvent, this);
+        this.m_pButtonFanOut.scale = 0.6
+        this.addChild(this.m_pButtonFanOut);
+
+
     },
 
     fanoutTouchEvent: function (sender, type) {
