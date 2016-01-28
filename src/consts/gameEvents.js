@@ -19,5 +19,6 @@ var gameEvents = {
     FAN_WHEN_IS_RED: 'onFanWhenIsRed',
     FAN_FINISHED: 'onFanFinished',
     BACK_TO_GAME: 'onBackToGame',
-    UI_COMMAND: 'onUICommand'
+    UI_COMMAND: 'onUICommand',
+    VERSION_UPGRADE: 'onVersionUpgrade'
 }

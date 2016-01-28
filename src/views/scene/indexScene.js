@@ -11,6 +11,7 @@ var IndexScene = cc.Scene.extend({
 
         cc.spriteFrameCache.addSpriteFrames(res.index_plist);
         cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
 
         //header
         var headerLayer = new HeaderLayer({lobby: undefined});
