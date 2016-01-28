@@ -160,14 +160,14 @@ var HeaderLayer = cc.Layer.extend({
         });
 
 
-        gGameSenceCompleted = true;
-        EventQueue.dispatchEventFromQueue();
+        //gGameSenceCompleted = true;
+        //EventQueue.dispatchEventFromQueue();
 
     },
 
     onExit: function () {
         this._super();
-        gGameSenceCompleted = false;
+        //gGameSenceCompleted = false;
         cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 
