@@ -210,3 +210,11 @@ var GAME = {
 
 
 }
+
+var CommonConf = {
+    RANKING_LIST: {
+        RICH: 'RICH',
+        GOD: 'GOD',
+        RECHARGE: 'RECHARGE'
+    }
+}
