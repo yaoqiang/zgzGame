@@ -929,6 +929,7 @@ var GameLayer = cc.Layer.extend({
 
     onExit: function () {
         gGameSenceCompleted = false;
+        selfPointer = null;
         this._super();
         //event
         cc.eventManager.removeCustomListeners("joinEvent");

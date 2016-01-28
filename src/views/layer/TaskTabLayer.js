@@ -87,7 +87,7 @@ var TaskTabLayer = cc.Layer.extend({
         }
         this.addChild(this.selectedSprite);
 
-        this.args.callback.call(null, index);
+        this.args.callback.call(this.args.targe, index);
 
     },
 

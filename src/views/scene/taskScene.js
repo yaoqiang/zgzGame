@@ -1,48 +1,71 @@
 var TaskScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
+        TaskScenePoint = this;
+
+        this.scheduleOnce(this.updateTime, 0.5);
     },
 
     ctor: function (args) {
         this._super();
         cc.spriteFrameCache.addSpriteFrames(res.task_plist);
 
-        this.selected = args.selected;
+        this.selected = 100;//args.selected;
+        //background
+        var winSize = cc.director.getWinSize();
+        var bg = new cc.Sprite("#common_bg_beijing.png");
+        bg.setPosition(winSize.width/2, winSize.height/2);
+        bg.scale = ZGZ.SCALE * 10;
+        this.addChild(bg);
 
-        this.tabLayer = new TaskTabLayer({lobby: args.selected, callback: this.onTabChange});
+
+        this.tabLayer = new TaskTabLayer({lobby: args.selected, callback: this.onTabChange, targe:this});
         this.addChild(this.tabLayer, 9);
+        this.tasklayer = null;
 
-        this.layer = new DailyTaskLayer(args.data);
-        this.addChild(this.layer);
 
     },
 
     onExit: function () {
+        TaskScenePoint = null;
         this._super();
 
     },
 
+    updateTime: function () {
+        this.onTabChange(0);
+
+    },
+
     onTabChange: function (index) {
-        var scene = cc.director.getRunningScene();
-        if (scene.selected == index) return;
-        if (scene.layer) {
-            scene.layer.removeFromParent(true);
-            scene.layer = null;
+        if (this.selected == index) return;
+
+        if (this.tasklayer) {
+            cc.log("----->remove tasklayer:"+this.selected);
+            this.tasklayer.removeFromParent(true);
+            this.tasklayer = null;
         }
 
-        scene.selected = index;
+        cc.log("----->onTabChange:"+index);
 
-        if (scene.selected == 0) {
-            scene.layer = new DailyTaskLayer();
+        if (index == 0) {
+            UniversalController.getDailyTaskList(function (data) {
+                var scene = cc.director.getRunningScene();
+                var layer = new DailyTaskLayer(data);
+                TaskScenePoint.addChild(layer);
+                TaskScenePoint.tasklayer = layer;
+            });
         }
 
-        if (scene.selected == 1) {
-            scene.layer = new ForeverTaskLayer();
+        if (index == 1) {
+            UniversalController.getForeverTaskList(function (data) {
+                var scene = cc.director.getRunningScene();
+                var layer = new ForeverTaskLayer(data);
+                TaskScenePoint.addChild(layer);
+                TaskScenePoint.tasklayer = layer;
+            });
         }
-
-        scene.addChild(scene.layer);
-
-
+        this.selected = index;
     }
 
 });
@@ -64,11 +87,7 @@ var DailyTaskLayer = cc.Layer.extend({
         var visibleOrigin = cc.director.getVisibleOrigin();
         var visibleSize = cc.director.getVisibleSize();
 
- //background
-        var bg = new cc.Sprite("#common_bg_beijing.png");
-        bg.setPosition(winSize.width/2, winSize.height/2);
-        bg.scale = ZGZ.SCALE * 10;
-        this.addChild(bg);
+
 //
         var iconImage = "#task_Quest_2.png";
         var icon = new cc.Sprite(iconImage);
@@ -289,10 +308,10 @@ var ForeverTaskLayer = cc.Layer.extend({
         var visibleSize = cc.director.getVisibleSize();
 
         //background
-        var bg = new cc.Sprite("#common_bg_beijing.png");
-        bg.setPosition(winSize.width/2, winSize.height/2);
-        bg.scale = ZGZ.SCALE * 10;
-        this.addChild(bg);
+        //var bg = new cc.Sprite("#common_bg_beijing.png");
+        //bg.setPosition(winSize.width/2, winSize.height/2);
+        //bg.scale = ZGZ.SCALE * 10;
+        //this.addChild(bg);
 
 //
         var iconImage = "#task_Quest_2.png";
