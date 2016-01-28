@@ -152,16 +152,23 @@ var HeaderLayer = cc.Layer.extend({
 
         var self = this;
 
-        this.onGoldChangeListener = cc.eventManager.addCustomListener("onGoldChange", function (data) {
-            self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+        cc.eventManager.addCustomListener(gameEvents.GOLD_CHANGE, function (event) {
+            console.log(event._userData)
+
+            self.gold.setString(zgzNumeral(event._userData.gold).format('0,0'))
+
         });
+
+
+        gGameSenceCompleted = true;
+        EventQueue.dispatchEventFromQueue();
 
     },
 
     onExit: function () {
         this._super();
-
-        cc.eventManager.removeListener(this.onGoldChangeListener);
+        gGameSenceCompleted = false;
+        cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 
 })
