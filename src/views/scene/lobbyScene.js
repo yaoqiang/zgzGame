@@ -4,6 +4,9 @@ var LobbyScene = cc.Scene.extend({
         this._super();
 
         cc.spriteFrameCache.addSpriteFrames(res.room_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
 
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobby: lobbyId});

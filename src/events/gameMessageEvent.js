@@ -187,8 +187,14 @@ pomelo.on(gameEvents.BROADCAST, function (data) {
  * 自己金币变化
  */
 pomelo.on(gameEvents.GOLD_CHANGE, function (data) {
-    console.log('receive onGoldChange event.');
+    console.log('receive onGoldChange event.', data);
     gPlayer.gold = data.gold;
     EventQueue.dispatchCustomEvent("onGoldChange", data);
 });
+
+pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
+    console.log('receive onVersionUpgrade event.', data);
+    prompt.fadeMiddle('有新的版本发布, 请您去官网更新!');
+    EventQueue.dispatchCustomEvent(gameEvents.VERSION_UPGRADE, data);
+})
 

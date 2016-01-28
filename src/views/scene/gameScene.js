@@ -4,6 +4,7 @@ var GameScene = cc.Scene.extend({
 
         cc.spriteFrameCache.addSpriteFrames(res.game_plist);
         cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
 
         gGameSenceCompleted = false;
         var layer = new GameLayer(args, isBackGame);
