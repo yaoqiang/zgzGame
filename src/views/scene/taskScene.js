@@ -145,7 +145,7 @@ var DailyTaskLayer = cc.Layer.extend({
         var taskList = this.data.taskList;
         var oneTask = taskList[idx];
 
-        var xx = 5;
+        var xx = 15;
 //bg
         var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
         bg.width = this.m_nCellWidth;
@@ -164,31 +164,31 @@ var DailyTaskLayer = cc.Layer.extend({
         var icon = new cc.Sprite(iconImage);
         icon.setPosition(xx, this.m_nCelleHeight/2);
         icon.setAnchorPoint(0, 0.5);
-        icon.scale = ZGZ.SCALE * 1;
+        icon.scale = ZGZ.SCALE * 0.9;
         cell.addChild(icon);
         var iconSize = icon.getBoundingBox();
-        xx = xx + iconSize.width +5;
+        xx = xx + iconSize.width + 25;
 //任务名称
         var name = oneTask.name;
-        var taskname = new cc.LabelTTF(name, "Arial", 24);
-        taskname.color = cc.color.YELLOW;
+        var taskname = new cc.LabelTTF(name, "Arial", 22);
+        taskname.color = cc.color.GREEN;
         taskname.setAnchorPoint(0, 0);
         taskname.setPosition(xx, this.m_nCelleHeight/2 + 4);
         cell.addChild(taskname);
         var nameSize = taskname.getContentSize();
 //任务简介
         var desc = oneTask.desc;
-        var descText = new cc.LabelTTF(desc, "Arial", 20);
-        descText.color = cc.color.YELLOW;
+        var descText = new cc.LabelTTF(desc, "Arial", 16);
+        descText.color = cc.color.WHITE;
         descText.setAnchorPoint(0, 1);
-        descText.setPosition(xx, this.m_nCelleHeight/2 - 6);
+        descText.setPosition(xx, this.m_nCelleHeight/2 - 15);
         cell.addChild(descText);
-        xx = xx + nameSize.width + 30;
+        xx = xx + nameSize.width + 60;
 //任务进度
         var current = oneTask.current;
         var target = oneTask.target;
-        var jindu = new cc.LabelTTF(current+"/"+target , "Arial", 24);
-        jindu.color = cc.color.YELLOW;
+        var jindu = new cc.LabelTTF(current+"/"+target , "Arial", 22);
+        jindu.color = current >= target ? cc.color.GREEN : cc.color.RED;
         jindu.setAnchorPoint(0, 0);
         jindu.setPosition(xx, this.m_nCelleHeight/2 + 4);
         cell.addChild(jindu);
@@ -196,8 +196,8 @@ var DailyTaskLayer = cc.Layer.extend({
         var finished = oneTask.finished;
         xx = this.m_nCellWidth-20;
         if(finished){
-            var finishedText = new cc.LabelTTF("任务完成", "Arial", 24);
-            finishedText.color = cc.color.YELLOW;
+            var finishedText = new cc.LabelTTF("任务完成", "Arial", 26);
+            finishedText.color = cc.color.WHITE;
             finishedText.setAnchorPoint(1, 0.5);
             finishedText.setPosition(xx, this.m_nCelleHeight/2 );
             cell.addChild(finishedText);
@@ -210,10 +210,10 @@ var DailyTaskLayer = cc.Layer.extend({
             var ItemSize = Item.getContentSize();
 
             var text = "去做任务";
-            if(current ==target )
+            if(current >= target )
                 text = "领取奖励";
-            var textLable = new cc.LabelTTF(text, "Arial", 30);
-            textLable.color = cc.color.YELLOW;
+            var textLable = new cc.LabelTTF(text, "Arial", 26);
+            textLable.color = cc.color.WHITE;
             textLable.setAnchorPoint(0.5, 0.5);
             textLable.setPosition(ItemSize.width/2, ItemSize.height/2 );
             Item.addChild(textLable);
@@ -234,7 +234,7 @@ var DailyTaskLayer = cc.Layer.extend({
         var jiangSize = jiangImage.getBoundingBox();
         xx = xx + jiangSize.width + 3;
 
-        var jiangText = new cc.LabelTTF(grant, "Arial", 24);
+        var jiangText = new cc.LabelTTF(zgzNumeral(grant).format('0,0'), "Arial", 24);
         jiangText.color = cc.color.YELLOW;
         jiangText.setAnchorPoint(0, 0.5);
         jiangText.setPosition(xx, this.m_nCelleHeight/2 );
@@ -248,6 +248,7 @@ var DailyTaskLayer = cc.Layer.extend({
         return this.m_nCelleNum;
     },
     onCallBackk: function (sender) {
+        var self = this;
         var tag = sender.tag;
         console.log("----->tag:"+tag);
         var taskList = this.data.taskList;
@@ -257,7 +258,13 @@ var DailyTaskLayer = cc.Layer.extend({
         var id = oneTask.id;
         if(current == target){
             //领取奖励
-            UniversalController.getTaskGrant(id,this.getTaskGrant);
+            UniversalController.getTaskGrant(id, function (data) {
+                if (data.code == RETURN_CODE.FAIL) {
+                    prompt.fadeMiddle('领取失败');
+                    return;
+                }
+                self.getTaskGrant(data);
+            });
         }else{
             //去做任务
             UniversalController.enterIndex();
@@ -265,6 +272,9 @@ var DailyTaskLayer = cc.Layer.extend({
 
     },
     getTaskGrant: function (data) {
+
+        prompt.fade('您成功领取任务奖励');
+
         //领取奖励
         var nextTask = data.nextTask;
         var taskList = this.data.taskList;
@@ -372,7 +382,7 @@ var ForeverTaskLayer = cc.Layer.extend({
         var taskList = this.data.taskList;
         var oneTask = taskList[idx];
 
-        var xx = 5;
+        var xx = 15;
 //bg
         var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
         bg.width = this.m_nCellWidth;
@@ -391,31 +401,31 @@ var ForeverTaskLayer = cc.Layer.extend({
         var icon = new cc.Sprite(iconImage);
         icon.setPosition(xx, this.m_nCelleHeight/2);
         icon.setAnchorPoint(0, 0.5);
-        icon.scale = ZGZ.SCALE * 1;
+        icon.scale = ZGZ.SCALE * 0.9;
         cell.addChild(icon);
         var iconSize = icon.getBoundingBox();
-        xx = xx + iconSize.width +5;
+        xx = xx + iconSize.width + 25;
 //任务名称
         var name = oneTask.name;
-        var taskname = new cc.LabelTTF(name, "Arial", 24);
-        taskname.color = cc.color.YELLOW;
+        var taskname = new cc.LabelTTF(name, "Arial", 22);
+        taskname.color = cc.color.GREEN;
         taskname.setAnchorPoint(0, 0);
         taskname.setPosition(xx, this.m_nCelleHeight/2 + 4);
         cell.addChild(taskname);
         var nameSize = taskname.getContentSize();
 //任务简介
         var desc = oneTask.desc;
-        var descText = new cc.LabelTTF(desc, "Arial", 20);
-        descText.color = cc.color.YELLOW;
+        var descText = new cc.LabelTTF(desc, "Arial", 16);
+        descText.color = cc.color.WHITE;
         descText.setAnchorPoint(0, 1);
-        descText.setPosition(xx, this.m_nCelleHeight/2 - 6);
+        descText.setPosition(xx, this.m_nCelleHeight/2 - 15);
         cell.addChild(descText);
-        xx = xx + nameSize.width + 30;
+        xx = xx + nameSize.width + 60;
 //任务进度
         var current = oneTask.current;
         var target = oneTask.target;
-        var jindu = new cc.LabelTTF(current+"/"+target , "Arial", 24);
-        jindu.color = cc.color.YELLOW;
+        var jindu = new cc.LabelTTF(current+"/"+target , "Arial", 22);
+        jindu.color = current >= target ? cc.color.GREEN : cc.color.RED;
         jindu.setAnchorPoint(0, 0);
         jindu.setPosition(xx, this.m_nCelleHeight/2 + 4);
         cell.addChild(jindu);
@@ -423,8 +433,8 @@ var ForeverTaskLayer = cc.Layer.extend({
         var finished = oneTask.finished;
         xx = this.m_nCellWidth-20;
         if(finished){
-            var finishedText = new cc.LabelTTF("任务完成", "Arial", 24);
-            finishedText.color = cc.color.YELLOW;
+            var finishedText = new cc.LabelTTF("任务完成", "Arial", 26);
+            finishedText.color = cc.color.WHITE;
             finishedText.setAnchorPoint(1, 0.5);
             finishedText.setPosition(xx, this.m_nCelleHeight/2 );
             cell.addChild(finishedText);
@@ -437,10 +447,10 @@ var ForeverTaskLayer = cc.Layer.extend({
             var ItemSize = Item.getContentSize();
 
             var text = "去做任务";
-            if(current ==target )
+            if(current >=target )
                 text = "领取奖励";
-            var textLable = new cc.LabelTTF(text, "Arial", 30);
-            textLable.color = cc.color.YELLOW;
+            var textLable = new cc.LabelTTF(text, "Arial", 26);
+            textLable.color = cc.color.WHITE;
             textLable.setAnchorPoint(0.5, 0.5);
             textLable.setPosition(ItemSize.width/2, ItemSize.height/2 );
             Item.addChild(textLable);
@@ -461,7 +471,7 @@ var ForeverTaskLayer = cc.Layer.extend({
         var jiangSize = jiangImage.getBoundingBox();
         xx = xx + jiangSize.width + 3;
 
-        var jiangText = new cc.LabelTTF(grant, "Arial", 24);
+        var jiangText = new cc.LabelTTF(zgzNumeral(grant).format('0,0'), "Arial", 24);
         jiangText.color = cc.color.YELLOW;
         jiangText.setAnchorPoint(0, 0.5);
         jiangText.setPosition(xx, this.m_nCelleHeight/2 );
@@ -475,6 +485,7 @@ var ForeverTaskLayer = cc.Layer.extend({
         return this.m_nCelleNum;
     },
     onCallBackk: function (sender) {
+        var self = this;
         var tag = sender.tag;
         console.log("----->tag:"+tag);
         var taskList = this.data.taskList;
@@ -482,9 +493,15 @@ var ForeverTaskLayer = cc.Layer.extend({
         var current = oneTask.current;
         var target = oneTask.target;
         var id = oneTask.id;
-        if(current == target){
+        if(current >= target){
             //领取奖励
-            UniversalController.getTaskGrant(id,this.getTaskGrant);
+            UniversalController.getTaskGrant(id, function (data) {
+                if (data.code == RETURN_CODE.FAIL) {
+                    prompt.fadeMiddle('领取失败');
+                    return;
+                }
+                self.getTaskGrant(data);
+            });
         }else{
             //去做任务
             UniversalController.enterIndex();
@@ -492,6 +509,7 @@ var ForeverTaskLayer = cc.Layer.extend({
 
     },
     getTaskGrant: function (data) {
+        prompt.fade('您成果领取任务奖励!')
         //领取奖励
         var nextTask = data.nextTask;
         var taskList = this.data.taskList;

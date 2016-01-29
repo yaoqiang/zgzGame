@@ -192,6 +192,7 @@ var DialogWithModeNode = cc.Node.extend({
 
 
         this.m_pLable = new cc.LabelTTF(this.m_msg, "AmericanTypewriter", 26);
+        this.m_pLable.enableStroke(cc.color.WHITE, 1);
         this.m_pLable.color = cc.color.WHITE;
         //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
         this.m_pLable.setPosition(winSize.width/2, winSize.height/2 + bgActualSize.height/2 - 22);

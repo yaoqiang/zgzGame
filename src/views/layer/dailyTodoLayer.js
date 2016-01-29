@@ -10,9 +10,9 @@ var DailyTodoLayer = cc.Layer.extend({
 
         var winSize = cc.director.getWinSize();
 
-        var box = new DialogWithMode('每日必做');
+        this.box = new DialogWithMode('每日必做');
 
-        var boxSize = box.bg.getBoundingBox();
+        var boxSize = this.box.bg.getBoundingBox();
 
         var startY = 300;
         //var itemCount = 2;
@@ -22,21 +22,22 @@ var DailyTodoLayer = cc.Layer.extend({
         var checkInIcon = new cc.Sprite('#common_icon_gold_5.png');
         checkInIcon.setPosition(80, startY + 200);
         checkInIcon.scale = 1.4
-        box.bg.addChild(checkInIcon);
+        this.box.bg.addChild(checkInIcon);
 
         //标题
-        var checkInTitle = new cc.LabelTTF("签到有礼", "AmericanTypewriter", 30);
+        var checkInTitle = new cc.LabelTTF("签到有礼", "AmericanTypewriter", 32);
         checkInTitle.setColor(cc.color.GREEN);
         checkInTitle.setAnchorPoint(0, 0);
+        checkInTitle.enableStroke(cc.color.GREEN, 1);
         checkInTitle.setPosition(200, startY + 220);
-        box.bg.addChild(checkInTitle);
+        this.box.bg.addChild(checkInTitle);
 
         //描述
-        var checkInSummary = new cc.LabelTTF("天天签到, 天天惊喜, 玩牌有大礼!", "AmericanTypewriter", 26);
+        var checkInSummary = new cc.LabelTTF("天天签到, 天天惊喜, 玩牌有大礼!", "AmericanTypewriter", 28);
         checkInSummary.setColor(cc.color.WHITE);
         checkInSummary.setAnchorPoint(0, 0);
         checkInSummary.setPosition(200, startY + 170);
-        box.bg.addChild(checkInSummary);
+        this.box.bg.addChild(checkInSummary);
 
 
         //按钮
@@ -47,39 +48,41 @@ var DailyTodoLayer = cc.Layer.extend({
         checkInBtn.addTouchEventListener(this.onCheckInClick, this);
         checkInBtn.x = 820;
         checkInBtn.y = startY + 200;
+        checkInBtn.scale = 1.2;
 
         //按钮文字
-        this.checkInBtnLabel = new cc.LabelTTF(this.canGetCheckInGrant ? "签到" : "已签到", "AmericanTypewriter", 28);
+        this.checkInBtnLabel = new cc.LabelTTF(this.canGetCheckInGrant ? "签到" : "已签到", "AmericanTypewriter", 30);
         this.checkInBtnLabel.setColor(cc.color.WHITE);
         this.checkInBtnLabel.setPosition(checkInBtn.getContentSize().width/2, checkInBtn.getContentSize().height/2);
         checkInBtn.addChild(this.checkInBtnLabel);
 
-        box.bg.addChild(checkInBtn);
+        this.box.bg.addChild(checkInBtn);
 
         var line = new cc.Sprite('#split_line.png');
         line.setPosition(boxSize.width/2 + 220, startY + 130);
         line.scaleX = 3.5
         line.scaleY = 1.3
-        box.bg.addChild(line);
+        this.box.bg.addChild(line);
 
 
         //破产补助
         var bankruptGrantIcon = new cc.Sprite('#common_icon_gold.png');
         bankruptGrantIcon.setPosition(80, startY + 60);
-        bankruptGrantIcon.scale = 1.4
-        box.bg.addChild(bankruptGrantIcon);
+        bankruptGrantIcon.scale = 1.5
+        this.box.bg.addChild(bankruptGrantIcon);
 
-        var bankruptGrantTitle = new cc.LabelTTF("破产补助", "AmericanTypewriter", 30);
+        var bankruptGrantTitle = new cc.LabelTTF("破产补助", "AmericanTypewriter", 32);
         bankruptGrantTitle.setColor(cc.color.GREEN);
+        bankruptGrantTitle.enableStroke(cc.color.GREEN, 1);
         bankruptGrantTitle.setAnchorPoint(0, 0);
         bankruptGrantTitle.setPosition(200, startY + 80);
-        box.bg.addChild(bankruptGrantTitle);
+        this.box.bg.addChild(bankruptGrantTitle);
 
-        var bankruptGrantSummary = new cc.LabelTTF("在您破产的时候才会解囊相助!", "AmericanTypewriter", 26);
+        var bankruptGrantSummary = new cc.LabelTTF("在您破产的时候才会解囊相助!", "AmericanTypewriter", 28);
         bankruptGrantSummary.setColor(cc.color.WHITE);
         bankruptGrantSummary.setAnchorPoint(0, 0);
         bankruptGrantSummary.setPosition(200, startY + 30);
-        box.bg.addChild(bankruptGrantSummary);
+        this.box.bg.addChild(bankruptGrantSummary);
 
 
         var bankruptGrantBtn = new ccui.Button();
@@ -89,6 +92,7 @@ var DailyTodoLayer = cc.Layer.extend({
         bankruptGrantBtn.addTouchEventListener(this.onBankruptGrantClick, this);
         bankruptGrantBtn.x = 820;
         bankruptGrantBtn.y = startY + 60;
+        bankruptGrantBtn.scale = 1.2;
 
         var bankruptGrantBtnLabelStr = "";
         if (!this.canGetBankruptcyGrant) {
@@ -100,20 +104,20 @@ var DailyTodoLayer = cc.Layer.extend({
                 bankruptGrantBtnLabelStr = "前往游戏";
             }
         }
-        this.bankruptGrantBtnLabel = new cc.LabelTTF(bankruptGrantBtnLabelStr, "AmericanTypewriter", 28);
+        this.bankruptGrantBtnLabel = new cc.LabelTTF(bankruptGrantBtnLabelStr, "AmericanTypewriter", 30);
         this.bankruptGrantBtnLabel.setColor(cc.color.WHITE);
         this.bankruptGrantBtnLabel.setPosition(checkInBtn.getContentSize().width/2, checkInBtn.getContentSize().height/2);
         bankruptGrantBtn.addChild(this.bankruptGrantBtnLabel);
 
-        box.bg.addChild(bankruptGrantBtn);
+        this.box.bg.addChild(bankruptGrantBtn);
 
         line = new cc.Sprite('#split_line.png');
         line.setPosition(boxSize.width/2 + 220, startY - 10);
         line.scaleX = 3.5
         line.scaleY = 1.3
-        box.bg.addChild(line);
+        this.box.bg.addChild(line);
 
-        this.addChild(box);
+        this.addChild(this.box);
 
     },
 
@@ -138,6 +142,9 @@ var DailyTodoLayer = cc.Layer.extend({
 
             if (!this.threshold) {
                 //如果是前往游戏, 自动根据金币加入牌局
+                if (this.box) {
+                    this.box.removeFromParent(true);
+                }
                 return;
             }
 

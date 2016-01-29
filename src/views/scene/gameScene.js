@@ -780,7 +780,7 @@ var GameLayer = cc.Layer.extend({
     fanOutResponse: function (data) {
         //cc.log("FanOutResponse :", data);
         var code = data.code;
-        if (code == 500) {
+        if (code == RETURN_CODE.FAIL) {
             //cc.log("----> FanOutResponse fail");
             return;
         }

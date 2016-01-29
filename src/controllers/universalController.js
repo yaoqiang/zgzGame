@@ -20,7 +20,7 @@ UniversalController.updateProfile = function (nickName, gender, avatar) {
     }
 
     pomelo.request(route.updateProfile, {nickName: nickName, gender: gender, avatar: avatar}, function (data) {
-        if (data.code == 200) {
+        if (data.code == RETURN_CODE.OK) {
             gPlayer.nickName = nickName;
             gPlayer.gender = gender;
             gPlayer.avatar = avatar;
@@ -28,7 +28,7 @@ UniversalController.updateProfile = function (nickName, gender, avatar) {
             prompt.fadeMiddle('修改成功');
 
             //var alert = new AlertBox("修改成功", null, null);
-        } else if (data.code == 500) {
+        } else if (data.code == RETURN_CODE.FAIL) {
 
             prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err), 3);
             //var alert = new AlertBox(ERR_MESSAGE.getMessage(data.err), null, null);

@@ -102,7 +102,7 @@ var SignupLayer = cc.Layer.extend({
             args : {username: username, password: password},
             onSuccess : function(result) {
 
-                if (result.code === 200)
+                if (result.code === RETURN_CODE.OK)
                 {
                     //console.log('注册成功');
 

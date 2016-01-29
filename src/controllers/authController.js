@@ -34,7 +34,7 @@ AuthController.login = function(username, password)
             var token = result.token;
 
             Network.enter(uid, token, function (data) {
-                if (data.code !== 200)
+                if (data.code !== RETURN_CODE.OK)
                 {
                     //console.log('err.');
                     prompt.fade(data.message);

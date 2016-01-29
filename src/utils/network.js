@@ -18,7 +18,7 @@ var Network = {
                 var httpStatus = xhr.statusText;
                 var response = xhr.responseText;
 
-                if (xhr.status == 200) {
+                if (xhr.status == RETURN_CODE.OK) {
                     params.onSuccess(JSON.parse(response));
                 }
                 else {

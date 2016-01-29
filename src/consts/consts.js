@@ -1,4 +1,7 @@
-
+var RETURN_CODE = {
+    OK: 200,
+    FAIL: 500
+}
 
 
 var ERR_CODE = {
