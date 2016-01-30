@@ -83,6 +83,7 @@ UniversalController.getDailyTaskList = function (cb) {
  */
 UniversalController.getForeverTaskList = function (cb) {
     pomelo.request(route.getForeverTaskList, {}, function (data) {
+        data.taskList = _.sortBy(data.taskList, 'id').reverse();
         cb(data);
     });
 }

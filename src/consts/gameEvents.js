@@ -1,6 +1,8 @@
 var gameEvents = {
-    CHAT: 'onChat',
-    BROADCAST: 'onBroadcast',
+
+    ///////////////
+    //牌局相关
+    ///////////////
     JOIN: 'onJoin',
     READY: 'onReady',
     LEAVE: 'onLeave',
@@ -15,10 +17,16 @@ var gameEvents = {
     TRUSTEESHIP: 'onTrusteeship',
     CANCEL_TRUSTEESHIP: 'onCancelTrusteeship',
     OVER: 'onOver',
-    GOLD_CHANGE: 'onGoldChange',
     FAN_WHEN_IS_RED: 'onFanWhenIsRed',
     FAN_FINISHED: 'onFanFinished',
     BACK_TO_GAME: 'onBackToGame',
+
+
+    ////////////
+    GOLD_CHANGE: 'onGoldChange',
+    CHAT: 'onChat',
+    BROADCAST: 'onBroadcast',
     UI_COMMAND: 'onUICommand',
-    VERSION_UPGRADE: 'onVersionUpgrade'
+    VERSION_UPGRADE: 'onVersionUpgrade',
+    INGOT_CHANGE: 'onIngotChange'
 }

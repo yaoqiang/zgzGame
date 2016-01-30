@@ -2,6 +2,8 @@ var HeaderLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
 
+        this.initSubscribeEvent();
+
         this.args = args;
         var size = cc.director.getWinSize();
 
@@ -132,7 +134,7 @@ var HeaderLayer = cc.Layer.extend({
     },
 
     /**
-     * When click the help button(?) on right side of top screen.
+     * do btn clicked.
      */
     onDoButton: function () {
 
@@ -147,28 +149,25 @@ var HeaderLayer = cc.Layer.extend({
 
     },
 
+    initSubscribeEvent: function () {
+        var self = this;
+
+        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+            self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+
+        });
+    },
+
     onEnter: function () {
         this._super();
 
-        var self = this;
 
-        cc.eventManager.addCustomListener(gameEvents.GOLD_CHANGE, function (event) {
-            console.log(event._userData)
-
-            self.gold.setString(zgzNumeral(event._userData.gold).format('0,0'))
-
-        });
-
-
-        //gGameSenceCompleted = true;
-        //EventQueue.dispatchEventFromQueue();
 
     },
 
     onExit: function () {
         this._super();
-        //gGameSenceCompleted = false;
-        cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
+        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 
 })

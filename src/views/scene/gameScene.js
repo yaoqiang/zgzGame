@@ -12,12 +12,17 @@ var GameScene = cc.Scene.extend({
 
     }
 
+
+
 });
 
 var GameLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args, isBackGame) {
         this._super();
+
+        this.initSubscribeEvent();
+
         this.m_pData = args;
         this.m_pTableLayer = null;
         this.m_pPokerLayer = null;
@@ -50,6 +55,84 @@ var GameLayer = cc.Layer.extend({
             this.init();
         }
 
+    },
+
+    initSubscribeEvent: function () {
+        var selfPointer = this;
+
+        EventBus.subscribe(gameEvents.JOIN, function (data) {
+            selfPointer.joinEvent(data);
+        })
+
+        EventBus.subscribe(gameEvents.LEAVE, function (data) {
+            //cc.log("---->game  leaveEvent: ", event._userData);
+            selfPointer.leaveEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.READY, function (data) {
+            //cc.log("---->game  readyEvent: ", event._userData);
+            selfPointer.readyEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.START, function (data) {
+            //cc.log("---->game  gameStartEvent: ", data);
+            selfPointer.gameStartEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.TALK_COUNTDOWN, function (data) {
+            //cc.log("---->game  talkCountdownEvent: ", data);
+            selfPointer.talkCountdownEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.FAN, function (data) {
+            //cc.log("---->game  fanOutEvent: ", data);
+            selfPointer.fanOutEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.FAN_COUNTDOWN, function (data) {
+            //cc.log("---->game  fanCountdownEvent: ", data);
+            selfPointer.fanCountdownEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.TALK, function (data) {
+            //cc.log("---->game  talkEvent: ", data);
+            selfPointer.talkEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.TALK_COUNTDOWN_TIMEOUT, function (data) {
+            //cc.log("---->game  talkTimeoutEvent: ", data);
+            selfPointer.talkTimeoutEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.AFTER_TALK, function (data) {
+            //cc.log("---->game  afterTalk: ", data);
+            selfPointer.afterTalk(data);
+        });
+
+        EventBus.subscribe(gameEvents.OVER, function (data) {
+            //cc.log("---->game  gameOverEvent: ", data);
+            selfPointer.overEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.FAN_FINISHED, function (data) {
+            //cc.log("---->game  fanFinishedEvent: ", data);
+            selfPointer.fanFinishedEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.FAN_WHEN_IS_RED, function (data) {
+            //cc.log("---->game  fanWhenIsRedEvent: ", data);
+            selfPointer.fanWhenIsRedEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.TRUSTEESHIP, function (data) {
+            //cc.log("---->game  trusteeshipEvent: ", data);
+            selfPointer.trusteeshipEvent(data);
+        });
+
+        EventBus.subscribe(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
+            //cc.log("---->game  cancelTrusteeshipEvent: ", data);
+            selfPointer.cancelTrusteeshipEvent(data);
+        });
     },
 
     backGameInit: function (args) {
@@ -810,150 +893,28 @@ var GameLayer = cc.Layer.extend({
 
     },
 
-
     onEnter: function () {
         this._super();
-        selfPointer = this;
-        //event
-        cc.eventManager.addCustomListener("joinEvent", function (event) {
-            //cc.log("---->game joinEvent: ", event._userData);
-            selfPointer.joinEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("leaveEvent", function (event) {
-            //cc.log("---->game  leaveEvent: ", event._userData);
-            selfPointer.leaveEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("readyEvent", function (event) {
-            //cc.log("---->game  readyEvent: ", event._userData);
-            selfPointer.readyEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("gameStartEvent", function (event) {
-            //cc.log("---->game  gameStartEvent: ", event._userData);
-            selfPointer.gameStartEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("talkCountdownEvent", function (event) {
-            //cc.log("---->game  talkCountdownEvent: ", event._userData);
-            selfPointer.talkCountdownEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("fanOutEvent", function (event) {
-            //cc.log("---->game  fanOutEvent: ", event._userData);
-            selfPointer.fanOutEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("fanCountdownEvent", function (event) {
-            //cc.log("---->game  fanCountdownEvent: ", event._userData);
-            selfPointer.fanCountdownEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("talkEvent", function (event) {
-            //cc.log("---->game  talkEvent: ", event._userData);
-            selfPointer.talkEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("talkTimeoutEvent", function (event) {
-            //cc.log("---->game  talkTimeoutEvent: ", event._userData);
-            selfPointer.talkTimeoutEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("afterTalk", function (event) {
-            //cc.log("---->game  afterTalk: ", event._userData);
-            selfPointer.afterTalk(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("gameOverEvent", function (event) {
-            //cc.log("---->game  gameOverEvent: ", event._userData);
-            selfPointer.overEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("fanFinishedEvent", function (event) {
-            //cc.log("---->game  fanFinishedEvent: ", event._userData);
-            selfPointer.fanFinishedEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("fanWhenIsRedEvent", function (event) {
-            //cc.log("---->game  fanWhenIsRedEvent: ", event._userData);
-            selfPointer.fanWhenIsRedEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("trusteeshipEvent", function (event) {
-            //cc.log("---->game  trusteeshipEvent: ", event._userData);
-            selfPointer.trusteeshipEvent(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("cancelTrusteeshipEvent", function (event) {
-            //cc.log("---->game  cancelTrusteeshipEvent: ", event._userData);
-            selfPointer.cancelTrusteeshipEvent(event._userData);
-        });
-
-
-        //response
-        cc.eventManager.addCustomListener("readyResponse", function (event) {
-            //cc.log("---->game  readyResponse: ", event._userData);
-            selfPointer.readyResponse();
-        });
-
-        cc.eventManager.addCustomListener("talkResponse", function (event) {
-            //cc.log("---->game  talkResponse: ", event._userData);
-            selfPointer.talkResponse(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("fanOutResponse", function (event) {
-            //cc.log("---->game  fanOutResponse: ", event._userData);
-            selfPointer.fanOutResponse(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("trusteeshipResponse", function (event) {
-            //cc.log("---->game  trusteeshipResponse: ", event._userData);
-            selfPointer.trusteeshipResponse(event._userData);
-        });
-
-        cc.eventManager.addCustomListener("cancelTrusteeshipResponse", function (event) {
-            //cc.log("---->game  cancelTrusteeshipResponse: ", event._userData);
-            selfPointer.cancelTrusteeshipResponse(event._userData);
-        });
-
-
-        //this.addBidMenu(BidMenuBtn.kCCBidMenu_Liang);
-        //this.m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang,true);
-        //this.addFanOutMenu();
-
-        gGameSenceCompleted = true;
-        EventQueue.dispatchEventFromQueue();
 
     },
 
     onExit: function () {
         gGameSenceCompleted = false;
-        selfPointer = null;
         this._super();
         //event
-        cc.eventManager.removeCustomListeners("joinEvent");
-        cc.eventManager.removeCustomListeners("leaveEvent");
-        cc.eventManager.removeCustomListeners("readyEvent");
-        cc.eventManager.removeCustomListeners("gameStartEvent");
-        cc.eventManager.removeCustomListeners("talkCountdownEvent");
-        cc.eventManager.removeCustomListeners("fanOutEvent");
-        cc.eventManager.removeCustomListeners("fanCountdownEvent");
-        cc.eventManager.removeCustomListeners("talkEvent");
-        cc.eventManager.removeCustomListeners("gameOverEvent");
-        cc.eventManager.removeCustomListeners("fanFinishedEvent");
-        cc.eventManager.removeCustomListeners("fanWhenIsRedEvent");
-        cc.eventManager.removeCustomListeners("trusteeshipEvent");
-        cc.eventManager.removeCustomListeners("cancelTrusteeshipEvent");
-
-        //response
-        cc.eventManager.removeCustomListeners("readyResponse");
-        cc.eventManager.removeCustomListeners("talkResponse");
-        cc.eventManager.removeCustomListeners("fanOutResponse");
-
-        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
-        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
-        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.card_plist);
+        cc.eventManager.removeCustomListeners(gameEvents.JOIN);
+        cc.eventManager.removeCustomListeners(gameEvents.LEAVE);
+        cc.eventManager.removeCustomListeners(gameEvents.READY);
+        cc.eventManager.removeCustomListeners(gameEvents.START);
+        cc.eventManager.removeCustomListeners(gameEvents.TALK_COUNTDOWN);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN_COUNTDOWN);
+        cc.eventManager.removeCustomListeners(gameEvents.TALK);
+        cc.eventManager.removeCustomListeners(gameEvents.OVER);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN_FINISHED);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN_WHEN_IS_RED);
+        cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
+        cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
     }
 
 

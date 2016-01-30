@@ -3,21 +3,21 @@ var pomelo = window.pomelo;
 pomelo.on(gameEvents.JOIN, function (data) {
     console.log('receive join event -> ', data);
 
-    //cc.eventManager.dispatchCustomEvent("joinEvent", data);
-    EventQueue.dispatchCustomEvent("joinEvent", data);
+    EventBus.publish(gameEvents.JOIN, data);
+    //EventQueue.dispatchCustomEvent("joinEvent", data);
 });
 
 pomelo.on(gameEvents.LEAVE, function (data) {
     console.log('receive onLeave event -> ', data);
 
-    //cc.eventManager.dispatchCustomEvent("leaveEvent", data);
-    EventQueue.dispatchCustomEvent("leaveEvent", data);
+    EventBus.publish(gameEvents.LEAVE, data);
+    //EventQueue.dispatchCustomEvent("leaveEvent", data);
 });
 
 pomelo.on(gameEvents.READY, function (data) {
     console.log('receive onReady event ->', data);
-    //cc.eventManager.dispatchCustomEvent("readyEvent", data);
-    EventQueue.dispatchCustomEvent("readyEvent", data);
+    EventBus.publish(gameEvents.READY, data);
+    //EventQueue.dispatchCustomEvent("readyEvent", data);
 });
 
 
@@ -28,15 +28,15 @@ pomelo.on(gameEvents.START, function (data) {
     gActor.actorNr = data.actor.actorNr;
     gActor.uid = data.actor.uid;
     gActor.cards = data.actor.gameStatus.currentHoldingCards;
-    //cc.eventManager.dispatchCustomEvent("gameStartEvent", data);
-    EventQueue.dispatchCustomEvent("gameStartEvent", data);
+    EventBus.publish(gameEvents.START, data);
+    //EventQueue.dispatchCustomEvent("gameStartEvent", data);
 });
 
 pomelo.on(gameEvents.TALK_COUNTDOWN, function (data) {
     console.log('receive onTalkCountdown event -> ', data);
 
-    //cc.eventManager.dispatchCustomEvent("talkCountdownEvent", data);
-    EventQueue.dispatchCustomEvent("talkCountdownEvent", data);
+    EventBus.publish(gameEvents.TALK_COUNTDOWN, data);
+    //EventQueue.dispatchCustomEvent("talkCountdownEvent", data);
 });
 
 /**
@@ -57,8 +57,8 @@ pomelo.on(gameEvents.TALK, function (data) {
     console.log('receive onTalk event -> ', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
-    //cc.eventManager.dispatchCustomEvent("talkEvent", data);
-    EventQueue.dispatchCustomEvent("talkEvent", data);
+    EventBus.publish(gameEvents.TALK, data);
+    //EventQueue.dispatchCustomEvent("talkEvent", data);
 });
 
 /**
@@ -68,8 +68,8 @@ pomelo.on(gameEvents.AFTER_TALK, function (data) {
     console.log('receive onAfterTalk event -> ', data);
     //goal=说话结果（参考consts.GAME.IDENTITY)；append=说话时亮3情况，数组里放牌号；share=股子数
 
-    //cc.eventManager.dispatchCustomEvent("afterTalk", data);
-    EventQueue.dispatchCustomEvent("afterTalk", data);
+    EventBus.publish(gameEvents.AFTER_TALK, data);
+    //EventQueue.dispatchCustomEvent("afterTalk", data);
 });
 
 /**
@@ -85,8 +85,8 @@ pomelo.on(gameEvents.FAN_COUNTDOWN, function (data) {
     }
     //actor: {uid: xx, actorNr: xx},isBoss: true/false（是否当前回合BOSS）,
     //lastFanCardRecognization: utils.cards.CardRecognization (上手牌型，如果是第一个出牌，则是null）, second: 倒计时时间
-    //cc.eventManager.dispatchCustomEvent("fanCountdownEvent", data);
-    EventQueue.dispatchCustomEvent("fanCountdownEvent", data);
+    EventBus.publish(gameEvents.FAN_COUNTDOWN, data);
+    //EventQueue.dispatchCustomEvent("fanCountdownEvent", data);
 });
 
 //pomelo.on('onFanTimeout', function (data) {
@@ -102,8 +102,8 @@ pomelo.on(gameEvents.FAN, function (data) {
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;
     }
-    //cc.eventManager.dispatchCustomEvent("fanOutEvent", data);
-    EventQueue.dispatchCustomEvent("fanOutEvent", data);
+    EventBus.publish(gameEvents.FAN, data);
+    //EventQueue.dispatchCustomEvent("fanOutEvent", data);
     //actor: {uid: xx, actorNr: xx},
     //cardRecognization: utils.cards.CardRecognization (当前出牌牌型）, cards: 出牌，数组[]，为空时为不出
 
@@ -115,8 +115,8 @@ pomelo.on(gameEvents.FAN, function (data) {
  */
 pomelo.on(gameEvents.TRUSTEESHIP, function (data) {
     console.log('receive onTrusteeship event -> ', data);
-    //cc.eventManager.dispatchCustomEvent("trusteeshipEvent", data);
-    EventQueue.dispatchCustomEvent("trusteeshipEvent", data);
+    EventBus.publish(gameEvents.TRUSTEESHIP, data);
+    //EventQueue.dispatchCustomEvent("trusteeshipEvent", data);
 });
 
 /**
@@ -125,8 +125,8 @@ pomelo.on(gameEvents.TRUSTEESHIP, function (data) {
  */
 pomelo.on(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
     console.log('receive onCancelTrusteeship event -> ', data);
-    //cc.eventManager.dispatchCustomEvent("cancelTrusteeshipEvent", data);
-    EventQueue.dispatchCustomEvent("cancelTrusteeshipEvent", data);
+    EventBus.publish(gameEvents.CANCEL_TRUSTEESHIP, data);
+    //EventQueue.dispatchCustomEvent("cancelTrusteeshipEvent", data);
 });
 
 /**
@@ -138,8 +138,8 @@ pomelo.on(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
  */
 pomelo.on(gameEvents.OVER, function (data) {
     console.log('receive onOver event -> ', data);
-    //cc.eventManager.dispatchCustomEvent("gameOverEvent", data);
-    EventQueue.dispatchCustomEvent("gameOverEvent", data);
+    EventBus.publish(gameEvents.OVER, data);
+    //EventQueue.dispatchCustomEvent("gameOverEvent", data);
 });
 
 /**
@@ -148,8 +148,8 @@ pomelo.on(gameEvents.OVER, function (data) {
  */
 pomelo.on(gameEvents.FAN_WHEN_IS_RED, function (data) {
     console.log('receive onFanWhenIsRed event.');
-    //cc.eventManager.dispatchCustomEvent("fanWhenIsRedEvent", data);
-    EventQueue.dispatchCustomEvent("fanWhenIsRedEvent", data);
+    EventBus.publish(gameEvents.FAN_WHEN_IS_RED, data);
+    //EventQueue.dispatchCustomEvent("fanWhenIsRedEvent", data);
 });
 
 /**
@@ -165,8 +165,8 @@ pomelo.on(gameEvents.FAN_WHEN_IS_RED, function (data) {
  */
 pomelo.on(gameEvents.FAN_FINISHED, function (data) {
     console.log('receive onFanFinished event.', data);
-    //cc.eventManager.dispatchCustomEvent("fanFinishedEvent", data);
-    EventQueue.dispatchCustomEvent("fanFinishedEvent", data);
+    EventBus.publish(gameEvents.FAN_FINISHED, data);
+    //EventQueue.dispatchCustomEvent("fanFinishedEvent", data);
 });
 
 pomelo.on(gameEvents.BACK_TO_GAME, function (data) {
@@ -189,12 +189,20 @@ pomelo.on(gameEvents.BROADCAST, function (data) {
 pomelo.on(gameEvents.GOLD_CHANGE, function (data) {
     console.log('receive onGoldChange event.', data);
     gPlayer.gold = data.gold;
-    EventQueue.dispatchCustomEvent("onGoldChange", data);
+    EventBus.publish(gameEvents.GOLD_CHANGE, data);
+    //EventQueue.dispatchCustomEvent("onGoldChange", data);
+});
+
+pomelo.on(gameEvents.INGOT_CHANGE, function (data) {
+    console.log('receive onIngotChange event.', data);
+    gPlayer.fragment = data.ingot;
+    EventBus.publish(gameEvents.INGOT_CHANGE, data);
+    //EventQueue.dispatchCustomEvent("onGoldChange", data);
 });
 
 pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
     console.log('receive onVersionUpgrade event.', data);
     prompt.fadeMiddle('有新的版本发布, 请您去官网更新!');
-    EventQueue.dispatchCustomEvent(gameEvents.VERSION_UPGRADE, data);
+    EventBus.publish(gameEvents.VERSION_UPGRADE, data);
 })
 

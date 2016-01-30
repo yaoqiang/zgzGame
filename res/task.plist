@@ -7,6 +7,19 @@
             <key>daily_task_normal.png</key>
             <dict>
                 <key>frame</key>
+                <string>{{174,8},{170,44}}</string>
+                <key>offset</key>
+                <string>{0,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{5,4},{170,44}}</string>
+                <key>sourceSize</key>
+                <string>{180,48}</string>
+            </dict>
+            <key>sys_task_normal.png</key>
+            <dict>
+                <key>frame</key>
                 <string>{{2,8},{170,44}}</string>
                 <key>offset</key>
                 <string>{0,-2}</string>
@@ -17,23 +30,10 @@
                 <key>sourceSize</key>
                 <string>{180,48}</string>
             </dict>
-            <key>sys_task_normal.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{180,8},{170,44}}</string>
-                <key>offset</key>
-                <string>{0,-2}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{5,4},{170,44}}</string>
-                <key>sourceSize</key>
-                <string>{180,48}</string>
-            </dict>
             <key>task_Quest_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,162},{88,88}}</string>
+                <string>{{2,155},{88,88}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>task_Quest_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{92,162},{86,86}}</string>
+                <string>{{2,333},{86,86}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -55,6 +55,58 @@
                 <string>{{1,1},{86,86}}</string>
                 <key>sourceSize</key>
                 <string>{88,88}</string>
+            </dict>
+            <key>task_Quest_3.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{90,299},{86,86}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{86,86}}</string>
+                <key>sourceSize</key>
+                <string>{88,88}</string>
+            </dict>
+            <key>task_Quest_4.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,245},{86,86}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{86,86}}</string>
+                <key>sourceSize</key>
+                <string>{88,88}</string>
+            </dict>
+            <key>task_Quest_9.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{92,211},{86,86}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{86,86}}</string>
+                <key>sourceSize</key>
+                <string>{88,88}</string>
+            </dict>
+            <key>task_award_received.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,54},{122,99}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{122,99}}</string>
+                <key>sourceSize</key>
+                <string>{122,99}</string>
             </dict>
             <key>task_hengxian.png</key>
             <dict>
@@ -72,7 +124,7 @@
             <key>task_jiang.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,54},{54,54}}</string>
+                <string>{{92,155},{54,54}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +137,7 @@
             <key>task_jindutiao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{226,162},{80,24}}</string>
+                <string>{{220,162},{80,24}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -116,9 +168,9 @@
             <key>realTextureFileName</key>
             <string>task.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7823611a7ea8b5dc836874ecae7c041c:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:db1b545915880a78f854027b1f97b921:1/1$</string>
             <key>textureFileName</key>
             <string>task.png</string>
         </dict>

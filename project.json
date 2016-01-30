@@ -29,6 +29,7 @@
         "src/utils/cards/cardLogic.js",
         "src/utils/cards/cardSorter.js",
         "src/utils/cardUtil.js",
+        "src/utils/eventBus.js",
 
 
         "src/views/template/headerLayer.js",
