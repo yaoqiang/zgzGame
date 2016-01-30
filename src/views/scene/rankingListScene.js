@@ -1,4 +1,4 @@
-var TaskScene = cc.Scene.extend({
+var RankingListScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
         this.scheduleOnce(this.updateTime, 0.5);
@@ -6,9 +6,10 @@ var TaskScene = cc.Scene.extend({
 
     ctor: function (args) {
         this._super();
+        cc.spriteFrameCache.addSpriteFrames(res.rank_plist);
         cc.spriteFrameCache.addSpriteFrames(res.task_plist);
 
-        this.selected = 100;//args.selected;
+        this.selected = 100;
 
         //background
         var winSize = cc.director.getWinSize();
@@ -17,10 +18,9 @@ var TaskScene = cc.Scene.extend({
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
-
-        this.tabLayer = new TaskTabLayer({lobbyId: args.lobbyId, callback: this.onTabChange, target: this});
+        this.tabLayer = new RankingListTabLayer({lobbyId: args.lobbyId, callback: this.onTabChange, target: this});
         this.addChild(this.tabLayer, 9);
-        this.tasklayer = null;
+        this.layer = null;
 
 
     },
@@ -31,7 +31,7 @@ var TaskScene = cc.Scene.extend({
     },
 
     updateTime: function () {
-        this.onTabChange(0);
+        this.onTabChange(this.selected);
 
     },
 
@@ -40,28 +40,35 @@ var TaskScene = cc.Scene.extend({
         var self = this;
         if (this.selected == index) return;
 
-        if (this.tasklayer) {
-            this.tasklayer.removeFromParent(true);
-            this.tasklayer = null;
+        if (this.layer) {
+            this.layer.removeFromParent(true);
+            this.layer = null;
         }
 
         if (index == 0) {
-            UniversalController.getDailyTaskList(function (data) {
-                var scene = cc.director.getRunningScene();
-                var layer = new DailyTaskLayer(data);
-                self.addChild(layer);
-                self.tasklayer = layer;
-            });
+            //UniversalController.getDailyTaskList(function (data) {
+            //    var scene = cc.director.getRunningScene();
+            //    var layer = new DailyTaskLayer(data);
+            //    self.addChild(layer);
+            //    self.tabLayer = layer;
+            //});
+            UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RICH}, function (data) {
+                console.log('RICH = ', data);
+            })
         }
 
         if (index == 1) {
-            UniversalController.getForeverTaskList(function (data) {
-                var scene = cc.director.getRunningScene();
-                var layer = new ForeverTaskLayer(data);
-                self.addChild(layer);
-                self.tasklayer = layer;
-            });
+            UniversalController.getRankingList({type: CommonConf.RANKING_LIST.GOD}, function (data) {
+                console.log('GOD - ', data);
+            })
         }
+
+        if (index == 2) {
+            UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RECHARGE}, function (data) {
+                console.log('RECHARGE - ', data);
+            })
+        }
+
         this.selected = index;
     }
 

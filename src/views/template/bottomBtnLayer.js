@@ -1,10 +1,12 @@
 var BottomBtnLayer = cc.Layer.extend({
-    ctor: function () {
+    ctor: function (args) {
         this._super();
+
+        this.lobbyId = args.lobbyId;
 
         var taskMenuItem = new cc.MenuItemImage("#index_renwu.png", "#index_renwu.png", this.onTaskBtnClick, this);
         taskMenuItem.setPosition(120, 25);
-        var rankMenuItem = new cc.MenuItemImage("#index_paihang.png", "#index_paihang.png", this.onRankBtnClick, this);
+        var rankMenuItem = new cc.MenuItemImage("#index_paihang.png", "#index_paihang.png", this.onRankingBtnClick, this);
         rankMenuItem.setPosition(240, 25);
         var exchangeMenuItem = new cc.MenuItemImage("#index_duihuan.png", "#index_duihuan.png", this.onExchangeBtnClick, this);
         exchangeMenuItem.setPosition(360, 25);
@@ -27,14 +29,13 @@ var BottomBtnLayer = cc.Layer.extend({
     },
 
     onTaskBtnClick: function () {
-        UniversalController.getDailyTaskList(function (data) {
-            var scene = new TaskScene({selected: 0, data: data});
-            cc.director.runScene(new cc.TransitionFade(1.2, scene));
-        });
+        var scene = new TaskScene({selected: 0, lobbyId: this.lobbyId});
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
-    onRankBtnClick: function () {
-
+    onRankingBtnClick: function () {
+        var scene = new RankingListScene({selected: 0, lobbyId: this.lobbyId});
+        cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
     onExchangeBtnClick: function () {

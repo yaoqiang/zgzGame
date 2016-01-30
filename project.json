@@ -31,7 +31,6 @@
         "src/utils/cardUtil.js",
         "src/utils/eventBus.js",
 
-
         "src/views/template/headerLayer.js",
         "src/views/template/hornLayer.js",
         "src/views/template/components.js",
@@ -45,7 +44,6 @@
         "src/views/template/smallWidget.js",
         "src/views/template/bottomBtnLayer.js",
 
-
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
         "src/views/scene/indexScene.js",
@@ -53,6 +51,7 @@
         "src/views/scene/gameScene.js",
         "src/views/scene/profileScene.js",
         "src/views/scene/taskScene.js",
+        "src/views/scene/rankingListScene.js",
 
         "src/controllers/authController.js",
         "src/controllers/gameController.js",
@@ -60,6 +59,7 @@
 
         "src/views/layer/profileTabLayer.js",
         "src/views/layer/taskTabLayer.js",
+        "src/views/layer/rankingListTabLayer.js",
 
         "src/views/layer/fivePeopleTableLayer.js",
         "src/views/layer/sevenPeopleTableLayer.js",
@@ -68,7 +68,6 @@
         "src/views/layer/clock.js",
         "src/views/layer/indexScrollLayer.js",
         "src/views/layer/dailyTodoLayer.js",
-
 
         "src/views/poker/pokerLayer.js",
         "src/views/poker/pokerLayerDefine.js",

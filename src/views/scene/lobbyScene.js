@@ -12,7 +12,7 @@ var LobbyScene = cc.Scene.extend({
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobby: lobbyId});
         this.addChild(headerLayer, 1);
 
-        var lobbyLayer = new LobbyLayer(data);
+        var lobbyLayer = new LobbyLayer(data, lobbyId);
         this.addChild(lobbyLayer);
     }
 
@@ -32,8 +32,11 @@ var LobbyLayer = cc.Layer.extend({
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
     },
 
-    ctor: function (data) {
+    ctor: function (data, lobbyId) {
         this._super();
+
+        this.lobbyId = lobbyId;
+
         this.addChild(new HornSprite());
 
         var winSize = cc.director.getWinSize();
@@ -127,7 +130,7 @@ var LobbyLayer = cc.Layer.extend({
         this.addChild(backMenu);
 
         //template
-        var bottomBtnLayer = new BottomBtnLayer();
+        var bottomBtnLayer = new BottomBtnLayer({lobbyId: this.lobbyId});
         this.addChild(bottomBtnLayer);
 
 

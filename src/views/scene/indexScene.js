@@ -22,7 +22,7 @@ var IndexScene = cc.Scene.extend({
         this.addChild(indexLayer);
 
         //template
-        var bottomBtnLayer = new BottomBtnLayer();
+        var bottomBtnLayer = new BottomBtnLayer({});
         this.addChild(bottomBtnLayer);
 
     },

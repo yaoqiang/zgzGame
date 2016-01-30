@@ -10,6 +10,8 @@ var TaskTabLayer = cc.Layer.extend({
 
         this.args = args;
 
+        this.lobbyId = args.lobbyId;
+
         var winSize = cc.director.getWinSize();
 
         var bg = new cc.Sprite("#deep_bg_big.png");
@@ -88,14 +90,14 @@ var TaskTabLayer = cc.Layer.extend({
         this.addChild(separatorSprite);
 
         //
-        var itemNormal = new cc.Sprite("#sys_task_normal.png");
-        var itemSelected = new cc.Sprite("#sys_task_normal.png");
-        var itemDisabled = new cc.Sprite("#sys_task_normal.png");
-        var itemButton = new cc.MenuItemSprite(itemNormal, itemSelected, itemDisabled, this.onForeverClick, this);
-        itemButton.scale = 0.5;
-        var menuItem = new cc.Menu(itemButton);
-        menuItem.setPosition(winSize.width - 70, winSize.height - 30);
-        this.addChild(menuItem, 2);
+        var foreverNormal = new cc.Sprite("#sys_task_normal.png");
+        var foreverSelected = new cc.Sprite("#sys_task_normal.png");
+        var foreverDisabled = new cc.Sprite("#sys_task_normal.png");
+        var foreverButton = new cc.MenuItemSprite(foreverNormal, foreverSelected, foreverDisabled, this.onForeverClick, this);
+        foreverButton.scale = 0.5;
+        var foreverMenu = new cc.Menu(foreverButton);
+        foreverMenu.setPosition(winSize.width - 70, winSize.height - 30);
+        this.addChild(foreverMenu, 2);
 
         if (this.selected == 1) {
             this.selectedSprite.setPosition(winSize.width - 70, winSize.height - 30);
@@ -126,7 +128,7 @@ var TaskTabLayer = cc.Layer.extend({
         }
         this.addChild(this.selectedSprite);
 
-        this.args.callback.call(this.args.targe, index);
+        this.args.callback.call(this.args.target, index);
 
     },
 
@@ -140,7 +142,7 @@ var TaskTabLayer = cc.Layer.extend({
 
 
     onBackButton: function () {
-        if (this.lobbyId) {
+        if (this.lobbyId != undefined) {
             GameController.enterLobby(this.lobbyId);
         }
         else {
