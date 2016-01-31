@@ -52,6 +52,8 @@
         "src/views/scene/profileScene.js",
         "src/views/scene/taskScene.js",
         "src/views/scene/rankingListScene.js",
+        "src/views/scene/exchangeScene.js",
+
 
         "src/controllers/authController.js",
         "src/controllers/gameController.js",
@@ -60,6 +62,7 @@
         "src/views/layer/profileTabLayer.js",
         "src/views/layer/taskTabLayer.js",
         "src/views/layer/rankingListTabLayer.js",
+        "src/views/layer/exchangeTabLayer.js",
 
         "src/views/layer/fivePeopleTableLayer.js",
         "src/views/layer/sevenPeopleTableLayer.js",

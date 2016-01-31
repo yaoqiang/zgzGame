@@ -85,7 +85,7 @@ var LoginLayer = cc.Layer.extend({
         this.registerMenu.setPosition(bg.width/2-80, 42);
         this.registerMenu.setScale(0.65);
 
-        bg.addChild(this.registerMenu);
+        //bg.addChild(this.registerMenu);
 
 
         //other.

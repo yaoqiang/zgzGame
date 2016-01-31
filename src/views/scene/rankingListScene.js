@@ -7,7 +7,6 @@ var RankingListScene = cc.Scene.extend({
     ctor: function (args) {
         this._super();
         cc.spriteFrameCache.addSpriteFrames(res.rank_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.task_plist);
 
         this.selected = 100;
 
