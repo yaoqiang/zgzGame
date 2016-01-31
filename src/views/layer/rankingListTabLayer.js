@@ -48,9 +48,17 @@ var RankingListTabLayer = cc.Layer.extend({
         this.selectedSprite.scale = 0.7;
 
         //
-        var richNormal = new cc.Sprite("#daily_task_normal.png");
-        var richSelected = new cc.Sprite("#daily_task_normal.png");
-        var richDisabled = new cc.Sprite("#daily_task_normal.png");
+        //var richNormal = new cc.Sprite("#daily_task_normal.png");
+        //var richSelected = new cc.Sprite("#daily_task_normal.png");
+        //var richDisabled = new cc.Sprite("#daily_task_normal.png");
+
+        var richNormal = new cc.LabelTTF("土豪榜", "AmericanTypewriter", 40);
+        richNormal.enableStroke(cc.color.WHITE, 1);
+        var richSelected = new cc.LabelTTF("土豪榜", "AmericanTypewriter", 42);
+        richSelected.enableStroke(cc.color.WHITE, 1);
+        var richDisabled = new cc.LabelTTF("土豪榜", "AmericanTypewriter", 40);
+        richDisabled.enableStroke(cc.color.WHITE, 1);
+
         var richButton = new cc.MenuItemSprite(richNormal, richSelected, richDisabled, this.onRichClick, this);
         richButton.scale = 0.5;
         var richMenu = new cc.Menu(richButton);
@@ -63,13 +71,20 @@ var RankingListTabLayer = cc.Layer.extend({
         }
 
         var separatorSprite = new cc.Sprite("#separator.png");
-        separatorSprite.setPosition(winSize.width - 350, winSize.height - 30);
+        separatorSprite.setPosition(winSize.width - 340, winSize.height - 30);
         this.addChild(separatorSprite);
 
         //
-        var godNormal = new cc.Sprite("#daily_task_normal.png");
-        var godSelected = new cc.Sprite("#daily_task_normal.png");
-        var godDisabled = new cc.Sprite("#daily_task_normal.png");
+        //var godNormal = new cc.Sprite("#daily_task_normal.png");
+        //var godSelected = new cc.Sprite("#daily_task_normal.png");
+        //var godDisabled = new cc.Sprite("#daily_task_normal.png");
+
+        var godNormal = new cc.LabelTTF("股神榜", "AmericanTypewriter", 40);
+        godNormal.enableStroke(cc.color.WHITE, 1);
+        var godSelected = new cc.LabelTTF("股神榜", "AmericanTypewriter", 42);
+        godSelected.enableStroke(cc.color.WHITE, 1);
+        var godDisabled = new cc.LabelTTF("股神榜", "AmericanTypewriter", 40);
+        godDisabled.enableStroke(cc.color.WHITE, 1);
         var godButton = new cc.MenuItemSprite(godNormal, godSelected, godDisabled, this.onGodClick, this);
         godButton.scale = 0.5;
         var godMenu = new cc.Menu(godButton);
@@ -82,13 +97,20 @@ var RankingListTabLayer = cc.Layer.extend({
         }
 
         var separatorSprite2 = new cc.Sprite("#separator.png");
-        separatorSprite2.setPosition(winSize.width - 170, winSize.height - 30);
+        separatorSprite2.setPosition(winSize.width - 160, winSize.height - 30);
         this.addChild(separatorSprite2);
 
          //
-        var rechargeNormal = new cc.Sprite("#sys_task_normal.png");
-        var rechargeSelected = new cc.Sprite("#sys_task_normal.png");
-        var rechargeDisabled = new cc.Sprite("#sys_task_normal.png");
+        //var rechargeNormal = new cc.Sprite("#sys_task_normal.png");
+        //var rechargeSelected = new cc.Sprite("#sys_task_normal.png");
+        //var rechargeDisabled = new cc.Sprite("#sys_task_normal.png");
+
+        var rechargeNormal = new cc.LabelTTF("昨日充值榜", "AmericanTypewriter", 40);
+        rechargeNormal.enableStroke(cc.color.WHITE, 1);
+        var rechargeSelected = new cc.LabelTTF("昨日充值榜", "AmericanTypewriter", 42);
+        rechargeSelected.enableStroke(cc.color.WHITE, 1);
+        var rechargeDisabled = new cc.LabelTTF("昨日充值榜", "AmericanTypewriter", 40);
+        rechargeDisabled.enableStroke(cc.color.WHITE, 1);
         var rechargeButton = new cc.MenuItemSprite(rechargeNormal, rechargeSelected, rechargeDisabled, this.onRechargeClick, this);
         rechargeButton.scale = 0.5;
         var rechargeMenu = new cc.Menu(rechargeButton);

@@ -210,14 +210,11 @@ var ProfileLayer = cc.Layer.extend({
 
         this.addChild(percentLabel);
 
-
         var totalBattle = gPlayer.loseNr + gPlayer.winNr;
 
-        var percentStr = (gPlayer.winNr / totalBattle).toFixed(2) * 100;
+        var percentStr = utils.getPercent(gPlayer.winNr, totalBattle);
 
-        if (totalBattle == 0) percentStr = "0"
-
-        var percentValue = new cc.LabelTTF(percentStr + "%", "AmericanTypewriter", 18);
+        var percentValue = new cc.LabelTTF(percentStr, "AmericanTypewriter", 18);
         percentValue.setPosition(winSize.width/2 + 10, winSize.height/2 - 40);
         percentValue.setAnchorPoint(0, 0.5);
         this.addChild(percentValue);

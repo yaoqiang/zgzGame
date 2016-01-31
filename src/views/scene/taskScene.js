@@ -165,7 +165,7 @@ var DailyTaskLayer = cc.Layer.extend({
 
         var xx = 15;
 //bg
-        var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
+        var bg = new cc.Scale9Sprite("bg_cell.png", cc.rect(70, 10, 10, 10));
         bg.width = this.m_nCellWidth;
         bg.height = this.m_nCelleHeight;
         bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);
@@ -407,7 +407,7 @@ var ForeverTaskLayer = cc.Layer.extend({
 
         var xx = 15;
 //bg
-        var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
+        var bg = new cc.Scale9Sprite("bg_cell.png", cc.rect(70, 10, 10, 10));
         bg.width = this.m_nCellWidth;
         bg.height = this.m_nCelleHeight;
         bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);

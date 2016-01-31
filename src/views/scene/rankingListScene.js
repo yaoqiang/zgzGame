@@ -22,16 +22,36 @@ var RankingListScene = cc.Scene.extend({
         this.addChild(this.tabLayer, 9);
         this.layer = null;
 
+        this.lobbyId = args.lobbyId;
+
+        //add a keyboard event listener to statusLabel
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                var target = event.getCurrentTarget();
+                if (keyCode == cc.KEY.back) {
+                    if (target.lobbyId != undefined) {
+                        GameController.enterLobby(target.lobbyId);
+                    }
+                    else {
+                        UniversalController.enterIndex();
+                    }
+                }
+
+            }
+        }, this);
 
     },
 
     onExit: function () {
         this._super();
-
+        cc.eventManager.removeListener(this.keyboardListener);
     },
 
     updateTime: function () {
-        this.onTabChange(this.selected);
+        this.onTabChange(0);
 
     },
 
@@ -46,26 +66,30 @@ var RankingListScene = cc.Scene.extend({
         }
 
         if (index == 0) {
-            //UniversalController.getDailyTaskList(function (data) {
-            //    var scene = cc.director.getRunningScene();
-            //    var layer = new DailyTaskLayer(data);
-            //    self.addChild(layer);
-            //    self.tabLayer = layer;
-            //});
+
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RICH}, function (data) {
                 console.log('RICH = ', data);
+                var layer = new RichRankingListLayer(data);
+                self.addChild(layer);
+                self.layer = layer;
             })
         }
 
         if (index == 1) {
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.GOD}, function (data) {
                 console.log('GOD - ', data);
+                var layer = new GodRankingListLayer(data);
+                self.addChild(layer);
+                self.layer = layer;
             })
         }
 
         if (index == 2) {
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RECHARGE}, function (data) {
                 console.log('RECHARGE - ', data);
+                var layer = new RechargeRankingListLayer(data);
+                self.addChild(layer);
+                self.layer = layer;
             })
         }
 
@@ -80,7 +104,7 @@ var CustomTableViewCell = cc.TableViewCell.extend({
     }
 });
 
-var DailyTaskLayer = cc.Layer.extend({
+var RichRankingListLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args) {
         this._super();
@@ -92,22 +116,23 @@ var DailyTaskLayer = cc.Layer.extend({
 
 
 //
-        var iconImage = "#task_Quest_2.png";
+        var iconImage = "#rank_top_rank1.png";
         var icon = new cc.Sprite(iconImage);
+        icon.scale = 0.8;
         var iconSize = icon.getBoundingBox();
 
-        var taskList = args.taskList;
+        var rankingList = args.rankingList;
         var cellH = iconSize.height + 10;
         var tabH = 60;
 //init data
         this.m_pTableView = null;
         this.m_nTableWidth = visibleSize.width;
-        this.m_nTableHeight = (cellH * taskList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * taskList.length);
+        this.m_nTableHeight = (cellH * rankingList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * rankingList.length);
         this.m_nCellWidth = visibleSize.width;
         this.m_nCelleHeight = cellH;
         this.m_nTableX = visibleOrigin.x;
         this.m_nTableY = visibleOrigin.y + visibleSize.height - tabH - this.m_nTableHeight;
-        this.m_nCelleNum = taskList.length;
+        this.m_nCelleNum = rankingList.length;
 
         this.init();
 
@@ -145,104 +170,70 @@ var DailyTaskLayer = cc.Layer.extend({
             cell = new CustomTableViewCell();
         }
         cell.removeAllChildren(true);
-        var taskList = this.data.taskList;
-        var oneTask = taskList[idx];
+        var rankingList = this.data.rankingList;
+        var oneRanking = rankingList[idx];
 
         var xx = 15;
 //bg
-        var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
+        var bg = new cc.Scale9Sprite("bg_cell.png", cc.rect(70, 10, 10, 10));
         bg.width = this.m_nCellWidth;
         bg.height = this.m_nCelleHeight;
         bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);
         cell.addChild(bg);
-//图标
-        var type = oneTask.type;
-        if (type == "battle") {
-            var iconImage = "#task_Quest_1.png";
-        } else if (type == "win") {
-            var iconImage = "#task_Quest_2.png";
-        } else {//meeting
-            var iconImage = "#task_Quest_2.png";
+        //图标
+        var rankingImageString = "#rank_paimingkuang.png";
+
+        if (idx == 0) {
+            rankingImageString = "#rank_top_rank1.png";
+        } else if (idx == 1) {
+            rankingImageString = "#rank_top_rank2.png";
+        } else if (idx == 2) {
+            rankingImageString = "#rank_top_rank3.png";
         }
-        var icon = new cc.Sprite(iconImage);
+        var icon = new cc.Sprite(rankingImageString);
         icon.setPosition(xx, this.m_nCelleHeight / 2);
         icon.setAnchorPoint(0, 0.5);
-        icon.scale = ZGZ.SCALE * 0.9;
+        icon.scale = idx < 3 ? ZGZ.SCALE * 0.7 : 1.1;
         cell.addChild(icon);
-        var iconSize = icon.getBoundingBox();
-        xx = xx + iconSize.width + 25;
-//任务名称
-        var name = oneTask.name;
-        var taskname = new cc.LabelTTF(name, "Arial", 24);
-        taskname.color = cc.color.GREEN;
-        taskname.setAnchorPoint(0, 0);
-        taskname.setPosition(xx, this.m_nCelleHeight / 2 + 4);
-        cell.addChild(taskname);
-        var nameSize = taskname.getContentSize();
-//任务简介
-        var desc = oneTask.desc;
-        var descText = new cc.LabelTTF(desc, "Arial", 18);
-        descText.color = cc.color.WHITE;
-        descText.setAnchorPoint(0, 1);
-        descText.setPosition(xx, this.m_nCelleHeight / 2 - 15);
-        cell.addChild(descText);
-        xx = xx + nameSize.width + 60;
-//任务进度
-        var current = oneTask.current;
-        var target = oneTask.target;
-        var jindu = new cc.LabelTTF(current + "/" + target, "Arial", 22);
-        jindu.color = current >= target ? cc.color.GREEN : cc.color.RED;
-        jindu.setAnchorPoint(0, 0);
-        jindu.setPosition(xx, this.m_nCelleHeight / 2 + 4);
-        cell.addChild(jindu);
-//menu
-        var finished = oneTask.finished;
-        xx = this.m_nCellWidth - 20;
-        if (finished) {
-            var finishedSprite = new cc.Sprite("#task_award_received.png");
-            finishedSprite.setAnchorPoint(1, 0.5);
-            finishedSprite.scale = 0.7;
-            finishedSprite.setPosition(xx - 20, this.m_nCelleHeight / 2);
-            cell.addChild(finishedSprite);
-        } else {
-            var Item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
-            Item.setPosition(xx, this.m_nCelleHeight / 2);
-            Item.setAnchorPoint(1, 0.5);
-            Item.scale = ZGZ.SCALE * 0.7;
-            Item.tag = idx;
-            var ItemSize = Item.getContentSize();
 
-            var text = "去做任务";
-            if (current >= target)
-                text = "领取奖励";
-            var textLable = new cc.LabelTTF(text, "Arial", 26);
-            textLable.color = cc.color.WHITE;
-            textLable.setAnchorPoint(0.5, 0.5);
-            textLable.setPosition(ItemSize.width / 2, ItemSize.height / 2);
-            Item.addChild(textLable);
-
-            var menu = new cc.Menu(Item);
-            menu.setPosition(0, 0);
-            cell.addChild(menu);
+        if (idx > 2) {
+            var rankValue = new cc.LabelTTF(idx + 1, "Arial", 26);
+            rankValue.setPosition(icon.width/2, icon.height/2)
+            icon.addChild(rankValue);
         }
 
-//任务奖励
-        var grant = oneTask.grant;
-        xx = this.m_nCellWidth - 300;
-        var jiangImage = new cc.Sprite("#task_jiang.png");
-        jiangImage.setPosition(xx, this.m_nCelleHeight / 2);
-        jiangImage.setAnchorPoint(0, 0.5);
-        jiangImage.scale = ZGZ.SCALE * 1;
-        cell.addChild(jiangImage);
-        var jiangSize = jiangImage.getBoundingBox();
-        xx = xx + jiangSize.width + 3;
+        xx = xx + 150;
 
-        var jiangText = new cc.LabelTTF(zgzNumeral(grant).format('0,0'), "Arial", 24);
-        jiangText.color = cc.color.YELLOW;
-        jiangText.setAnchorPoint(0, 0.5);
-        jiangText.setPosition(xx, this.m_nCelleHeight / 2);
-        cell.addChild(jiangText);
+        //
+        var avatarSprite = new cc.Sprite(utils.getAvatar(oneRanking.avatar));
+        avatarSprite.setPosition(xx, this.m_nCelleHeight / 2);
+        avatarSprite.scale = 0.7
+        cell.addChild(avatarSprite);
 
+        var avatarSize = avatarSprite.getBoundingBox();
+        xx = xx + avatarSize.width + 15;
+        //玩家昵称
+        var nickName = oneRanking.nickName;
+        var nickNameLabel = new cc.LabelTTF(nickName, "Arial", 24);
+        nickNameLabel.color = cc.color.WHITE;
+        nickNameLabel.setAnchorPoint(0, 0);
+        nickNameLabel.setPosition(xx, this.m_nCelleHeight / 2 + 4);
+        cell.addChild(nickNameLabel);
+
+        //
+        var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
+        goldIcon.setPosition(xx, this.m_nCelleHeight / 2 - 30);
+        goldIcon.scale = 0.4;
+        goldIcon.setAnchorPoint(0, 0);
+        cell.addChild(goldIcon);
+
+        //玩家金币
+        var goldValue = oneRanking.gold;
+        var goldLabel = new cc.LabelTTF(zgzNumeral(goldValue).format('0,0'), "Arial", 22);
+        goldLabel.color = cc.color.YELLOW;
+        goldLabel.setAnchorPoint(0, 0);
+        goldLabel.setPosition(xx + 30, this.m_nCelleHeight / 2 - 30);
+        cell.addChild(goldLabel);
 
         return cell;
     },
@@ -251,55 +242,7 @@ var DailyTaskLayer = cc.Layer.extend({
         return this.m_nCelleNum;
     },
     onCallBack: function (sender) {
-        var self = this;
-        var tag = sender.tag;
-        var taskList = this.data.taskList;
-        var oneTask = taskList[tag];
-        var current = oneTask.current;
-        var target = oneTask.target;
-        var id = oneTask.id;
-        this.lastTaskId = id;
-        if (current >= target) {
-            //领取奖励
-            UniversalController.getTaskGrant(id, function (data) {
-                if (data.code == RETURN_CODE.FAIL) {
-                    prompt.fadeMiddle('领取失败');
-                    return;
-                }
-                self.getTaskGrant(data);
-            });
-        } else {
-            //去做任务
-            UniversalController.enterIndex();
-        }
 
-    },
-    getTaskGrant: function (data) {
-
-        prompt.fade('您成功领取任务奖励');
-
-        //领取奖励
-        var nextTask = data.nextTask;
-        var taskList = this.data.taskList;
-
-        for (var i = 0; i < taskList.length; i++) {
-            var oneTask = taskList[i];
-            if (oneTask.id == this.lastTaskId) {
-                oneTask.current = nextTask.current;
-                oneTask.desc = nextTask.desc;
-                oneTask.finished = nextTask.finished;
-                oneTask.grant = nextTask.grant;
-                oneTask.icon = nextTask.icon;
-                oneTask.name = nextTask.name;
-                oneTask.target = nextTask.target;
-                oneTask.type = nextTask.type;
-                oneTask.id = nextTask.id;
-                //oneTask.fragment = nextTask.fragment;
-
-                this.m_pTableView.reloadData();
-                break;
-            }
-        }
     },
 
     onEnter: function () {
@@ -314,41 +257,37 @@ var DailyTaskLayer = cc.Layer.extend({
 
 
 ////////////////////
-//
+// 股神榜
 //////////////////////
-var ForeverTaskLayer = cc.Layer.extend({
+var GodRankingListLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args) {
         this._super();
         this.data = args;
+
         var winSize = cc.director.getWinSize();
         var visibleOrigin = cc.director.getVisibleOrigin();
         var visibleSize = cc.director.getVisibleSize();
 
-        //background
-        //var bg = new cc.Sprite("#common_bg_beijing.png");
-        //bg.setPosition(winSize.width/2, winSize.height/2);
-        //bg.scale = ZGZ.SCALE * 10;
-        //this.addChild(bg);
 
 //
-        var iconImage = "#task_Quest_2.png";
+        var iconImage = "#rank_top_rank1.png";
         var icon = new cc.Sprite(iconImage);
+        icon.scale = 0.8;
         var iconSize = icon.getBoundingBox();
 
-        var taskList = args.taskList;
+        var rankingList = args.rankingList;
         var cellH = iconSize.height + 10;
         var tabH = 60;
 //init data
         this.m_pTableView = null;
         this.m_nTableWidth = visibleSize.width;
-        this.m_nTableHeight = (cellH * taskList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * taskList.length);
+        this.m_nTableHeight = (cellH * rankingList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * rankingList.length);
         this.m_nCellWidth = visibleSize.width;
         this.m_nCelleHeight = cellH;
         this.m_nTableX = visibleOrigin.x;
         this.m_nTableY = visibleOrigin.y + visibleSize.height - tabH - this.m_nTableHeight;
-        this.m_nCelleNum = taskList.length;
-
+        this.m_nCelleNum = rankingList.length;
 
         this.init();
 
@@ -362,7 +301,6 @@ var ForeverTaskLayer = cc.Layer.extend({
         this.m_pTableView.setVerticalFillOrder(cc.TABLEVIEW_FILL_TOPDOWN);
         this.addChild(this.m_pTableView);
         this.m_pTableView.reloadData();
-
     },
 
     scrollViewDidScroll: function (view) {
@@ -387,120 +325,74 @@ var ForeverTaskLayer = cc.Layer.extend({
             cell = new CustomTableViewCell();
         }
         cell.removeAllChildren(true);
-        var taskList = this.data.taskList;
-        var oneTask = taskList[idx];
+        var rankingList = this.data.rankingList;
+        var oneRanking = rankingList[idx];
 
         var xx = 15;
 //bg
-        var bg = new cc.Scale9Sprite("task_jindutiao_dikuang.png", cc.rect(70, 10, 10, 10));
+        var bg = new cc.Scale9Sprite("bg_cell.png", cc.rect(70, 10, 10, 10));
         bg.width = this.m_nCellWidth;
         bg.height = this.m_nCelleHeight;
         bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);
         cell.addChild(bg);
-//图标
-        var type = oneTask.type;
+        //图标
+        var rankingImageString = "#rank_paimingkuang.png";
 
-        //对战
-        var iconImage = "#task_Quest_1.png";
-        //胜利
-        if (type == "win") {
-            iconImage = "#task_Quest_2.png";
+        if (idx == 0) {
+            rankingImageString = "#rank_top_rank1.png";
+        } else if (idx == 1) {
+            rankingImageString = "#rank_top_rank2.png";
+        } else if (idx == 2) {
+            rankingImageString = "#rank_top_rank3.png";
         }
-        //meeting
-        else if (type == 'meeting') {
-            iconImage = "#task_Quest_4.png";
-        }
-
-        iconImage = !!oneTask.fragment ? "#task_Quest_9.png" : iconImage;
-
-        var icon = new cc.Sprite(iconImage);
+        var icon = new cc.Sprite(rankingImageString);
         icon.setPosition(xx, this.m_nCelleHeight / 2);
         icon.setAnchorPoint(0, 0.5);
-        icon.scale = ZGZ.SCALE * 0.9;
+        icon.scale = idx < 3 ? ZGZ.SCALE * 0.7 : 1.1;
         cell.addChild(icon);
-        var iconSize = icon.getBoundingBox();
-        xx = xx + iconSize.width + 25;
-//任务名称
-        var name = oneTask.name;
-        var taskname = new cc.LabelTTF(name, "Arial", 24);
-        taskname.color = cc.color.GREEN;
-        taskname.setAnchorPoint(0, 0);
-        taskname.setPosition(xx, this.m_nCelleHeight / 2 + 4);
-        cell.addChild(taskname);
-        var nameSize = taskname.getContentSize();
-//任务简介
-        var desc = oneTask.desc;
-        var descText = new cc.LabelTTF(desc, "Arial", 18);
-        descText.color = cc.color.WHITE;
-        descText.setAnchorPoint(0, 1);
-        descText.setPosition(xx, this.m_nCelleHeight / 2 - 15);
-        cell.addChild(descText);
-        xx = xx + nameSize.width + 60;
-//任务进度
-        var current = oneTask.current;
-        var target = oneTask.target;
-        var jindu = new cc.LabelTTF(current + "/" + target, "Arial", 22);
-        jindu.color = current >= target ? cc.color.GREEN : cc.color.RED;
-        jindu.setAnchorPoint(0, 0);
-        jindu.setPosition(xx, this.m_nCelleHeight / 2 + 4);
-        cell.addChild(jindu);
-//menu
-        var finished = oneTask.finished;
-        xx = this.m_nCellWidth - 20;
-        if (finished) {
-            var finishedSprite = new cc.Sprite("#task_award_received.png");
-            finishedSprite.setAnchorPoint(1, 0.5);
-            finishedSprite.scale = 0.7;
-            finishedSprite.setPosition(xx - 20, this.m_nCelleHeight / 2);
-            cell.addChild(finishedSprite);
 
-        } else {
-            var Item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
-            Item.setPosition(xx, this.m_nCelleHeight / 2);
-            Item.setAnchorPoint(1, 0.5);
-            Item.scale = ZGZ.SCALE * 0.7;
-            Item.tag = idx;
-            var ItemSize = Item.getContentSize();
-
-            var text = "去做任务";
-            if (current >= target)
-                text = "领取奖励";
-            var textLable = new cc.LabelTTF(text, "Arial", 26);
-            textLable.color = cc.color.WHITE;
-            textLable.setAnchorPoint(0.5, 0.5);
-            textLable.setPosition(ItemSize.width / 2, ItemSize.height / 2);
-            Item.addChild(textLable);
-
-            var menu = new cc.Menu(Item);
-            menu.setPosition(0, 0);
-            cell.addChild(menu);
+        if (idx > 2) {
+            var rankValue = new cc.LabelTTF(idx + 1, "Arial", 26);
+            rankValue.setPosition(icon.width/2, icon.height/2)
+            icon.addChild(rankValue);
         }
 
-        //任务奖励明细
-        var grant = oneTask.grant;
-        xx = this.m_nCellWidth - 300;
-
-        var grantImageString = "#task_jiang.png";
-        var grantValue = grant;
-
-        if (oneTask.fragment) {
-            grantImageString = "#yuanbaoIcon.png";
-            grantValue = oneTask.fragment;
-        }
-        var jiangImage = new cc.Sprite(grantImageString);
-        jiangImage.setPosition(xx, this.m_nCelleHeight / 2);
-        jiangImage.setAnchorPoint(0, 0.5);
-        jiangImage.scale = !!oneTask.fragment ? ZGZ.SCALE * 0.8 : ZGZ.SCALE * 1;
-        cell.addChild(jiangImage);
-        var jiangSize = jiangImage.getBoundingBox();
-        xx = xx + jiangSize.width + 3;
+        xx = xx + 150;
 
         //
-        var jiangText = new cc.LabelTTF(zgzNumeral(grantValue).format('0,0'), "Arial", 24);
-        jiangText.color = cc.color.YELLOW;
-        jiangText.setAnchorPoint(0, 0.5);
-        jiangText.setPosition(xx, this.m_nCelleHeight / 2);
-        cell.addChild(jiangText);
+        var avatarSprite = new cc.Sprite(utils.getAvatar(oneRanking.avatar));
+        avatarSprite.setPosition(xx, this.m_nCelleHeight / 2);
+        avatarSprite.scale = 0.7
+        cell.addChild(avatarSprite);
+
+        var avatarSize = avatarSprite.getBoundingBox();
+        xx = xx + avatarSize.width + 15;
+        //玩家昵称
+        var nickName = oneRanking.nickName;
+        var nickNameLabel = new cc.LabelTTF(nickName, "Arial", 24);
+        nickNameLabel.color = cc.color.WHITE;
+        nickNameLabel.setAnchorPoint(0, 0);
+        nickNameLabel.setPosition(xx, this.m_nCelleHeight / 2 + 4);
+        cell.addChild(nickNameLabel);
+
+        //
+        var percentIcon = new cc.LabelTTF("胜率:", "Arial", 22);
+        percentIcon.setPosition(xx, this.m_nCelleHeight / 2 - 30);
+        percentIcon.setAnchorPoint(0, 0);
+        cell.addChild(percentIcon);
+
+        //玩家胜率
+        var totalBattle = oneRanking.loseNr + oneRanking.winNr;
+
+        var percentStr = utils.getPercent(oneRanking.winNr, totalBattle);
+
+        var winningLabel = new cc.LabelTTF(percentStr, "Arial", 22);
+        winningLabel.color = cc.color.GREEN;
+        winningLabel.setAnchorPoint(0, 0);
+        winningLabel.setPosition(xx + 60, this.m_nCelleHeight / 2 - 30);
+        cell.addChild(winningLabel);
+
+        //胜负
 
 
         return cell;
@@ -510,54 +402,161 @@ var ForeverTaskLayer = cc.Layer.extend({
         return this.m_nCelleNum;
     },
     onCallBack: function (sender) {
-        var self = this;
-        var tag = sender.tag;
-        var taskList = this.data.taskList;
-        var oneTask = taskList[tag];
-        var current = oneTask.current;
-        var target = oneTask.target;
-        var id = oneTask.id;
-        if (current >= target) {
-            //记录领奖的任务ID;
-            this.lastTaskId = id;
-            //领取奖励
-            UniversalController.getTaskGrant(id, function (data) {
-                if (data.code == RETURN_CODE.FAIL) {
-                    prompt.fadeMiddle('领取失败');
-                    return;
-                }
-                self.getTaskGrant(data);
-            });
-        } else {
-            //去做任务
-            UniversalController.enterIndex();
-        }
 
     },
-    getTaskGrant: function (data) {
-        prompt.fade('您成功领取任务奖励!')
-        //领取奖励
-        var nextTask = data.nextTask;
-        var taskList = this.data.taskList;
 
-        for (var i = 0; i < taskList.length; i++) {
-            var oneTask = taskList[i];
-            if (oneTask.id == this.lastTaskId) {
-                oneTask.id = nextTask.id;
-                oneTask.current = nextTask.current;
-                oneTask.desc = nextTask.desc;
-                oneTask.finished = nextTask.finished;
-                oneTask.grant = nextTask.grant;
-                oneTask.icon = nextTask.icon;
-                oneTask.name = nextTask.name;
-                oneTask.target = nextTask.target;
-                oneTask.type = nextTask.type;
-                oneTask.fragment = nextTask.fragment;
+    onEnter: function () {
+        this._super();
 
-                this.m_pTableView.reloadData();
-                break;
-            }
+    },
+
+    onExit: function () {
+        this._super();
+    }
+});
+
+
+////////////////
+/// 昨日充值榜
+///////////
+var RechargeRankingListLayer = cc.Layer.extend({
+    sprite: null,
+    ctor: function (args) {
+        this._super();
+        this.data = args;
+
+        var winSize = cc.director.getWinSize();
+        var visibleOrigin = cc.director.getVisibleOrigin();
+        var visibleSize = cc.director.getVisibleSize();
+
+
+//
+        var iconImage = "#rank_top_rank1.png";
+        var icon = new cc.Sprite(iconImage);
+        icon.scale = 0.8;
+        var iconSize = icon.getBoundingBox();
+
+        var rankingList = args.rankingList;
+        var cellH = iconSize.height + 10;
+        var tabH = 60;
+//init data
+        this.m_pTableView = null;
+        this.m_nTableWidth = visibleSize.width;
+        this.m_nTableHeight = (cellH * rankingList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * rankingList.length);
+        this.m_nCellWidth = visibleSize.width;
+        this.m_nCelleHeight = cellH;
+        this.m_nTableX = visibleOrigin.x;
+        this.m_nTableY = visibleOrigin.y + visibleSize.height - tabH - this.m_nTableHeight;
+        this.m_nCelleNum = rankingList.length;
+
+        this.init();
+
+    },
+    init: function () {
+        this.m_pTableView = new cc.TableView(this, cc.size(this.m_nTableWidth, this.m_nTableHeight));
+        this.m_pTableView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this.m_pTableView.x = this.m_nTableX;
+        this.m_pTableView.y = this.m_nTableY;
+        this.m_pTableView.setDelegate(this);
+        this.m_pTableView.setVerticalFillOrder(cc.TABLEVIEW_FILL_TOPDOWN);
+        this.addChild(this.m_pTableView);
+        this.m_pTableView.reloadData();
+    },
+
+    scrollViewDidScroll: function (view) {
+        //c.log("----->scrollViewDidScroll ");
+    },
+    scrollViewDidZoom: function (view) {
+        //cc.log("----->scrollViewDidZoom ");
+    },
+
+    tableCellTouched: function (table, cell) {
+        //cc.log("cell touched at index: " + cell.getIdx());
+    },
+
+    tableCellSizeForIndex: function (table, idx) {
+        return cc.size(this.m_nCellWidth, this.m_nCelleHeight);
+    },
+
+    tableCellAtIndex: function (table, idx) {
+        var strValue = idx.toFixed(0);
+        var cell = table.dequeueCell();
+        if (!cell) {
+            cell = new CustomTableViewCell();
         }
+        cell.removeAllChildren(true);
+        var rankingList = this.data.rankingList;
+        var oneRanking = rankingList[idx];
+
+        var xx = 15;
+//bg
+        var bg = new cc.Scale9Sprite("bg_cell.png", cc.rect(70, 10, 10, 10));
+        bg.width = this.m_nCellWidth;
+        bg.height = this.m_nCelleHeight;
+        bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);
+        cell.addChild(bg);
+        //图标
+        var rankingImageString = "#rank_paimingkuang.png";
+
+        if (idx == 0) {
+            rankingImageString = "#rank_top_rank1.png";
+        } else if (idx == 1) {
+            rankingImageString = "#rank_top_rank2.png";
+        } else if (idx == 2) {
+            rankingImageString = "#rank_top_rank3.png";
+        }
+        var icon = new cc.Sprite(rankingImageString);
+        icon.setPosition(xx, this.m_nCelleHeight / 2);
+        icon.setAnchorPoint(0, 0.5);
+        icon.scale = idx < 3 ? ZGZ.SCALE * 0.7 : 1.1;
+        cell.addChild(icon);
+
+        if (idx > 2) {
+            var rankValue = new cc.LabelTTF(idx + 1, "Arial", 26);
+            rankValue.setPosition(icon.width/2, icon.height/2)
+            icon.addChild(rankValue);
+        }
+
+        xx = xx + 150;
+
+        //
+        var avatarSprite = new cc.Sprite(utils.getAvatar(oneRanking.avatar));
+        avatarSprite.setPosition(xx, this.m_nCelleHeight / 2);
+        avatarSprite.scale = 0.7
+        cell.addChild(avatarSprite);
+
+        var avatarSize = avatarSprite.getBoundingBox();
+        xx = xx + avatarSize.width + 15;
+        //玩家昵称
+        var nickName = oneRanking.nickName;
+        var nickNameLabel = new cc.LabelTTF(nickName, "Arial", 24);
+        nickNameLabel.color = cc.color.WHITE;
+        nickNameLabel.setAnchorPoint(0, 0);
+        nickNameLabel.setPosition(xx, this.m_nCelleHeight / 2 + 4);
+        cell.addChild(nickNameLabel);
+
+        //
+        var rechargeIcon = new cc.LabelTTF("充值:", "Arial", 22);
+        rechargeIcon.setPosition(xx, this.m_nCelleHeight / 2 - 30);
+        rechargeIcon.color = cc.color.RED;
+        rechargeIcon.setAnchorPoint(0, 0);
+        cell.addChild(rechargeIcon);
+
+        //玩家充值金额
+        var rechargeLabel = new cc.LabelTTF(zgzNumeral(oneRanking.totalAmount).format('0,0'), "Arial", 22);
+        rechargeLabel.color = cc.color.YELLOW;
+        rechargeLabel.setAnchorPoint(0, 0);
+        rechargeLabel.setPosition(xx + 60, this.m_nCelleHeight / 2 - 30);
+        cell.addChild(rechargeLabel);
+
+        return cell;
+    },
+
+    numberOfCellsInTableView: function (table) {
+        return this.m_nCelleNum;
+    },
+    onCallBack: function (sender) {
+
     },
 
     onEnter: function () {

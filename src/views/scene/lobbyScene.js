@@ -8,8 +8,6 @@ var LobbyScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
         cc.spriteFrameCache.addSpriteFrames(res.index_plist);
 
-        console.log('lobbyId = ', lobbyId)
-
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobbyId: lobbyId});
         this.addChild(headerLayer, 1);

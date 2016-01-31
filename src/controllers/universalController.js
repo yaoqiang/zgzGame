@@ -149,8 +149,8 @@ UniversalController.getShopList = function (cb) {
  * @param type
  * @param cb
  */
-UniversalController.getRankingList = function (type, cb) {
-    pomelo.request(route.getRankingList, {type: 1}, function (data) {
+UniversalController.getRankingList = function (data, cb) {
+    pomelo.request(route.getRankingList, {type: data.type}, function (data) {
         cb(data);
     });
 }
