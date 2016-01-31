@@ -220,23 +220,23 @@ var DailyTaskLayer = cc.Layer.extend({
             finishedSprite.setPosition(xx - 20, this.m_nCelleHeight / 2);
             cell.addChild(finishedSprite);
         } else {
-            var Item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
-            Item.setPosition(xx, this.m_nCelleHeight / 2);
-            Item.setAnchorPoint(1, 0.5);
-            Item.scale = ZGZ.SCALE * 0.7;
-            Item.tag = idx;
-            var ItemSize = Item.getContentSize();
+            var item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
+            item.setPosition(xx, this.m_nCelleHeight / 2);
+            item.setAnchorPoint(1, 0.5);
+            item.scale = ZGZ.SCALE * 0.7;
+            item.tag = idx;
+            var itemSize = item.getContentSize();
 
             var text = "去做任务";
             if (current >= target)
                 text = "领取奖励";
-            var textLable = new cc.LabelTTF(text, "Arial", 26);
-            textLable.color = cc.color.WHITE;
-            textLable.setAnchorPoint(0.5, 0.5);
-            textLable.setPosition(ItemSize.width / 2, ItemSize.height / 2);
-            Item.addChild(textLable);
+            var textLabel = new cc.LabelTTF(text, "Arial", 26);
+            textLabel.color = cc.color.WHITE;
+            textLabel.setAnchorPoint(0.5, 0.5);
+            textLabel.setPosition(itemSize.width / 2, itemSize.height / 2);
+            item.addChild(textLabel);
 
-            var menu = new cc.Menu(Item);
+            var menu = new cc.Menu(item);
             menu.setPosition(0, 0);
             cell.addChild(menu);
         }
@@ -470,23 +470,23 @@ var ForeverTaskLayer = cc.Layer.extend({
             cell.addChild(finishedSprite);
 
         } else {
-            var Item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
-            Item.setPosition(xx, this.m_nCelleHeight / 2);
-            Item.setAnchorPoint(1, 0.5);
-            Item.scale = ZGZ.SCALE * 0.7;
-            Item.tag = idx;
-            var ItemSize = Item.getContentSize();
+            var item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
+            item.setPosition(xx, this.m_nCelleHeight / 2);
+            item.setAnchorPoint(1, 0.5);
+            item.scale = ZGZ.SCALE * 0.7;
+            item.tag = idx;
+            var itemSize = item.getContentSize();
 
             var text = "去做任务";
             if (current >= target)
                 text = "领取奖励";
-            var textLable = new cc.LabelTTF(text, "Arial", 26);
-            textLable.color = cc.color.WHITE;
-            textLable.setAnchorPoint(0.5, 0.5);
-            textLable.setPosition(ItemSize.width / 2, ItemSize.height / 2);
-            Item.addChild(textLable);
+            var textLabel = new cc.LabelTTF(text, "Arial", 26);
+            textLabel.color = cc.color.WHITE;
+            textLabel.setAnchorPoint(0.5, 0.5);
+            textLabel.setPosition(itemSize.width / 2, itemSize.height / 2);
+            item.addChild(textLabel);
 
-            var menu = new cc.Menu(Item);
+            var menu = new cc.Menu(item);
             menu.setPosition(0, 0);
             cell.addChild(menu);
         }
