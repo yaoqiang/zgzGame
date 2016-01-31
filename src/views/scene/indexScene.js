@@ -25,6 +25,24 @@ var IndexScene = cc.Scene.extend({
         var bottomBtnLayer = new BottomBtnLayer({});
         this.addChild(bottomBtnLayer);
 
+
+
+        //add a keyboard event listener to statusLabel
+
+        //首页, 如果按1次,弹出是否退出, 再按一次, 退出应用
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                var target = event.getCurrentTarget();
+                if (keyCode == cc.KEY.back) {
+
+                }
+
+            }
+        }, this);
+
     },
 
     onExit: function () {
@@ -86,7 +104,8 @@ var IndexLayer = cc.Layer.extend({
 
     onEnter: function () {
         this._super();
-
+        //
+        cc.eventManager.removeListener(this.keyboardListener);
     },
 
     onExit: function () {

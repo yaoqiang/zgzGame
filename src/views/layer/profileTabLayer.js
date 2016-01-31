@@ -2,6 +2,7 @@ var ProfileTabLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
 
+        console.log(args);
         this.lobbyId = args.lobbyId;
         //0: profile selected, 1: bag selected
         this.selected = args.selected || 0;
@@ -101,7 +102,7 @@ var ProfileTabLayer = cc.Layer.extend({
 
 
     onBackButton: function () {
-        if (this.lobbyId) {
+        if (this.lobbyId != undefined) {
             GameController.enterLobby(this.lobbyId);
         }
         else {

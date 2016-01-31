@@ -17,17 +17,39 @@ var TaskScene = cc.Scene.extend({
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
+        this.lobbyId = args.lobbyId;
 
         this.tabLayer = new TaskTabLayer({lobbyId: args.lobbyId, callback: this.onTabChange, target: this});
         this.addChild(this.tabLayer, 9);
         this.tasklayer = null;
 
 
+        //add a keyboard event listener to statusLabel
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                var target = event.getCurrentTarget();
+                if (keyCode == cc.KEY.back) {
+                    if (target.lobbyId != undefined) {
+                        GameController.enterLobby(target.lobbyId);
+                    }
+                    else {
+                        UniversalController.enterIndex();
+                    }
+                }
+
+            }
+        }, this);
+
+
     },
 
     onExit: function () {
         this._super();
-
+        //
+        cc.eventManager.removeListener(this.keyboardListener);
     },
 
     updateTime: function () {

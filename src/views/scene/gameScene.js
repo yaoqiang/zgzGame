@@ -133,6 +133,21 @@ var GameLayer = cc.Layer.extend({
             //cc.log("---->game  cancelTrusteeshipEvent: ", data);
             selfPointer.cancelTrusteeshipEvent(data);
         });
+
+
+        //
+        //add a keyboard event listener to statusLabel
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                if (keyCode == cc.KEY.back) {
+                    GameController.leave(gRoomId);
+                }
+
+            }
+        }, this);
     },
 
     backGameInit: function (args) {
@@ -321,8 +336,6 @@ var GameLayer = cc.Layer.extend({
         if (this.m_actorList == null) {
             return;
         }
-
-
     },
 
     addActorToList: function (actor) {
@@ -915,6 +928,9 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeCustomListeners(gameEvents.FAN_WHEN_IS_RED);
         cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
         cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
+
+        //
+        cc.eventManager.removeListener(this.keyboardListener);
     }
 
 

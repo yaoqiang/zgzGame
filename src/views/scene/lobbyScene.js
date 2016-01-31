@@ -8,12 +8,39 @@ var LobbyScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
         cc.spriteFrameCache.addSpriteFrames(res.index_plist);
 
+        console.log('lobbyId = ', lobbyId)
+
         //header
-        var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobby: lobbyId});
+        var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobbyId: lobbyId});
         this.addChild(headerLayer, 1);
 
         var lobbyLayer = new LobbyLayer(data, lobbyId);
         this.addChild(lobbyLayer);
+
+        //add a keyboard event listener to statusLabel
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                var target = event.getCurrentTarget();
+                if (keyCode == cc.KEY.back) {
+                    if (target.lobbyId != undefined) {
+                        GameController.enterLobby(target.lobbyId);
+                    }
+                    else {
+                        UniversalController.enterIndex();
+                    }
+                }
+
+            }
+        }, this);
+    },
+
+    onExit: function() {
+        this._super();
+        //
+        cc.eventManager.removeListener(this.keyboardListener);
     }
 
 

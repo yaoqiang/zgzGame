@@ -4,12 +4,31 @@ var ProfileScene = cc.Scene.extend({
 
         cc.spriteFrameCache.addSpriteFrames(res.profile_plist);
 
-        this.profileTabLayer = new ProfileTabLayer({lobby: args.lobby, callback: this.onTabChange});
+        this.profileTabLayer = new ProfileTabLayer({lobbyId: args.lobbyId, callback: this.onTabChange});
         this.addChild(this.profileTabLayer, 9);
 
         this.selected = 0;
         this.layer = new ProfileLayer();
         this.addChild(this.layer);
+
+        //add a keyboard event listener to statusLabel
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                var target = event.getCurrentTarget();
+                if (keyCode == cc.KEY.back) {
+                    if (target.lobbyId != undefined) {
+                        GameController.enterLobby(target.lobbyId);
+                    }
+                    else {
+                        UniversalController.enterIndex();
+                    }
+                }
+
+            }
+        }, this);
     },
 
     onTabChange: function (index) {
@@ -38,7 +57,8 @@ var ProfileScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
-
+        //
+        cc.eventManager.removeListener(this.keyboardListener);
     }
 
 });

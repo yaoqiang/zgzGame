@@ -4,6 +4,30 @@ var SignupScene = cc.Scene.extend({
 
         var layer = new SignupLayer();
         this.addChild(layer);
+    },
+
+    ctor: function() {
+        this._super();
+
+        //add a keyboard event listener to statusLabel
+        this.keyboardListener = cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyPressed:  function(keyCode, event){
+            },
+            onKeyReleased: function(keyCode, event){
+                var target = event.getCurrentTarget();
+                if (keyCode == cc.KEY.back) {
+                    var scene = new LoginScene();
+                    cc.director.runScene(new cc.TransitionFade(1.2, scene));
+                }
+
+            }
+        }, this);
+    },
+
+    onExit: function() {
+        this._super();
+        cc.eventManager.removeListener(this.keyboardListener);
     }
 
 });
