@@ -12,18 +12,31 @@ UniversalController.enterIndex = function () {
     });
 }
 
-UniversalController.updateProfile = function (nickName, gender, avatar) {
+UniversalController.getProfile = function (uid, cb) {
+    pomelo.request(route.getProfile, {uid: uid}, function (data) {
+        console.log(data);
+        cb(data);
+    });
+}
+
+UniversalController.updateProfile = function (nickName, gender, avatar, summary) {
 
     if (nickName.length < 2 || nickName.length > 6) {
         prompt.fadeMiddle('修改失败, 昵称2-6位', 3);
         return;
     }
 
-    pomelo.request(route.updateProfile, {nickName: nickName, gender: gender, avatar: avatar}, function (data) {
+    if (summary.length > 10) {
+        prompt.fadeMiddle('修改失败, 简介<10位', 3);
+        return;
+    }
+
+    pomelo.request(route.updateProfile, {nickName: nickName, gender: gender, avatar: avatar, summary: summary}, function (data) {
         if (data.code == RETURN_CODE.OK) {
             gPlayer.nickName = nickName;
             gPlayer.gender = gender;
             gPlayer.avatar = avatar;
+            gPlayer.summary = summary;
 
             prompt.fadeMiddle('修改成功');
 

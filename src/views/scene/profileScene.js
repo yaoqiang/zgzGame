@@ -8,7 +8,7 @@ var ProfileScene = cc.Scene.extend({
         this.addChild(this.profileTabLayer, 9);
 
         this.selected = 0;
-        this.layer = new ProfileLayer();
+        this.layer = new ProfileLayer({player: args.player});
         this.addChild(this.layer);
 
         //add a keyboard event listener to statusLabel
@@ -65,12 +65,21 @@ var ProfileScene = cc.Scene.extend({
 
 
 var ProfileLayer = cc.Layer.extend({
-    ctor: function() {
+    ctor: function(args) {
         this._super();
 
-        this.nickName = gPlayer.nickName;
-        this.gender = gPlayer.gender || 'MALE';
-        this.avatar = gPlayer.avatar;
+        this.player = {};
+
+        this.player.nickName = args.player.nickName;
+        this.player.gender = args.player.gender || 'MALE';
+        this.player.avatar = args.player.avatar;
+        this.player.summary = args.player.summary;
+        this.player.winNr = args.player.winNr;
+        this.player.tieNr = args.player.tieNr;
+        this.player.loseNr = args.player.loseNr;
+        this.player.gold = args.player.gold;
+        this.player.fragment = args.player.fragment;
+        this.player.meetingTimes = args.player.meetingTimes;
 
         var winSize = cc.director.getWinSize();
 
@@ -88,8 +97,8 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var avatar = new cc.MenuItemSprite(
-            new cc.Sprite(utils.getAvatar(gPlayer.avatar)),
-            new cc.Sprite(utils.getAvatar(gPlayer.avatar)),
+            new cc.Sprite(utils.getAvatar(this.player.avatar)),
+            new cc.Sprite(utils.getAvatar(this.player.avatar)),
             this.profile,
             this
         );
@@ -122,7 +131,7 @@ var ProfileLayer = cc.Layer.extend({
         var modifyBg = new cc.Sprite("#deep_bg_big.png");
 
         modifyBg.setPosition(winSize.width/2 + 150, winSize.height/2 + 63);
-        modifyBg.scaleY = 0.75
+        modifyBg.scaleY = 1.3
         this.addChild(modifyBg);
 
         //
@@ -133,7 +142,7 @@ var ProfileLayer = cc.Layer.extend({
 
         var blockSize = cc.size(180, 30);
         this.nickNameValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.nickNameValue.setString(gPlayer.nickName);
+        this.nickNameValue.setString(this.player.nickName);
         this.nickNameValue.setFontColor(cc.color.BLACK);
         this.nickNameValue.setPosition(winSize.width/2 + 100, winSize.height/2 + 80);
         this.nickNameValue.color =  cc.color.WHITE;
@@ -161,9 +170,26 @@ var ProfileLayer = cc.Layer.extend({
         femaleLabel.color =  cc.color.WHITE;
         this.addChild(femaleLabel);
 
-
         //
         this.initGenderCheckbox();
+
+        //summary
+        var summaryLabel = new cc.LabelTTF("简  介:", "AmericanTypewriter", 18);
+        summaryLabel.setPosition(winSize.width/2 - 60, winSize.height/2);
+        summaryLabel.color =  cc.color.WHITE;
+
+
+        var blockSize = cc.size(180, 30);
+        this.summaryValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.summaryValue.setString(this.player.summary);
+        this.summaryValue.setFontColor(cc.color.BLACK);
+        this.summaryValue.setPosition(winSize.width/2 + 100, winSize.height/2);
+        this.summaryValue.color =  cc.color.WHITE;
+        this.summaryValue.setMaxLength(10);
+        this.addChild(this.summaryValue);
+
+
+        this.addChild(summaryLabel);
 
         //update button;
         //
@@ -173,7 +199,7 @@ var ProfileLayer = cc.Layer.extend({
         this.updateButton = new cc.MenuItemSprite(this.updateNormal, this.updateSelected, this.updateDisabled, this.updateProfile, this);
         this.updateButton.scale = 0.8;
         var menuItem = new cc.Menu(this.updateButton);
-        menuItem.setPosition(winSize.width/2 + 300, winSize.height/2 + 60);
+        menuItem.setPosition(winSize.width/2 + 300, winSize.height/2 + 40);
         this.addChild(menuItem, 2);
 
         var butSize  = this.updateButton.getContentSize();
@@ -184,19 +210,19 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var goldLabel = new cc.LabelTTF("金  币:", "AmericanTypewriter", 18);
-        goldLabel.setPosition(winSize.width/2 - 60, winSize.height/2);
+        goldLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 40);
         goldLabel.color =  cc.color.WHITE;
 
         this.addChild(goldLabel);
 
         var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
-        goldIcon.setPosition(winSize.width/2 + 10, winSize.height/2);
+        goldIcon.setPosition(winSize.width/2 + 10, winSize.height/2 - 40);
         goldIcon.scale = 0.4;
         goldIcon.setAnchorPoint(0, 0.5);
         this.addChild(goldIcon);
 
-        var goldValue = new cc.LabelTTF(zgzNumeral(gPlayer.gold).format('0,0'), "AmericanTypewriter", 20);
-        goldValue.setPosition(winSize.width/2 + 40, winSize.height/2);
+        var goldValue = new cc.LabelTTF(zgzNumeral(this.player.gold).format('0,0'), "AmericanTypewriter", 20);
+        goldValue.setPosition(winSize.width/2 + 40, winSize.height/2 - 40);
         goldValue.color =  cc.color.YELLOW;
         goldValue.setAnchorPoint(0, 0.5);
 
@@ -205,55 +231,55 @@ var ProfileLayer = cc.Layer.extend({
 
         //胜率
         var percentLabel = new cc.LabelTTF("胜  率:", "AmericanTypewriter", 18);
-        percentLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 40);
+        percentLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 80);
         percentLabel.color =  cc.color.WHITE;
 
         this.addChild(percentLabel);
 
-        var totalBattle = gPlayer.loseNr + gPlayer.winNr;
+        var totalBattle = this.player.loseNr + this.player.winNr;
 
-        var percentStr = utils.getPercent(gPlayer.winNr, totalBattle);
+        var percentStr = utils.getPercent(this.player.winNr, totalBattle);
 
         var percentValue = new cc.LabelTTF(percentStr, "AmericanTypewriter", 18);
-        percentValue.setPosition(winSize.width/2 + 10, winSize.height/2 - 40);
+        percentValue.setPosition(winSize.width/2 + 10, winSize.height/2 - 80);
         percentValue.setAnchorPoint(0, 0.5);
         this.addChild(percentValue);
 
         //win
         var winNrLabel = new cc.LabelTTF("胜:", "AmericanTypewriter", 18);
-        winNrLabel.setPosition(winSize.width/2 + 90, winSize.height/2 - 40);
+        winNrLabel.setPosition(winSize.width/2 + 90, winSize.height/2 - 80);
         winNrLabel.color =  cc.color.WHITE;
         winNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(winNrLabel);
 
-        var winNrValueLabel = new cc.LabelTTF(gPlayer.winNr.toString(), "AmericanTypewriter", 18);
-        winNrValueLabel.setPosition(winSize.width/2 + 120, winSize.height/2 - 40);
+        var winNrValueLabel = new cc.LabelTTF(this.player.winNr.toString(), "AmericanTypewriter", 18);
+        winNrValueLabel.setPosition(winSize.width/2 + 120, winSize.height/2 - 80);
         winNrValueLabel.color =  cc.color.WHITE;
         winNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(winNrValueLabel);
 
         //tie
         var tieNrLabel = new cc.LabelTTF("平:", "AmericanTypewriter", 18);
-        tieNrLabel.setPosition(winSize.width/2 + 170, winSize.height/2 - 40);
+        tieNrLabel.setPosition(winSize.width/2 + 170, winSize.height/2 - 80);
         tieNrLabel.color =  cc.color.WHITE;
         tieNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(tieNrLabel);
 
-        var tieNrValueLabel = new cc.LabelTTF(gPlayer.tieNr.toString(), "AmericanTypewriter", 18);
-        tieNrValueLabel.setPosition(winSize.width/2 + 200, winSize.height/2 - 40);
+        var tieNrValueLabel = new cc.LabelTTF(this.player.tieNr.toString(), "AmericanTypewriter", 18);
+        tieNrValueLabel.setPosition(winSize.width/2 + 200, winSize.height/2 - 80);
         tieNrValueLabel.color =  cc.color.WHITE
         tieNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(tieNrValueLabel);
 
         //lose
         var loseNrLabel = new cc.LabelTTF("负:", "AmericanTypewriter", 18);
-        loseNrLabel.setPosition(winSize.width/2 + 250, winSize.height/2 - 40);
+        loseNrLabel.setPosition(winSize.width/2 + 250, winSize.height/2 - 80);
         loseNrLabel.color =  cc.color.WHITE;
         loseNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(loseNrLabel);
 
-        var loseNrValueLabel = new cc.LabelTTF(gPlayer.loseNr.toString(), "AmericanTypewriter", 18);
-        loseNrValueLabel.setPosition(winSize.width/2 + 280, winSize.height/2 - 40);
+        var loseNrValueLabel = new cc.LabelTTF(this.player.loseNr.toString(), "AmericanTypewriter", 18);
+        loseNrValueLabel.setPosition(winSize.width/2 + 280, winSize.height/2 - 80);
         loseNrValueLabel.color =  cc.color.WHITE;
         loseNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(loseNrValueLabel);
@@ -262,31 +288,31 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var meetingTimeLabel = new cc.LabelTTF("开  会:", "AmericanTypewriter", 18);
-        meetingTimeLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 80);
+        meetingTimeLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 120);
         meetingTimeLabel.color =  cc.color.WHITE;
 
         this.addChild(meetingTimeLabel);
 
-        var meetingTimeValueLabel = new cc.LabelTTF(gPlayer.meetingTimes.toString(), "AmericanTypewriter", 18);
-        meetingTimeValueLabel.setPosition(winSize.width/2 + 10, winSize.height/2 - 80);
+        var meetingTimeValueLabel = new cc.LabelTTF(this.player.meetingTimes.toString(), "AmericanTypewriter", 18);
+        meetingTimeValueLabel.setPosition(winSize.width/2 + 10, winSize.height/2 - 120);
         meetingTimeValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(meetingTimeValueLabel);
 
         //
         var ingotLabel = new cc.LabelTTF("元  宝:", "AmericanTypewriter", 18);
-        ingotLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 120);
+        ingotLabel.setPosition(winSize.width/2 - 60, winSize.height/2 - 160);
         ingotLabel.color =  cc.color.WHITE;
 
         this.addChild(ingotLabel);
 
         var ingotIcon = new cc.Sprite("#common_icon_yuanbao.png");
-        ingotIcon.setPosition(winSize.width/2 + 10, winSize.height/2 - 120);
+        ingotIcon.setPosition(winSize.width/2 + 10, winSize.height/2 - 160);
         ingotIcon.scale = 0.8;
         ingotIcon.setAnchorPoint(0, 0.5);
         this.addChild(ingotIcon);
 
-        var ingotValue = new cc.LabelTTF(gPlayer.fragment.toString(), "AmericanTypewriter", 20);
-        ingotValue.setPosition(winSize.width/2 + 40, winSize.height/2 - 120);
+        var ingotValue = new cc.LabelTTF(this.player.fragment.toString(), "AmericanTypewriter", 20);
+        ingotValue.setPosition(winSize.width/2 + 40, winSize.height/2 - 160);
         ingotValue.color =  cc.color.YELLOW;
         ingotValue.setAnchorPoint(0, 0.5);
 
@@ -296,8 +322,9 @@ var ProfileLayer = cc.Layer.extend({
     updateProfile: function () {
 
         var nickName = this.nickNameValue.getString();
+        var summary = this.summaryValue.getString();
 
-        UniversalController.updateProfile(nickName, this.gender, this.avatar);
+        UniversalController.updateProfile(nickName, this.player.gender, this.player.avatar, summary);
     },
 
     updateAvatar: function () {
@@ -309,11 +336,16 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     onGenderChecked: function (gender) {
-        if (this.gender == gender) return;
+        this.player.gender = gender;
+        if (gender == 'MALE') {
+            this.checkBoxMale.selected = true;
+            this.checkBoxFemale.selected = false;
+        }
+        else {
+            this.checkBoxMale.selected = false;
+            this.checkBoxFemale.selected = true;
+        }
 
-        this.gender = gender;
-
-        this.initGenderCheckbox();
     },
     
     onMaleChecked: function () {
@@ -330,76 +362,37 @@ var ProfileLayer = cc.Layer.extend({
     initGenderCheckbox: function () {
         var winSize = cc.director.getWinSize();
 
-        if (this.maleButton) {
-            this.maleButton.removeFromParent(true);
-            this.maleButton = null;
-        }
-        if (this.maleMenu) {
-            this.maleMenu.removeFromParent(true);
-            this.maleMenu = null;
-        }
-        if (this.femaleButton) {
-            this.femaleButton.removeFromParent(true);
-            this.femaleButton = null;
-        }
-        if (this.femaleMenu) {
-            this.femaleMenu.removeFromParent(true);
-            this.femaleMenu = null;
-        }
+        this.checkBoxMale = new ccui.CheckBox();
+        this.checkBoxMale.setTouchEnabled(true);
+        this.checkBoxMale.loadTextures("common_checkbox_1.png",
+            "common_checkbox_2.png",
+            "common_checkbox_2.png",
+            "common_checkbox_1.png",
+            "common_checkbox_1.png",
+            ccui.Widget.PLIST_TEXTURE);
 
-        if (this.uncheckedNormal) {
-            this.uncheckedNormal.removeFromParent(true);
-            this.uncheckedNormal = null;
-        }
+        this.checkBoxMale.addEventListener(this.onMaleChecked, this);
+        this.checkBoxMale.scale = 0.7;
+        this.checkBoxMale.selected = this.player.gender == 'MALE' ? true : false;
+        this.checkBoxMale.setPosition(winSize.width/2 + 50, winSize.height/2 + 40);
+        this.addChild(this.checkBoxMale);
 
-        if (this.uncheckedSelected) {
-            this.uncheckedSelected.removeFromParent(true);
-            this.uncheckedSelected = null;
-        }
+        this.checkBoxFemale = new ccui.CheckBox();
+        this.checkBoxFemale.setTouchEnabled(true);
+        this.checkBoxFemale.loadTextures("common_checkbox_1.png",
+            "common_checkbox_2.png",
+            "common_checkbox_2.png",
+            "common_checkbox_1.png",
+            "common_checkbox_1.png",
+            ccui.Widget.PLIST_TEXTURE);
 
-        if (this.uncheckedDisabled) {
-            this.uncheckedDisabled.removeFromParent(true);
-            this.uncheckedDisabled = null;
-        }
-
-        if (this.checkedNormal) {
-            this.checkedNormal.removeFromParent(true);
-            this.checkedNormal = null;
-        }
-
-        if (this.checkedSelected) {
-            this.checkedSelected.removeFromParent(true);
-            this.checkedSelected = null;
-        }
-
-        if (this.checkedDisabled) {
-            this.checkedDisabled.removeFromParent(true);
-            this.checkedDisabled = null;
-        }
-
-        this.uncheckedNormal = new cc.Sprite("#common_checkbox_1.png");
-        this.uncheckedSelected = new cc.Sprite("#common_checkbox_1.png");
-        this.uncheckedDisabled = new cc.Sprite("#common_checkbox_1.png");
-        this.checkedNormal = new cc.Sprite("#common_checkbox_2.png");
-        this.checkedSelected = new cc.Sprite("#common_checkbox_2.png");
-        this.checkedDisabled = new cc.Sprite("#common_checkbox_2.png");
+        this.checkBoxFemale.addEventListener(this.onFemaleChecked, this);
+        this.checkBoxFemale.scale = 0.7;
+        this.checkBoxFemale.selected = this.player.gender == 'FEMALE' ? true : false;
+        this.checkBoxFemale.setPosition(winSize.width/2 + 130, winSize.height/2 + 40);
+        this.addChild(this.checkBoxFemale);
 
 
-        this.maleButton = new cc.MenuItemSprite(this.gender == 'MALE' ? this.checkedNormal : this.uncheckedNormal, this.gender == 'MALE' ? this.checkedSelected : this.uncheckedSelected, this.gender == 'MALE' ? this.checkedDisabled : this.uncheckedDisabled, this.onMaleChecked, this);
-        this.maleButton.scale = 0.7;
-
-
-        this.maleMenu = new cc.Menu(this.maleButton);
-        this.maleMenu.setPosition(winSize.width/2 + 50, winSize.height/2 + 40)
-        this.addChild(this.maleMenu);
-        //
-        this.femaleButton = new cc.MenuItemSprite(this.gender == 'FEMALE' ? this.checkedNormal : this.uncheckedNormal, this.gender == 'FEMALE' ? this.checkedSelected : this.uncheckedSelected, this.gender == 'FEMALE' ? this.checkedDisabled : this.uncheckedDisabled, this.onFemaleChecked, this);
-        this.femaleButton.scale = 0.7;
-
-        this.femaleMenu = new cc.Menu(this.femaleButton);
-        this.femaleMenu.setPosition(winSize.width/2 + 130, winSize.height/2 + 40);
-
-        this.addChild(this.femaleMenu);
     }
 
 

@@ -129,8 +129,13 @@ var HeaderLayer = cc.Layer.extend({
     },
 
     profile: function () {
-        var scene = new ProfileScene(this.args);
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        var self = this;
+        UniversalController.getProfile(gPlayer.uid, function (data) {
+            self.args.player = data;
+            var scene = new ProfileScene(self.args);
+            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        });
+
     },
 
     /**
