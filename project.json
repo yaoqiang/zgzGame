@@ -43,6 +43,7 @@
         "src/views/template/eventQueue.js",
         "src/views/template/smallWidget.js",
         "src/views/template/bottomBtnLayer.js",
+        "src/views/template/soundManger.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",
@@ -71,6 +72,8 @@
         "src/views/layer/clock.js",
         "src/views/layer/indexScrollLayer.js",
         "src/views/layer/dailyTodoLayer.js",
+        "src/views/layer/setingLayer.js",
+
 
         "src/views/poker/pokerLayer.js",
         "src/views/poker/pokerLayerDefine.js",

@@ -4,6 +4,7 @@ var IndexScene = cc.Scene.extend({
         this._super();
         //var pLayer = new lobbyTableLayer({});
         //this.addChild(pLayer);
+
     },
 
     ctor: function (lobbyData) {
