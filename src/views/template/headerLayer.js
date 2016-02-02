@@ -96,12 +96,20 @@ var HeaderLayer = cc.Layer.extend({
         shoppingCar.setPosition(95, rightTopBg.height / 2);
         shoppingCar.setScale(0.9);
         rightTopBg.addChild(shoppingCar);
+//seting
+        var doNormal = new cc.Sprite("#index_shezhi_icon.png");
+        doNormal.attr({scale: 0.9});
+        var doSelected = new cc.Sprite("#index_shezhi_icon.png");
+        doSelected.attr({scale: 1});
+        var doDisabled = new cc.Sprite("#index_shezhi_icon.png");
 
-        var setting = new cc.Sprite("#index_shezhi_icon.png");
-        setting.setAnchorPoint(0, 0.5);
-        setting.setPosition(170, rightTopBg.height / 2);
-        setting.setScale(0.9);
-        rightTopBg.addChild(setting);
+        // create help button and added it to header
+        var doSetButton = new cc.MenuItemSprite(doNormal, doSelected, doDisabled, this.onSetButton, this);
+        doSetButton.setAnchorPoint(0, 0.5);
+        var menu = new cc.Menu(doSetButton);
+        menu.setPosition(170, rightTopBg.height / 2);
+        rightTopBg.addChild(menu);
+
 
         //中间
         var middleBg = new cc.Sprite("#index_mianban_04.png");
@@ -150,8 +158,11 @@ var HeaderLayer = cc.Layer.extend({
             self.addChild(box);
         })
 
-
-
+    },
+    onSetButton: function () {
+        var self = this;
+        var box = new setingLayer();
+        self.addChild(box);
     },
 
     initSubscribeEvent: function () {
