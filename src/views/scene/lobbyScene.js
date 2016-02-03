@@ -165,7 +165,7 @@ var LobbyLayer = cc.Layer.extend({
         quickStart.setAnchorPoint(1, 0);
         quickStart.setPosition(winSize.width, 0);
         quickStart.scale = ZGZ.SCALE * 0.6
-        this.addChild(quickStart);
+        //this.addChild(quickStart);
     },
 
     createButton:function (room, lobbyStr, numStr, x, y, tag) {

@@ -269,10 +269,15 @@ var GameLayer = cc.Layer.extend({
     addBg: function () {
         var winSize = cc.director.getWinSize();
         //牌桌
-        var bg = new cc.Sprite("#common_bg_beijing.png");
+        var bg = new cc.Sprite("#common_bg_beijing_3.png");
         bg.setPosition(winSize.width / 2, winSize.height / 2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
+
+        var centerIcon = new cc.Sprite('#game_icon_center.png');
+        centerIcon.setPosition(winSize.width / 2, winSize.height / 2);
+        centerIcon.scale = ZGZ.SCALE * 0.8;
+        this.addChild(centerIcon);
     },
     addBaseOdds: function () {
         var winSize = cc.director.getWinSize();

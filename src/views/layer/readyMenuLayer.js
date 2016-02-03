@@ -19,7 +19,7 @@ var ReadyMenuLayer = cc.Layer.extend({
         readyStr.setPosition(butsize.width/2, butsize.height/2);
         readyButton.addChild(readyStr);
 
-        readyButton.scale = 0.8
+        readyButton.scale = 0.7;
 
         var menu = new cc.Menu(readyButton);
         menu.setPosition(0,0);

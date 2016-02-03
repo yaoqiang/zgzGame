@@ -119,10 +119,19 @@ var HeaderLayer = cc.Layer.extend({
         middleBg.setPosition(size.width / 2, size.height);
         this.addChild(middleBg);
 
-        var title = new cc.LabelTTF(args && args.title || '大同扎股子', "Arial", 34);
-        title.setColor(cc.color.YELLOW);
+        var titleImage = "#index_title.png";
+        if (args.lobbyId == 0) {
+            titleImage = "#index_five.png";
+        } else if (args.lobbyId == 1) {
+            titleImage = "#index_six.png";
+        } else if (args.lobbyId == 2) {
+            titleImage = "#index_seven.png";
+        }
+
+        var title = new cc.Sprite(titleImage);
         title.setAnchorPoint(0.5, 0);
-        title.setPosition(middleBg.width / 2, 30);
+        title.scale = 0.9
+        title.setPosition(middleBg.width / 2, 16);
         middleBg.addChild(title);
 
         var leftIcon = new cc.Sprite("#index_mianban_04_2.png");

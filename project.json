@@ -16,6 +16,7 @@
         "src/vendors/pomelo-cocos2d-js.min.js",
 
         "src/resource.js",
+        "src/views/scene/gameLoaderScene.js",
         "src/globals.js",
         "src/utils/network.js",
         "src/consts/consts.js",

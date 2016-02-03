@@ -32,41 +32,7 @@ var res = {
     //dev
 };
 
-var g_resources = [
-
-
-    //
-    res.avatar_png,
-    res.common_png,
-    res.game_png,
-    res.index_png,
-    res.login_png,
-    res.poker_png,
-    res.profile_png,
-    res.rank_png,
-    res.room_png,
-    res.settings_png,
-    res.shop_png,
-    res.task_png,
-    //plist
-    res.avatar_plist,
-    res.common_plist,
-    res.game_plist,
-    res.index_plist,
-    res.login_plist,
-    res.poker_plist,
-    res.profile_plist,
-    res.rank_plist,
-    res.room_plist,
-    res.settings_plist,
-    res.shop_plist,
-    res.task_plist
-    //fnt
-
-    //tmx
-
-    //bgm
-
-    //effect
-
-];
+var g_resources = [];
+for (var i in res) {
+    g_resources.push(res[i]);
+}
