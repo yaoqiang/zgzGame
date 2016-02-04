@@ -40,5 +40,7 @@ var route = {
     requestCharges: 'connector.universalHandler.requestCharges',   //请求创建ping++的支付charge
     sendPaymentResult: 'connector.universalHandler.sendPaymentResult', //发送支付结果, for IAP
 
-    getTopOfAppReleaseRecord: 'connector.universalHandler.getTopOfAppReleaseRecord'    //获取最新发布的版本及信息
+    getTopOfAppReleaseRecord: 'connector.universalHandler.getTopOfAppReleaseRecord',    //获取最新发布的版本及信息
+
+    sendSMS: 'connector.universalHandler.sendSMS'    //
 }

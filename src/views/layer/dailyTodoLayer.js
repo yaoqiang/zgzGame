@@ -2,15 +2,13 @@ var DailyTodoLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
 
-        console.log(args);
-
         this.canGetCheckInGrant = args.canGetCheckInGrant;
         this.canGetBankruptcyGrant = args.canGetBankruptcyGrant;
         this.threshold = args.threshold;
 
         var winSize = cc.director.getWinSize();
 
-        this.box = new DialogWithMode('每日必做');
+        this.box = new DialogMiddle('每日必做');
 
         var boxSize = this.box.bg.getBoundingBox();
 

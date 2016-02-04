@@ -183,3 +183,7 @@ UniversalController.getTopOfAppReleaseRecord = function () {
         cb(data);
     });
 }
+
+UniversalController.sendSMS = function () {
+    
+}
