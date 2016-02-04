@@ -42,5 +42,6 @@ var route = {
 
     getTopOfAppReleaseRecord: 'connector.universalHandler.getTopOfAppReleaseRecord',    //获取最新发布的版本及信息
 
-    sendSMS: 'connector.universalHandler.sendSMS'    //
+    sendBindingSMS: 'connector.universalHandler.sendBindingSMS',    //
+    bindingMobile: 'connector.universalHandler.bindingMobile'    //
 }

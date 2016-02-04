@@ -184,6 +184,14 @@ UniversalController.getTopOfAppReleaseRecord = function () {
     });
 }
 
-UniversalController.sendSMS = function () {
-    
+UniversalController.sendBindingSMS = function (mobile, cb) {
+    pomelo.request(route.sendBindingSMS, {mobile: mobile}, function (data) {
+        cb(data);
+    });
+}
+
+UniversalController.bindingMobile = function (data, cb) {
+    pomelo.request(route.bindingMobile, {mobile: data.mobile, password: data.password, captcha: data.captcha}, function (data) {
+        cb(data);
+    });
 }

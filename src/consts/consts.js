@@ -75,6 +75,19 @@ var ERR_CODE = {
         INVALID_MOBILE: 9207,
         ERR: 9208,
         NEED_CUSTOMER: 9209
+    },
+    SMS: {
+        MOBILE_NOT_BLANK: 9301,
+        MOBILE_NOT_VALIDATE: 9302,
+        MOBILE_ALREADY_BINDING: 9303,
+        CAPTCHA_ERR: 9304,
+        ERR: 9305
+    },
+    MOBILE_RECHARGE: {
+        MOBILE_NOT_BLANK: 9401,
+        MOBILE_NOT_VALIDATE: 9402,
+        DENOMINATION_NOT_ERR: 9303,
+        ERR: 9305
     }
 };
 
@@ -136,7 +149,13 @@ var ERR_MESSAGE = {
     9206: "请填写收件地址",
     9207: "手机号码无效",
     9208: "兑换失败",
-    9209: "兑换失败, 请联系客服"
+    9209: "兑换失败, 请联系客服",
+
+    9301: "请输入手机号",
+    9302: "手机号格式有误",
+    9303: "该手机已绑定",
+    9304: "验证码错误",
+    9305: "操作失败",
 }
 
 
