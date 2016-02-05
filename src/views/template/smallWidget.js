@@ -134,8 +134,10 @@ var AlertBoxNode = cc.Node.extend({
             this.m_callback.call(this.m_targe, this)
         }
         this.removeFromParent(true);
+        playEffect(audio_common.Button_Click);
     },
     onExitCallback:function () {
+        playEffect(audio_common.Button_Click);
         //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }
@@ -212,6 +214,7 @@ var DialogMiddleNode = cc.Node.extend({
     },
 
     onExitCallback:function () {
+        playEffect(audio_common.Button_Click);
         //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }
@@ -288,6 +291,7 @@ var DialogSmallNode = cc.Node.extend({
     },
 
     onExitCallback:function () {
+        playEffect(audio_common.Button_Click);
         //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }
