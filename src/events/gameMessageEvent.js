@@ -191,6 +191,7 @@ pomelo.on(gameEvents.GOLD_CHANGE, function (data) {
     gPlayer.gold = data.gold;
     EventBus.publish(gameEvents.GOLD_CHANGE, data);
     //EventQueue.dispatchCustomEvent("onGoldChange", data);
+    playEffect(audio_common.Get_Glod);
 });
 
 pomelo.on(gameEvents.INGOT_CHANGE, function (data) {
@@ -198,6 +199,7 @@ pomelo.on(gameEvents.INGOT_CHANGE, function (data) {
     gPlayer.fragment = data.ingot;
     EventBus.publish(gameEvents.INGOT_CHANGE, data);
     //EventQueue.dispatchCustomEvent("onGoldChange", data);
+
 });
 
 pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {

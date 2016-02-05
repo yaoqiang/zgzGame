@@ -152,14 +152,14 @@ var HeaderLayer = cc.Layer.extend({
             var scene = new ProfileScene(self.args);
             cc.director.runScene(new cc.TransitionFade(1.2, scene));
         });
-
+        playEffect(audio_common.Button_Click);
     },
 
     /**
      * do btn clicked.
      */
     onDoButton: function () {
-
+        playEffect(audio_common.Button_Click);
         var self = this;
         UniversalController.getDailyTodoInfo(function (data) {
             var box = new DailyTodoLayer(data);
@@ -169,6 +169,7 @@ var HeaderLayer = cc.Layer.extend({
 
     },
     onSetButton: function () {
+        playEffect(audio_common.Button_Click);
         var self = this;
         var box = new setingLayer();
         self.addChild(box);
@@ -176,7 +177,6 @@ var HeaderLayer = cc.Layer.extend({
 
     initSubscribeEvent: function () {
         var self = this;
-
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             self.gold.setString(zgzNumeral(data.gold).format('0,0'))
         });

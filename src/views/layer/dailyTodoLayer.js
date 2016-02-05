@@ -121,6 +121,7 @@ var DailyTodoLayer = cc.Layer.extend({
 
     onCheckInClick: function (ref, event) {
         if (event === ccui.Widget.TOUCH_ENDED) {
+            playEffect(audio_common.Button_Click);
             if (!this.canGetCheckInGrant) {
                 prompt.fade("您今天已经签到了");
                 return;
@@ -137,7 +138,7 @@ var DailyTodoLayer = cc.Layer.extend({
 
     onBankruptGrantClick: function (ref, event) {
         if (event === ccui.Widget.TOUCH_ENDED) {
-
+            playEffect(audio_common.Button_Click);
             if (!this.threshold) {
                 //如果是前往游戏, 自动根据金币加入牌局
                 if (this.box) {

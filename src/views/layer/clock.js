@@ -41,6 +41,7 @@ var Clock = cc.Node.extend({
     },
 
     updateTime:function(dt){
+        playEffect(audio_common.Reminded_Myself);
         this.m_nTime = this.m_nTime -1;
         if(this.m_nTime <=0 ){
             this.unschedule(this.updateTime);

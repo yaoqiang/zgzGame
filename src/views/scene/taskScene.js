@@ -68,6 +68,7 @@ var TaskScene = cc.Scene.extend({
         }
 
         if (index == 0) {
+            playEffect(audio_common.Button_Click);
             UniversalController.getDailyTaskList(function (data) {
                 var scene = cc.director.getRunningScene();
                 var layer = new DailyTaskLayer(data);
@@ -77,6 +78,7 @@ var TaskScene = cc.Scene.extend({
         }
 
         if (index == 1) {
+            playEffect(audio_common.Button_Click);
             UniversalController.getForeverTaskList(function (data) {
                 var scene = cc.director.getRunningScene();
                 var layer = new ForeverTaskLayer(data);

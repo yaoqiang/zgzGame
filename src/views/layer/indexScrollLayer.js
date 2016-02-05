@@ -107,6 +107,7 @@ var indexScrollLayer = cc.Layer.extend({
     buttoTouchEvent: function (sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
                 if(sender.tag == 5){
                     //console.log("------->5");
                     GameController.enterLobby(0);

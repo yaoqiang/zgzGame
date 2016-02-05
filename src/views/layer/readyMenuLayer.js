@@ -27,6 +27,7 @@ var ReadyMenuLayer = cc.Layer.extend({
     },
 
     onReadyButton:function(){
+        playEffect(audio_common.Button_Click);
         //console.log("ReadyMenuLayer onReadyButton:" + gRoomId);
         GameController.ready(gRoomId, gGameId);
     },

@@ -28,6 +28,7 @@ var ExchangeScene = cc.Scene.extend({
             onKeyPressed:  function(keyCode, event){
             },
             onKeyReleased: function(keyCode, event){
+                playEffect(audio_common.Button_Click);
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
                     if (target.lobbyId != undefined) {
@@ -62,7 +63,7 @@ var ExchangeScene = cc.Scene.extend({
             this.layer.removeFromParent(true);
             this.layer = null;
         }
-
+        playEffect(audio_common.Button_Click);
         if (index == 0) {
             UniversalController.getExchangeList(function (data) {
                 var layer = new ExchangeListLayer(data);

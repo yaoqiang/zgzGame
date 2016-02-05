@@ -4,7 +4,7 @@ var IndexScene = cc.Scene.extend({
         this._super();
         //var pLayer = new lobbyTableLayer({});
         //this.addChild(pLayer);
-
+        playBackMusic();
     },
 
     ctor: function (lobbyData) {
@@ -38,7 +38,7 @@ var IndexScene = cc.Scene.extend({
             onKeyReleased: function(keyCode, event){
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
-
+                    playEffect(audio_common.Button_Click);
                 }
 
             }
@@ -87,7 +87,7 @@ var IndexLayer = cc.Layer.extend({
         //    this.lobbyMenu.enabled = true;
         //}, 2);
         this.onLobbyIconClicked(this.lobbyOf5Icon, 0);
-
+        playEffect(audio_common.Button_Click);
     },
     onMenuCallback2: function () {
         this.lobbyMenu.enabled = false;
@@ -95,12 +95,13 @@ var IndexLayer = cc.Layer.extend({
             this.lobbyMenu.enabled = true;
         }, 2);
         this.onLobbyIconClicked(this.lobbyOf7Icon, 1);
-
+        playEffect(audio_common.Button_Click);
     },
 
     onLobbyIconClicked: function(node, lobbyId)
     {
         GameController.enterLobby(lobbyId);
+        playEffect(audio_common.Button_Click);
     },
 
     onEnter: function () {

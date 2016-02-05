@@ -20,6 +20,7 @@ var GameMenuLayer = cc.Layer.extend({
     },
 
     onBackButton:function(){
+        playEffect(audio_common.Button_Click);
         //console.log("GameMenuLayer onBackButton:" + gRoomId);
         GameController.leave(gRoomId);
     },

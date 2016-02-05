@@ -31,6 +31,7 @@ var RankingListScene = cc.Scene.extend({
             onKeyReleased: function(keyCode, event){
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
+                    playEffect(audio_common.Button_Click);
                     if (target.lobbyId != undefined) {
                         GameController.enterLobby(target.lobbyId);
                     }
@@ -63,7 +64,7 @@ var RankingListScene = cc.Scene.extend({
             this.layer.removeFromParent(true);
             this.layer = null;
         }
-
+        playEffect(audio_common.Button_Click);
         if (index == 0) {
 
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RICH}, function (data) {

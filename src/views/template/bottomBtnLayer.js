@@ -29,21 +29,24 @@ var BottomBtnLayer = cc.Layer.extend({
     },
 
     onTaskBtnClick: function () {
+       // playEffect(audio_common.Button_Click);
         var scene = new TaskScene({selected: 0, lobbyId: this.lobbyId});
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
     onRankingBtnClick: function () {
+       // playEffect(audio_common.Button_Click);
         var scene = new RankingListScene({selected: 0, lobbyId: this.lobbyId});
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
     onExchangeBtnClick: function () {
+        //playEffect(audio_common.Button_Click);
         var scene = new ExchangeScene({selected: 0, lobbyId: this.lobbyId});
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
     onMessageBtnClick: function () {
-
+        playEffect(audio_common.Button_Click);
     }
 })
