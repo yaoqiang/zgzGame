@@ -113,7 +113,7 @@ var TaskTabLayer = cc.Layer.extend({
         }
 
         this.selected = index;
-
+        playEffect(audio_common.Button_Click);
         //
         this.selectedSprite = new cc.Sprite("#tab_selected_bg.png");
         this.selectedSprite.scale = 0.7;
@@ -142,6 +142,7 @@ var TaskTabLayer = cc.Layer.extend({
 
 
     onBackButton: function () {
+        playEffect(audio_common.Button_Click);
         if (this.lobbyId != undefined) {
             GameController.enterLobby(this.lobbyId);
         }

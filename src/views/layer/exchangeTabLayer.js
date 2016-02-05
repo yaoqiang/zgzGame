@@ -107,7 +107,7 @@ var ExchangeTabLayer = cc.Layer.extend({
             this.selectedSprite.removeFromParent(true);
             this.selectedSprite = null;
         }
-
+        playEffect(audio_common.Button_Click);
         this.selected = index;
 
         //
@@ -138,6 +138,7 @@ var ExchangeTabLayer = cc.Layer.extend({
     },
 
     onBackButton: function () {
+        playEffect(audio_common.Button_Click);
         if (this.lobbyId != undefined) {
             GameController.enterLobby(this.lobbyId);
         }

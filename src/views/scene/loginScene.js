@@ -118,13 +118,14 @@ var LoginLayer = cc.Layer.extend({
         }
 
         AuthController.login(username, password);
-
+        playEffect(audio_common.Button_Click);
 
     },
 
     onSignUp: function () {
         var scene = new SignupScene();
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        playEffect(audio_common.Button_Click);
     }
 
 

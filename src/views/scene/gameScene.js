@@ -533,6 +533,7 @@ var GameLayer = cc.Layer.extend({
     joinEvent: function (data) {
         this.addActorToList(data.actor);
         this.updateActorHD();
+        playEffect(audio_common.Player_Come_In);
     },
 
     leaveEvent: function (data) {
@@ -540,6 +541,7 @@ var GameLayer = cc.Layer.extend({
         if (this.selfLeave(data.actor) == false) {
             this.removeActorFromList(data.actor);
             this.updateActorHD();
+            playEffect(audio_common.Player_Logout);
         } else {
             GameController.enterLobby(gLobbyId);//回大厅
         }

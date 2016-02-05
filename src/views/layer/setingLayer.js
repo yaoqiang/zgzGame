@@ -85,7 +85,7 @@ var setingNode = cc.Node.extend({
         this.addChild(musicSwitchControl, 1);
 
         musicSwitchControl.addTargetWithActionForControlEvents(this, this.musicValueChanged, cc.CONTROL_EVENT_VALUECHANGED);
-        this.musicValueChanged(musicSwitchControl, cc.CONTROL_EVENT_VALUECHANGED);
+        //this.musicValueChanged(musicSwitchControl, cc.CONTROL_EVENT_VALUECHANGED);
 
 
         var effectSwitchControl = new cc.ControlSwitch
@@ -103,17 +103,17 @@ var setingNode = cc.Node.extend({
         this.addChild(effectSwitchControl, 1);
 
         effectSwitchControl.addTargetWithActionForControlEvents(this, this.effectValueChanged, cc.CONTROL_EVENT_VALUECHANGED);
-        this.effectValueChanged(effectSwitchControl, cc.CONTROL_EVENT_VALUECHANGED);
+        //this.effectValueChanged(effectSwitchControl, cc.CONTROL_EVENT_VALUECHANGED);
     },
 
     musicValueChanged:function (sender, controlEvent) {
         if (sender.isOn()) {
             console.log("On");
-            //setPlayMusic(true);
+            setPlayMusic(true);
         }
         else {
             console.log("Off");
-           // setPlayMusic(false);
+            setPlayMusic(false);
         }
     },
 
@@ -124,11 +124,12 @@ var setingNode = cc.Node.extend({
         }
         else {
             console.log("Off");
-           // setPlayEffects(false);
+            setPlayEffects(false);
         }
     },
 
     onExitCallback:function () {
+        playEffect(audio_common.Button_Click);
         this.removeFromParent(true);
     }
 });

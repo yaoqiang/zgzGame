@@ -3,7 +3,7 @@ var audioEngine = cc.audioEngine;
 var isPlayEffect  = true;
 var isPlayBackMusic = true;
 var soundId = null;
-var backMusic = "";
+var backMusic = audio_backMusic[0];
 
 var stopAllEffects = function () {
     cc.log("stop all effects");
@@ -73,6 +73,15 @@ var isMusicPlaying = function () {
 var setBackMusic = function (path) {
     backMusic = path;
 };
+var playBackMusic = function () {
+    if(isPlayBackMusic){
+        if(audioEngine.isMusicPlaying()){
+
+        }else{
+            playMusic(backMusic, true);
+        }
+    }
+};
 var setPlayMusic = function (isplay) {
     if(isplay){
         isPlayBackMusic = true;
@@ -93,15 +102,15 @@ var setPlayEffects = function (isplay) {
     saveEffectsSet();
 };
 var loadSet = function () {
-    var ls = cc.sys.localStorage;
-    isPlayBackMusic = ls.getItem("isPlayBackMusic");
-    isPlayEffect = ls.getItem("isPlayEffect");
-    if(isPlayBackMusic == null){
-        isPlayBackMusic = true;
-    }
-    if(isPlayEffect == null){
-        isPlayEffect = true;
-    }
+    //var ls = cc.sys.localStorage;
+    //isPlayBackMusic = ls.getItem("isPlayBackMusic");
+    //isPlayEffect = ls.getItem("isPlayEffect");
+    //if(isPlayBackMusic == null){
+    //    isPlayBackMusic = true;
+    //}
+    //if(isPlayEffect == null){
+    //    isPlayEffect = true;
+    //}
     console.log("isPlayBackMusic:"+ isPlayBackMusic + "     isPlayEffect:" + isPlayEffect );
     return  [isPlayBackMusic , isPlayEffect];
 };

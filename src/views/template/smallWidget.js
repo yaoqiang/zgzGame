@@ -212,6 +212,7 @@ var DialogMiddleNode = cc.Node.extend({
     },
 
     onExitCallback:function () {
+        playEffect(audio_common.Button_Click);
         //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }
@@ -288,6 +289,7 @@ var DialogSmallNode = cc.Node.extend({
     },
 
     onExitCallback:function () {
+        playEffect(audio_common.Button_Click);
         //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }

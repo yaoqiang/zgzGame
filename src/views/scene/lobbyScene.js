@@ -144,6 +144,7 @@ var LobbyLayer = cc.Layer.extend({
             "#back_btn.png",
             function () {
                 UniversalController.enterIndex();
+                playEffect(audio_common.Button_Click);
             },
             this
         );
@@ -224,6 +225,7 @@ var LobbyLayer = cc.Layer.extend({
             case ccui.Widget.TOUCH_ENDED:
                 //console.log("Touch Up");
                 GameController.join(sender.room.id);
+                playEffect(audio_common.Button_Click);
                 break;
 
             case ccui.Widget.TOUCH_CANCELED:
