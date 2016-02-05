@@ -179,7 +179,6 @@ var HeaderLayer = cc.Layer.extend({
         var self = this;
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             self.gold.setString(zgzNumeral(data.gold).format('0,0'))
-
         });
     },
 
