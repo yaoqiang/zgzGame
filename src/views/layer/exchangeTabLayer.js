@@ -162,7 +162,7 @@ var ExchangeTabLayer = cc.Layer.extend({
     onExit: function () {
         this._super();
 
-        cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
+        //cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
     }
 
 });

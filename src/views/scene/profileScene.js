@@ -68,6 +68,9 @@ var ProfileLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
 
+        //init event
+        this.initSubscribeEvent();
+
         //init state;
         this.isSending = false;
         this.m_nTime = 120;
@@ -132,9 +135,7 @@ var ProfileLayer = cc.Layer.extend({
         this.addChild(avatarEditStr);
 
         //绑定手机
-        console.log('this.player.mobile = ', this.player.mobile);
 
-        console.log(this.player.mobile == '' || this.player.mobile == undefined);
         if (this.player.mobile == '' || this.player.mobile == undefined) {
             this.bindingMobileNormal = new cc.Sprite("#common_btn_5.png");
             this.bindingMobileSelected = new cc.Sprite("#common_btn_5.png");
@@ -150,7 +151,7 @@ var ProfileLayer = cc.Layer.extend({
             bindingMobileLabel.setPosition(butSize.width / 2, butSize.height / 2);
             this.bindingMobileButton.addChild(bindingMobileLabel);
 
-            var bindingMobileTipLabel = new cc.LabelTTF("绑定手机可用手机号登录", "Arial", 12);
+            var bindingMobileTipLabel = new cc.LabelTTF("绑定后可用手机号登录\n(+金币奖励)", "Arial", 14);
             bindingMobileTipLabel.color = cc.color.RED;
             bindingMobileTipLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 100);
             this.addChild(bindingMobileTipLabel, 10);
@@ -258,12 +259,12 @@ var ProfileLayer = cc.Layer.extend({
         goldIcon.setAnchorPoint(0, 0.5);
         this.addChild(goldIcon);
 
-        var goldValue = new cc.LabelTTF(zgzNumeral(this.player.gold).format('0,0'), "AmericanTypewriter", 20);
-        goldValue.setPosition(winSize.width / 2 - 10, winSize.height / 2 - 40);
-        goldValue.color = cc.color.YELLOW;
-        goldValue.setAnchorPoint(0, 0.5);
+        this.goldValue = new cc.LabelTTF(zgzNumeral(this.player.gold).format('0,0'), "AmericanTypewriter", 20);
+        this.goldValue.setPosition(winSize.width / 2 - 10, winSize.height / 2 - 40);
+        this.goldValue.color = cc.color.YELLOW;
+        this.goldValue.setAnchorPoint(0, 0.5);
 
-        this.addChild(goldValue);
+        this.addChild(this.goldValue);
 
 
         //胜率
@@ -372,7 +373,7 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     bindingMobileProfile: function () {
-        this.bindingBox = new DialogSmall('绑定手机');
+        this.bindingBox = new DialogSmall('绑定手机', 2, {ensureCallback: this.sendBinding}, this);
 
         var boxSize = this.bindingBox.bg.getBoundingBox();
 
@@ -436,24 +437,12 @@ var ProfileLayer = cc.Layer.extend({
         this.passwordValue.setFontColor(cc.color.BLACK);
         this.passwordValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 90);
         this.passwordValue.color = cc.color.WHITE;
-        this.passwordValue.setMaxLength(11);
+        this.passwordValue.setMaxLength(16);
         this.bindingBox.bg.addChild(this.passwordValue);
 
 
         //确定
-        this.okNormal = new cc.Sprite("#common_btn_hong.png");
-        this.okSelected = new cc.Sprite("#common_btn_hong.png");
-        this.okDisabled = new cc.Sprite("#common_btn_hong.png");
-        this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, this.sendBinding, this);
-        //this.okButton.scale = 2.3;
-        var menuItem = new cc.Menu(this.okButton);
-        menuItem.setPosition(boxSize.width / 2 + 300, boxSize.height / 2);
-        this.bindingBox.bg.addChild(menuItem, 2);
 
-        var butSize = this.okButton.getContentSize();
-        this.okLabel = new cc.LabelTTF("确定", "Arial", 22);
-        this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
-        this.okButton.addChild(this.okLabel);
 
         this.addChild(this.bindingBox, 20);
 
@@ -613,12 +602,34 @@ var ProfileLayer = cc.Layer.extend({
         this.checkBoxFemale.setPosition(winSize.width / 2 + 80, winSize.height / 2 + 40);
         this.addChild(this.checkBoxFemale);
 
+    },
 
+    initSubscribeEvent: function () {
+        var self = this;
+        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+            console.log('recccc = ',data)
+            self.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
+
+        });
+    },
+
+    onEnter: function () {
+        this._super();
+
+    },
+
+    onExit: function () {
+        this._super();
+        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 
 
 });
 
+
+/**
+ * 背包Layer
+ */
 var BagLayer = cc.Layer.extend({
     ctor: function () {
         this._super();
