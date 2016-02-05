@@ -142,26 +142,26 @@ var ProfileLayer = cc.Layer.extend({
             this.bindingMobileDisabled = new cc.Sprite("#common_btn_5.png");
             this.bindingMobileButton = new cc.MenuItemSprite(this.bindingMobileNormal, this.bindingMobileSelected, this.bindingMobileDisabled, this.bindingMobileProfile, this);
             this.bindingMobileButton.scale = 0.65;
-            var menuItem = new cc.Menu(this.bindingMobileButton);
-            menuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 50);
-            this.addChild(menuItem, 2);
+            this.bindingMenuItem = new cc.Menu(this.bindingMobileButton);
+            this.bindingMenuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 50);
+            this.addChild(this.bindingMenuItem, 2);
 
             var butSize = this.bindingMobileButton.getContentSize();
             var bindingMobileLabel = new cc.LabelTTF("绑定手机", "Arial", 24);
             bindingMobileLabel.setPosition(butSize.width / 2, butSize.height / 2);
             this.bindingMobileButton.addChild(bindingMobileLabel);
 
-            var bindingMobileTipLabel = new cc.LabelTTF("绑定后可用手机号登录\n(+金币奖励)", "Arial", 14);
-            bindingMobileTipLabel.color = cc.color.RED;
-            bindingMobileTipLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 100);
-            this.addChild(bindingMobileTipLabel, 10);
+            this.bindingMobileTipLabel = new cc.LabelTTF("绑定后可用手机号登录\n(+金币奖励)", "Arial", 14);
+            this.bindingMobileTipLabel.color = cc.color.RED;
+            this.bindingMobileTipLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 100);
+            this.addChild(this.bindingMobileTipLabel, 10);
 
         }
         else {
-            var mobileStr = new cc.LabelTTF("账号:" + this.player.mobile, "Arial", 16);
-            mobileStr.color = cc.color.WHITE;
-            mobileStr.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 40);
-            this.addChild(mobileStr);
+            this.mobileLabel = new cc.LabelTTF("账号:" + this.player.mobile, "Arial", 16);
+            this.mobileLabel.color = cc.color.WHITE;
+            this.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 40);
+            this.addChild(this.mobileLabel);
         }
 
 
@@ -506,18 +506,38 @@ var ProfileLayer = cc.Layer.extend({
     },
 
 
+    /**
+     * 发送绑定请求
+     */
     sendBinding: function () {
         if (!this.validateMobile()) return;
         if (!this.validateCaptcha()) return;
         if (!this.validatePassword()) return;
 
         var self = this;
+        var winSize = cc.director.getWinSize();
 
-        var data = {mobile: this.mobileValue.getString(), password: this.passwordValue.getString(), captcha: this.captchaValue.getString()};
+        var mobile = this.mobileValue.getString();
+        var password = this.passwordValue.getString();
+        var captcha = this.captchaValue.getString();
+
+        var data = {mobile: mobile, password: password, captcha: captcha};
         UniversalController.bindingMobile(data, function (data) {
             if (data.code == RETURN_CODE.OK) {
                 prompt.fadeMiddle('绑定成功, 您可以使用手机号登录');
-                self.bindingBox.removeFromParent(true);
+                if (self.bindingBox) self.bindingBox.removeFromParent(true);
+
+                //移除绑定按钮
+                if (self.bindingMenuItem) self.bindingMenuItem.removeFromParent(true);
+                if (self.bindingMobileTipLabel) self.bindingMobileTipLabel.removeFromParent(true);
+
+                //添加账号信息
+                if (self.mobileLabel) self.mobileLabel.removeFromParent(true);
+                self.mobileLabel = new cc.LabelTTF("账号:" + mobile, "Arial", 16);
+                self.mobileLabel.color = cc.color.WHITE;
+                self.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 40);
+                self.addChild(self.mobileLabel);
+
             }
             else {
                 prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));

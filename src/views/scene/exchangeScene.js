@@ -227,7 +227,7 @@ var ExchangeListLayer = cc.Layer.extend({
         cell.addChild(ingotLabel);
 
         //
-        var item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onCallBack, this);
+        var item = new cc.MenuItemImage("#common_btn_lv.png", "#common_btn_lan.png", this.onExchange, this);
         item.setPosition(this.m_nCellWidth - 30, this.m_nCelleHeight / 2);
         item.setAnchorPoint(1, 0.5);
         item.scale = ZGZ.SCALE * 0.7;
@@ -253,14 +253,52 @@ var ExchangeListLayer = cc.Layer.extend({
     numberOfCellsInTableView: function (table) {
         return this.m_nCelleNum;
     },
-    onCallBack: function (sender) {
+
+    onExchange: function (sender) {
 
         var self = this;
         var tag = sender.tag;
         var exchangeList = this.data.exchangeList;
         var oneExchange = exchangeList[tag];
+
+        //设置兑换物品信息
+        this.exchangeId = oneExchange._id;
+
         if (gPlayer.fragment >= oneExchange.fragment) {
             //弹框, 如果是话费, 输入手机号码; 如果是实物类, 输入地址, 联系人, 电话;
+            if (oneExchange.type == CommonConf.EXCHANGE.TYPE.INBOX_CALL) {
+                this.infoBox = new DialogSmall('填写信息', 2, {ensureCallback: this.doExchange}, this);
+
+                var boxSize = this.infoBox.bg.getBoundingBox();
+
+                var mobileLabel = new cc.LabelTTF("手机号:", "AmericanTypewriter", 26);
+                mobileLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 350);
+                mobileLabel.color = cc.color.WHITE;
+                mobileLabel.scale = 2;
+                this.infoBox.bg.addChild(mobileLabel);
+
+
+                var blockSize = cc.size(370, 70);
+                this.mobileValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+                this.mobileValue.setPlaceHolder('请输入手机号');
+                this.mobileValue.setFontColor(cc.color.BLACK);
+                this.mobileValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
+                this.mobileValue.color = cc.color.WHITE;
+                this.mobileValue.setMaxLength(11);
+                this.infoBox.bg.addChild(this.mobileValue);
+
+
+                this.mobileRechargeTipLabel = new cc.LabelTTF("温馨提示: \n操作失败情况通常原因是：该号码不存在" +
+                    "\n或号码对应归属地的运营商系统正在结算或维护" +
+                    "\n请稍等再试。通常月初月末或者每天晚上12点左右" +
+                    "\n各地区运营商系统会进入1-2两小时的维护结算。", "Arial", 14);
+                this.mobileRechargeTipLabel.color = cc.color.RED;
+                this.mobileRechargeTipLabel.setPosition(boxSize.width / 2 + 220, boxSize.height / 2 + 80);
+                this.infoBox.addChild(this.mobileRechargeTipLabel, 10);
+
+                this.addChild(this.infoBox, 20);
+
+            }
 
         } else {
             //去做任务
@@ -268,6 +306,56 @@ var ExchangeListLayer = cc.Layer.extend({
         }
 
     },
+
+    validateMobile: function () {
+        var mobile = this.mobileValue.getString();
+
+        if (mobile == '') {
+            prompt.fadeMiddle('请输入手机号');
+            return false;
+        }
+        if (!utils.mobileValidate(mobile)) {
+            prompt.fadeMiddle('您输入的手机号有误, 请检查');
+            return false;
+        }
+        return true;
+    },
+
+    doExchange: function () {
+        if (!this.validateMobile()) return;
+
+        var self = this;
+
+        var mobile = this.mobileValue.getString();
+
+        UniversalController.exchange(this.exchangeId, mobile, 1, this.contact, this.address, function (data) {
+            if (data.code == RETURN_CODE.OK) {
+                prompt.fadeMiddle('兑换成功, 请您注意查收');
+                if (self.infoBox) self.infoBox.removeFromParent(true);
+
+                //兑换结束后更新view
+                var exchangeList = self.data.exchangeList;
+
+                for (var i = 0; i < exchangeList.length; i++) {
+                    var item = exchangeList[i];
+                    if (item._id == self.exchangeId) {
+                        //暂时客户端处理
+                        item.inventory -= 1;
+                        item.inventory = item.inventory < 0 ? 0 : item.inventory;
+                        self.m_pTableView.reloadData();
+                        break;
+                    }
+                }
+
+
+            }
+            else {
+                prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+            }
+        });
+
+    },
+
 
     onEnter: function () {
         this._super();
@@ -386,7 +474,7 @@ var ExchangeRecordListLayer = cc.Layer.extend({
         var halfX = xx/2;
 
         //兑换时间
-        date = new Date(oneExchangeRecord.createdAt);
+        var date = new Date(oneExchangeRecord.createdAt);
         var createdAtLabel = new cc.LabelTTF(date.format('yyyy-MM-dd hh:mm:ss'));
         createdAtLabel.setPosition(xx - halfX, this.m_nCelleHeight / 2);
         cell.addChild(createdAtLabel);
