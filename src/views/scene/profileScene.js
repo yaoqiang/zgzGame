@@ -607,7 +607,6 @@ var ProfileLayer = cc.Layer.extend({
     initSubscribeEvent: function () {
         var self = this;
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
-            console.log('recccc = ',data)
             self.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
 
         });
