@@ -5,9 +5,28 @@ cc.game.onStart = function(){
 	cc.view.resizeWithBrowserSize(true);
     //load resources
     cc.GameLoaderScene.preload(g_resources, function () {
-        //cc.director.runScene(new GameScene(ZGZ.GAME_TYPE.T1));
 
-        cc.director.runScene(new LoginScene());
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+
+        //init data conf
+        if (!Storage.get('init')) {
+            Storage.init();
+        }
+
+        if (!cc.sys.isNative) {
+            cc.director.runScene(new LoginScene());
+            return;
+        }
+        if (Storage.get(CommonConf.LOCAL_STORAGE.TOKEN)) {
+            var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+            AuthController.loginWithToken(token);
+        } else {
+            AuthController.autoLogin();
+        }
+
+        //
+
+        //
 
         //debug();
 

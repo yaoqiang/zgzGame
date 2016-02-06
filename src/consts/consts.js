@@ -234,6 +234,14 @@ var GAME = {
 }
 
 var CommonConf = {
+    LOCAL_STORAGE: {
+        INIT: 'INIT',
+        IS_PLAY_EFFECT: 'isPlayEffect',
+        IS_PLAY_BACKGROUND_MUSIC: 'isPlayBackgroundMusic',
+        VERSION: 'VERSION',
+        TOKEN: 'TOKEN'
+    },
+
     RANKING_LIST: {
         RICH: 'RICH',
         GOD: 'GOD',

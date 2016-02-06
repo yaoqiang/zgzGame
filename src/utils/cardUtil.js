@@ -1,4 +1,4 @@
-var cardUtil = utils || {};
+var cardUtil = cardUtil || {};
 
 /**
  * 识别身份

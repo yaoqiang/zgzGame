@@ -3,10 +3,23 @@ var LoginScene = cc.Scene.extend({
         this._super();
 
         cc.spriteFrameCache.addSpriteFrames(res.login_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
         var layer = new LoginLayer();
         this.addChild(layer);
 
+
+        //Storage.removeFile();
+        Storage.init();
+        console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_BACKGROUND_MUSIC));
+        console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_EFFECT));
+
+
+        //console.log(Storage.get('init'));
+        //
+        //if (!Storage.get('init')) {
+        //    Storage.init();
+        //}
+        //
+        //console.log(Storage.get('init'));
     }
 
 });

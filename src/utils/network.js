@@ -40,7 +40,7 @@ var Network = {
             log: true
         }, function () {
             var route = 'gate.gateHandler.queryEntry';
-            pomelo.request(route, {uid: uid}, function (data) {
+            pomelo.request(route, {uid: uid, token: token}, function (data) {
                 pomelo.disconnect();
                 pomelo.init({
                     host: data.host,

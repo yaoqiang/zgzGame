@@ -180,7 +180,7 @@ var ProfileLayer = cc.Layer.extend({
 
 
         var blockSize = cc.size(180, 30);
-        this.nickNameValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.nickNameValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.nickNameValue.setString(this.player.nickName);
         this.nickNameValue.setFontColor(cc.color.BLACK);
         this.nickNameValue.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 80);
@@ -219,7 +219,7 @@ var ProfileLayer = cc.Layer.extend({
 
 
         var blockSize = cc.size(180, 30);
-        this.summaryValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.summaryValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.summaryValue.setString(this.player.summary);
         this.summaryValue.setFontColor(cc.color.BLACK);
         this.summaryValue.setPosition(winSize.width / 2 + 50, winSize.height / 2);

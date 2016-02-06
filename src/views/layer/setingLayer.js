@@ -2,8 +2,6 @@ var setingNode = cc.Node.extend({
     ctor: function () {
         this._super();
 
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
-
         this.init();
     },
     onEnter:function(){
