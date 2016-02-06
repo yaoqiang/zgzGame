@@ -42,15 +42,16 @@ var ProfileScene = cc.Scene.extend({
         scene.selected = index;
 
         if (scene.selected == 0) {
-            scene.layer = new ProfileLayer();
+            UniversalController.getProfile(gPlayer.uid, function (data) {
+                scene.layer = new ProfileLayer({player: data});
+                scene.addChild(scene.layer);
+            });
         }
-
-        if (scene.selected == 1) {
+        else {
             scene.layer = new BagLayer();
+            scene.addChild(scene.layer);
+
         }
-
-        scene.addChild(scene.layer);
-
 
     },
 
@@ -398,9 +399,9 @@ var ProfileLayer = cc.Layer.extend({
         this.sendCaptchaSelected = new cc.Sprite("#common_btn_4.png");
         this.sendCaptchaDisabled = new cc.Sprite("#common_btn_4.png");
         this.sendCaptchaButton = new cc.MenuItemSprite(this.sendCaptchaNormal, this.sendCaptchaSelected, this.sendCaptchaDisabled, this.sendCaptcha, this);
-        this.sendCaptchaButton.scale = 2.2;
+        this.sendCaptchaButton.scale = 2.3;
         var menuItem = new cc.Menu(this.sendCaptchaButton);
-        menuItem.setPosition(boxSize.width / 2 + 600, boxSize.height / 2 + 350);
+        menuItem.setPosition(boxSize.width / 2 + 610, boxSize.height / 2 + 350);
         this.bindingBox.bg.addChild(menuItem, 2);
 
         var butSize = this.sendCaptchaButton.getContentSize();

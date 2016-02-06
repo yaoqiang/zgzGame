@@ -224,11 +224,14 @@ var DialogMiddle = function (title, mode, callback) {
     return box;
 };
 
+///
 var DialogSmallNode = cc.Node.extend({
-    ctor: function (title, mode, callback) {
+    ctor: function (title, mode, callback, target) {
         this._super();
 //类变量
-        this.m_callback = callback;
+        this.callback = callback;
+
+        this.target = target;
 
         this.mode = mode;
         this.m_msg = title;
@@ -237,22 +240,24 @@ var DialogSmallNode = cc.Node.extend({
 
         this.init({});
     },
-    onEnter:function(){
+    onEnter: function () {
         this._super();
         //console.log("AlertBoxNode onEnter");
         //cc.spriteFrameCache.addSpriteFrames(res.common_plist);
     },
-    onExit:function(){
+    onExit: function () {
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
         this._super();
         //console.log("AlertBoxNode onEnter");
     },
 
-    init:function(args){
-        if(this.m_bRun) return;
+    init: function (args) {
+        if (this.m_bRun) return;
         this.m_bRun = true;
 
         this._super();
+
+        var self = this;
         var sg = new MaskLayer(false);
         this.addChild(sg);
 
@@ -269,18 +274,18 @@ var DialogSmallNode = cc.Node.extend({
         var bgActualSize = this.bg.getBoundingBox();
 
 
-        this.m_pLable = new cc.LabelTTF(this.m_msg, "AmericanTypewriter", 22);
+        this.m_pLable = new cc.LabelTTF(this.m_msg, "AmericanTypewriter", 20);
         this.m_pLable.enableStroke(cc.color.WHITE, 1);
         this.m_pLable.color = cc.color.WHITE;
         //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
-        this.m_pLable.setPosition(winSize.width/2, winSize.height/2 + bgActualSize.height/2 - 22);
+        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2 + bgActualSize.height / 2 - 18);
         this.addChild(this.m_pLable);
 
         //close
         var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
         closeItem.setScale(0.65);
-        closeItem.x = winSize.width/2 + bgActualSize.width/2 - 8;
-        closeItem.y = winSize.height/2 + bgActualSize.height/2 - 8;
+        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8;
+        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8;
         this.m_menu = new cc.Menu(closeItem);
         this.m_menu.tag = TAG_MENU;
         this.m_menu.x = 0;
@@ -288,15 +293,87 @@ var DialogSmallNode = cc.Node.extend({
         this.addChild(this.m_menu, 1);
         // menu end
 
+        //mode switch
+        if (this.mode == 1) {
+
+        } else if (this.mode == 2) {
+            //确定
+            this.okNormal = new cc.Sprite("#common_btn_hong.png");
+            this.okSelected = new cc.Sprite("#common_btn_hong.png");
+            this.okDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, function () {
+                self.callback.ensureCallback.call(self.target, function (close) {
+                    if (close) {
+                        self.onExitCallback();
+                    }
+                });
+            }, this);
+            //this.okButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.okButton);
+            menuItem.setPosition(winSize.width / 2 - 160, winSize.height / 2 - 180);
+            menuItem.scale = 0.6;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.okButton.getContentSize();
+            this.okLabel = new cc.LabelTTF("确定", "Arial", 22);
+            this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.okButton.addChild(this.okLabel);
+        } else {
+            //确定
+            this.okNormal = new cc.Sprite("#common_btn_hong.png");
+            this.okSelected = new cc.Sprite("#common_btn_hong.png");
+            this.okDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, function () {
+                self.callback.ensureCallback.call(self.target, function (close) {
+                    if (close) {
+                        self.onExitCallback();
+                    }
+                });
+            }, this);
+            //this.okButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.okButton);
+            menuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 180);
+            menuItem.scale = 0.6;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.okButton.getContentSize();
+            this.okLabel = new cc.LabelTTF("确定", "Arial", 22);
+            this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.okButton.addChild(this.okLabel);
+
+            //取消
+            this.cancelNormal = new cc.Sprite("#common_btn_hong.png");
+            this.cancelSelected = new cc.Sprite("#common_btn_hong.png");
+            this.cancelDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.cancelButton = new cc.MenuItemSprite(this.cancelNormal, this.cancelSelected, this.cancelDisabled, function () {
+                self.callback.cancelCallback.call(self.target, function (close) {
+                    if (close) {
+                        self.onExitCallback();
+                    }
+                });
+            }, this);
+            //this.cancelButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.cancelButton);
+            menuItem.setPosition(winSize.width / 2 - 80, winSize.height / 2 - 180);
+            menuItem.scale = 0.6;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.cancelButton.getContentSize();
+            this.cancelLabel = new cc.LabelTTF("取消", "Arial", 22);
+            this.cancelLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.cancelButton.addChild(this.cancelLabel);
+        }
+
     },
 
-    onExitCallback:function () {
-        playEffect(audio_common.Button_Click);
+    onExitCallback: function () {
         //console.log("noteLayer onExitCallback");
         this.removeFromParent(true);
     }
 });
-var DialogSmall = function (title, mode, callback) {
-    var box = new DialogSmallNode(title, mode, callback);
+//mode: 1: blank, 2: alert, 3: confirm
+//callback: {ensureCallback: xx, cancelCallback: xx}
+var DialogSmall = function (title, mode, callback, target) {
+    var box = new DialogSmallNode(title, mode, callback, target);
     return box;
 };
