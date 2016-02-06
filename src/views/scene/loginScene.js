@@ -8,9 +8,9 @@ var LoginScene = cc.Scene.extend({
 
 
         //Storage.removeFile();
-        Storage.init();
-        console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_BACKGROUND_MUSIC));
-        console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_EFFECT));
+        //Storage.init();
+        //console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_BACKGROUND_MUSIC));
+        //console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_EFFECT));
 
 
         //console.log(Storage.get('init'));
