@@ -265,7 +265,7 @@ var PokerLayer = cc.Layer.extend({
 
             pc.runAction(cc.moveTo(0.02 * time, ccp(pos.x, pos.y)));
         }
-
+        playEffect(audio_common.Deal_Card);
     },
 
 
@@ -364,12 +364,14 @@ var PokerLayer = cc.Layer.extend({
                 pc.setHitted(false);
                 pc.isSelected = false;
                 pc.setPositionY(HOLDING_CARD_BOTTOM);
+                playEffect(audio_common.Card_Click);
             } else {
                 if (pc.isHitted) {
                     hasSelectedCards = true;
                     pc.isSelected = true;
                     pc.setPositionY(HOLDING_CARD_BOTTOM + CARD_SELECTED_UP_OFFSET);
                     pc.setHitted(false);
+                    playEffect(audio_common.Card_Click);
                 }
             }
 
@@ -388,6 +390,7 @@ var PokerLayer = cc.Layer.extend({
             this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
             //this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, false);
         }
+        playEffect(audio_common.Card_Click);
     },
 
 

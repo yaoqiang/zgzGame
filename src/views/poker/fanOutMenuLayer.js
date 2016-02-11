@@ -142,6 +142,7 @@
         if(this.m_pTarge && cc.isFunction(this.m_pCallback)){
             //console.log("fanout chupai");
             this.m_pCallback.call(this.m_pTarge, FanOutMenuBtn.kCCFanOutMenu_FanOut);
+            playEffect(audio_common.Out_Card);
         }
     },
 
