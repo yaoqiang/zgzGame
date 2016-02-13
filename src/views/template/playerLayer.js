@@ -44,12 +44,12 @@ var PlayerLayer = cc.Layer.extend({
         //}
     },
 
-    clear:function(){
+    clear: function () {
         this.m_uid = -1;
         this.m_nickNname = "";
         this.m_avatar = -1;
 
-        if(this.m_pPhoto != null && cc.sys.isObjectValid(this.m_pPhoto)){
+        if (this.m_pPhoto != null && cc.sys.isObjectValid(this.m_pPhoto)) {
             this.removeChild(this.m_pPhoto);
         }
         this.showNickName();
@@ -58,26 +58,26 @@ var PlayerLayer = cc.Layer.extend({
         this.clearFanoutCards();
 
         this.setRank("", false);
-       // this.visible = false;
+        // this.visible = false;
     },
 
-    clearFanoutCards:function(){
-        if(this.m_pFanOutCardVector == null){
+    clearFanoutCards: function () {
+        if (this.m_pFanOutCardVector == null) {
             return;
         }
         var len = this.m_pFanOutCardVector.length;
 
-        for(var i=0; i<len; i++){
+        for (var i = 0; i < len; i++) {
             var card = this.m_pFanOutCardVector[i];
             card.removeFromParent();
         }
         this.m_pFanOutCardVector = null;
     },
 
-    setFanoutCards:function(array){
+    setFanoutCards: function (array) {
         this.clearFanoutCards();
         var len = array.length;
-        if(len <= 0){
+        if (len <= 0) {
             return;
         }
         this.m_pFanOutCardVector = array;
@@ -92,26 +92,27 @@ var PlayerLayer = cc.Layer.extend({
      * @param array
      */
     showIdentity: function (goal, array) {
-        if(!cc.isArray(array)){
+        if (!cc.isArray(array)) {
             return;
         }
         var size = this.m_pAvatarBg.getContentSize();
 
-        if(goal == GAME.IDENTITY.GUZI){
+        if (goal == GAME.IDENTITY.GUZI) {
             var winSize = cc.director.getWinSize();
-            var label = new cc.LabelTTF("股", "Arial", 28);
+            var guIcon = new cc.Sprite("#game_icon_gu.png");
+            guIcon.scale = 0.4;
 
-            this.m_pAvatarBg.addChild(label, 1);
-            this.m_pIdentityArray.push(label);
+            this.m_pAvatarBg.addChild(guIcon, 1);
+            this.m_pIdentityArray.push(guIcon);
 
-            if(this.m_position.x < winSize.width/2){
-                label.setAnchorPoint(0, 1);
-                label.setPosition(size.width, size.height-1);
-            }else{
-                label.setAnchorPoint(1, 1);
-                label.setPosition(0, size.height-1);
+            if (this.m_position.x < winSize.width / 2) {
+                guIcon.setAnchorPoint(0, 1);
+                guIcon.setPosition(size.width, size.height - 1);
+            } else {
+                guIcon.setAnchorPoint(1, 1);
+                guIcon.setPosition(0, size.height - 1);
             }
-           // return;
+            // return;
         }
         else if (goal == GAME.IDENTITY.UNKNOW) {
             var winSize = cc.director.getWinSize();
@@ -120,12 +121,12 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pAvatarBg.addChild(label, 1);
             this.m_pIdentityArray.push(label);
 
-            if(this.m_position.x < winSize.width/2){
+            if (this.m_position.x < winSize.width / 2) {
                 label.setAnchorPoint(0, 1);
-                label.setPosition(size.width, size.height-1);
-            }else{
+                label.setPosition(size.width, size.height - 1);
+            } else {
                 label.setAnchorPoint(1, 1);
-                label.setPosition(0, size.height-1);
+                label.setPosition(0, size.height - 1);
             }
         }
 
@@ -133,32 +134,32 @@ var PlayerLayer = cc.Layer.extend({
         var y = 0;
         var len = array.length;
         //console.log("----->showIdentity array.length:", len);
-        for(var i=0; i< len; i++){
+        for (var i = 0; i < len; i++) {
             var cardFace = parseInt(array[i] / 100);
             var cardPoint = array[i] % 100;
             //console.log("----->showIdentity cardFace:", cardFace, "      cardPoint:", cardPoint);
             var bigFaceBuf = null;
-            if (cardFace == PokerCard_enum.kCCCardFaceClub && cardPoint == 16){
-                    bigFaceBuf = "#Card_Flower_black_1.png" ; //4
-            }else if (cardFace == PokerCard_enum.kCCCardFaceDiamond && cardPoint == 16){
-                    bigFaceBuf = "#Card_Square-piece_red_1.png" ; // 1
-            }else if (cardFace == PokerCard_enum.kCCCardFaceHeart && cardPoint == 16){
-                    bigFaceBuf = "#Card_hearts_red_1.png" ;  //  2
-            }else if (cardFace == PokerCard_enum.kCCCardFaceSpade && cardPoint == 16){
-                    bigFaceBuf = "#Card_hearts_black_1.png" ;  //  3
+            if (cardFace == PokerCard_enum.kCCCardFaceClub && cardPoint == 16) {
+                bigFaceBuf = "#Card_Flower_black_1.png"; //4
+            } else if (cardFace == PokerCard_enum.kCCCardFaceDiamond && cardPoint == 16) {
+                bigFaceBuf = "#Card_Square-piece_red_1.png"; // 1
+            } else if (cardFace == PokerCard_enum.kCCCardFaceHeart && cardPoint == 16) {
+                bigFaceBuf = "#Card_hearts_red_1.png";  //  2
+            } else if (cardFace == PokerCard_enum.kCCCardFaceSpade && cardPoint == 16) {
+                bigFaceBuf = "#Card_hearts_black_1.png";  //  3
             }
             //console.log("----->showIdentity bigFaceBuf:", bigFaceBuf);
-            if(bigFaceBuf){
+            if (bigFaceBuf) {
                 var identityImage = new cc.Sprite(bigFaceBuf);
-                if(identityImage) {
-                    var xx = (1-this.m_anchorX)*size.width;//*this.bgScale;
-                    var yy = (1-this.m_anchorY)*size.height;//*this.bgScale;
-                    identityImage.setPosition(cc.p(size.width - 0, size.height-i*40));
+                if (identityImage) {
+                    var xx = (1 - this.m_anchorX) * size.width;//*this.bgScale;
+                    var yy = (1 - this.m_anchorY) * size.height;//*this.bgScale;
+                    identityImage.setPosition(cc.p(size.width - 0, size.height - i * 40));
                     identityImage.setAnchorPoint(0, 1);
                     identityImage.setScale(0.4);
                     this.m_pAvatarBg.addChild(identityImage, 1);
                     this.m_pIdentityArray.push(identityImage);
-                }else{
+                } else {
                     //console.log("----->没创建成功", bigFaceBuf);
                 }
 
@@ -170,7 +171,7 @@ var PlayerLayer = cc.Layer.extend({
 
     removeIdentity: function () {
         var len = this.m_pIdentityArray.length;
-        for(var i =0; i<len; i++){
+        for (var i = 0; i < len; i++) {
             var identity = this.m_pIdentityArray[i];
             identity.removeFromParent(true);
         }
@@ -179,7 +180,7 @@ var PlayerLayer = cc.Layer.extend({
 
 
     fill: function () {
-        
+
     },
     jion: function (params) {
 
@@ -197,7 +198,7 @@ var PlayerLayer = cc.Layer.extend({
 
     },
     expression: function () {
-        
+
     },
     identity3: function () {
 
@@ -207,7 +208,7 @@ var PlayerLayer = cc.Layer.extend({
     },
 
     details: function () {
-        
+
     },
 
     updata: function (args) {
@@ -227,16 +228,16 @@ var PlayerLayer = cc.Layer.extend({
         this.showReady(this.m_isready);
     },
 
-    showActorPhoto:function(){
-        if(this.m_avatar != -1){
+    showActorPhoto: function () {
+        if (this.m_avatar != -1) {
             var image = utils.getAvatar(this.m_avatar);
             //console.log(image);
-            if(this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
+            if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
                 this.removeChild(this.m_pPhoto);
             }
 
             this.m_pPhoto = new cc.Sprite(image);
-            if(this.m_pPhoto){
+            if (this.m_pPhoto) {
                 this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
                 this.m_pPhoto.anchorX = this.m_anchorX;
                 this.m_pPhoto.anchorY = this.m_anchorY;
@@ -251,7 +252,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pPhoto.removeFromParent(true);
         }
         this.m_pPhoto = new cc.Sprite(image);
-        if(this.m_pPhoto){
+        if (this.m_pPhoto) {
             this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
             this.m_pPhoto.anchorX = this.m_anchorX;
             this.m_pPhoto.anchorY = this.m_anchorY;
@@ -260,7 +261,7 @@ var PlayerLayer = cc.Layer.extend({
         }
     },
 
-    showNickName:function(){
+    showNickName: function () {
         //if(this.m_pName == null){
         //    this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 28);
         //    var size = this.m_pAvatarBg.getContentSize();
@@ -272,23 +273,23 @@ var PlayerLayer = cc.Layer.extend({
         //    this.m_pName.setString(this.m_nickNname);
         //}
 
-        if(this.m_pName == null){
+        if (this.m_pName == null) {
             this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 13);
             var size = this.m_pAvatarBg.getContentSize();
-            this.m_pName.color = cc.color(255,255,255,255);
+            this.m_pName.color = cc.color(255, 255, 255, 255);
             this.m_pName.anchorX = 0.5;
             this.m_pName.anchorY = 0;
-            var xx = (1-this.m_anchorX - 0.5)*size.width*this.bgScale;
-            var yy = (1-this.m_anchorY)*size.height*this.bgScale*1.2;
+            var xx = (1 - this.m_anchorX - 0.5) * size.width * this.bgScale;
+            var yy = (1 - this.m_anchorY) * size.height * this.bgScale * 1.2;
             this.m_pName.setPosition(this.m_position.x + xx, this.m_position.y + yy);
             this.addChild(this.m_pName, 1);
-        }else{
+        } else {
             this.m_pName.setString(this.m_nickNname);
         }
     },
 
-    addActorPhotoBg:function(){
-        if(this.m_photoId == null){
+    addActorPhotoBg: function () {
+        if (this.m_photoId == null) {
             this.m_pAvatarBg = new cc.Sprite("#game_bg_avatar.png");
             this.m_pAvatarBg.setPosition(this.m_position.x, this.m_position.y);
             this.m_pAvatarBg.anchorX = this.m_anchorX;
@@ -298,7 +299,7 @@ var PlayerLayer = cc.Layer.extend({
         }
     },
 
-    showReady:function(visible) {
+    showReady: function (visible) {
         this.m_isready = visible;
         if (this.m_pReady == null) {
             this.m_pReady = new cc.Sprite("#game_zhunbei_2.png");
@@ -321,8 +322,7 @@ var PlayerLayer = cc.Layer.extend({
     setRank: function (rank, visible) {
         var size = this.m_pAvatarBg.getContentSize();
         var winSize = cc.director.getWinSize();
-        if (visible)
-        {
+        if (visible) {
             var rankPng = "";
             switch (parseInt(rank)) {
                 case 1:
@@ -347,13 +347,13 @@ var PlayerLayer = cc.Layer.extend({
             }
 
             this.rankS = new cc.Sprite(rankPng);
-            this.rankS.scale = 5;
-            if(this.m_position.x < winSize.width/2){
+            this.rankS.scale = 4;
+            if (this.m_position.x < winSize.width / 2) {
                 this.rankS.setAnchorPoint(0, 1);
-                this.rankS.setPosition(size.width + 60, size.height-1);
-            }else{
+                this.rankS.setPosition(size.width + 60, size.height - 1);
+            } else {
                 this.rankS.setAnchorPoint(1, 1);
-                this.rankS.setPosition(0 - 60, size.height-1);
+                this.rankS.setPosition(0 - 60, size.height - 1);
             }
 
             this.m_pAvatarBg.addChild(this.rankS, 10);
@@ -365,11 +365,11 @@ var PlayerLayer = cc.Layer.extend({
 
     },
 
-    onEnter:function(){
+    onEnter: function () {
         this._super();
     },
 
-    onExit:function(){
+    onExit: function () {
         this._super();
     }
 

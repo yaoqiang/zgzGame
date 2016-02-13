@@ -152,7 +152,8 @@ UniversalController.exchange = function (exchangeId, mobile, count, contact, add
  * @param cb
  */
 UniversalController.getShopList = function (cb) {
-    pomelo.request(route.getShopList, {device: 'ios'}, function (data) {
+    var device = cc.sys.os == 'ios' ? 'ios' : 'android';
+    pomelo.request(route.getShopList, {device: device}, function (data) {
         cb(data);
     });
 }

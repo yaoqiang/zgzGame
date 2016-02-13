@@ -1,4 +1,4 @@
-var setingNode = cc.Node.extend({
+var SettingNode = cc.Node.extend({
     ctor: function () {
         this._super();
 
@@ -6,11 +6,11 @@ var setingNode = cc.Node.extend({
     },
     onEnter:function(){
         this._super();
-        console.log("setingNode onEnter");
+        console.log("settingNode onEnter");
     },
     onExit:function(){
         this._super();
-        console.log("setingNode onExit");
+        console.log("settingNode onExit");
     },
 
     init:function(){
@@ -131,7 +131,7 @@ var setingNode = cc.Node.extend({
         this.removeFromParent(true);
     }
 });
-var setingLayer = function () {
-    var box = new setingNode();
+var SettingLayer = function () {
+    var box = new SettingNode();
     return box;
 };

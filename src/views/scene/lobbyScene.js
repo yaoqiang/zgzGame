@@ -62,14 +62,14 @@ var LobbyLayer = cc.Layer.extend({
 
         this.lobbyId = lobbyId;
 
-        this.addChild(new HornSprite());
+        this.addChild(new HornSprite(), 9);
 
         var winSize = cc.director.getWinSize();
         this.m_pScrollView = null;
         this.m_nScrollWidth =  winSize.width;
         this.m_nScrollHeight =  winSize.height;
         this.m_nScrollX =  0;
-        this.m_nScrollY =  80;
+        this.m_nScrollY =  50;
 
         //background
         var bg = new cc.Sprite("#common_bg_beijing.png");
@@ -197,16 +197,16 @@ var LobbyLayer = cc.Layer.extend({
         onlineCounterValue.setPosition(onlineCounterLabel.width+10, button.height / 2 - 30);
         button.addChild(onlineCounterValue);
 
-        var baseLabel = new cc.LabelTTF("底注：", "AmericanTypewriter", 20);
+        var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 20);
         baseLabel.setColor(cc.color.WHITE);
         baseLabel.setAnchorPoint(0, 0);
-        baseLabel.setPosition(button.width / 2, button.height / 2 - 30);
+        baseLabel.setPosition(button.width / 2 - 45, button.height / 2 - 30);
         button.addChild(baseLabel);
 
-        var baseValue = new cc.LabelTTF(room.base, "AmericanTypewriter", 22);
-        baseValue.setColor(cc.color.YELLOW);
+        var baseValue = new cc.LabelTTF(""+room.min+'≤金', "Arial", 16);
+        baseValue.setColor(cc.color.GREEN);
         baseValue.setAnchorPoint(0, 0);
-        baseValue.setPosition(button.width / 2 + baseLabel.width+10, button.height / 2 - 30);
+        baseValue.setPosition(button.width / 2 + 100, button.height / 2 - 30);
         button.addChild(baseValue);
 
         return button;

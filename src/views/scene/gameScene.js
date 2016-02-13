@@ -33,6 +33,9 @@ var GameLayer = cc.Layer.extend({
         this.m_pBidMenuLayer = null;
         this.trusteeshipMask = null;
 
+        //
+        this.optionLayer = null;
+
         if (isBackGame) {
             var game = args.game;
             var actors = args.actors;
@@ -155,7 +158,10 @@ var GameLayer = cc.Layer.extend({
         this.addBg();
         //房间底注
         this.addBaseOdds();
-        this.addTrusteeshipMenu();
+        //
+        this.addOptionMenu();
+        //
+        //this.addTrusteeshipMenu();
         //创建牌桌
         this.createTable();
         //刷新玩家信息
@@ -253,8 +259,10 @@ var GameLayer = cc.Layer.extend({
         this.addBaseOdds();
         //喊话股数
 
+        //
+        this.addOptionMenu();
         //按钮操作区域（可做成工具tip弹出方式）
-        this.addTrusteeshipMenu();
+        //this.addTrusteeshipMenu();
 
         //创建牌桌
         this.createTable();
@@ -269,7 +277,7 @@ var GameLayer = cc.Layer.extend({
     addBg: function () {
         var winSize = cc.director.getWinSize();
         //牌桌
-        var bg = new cc.Sprite("#common_bg_beijing_3.png");
+        var bg = new cc.Sprite("#common_bg_beijing.png");
         bg.setPosition(winSize.width / 2, winSize.height / 2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
@@ -287,9 +295,40 @@ var GameLayer = cc.Layer.extend({
         baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180);
         this.addChild(baseLabel);
     },
-    addTrusteeshipMenu: function () {
+
+    addOptionMenu: function () {
+
         var winSize = cc.director.getWinSize();
-        //按钮操作区域（可做成工具tip弹出方式）
+        var sOption = new cc.MenuItemSprite(
+            new cc.Sprite("#icon_duogongneng.png"),
+            new cc.Sprite("#icon_duogongneng.png"),
+            this.onOptionClicked,
+            this
+        );
+        this.optionMenu = new cc.Menu(sOption);
+        this.optionMenu.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 60);
+        this.optionMenu.scaleX = 0.6;
+        this.optionMenu.scaleY = 0.5;
+        this.addChild(this.optionMenu, 1);
+    },
+
+    onOptionClicked: function () {
+
+        if (this.optionLayer) {
+            this.optionLayer.removeFromParent(true);
+            this.optionLayer = null;
+            return;
+        }
+        var winSize = cc.director.getWinSize();
+        this.optionLayer = new cc.Scale9Sprite("game_dikuang_4.png", cc.rect(7, 7, 14, 14));
+        var size = cc.size(180, 100);
+        this.optionLayer.setContentSize(size);
+        this.optionLayer.setAnchorPoint(1, 1);
+        this.optionLayer.setPosition(this.optionMenu.getBoundingBox().x, this.optionMenu.getBoundingBox().y);
+        this.addChild(this.optionLayer);
+
+
+        //托管
         var sTrusteeship = new cc.MenuItemSprite(
             new cc.Sprite("#game_icon_jiqiren_1.png"),
             new cc.Sprite("#game_icon_jiqiren_2.png"),
@@ -297,10 +336,26 @@ var GameLayer = cc.Layer.extend({
             this
         );
         var trusteeshipMenu = new cc.Menu(sTrusteeship);
-        trusteeshipMenu.setPosition(winSize.width / 2 + 220, winSize.height / 2 + 80);
+        trusteeshipMenu.setPosition(30, 0);
+        trusteeshipMenu.setAnchorPoint(0, 0.5);
         trusteeshipMenu.scale = 0.7
-        this.addChild(trusteeshipMenu, 99);
+        this.optionLayer.addChild(trusteeshipMenu, 1);
+
+        //聊天
+        var sChat = new cc.MenuItemSprite(
+            new cc.Sprite("#game_icon_biaoqing.png"),
+            new cc.Sprite("#game_icon_biaoqing.png"),
+            this.onChatClicked,
+            this
+        );
+        var chatMenu = new cc.Menu(sChat);
+        chatMenu.setPosition(90, 0);
+        chatMenu.setAnchorPoint(0, 0.5);
+        chatMenu.scale = 0.7
+        this.optionLayer.addChild(chatMenu, 1);
+
     },
+
     createTable: function () {
         switch (this.m_type) {
             case ZGZ.GAME_TYPE.T1:

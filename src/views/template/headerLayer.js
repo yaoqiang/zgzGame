@@ -91,20 +91,28 @@ var HeaderLayer = cc.Layer.extend({
         rightTopBg.addChild(menu);
 
         //商店
-        var shoppingCar = new cc.Sprite("#index_shangcheng_icon.png");
+        var shopNormal = new cc.Sprite("#index_shangcheng_icon.png");
+        shopNormal.attr({scale: 0.9});
+        var shopSelected = new cc.Sprite("#index_shangcheng_icon.png");
+        shopSelected.attr({scale: 1});
+        var shopDisabled = new cc.Sprite("#index_shangcheng_icon.png");
+
+        var shoppingCar = new cc.MenuItemSprite(shopNormal, shopSelected, shopDisabled, this.onShopButton, this);
         shoppingCar.setAnchorPoint(0, 0.5);
-        shoppingCar.setPosition(95, rightTopBg.height / 2);
-        shoppingCar.setScale(0.9);
-        rightTopBg.addChild(shoppingCar);
-//seting
-        var doNormal = new cc.Sprite("#index_shezhi_icon.png");
+        var menu = new cc.Menu(shoppingCar);
+        menu.setPosition(95, rightTopBg.height / 2);
+        rightTopBg.addChild(menu);
+
+
+        //setting
+        var settingNormal = new cc.Sprite("#index_shezhi_icon.png");
         doNormal.attr({scale: 0.9});
-        var doSelected = new cc.Sprite("#index_shezhi_icon.png");
+        var settingSelected = new cc.Sprite("#index_shezhi_icon.png");
         doSelected.attr({scale: 1});
-        var doDisabled = new cc.Sprite("#index_shezhi_icon.png");
+        var settingDisabled = new cc.Sprite("#index_shezhi_icon.png");
 
         // create help button and added it to header
-        var doSetButton = new cc.MenuItemSprite(doNormal, doSelected, doDisabled, this.onSetButton, this);
+        var doSetButton = new cc.MenuItemSprite(settingNormal, settingSelected, settingDisabled, this.onSetButton, this);
         doSetButton.setAnchorPoint(0, 0.5);
         var menu = new cc.Menu(doSetButton);
         menu.setPosition(170, rightTopBg.height / 2);
@@ -146,13 +154,15 @@ var HeaderLayer = cc.Layer.extend({
     },
 
     profile: function () {
+        playEffect(audio_common.Button_Click);
+
         var self = this;
+
         UniversalController.getProfile(gPlayer.uid, function (data) {
             self.args.player = data;
             var scene = new ProfileScene(self.args);
             cc.director.runScene(new cc.TransitionFade(1.2, scene));
         });
-        playEffect(audio_common.Button_Click);
     },
 
     /**
@@ -171,8 +181,18 @@ var HeaderLayer = cc.Layer.extend({
     onSetButton: function () {
         playEffect(audio_common.Button_Click);
         var self = this;
-        var box = new setingLayer();
+        var box = new SettingLayer();
         self.addChild(box);
+    },
+
+    onShopButton: function () {
+        playEffect(audio_common.Button_Click);
+        var self = this;
+        UniversalController.getShopList(function (data) {
+            self.args.data = data;
+            var scene = new ShopScene(self.args);
+            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        });
     },
 
     initSubscribeEvent: function () {

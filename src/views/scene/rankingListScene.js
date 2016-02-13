@@ -68,7 +68,6 @@ var RankingListScene = cc.Scene.extend({
         if (index == 0) {
 
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RICH}, function (data) {
-                console.log('RICH = ', data);
                 var layer = new RichRankingListLayer(data);
                 self.addChild(layer);
                 self.layer = layer;
@@ -77,7 +76,6 @@ var RankingListScene = cc.Scene.extend({
 
         if (index == 1) {
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.GOD}, function (data) {
-                console.log('GOD - ', data);
                 var layer = new GodRankingListLayer(data);
                 self.addChild(layer);
                 self.layer = layer;
@@ -86,7 +84,6 @@ var RankingListScene = cc.Scene.extend({
 
         if (index == 2) {
             UniversalController.getRankingList({type: CommonConf.RANKING_LIST.RECHARGE}, function (data) {
-                console.log('RECHARGE - ', data);
                 var layer = new RechargeRankingListLayer(data);
                 self.addChild(layer);
                 self.layer = layer;

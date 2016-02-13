@@ -48,5 +48,6 @@ var BottomBtnLayer = cc.Layer.extend({
 
     onMessageBtnClick: function () {
         playEffect(audio_common.Button_Click);
+        this.addChild(new LoadingLayer());
     }
 })

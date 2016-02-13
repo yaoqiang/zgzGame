@@ -224,7 +224,7 @@ var ExchangeListLayer = cc.Layer.extend({
         var ingotLabel = new cc.LabelTTF(oneExchange.fragment+"个元宝可兑换", "Arial", 16);
         ingotLabel.setPosition(xx + 200, this.m_nCelleHeight / 2 - 30);
         ingotLabel.setAnchorPoint(0, 0);
-        inventoryLabel.color = cc.color.RED;
+        ingotLabel.color = cc.color.RED;
         cell.addChild(ingotLabel);
 
         //
