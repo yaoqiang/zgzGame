@@ -7,6 +7,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_pName = null;
         this.m_pReady = null;
         this.rankS = null;
+        this.m_gender = null;
 
         this.m_index = params.index;
         this.m_position = params.position;
@@ -222,6 +223,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_gold = properties.gold;
         this.m_rank = properties.rank;
         this.m_isready = args.m_isReady;
+        this.m_gender = args.m_gender;
 
         this.showActorPhoto();
         this.showNickName();

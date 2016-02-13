@@ -724,13 +724,13 @@ var GameLayer = cc.Layer.extend({
     },
 
     fanOutEvent: function (data) {
-        //cc.log("---->fanOutEvent:", data);
+        cc.log("---->fanOutEvent:", data);
         var uid = data.uid;
         var actorNr = data.actorNr;
         var cards = data.cards;
         var cardRecognization = data.cardRecognization;
         this.m_pPokerLayer.setFanOutCards(cards, actorNr);
-
+        playEffect(audio_common.Button_Click);
 
     },
 
