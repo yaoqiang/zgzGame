@@ -49,6 +49,8 @@ var IndexScene = cc.Scene.extend({
     onExit: function () {
         this._super();
 
+        cc.eventManager.removeListener(this.keyboardListener);
+
     }
 
 });
@@ -113,7 +115,6 @@ var IndexLayer = cc.Layer.extend({
         this._super();
 
         //
-        cc.eventManager.removeListener(this.keyboardListener);
 
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_png);
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_png);
