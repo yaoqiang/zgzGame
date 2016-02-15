@@ -522,7 +522,9 @@ var GameLayer = cc.Layer.extend({
         //GameController.fan = function (roomId, gameId, cards)
         switch (tag) {
             case FanOutMenuBtn.kCCFanOutMenu_Pass:
+            {
                 GameController.fan(gRoomId, gGameId, []);
+            }
                 break;
             case FanOutMenuBtn.kCCFanOutMenu_FanOut:
                 GameController.fan(gRoomId, gGameId, this.m_pPokerLayer.m_pSelectedWillOutCards);
@@ -744,8 +746,8 @@ var GameLayer = cc.Layer.extend({
         var cards = data.cards;
         var cardRecognization = data.cardRecognization;
         this.m_pPokerLayer.setFanOutCards(cards, actorNr);
-        playEffect(audio_common.Button_Click);
 
+        this.audioCard(cardRecognization, actorNr);
     },
 
     fanCountdownEvent: function (data) {
@@ -960,7 +962,7 @@ var GameLayer = cc.Layer.extend({
         var cards = data.cards;
         var cardRecognization = data.cardRecognization;
         //this.m_pPokerLayer.setFanOutCards(cards, gActor.actorNr);
-
+        playEffect(audio_common.Button_Click);
     },
 
     trusteeshipResponse: function (data) {
@@ -969,6 +971,21 @@ var GameLayer = cc.Layer.extend({
 
     cancelTrusteeshipResponse: function (data) {
 
+    },
+
+    audioCard: function (cardRecognization, actorNr){
+        var actorHD = this.m_pTableLayer.getActorHDWithNr(actorNr);
+        var sex = actorHD.m_gender;
+        if(cardRecognization == null){
+            var random = Math.floor(Math.random() * 2);
+            playEffect(audio_fanmenu.Pass[random][sex]);
+            return;
+        }
+        if(cardRecognization.cardSeries >1 ){
+            playEffect(audio_card[cardRecognization.cardSeries][0][sex]);
+        }else {
+            playEffect(audio_card[cardRecognization.cardSeries][cardRecognization.maxCardPoint][sex]);
+        }
     },
 
 
@@ -1008,6 +1025,7 @@ var GameLayer = cc.Layer.extend({
         //
         cc.eventManager.removeListener(this.keyboardListener);
     }
+
 
 
 });
