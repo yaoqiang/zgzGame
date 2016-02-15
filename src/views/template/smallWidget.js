@@ -93,8 +93,8 @@ var AlertBoxNode = cc.Node.extend({
         this.m_pLable = null;
         this.m_nIdx = 0;
         this.m_bRun = false;
-        this.m_bgWidth = 400;
-        this.m_bgHeight = 250;
+        this.m_bgWidth = 300;
+        this.m_bgHeight = 180;
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
 
         this.init({});
@@ -128,11 +128,11 @@ var AlertBoxNode = cc.Node.extend({
         bg.y = winSize.height / 2.0;
         this.addChild(bg);
 
-        this.m_pLable = new cc.LabelTTF(this.m_msg, "Arial", 25);
-        this.m_pLable.color = cc.color.YELLOW;
-        this.m_pLable.setDimensions(this.m_bgWidth - 40, this.m_bgHeight - 60);
+        this.m_pLable = new cc.LabelTTF(this.m_msg, "Arial", 22);
+        this.m_pLable.color = cc.color.WHITE;
+        //this.m_pLable.setDimensions(this.m_bgWidth - 40, this.m_bgHeight - 60);
         //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
-        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2);
+        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2 + 30);
         this.addChild(this.m_pLable);
 
         //ok
@@ -177,7 +177,7 @@ var AlertBoxNode = cc.Node.extend({
 });
 var AlertBox = function (msg, callback, targe) {
     var box = new AlertBoxNode(msg, callback, targe);
-    cc.director.getRunningScene().addChild(box);
+    return box;
 };
 
 

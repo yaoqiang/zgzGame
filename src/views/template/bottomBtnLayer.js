@@ -4,16 +4,42 @@ var BottomBtnLayer = cc.Layer.extend({
 
         this.lobbyId = args.lobbyId;
 
-        var taskMenuItem = new cc.MenuItemImage("#index_renwu.png", "#index_renwu.png", this.onTaskBtnClick, this);
-        taskMenuItem.setPosition(120, 25);
-        var rankMenuItem = new cc.MenuItemImage("#index_paihang.png", "#index_paihang.png", this.onRankingBtnClick, this);
-        rankMenuItem.setPosition(240, 25);
-        var exchangeMenuItem = new cc.MenuItemImage("#index_duihuan.png", "#index_duihuan.png", this.onExchangeBtnClick, this);
-        exchangeMenuItem.setPosition(360, 25);
-        var messageMenuItem = new cc.MenuItemImage("#index_tongzhi.png", "#index_tongzhi.png", this.onMessageBtnClick, this);
-        messageMenuItem.setPosition(480, 25);
+        var winSize = cc.director.getWinSize();
 
-        var menu = new cc.Menu(taskMenuItem, rankMenuItem, exchangeMenuItem, messageMenuItem);
+
+        var shopMenuItem = new cc.MenuItemImage("#bt_market.png", "#bt_market.png", this.onShopButton, this);
+        shopMenuItem.setPosition(120, 35);
+        shopMenuItem.scale = 0.6;
+        var shopWords = new cc.Sprite('#words_market.png');
+        shopWords.setAnchorPoint(0, 0.5);
+        shopWords.setPosition(shopMenuItem.getContentSize().width, shopMenuItem.getContentSize().height/2);
+        shopMenuItem.addChild(shopWords);
+
+        var rankMenuItem = new cc.MenuItemImage("#index_paihang_icon.png", "#index_paihang_icon.png", this.onRankingBtnClick, this);
+        rankMenuItem.setPosition(240, 35);
+        rankMenuItem.scale = 0.6;
+        var rankingWords = new cc.Sprite('#words_ranking.png');
+        rankingWords.setAnchorPoint(0, 0.5);
+        rankingWords.setPosition(rankMenuItem.getContentSize().width, rankMenuItem.getContentSize().height/2);
+        rankMenuItem.addChild(rankingWords);
+
+
+        var taskMenuItem = new cc.MenuItemImage("#bt_task.png", "#bt_task.png", this.onTaskBtnClick, this);
+        taskMenuItem.setPosition(360, 35);
+
+        taskMenuItem.scale = 0.6;
+        var taskWords = new cc.Sprite('#words_task.png');
+        taskWords.setAnchorPoint(0, 0.5);
+        taskWords.setPosition(taskMenuItem.getContentSize().width - 20, taskMenuItem.getContentSize().height/2);
+        taskMenuItem.addChild(taskWords);
+
+
+
+        var exchangeMenuItem = new cc.MenuItemImage("#three_exchange.png", "#three_exchange.png", this.onExchangeBtnClick, this);
+        exchangeMenuItem.scale = 0.6;
+        exchangeMenuItem.setPosition(500, 35);
+
+        var menu = new cc.Menu(shopMenuItem, rankMenuItem, taskMenuItem, exchangeMenuItem);
         menu.setPosition(0, 0);
         //
         this.addChild(menu);
@@ -46,8 +72,15 @@ var BottomBtnLayer = cc.Layer.extend({
         cc.director.runScene(new cc.TransitionFade(1.2, scene));
     },
 
-    onMessageBtnClick: function () {
+    onShopButton: function () {
         playEffect(audio_common.Button_Click);
-        this.addChild(new LoadingLayer());
-    }
+        var self = this;
+        UniversalController.getShopList(function (data) {
+            var args = {};
+            args.data = data;
+            args.lobbyId = self.lobbyId;
+            var scene = new ShopScene(args);
+            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        });
+    },
 })

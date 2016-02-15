@@ -158,6 +158,9 @@ var GameLayer = cc.Layer.extend({
         this.addBg();
         //房间底注
         this.addBaseOdds();
+
+        //暂时不加
+        //this.addBottom();
         //
         this.addOptionMenu();
         //
@@ -257,7 +260,9 @@ var GameLayer = cc.Layer.extend({
         this.addBg();
         //房间底注
         this.addBaseOdds();
-        //喊话股数
+
+        //暂时不加
+        //this.addBottom();
 
         //
         this.addOptionMenu();
@@ -294,6 +299,15 @@ var GameLayer = cc.Layer.extend({
         baseLabel.color = cc.color.YELLOW;
         baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180);
         this.addChild(baseLabel);
+    },
+
+    addBottom: function () {
+        var winSize = cc.director.getWinSize();
+        var bottomBg = new cc.Sprite('#toast_bg.png');
+        bottomBg.setAnchorPoint(0.5, 0);
+        bottomBg.setPosition(winSize.width/2, 0);
+        bottomBg.scaleY = 0.35;
+        this.addChild(bottomBg)
     },
 
     addOptionMenu: function () {

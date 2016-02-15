@@ -77,6 +77,7 @@ var HeaderLayer = cc.Layer.extend({
         this.addChild(rightTopBg);
 
 
+        //每日必做
         // create help button sprite
         var doNormal = new cc.Sprite("#index_huodong.png");
         doNormal.attr({scale: 0.9});
@@ -90,17 +91,17 @@ var HeaderLayer = cc.Layer.extend({
         menu.setPosition(55, rightTopBg.height / 2 + 3);
         rightTopBg.addChild(menu);
 
-        //商店
-        var shopNormal = new cc.Sprite("#index_shangcheng_icon.png");
-        shopNormal.attr({scale: 0.9});
-        var shopSelected = new cc.Sprite("#index_shangcheng_icon.png");
-        shopSelected.attr({scale: 1});
-        var shopDisabled = new cc.Sprite("#index_shangcheng_icon.png");
+        //邮件
+        var messageNormal = new cc.Sprite("#index_youjian_icon.png");
+        messageNormal.attr({scale: 0.65});
+        var messageSelected = new cc.Sprite("#index_youjian_icon.png");
+        messageSelected.attr({scale: 0.7});
+        var messageDisabled = new cc.Sprite("#index_youjian_icon.png");
 
-        var shoppingCar = new cc.MenuItemSprite(shopNormal, shopSelected, shopDisabled, this.onShopButton, this);
-        shoppingCar.setAnchorPoint(0, 0.5);
-        var menu = new cc.Menu(shoppingCar);
-        menu.setPosition(95, rightTopBg.height / 2);
+        var messageMenu = new cc.MenuItemSprite(messageNormal, messageSelected, messageDisabled, this.onMessageBtnClick, this);
+        messageMenu.setAnchorPoint(0, 0.5);
+        var menu = new cc.Menu(messageMenu);
+        menu.setPosition(95, rightTopBg.height / 2 + 10);
         rightTopBg.addChild(menu);
 
 
@@ -185,14 +186,14 @@ var HeaderLayer = cc.Layer.extend({
         self.addChild(box);
     },
 
-    onShopButton: function () {
+
+
+    onMessageBtnClick: function () {
         playEffect(audio_common.Button_Click);
-        var self = this;
-        UniversalController.getShopList(function (data) {
-            self.args.data = data;
-            var scene = new ShopScene(self.args);
-            cc.director.runScene(new cc.TransitionFade(1.2, scene));
-        });
+        this.addChild(new AlertBox('哎呀,您的网络太差...', function () {
+
+        }, this));
+        //this.addChild(new LoadingLayer());
     },
 
     initSubscribeEvent: function () {

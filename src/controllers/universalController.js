@@ -180,9 +180,7 @@ UniversalController.payment = function () {
  * 获取最新版本信息
  */
 UniversalController.getTopOfAppReleaseRecord = function () {
-    pomelo.request(route.getTopOfAppReleaseRecord, {}, function (data) {
-        cb(data);
-    });
+    pomelo.notify(route.getTopOfAppReleaseRecord, {});
 }
 
 UniversalController.sendBindingSMS = function (mobile, cb) {
