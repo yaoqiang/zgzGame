@@ -41,15 +41,16 @@ var Clock = cc.Node.extend({
     },
 
     updateTime:function(dt){
-        playEffect(audio_common.Reminded_Myself);
         this.m_nTime = this.m_nTime -1;
         if(this.m_nTime <=0 ){
             this.unschedule(this.updateTime);
             if(this.m_targe && cc.isFunction(this.m_pCallBack)){
                 this.m_pCallBack.call(this.m_targe);
             }
-
             return;
+        }
+        if(this.m_nTime <=5 ){
+            playEffect(audio_common.Reminded_Myself);
         }
 
         if(this.m_pLable){
