@@ -65,7 +65,7 @@ AuthController.login = function(username, password)
 }
 
 
-AuthController.loginWithToken = function(token)
+AuthController.loginWithToken = function(token, cb)
 {
 
     Network.post({
@@ -108,6 +108,7 @@ AuthController.loginWithToken = function(token)
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;
                 console.log("gPlayer => ", gPlayer);
+                if (cb) cb();
 
                 //如果是断线重回游戏, 则不需要自动进入大厅;
                 if (data.isBackGame) return;

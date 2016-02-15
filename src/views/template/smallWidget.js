@@ -5,6 +5,8 @@ var LoadingNode = cc.Node.extend({
         this.m_pLable = null;
         this.m_nIdx = 0;
         this.m_bRun = false;
+        this.args = args;
+        this.args.msg = this.args.msg || '加载中';
         this.init(args);
     },
     onEnter: function () {
@@ -48,7 +50,7 @@ var LoadingNode = cc.Node.extend({
         this.addChild(this.m_menu, 1);
 
 
-        var resultTxt = "加载中...";
+        var resultTxt = this.args.msg+"...";
         this.m_pLable = new cc.LabelTTF(resultTxt, "Arial", 16);
         this.m_pLable.color = cc.color.WHITE;
         this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2);
@@ -59,7 +61,7 @@ var LoadingNode = cc.Node.extend({
         this.schedule(this.onTick, 0.5);
     },
     onTick: function (dt) {
-        var resultTxt = "加载中";
+        var resultTxt = this.args.msg;
         this.m_nIdx = this.m_nIdx + 1;
         this.m_nIdx = this.m_nIdx % 4;
         var i = 0;
@@ -76,7 +78,7 @@ var LoadingNode = cc.Node.extend({
 })
 
 var LoadingLayer = function (data) {
-    var load = new LoadingNode({});
+    var load = new LoadingNode({msg: data.msg});
     return load;
 };
 

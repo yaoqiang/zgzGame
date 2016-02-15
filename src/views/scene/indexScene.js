@@ -10,6 +10,9 @@ var IndexScene = cc.Scene.extend({
     ctor: function (lobbyData) {
         this._super();
 
+        this.androidBackBtnClickTimes = 0;
+        var self = this;
+
         cc.spriteFrameCache.addSpriteFrames(res.index_plist);
         cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
@@ -38,8 +41,21 @@ var IndexScene = cc.Scene.extend({
             onKeyReleased: function(keyCode, event){
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
+                    self.androidBackBtnClickTimes += 1;
                     playEffect(audio_common.Button_Click);
+
+                    if (self.androidBackBtnClickTimes == 1) {
+                        var box = new AlertBox('您确定要退出游戏吗?', function () {
+                            cc.director.end();
+                        }, this);
+                        self.addChild(box, 9);
+                    }
+                    else if (self.androidBackBtnClickTimes > 1) {
+                        cc.director.end();
+                    }
                 }
+
+
 
             }
         }, this);
