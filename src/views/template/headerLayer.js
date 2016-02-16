@@ -190,10 +190,10 @@ var HeaderLayer = cc.Layer.extend({
 
     onMessageBtnClick: function () {
         playEffect(audio_common.Button_Click);
-        this.addChild(new AlertBox('哎呀,您的网络太差...', function () {
-
-        }, this));
-        //this.addChild(new LoadingLayer());
+        //this.addChild(new AlertBox('哎呀,您的网络太差...', function () {
+        //
+        //}, this));
+        this.addChild(new LoadingLayer({}));
     },
 
     initSubscribeEvent: function () {

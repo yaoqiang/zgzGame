@@ -5,7 +5,7 @@ var LoadingNode = cc.Node.extend({
         this.m_pLable = null;
         this.m_nIdx = 0;
         this.m_bRun = false;
-        this.args = args;
+        this.args = args || {};
         this.args.msg = this.args.msg || '加载中';
         this.init(args);
     },
@@ -29,14 +29,18 @@ var LoadingNode = cc.Node.extend({
 
 
         this.bg = new cc.Sprite("#loading_bg.png");
+        this.bg.scaleY = 1.2;
         this.bg.setPosition(winSize.width / 2, winSize.height / 2);
 
         sg.addChild(this.bg);
 
         this.icon = new cc.Sprite("#loading.png");
-        this.icon.setPosition(winSize.width / 2, winSize.height / 2);
+        this.icon.setPosition(winSize.width / 2, winSize.height / 2 + 15);
         this.icon.scale = 1.2;
         sg.addChild(this.icon);
+        var ccRotateBy = new cc.RotateBy(0.7, 360);
+        var ccRepeatForever = new cc.RepeatForever(ccRotateBy);
+        this.icon.runAction(ccRepeatForever);
 
 
         var closeItem = new cc.MenuItemImage("#close.png", "#close.png", this.onExitCallback, this);
@@ -53,7 +57,7 @@ var LoadingNode = cc.Node.extend({
         var resultTxt = this.args.msg+"...";
         this.m_pLable = new cc.LabelTTF(resultTxt, "Arial", 16);
         this.m_pLable.color = cc.color.WHITE;
-        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2);
+        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2-35);
         sg.addChild(this.m_pLable);
 
         this.addChild(sg);
