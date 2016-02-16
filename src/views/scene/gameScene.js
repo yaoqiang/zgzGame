@@ -421,11 +421,11 @@ var GameLayer = cc.Layer.extend({
     },
     removeActorFromList: function (actor) {
         if (this.m_actorList) {
-            var actor = new Actor(actor);
+            //var actor = new Actor(actor);
             //离开别人
             for (var i = 0; this.m_actorList.length; i++) {
                 var one = this.m_actorList[i];
-                if (actor.m_uid == one.m_uid) {
+                if (actor.uid == one.m_uid) {
                     //this.m_actorList.delete(one);
                     this.m_actorList.splice(i, 1);
                     return;
@@ -449,8 +449,8 @@ var GameLayer = cc.Layer.extend({
     },
 
     selfLeave: function (actor) {
-        var actor = new Actor(actor);
-        if (actor.m_uid == gPlayer.uid) {
+       // var actor = new Actor(actor);
+        if (actor.uid == gPlayer.uid) {
             return true;
         }
         return false;
@@ -608,7 +608,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     leaveEvent: function (data) {
-
+        cc.log("---->game  leaveEvent: ", data);
         if (this.selfLeave(data.actor) == false) {
             this.removeActorFromList(data.actor);
             this.updateActorHD();

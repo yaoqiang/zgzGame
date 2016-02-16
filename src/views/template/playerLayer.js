@@ -224,6 +224,8 @@ var PlayerLayer = cc.Layer.extend({
         this.m_rank = properties.rank;
         this.m_isready = args.m_isReady;
         this.m_gender = args.m_gender;
+        //if(properties.gender == "FEMALE")
+        //    this.m_gender = 0;
 
         this.showActorPhoto();
         this.showNickName();
