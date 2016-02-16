@@ -68,6 +68,7 @@ cc.GameLoaderScene = cc.Scene.extend({
         //}
 
         var logoSprite = new cc.Sprite("res/logo.png");
+        logoSprite.scale = 0.8;
         logoSprite.setPosition(cc.visibleRect.center.x, cc.visibleRect.center.y);
         self._bgLayer.addChild(logoSprite, 20);
         //loading percent
@@ -75,6 +76,11 @@ cc.GameLoaderScene = cc.Scene.extend({
         label.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, lblHeight)));
         label.setColor(cc.color(180, 180, 180));
         bgLayer.addChild(this._label, 10);
+
+        var copyright = new cc.LabelTTF("大同亿润网络", "Arial", fontSize);
+        copyright.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, lblHeight-200)));
+        copyright.setColor(cc.color(180, 180, 180));
+        bgLayer.addChild(copyright, 21);
         return true;
     },
 
