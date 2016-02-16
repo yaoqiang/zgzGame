@@ -10,7 +10,6 @@ var IndexScene = cc.Scene.extend({
     ctor: function (lobbyData) {
         this._super();
 
-        this.androidBackBtnClickTimes = 0;
         var self = this;
 
         cc.spriteFrameCache.addSpriteFrames(res.index_plist);
@@ -33,29 +32,26 @@ var IndexScene = cc.Scene.extend({
 
         //add a keyboard event listener to statusLabel
 
-        //首页, 如果按1次,弹出是否退出, 再按一次, 退出应用
+        //首页, 如果按1次, 弹出是否退出
         this.keyboardListener = cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
             onKeyPressed:  function(keyCode, event){
             },
             onKeyReleased: function(keyCode, event){
-                var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
-                    self.androidBackBtnClickTimes += 1;
                     playEffect(audio_common.Button_Click);
 
-                    if (self.androidBackBtnClickTimes == 1) {
-                        var box = new AlertBox('您确定要退出游戏吗?', function () {
-                            cc.director.end();
-                        }, this);
-                        self.addChild(box, 9);
+                    if (self.exitBox) {
+                        self.exitBox.removeFromParent(true);
+                        return;
                     }
-                    else if (self.androidBackBtnClickTimes > 1) {
+
+                    self.exitBox = new AlertBox('您确定要退出游戏吗?', function () {
                         cc.director.end();
-                    }
+                    }, this);
+                    self.addChild(self.exitBox, 9);
+
                 }
-
-
 
             }
         }, this);
@@ -89,7 +85,7 @@ var IndexLayer = cc.Layer.extend({
         return ;
 
 
-       // return true;
+        // return true;
     },
     init:function (lobbyData) {
         //console.log("---|---->init");
