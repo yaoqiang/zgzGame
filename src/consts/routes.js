@@ -1,4 +1,6 @@
 var route = {
+    ping: 'connector.entryHandler.ping',    //ping
+
     queryEntry: 'gate.gateHandler.queryEntry',    //search gate server
     enter: 'connector.entryHandler.enter',    //进入游戏
     enterIndex: 'connector.entryHandler.enterIndex',    //进入index

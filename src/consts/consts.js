@@ -234,6 +234,12 @@ var GAME = {
 }
 
 var CommonConf = {
+    KICK_REASON: {
+        ANOTHER_LOGIN: 'ANOTHER_LOGIN',
+        SERVICE_MAINTENANCE: 'SERVICE_MAINTENANCE',
+        UNKNOWN: 'UNKNOWN'
+    },
+
     LOCAL_STORAGE: {
         INIT: 'INIT',
         IS_PLAY_EFFECT: 'isPlayEffect',

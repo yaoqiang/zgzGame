@@ -6,8 +6,16 @@ cc.eventManager.addCustomListener(cc.game.EVENT_HIDE, function(){
 cc.eventManager.addCustomListener(cc.game.EVENT_SHOW, function(){
     cc.log("重新返回游戏");
     //如果网络与服务器连接已断开, 则自动登录
-    if (gNetworkState == 1) {
+    try {
+        pomelo.request(route.ping, function (data) {
 
+        })
+    } catch (err) {
+        var loadingBar = new LoadingLayer({msg: '连接中'});
+        var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+        AuthController.loginWithToken(token, function () {
+            loadingBar.removeFromParent(true);
+        });
     }
 
 });
@@ -19,7 +27,6 @@ pomelo.on('disconnect', function(reason) {
 pomelo.on('close', function(reason) {
     console.log('close -> ', reason);
     if (reason.code > 1000) {
-        gNetworkState = 1;
         var loadingBar = new LoadingLayer({msg: '连接中'});
         cc.director.getRunningScene().addChild(loadingBar, 9);
 
@@ -32,7 +39,11 @@ pomelo.on('close', function(reason) {
 });
 
 pomelo.on('onKick', function (data) {
-    var box = new AlertBox('哎呀,您的账号在其他设备登录...', function () {
+    var msg = '哎呀,您的账号在其他设备登录...';
+    if (data.reason == CommonConf.KICK_REASON.SERVICE_MAINTENANCE) {
+        msg = '服务器正在维护...';
+    }
+    var box = new AlertBox(msg, function () {
         cc.director.end();
     }, this);
     cc.director.getRunningScene().addChild(box);
@@ -41,7 +52,7 @@ pomelo.on('onKick', function (data) {
 pomelo.on('heartbeat timeout', function (data) {
     console.log('heartbeat timeout -> ', data);
 
-    var box = new AlertBox('哎呀,您的网络太差...', function () {
+    var box = new AlertBox('哎呀, 您的网络太差...', function () {
         //
         var loadingBar = new LoadingLayer({msg: '连接中'});
         var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);

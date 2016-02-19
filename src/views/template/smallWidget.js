@@ -43,15 +43,15 @@ var LoadingNode = cc.Node.extend({
         this.icon.runAction(ccRepeatForever);
 
 
-        var closeItem = new cc.MenuItemImage("#close.png", "#close.png", this.onExitCallback, this);
-        closeItem.setScale(0.65);
-        closeItem.x = winSize.width / 2 + this.bg.width / 2 - 8;
-        closeItem.y = winSize.height / 2 + this.bg.height / 2 - 8;
-        this.m_menu = new cc.Menu(closeItem);
-        this.m_menu.tag = TAG_MENU;
-        this.m_menu.x = 0;
-        this.m_menu.y = 0;
-        this.addChild(this.m_menu, 1);
+        //var closeItem = new cc.MenuItemImage("#close.png", "#close.png", this.onExitCallback, this);
+        //closeItem.setScale(0.65);
+        //closeItem.x = winSize.width / 2 + this.bg.width / 2 - 8;
+        //closeItem.y = winSize.height / 2 + this.bg.height / 2 - 8;
+        //this.m_menu = new cc.Menu(closeItem);
+        //this.m_menu.tag = TAG_MENU;
+        //this.m_menu.x = 0;
+        //this.m_menu.y = 0;
+        //this.addChild(this.m_menu, 1);
 
 
         var resultTxt = this.args.msg+"...";
