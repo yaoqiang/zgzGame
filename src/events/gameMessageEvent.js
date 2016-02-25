@@ -208,3 +208,10 @@ pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
     EventBus.publish(gameEvents.VERSION_UPGRADE, data);
 })
 
+pomelo.on(gameEvents.RESTART_GAME, function (data) {
+    prompt.fadeMiddle('没有人说话,重新开始!');
+});
+
+pomelo.on(gameEvents.DISSOLVE_GAME, function (data) {
+    prompt.fadeMiddle('连续没有人说话,即将解散牌局!');
+});

@@ -13,7 +13,7 @@
     "jsList" : [
 
         "src/vendors/underscore-min.js",
-        "src/vendors/pomelo-cocos2d-js.min.js",
+        "src/vendors/pomelo-cocos2d-js.js",
 
         "src/resource.js",
         "src/views/scene/gameLoaderScene.js",

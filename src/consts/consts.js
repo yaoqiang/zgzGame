@@ -245,7 +245,11 @@ var CommonConf = {
         IS_PLAY_EFFECT: 'isPlayEffect',
         IS_PLAY_BACKGROUND_MUSIC: 'isPlayBackgroundMusic',
         VERSION: 'VERSION',
-        TOKEN: 'TOKEN'
+        TOKEN: 'TOKEN',
+        ENTER_BACKGROUND: 'ENTER_BACKGROUND',
+        HANDSHAKE_TIME: 'HANDSHAKE_TIME',
+        HANDSHAKE_HEARTBEAT: 'HANDSHAKE_HEARTBEAT',
+        LAST_HEARTBEAT_TIME: 'LAST_HEARTBEAT_TIME'
     },
 
     RANKING_LIST: {

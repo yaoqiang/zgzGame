@@ -28,5 +28,8 @@ var gameEvents = {
     BROADCAST: 'onBroadcast',
     UI_COMMAND: 'onUICommand',
     VERSION_UPGRADE: 'onVersionUpgrade',
-    INGOT_CHANGE: 'onIngotChange'
+    INGOT_CHANGE: 'onIngotChange',
+    RESTART_GAME: 'onRestartGame',
+    DISSOLVE_GAME: 'onDissolveGame'
+
 }

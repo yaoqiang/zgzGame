@@ -45,7 +45,11 @@ var Network = {
                 pomelo.init({
                     host: data.host,
                     port: data.port,
-                    log: true
+                    log: true,
+                    handshakeCallback: function (handshakeData) {
+                        Storage.set(CommonConf.LOCAL_STORAGE.HANDSHAKE_HEARTBEAT, handshakeData.heartbeat);
+                        Storage.set(CommonConf.LOCAL_STORAGE.HANDSHAKE_TIME, (new Date(handshakeData.handshakeTime)).format('yyyy-MM-dd hh:mm:ss'));
+                    }
                 }, function () {
                     var route = 'connector.entryHandler.enter';
                     pomelo.request(route, {uid: uid, token: token}, function (data) {
