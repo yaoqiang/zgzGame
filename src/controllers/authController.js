@@ -45,6 +45,7 @@ AuthController.login = function(username, password)
 
                 //INIT
                 Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
+                UniversalController.initIAP();
 
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;
@@ -110,6 +111,7 @@ AuthController.loginWithToken = function(token, cb)
 
                 //INIT
                 Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
+                UniversalController.initIAP();
 
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;
@@ -161,7 +163,6 @@ AuthController.autoLogin = function()
                 return;
             }
 
-            console.log('result -- ', result);
 
             var uid = result.uid;
             var token = result.token;
@@ -178,6 +179,7 @@ AuthController.autoLogin = function()
 
                 //INIT
                 Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
+                UniversalController.initIAP();
 
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;

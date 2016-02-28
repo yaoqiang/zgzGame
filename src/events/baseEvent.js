@@ -15,7 +15,8 @@ cc.eventManager.addCustomListener(cc.game.EVENT_SHOW, function () {
 
         //每进入游戏会初始化lastHeartbeatTime为空字符串, 如果是刚进入游戏, 还没有收到过心跳,
         // 从连接时间计算,
-        if (lastHeartbeatTime == '') {
+        if (lastHeartbeatTime == '' || lastHeartbeatTime == null) {
+            if (handshake == '' || handshake == null) return;
             var fromHandshake = getDateDiff(handshake, now, 'second');
             if (fromHandshake > heartbeat * 2) {
                 //
@@ -45,26 +46,23 @@ cc.eventManager.addCustomListener(cc.game.EVENT_SHOW, function () {
     }
 
 
-    //
-    //var enterBackground = Storage.get(CommonConf.LOCAL_STORAGE.ENTER_BACKGROUND);
-    //
-    ////连接建立到上次转入后台的时间差
-    //var diff = getDateDiff(handshakeTime, enterBackground, 'second');
-    //
-    ////计算下次心跳时间
-    //var remainder = diff % heartbeat;
-    //
-    //console.log('diff -> ', diff, diff % heartbeat);
-    //diff % (heartbeat * 2)
-
-
-    ///////////////////////
-
-
 });
 
 pomelo.on('disconnect', function (reason) {
     console.log('disconnected -> ', reason);
+
+    if (gHasConnector) {
+        gHasConnector = false;
+        var loadingBar = new LoadingLayer({msg: '连接中'});
+        cc.director.getRunningScene().addChild(loadingBar, 9);
+
+        //
+        var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+        AuthController.loginWithToken(token, function () {
+            loadingBar.removeFromParent(true);
+        });
+    }
+
 });
 
 pomelo.on('close', function (reason) {
@@ -87,7 +85,7 @@ pomelo.on('onKick', function (data) {
         msg = '服务器正在维护...';
     }
     var box = new AlertBox(msg, function () {
-        cc.director.end();
+        if (cc.sys.os == cc.sys.ANDROID) cc.director.end();
     }, this);
     cc.director.getRunningScene().addChild(box);
 });

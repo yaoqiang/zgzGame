@@ -29,20 +29,20 @@ var IndexScene = cc.Scene.extend({
         this.addChild(bottomBtnLayer);
 
 
-
         //add a keyboard event listener to statusLabel
 
         //首页, 如果按1次, 弹出是否退出
         this.keyboardListener = cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
-            onKeyPressed:  function(keyCode, event){
+            onKeyPressed: function (keyCode, event) {
             },
-            onKeyReleased: function(keyCode, event){
+            onKeyReleased: function (keyCode, event) {
                 if (keyCode == cc.KEY.back) {
                     playEffect(audio_common.Button_Click);
 
                     if (self.exitBox) {
                         self.exitBox.removeFromParent(true);
+                        self.exitBox = null;
                         return;
                     }
 
@@ -69,7 +69,7 @@ var IndexScene = cc.Scene.extend({
 
 
 var IndexLayer = cc.Layer.extend({
-    sprite:null,
+    sprite: null,
     ctor: function (lobbyData) {
         this._super();
 
@@ -77,21 +77,27 @@ var IndexLayer = cc.Layer.extend({
 
         //background
         var bg = new cc.Sprite("#common_bg_beijing.png");
-        bg.setPosition(winSize.width/2, winSize.height/2);
+        bg.setPosition(winSize.width / 2, winSize.height / 2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
         this.init(lobbyData);
-        return ;
+        return;
 
 
         // return true;
     },
-    init:function (lobbyData) {
+    init: function (lobbyData) {
         //console.log("---|---->init");
         var winSize = cc.director.getWinSize();
         this.addChild(new HornSprite());
-        this.addChild(createIndexScrollLayer({width: winSize.width, height: 350, x: 0, y: 0, lobbyData: lobbyData}), 100);
+        this.addChild(createIndexScrollLayer({
+            width: winSize.width,
+            height: 350,
+            x: 0,
+            y: 0,
+            lobbyData: lobbyData
+        }), 100);
         //this.addChild(new createLobbyScrollLayer({width:winSize.width, height:300, x:0, y:0}), 100);
         //this.addChild(new createLobbyTableLayer({width:winSize.width, height:300, x:0, y:0, cwidth:winSize.width-20, cheight:40}), 100);
     },
@@ -112,8 +118,7 @@ var IndexLayer = cc.Layer.extend({
         playEffect(audio_common.Button_Click);
     },
 
-    onLobbyIconClicked: function(node, lobbyId)
-    {
+    onLobbyIconClicked: function (node, lobbyId) {
         GameController.enterLobby(lobbyId);
         playEffect(audio_common.Button_Click);
     },

@@ -10,8 +10,8 @@ var gWebSvrAddr = {
     port: 3001
 }
 
-//网络状态, 0=正常, 其他失败
-var gNetworkState = 0;
+//网络状态,
+var gHasConnector = false;
 
 var gPlayer = {};
 var gLobbyId = 0;

@@ -193,7 +193,12 @@ var HeaderLayer = cc.Layer.extend({
         //this.addChild(new AlertBox('哎呀,您的网络太差...', function () {
         //
         //}, this));
-        this.addChild(new LoadingLayer({}));
+
+
+        //this.addChild(new LoadingLayer({}));
+
+        //
+
     },
 
     initSubscribeEvent: function () {

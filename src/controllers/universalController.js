@@ -1,7 +1,6 @@
 var pomelo = window.pomelo;
 
-var UniversalController = function()
-{
+var UniversalController = function () {
 
 }
 
@@ -31,7 +30,12 @@ UniversalController.updateProfile = function (nickName, gender, avatar, summary)
         return;
     }
 
-    pomelo.request(route.updateProfile, {nickName: nickName, gender: gender, avatar: avatar, summary: summary}, function (data) {
+    pomelo.request(route.updateProfile, {
+        nickName: nickName,
+        gender: gender,
+        avatar: avatar,
+        summary: summary
+    }, function (data) {
         if (data.code == RETURN_CODE.OK) {
             gPlayer.nickName = nickName;
             gPlayer.gender = gender;
@@ -142,7 +146,13 @@ UniversalController.getMyExchangeRecordList = function (cb) {
  * @param cb
  */
 UniversalController.exchange = function (exchangeId, mobile, count, contact, address, cb) {
-    pomelo.request(route.exchange, {exchangeId: exchangeId, mobile: mobile, count: count, contact: contact, address: address}, function (data) {
+    pomelo.request(route.exchange, {
+        exchangeId: exchangeId,
+        mobile: mobile,
+        count: count,
+        contact: contact,
+        address: address
+    }, function (data) {
         cb(data);
     });
 }
@@ -172,8 +182,56 @@ UniversalController.getRankingList = function (data, cb) {
 /**
  * 支付
  */
-UniversalController.payment = function () {
-    
+UniversalController.payment = function (product) {
+    pomelo.notify(route.sendPaymentResult, {productId: product.name, product: product});
+}
+
+/**
+ * 苹果IAP支付
+ */
+UniversalController.initIAP = function () {
+    if (cc.sys.os == cc.sys.OS_IOS) {
+        sdkbox.IAP.init();
+        sdkbox.IAP.enableUserSideVerification(true);
+        //TODO: 上线时候设为false
+        sdkbox.IAP.setDebug(true);
+        sdkbox.IAP.setListener({
+            onSuccess: function (product) {
+                //Purchase success
+                cc.log("Purchase successful: " + product.name)
+                UniversalController.payment(product);
+
+            },
+            onFailure: function (product, msg) {
+                //Purchase failed
+                //msg is the error message
+                cc.log("Purchase failed: " + product.name + " error: " + msg);
+            },
+            onCanceled: function (product) {
+                //Purchase was canceled by user
+                cc.log("Purchase canceled: " + product.name);
+            },
+            onRestored: function (product) {
+                //Purchase restored
+                cc.log("Restored: " + product.name);
+            },
+            onProductRequestSuccess: function (products) {
+                //self.menuIAP.removeAllChildren();
+                //Returns you the data for all the iap products
+                //You can get each item using following method
+                for (var i = 0; i < products.length; i++) {
+                    cc.log("================");
+                    cc.log("name: " + products[i].name);
+                    cc.log("price: " + products[i].price);
+                    cc.log("================");
+                }
+            },
+            onProductRequestFailure: function (msg) {
+                //When product refresh request fails.
+                cc.log("Failed to get products");
+            }
+        });
+    }
 }
 
 /**
@@ -190,7 +248,11 @@ UniversalController.sendBindingSMS = function (mobile, cb) {
 }
 
 UniversalController.bindingMobile = function (data, cb) {
-    pomelo.request(route.bindingMobile, {mobile: data.mobile, password: data.password, captcha: data.captcha}, function (data) {
+    pomelo.request(route.bindingMobile, {
+        mobile: data.mobile,
+        password: data.password,
+        captcha: data.captcha
+    }, function (data) {
         cb(data);
     });
 }

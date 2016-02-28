@@ -51,6 +51,8 @@ var Network = {
                         Storage.set(CommonConf.LOCAL_STORAGE.HANDSHAKE_TIME, (new Date(handshakeData.handshakeTime)).format('yyyy-MM-dd hh:mm:ss'));
                     }
                 }, function () {
+                    //标识已连接到connector
+                    gHasConnector = true;
                     var route = 'connector.entryHandler.enter';
                     pomelo.request(route, {uid: uid, token: token}, function (data) {
                         cb(data);

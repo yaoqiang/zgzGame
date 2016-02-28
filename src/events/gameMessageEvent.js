@@ -202,6 +202,16 @@ pomelo.on(gameEvents.INGOT_CHANGE, function (data) {
 
 });
 
+pomelo.on(gameEvents.PAYMENT_RESULT, function (data) {
+    var msg = '您购买的商品已到账';
+    if (data.code === RETURN_CODE.FAIL) {
+        msg = '充值失败,请联系客服';
+    }
+    var box = new AlertBox(msg, function () {
+    }, this);
+    cc.director.getRunningScene().addChild(box, 9);
+})
+
 pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
     console.log('receive onVersionUpgrade event.', data);
     prompt.fadeMiddle('有新的版本发布, 请您去官网更新!');

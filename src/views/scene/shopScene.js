@@ -27,9 +27,9 @@ var ShopScene = cc.Scene.extend({
         //add a keyboard event listener to statusLabel
         this.keyboardListener = cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
-            onKeyPressed:  function(keyCode, event){
+            onKeyPressed: function (keyCode, event) {
             },
-            onKeyReleased: function(keyCode, event){
+            onKeyReleased: function (keyCode, event) {
                 playEffect(audio_common.Button_Click);
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
@@ -62,6 +62,8 @@ var CustomTableViewCell = cc.TableViewCell.extend({
 var ShopLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args) {
+
+
         this._super();
         this.data = args;
 
@@ -136,7 +138,7 @@ var ShopLayer = cc.Layer.extend({
         bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);
         cell.addChild(bg);
         //图标
-        var itemImageString = "#shop_gift_"+product.icon+".png";
+        var itemImageString = "#shop_gift_" + product.icon + ".png";
 
 
         var icon = new cc.Sprite(itemImageString);
@@ -158,7 +160,7 @@ var ShopLayer = cc.Layer.extend({
         var goldPlusIcon = new cc.Sprite("#common_icon_gold_10.png");
         goldPlusIcon.setAnchorPoint(0, 0.5);
         goldPlusIcon.scale = 0.45;
-        goldPlusIcon.setPosition(xx + 55 , this.m_nCelleHeight / 2 + 20);
+        goldPlusIcon.setPosition(xx + 55, this.m_nCelleHeight / 2 + 20);
 
         cell.addChild(goldPlusIcon);
 
@@ -166,7 +168,7 @@ var ShopLayer = cc.Layer.extend({
         var goldLabel = new cc.LabelTTF('+' + zgzNumeral(product.gold).format('0,0'), "Arial", 20);
         goldLabel.color = cc.color.YELLOW;
         goldLabel.setAnchorPoint(0, 0.5);
-        goldLabel.setPosition(xx + 110 , this.m_nCelleHeight / 2 + 20);
+        goldLabel.setPosition(xx + 110, this.m_nCelleHeight / 2 + 20);
 
         cell.addChild(goldLabel);
 
@@ -174,7 +176,7 @@ var ShopLayer = cc.Layer.extend({
         var descLabel = new cc.LabelTTF(product.desc, "Arial", 18);
         descLabel.color = cc.color.RED;
         descLabel.setAnchorPoint(0, 0.5);
-        descLabel.setPosition(xx + 65 , this.m_nCelleHeight / 2 - 20);
+        descLabel.setPosition(xx + 65, this.m_nCelleHeight / 2 - 20);
 
         cell.addChild(descLabel);
 
@@ -192,7 +194,7 @@ var ShopLayer = cc.Layer.extend({
         item.tag = idx;
         var itemSize = item.getContentSize();
 
-        var text = "¥"+product.amount;
+        var text = "¥" + product.amount;
         var textLabel = new cc.LabelTTF(text, "Arial", 28);
         textLabel.color = cc.color.WHITE;
         textLabel.setAnchorPoint(0.5, 0.5);
@@ -220,6 +222,13 @@ var ShopLayer = cc.Layer.extend({
         //设置购买物品信息
         this.productId = product.id;
 
+        //暂时iOS只支持苹果支付, 如果是安卓则接其他支付
+        if (cc.sys.os == cc.sys.OS_IOS) {
+            sdkbox.IAP.purchase(this.productId);
+        } else {
+            prompt.fadeMiddle('安卓支付即将支持..')
+        }
+
     },
 
 
@@ -227,6 +236,9 @@ var ShopLayer = cc.Layer.extend({
 
 
     },
+
+
+
 
 
     onEnter: function () {
