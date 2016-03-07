@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>alipaynew.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{585,776},{62,62}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,62}}</string>
+                <key>sourceSize</key>
+                <string>{62,62}</string>
+            </dict>
             <key>back_btn.png</key>
             <dict>
                 <key>frame</key>
@@ -423,7 +436,7 @@
             <key>common_btn_shanchu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{524,862},{60,60}}</string>
+                <string>{{554,926},{60,60}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -878,7 +891,7 @@
             <key>mobile_pay.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{490,960},{62,62}}</string>
+                <string>{{524,862},{62,62}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -1057,6 +1070,19 @@
                 <key>sourceSize</key>
                 <string>{1096,108}</string>
             </dict>
+            <key>weixin.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{490,960},{62,62}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,62}}</string>
+                <key>sourceSize</key>
+                <string>{62,62}</string>
+            </dict>
             <key>white_line.png</key>
             <dict>
                 <key>frame</key>
@@ -1106,7 +1132,7 @@
             <key>size</key>
             <string>{2048,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d923cc9c3f17d29f1cb6d7439ee7a4e1:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:41c7a518069b95a0efb2b386cd65e3b6:1/1$</string>
             <key>textureFileName</key>
             <string>common.png</string>
         </dict>

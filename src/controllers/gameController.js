@@ -10,7 +10,11 @@ GameController.join = function (roomId, lobbyId) {
     //cc.log("GameController.join roomId:", roomId);
     gRoomId = roomId;
 
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
+
     pomelo.request(route.join, {roomId: roomId}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("join :", data);
         if (data.code == RETURN_CODE.OK) {
             gGameType = data.gameType;
@@ -32,6 +36,7 @@ GameController.join = function (roomId, lobbyId) {
  */
 GameController.leave = function (roomId, lobbyId) {
     //cc.log("GameController.leave roomId:", roomId);
+
     pomelo.request(route.leave, {roomId: roomId}, function (data) {
         //cc.log("leave :", data);
         if (data.code == RETURN_CODE.OK) {
@@ -50,7 +55,10 @@ GameController.leave = function (roomId, lobbyId) {
  * @param lobbyId
  */
 GameController.enterLobby = function (lobbyId) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.enterLobby, {lobbyId: lobbyId}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("enterLobby :", data);
         var scene = new LobbyScene(data, lobbyId);
         cc.director.runScene(new cc.TransitionFade(1.2, scene));

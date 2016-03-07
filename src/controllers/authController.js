@@ -79,20 +79,33 @@ AuthController.loginWithToken = function(token, cb)
 
             if (result.code == 1001)
             {
-                //console.log('用户名不存在');
-                prompt.fade('您输入的用户名不存在, 请重新输入');
+                var alert = new DialogSmall("您的用户名不存在, 请重新登录", 2, {
+                    ensureCallback: function () {
+                        cc.director.runScene(new LoginScene());
+                    }
+                });
+                cc.director.getRunningScene().addChild(alert);
+
                 return;
             }
             if (result.code == 1002)
             {
-                //console.log('密码错误');
-                prompt.fade('您输入的密码错误, 请重新输入');
+                var alert = new DialogSmall("您的密码错误, 请重新登录", 2, {
+                    ensureCallback: function () {
+                        cc.director.runScene(new LoginScene());
+                    }
+                });
+                cc.director.getRunningScene().addChild(alert);
                 return;
             }
             if (result.code == 1003)
             {
-                //console.log('用户名密码不能为空');
-                prompt.fade('用户名密码不能为空');
+                var alert = new DialogSmall("您的账号密码错误, 请重新登录", 2, {
+                    ensureCallback: function () {
+                        cc.director.runScene(new LoginScene());
+                    }
+                });
+                cc.director.getRunningScene().addChild(alert);
                 return;
             }
 

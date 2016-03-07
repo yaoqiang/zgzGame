@@ -14,6 +14,7 @@ var res = {
     settings_png : "res/settings.png",
     shop_png : "res/shop.png",
     task_png : "res/task.png",
+    exp_png: "res/free_expression.png",
     //plist
     avatar_plist: "res/avatar.plist",
     common_plist: "res/common.plist",
@@ -26,7 +27,8 @@ var res = {
     room_plist : "res/room.plist",
     settings_plist : "res/settings.plist",
     shop_plist : "res/shop.plist",
-    task_plist : "res/task.plist"
+    task_plist : "res/task.plist",
+    exp_plist: "res/free_expression.plist"
     //effect
 
 

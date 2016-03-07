@@ -5,6 +5,7 @@ var GameScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.game_plist);
         cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
         cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
 
         gGameSenceCompleted = false;
         var layer = new GameLayer(args, isBackGame);
@@ -159,8 +160,8 @@ var GameLayer = cc.Layer.extend({
         //房间底注
         this.addBaseOdds();
 
-        //暂时不加
-        //this.addBottom();
+        //底部
+        this.addBottom();
         //
         this.addOptionMenu();
         //
@@ -261,8 +262,8 @@ var GameLayer = cc.Layer.extend({
         //房间底注
         this.addBaseOdds();
 
-        //暂时不加
-        //this.addBottom();
+        //底部
+        this.addBottom();
 
         //
         this.addOptionMenu();
@@ -295,10 +296,10 @@ var GameLayer = cc.Layer.extend({
     addBaseOdds: function () {
         var winSize = cc.director.getWinSize();
         //房间底注
-        var baseLabel = new cc.LabelTTF("底注: " + this.base, "Arial", 32);
-        baseLabel.color = cc.color.YELLOW;
-        baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180);
-        this.addChild(baseLabel);
+        //var baseLabel = new cc.LabelTTF("底注: " + this.base, "Arial", 32);
+        //baseLabel.color = cc.color.YELLOW;
+        //baseLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 180);
+        //this.addChild(baseLabel);
     },
 
     addBottom: function () {
@@ -307,67 +308,124 @@ var GameLayer = cc.Layer.extend({
         bottomBg.setAnchorPoint(0.5, 0);
         bottomBg.setPosition(winSize.width/2, 0);
         bottomBg.scaleY = 0.35;
-        this.addChild(bottomBg)
+        this.addChild(bottomBg, 1)
     },
 
     addOptionMenu: function () {
 
         var winSize = cc.director.getWinSize();
-        var sOption = new cc.MenuItemSprite(
-            new cc.Sprite("#icon_duogongneng.png"),
-            new cc.Sprite("#icon_duogongneng.png"),
+
+        this.toolBarHeight = 50;
+        this.toolBarState = 0;
+
+
+        this.toolBar = new cc.Sprite("#toolsBg.png");
+        this.toolBar.setPosition(winSize.width / 2, winSize.height + 20);
+        this.toolBar.scale = 0.55;
+
+        this.addChild(this.toolBar, 1);
+
+
+        //drop menu
+        this.sToolDrop = new cc.MenuItemSprite(
+            new cc.Sprite("#toolDropBtn.png"),
+            new cc.Sprite("#toolDropBtn.png"),
             this.onOptionClicked,
             this
         );
-        this.optionMenu = new cc.Menu(sOption);
-        this.optionMenu.setPosition(winSize.width / 2 + 200, winSize.height / 2 + 60);
-        this.optionMenu.scaleX = 0.6;
-        this.optionMenu.scaleY = 0.5;
-        this.addChild(this.optionMenu, 1);
+        this.toolDrop = new cc.Sprite("#game_icon_gu.png");
+        this.toolDrop.scale = 0.25
+        this.sToolDrop.addChild(this.toolDrop);
+        this.toolDrop.setPosition(32, 34);
+
+        this.toolDropMenu = new cc.Menu(this.sToolDrop);
+        this.toolDropMenu.setPosition(winSize.width / 2 + 120, winSize.height - 80);
+        this.toolDropMenu.scale = 0.7
+        this.addChild(this.toolDropMenu, 1);
+
+        //聊天
+        var cellWidth = this.toolBar.getBoundingBox().width/4;
+        this.expressBtn = new ccui.Button();
+        this.expressBtn.setPressedActionEnabled(true);
+        this.expressBtn.setTouchEnabled(true);
+        this.expressBtn.loadTextures("tool_chat.png", "tool_chat.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.expressBtn.x = cellWidth;
+        this.expressBtn.y = 55;
+        this.expressBtn.addTouchEventListener(this.onExpressBtnClicked, this);
+        this.toolBar.addChild(this.expressBtn);
+
+        //托管
+        this.trusteeshipBtn = new ccui.Button();
+        this.trusteeshipBtn.setTouchEnabled(true);
+        this.trusteeshipBtn.loadTextures("tool_ai.png", "tool_ai.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.trusteeshipBtn.x = cellWidth * 2;
+        this.trusteeshipBtn.y = 55;
+        this.trusteeshipBtn.addTouchEventListener(this.trusteeship, this);
+        this.toolBar.addChild(this.trusteeshipBtn);
+
+
+        //底注
+        this.baseBtn = new ccui.Button();
+        //this.trusteeshipBtn.setTouchEnabled(true);
+        this.baseBtn.loadTextures("basechip_tag.png", "basechip_tag.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.baseBtn.scale = 1.25;
+        this.baseBtn.x = cellWidth * 5.9;
+        this.baseBtn.y = 55;
+        this.toolBar.addChild(this.baseBtn);
+
+        var baseLabel = new cc.LabelTTF(this.base, "Arial", 28);
+        baseLabel.enableStroke(cc.color.YELLOW, 1);
+        //baseLabel.color = cc.color.WHITE;
+        baseLabel.setPosition(cellWidth * 6 + 55, 55);
+        this.toolBar.addChild(baseLabel);
+
+
     },
 
     onOptionClicked: function () {
 
-        if (this.optionLayer) {
-            this.optionLayer.removeFromParent(true);
-            this.optionLayer = null;
-            return;
+        if (this.toolBarState == 0) {
+            this.toolBarState = 1;
+            var moveDown = cc.moveBy(0.5, cc.p(0, -this.toolBarHeight));
+            var moveBack = moveDown.reverse();
+
+            this.toolBar.runAction(cc.sequence(moveDown));
+
+        } else {
+            this.toolBarState = 0;
+            var moveDown = cc.moveBy(0.5, cc.p(0, this.toolBarHeight));
+            var moveBack = moveDown.reverse();
+
+            this.toolBar.runAction(cc.sequence(moveDown));
         }
-        var winSize = cc.director.getWinSize();
-        this.optionLayer = new cc.Scale9Sprite("game_dikuang_4.png", cc.rect(7, 7, 14, 14));
-        var size = cc.size(180, 100);
-        this.optionLayer.setContentSize(size);
-        this.optionLayer.setAnchorPoint(1, 1);
-        this.optionLayer.setPosition(this.optionMenu.getBoundingBox().x, this.optionMenu.getBoundingBox().y);
-        this.addChild(this.optionLayer);
+
+    },
+
+    onExpressBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                var chatLayer = new ChatInGameLayer();
+                this.addChild(chatLayer, 2);
 
 
-        //托管
-        var sTrusteeship = new cc.MenuItemSprite(
-            new cc.Sprite("#game_icon_jiqiren_1.png"),
-            new cc.Sprite("#game_icon_jiqiren_2.png"),
-            this.trusteeship,
-            this
-        );
-        var trusteeshipMenu = new cc.Menu(sTrusteeship);
-        trusteeshipMenu.setPosition(30, 0);
-        trusteeshipMenu.setAnchorPoint(0, 0.5);
-        trusteeshipMenu.scale = 0.7
-        this.optionLayer.addChild(trusteeshipMenu, 1);
+                break;
 
-        //聊天
-        var sChat = new cc.MenuItemSprite(
-            new cc.Sprite("#game_icon_biaoqing.png"),
-            new cc.Sprite("#game_icon_biaoqing.png"),
-            this.onChatClicked,
-            this
-        );
-        var chatMenu = new cc.Menu(sChat);
-        chatMenu.setPosition(90, 0);
-        chatMenu.setAnchorPoint(0, 0.5);
-        chatMenu.scale = 0.7
-        this.optionLayer.addChild(chatMenu, 1);
+            case ccui.Widget.TOUCH_CANCELED:
 
+                break;
+
+            default:
+                break;
+        }
     },
 
     createTable: function () {
@@ -378,6 +436,8 @@ var GameLayer = cc.Layer.extend({
                 this.m_pTableLayer.setClockCallback(this, this.clockCallback);
                 break;
             case ZGZ.GAME_TYPE.T2:
+                break;
+            case ZGZ.GAME_TYPE.T3:
                 this.m_pTableLayer = new SevenPeopleTableLayer();
                 this.addChild(this.m_pTableLayer);
                 break;
@@ -847,8 +907,28 @@ var GameLayer = cc.Layer.extend({
         }
     },
 
-    trusteeship: function () {
-        GameController.trusteeship(gRoomId, gGameId);
+    trusteeship: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                GameController.trusteeship(gRoomId, gGameId);
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+
+                break;
+
+            default:
+                break;
+        }
+
     },
 
     cancelTrusteeship: function () {

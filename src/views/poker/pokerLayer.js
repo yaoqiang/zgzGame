@@ -36,7 +36,7 @@ var PokerLayer = cc.Layer.extend({
         CARD_WIDTH_SMALL = ZySize.SCALE(44);
         CARD_HEIGHT_SMALL = ZySize.SCALE(56);
 
-        HOLDING_CARD_BOTTOM = ZySize.SCALE(10);  //--相对屏幕底部边缘的留边宽度
+        HOLDING_CARD_BOTTOM = ZySize.SCALE(1);  //--相对屏幕底部边缘的留边宽度
         HOLDING_CARD_PADDING = ZySize.SCALE(20); //--相对屏幕左右边缘的留边宽度
 
         LARGE_CARD_MIN_VISIBLE_WIDTH = ZySize.SCALE(52);//--卡片重叠时的最小可视宽度

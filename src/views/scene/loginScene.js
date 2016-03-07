@@ -81,10 +81,12 @@ var LoginLayer = cc.Layer.extend({
         bg.addChild(this.menuLogin);
 
         //快速登录
-        this.quickLogin = new cc.Sprite("#login_kuaisudenglu.png");
-        this.quickLogin.setPosition(bg.width/2 - 70, 120);
-        this.quickLogin.setScale(0.65);
-        bg.addChild(this.quickLogin);
+        this.quickLogin = new cc.MenuItemImage("#login_kuaisudenglu.png", "#login_kuaisudenglu.png", this.doQuickLogin, this);
+        this.menuQuickLogin = new cc.Menu(this.quickLogin);
+        this.menuQuickLogin.setPosition(bg.width/2 - 200, 50);
+        this.menuQuickLogin.setScale(0.6);
+
+        bg.addChild(this.menuQuickLogin);
 
         //注册
         this.register = new cc.MenuItemImage(
@@ -133,6 +135,20 @@ var LoginLayer = cc.Layer.extend({
         AuthController.login(username, password);
         playEffect(audio_common.Button_Click);
 
+    },
+
+    doQuickLogin: function () {
+
+        if (!Storage.get('init')) {
+            Storage.init();
+        }
+
+        if (Storage.get(CommonConf.LOCAL_STORAGE.TOKEN)) {
+            var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+            AuthController.loginWithToken(token);
+        } else {
+            AuthController.autoLogin();
+        }
     },
 
     onSignUp: function () {

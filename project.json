@@ -20,6 +20,7 @@
         "src/globals.js",
         "src/utils/network.js",
         "src/consts/consts.js",
+        "src/consts/chatConf.js",
         "src/consts/routes.js",
         "src/consts/gameEvents.js",
         "src/utils/utils.js",
@@ -47,6 +48,7 @@
         "src/views/template/smallWidget.js",
         "src/views/template/bottomBtnLayer.js",
         "src/views/template/soundManger.js",
+        "src/views/template/chatInGameLayer.js",
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",

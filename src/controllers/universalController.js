@@ -5,15 +5,25 @@ var UniversalController = function () {
 }
 
 UniversalController.enterIndex = function () {
+
     pomelo.request(route.enterIndex, {}, function (lobbyData) {
+
         var indexScene = new IndexScene(lobbyData.onlineLobby);
         cc.director.runScene(new cc.TransitionFade(1.2, indexScene));
     });
 }
 
 UniversalController.getProfile = function (uid, cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getProfile, {uid: uid}, function (data) {
-        console.log(data);
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        cb(data);
+    });
+}
+
+UniversalController.getMyItemList = function (cb) {
+    pomelo.request(route.getMyItemList, {}, function (data) {
         cb(data);
     });
 }
@@ -59,7 +69,10 @@ UniversalController.updateProfile = function (nickName, gender, avatar, summary)
  * @param cb
  */
 UniversalController.getDailyTodoInfo = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getDailyTodoInfo, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -69,7 +82,10 @@ UniversalController.getDailyTodoInfo = function (cb) {
  * @param cb
  */
 UniversalController.getCheckInGrant = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getCheckInGrant, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -79,7 +95,10 @@ UniversalController.getCheckInGrant = function (cb) {
  * @param cb
  */
 UniversalController.getBankruptcyGrant = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getBankruptcyGrant, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -89,7 +108,10 @@ UniversalController.getBankruptcyGrant = function (cb) {
  * @param cb
  */
 UniversalController.getDailyTaskList = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getDailyTaskList, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -99,7 +121,10 @@ UniversalController.getDailyTaskList = function (cb) {
  * @param cb
  */
 UniversalController.getForeverTaskList = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getForeverTaskList, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         data.taskList = _.sortBy(data.taskList, 'id').reverse();
         cb(data);
     });
@@ -111,7 +136,10 @@ UniversalController.getForeverTaskList = function (cb) {
  * @param cb
  */
 UniversalController.getTaskGrant = function (taskId, cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getTaskGrant, {taskId: taskId}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -121,7 +149,10 @@ UniversalController.getTaskGrant = function (taskId, cb) {
  * @param cb
  */
 UniversalController.getExchangeList = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getExchangeList, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -131,7 +162,10 @@ UniversalController.getExchangeList = function (cb) {
  * @param cb
  */
 UniversalController.getMyExchangeRecordList = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getMyExchangeRecordList, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -146,6 +180,8 @@ UniversalController.getMyExchangeRecordList = function (cb) {
  * @param cb
  */
 UniversalController.exchange = function (exchangeId, mobile, count, contact, address, cb) {
+    var loadingBar = new LoadingLayer({msg: '兑换中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.exchange, {
         exchangeId: exchangeId,
         mobile: mobile,
@@ -153,6 +189,7 @@ UniversalController.exchange = function (exchangeId, mobile, count, contact, add
         contact: contact,
         address: address
     }, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
@@ -162,8 +199,13 @@ UniversalController.exchange = function (exchangeId, mobile, count, contact, add
  * @param cb
  */
 UniversalController.getShopList = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
+
     var device = cc.sys.os == cc.sys.OS_IOS ? 'ios' : 'android';
     pomelo.request(route.getShopList, {device: device}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+
         cb(data);
     });
 }
@@ -174,7 +216,12 @@ UniversalController.getShopList = function (cb) {
  * @param cb
  */
 UniversalController.getRankingList = function (data, cb) {
+
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getRankingList, {type: data.type}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+
         cb(data);
     });
 }
@@ -242,17 +289,26 @@ UniversalController.getTopOfAppReleaseRecord = function () {
 }
 
 UniversalController.sendBindingSMS = function (mobile, cb) {
+    var loadingBar = new LoadingLayer({msg: '发送中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.sendBindingSMS, {mobile: mobile}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
 
 UniversalController.bindingMobile = function (data, cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.bindingMobile, {
         mobile: data.mobile,
         password: data.password,
         captcha: data.captcha
     }, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        if (data.code == RETURN_CODE.OK) {
+            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, data.token);
+        }
         cb(data);
     });
 }

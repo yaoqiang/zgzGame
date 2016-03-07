@@ -113,8 +113,10 @@ var indexScrollLayer = cc.Layer.extend({
                     GameController.enterLobby(0);
                 }else if(sender.tag == 6){
                     //console.log("------->6");
+                    GameController.enterLobby(1);
                 }else if(sender.tag == 7){
                     //console.log("------->7");
+                    GameController.enterLobby(2);
                 }
                 break;
         }
