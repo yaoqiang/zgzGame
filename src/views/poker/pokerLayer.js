@@ -534,6 +534,12 @@ var PokerLayer = cc.Layer.extend({
         }
         return false;
     },
+
+    /**
+     * 校验是否可出牌
+     * @param vector
+     * @returns {boolean}
+     */
     isCanFanOut: function (vector) {
         var len = vector.length;
         if (len == 0) {
@@ -547,32 +553,22 @@ var PokerLayer = cc.Layer.extend({
         var cr1 = cardUtil.recognitionCards(vector, gGameType, gActor.append);//牌型分析
         if (cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_99) {
             //console.log("------->isCanFanOut 2: ", cr1);
+            prompt.fadeMiddle('牌型有误,请重新选择')
             return false;
         }
 
-        //console.log('### this.m_pFanOutCard => ', this.m_pFanOutCard);
-        var cr2 = cardUtil.recognitionCards(this.m_pFanOutCard, gGameType, gActor.append);//牌型分析
-        //if(cr2.cardSeries == CardLogic.CardSeriesCode.cardSeries_99 ){
-        //    return true;
-        //}
-        //
-        ////本次出牌大于上家出牌
-        //if(cardUtil.isCurrentBiggerThanLast (cr1, cr2, gGameType, gActor.append))
-        //{
-        //    return true;
-        //}
-        //return false;
-
 
         if (!gActor.isBoss) {
-            if (cardUtil.isCurrentBiggerThanLast(cr1, gLastFanCardRecognization, gGameType, gActor.append)) {
+            if (!cardUtil.isCurrentBiggerThanLast(cr1, gLastFanCardRecognization, gGameType, gActor.append)) {
                 //console.log("------->isCanFanOut 3");
-                return true;
+                prompt.fadeMiddle('您选择的牌型小于上手牌')
+                return false;
             }
         } else {
             if (_.size(vector) == 0) {
                 // '当前玩家是上回合Boss, 不能不出
                 //console.log("------->isCanFanOut4");
+                prompt.fadeMiddle('您是本回合老大,不能不出')
                 return false;
             }
         }
@@ -584,6 +580,30 @@ var PokerLayer = cc.Layer.extend({
         this.m_pSelectedWillOutCards = [];
     },
 
+    /**
+     * 点击牌桌时候设置选中牌:this.m_pSelectedWillOutCards
+     */
+    setSelectedWillOutCards: function () {
+        this.m_pSelectedWillOutCards = [];
+        var selectCardVector = [];
+        var count = this.m_pSelfCardArray.length;
+        var idx = 0;
+        var i = 1;
+
+        for (idx = count - 1; idx >= 0; idx--) {
+            var pc = this.m_pSelfCardArray[idx];
+            if (pc.isSelected) {
+                selectCardVector.push(pc.cardValue);//(pc.cardPoint);
+                this.m_pSelectedWillOutCards.push(pc.cardValue);
+            }
+        }
+    },
+
+    /**
+     * 出牌事件, 将选中牌回传到GameScene
+     * @param call
+     * @returns {*}
+     */
     checkForFanOut: function (call) {
         this.m_pSelectedWillOutCards = [];
         var selectCardVector = [];
@@ -713,33 +733,31 @@ var PokerLayer = cc.Layer.extend({
         //--显示可以操作的按钮
         switch (gGameState) {
             case ZGZ.GAME_STATE.TALK:
-            {
                 //console.log("ZGZ.GAME_STATE.TALK");
                 if (this.getParent().m_pBidMenuLayer) {
                     var able;// = this.checkForFanOut();
                     //console.log("------>able:", able);
                     var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
+                    this.setSelectedWillOutCards();
+                    var able = true;
                     if (identity == GAME.IDENTITY.HONG3) {
-                        able = this.checkForFanOut(this.isHong3);
+                        //able = this.checkForFanOut(this.isHong3);
                         this.getParent().m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Liang, able);
                     } else {
-                        able = this.checkForFanOut(this.isBlack3);
+                        //able = this.checkForFanOut(this.isBlack3);
                         this.getParent().m_pBidMenuLayer.setBtnEnabled(BidMenuBtn.kCCBidMenu_Guzi, able);
                     }
 
                 }
-            }
                 break;
             case ZGZ.GAME_STATE.PLAY:
-            {
                 //console.log("ZGZ.GAME_STATE.PLAY");
                 if (this.m_pFanOutMenuLayer) {
-                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, this.checkForFanOut(this.isCanFanOut));
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, true);
                     //this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Reset, this.checkSelfCard(this.isCanFanOut));
                 } else {
                     //console.log("--->this.m_pFanOutMenuLayer == null");
                 }
-            }
                 break;
         }
 

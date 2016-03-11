@@ -390,7 +390,6 @@ var GameLayer = cc.Layer.extend({
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
-                console.log('aaaaaaaaaaa');
                 UniversalController.getProfileByUid(this.m_uid, function (data) {
                     cc.director.getRunningScene().addChild(new PlayerProfileLayer(data), 21);
                 });
@@ -600,7 +599,11 @@ var GameLayer = cc.Layer.extend({
     bidMenuCallback: function (tag) {
         switch (tag) {
             case BidMenuBtn.kCCBidMenu_Liang:
-                if (this.m_pPokerLayer.m_pSelectedWillOutCards) {
+                if (this.m_pPokerLayer.m_pSelectedWillOutCards && this.m_pPokerLayer.m_pSelectedWillOutCards.length == 0) {
+                    prompt.fadeMiddle('请先选出手牌里的3,再点亮3');
+                    return;
+                }
+                if (this.m_pPokerLayer.m_pSelectedWillOutCards == null || this.m_pPokerLayer.m_pSelectedWillOutCards == undefined) {
                     prompt.fadeMiddle('请先选出手牌里的3,再点亮3');
                     return;
                 }
@@ -620,11 +623,12 @@ var GameLayer = cc.Layer.extend({
         //GameController.fan = function (roomId, gameId, cards)
         switch (tag) {
             case FanOutMenuBtn.kCCFanOutMenu_Pass:
-            {
                 GameController.fan(gRoomId, gGameId, []);
-            }
                 break;
             case FanOutMenuBtn.kCCFanOutMenu_FanOut:
+                if (!this.m_pPokerLayer.checkForFanOut(this.m_pPokerLayer.isCanFanOut)) {
+                    return;
+                }
                 GameController.fan(gRoomId, gGameId, this.m_pPokerLayer.m_pSelectedWillOutCards);
                 break;
             case FanOutMenuBtn.kCCFanOutMenu_Hint:
@@ -861,7 +865,7 @@ var GameLayer = cc.Layer.extend({
             var boss = data.isBoss;
             //cc.log("---->fanCountdownEvent   boss:", !boss);
             if (this.m_pFanOutMenuLayer) {
-                this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, !boss);
+                this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
             }
             //if (data.isBoss) {
             //    if (this.m_pFanOutMenuLayer) {
@@ -872,7 +876,7 @@ var GameLayer = cc.Layer.extend({
             //        this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
             //    }
             //}
-            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, false);
+            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, true);
         } else {
 
         }

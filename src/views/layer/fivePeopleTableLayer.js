@@ -187,7 +187,6 @@ var FivePeopleTableLayer = cc.Layer.extend({
         }
 
         for (i = 0; i < listlen; i++) {
-            console.log(this.m_HDList[i].m_Nr, this.m_HDList[i].m_position.x, this.m_HDList[i].m_position.y)
             if (this.m_HDList[i].m_Nr == actorNr) {
                 if (this.m_HDList[i].m_position.x < winSize.width / 2) {
 
