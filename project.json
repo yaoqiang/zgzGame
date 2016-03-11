@@ -35,6 +35,7 @@
         "src/utils/storageUtil.js",
 
 
+
         "src/views/template/headerLayer.js",
         "src/views/template/hornLayer.js",
         "src/views/template/components.js",
@@ -49,6 +50,8 @@
         "src/views/template/bottomBtnLayer.js",
         "src/views/template/soundManger.js",
         "src/views/template/chatInGameLayer.js",
+        "src/views/layer/playerProfileLayer.js",
+
 
         "src/views/scene/loginScene.js",
         "src/views/scene/signupScene.js",

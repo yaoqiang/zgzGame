@@ -2,6 +2,9 @@
 var PlayerLayer = cc.Layer.extend({
     ctor: function (params) {
         this._super();
+
+        this.onActorAvatarClickedCallback = params.onActorAvatarClickedCallback;
+
         this.m_pAvatarBg = null;// new cc.Sprite("#touxiangkuang.png");
         this.m_pPhoto = null;
         this.m_pName = null;
@@ -101,7 +104,7 @@ var PlayerLayer = cc.Layer.extend({
         if (goal == GAME.IDENTITY.GUZI) {
             var winSize = cc.director.getWinSize();
             var guIcon = new cc.Sprite("#game_icon_gu.png");
-            guIcon.scale = 0.4;
+            guIcon.scale = 0.3;
 
             this.m_pAvatarBg.addChild(guIcon, 1);
             this.m_pIdentityArray.push(guIcon);
@@ -180,37 +183,18 @@ var PlayerLayer = cc.Layer.extend({
     },
 
 
-    fill: function () {
 
-    },
-    jion: function (params) {
-
-    },
     leave: function () {
         this.clear();
     },
-    fan: function () {
 
-    },
-    action: function () {
-
-    },
     chat: function () {
 
     },
     expression: function () {
 
     },
-    identity3: function () {
 
-    },
-    zha: function () {
-
-    },
-
-    details: function () {
-
-    },
 
     updata: function (args) {
         //console.log("PlayerLayer updata");
@@ -240,7 +224,14 @@ var PlayerLayer = cc.Layer.extend({
                 this.removeChild(this.m_pPhoto);
             }
 
-            this.m_pPhoto = new cc.Sprite(image);
+
+            image = image.substring(1, image.length);
+
+            this.m_pPhoto = new ccui.Button();
+            this.m_pPhoto.setTouchEnabled(true);
+            this.m_pPhoto.loadTextures(image, image, image, ccui.Widget.PLIST_TEXTURE);
+            this.m_pPhoto.addTouchEventListener(this.onActorAvatarClicked, this);
+
             if (this.m_pPhoto) {
                 this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
                 this.m_pPhoto.anchorX = this.m_anchorX;
@@ -248,7 +239,14 @@ var PlayerLayer = cc.Layer.extend({
                 this.m_pPhoto.scale = ZGZ.SCALE * 0.5;
                 this.addChild(this.m_pPhoto);
             }
+
+
+
         }
+    },
+
+    onActorAvatarClicked: function (sender, type) {
+        this.onActorAvatarClickedCallback.call(this, sender, type);
     },
 
     changeActorPhoto: function (image) {
@@ -278,13 +276,13 @@ var PlayerLayer = cc.Layer.extend({
         //}
 
         if (this.m_pName == null) {
-            this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 13);
+            this.m_pName = new cc.LabelTTF(this.m_nickNname, "Arial", 14);
             var size = this.m_pAvatarBg.getContentSize();
             this.m_pName.color = cc.color(255, 255, 255, 255);
             this.m_pName.anchorX = 0.5;
             this.m_pName.anchorY = 0;
             var xx = (1 - this.m_anchorX - 0.5) * size.width * this.bgScale;
-            var yy = (1 - this.m_anchorY) * size.height * this.bgScale * 1.2;
+            var yy = (1 - this.m_anchorY) * size.height * this.bgScale * 1.35;
             this.m_pName.setPosition(this.m_position.x + xx, this.m_position.y + yy);
             this.addChild(this.m_pName, 1);
         } else {
@@ -298,7 +296,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pAvatarBg.setPosition(this.m_position.x, this.m_position.y);
             this.m_pAvatarBg.anchorX = this.m_anchorX;
             this.m_pAvatarBg.anchorY = this.m_anchorY;
-            this.m_pAvatarBg.scale = this.bgScale * 1.2;
+            this.m_pAvatarBg.scale = this.bgScale * 1.35;
             this.addChild(this.m_pAvatarBg);
         }
     },

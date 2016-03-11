@@ -76,17 +76,14 @@ var PokerLayer = cc.Layer.extend({
         var star = 100;//60;
         switch (showP.mode) {
             case SHOW_MODE.LEFT:
-            {
                 for (var i = 0; i < len; i++) {
                     var card = cardsArray[i];
                     card.setPosition(x + star + i * space, y);
                     //card.x = x + i*space;
                     //card.y = y;
                 }
-            }
                 break;
             case SHOW_MODE.RIGHT:
-            {
                 var j = len - 1;
                 for (var i = 0; i < len; i++) {
                     var card = cardsArray[i];
@@ -94,10 +91,8 @@ var PokerLayer = cc.Layer.extend({
                     //card.x = x - (j-i)*space;
                     //card.y = y;
                 }
-            }
                 break;
             case SHOW_MODE.CENTER:
-            {
                 var j = len / 2;
                 for (var i = 0; i < len; i++) {
                     var card = cardsArray[i];
@@ -105,7 +100,9 @@ var PokerLayer = cc.Layer.extend({
                     //card.x = x + (i-j)*space;
                     //card.y = y;
                 }
-            }
+                break;
+            case SHOW_MODE.BOTTOM:
+                //TODO 为6-7人 座位位置在顶部的人出牌位置处理
                 break;
         }
 

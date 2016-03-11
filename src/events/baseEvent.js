@@ -67,16 +67,16 @@ pomelo.on('disconnect', function (reason) {
 
 pomelo.on('close', function (reason) {
     console.log('close -> ', reason);
-    if (reason.code > 1000) {
-        var loadingBar = new LoadingLayer({msg: '连接中'});
-        cc.director.getRunningScene().addChild(loadingBar, 9);
-
-        //
-        var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
-        AuthController.loginWithToken(token, function () {
-            loadingBar.removeFromParent(true);
-        });
-    }
+    //if (reason.code > 1000) {
+    //    var loadingBar = new LoadingLayer({msg: '连接中'});
+    //    cc.director.getRunningScene().addChild(loadingBar, 9);
+    //
+    //    //
+    //    var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+    //    AuthController.loginWithToken(token, function () {
+    //        loadingBar.removeFromParent(true);
+    //    });
+    //}
 });
 
 pomelo.on('onKick', function (data) {
@@ -84,6 +84,7 @@ pomelo.on('onKick', function (data) {
     if (data.reason == CommonConf.KICK_REASON.SERVICE_MAINTENANCE) {
         msg = '服务器正在维护...';
     }
+    gHasConnector = false;
     var box = new AlertBox(msg, function () {
         if (cc.sys.os == cc.sys.ANDROID) cc.director.end();
     }, this);

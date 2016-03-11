@@ -164,7 +164,15 @@ var audio_fanmenu = {
     ]
 };
 
-var audio_chat = {
-
-
-}
+var audio_chat = [
+    ["res/audio/chat/Audio_Dialog1_M.mp3", "res/audio/chat/Audio_Dialog1_W.mp3"],
+    ["res/audio/chat/Audio_Dialog2_M.mp3", "res/audio/chat/Audio_Dialog2_W.mp3"],
+    ["res/audio/chat/Audio_Dialog3_M.mp3", "res/audio/chat/Audio_Dialog3_W.mp3"],
+    ["res/audio/chat/Audio_Dialog4_M.mp3", "res/audio/chat/Audio_Dialog4_W.mp3"],
+    ["res/audio/chat/Audio_Dialog5_M.mp3", "res/audio/chat/Audio_Dialog5_W.mp3"],
+    ["res/audio/chat/Audio_Dialog6_M.mp3", "res/audio/chat/Audio_Dialog6_W.mp3"],
+    ["res/audio/chat/Audio_Dialog7_M.mp3", "res/audio/chat/Audio_Dialog7_W.mp3"],
+    ["res/audio/chat/Audio_Dialog8_M.mp3", "res/audio/chat/Audio_Dialog8_W.mp3"],
+    ["res/audio/chat/Audio_Dialog9_M.mp3", "res/audio/chat/Audio_Dialog9_W.mp3"],
+    ["res/audio/chat/Audio_Dialog10_M.mp3", "res/audio/chat/Audio_Dialog10_W.mp3"],
+]

@@ -13,11 +13,20 @@ UniversalController.enterIndex = function () {
     });
 }
 
+//获取个人
 UniversalController.getProfile = function (uid, cb) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getProfile, {uid: uid}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        cb(data);
+    });
+}
+
+//获取他人信息
+UniversalController.getProfileByUid = function (uid, cb) {
+    pomelo.request(route.getProfileByUid, {uid: uid}, function (data) {
+        console.log('get profile -> ', data);
         cb(data);
     });
 }

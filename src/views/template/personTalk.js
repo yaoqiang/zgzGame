@@ -6,7 +6,7 @@ var PersonTalk = cc.Node.extend({
         this.m_note = args.note ? args.note : "";
         this.m_label = null;
         this.m_pBg = null;
-        this.m_direction = args.direction == SHOW_MODE.RIGHT ? SHOW_MODE.RIGHT : SHOW_MODE.LEFT; //1:左方向，2：右方向
+        this.m_direction = args.direction;  //1:左方向，2：右方向
         this.m_time = args.time ? args.time : 2;
 
 
@@ -47,7 +47,7 @@ var PersonTalk = cc.Node.extend({
                 this.m_pBg.x = offect;
                 this.m_pBg.setAnchorPoint(1, 0.5);
             }
-            this.m_pBg.opacity = 100;
+            //this.m_pBg.opacity = 100;
             this.addChild(this.m_pBg, 0);
             //console.log("-------->m_pBg:");
         }

@@ -57,7 +57,8 @@ var ZySize = {
 var SHOW_MODE = {
     LEFT:1,
     RIGHT:2,
-    CENTER:3
+    CENTER:3,
+    BOTTOM: 4
 };
 
 var FanOutMenuBtn =  {

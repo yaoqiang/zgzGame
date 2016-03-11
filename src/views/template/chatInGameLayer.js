@@ -320,6 +320,7 @@ ChatInGameLayer.prototype = {
     },
 
     doQuickChat: function (sender, type) {
+        console.log(this);
         //cc.log(type)
         switch (type) {
             case ccui.ListView.EVENT_SELECTED_ITEM:
@@ -328,7 +329,9 @@ ChatInGameLayer.prototype = {
                 break;
             case ccui.ListView.ON_SELECTED_ITEM_END:
                 var listViewEx = sender;
-                cc.log("select end child index = " + listViewEx.getCurSelectedIndex());
+                var item = listViewEx.getCurSelectedIndex();
+                GameController.chat(GAME.CHAT.SCOPE_GAME, GAME.CHAT.TYPE_QUICK, item, "");
+                this.box.removeFromParent(true);
                 break;
             default:
                 break;
@@ -344,7 +347,9 @@ ChatInGameLayer.prototype = {
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
-                console.log('expression clicked..'+sender.getTag());
+                var item = sender.getTag();
+                GameController.chat(GAME.CHAT.SCOPE_GAME, GAME.CHAT.TYPE_EXP, item, "");
+                this.box.removeFromParent(true);
                 break;
 
             case ccui.Widget.TOUCH_CANCELED:

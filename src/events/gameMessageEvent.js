@@ -176,7 +176,8 @@ pomelo.on(gameEvents.BACK_TO_GAME, function (data) {
 });
 
 pomelo.on(gameEvents.CHAT, function (data) {
-    console.log('receive onChat event.');
+    console.log('receive onChat event.', data);
+    EventBus.publish(gameEvents.CHAT, data);
 });
 
 pomelo.on(gameEvents.BROADCAST, function (data) {

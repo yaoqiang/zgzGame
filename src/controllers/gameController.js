@@ -184,3 +184,7 @@ GameController.cancelTrusteeship = function (roomId, gameId) {
         }
     });
 }
+
+GameController.chat = function (scope, type, item, content) {
+    pomelo.request(route.chat, {scope: scope, type: type, item: item, content: content, gameId: gGameId}, null);
+}

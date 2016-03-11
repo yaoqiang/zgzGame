@@ -9,13 +9,13 @@ var CardLogic = {}
 //如105代表方片5,
 
 CardLogic.CardSeriesCode = {
-    cardSeries_1: 0, //单牌
-    cardSeries_2: 1, //对子
-    cardSeries_3: 2, //炸弹
-    cardSeries_4: 3, //四轮车
-    cardSeries_5: 4, //对王
-    cardSeries_6: 5, //双三满天飞
-    cardSeries_99: 6 //无法识别，错误牌型
+    cardSeries_1: 1, //单牌
+    cardSeries_2: 2, //对子
+    cardSeries_3: 3, //炸弹
+    cardSeries_4: 4, //四轮车
+    cardSeries_5: 5, //对王
+    cardSeries_6: 6, //双三满天飞
+    cardSeries_99: 7 //无法识别，错误牌型
 }
 
 /**
@@ -29,7 +29,7 @@ CardLogic.recognizeSeries = function(cards, type, liang3)
 {
     if (!cards || cards == undefined || cards.length < 1 || cards.length > 4)
     {
-        return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0);
+        return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0, []);
     }
 
     //校验牌型
@@ -55,7 +55,7 @@ CardLogic.recognizeSeries = function(cards, type, liang3)
                 {
                     if (type == GAME.TYPE.FIVE)
                     {
-                        return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_6, null);
+                        return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_6, tmp[0], cards);
                     }
                 }
                 return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_2, tmp[0], cards);
@@ -65,12 +65,12 @@ CardLogic.recognizeSeries = function(cards, type, liang3)
                 //如果是双王
                 if (_.contains(tmp, 18) && _.contains(tmp, 19))
                 {
-                    return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_5, null);
+                    return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_5, tmp[0], cards);
                 }
                 //错误牌型
                 else
                 {
-                    return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0);
+                    return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0, []);
                 }
             }
         }
@@ -84,7 +84,7 @@ CardLogic.recognizeSeries = function(cards, type, liang3)
             }
             else
             {
-                return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0);
+                return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0, []);
             }
         }
         else
@@ -96,7 +96,7 @@ CardLogic.recognizeSeries = function(cards, type, liang3)
             }
             else
             {
-                return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0);
+                return new CardRecognization(CardLogic.CardSeriesCode.cardSeries_99, 0, []);
             }
         }
 
@@ -190,15 +190,21 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
                 //6人平3可打；5人如果块3不亮也可打；
                 if (type == GAME.TYPE.FIVE || type == GAME.TYPE.SEVEN)
                 {
+                    //如果上手牌是红3，那4大不了
                     if (cr2.originalCard[0] == 216) {
                         return false;
                     }
+                    //如果上手牌是方块3
                     if (cr2.originalCard[0] == 116) {
+                        //如果当前是5人局，如果方块3亮了，则4大不了3
                         if (type == GAME.TYPE.FIVE) {
                             if (_.contains(liang3, 116)) return false;
                             return true;
                         }
+                        //如果当前是7人局，方块3大不了4
+                        return true;
                     }
+                    //正常比较即可
                     if (cr1.maxCardPoint > cr2.maxCardPoint)
                     {
                         return true;
@@ -260,7 +266,6 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
     //如果是炸弹(3张相同牌）、如果是四轮车：炸弹和四轮车比较逻辑一样
     if (cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_3 || cr1.cardSeries == CardLogic.CardSeriesCode.cardSeries_4)
     {
-        //console.log('cards reg => ', cr1.cardSeries, cr2.cardSeries)
         //如果上手牌型是比当前牌型大，返回false
         if (cr2.cardSeries > cr1.cardSeries)
         {
@@ -277,5 +282,8 @@ CardLogic.isCurrentBiggerThanLast = function(cr1, cr2, type, liang3)
             return true;
         }
     }
+
+    //上手牌是单牌, 当前牌型是对子; 或者 上手牌是对子, 当前牌型是单牌; 无法匹配则返回undefined;
+    return undefined;
 
 }

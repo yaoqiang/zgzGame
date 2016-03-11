@@ -17,7 +17,9 @@ var route = {
     trusteeship: 'game.gameHandler.trusteeship',    //托管
     cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',    //取消托管
 
-    chat: 'game.gameHandler.chat',  //房间内聊天
+    chat: 'chat.chatHandler.send',  //房间内聊天&小喇叭
+
+    getProfileByUid: 'connector.universalHandler.getProfileByUid',    //根据uid获取玩家信息
 
 
     //
@@ -30,7 +32,7 @@ var route = {
     getShopList: 'connector.universalHandler.getShopList',    //获取商城列表
 
     updateProfile: 'connector.universalHandler.updateProfile',    //更新个人信息
-    getProfile: 'connector.universalHandler.getProfile',    //更新个人信息
+    getProfile: 'connector.universalHandler.getProfile',    //获取个人信息
     getMyItemList: 'connector.universalHandler.getMyItemList',    //获取我的背包物品
 
     getExchangeList: 'connector.universalHandler.getExchangeList',    //获取兑换列表
@@ -46,4 +48,6 @@ var route = {
 
     sendBindingSMS: 'connector.universalHandler.sendBindingSMS',    //
     bindingMobile: 'connector.universalHandler.bindingMobile'    //
+
+
 }
