@@ -24,8 +24,8 @@ var GameLayer = cc.Layer.extend({
         this.initSubscribeEvent();
 
         this.m_pData = args;
-        this.m_pTableLayer = null;
-        this.m_pPokerLayer = null;
+        this.m_pTableLayer = null;  //zOrder: 2x
+        this.m_pPokerLayer = null;  //zOrder: 1x
         this.m_pGameNemu = null;
         this.m_pReadyMenu = null;
         this.m_pClock = null;
@@ -142,6 +142,13 @@ var GameLayer = cc.Layer.extend({
             selfPointer.chatEvent(data);
         });
 
+        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+            selfPointer.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
+        });
+
+        EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
+            selfPointer.ingotValue.setString(zgzNumeral(data.ingot).format('0,0'))
+        });
 
         //
         //add a keyboard event listener to statusLabel
@@ -163,16 +170,15 @@ var GameLayer = cc.Layer.extend({
         this.addBg();
 
         //底部
-        //this.addBottom();
+        this.addBottom();
         //
         this.addOptionMenu();
         //
-        //this.addTrusteeshipMenu();
         //创建牌桌
         this.createTable();
         //刷新玩家信息
         this.updateActorHD();
-        //gamen nenu
+        //game menu
         this.addMenu();
 
 
@@ -206,21 +212,24 @@ var GameLayer = cc.Layer.extend({
 
         //
         if (state == ZGZ.GAME_STATE.TALK) {
-            console.log("-----------------回到游戏，说话阶段-----------------");
+            //console.log("-----------------回到游戏，说话阶段-----------------");
             this.talkCountdownEvent({actor: {actorNr: currentTalker.actorNr, uid: currentTalker.uid}, second: 15});
         } else {
-            console.log("-----------------回到游戏，打牌阶段-----------------");
-            this.fanOutEvent({
-                actorNr: lastFanActor.actorNr,
-                uid: lastFanActor.uid,
-                cards: lastFanCardRecongnization.originalCard
-            });
+            //console.log("-----------------回到游戏，打牌阶段-----------------");
+            //如果上手牌型不为空,则显示上手牌; 否则可能是第一轮出牌, 则不需要显示.
+            if (lastFanCardRecongnization != null) {
+                this.fanOutEvent({
+                    actorNr: lastFanActor.actorNr,
+                    uid: lastFanActor.uid,
+                    cards: lastFanCardRecongnization.originalCard
+                });
+            }
 
             var actor = {actorNr: currentFanActor.actorNr, uid: currentFanActor.uid};
             var isBoss = false;
             var second = 15;
             gActor.isBoss = isBoss;
-            gLastFanCardRecognization = lastFanCardRecongnization.originalCard;
+            gLastFanCardRecognization = lastFanCardRecongnization;
             this.fanCountdownEvent({actor: actor, isBoss: isBoss, second: second});
         }
         //处理说话显示和牌局名次
@@ -266,7 +275,7 @@ var GameLayer = cc.Layer.extend({
         this.addBg();
 
         //底部
-        //this.addBottom();
+        this.addBottom();
 
         //
         this.addOptionMenu();
@@ -299,11 +308,50 @@ var GameLayer = cc.Layer.extend({
 
     addBottom: function () {
         var winSize = cc.director.getWinSize();
-        var bottomBg = new cc.Sprite('#toast_bg.png');
+        var bottomBg = new cc.Sprite('#common_bg_wenzidiban.png');
         bottomBg.setAnchorPoint(0.5, 0);
         bottomBg.setPosition(winSize.width / 2, 0);
-        bottomBg.scaleY = 0.35;
-        this.addChild(bottomBg, 1)
+        bottomBg.scaleX = 1.5;
+        this.addChild(bottomBg, 23);
+
+        //
+        var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
+        goldIcon.setScale(0.35);
+        goldIcon.setAnchorPoint(0, 0);
+        goldIcon.setPosition(winSize.width / 2 - 320, 0);
+        bottomBg.addChild(goldIcon);
+
+        this.goldValue = new cc.LabelTTF(zgzNumeral(gPlayer.gold).format('0,0'), "Arial", 14);
+        this.goldValue.setColor(cc.color.YELLOW);
+        this.goldValue.setAnchorPoint(0, 0);
+        this.goldValue.setPosition(winSize.width / 2 - 290, 5);
+        bottomBg.addChild(this.goldValue);
+
+        //
+        var ingotIcon = new cc.Sprite("#common_icon_yuanbao.png");
+        ingotIcon.setAnchorPoint(0, 0);
+        ingotIcon.setScale(0.7);
+        ingotIcon.setPosition(winSize.width / 2 - 210, 5);
+        bottomBg.addChild(ingotIcon);
+
+        this.ingotValue = new cc.LabelTTF(zgzNumeral(gPlayer.fragment).format('0,0'), "Arial", 14);
+        this.ingotValue.setColor(cc.color.YELLOW);
+        this.ingotValue.setAnchorPoint(0, 0);
+        this.ingotValue.setPosition(winSize.width / 2 - 185, 5);
+        bottomBg.addChild(this.ingotValue);
+
+
+        var nowVal = new Date().getHours() + ':' + new Date().getMinutes();
+        this.timeLabel = new cc.LabelTTF(nowVal, "Arial", 14);
+        this.timeLabel.color = {r: 135, g: 206, b: 250};
+        this.timeLabel.setPosition(winSize.width/2 + 140, 15);
+        bottomBg.addChild(this.timeLabel);
+
+        var self = this;
+        this.schedule(function () {
+            nowVal = new Date().getHours() + ':' + new Date().getMinutes();
+            self.timeLabel.setString(nowVal);
+        }, 5);
     },
 
     addOptionMenu: function () {
