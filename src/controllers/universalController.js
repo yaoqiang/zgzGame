@@ -26,7 +26,6 @@ UniversalController.getProfile = function (uid, cb) {
 //获取他人信息
 UniversalController.getProfileByUid = function (uid, cb) {
     pomelo.request(route.getProfileByUid, {uid: uid}, function (data) {
-        console.log('get profile -> ', data);
         cb(data);
     });
 }

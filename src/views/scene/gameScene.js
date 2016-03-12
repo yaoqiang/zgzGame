@@ -341,7 +341,8 @@ var GameLayer = cc.Layer.extend({
         bottomBg.addChild(this.ingotValue);
 
 
-        var nowVal = new Date().getHours() + ':' + new Date().getMinutes();
+        var now = new Date();
+        var nowVal = (now.getHours() < 10 ? '0' + now.getHours() : now.getHours()) + ':' + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
         this.timeLabel = new cc.LabelTTF(nowVal, "Arial", 14);
         this.timeLabel.color = {r: 135, g: 206, b: 250};
         this.timeLabel.setPosition(winSize.width/2 + 140, 15);
@@ -349,7 +350,8 @@ var GameLayer = cc.Layer.extend({
 
         var self = this;
         this.schedule(function () {
-            nowVal = new Date().getHours() + ':' + new Date().getMinutes();
+            var now = new Date();
+            nowVal = (now.getHours() < 10 ? '0' + now.getHours() : now.getHours()) + ':' + (now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes());
             self.timeLabel.setString(nowVal);
         }, 5);
     },
@@ -758,7 +760,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     leaveEvent: function (data) {
-        cc.log("---->game  leaveEvent: ", data);
+        //cc.log("---->game  leaveEvent: ", data);
         if (this.selfLeave(data.actor) == false) {
             this.removeActorFromList(data.actor);
             this.updateOneActorHD(data.actor, 2);
@@ -890,7 +892,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     fanOutEvent: function (data) {
-        cc.log("---->fanOutEvent:", data);
+        //cc.log("---->fanOutEvent:", data);
         var uid = data.uid;
         var actorNr = data.actorNr;
         var cards = data.cards;
@@ -1206,6 +1208,8 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
         cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
         cc.eventManager.removeCustomListeners(gameEvents.CHAT);
+        cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
+        cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
 
         //
         cc.eventManager.removeListener(this.keyboardListener);
