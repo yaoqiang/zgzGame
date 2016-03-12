@@ -267,14 +267,20 @@ var DialogMiddle = function (title, mode, callback) {
     return box;
 };
 
+/////////////////////////////////////////////////////////
+//
+////////
 ///
 var DialogSmallNode = cc.Node.extend({
-    ctor: function (title, mode, callback, target) {
+    ctor: function (title, mode, callback, target, bgScale) {
         this._super();
 //类变量
         this.callback = callback;
 
         this.target = target;
+
+        this.bgScale = bgScale ? bgScale : 1;
+
 
         this.mode = mode;
         this.m_msg = title;
@@ -309,9 +315,9 @@ var DialogSmallNode = cc.Node.extend({
         var bgString = "#dialog_bg_middle.png";
 
         this.bg = new cc.Sprite(bgString);
-        this.bg.x = winSize.width / 2.0;
-        this.bg.y = winSize.height / 2.0;
-        this.bg.scale = 0.4;
+        this.bg.x = winSize.width / 2;
+        this.bg.y = winSize.height / 2;
+        this.bg.scale = 0.4 * this.bgScale;
         this.addChild(this.bg);
 
         var bgActualSize = this.bg.getBoundingBox();
@@ -416,7 +422,7 @@ var DialogSmallNode = cc.Node.extend({
 });
 //mode: 1: blank, 2: alert, 3: confirm
 //callback: {ensureCallback: xx, cancelCallback: xx}
-var DialogSmall = function (title, mode, callback, target) {
-    var box = new DialogSmallNode(title, mode, callback, target);
+var DialogSmall = function (title, mode, callback, target, scale) {
+    var box = new DialogSmallNode(title, mode, callback, target, scale);
     return box;
 };
