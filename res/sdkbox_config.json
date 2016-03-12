@@ -2,8 +2,38 @@
     "android": {
         "iap": {
             "items": {
-                "2002": {
-                    "id": "zaguzi.product.2002"
+                "200002": {
+                    "id": "zaguzi.product.200002"
+                },
+                "200003": {
+                    "id": "zaguzi.product.200003"
+                },
+                "200004": {
+                    "id": "zaguzi.product.200004"
+                },
+                "200005": {
+                    "id": "zaguzi.product.200005"
+                },
+                "200006": {
+                    "id": "zaguzi.product.200006"
+                },
+                "200007": {
+                    "id": "zaguzi.product.200007"
+                },
+                "200008": {
+                    "id": "zaguzi.product.200008"
+                },
+                "200009": {
+                    "id": "zaguzi.product.200009"
+                },
+                "200010": {
+                    "id": "zaguzi.product.200010"
+                },
+                "200011": {
+                    "id": "zaguzi.product.200011"
+                },
+                "200012": {
+                    "id": "zaguzi.product.200012"
                 }
             }, 
             "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq7eIGu7dRcBRBSC05cYvxjBMd7cqq9w6++1er+cqO2tyWPtWB4vuTkliq4k/Fkylx5UMfptdOYOW8ENgQyVucs/NyuOAGmve4j5JFhLPcLa6LjO2HUSY6zk04DRR9Zw7YPET4WAezZTz8jYMGhPG08HYltVj8cmSpSFWd1nI0pGOJoLQIMkIkXplgnPQRbMpuOu70vnQQBS1RFcoFT7OjaV8U0cfJzMoS1TMkGqaJKks2T+qOBNTtkXzge92EnvYIkhpCfN98dj6aQmETNp5yj5Fa+jcbAVF8dy5xymJwioL89XQKfKkGR+P6ESMoBEPfIZYIlMU8EUwmC+UKGLujQIDAQAB"
@@ -13,8 +43,38 @@
         "iap": {
             "items": {
 
-                "2002": {
-                    "id": "zaguzi.product.2002"
+                "200002": {
+                    "id": "zaguzi.product.200002"
+                },
+                "200003": {
+                    "id": "zaguzi.product.200003"
+                },
+                "200004": {
+                    "id": "zaguzi.product.200004"
+                },
+                "200005": {
+                    "id": "zaguzi.product.200005"
+                },
+                "200006": {
+                    "id": "zaguzi.product.200006"
+                },
+                "200007": {
+                    "id": "zaguzi.product.200007"
+                },
+                "200008": {
+                    "id": "zaguzi.product.200008"
+                },
+                "200009": {
+                    "id": "zaguzi.product.200009"
+                },
+                "200010": {
+                    "id": "zaguzi.product.200010"
+                },
+                "200011": {
+                    "id": "zaguzi.product.200011"
+                },
+                "200012": {
+                    "id": "zaguzi.product.200012"
                 }
 
             }
