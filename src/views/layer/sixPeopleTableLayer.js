@@ -1,4 +1,4 @@
-var SevenPeopleTableLayer = cc.Layer.extend({
+var SixPeopleTableLayer = cc.Layer.extend({
 
     ctor: function (args) {
         this._super();
@@ -20,7 +20,6 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
         var leftP = 50;
         var rightP = 50;
-
         //player按逆时针位置顺序创建,再按顺序扔到this.m_HDList, 为后续识别座位排序
         var player1 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
@@ -43,29 +42,21 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         var player4 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
             index: 4,
-            position: {x: winSize.width / 2 + 130, y: 400},
+            position: {x: winSize.width / 2 + 10, y: 400},
             anchor: {x: 0.5, y: 0.5}
         });
-
         var player5 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
             index: 5,
-            position: {x: winSize.width / 2 - 130, y: 400},
+            position: {x: leftP, y: 280 + 50},
             anchor: {x: 0.5, y: 0.5}
         });
         var player6 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
             index: 6,
-            position: {x: leftP, y: 280 + 50},
-            anchor: {x: 0.5, y: 0.5}
-        });
-        var player7 = new PlayerLayer({
-            onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
-            index: 7,
             position: {x: leftP, y: 160 + 50},
             anchor: {x: 0.5, y: 0.5}
         });
-
 
 
         this.addChild(player1);
@@ -74,7 +65,6 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         this.addChild(player4);
         this.addChild(player5);
         this.addChild(player6);
-        this.addChild(player7);
 
         this.m_HDList.push(player1);
         this.m_HDList.push(player2);
@@ -82,7 +72,6 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         this.m_HDList.push(player4);
         this.m_HDList.push(player5);
         this.m_HDList.push(player6);
-        this.m_HDList.push(player7);
 
     },
 
@@ -247,13 +236,7 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         for (i = 0; i < listlen; i++) {
             if (this.m_HDList[i].m_Nr == actorNr) {
                 if (this.m_HDList[i].m_position.x < winSize.width / 2) {
-                    if (this.m_HDList[i].m_Nr == selfNr) {
-                        return {
-                            x: this.m_HDList[i].m_position.x,
-                            y: this.m_HDList[i].m_position.y + 85,
-                            mode: SHOW_MODE.LEFT
-                        };
-                    }
+
                     if (this.m_HDList[i].m_position.y > 350) {
                         return {
                             x: this.m_HDList[i].m_position.x,

@@ -25,14 +25,14 @@ var BalanceLayer = function (data, opt) {
     sg.addChild(shareLabel);
 
 
-    var y = winSize.height / 2 + 100;
+    var y = winSize.height / 2 + 110;
     //明细
     for (var i in data.details) {
         var x = 200;
         //玩家头像
         var actorAvatar = new cc.Sprite(utils.getAvatar(data.details[i].actorAvatar));
         actorAvatar.setPosition(x, y);
-        actorAvatar.scale = 0.5;
+        actorAvatar.scale = 0.4;
         sg.addChild(actorAvatar)
 
         x += 50;
@@ -102,14 +102,43 @@ var BalanceLayer = function (data, opt) {
 
         x += 70;
 
-        var rankLabel = new cc.LabelTTF(data.details[i].rank, "Arial", 16);
-        rankLabel.setPosition(x, y);
-        sg.addChild(rankLabel);
+        //
+        var rankPng = "";
+        switch (parseInt(data.details[i].rank)) {
+            case 1:
+                rankPng = "#game_shuzi2_01.png";
+                break;
+            case 2:
+                rankPng = "#game_shuzi2_02.png";
+                break;
+            case 3:
+                rankPng = "#game_shuzi2_03.png";
+                break;
+            case 4:
+                rankPng = "#game_shuzi2_04.png";
+                break;
+            case 5:
+                rankPng = "#game_shuzi2_05.png";
+                break;
+            case 6:
+                rankPng = "#game_shuzi2_06.png";
+                break;
+            default:
+                break;
 
-        y -= 50;
+        }
+
+        if (rankPng != "") {
+            var rankS = new cc.Sprite(rankPng);
+            rankS.setPosition(x, y);
+            sg.addChild(rankS);
+        }
+
+
+        y -= 45;
     }
 
-    y -= 110;
+    y -= 120;
 
     var sReady = new cc.MenuItemSprite(
         new cc.Sprite("#common_btn_lv.png"),

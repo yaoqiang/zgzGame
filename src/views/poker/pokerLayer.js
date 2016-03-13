@@ -102,7 +102,14 @@ var PokerLayer = cc.Layer.extend({
                 }
                 break;
             case SHOW_MODE.BOTTOM:
-                //TODO 为6-7人 座位位置在顶部的人出牌位置处理
+                //为6-7人 座位位置在顶部的人出牌位置处理
+                var j = len / 2;
+                for (var i = 0; i < len; i++) {
+                    var card = cardsArray[i];
+                    card.setPosition(x + (i - j) * space, y);
+                    //card.x = x + (i-j)*space;
+                    //card.y = y;
+                }
                 break;
         }
 

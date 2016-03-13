@@ -20,22 +20,18 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var winSize = cc.director.getWinSize();
         var leftP = 50;
         var rightP = 50;
+
+        //player按逆时针位置顺序创建,再按顺序扔到this.m_HDList, 为后续识别座位排序
         var player1 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
             index: 1,
             position: {x: leftP, y: 65},
             anchor: {x: 0.5, y: 0.5}
         });
-        var player5 = new PlayerLayer({
+        var player2 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
-            index: 5,
-            position: {x: leftP, y: 160 + 50},
-            anchor: {x: 0.5, y: 0.5}
-        });
-        var player4 = new PlayerLayer({
-            onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
-            index: 4,
-            position: {x: leftP, y: 280 + 50},
+            index: 2,
+            position: {x: winSize.width - rightP, y: 160 + 50},
             anchor: {x: 0.5, y: 0.5}
         });
         var player3 = new PlayerLayer({
@@ -44,10 +40,16 @@ var FivePeopleTableLayer = cc.Layer.extend({
             position: {x: winSize.width - rightP, y: 280 + 50},
             anchor: {x: 0.5, y: 0.5}
         });
-        var player2 = new PlayerLayer({
+        var player4 = new PlayerLayer({
             onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
-            index: 2,
-            position: {x: winSize.width - rightP, y: 160 + 50},
+            index: 4,
+            position: {x: leftP, y: 280 + 50},
+            anchor: {x: 0.5, y: 0.5}
+        });
+        var player5 = new PlayerLayer({
+            onActorAvatarClickedCallback: this.onActorAvatarClickedCallback,
+            index: 5,
+            position: {x: leftP, y: 160 + 50},
             anchor: {x: 0.5, y: 0.5}
         });
 
@@ -193,7 +195,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
                     if (this.m_HDList[i].m_position.y > 350) {
                         return {
                             x: this.m_HDList[i].m_position.x,
-                            y: this.m_HDList[i].m_position.y - 100,
+                            y: this.m_HDList[i].m_position.y - 70,
                             mode: SHOW_MODE.BOTTOM
                         };
                     }
@@ -202,7 +204,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
                     if (this.m_HDList[i].m_position.y > 350) {
                         return {
                             x: this.m_HDList[i].m_position.x,
-                            y: this.m_HDList[i].m_position.y - 100,
+                            y: this.m_HDList[i].m_position.y - 70,
                             mode: SHOW_MODE.BOTTOM
                         };
                     }
@@ -373,7 +375,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
                 x = winSize.width / 2;
                 y = winSize.height / 2;
             case SHOW_MODE.BOTTOM:
-                y = y - 100;
+                y = y;
         }
 
         var say = new PersonTalk({note: text, direction: showP.mode, time: 2});

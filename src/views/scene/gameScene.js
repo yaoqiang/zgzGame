@@ -365,7 +365,7 @@ var GameLayer = cc.Layer.extend({
 
 
         this.toolBar = new cc.Sprite("#toolsBg.png");
-        this.toolBar.setPosition(winSize.width / 2, winSize.height + 20);
+        this.toolBar.setPosition(winSize.width / 2, winSize.height + 25);
         this.toolBar.scale = 0.55;
 
         this.addChild(this.toolBar, 21);
@@ -511,10 +511,14 @@ var GameLayer = cc.Layer.extend({
 
                 break;
             case ZGZ.GAME_TYPE.T2:
+                this.m_pTableLayer = new SixPeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});
+                this.addChild(this.m_pTableLayer, 1);
+                this.m_pTableLayer.setClockCallback(this, this.clockCallback);
                 break;
             case ZGZ.GAME_TYPE.T3:
-                this.m_pTableLayer = new SevenPeopleTableLayer();
-                this.addChild(this.m_pTableLayer);
+                this.m_pTableLayer = new SevenPeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});
+                this.addChild(this.m_pTableLayer, 1);
+                this.m_pTableLayer.setClockCallback(this, this.clockCallback);
                 break;
         }
         this.addPokerLayer(this.m_pTableLayer);
@@ -1060,7 +1064,7 @@ var GameLayer = cc.Layer.extend({
                     GameController.leave(gRoomId);
                 }
             });
-        this.addChild(this.balanceLayer);
+        this.addChild(this.balanceLayer, 30);
     },
 
     /**

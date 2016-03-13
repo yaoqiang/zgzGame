@@ -76,6 +76,7 @@
         "src/views/layer/shopTabLayer.js",
 
         "src/views/layer/fivePeopleTableLayer.js",
+        "src/views/layer/sixPeopleTableLayer.js",
         "src/views/layer/sevenPeopleTableLayer.js",
         "src/views/layer/gameMenuLayer.js",
         "src/views/layer/readyMenuLayer.js",
