@@ -32,30 +32,54 @@ ChatInGameLayer.prototype = {
         var quickChatButton = null;
         //常用语
         var quickChatLabel = new cc.LabelTTF("常用语", "AmericanTypewriter", 34);
+        var quickChatLabelSelected = new cc.LabelTTF("常用语", "AmericanTypewriter", 34);
+        var quickChatLabelDisabled = new cc.LabelTTF("常用语", "AmericanTypewriter", 34);
         if (this.selected == 0) {
             var quickChatNormal = new cc.Sprite("#common_btn_qianwang.png");
             quickChatNormal.addChild(quickChatLabel);
             quickChatLabel.x = quickChatNormal.getContentSize().width/2;
             quickChatLabel.y = quickChatNormal.getContentSize().height/2;
 
-            quickChatButton = new cc.MenuItemSprite(quickChatNormal, "", "", this.onQuickChatClick, this);
+            var quickChatSelected = new cc.Sprite("#common_btn_qianwang.png");
+            quickChatSelected.addChild(quickChatLabelSelected);
+            quickChatLabelSelected.x = quickChatSelected.getContentSize().width/2;
+            quickChatLabelSelected.y = quickChatSelected.getContentSize().height/2;
+
+            var quickChatDisabled = new cc.Sprite("#common_btn_qianwang.png");
+            quickChatDisabled.addChild(quickChatLabelDisabled);
+            quickChatLabelDisabled.x = quickChatDisabled.getContentSize().width/2;
+            quickChatLabelDisabled.y = quickChatDisabled.getContentSize().height/2;
+
+            quickChatButton = new cc.MenuItemSprite(quickChatNormal, quickChatSelected, quickChatDisabled, this.onQuickChatClick, this);
         } else {
-            quickChatButton = new cc.MenuItemSprite(quickChatLabel, "", "", this.onQuickChatClick, this);
+            quickChatButton = new cc.MenuItemSprite(quickChatLabel, quickChatLabelSelected, quickChatLabelDisabled, this.onQuickChatClick, this);
         }
 
 
         var expressChatButton = null;
         //表情
         var expressChatLabel = new cc.LabelTTF("表 情", "AmericanTypewriter", 34);
+        var expressChatLabelSelected = new cc.LabelTTF("表 情", "AmericanTypewriter", 34);
+        var expressChatLabelDisabled = new cc.LabelTTF("表 情", "AmericanTypewriter", 34);
         if (this.selected == 1) {
             var expressChatNormal = new cc.Sprite("#common_btn_qianwang.png");
             expressChatNormal.addChild(expressChatLabel);
             expressChatLabel.x = expressChatNormal.getContentSize().width/2;
             expressChatLabel.y = expressChatNormal.getContentSize().height/2;
 
-            expressChatButton = new cc.MenuItemSprite(expressChatNormal, "", "", this.onExpressChatClick, this);
+            var expressChatSelected = new cc.Sprite("#common_btn_qianwang.png");
+            expressChatSelected.addChild(expressChatLabelSelected);
+            expressChatLabelSelected.x = expressChatSelected.getContentSize().width/2;
+            expressChatLabelSelected.y = expressChatSelected.getContentSize().height/2;
+
+            var expressChatDisabled = new cc.Sprite("#common_btn_qianwang.png");
+            expressChatDisabled.addChild(expressChatLabelDisabled);
+            expressChatLabelDisabled.x = expressChatDisabled.getContentSize().width/2;
+            expressChatLabelDisabled.y = expressChatDisabled.getContentSize().height/2;
+
+            expressChatButton = new cc.MenuItemSprite(expressChatNormal, expressChatSelected, expressChatDisabled, this.onExpressChatClick, this);
         } else {
-            expressChatButton = new cc.MenuItemSprite(expressChatLabel, "", "", this.onExpressChatClick, this);
+            expressChatButton = new cc.MenuItemSprite(expressChatLabel, expressChatLabelSelected, expressChatLabelDisabled, this.onExpressChatClick, this);
         }
 
 
@@ -63,15 +87,27 @@ ChatInGameLayer.prototype = {
         var trumpetChatButton = null;
         //表情
         var trumpetChatLabel = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 34);
+        var trumpetChatLabelSelected = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 34);
+        var trumpetChatLabelDisabled = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 34);
         if (this.selected == 2) {
             var trumpetChatNormal = new cc.Sprite("#common_btn_qianwang.png");
             trumpetChatNormal.addChild(trumpetChatLabel);
             trumpetChatLabel.x = trumpetChatNormal.getContentSize().width/2;
             trumpetChatLabel.y = trumpetChatNormal.getContentSize().height/2;
 
-            trumpetChatButton = new cc.MenuItemSprite(trumpetChatNormal, "", "", this.onTrumpetChatClick, this);
+            var trumpetChatSelected = new cc.Sprite("#common_btn_qianwang.png");
+            trumpetChatSelected.addChild(trumpetChatLabelSelected);
+            trumpetChatLabelSelected.x = trumpetChatSelected.getContentSize().width/2;
+            trumpetChatLabelSelected.y = trumpetChatSelected.getContentSize().height/2;
+
+            var trumpetChatDisabled = new cc.Sprite("#common_btn_qianwang.png");
+            trumpetChatNormal.addChild(trumpetChatLabelDisabled);
+            trumpetChatLabelDisabled.x = trumpetChatDisabled.getContentSize().width/2;
+            trumpetChatLabelDisabled.y = trumpetChatDisabled.getContentSize().height/2;
+
+            trumpetChatButton = new cc.MenuItemSprite(trumpetChatNormal, trumpetChatSelected, trumpetChatDisabled, this.onTrumpetChatClick, this);
         } else {
-            trumpetChatButton = new cc.MenuItemSprite(trumpetChatLabel, "", "", this.onTrumpetChatClick, this);
+            trumpetChatButton = new cc.MenuItemSprite(trumpetChatLabel, trumpetChatLabelSelected, trumpetChatLabelDisabled, this.onTrumpetChatClick, this);
         }
 
 
@@ -203,8 +239,8 @@ ChatInGameLayer.prototype = {
                 expSprite.scale = 1.5;
                 expSprite.addTouchEventListener(this.doExpressChat, this);
 
-                var ey = (row + 1 - i) * 145;
-                expSprite.x =  cellWidth * j - cellWidth / 2 + 300;
+                var ey = (row + 1 - i) * 125;
+                expSprite.x =  cellWidth * j - cellWidth / 2 + 250;
                 expSprite.y = ey;
 
                 this.rightBox.addChild(expSprite);
@@ -227,22 +263,22 @@ ChatInGameLayer.prototype = {
         trumpetHeaderIcon.setPosition(300, 470);
         this.rightBox.addChild(trumpetHeaderIcon);
 
-        var blockSize = cc.size(480, 60);
-        this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("login_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        var blockSize = cc.size(480, 50);
+        this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.trumpetContent.setPlaceHolder('小喇叭内容');
         this.trumpetContent.setFontColor(cc.color.BLACK);
-        this.trumpetContent.setMaxLength(20);
-        this.trumpetContent.setFont(30);
+        this.trumpetContent.setFont("Arial", 30);
         this.trumpetContent.setPosition(520, 400);
-        this.trumpetContent.setDelegate(this.rightBox);
+        this.trumpetContent.color = cc.color.WHITE;
+        this.trumpetContent.setMaxLength(20);
         this.rightBox.addChild(this.trumpetContent);
 
         //btn
-        var btnTrumpet = new ccui.Button("common_btn_lv.png", "", "", ccui.Widget.PLIST_TEXTURE);
+        var btnTrumpet = new ccui.Button("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
         btnTrumpet.setPosition(850, 400);
         btnTrumpet.setTitleText("发送");
         btnTrumpet.setTitleFontSize(34);
-        btnTrumpet.scale = 0.9;
+        btnTrumpet.scale = 1;
         btnTrumpet.addTouchEventListener(this.doTrumpetChat, this);
         this.rightBox.addChild(btnTrumpet);
 
@@ -320,7 +356,6 @@ ChatInGameLayer.prototype = {
     },
 
     doQuickChat: function (sender, type) {
-        console.log(this);
         //cc.log(type)
         switch (type) {
             case ccui.ListView.EVENT_SELECTED_ITEM:
@@ -330,8 +365,25 @@ ChatInGameLayer.prototype = {
             case ccui.ListView.ON_SELECTED_ITEM_END:
                 var listViewEx = sender;
                 var item = listViewEx.getCurSelectedIndex();
-                GameController.chat(GAME.CHAT.SCOPE_GAME, GAME.CHAT.TYPE_QUICK, item, "");
-                this.box.removeFromParent(true);
+                var now = (new Date()).format('yyyy-MM-dd hh:mm:ss');
+                if (!this.lastQuickChatShortTime) {
+                    this.lastQuickChatShortTime = (new Date()).format('yyyy-MM-dd hh:mm:ss');
+
+                    GameController.chat(GAME.CHAT.SCOPE_GAME, GAME.CHAT.TYPE_QUICK, item, "");
+                }
+                else {
+                    if (getDateDiff(this.lastQuickChatShortTime, now, 'second') > 5) {
+                        this.lastQuickChatShortTime = (new Date()).format('yyyy-MM-dd hh:mm:ss');
+                        GameController.chat(GAME.CHAT.SCOPE_GAME, GAME.CHAT.TYPE_QUICK, item, "");
+                    }
+                    else {
+                        prompt.fadeMiddle('您说话太快啦!');
+                    }
+                }
+
+
+                //bug on Native!!!
+                //this.box.removeFromParent(true);
                 break;
             default:
                 break;
