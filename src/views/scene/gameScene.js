@@ -874,6 +874,8 @@ var GameLayer = cc.Layer.extend({
         if (gGameState == ZGZ.GAME_STATE.TALK) {
             this.sayForTalk({goal: goal, append: append, actorNr: actorNr});
         }
+
+        this.audioTalk(goal, actorNr);
     },
 
     afterTalk: function (data) {
@@ -956,6 +958,7 @@ var GameLayer = cc.Layer.extend({
     fanWhenIsRedEvent: function (data) {
         var actor = data.actor;
         this.sayForTalk({append: null, actorNr: actor.actorNr, text: "有3"});
+        this.audioFanYou3(actor.actorNr);
     },
 
     /**
@@ -1178,6 +1181,17 @@ var GameLayer = cc.Layer.extend({
         }
     },
 
+    audioTalk: function (goal, actorNr) {
+        var actorHD = this.m_pTableLayer.getActorHDWithNr(actorNr);
+        var sex = actorHD.m_gender;
+        playEffect(audio_talk[goal][sex]);
+    },
+
+    audioFanYou3: function (actorNr) {
+        var actorHD = this.m_pTableLayer.getActorHDWithNr(actorNr);
+        var sex = actorHD.m_gender;
+        playEffect(audio_fan_you3[0][sex]);
+    },
 
     /**
      * 更新股数

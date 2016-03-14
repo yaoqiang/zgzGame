@@ -137,19 +137,31 @@ var audio_Bomb = [
     ["res/audio/card/Audio_Card_Bomb_M.mp3" , "res/audio/card/Audio_Card_Bomb_W.mp3" ]
 ];
 var audio_Four = [
-    ["res/audio/card/Audio_Card_Rocket_M.mp3", "res/audio/card/Audio_Card_Rocket_W.mp3"]
+    ["res/audio/card/Audio_Card_Four_M.mp3", "res/audio/card/Audio_Card_Four_W.mp3"]
 ];
 var audio_Three = [
     ["res/audio/card/Audio_Card_Three_M.mp3", "res/audio/card/Audio_Card_Three_W.mp3"]
 ];
 var audio_Double_Joker = [
-    ["res/audio/card/Audio_Card_Rocket_M.mp3", "res/audio/card/Audio_Card_Rocket_W.mp3"]
+    ["res/audio/card/Audio_Card_SHUANGW_M.mp3", "res/audio/card/Audio_Card_SHUANGW_W.mp3"]
 ];
+var audio_shuang3 = [
+    ["res/audio/card/Audio_Card_SHUANG3_M.mp3", "res/audio/card/Audio_Card_SHUANG3_W.mp3"]
+];
+
 var audio_No = [
     ["res/audio/card/_M.mp3", "res/audio/card/_W.mp3"]
 ];
+var audio_talk = [
+    ["res/audio/card/Audio_TALK_NOTHING_M.mp3", "res/audio/card/Audio_TALK_NOTHING_W.mp3"],
+    ["res/audio/card/Audio_TALK_GUZI_M.mp3", "res/audio/card/Audio_TALK_GUZI_W.mp3"],
+    ["res/audio/card/Audio_TALK_LIANG_M.mp3", "res/audio/card/Audio_TALK_LIANG_W.mp3"]
+]
+var audio_fan_you3 = [
+    ["res/audio/card/Audio_FAN_YOU3_M.mp3", "res/audio/card/Audio_FAN_YOU3_W.mp3"]
+]
 var audio_card = [
-    audio_Single, audio_Double, audio_Bomb, audio_Four, audio_Double_Joker, audio_Three, audio_No
+    audio_Single, audio_Double, audio_Three, audio_Four, audio_Double_Joker, audio_shuang3, audio_No
 ];
 var audio_fanmenu = {
     Pass :[
