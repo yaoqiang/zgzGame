@@ -31,9 +31,9 @@ ChatInGameLayer.prototype = {
 
         var quickChatButton = null;
         //常用语
-        var quickChatLabel = new cc.LabelTTF("常用语", "AmericanTypewriter", 34);
-        var quickChatLabelSelected = new cc.LabelTTF("常用语", "AmericanTypewriter", 34);
-        var quickChatLabelDisabled = new cc.LabelTTF("常用语", "AmericanTypewriter", 34);
+        var quickChatLabel = new cc.LabelTTF("常用语", "AmericanTypewriter", 36);
+        var quickChatLabelSelected = new cc.LabelTTF("常用语", "AmericanTypewriter", 36);
+        var quickChatLabelDisabled = new cc.LabelTTF("常用语", "AmericanTypewriter", 36);
         if (this.selected == 0) {
             var quickChatNormal = new cc.Sprite("#common_btn_qianwang.png");
             quickChatNormal.addChild(quickChatLabel);
@@ -58,9 +58,9 @@ ChatInGameLayer.prototype = {
 
         var expressChatButton = null;
         //表情
-        var expressChatLabel = new cc.LabelTTF("表 情", "AmericanTypewriter", 34);
-        var expressChatLabelSelected = new cc.LabelTTF("表 情", "AmericanTypewriter", 34);
-        var expressChatLabelDisabled = new cc.LabelTTF("表 情", "AmericanTypewriter", 34);
+        var expressChatLabel = new cc.LabelTTF("表 情", "AmericanTypewriter", 36);
+        var expressChatLabelSelected = new cc.LabelTTF("表 情", "AmericanTypewriter", 36);
+        var expressChatLabelDisabled = new cc.LabelTTF("表 情", "AmericanTypewriter", 36);
         if (this.selected == 1) {
             var expressChatNormal = new cc.Sprite("#common_btn_qianwang.png");
             expressChatNormal.addChild(expressChatLabel);
@@ -86,9 +86,9 @@ ChatInGameLayer.prototype = {
         //喇叭
         var trumpetChatButton = null;
         //表情
-        var trumpetChatLabel = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 34);
-        var trumpetChatLabelSelected = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 34);
-        var trumpetChatLabelDisabled = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 34);
+        var trumpetChatLabel = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 36);
+        var trumpetChatLabelSelected = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 36);
+        var trumpetChatLabelDisabled = new cc.LabelTTF("小喇叭", "AmericanTypewriter", 36);
         if (this.selected == 2) {
             var trumpetChatNormal = new cc.Sprite("#common_btn_qianwang.png");
             trumpetChatNormal.addChild(trumpetChatLabel);
@@ -228,6 +228,9 @@ ChatInGameLayer.prototype = {
         var col = 4, currentIndex = 0;
         var cellWidth = 700 / col;
         var row = Math.ceil(count/col);
+        //Browser和Native这里显示有偏差
+        var expX = cc.sys.isNative ? 250 : 300;
+        var expY = cc.sys.isNative ? 125 : 145;
         for (var i = 1; i <= row; ++i) {
 
             for (var j = 1; j <= col; j++) {
@@ -239,9 +242,8 @@ ChatInGameLayer.prototype = {
                 expSprite.scale = 1.5;
                 expSprite.addTouchEventListener(this.doExpressChat, this);
 
-                var ey = (row + 1 - i) * 125;
-                expSprite.x =  cellWidth * j - cellWidth / 2 + 250;
-                expSprite.y = ey;
+                expSprite.x =  cellWidth * j - cellWidth / 2 + expX;
+                expSprite.y = (row + 1 - i) * expY;
 
                 this.rightBox.addChild(expSprite);
 
