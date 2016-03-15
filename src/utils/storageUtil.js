@@ -32,7 +32,7 @@ Storage.init = function () {
     if (cc.sys.isNative) {
         var dataFile = Storage.getDataFilePath();
         var initData = {
-            init: true,
+            INIT: true,
             isPlayEffect: true,
             isPlayBackMusic: true
         };
