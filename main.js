@@ -9,7 +9,7 @@ cc.game.onStart = function(){
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
 
         //init data conf
-        if (!Storage.get('init')) {
+        if (!Storage.get(CommonConf.LOCAL_STORAGE.INIT)) {
             Storage.init();
         }
 

@@ -38,9 +38,9 @@ Storage.init = function () {
         };
         jsb.fileUtils.writeStringToFile(JSON.stringify(initData), dataFile);
     } else {
-        cc.sys.localStorage.setItem('init', true);
-        cc.sys.localStorage.setItem('isPlayEffect', true);
-        cc.sys.localStorage.setItem('isPlayBackMusic', true);
+        cc.sys.localStorage.setItem(CommonConf.LOCAL_STORAGE.INIT, true);
+        cc.sys.localStorage.setItem(CommonConf.LOCAL_STORAGE.IS_PLAY_BACKGROUND_MUSIC, true);
+        cc.sys.localStorage.setItem(CommonConf.LOCAL_STORAGE.IS_PLAY_EFFECT, true);
     }
 }
 

@@ -6,20 +6,6 @@ var LoginScene = cc.Scene.extend({
         var layer = new LoginLayer();
         this.addChild(layer);
 
-
-        //Storage.removeFile();
-        //Storage.init();
-        //console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_BACKGROUND_MUSIC));
-        //console.log(Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_EFFECT));
-
-
-        //console.log(Storage.get('init'));
-        //
-        //if (!Storage.get('init')) {
-        //    Storage.init();
-        //}
-        //
-        //console.log(Storage.get('init'));
     }
 
 });
@@ -139,7 +125,7 @@ var LoginLayer = cc.Layer.extend({
 
     doQuickLogin: function () {
 
-        if (!Storage.get('init')) {
+        if (!Storage.get(CommonConf.LOCAL_STORAGE.INIT)) {
             Storage.init();
         }
 
