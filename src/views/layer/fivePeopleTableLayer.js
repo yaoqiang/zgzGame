@@ -328,17 +328,11 @@ var FivePeopleTableLayer = cc.Layer.extend({
         for (i = 0; i < listlen; i++) {
             if (this.m_HDList[i].m_Nr == actorNr) {
                 if (this.m_HDList[i].m_position.x < winSize.width / 2) {
-                    if (this.m_HDList[i].m_Nr == selfNr) {
-                        return {
-                            x: this.m_HDList[i].m_position.x,
-                            y: this.m_HDList[i].m_position.y + 80,
-                            mode: SHOW_MODE.LEFT
-                        };
-                    }
+
                     if (this.m_HDList[i].m_position.y > 350) {
                         return {
                             x: this.m_HDList[i].m_position.x,
-                            y: this.m_HDList[i].m_position.y,
+                            y: this.m_HDList[i].m_position.y - 60,
                             mode: SHOW_MODE.BOTTOM
                         };
                     }
@@ -347,7 +341,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
                     if (this.m_HDList[i].m_position.y > 350) {
                         return {
                             x: this.m_HDList[i].m_position.x,
-                            y: this.m_HDList[i].m_position.y,
+                            y: this.m_HDList[i].m_position.y - 60,
                             mode: SHOW_MODE.BOTTOM
                         };
                     }
