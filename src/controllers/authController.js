@@ -71,12 +71,10 @@ AuthController.login = function(username, password)
 
 AuthController.loginWithToken = function(token, cb)
 {
-
     Network.post({
         action : 'loginByToken',
         args : {token: token},
         onSuccess : function(result) {
-
             if (result.code == 1001)
             {
                 var alert = new DialogSmall("您的用户名不存在, 请重新登录", 2, {
@@ -128,7 +126,7 @@ AuthController.loginWithToken = function(token, cb)
 
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;
-                console.log("gPlayer => ", gPlayer);
+                //console.log("#gPlayer => ", gPlayer);
                 if (cb) cb();
 
                 //如果是断线重回游戏, 则不需要自动进入大厅;

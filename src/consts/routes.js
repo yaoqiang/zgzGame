@@ -45,6 +45,7 @@ var route = {
     sendPaymentResult: 'connector.universalHandler.sendPaymentResult', //发送支付结果, for IAP
 
     getTopOfAppReleaseRecord: 'connector.universalHandler.getTopOfAppReleaseRecord',    //获取最新发布的版本及信息
+    getSystemMessage: 'connector.universalHandler.getSystemMessage',    //获取最新系统消息
 
     sendBindingSMS: 'connector.universalHandler.sendBindingSMS',    //
     bindingMobile: 'connector.universalHandler.bindingMobile'    //

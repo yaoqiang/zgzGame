@@ -296,6 +296,12 @@ UniversalController.getTopOfAppReleaseRecord = function () {
     pomelo.notify(route.getTopOfAppReleaseRecord, {});
 }
 
+UniversalController.getSystemMessage = function (cb) {
+    pomelo.request(route.getSystemMessage, {}, function (data) {
+        cb(data);
+    });
+}
+
 UniversalController.sendBindingSMS = function (mobile, cb) {
     var loadingBar = new LoadingLayer({msg: '发送中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);

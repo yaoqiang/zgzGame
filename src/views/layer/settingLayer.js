@@ -1,137 +1,297 @@
-var SettingNode = cc.Node.extend({
+var SettingLayer = function () {
+    return this.ctor();
+}
+
+SettingLayer.prototype = {
     ctor: function () {
-        this._super();
+
+        cc.spriteFrameCache.addSpriteFrames(res.settings_plist);
+
+        this.box = new DialogSmall("设置", 1, null);
 
         this.init();
-    },
-    onEnter:function(){
-        this._super();
-        console.log("settingNode onEnter");
-    },
-    onExit:function(){
-        this._super();
-        console.log("settingNode onExit");
+
+        return this.box;
+
     },
 
-    init:function(){
-        if(this.m_bRun) return;
-        this.m_bRun = true;
-
-        this._super();
-        var sg = new MaskLayer(false);
-        this.addChild(sg);
+    init: function () {
 
         var winSize = cc.director.getWinSize();
 
-        var bgString = "#dialog_bg_middle.png";
-
-        this.bg = new cc.Sprite(bgString);
-        this.bg.x = winSize.width / 2.0;
-        this.bg.y = winSize.height / 2.0;
-        this.bg.scale = 0.55;
-        this.addChild(this.bg);
-
-        var bgActualSize = this.bg.getBoundingBox();
-
-
-        this.m_pLable = new cc.LabelTTF("设 置", "AmericanTypewriter", 26);
-        this.m_pLable.enableStroke(cc.color.WHITE, 1);
-        this.m_pLable.color = cc.color.WHITE;
-        //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
-        this.m_pLable.setPosition(winSize.width/2, winSize.height/2 + bgActualSize.height/2 - 22);
-        this.addChild(this.m_pLable, 1);
-
-        //close
-        var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
-        closeItem.setScale(0.65);
-        closeItem.x = winSize.width/2 + bgActualSize.width/2 - 8;
-        closeItem.y = winSize.height/2 + bgActualSize.height/2 - 8;
-        this.m_menu = new cc.Menu(closeItem);
-        this.m_menu.tag = TAG_MENU;
-        this.m_menu.x = 0;
-        this.m_menu.y = 0;
-        this.addChild(this.m_menu, 1);
-        // menu end
-
-        var lable = new cc.LabelTTF("背景音乐：", "AmericanTypewriter", 26);
-        lable.setAnchorPoint(1, 0.5);
-        lable.color = cc.color.RED;
-        lable.setPosition(winSize.width/2 - 30, winSize.height/2 + 40);
-        this.addChild(lable, 1);
-
-        var lable = new cc.LabelTTF("音效：", "AmericanTypewriter", 26);
-        lable.setAnchorPoint(1, 0.5);
-        lable.color = cc.color.RED;
-        lable.setPosition(winSize.width/2-30, winSize.height/2 - 40);
-        this.addChild(lable, 1);
+        //加载当前音乐音效设置
         var code = loadSet();
         var music = code[0];
         var effect = code[1];
-        console.log("music:"+ music + "effect:" + effect );
-        var musicSwitchControl = new cc.ControlSwitch
-        (
-            new cc.Sprite("res/switch-mask.png"),
-            new cc.Sprite("res/switch-on.png"),
-            new cc.Sprite("res/switch-off.png"),
-            new cc.Sprite("res/switch-thumb.png"),
-            new cc.LabelTTF("On", "Arial-BoldMT", 16),
-            new cc.LabelTTF("Off", "Arial-BoldMT", 16)
-        );
-        musicSwitchControl.x = winSize.width/2 + 30;
-        musicSwitchControl.y = winSize.height/2 + 40;
-        musicSwitchControl.setOn(music);
-        this.addChild(musicSwitchControl, 1);
 
-        musicSwitchControl.addTargetWithActionForControlEvents(this, this.musicValueChanged, cc.CONTROL_EVENT_VALUECHANGED);
-        //this.musicValueChanged(musicSwitchControl, cc.CONTROL_EVENT_VALUECHANGED);
+        //version title
+        var version = Storage.get('version') ? Storage.get('version') : '1.0.0';
+        var versionLabel = new cc.LabelTTF('游戏版本: '+version, 'AmericanTypewriter', 38);
+        versionLabel.setAnchorPoint(0, 0.5);
+        versionLabel.color = {r: 0, g: 255, b: 127};
+        versionLabel.x = 100;
+        versionLabel.y = winSize.height / 2 + 300;
+        this.box.bg.addChild(versionLabel);
+
+        var idLabel = new cc.LabelTTF('玩家ID: '+gPlayer.uid, 'AmericanTypewriter', 38);
+        idLabel.setAnchorPoint(0, 0.5);
+        idLabel.x = 100;
+        idLabel.y = winSize.height / 2 + 240;
+        idLabel.color = {r: 0, g: 255, b: 127};
+        this.box.bg.addChild(idLabel);
+
+        var x = 160, y = winSize.height / 2 + 110, cellX = 220;
+        //
+        this.checkBoxMusic = new ccui.CheckBox();
+        this.checkBoxMusic.setTouchEnabled(true);
+        this.checkBoxMusic.scale = 2;
+        this.checkBoxMusic.setSelected(!music);
+        this.checkBoxMusic.loadTextures("ic_setup_music.png",
+            "ic_setup_close.png",
+            "ic_setup_close.png",
+            "ic_setup_music.png",
+            "ic_setup_music.png",
+            ccui.Widget.PLIST_TEXTURE);
+
+        this.checkBoxMusic.addEventListener(this.musicValueChanged, this);
+        this.checkBoxMusic.setPosition(x, y);
+
+        var musicLabel = new cc.LabelTTF('音乐', 'Arial', 34);
+        musicLabel.setPosition(x, y - 100);
+
+        this.box.bg.addChild(this.checkBoxMusic);
+        this.box.bg.addChild(musicLabel);
+
+        x += cellX;
+        //
+        this.checkBoxEffect = new ccui.CheckBox();
+        this.checkBoxEffect.setTouchEnabled(true);
+        this.checkBoxEffect.scale = 2;
+        this.checkBoxEffect.setSelected(!effect);
+        this.checkBoxEffect.loadTextures("ic_setup_volume.png",
+            "ic_setup_close.png",
+            "ic_setup_close.png",
+            "ic_setup_volume.png",
+            "ic_setup_volume.png",
+            ccui.Widget.PLIST_TEXTURE);
+
+        this.checkBoxEffect.addEventListener(this.effectValueChanged, this);
+        this.checkBoxEffect.setPosition(x, y);
+
+        var effectLabel = new cc.LabelTTF('音效', 'Arial', 34);
+        effectLabel.setPosition(x, y - 100);
+
+        this.box.bg.addChild(this.checkBoxEffect);
+        this.box.bg.addChild(effectLabel);
+
+        x += cellX;
+        //
+        var helpBtn = new ccui.Button();
+        helpBtn.setPressedActionEnabled(true);
+        helpBtn.setAnchorPoint(0.5, 0.5);
+        helpBtn.setTouchEnabled(true);
+        helpBtn.loadTextures("ic_setup_help.png", "ic_setup_help.png", "ic_setup_help.png", ccui.Widget.PLIST_TEXTURE);
+        helpBtn.addTouchEventListener(this.helpBtnClicked, this);
+        helpBtn.x = x;
+        helpBtn.y = y;
+        helpBtn.scale = 2;
+        this.box.bg.addChild(helpBtn);
+
+        var helpLabel = new cc.LabelTTF('帮助', 'Arial', 34);
+        helpLabel.setPosition(x, y - 100);
+
+        this.box.bg.addChild(helpLabel);
 
 
-        var effectSwitchControl = new cc.ControlSwitch
-        (
-            new cc.Sprite("res/switch-mask.png"),
-            new cc.Sprite("res/switch-on.png"),
-            new cc.Sprite("res/switch-off.png"),
-            new cc.Sprite("res/switch-thumb.png"),
-            new cc.LabelTTF("On", "Arial-BoldMT", 16),
-            new cc.LabelTTF("Off", "Arial-BoldMT", 16)
-        );
-        effectSwitchControl.x = winSize.width/2 + 30;
-        effectSwitchControl.y = winSize.height/2 - 40;
-        effectSwitchControl.setOn(effect);
-        this.addChild(effectSwitchControl, 1);
+        x += cellX;
+        //
+        var customerBtn = new ccui.Button();
+        customerBtn.setPressedActionEnabled(true);
+        customerBtn.setAnchorPoint(0.5, 0.5);
+        customerBtn.setTouchEnabled(true);
+        customerBtn.loadTextures("ic_setup_service.png", "ic_setup_service.png", "ic_setup_service.png", ccui.Widget.PLIST_TEXTURE);
+        customerBtn.addTouchEventListener(this.customerBtnClicked, this);
+        customerBtn.x = x;
+        customerBtn.y = y;
+        customerBtn.scale = 2;
+        this.box.bg.addChild(customerBtn);
 
-        effectSwitchControl.addTargetWithActionForControlEvents(this, this.effectValueChanged, cc.CONTROL_EVENT_VALUECHANGED);
-        //this.effectValueChanged(effectSwitchControl, cc.CONTROL_EVENT_VALUECHANGED);
+        var customerLabel = new cc.LabelTTF('客服', 'Arial', 34);
+        customerLabel.setPosition(x, y - 100);
+
+        this.box.bg.addChild(customerLabel);
+
+        y = y-220;
+
+        //button
+        var versionDetectBtn = new ccui.Button();
+        versionDetectBtn.setTitleText('版本检测');
+        versionDetectBtn.setTitleFontSize(28);
+        versionDetectBtn.setAnchorPoint(0.5, 0.5);
+        versionDetectBtn.setTouchEnabled(true);
+        versionDetectBtn.loadTextures("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+        versionDetectBtn.addTouchEventListener(this.versionDetectBtnClicked, this);
+        versionDetectBtn.x = winSize.width/2 - 100;
+        versionDetectBtn.y = y;
+        versionDetectBtn.scale = 1.3;
+        this.box.bg.addChild(versionDetectBtn);
+
+        var switchAccountBtn = new ccui.Button();
+        switchAccountBtn.setTitleText('切换账号');
+        switchAccountBtn.setTitleFontSize(28);
+        switchAccountBtn.setAnchorPoint(0.5, 0.5);
+        switchAccountBtn.setTouchEnabled(true);
+        switchAccountBtn.loadTextures("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+        switchAccountBtn.addTouchEventListener(this.switchAccountBtnClicked, this);
+        switchAccountBtn.x = winSize.width/2 + 250;
+        switchAccountBtn.y = y;
+        switchAccountBtn.scale = 1.3;
+        this.box.bg.addChild(switchAccountBtn);
+
     },
 
-    musicValueChanged:function (sender, controlEvent) {
-        if (sender.isOn()) {
-            console.log("On");
-            setPlayMusic(true);
-        }
-        else {
-            console.log("Off");
-            setPlayMusic(false);
+    musicValueChanged: function (sender, type) {
+
+        switch (type) {
+            case  ccui.CheckBox.EVENT_UNSELECTED:
+                setPlayMusic(true);
+                break;
+            case ccui.CheckBox.EVENT_SELECTED:
+                setPlayMusic(false);
+                break;
+
+            default:
+                break;
         }
     },
 
-    effectValueChanged:function (sender, controlEvent) {
-        if (sender.isOn()) {
-            console.log("On");
-            setPlayEffects(true);
+    effectValueChanged: function (sender, type) {
+
+        switch (type) {
+            case  ccui.CheckBox.EVENT_UNSELECTED:
+                setPlayEffects(true);
+                break;
+            case ccui.CheckBox.EVENT_SELECTED:
+                setPlayEffects(false);
+                break;
+
+            default:
+                break;
         }
-        else {
-            console.log("Off");
-            setPlayEffects(false);
+    },
+    
+    versionDetectBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                UniversalController.getTopOfAppReleaseRecord();
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                break;
+
+            default:
+                break;
         }
     },
 
-    onExitCallback:function () {
-        playEffect(audio_common.Button_Click);
-        this.removeFromParent(true);
+    switchAccountBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                //切换账号, 先设置全局变量, 以防自动连接, 断开pomelo, 跳转到登录scene
+                gHasConnector = false;
+                pomelo.disconnect();
+                cc.director.runScene(new LoginScene());
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                break;
+
+            default:
+                break;
+        }
+    },
+
+    helpBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                var helpBox = new DialogMiddle("游戏帮助", 1, null);
+                cc.director.getRunningScene().addChild(helpBox, 50);
+
+
+                var webView = new ccui.WebView("res/help.html");
+                var x = 400, y = 210, w = 500, h = 290;
+                if (cc.sys.isNative) {
+                    x = 485;
+                    y = 300;
+                    w = 900;
+                    h = 500;
+                }
+                webView.setContentSize(w, h);
+                webView.setPosition(x, y);
+                helpBox.bg.addChild(webView);
+
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                break;
+
+            default:
+                break;
+        }
+    },
+
+    customerBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                prompt.fadeMiddle('请拨打客服热线: 0352-7963773')
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                break;
+
+            default:
+                break;
+        }
+    },
+
+
+
+    getHelpContentString: function (cb) {
+        cc.loader.loadTxt('res/gameHelp.txt', function (err, data) {
+            cb(data);
+        });
+
     }
-});
-var SettingLayer = function () {
-    var box = new SettingNode();
-    return box;
-};
+}
+

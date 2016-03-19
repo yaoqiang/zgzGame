@@ -2,6 +2,25 @@ var audioEngine = cc.audioEngine;
 
 var isPlayEffect = Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_EFFECT);
 var isPlayBackMusic = Storage.get(CommonConf.LOCAL_STORAGE.IS_PLAY_BACKGROUND_MUSIC);
+
+//兼容浏览器, 因localStorage的value是string
+if (typeof isPlayBackMusic == 'string') {
+    if (isPlayBackMusic == 'true') {
+        isPlayBackMusic = true;
+    } else {
+        isPlayBackMusic = false;
+    }
+}
+
+if (typeof isPlayEffect == 'string') {
+    if (isPlayEffect == 'true') {
+        isPlayEffect = true;
+    } else {
+        isPlayEffect = false;
+    }
+}
+
+
 var soundId = null;
 var backMusic = audio_backMusic[0];
 

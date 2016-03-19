@@ -197,7 +197,11 @@ var HeaderLayer = cc.Layer.extend({
 
         //this.addChild(new LoadingLayer({}));
 
+        var self = this;
         //
+        UniversalController.getSystemMessage(function (data) {
+            self.addChild(new SystemMessageLayer(data));
+        })
 
     },
 

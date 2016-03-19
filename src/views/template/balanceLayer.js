@@ -138,7 +138,7 @@ var BalanceLayer = function (data, opt) {
         y -= 45;
     }
 
-    y -= 120;
+    y -= 90;
 
     var sReady = new cc.MenuItemSprite(
         new cc.Sprite("#common_btn_lv.png"),

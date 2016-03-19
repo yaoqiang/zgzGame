@@ -293,6 +293,7 @@ ChatInGameLayer.prototype = {
 
         //当前玩家喇叭情况, 如果没有则显示快捷购买喇叭
         UniversalController.getMyItemList(function (data) {
+
             if (data.code != RETURN_CODE.OK) {
                 return;
             }
@@ -301,17 +302,17 @@ ChatInGameLayer.prototype = {
                 self.trumpetVal = 0;
             }
 
-            _.each(data.itemsList, function (item) {
+            _.each(data.itemList, function (item) {
                 if (item.id == 2) {
                     self.trumpetVal = item.value;
                 }
             });
 
             if (self.trumpetVal > 0) {
-                var trumpetCountString = new cc.LabelTTF(self.trumpetVal + "个", "AmericanTypewriter", 34);
-                trumpetCountString.setPosition(450, 170);
-                trumpetCountString.color = {r: 0, g: 255, b: 127};
-                self.rightBox.addChild(trumpetCountString);
+                self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个", "AmericanTypewriter", 34);
+                self.trumpetCountString.setPosition(480, 170);
+                self.trumpetCountString.color = {r: 0, g: 255, b: 127};
+                self.rightBox.addChild(self.trumpetCountString);
 
                 //
                 var trumpetCountIcon = new cc.Sprite("#common_icon_laba.png");
@@ -423,17 +424,21 @@ ChatInGameLayer.prototype = {
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
-                console.log('trumpet clicked..');
 
                 if (this.trumpetVal == 0) {
                     prompt.fadeMiddle('您没有小喇叭,可在商城购买后使用');
                     return;
                 }
 
-                if (this.trumpetContent.getString() == '') {
+                var content = this.trumpetContent.getString();
+                if (content == '') {
                     prompt.fadeMiddle('请输入喇叭内容');
                     return;
                 }
+
+                this.trumpetVal -= 1;
+                this.trumpetCountString.setString('您还有'+this.trumpetVal+'个');
+                GameController.chat(GAME.CHAT.SCOPE_ALL, '', '', content);
 
                 break;
 

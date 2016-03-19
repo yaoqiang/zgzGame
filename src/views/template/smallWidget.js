@@ -417,6 +417,7 @@ var DialogSmallNode = cc.Node.extend({
 
     onExitCallback: function () {
         //console.log("noteLayer onExitCallback");
+        playEffect(audio_common.Button_Click);
         this.removeFromParent(true);
     }
 });
