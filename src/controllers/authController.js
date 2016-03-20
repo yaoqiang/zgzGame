@@ -77,33 +77,29 @@ AuthController.loginWithToken = function(token, cb)
         onSuccess : function(result) {
             if (result.code == 1001)
             {
-                var alert = new DialogSmall("您的用户名不存在, 请重新登录", 2, {
-                    ensureCallback: function () {
-                        cc.director.runScene(new LoginScene());
-                    }
-                });
-                cc.director.getRunningScene().addChild(alert);
+                var box = new AlertBox('用户名不存在,请重新登录', function () {
+                    cc.director.runScene(new LoginScene());
+                }, this);
+                cc.director.getRunningScene().addChild(box, 9);
 
                 return;
             }
             if (result.code == 1002)
             {
-                var alert = new DialogSmall("您的密码错误, 请重新登录", 2, {
-                    ensureCallback: function () {
-                        cc.director.runScene(new LoginScene());
-                    }
-                });
-                cc.director.getRunningScene().addChild(alert);
+
+                var box = new AlertBox('密码错误,请重新登录', function () {
+                    cc.director.runScene(new LoginScene());
+                }, this);
+                cc.director.getRunningScene().addChild(box, 9);
                 return;
             }
             if (result.code == 1003)
             {
-                var alert = new DialogSmall("您的账号密码错误, 请重新登录", 2, {
-                    ensureCallback: function () {
-                        cc.director.runScene(new LoginScene());
-                    }
-                });
-                cc.director.getRunningScene().addChild(alert);
+
+                var box = new AlertBox('账号密码错误,请重新登录', function () {
+                    cc.director.runScene(new LoginScene());
+                }, this);
+                cc.director.getRunningScene().addChild(box, 9);
                 return;
             }
 

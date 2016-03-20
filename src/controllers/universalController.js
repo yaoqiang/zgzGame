@@ -55,10 +55,10 @@ UniversalController.updateProfile = function (nickName, gender, avatar, summary)
         summary: summary
     }, function (data) {
         if (data.code == RETURN_CODE.OK) {
-            gPlayer.nickName = nickName;
+            gPlayer.nickName = data.nickName;
             gPlayer.gender = gender;
             gPlayer.avatar = avatar;
-            gPlayer.summary = summary;
+            gPlayer.summary = data.summary;
 
             prompt.fadeMiddle('修改成功');
 

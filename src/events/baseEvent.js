@@ -94,7 +94,7 @@ pomelo.on('onKick', function (data) {
 pomelo.on('heartbeat timeout', function (data) {
     console.log('heartbeat timeout -> ', data);
 
-    var box = new AlertBox('哎呀, 您的网络太差...', function () {
+    var box = new AlertBox('您的网络太差...', function () {
         //
         var loadingBar = new LoadingLayer({msg: '连接中'});
         var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);

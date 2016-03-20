@@ -151,7 +151,6 @@ SettingLayer.prototype = {
     },
 
     musicValueChanged: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         switch (type) {
             case  ccui.CheckBox.EVENT_UNSELECTED:
                 setPlayMusic(true);
@@ -166,7 +165,6 @@ SettingLayer.prototype = {
     },
 
     effectValueChanged: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         switch (type) {
             case  ccui.CheckBox.EVENT_UNSELECTED:
                 setPlayEffects(true);
@@ -181,7 +179,6 @@ SettingLayer.prototype = {
     },
     
     versionDetectBtnClicked: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -190,6 +187,7 @@ SettingLayer.prototype = {
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
 
                 UniversalController.getTopOfAppReleaseRecord();
 
@@ -213,7 +211,7 @@ SettingLayer.prototype = {
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
-
+                playEffect(audio_common.Button_Click);
                 //切换账号, 先设置全局变量, 以防自动连接, 断开pomelo, 跳转到登录scene
                 gHasConnector = false;
                 pomelo.disconnect();
@@ -230,7 +228,6 @@ SettingLayer.prototype = {
     },
 
     helpBtnClicked: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -239,6 +236,7 @@ SettingLayer.prototype = {
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
 
                 var helpBox = new DialogMiddle("游戏帮助", 1, null);
                 cc.director.getRunningScene().addChild(helpBox, 50);
@@ -268,7 +266,7 @@ SettingLayer.prototype = {
     },
 
     customerBtnClicked: function (sender, type) {
-        playEffect(audio_common.Button_Click);
+
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -277,6 +275,7 @@ SettingLayer.prototype = {
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
 
                 prompt.fadeMiddle('请拨打客服热线: 0352-7963773', 3)
 
