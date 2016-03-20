@@ -34,7 +34,7 @@ Storage.init = function () {
         var initData = {
             INIT: true,
             isPlayEffect: true,
-            isPlayBackMusic: true
+            isPlayBackgroundMusic: true
         };
         jsb.fileUtils.writeStringToFile(JSON.stringify(initData), dataFile);
     } else {

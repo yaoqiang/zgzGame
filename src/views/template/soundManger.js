@@ -20,6 +20,10 @@ if (typeof isPlayEffect == 'string') {
     }
 }
 
+//处理首次打开app
+if (isPlayBackMusic == null) isPlayBackMusic = true;
+if (isPlayEffect == null) isPlayEffect = true;
+
 
 var soundId = null;
 var backMusic = audio_backMusic[0];
