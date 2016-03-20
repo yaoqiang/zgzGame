@@ -129,6 +129,8 @@ var LoginLayer = cc.Layer.extend({
             Storage.init();
         }
 
+        var loadingBar = new LoadingLayer({msg: '加载中'});
+        cc.director.getRunningScene().addChild(loadingBar, 100);
         if (Storage.get(CommonConf.LOCAL_STORAGE.TOKEN)) {
             var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
             AuthController.loginWithToken(token);

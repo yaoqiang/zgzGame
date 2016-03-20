@@ -151,7 +151,7 @@ SettingLayer.prototype = {
     },
 
     musicValueChanged: function (sender, type) {
-
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case  ccui.CheckBox.EVENT_UNSELECTED:
                 setPlayMusic(true);
@@ -166,7 +166,7 @@ SettingLayer.prototype = {
     },
 
     effectValueChanged: function (sender, type) {
-
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case  ccui.CheckBox.EVENT_UNSELECTED:
                 setPlayEffects(true);
@@ -181,6 +181,7 @@ SettingLayer.prototype = {
     },
     
     versionDetectBtnClicked: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -191,6 +192,7 @@ SettingLayer.prototype = {
             case ccui.Widget.TOUCH_ENDED:
 
                 UniversalController.getTopOfAppReleaseRecord();
+
                 break;
 
             case ccui.Widget.TOUCH_CANCELED:
@@ -202,6 +204,7 @@ SettingLayer.prototype = {
     },
 
     switchAccountBtnClicked: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -227,6 +230,7 @@ SettingLayer.prototype = {
     },
 
     helpBtnClicked: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -264,6 +268,7 @@ SettingLayer.prototype = {
     },
 
     customerBtnClicked: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
                 break;
@@ -273,7 +278,7 @@ SettingLayer.prototype = {
 
             case ccui.Widget.TOUCH_ENDED:
 
-                prompt.fadeMiddle('请拨打客服热线: 0352-7963773')
+                prompt.fadeMiddle('请拨打客服热线: 0352-7963773', 3)
 
                 break;
 
@@ -283,15 +288,8 @@ SettingLayer.prototype = {
             default:
                 break;
         }
-    },
-
-
-
-    getHelpContentString: function (cb) {
-        cc.loader.loadTxt('res/gameHelp.txt', function (err, data) {
-            cb(data);
-        });
-
     }
+
+
 }
 

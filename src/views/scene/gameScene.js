@@ -430,6 +430,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onActorAvatarClicked: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         var self = this;
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
@@ -456,7 +457,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onOptionClicked: function () {
-
+        playEffect(audio_common.Button_Click);
         if (this.toolBarState == 0) {
             this.toolBarState = 1;
             var moveDown = cc.moveBy(0.5, cc.p(0, -this.toolBarHeight));
@@ -475,6 +476,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onExpressBtnClicked: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
 
@@ -1007,6 +1009,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     trusteeship: function (sender, type) {
+        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
 
@@ -1031,6 +1034,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     cancelTrusteeship: function () {
+        playEffect(audio_common.Button_Click);
         GameController.cancelTrusteeship(gRoomId, gGameId);
     },
 

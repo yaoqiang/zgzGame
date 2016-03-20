@@ -369,9 +369,9 @@ var DialogSmallNode = cc.Node.extend({
             this.okButton.addChild(this.okLabel);
         } else {
             //确定
-            this.okNormal = new cc.Sprite("#common_btn_hong.png");
-            this.okSelected = new cc.Sprite("#common_btn_hong.png");
-            this.okDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.okNormal = new cc.Sprite("#common_btn_lv.png");
+            this.okSelected = new cc.Sprite("#common_btn_lv.png");
+            this.okDisabled = new cc.Sprite("#common_btn_lv.png");
             this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, function () {
                 self.callback.ensureCallback.call(self.target, function (close) {
                     if (close) {
@@ -386,7 +386,7 @@ var DialogSmallNode = cc.Node.extend({
             this.addChild(menuItem, 2);
 
             var butSize = this.okButton.getContentSize();
-            this.okLabel = new cc.LabelTTF("确定", "Arial", 22);
+            this.okLabel = new cc.LabelTTF(this.callback.ensureLabel || "确定", "Arial", 22);
             this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
             this.okButton.addChild(this.okLabel);
 
@@ -408,7 +408,7 @@ var DialogSmallNode = cc.Node.extend({
             this.addChild(menuItem, 2);
 
             var butSize = this.cancelButton.getContentSize();
-            this.cancelLabel = new cc.LabelTTF("取消", "Arial", 22);
+            this.cancelLabel = new cc.LabelTTF(this.callback.cancelLabel || "取消", "Arial", 22);
             this.cancelLabel.setPosition(butSize.width / 2, butSize.height / 2);
             this.cancelButton.addChild(this.cancelLabel);
         }
@@ -422,7 +422,7 @@ var DialogSmallNode = cc.Node.extend({
     }
 });
 //mode: 1: blank, 2: alert, 3: confirm
-//callback: {ensureCallback: xx, cancelCallback: xx}
+//callback: {ensureCallback: xx, cancelCallback: xx, ensureLabel: xx, cancelLabel: xx}
 var DialogSmall = function (title, mode, callback, target, scale) {
     var box = new DialogSmallNode(title, mode, callback, target, scale);
     return box;

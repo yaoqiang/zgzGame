@@ -48,8 +48,11 @@ var ProfileScene = cc.Scene.extend({
             });
         }
         else {
-            scene.layer = new BagLayer();
-            scene.addChild(scene.layer);
+            UniversalController.getMyItemList(function (data) {
+                scene.layer = new BagLayer({itemList: data.itemList});
+                scene.addChild(scene.layer);
+            });
+
 
         }
 
@@ -651,9 +654,8 @@ var ProfileLayer = cc.Layer.extend({
  * 背包Layer
  */
 var BagLayer = cc.Layer.extend({
-    ctor: function () {
+    ctor: function (args) {
         this._super();
-
 
         var winSize = cc.director.getWinSize();
 
@@ -663,10 +665,81 @@ var BagLayer = cc.Layer.extend({
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
 
-        var itemLabel = new cc.LabelTTF("即将开放, 敬请期待!", "Arial", 34);
-        itemLabel.setPosition(winSize.width / 2, winSize.height / 2);
-        itemLabel.color = cc.color.YELLOW;
-        this.addChild(itemLabel);
+        var x = 20, y = winSize.height/2 + 150;
 
+        var self = this;
+        args.itemList.forEach(function (item, index) {
+            var itemView = self.generateItemView(item);
+            itemView.setPosition(x, y);
+            self.addChild(itemView);
+            x += 150;
+
+            if (index == 5) {
+                x = 20;
+                y = winSize.height/2 - 100;
+            }
+        });
+
+
+        //var itemLabel = new cc.LabelTTF("即将开放, 敬请期待!", "Arial", 34);
+        //itemLabel.setPosition(winSize.width / 2, winSize.height / 2);
+        //itemLabel.color = cc.color.YELLOW;
+        //this.addChild(itemLabel);
+    },
+
+    generateItemView: function(item) {
+
+        var valueLabel = item.mode === 'count' ? item.value : new Date(item.value).format('yyyy-MM-dd');
+        var unitLabel = item.mode === 'count' ? '个' : '\n      到期';
+
+        var x = 110;
+        var bg = new cc.Sprite("#item_bg.png");
+        bg.setAnchorPoint(0, 1);
+        bg.scale = 0.5;
+        switch (item.id) {
+            //表情包
+            case 1:
+                break;
+            //小喇叭
+            case 2:
+                var itemIcon = new cc.Sprite("#common_icon_laba.png");
+                itemIcon.setAnchorPoint(0.5, 1);
+                itemIcon.setPosition(x, 260);
+                itemIcon.scale = 0.85;
+
+                var itemLabel = new cc.LabelTTF(item.title, "Arial", 30);
+                itemLabel.setAnchorPoint(0.5, 1);
+                itemLabel.setPosition(x, 170);
+
+                var itemValueLabel = new cc.LabelTTF(valueLabel + unitLabel, "Arial", 26);
+                itemValueLabel.setAnchorPoint(0.5, 1);
+                itemValueLabel.setPosition(x, 110);
+                bg.addChild(itemIcon);
+                bg.addChild(itemLabel);
+                bg.addChild(itemValueLabel);
+                break;
+            //记牌器
+            case 3:
+                var itemIcon = new cc.Sprite("#jipaiqi.png");
+                itemIcon.setAnchorPoint(0.5, 1);
+                itemIcon.setPosition(x, 260);
+                itemIcon.scale = 0.85;
+
+                var itemLabel = new cc.LabelTTF(item.title, "Arial", 30);
+                itemLabel.setAnchorPoint(0.5, 1);
+                itemLabel.setPosition(x, 170);
+
+                var itemValueLabel = new cc.LabelTTF(valueLabel + unitLabel, "Arial", 26);
+                itemValueLabel.setAnchorPoint(0.5, 1);
+                itemValueLabel.setPosition(x, 110);
+                bg.addChild(itemIcon);
+                bg.addChild(itemLabel);
+                bg.addChild(itemValueLabel);
+                break;
+            //VIP
+            case 4:
+                break;
+        }
+        return bg;
     }
 });

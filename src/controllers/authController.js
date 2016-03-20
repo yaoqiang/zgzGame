@@ -49,7 +49,7 @@ AuthController.login = function(username, password)
 
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;
-                console.log("gPlayer => ", gPlayer);
+                //console.log("gPlayer => ", gPlayer);
 
                 //如果是断线重回游戏, 则不需要自动进入大厅;
                 if (data.isBackGame) return;
@@ -194,7 +194,7 @@ AuthController.autoLogin = function()
 
                 //初始化全局变量gPlayer;
                 gPlayer = data.player;
-                console.log("gPlayer => ", gPlayer);
+                //console.log("gPlayer => ", gPlayer);
 
                 //如果是断线重回游戏, 则不需要自动进入大厅;
                 if (data.isBackGame) return;

@@ -52,6 +52,7 @@
         "src/views/template/chatInGameLayer.js",
         "src/views/layer/playerProfileLayer.js",
         "src/views/layer/systemMessageLayer.js",
+        "src/views/layer/upgradeLayer.js",
 
 
         "src/views/scene/loginScene.js",

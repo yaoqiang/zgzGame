@@ -274,12 +274,13 @@ UniversalController.initIAP = function () {
                 //self.menuIAP.removeAllChildren();
                 //Returns you the data for all the iap products
                 //You can get each item using following method
-                for (var i = 0; i < products.length; i++) {
-                    cc.log("================");
-                    cc.log("name: " + products[i].name);
-                    cc.log("price: " + products[i].price);
-                    cc.log("================");
-                }
+
+                //for (var i = 0; i < products.length; i++) {
+                //    cc.log("================");
+                //    cc.log("name: " + products[i].name);
+                //    cc.log("price: " + products[i].price);
+                //    cc.log("================");
+                //}
             },
             onProductRequestFailure: function (msg) {
                 //When product refresh request fails.
@@ -293,7 +294,10 @@ UniversalController.initIAP = function () {
  * 获取最新版本信息
  */
 UniversalController.getTopOfAppReleaseRecord = function () {
-    pomelo.notify(route.getTopOfAppReleaseRecord, {});
+    cc.loader.loadJson("res/game_config.json", function (err, config) {
+        pomelo.notify(route.getTopOfAppReleaseRecord, {version: config.version});
+    });
+
 }
 
 UniversalController.getSystemMessage = function (cb) {

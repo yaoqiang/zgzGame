@@ -196,8 +196,12 @@ pomelo.on(gameEvents.PAYMENT_RESULT, function (data) {
 })
 
 pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
-    console.log('receive onVersionUpgrade event.', data);
-    prompt.fadeMiddle('有新的版本发布, 请您去官网更新!');
+    if (data.isNew) {
+        prompt.fadeMiddle('当前已是最新版本');
+        return;
+    }
+    var upgradeBox = new UpgradeLayer(data);
+    cc.director.getRunningScene().addChild(upgradeBox, 9);
     EventBus.publish(gameEvents.VERSION_UPGRADE, data);
 })
 
