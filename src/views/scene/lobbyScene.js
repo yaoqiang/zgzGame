@@ -131,6 +131,19 @@ var LobbyLayer = cc.Layer.extend({
 
         this.addMenu();
 
+        //
+        //add trumpet btn
+        var talkIcon = new ccui.Button();
+        talkIcon.setAnchorPoint(0, 0.5);
+        talkIcon.setTouchEnabled(true);
+        talkIcon.loadTextures("btn_hall_chat_nor.png", "btn_hall_chat_nor.png", "btn_hall_chat_nor.png", ccui.Widget.PLIST_TEXTURE);
+        talkIcon.addTouchEventListener(this.onTrumpetBtnClick, this);
+        talkIcon.x = 0;
+        talkIcon.y = winSize.height/2;
+        talkIcon.scale = 0.55;
+
+        this.addChild(talkIcon, 11);
+
         return true;
 
 
@@ -230,6 +243,126 @@ var LobbyLayer = cc.Layer.extend({
 
             case ccui.Widget.TOUCH_CANCELED:
 //                console.log("Touch Cancelled");
+                break;
+
+            default:
+                break;
+        }
+    },
+
+    onTrumpetBtnClick: function (ref, event) {
+        if (event === ccui.Widget.TOUCH_ENDED) {
+            playEffect(audio_common.Button_Click);
+
+            this.trumpetBox = new DialogSmall("刷喇叭", 1, null);
+
+            var trumpetHeaderIcon = new cc.Sprite("#common_icon_laba_2.png");
+            trumpetHeaderIcon.scale = 1;
+            trumpetHeaderIcon.setAnchorPoint(0, 0.5);
+            trumpetHeaderIcon.setPosition(230, 300);
+            this.trumpetBox.addChild(trumpetHeaderIcon);
+
+            var blockSize = cc.size(260, 30);
+            this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+            this.trumpetContent.setPlaceHolder('小喇叭内容');
+            this.trumpetContent.setAnchorPoint(0, 0.5);
+            this.trumpetContent.setFontColor(cc.color.BLACK);
+            this.trumpetContent.setFont("Arial", 30);
+            this.trumpetContent.setPosition(230, 260);
+            this.trumpetContent.color = cc.color.WHITE;
+            this.trumpetContent.setMaxLength(20);
+            this.trumpetBox.addChild(this.trumpetContent);
+
+            //btn
+            var btnTrumpet = new ccui.Button("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+            btnTrumpet.setPosition(500, 260);
+            btnTrumpet.setAnchorPoint(0, 0.5);
+            btnTrumpet.setTitleText("发送");
+            btnTrumpet.setTitleFontSize(28);
+            btnTrumpet.scale = 0.5;
+            btnTrumpet.addTouchEventListener(this.doTrumpetChat, this);
+            this.trumpetBox.addChild(btnTrumpet);
+
+
+            var self = this;
+
+            //当前玩家喇叭情况, 如果没有则显示快捷购买喇叭
+            UniversalController.getMyItemList(function (data) {
+
+                if (data.code != RETURN_CODE.OK) {
+                    return;
+                }
+
+                if (data.itemList.length == 0) {
+                    self.trumpetVal = 0;
+                }
+
+                _.each(data.itemList, function (item) {
+                    if (item.id == 2) {
+                        self.trumpetVal = item.value;
+                    }
+                });
+
+                if (self.trumpetVal > 0) {
+                    self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个", "AmericanTypewriter", 20);
+                    self.trumpetCountString.setAnchorPoint(0, 0.5);
+                    self.trumpetCountString.setPosition(280, 170);
+                    self.trumpetCountString.color = {r: 0, g: 255, b: 127};
+                    self.trumpetBox.addChild(self.trumpetCountString);
+
+                    //
+                    var trumpetCountIcon = new cc.Sprite("#common_icon_laba.png");
+                    trumpetCountIcon.scale = 0.4;
+                    trumpetCountIcon.setPosition(230, 170);
+                    trumpetCountIcon.setAnchorPoint(0, 0.5);
+                    self.trumpetBox.addChild(trumpetCountIcon);
+                }
+                else {
+                    var trumpetCountString = new cc.LabelTTF("您当前没有小喇叭, 可前往商城购买", "AmericanTypewriter", 20);
+                    trumpetCountString.setPosition(230, 170);
+                    trumpetCountString.setAnchorPoint(0, 0.5);
+                    trumpetCountString.color = cc.color.RED;
+                    self.trumpetBox.addChild(trumpetCountString);
+                }
+
+
+            });
+
+
+            this.addChild(this.trumpetBox, 77);
+
+        }
+    },
+
+    doTrumpetChat: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                if (this.trumpetVal == 0) {
+                    prompt.fadeMiddle('您没有小喇叭,可在商城购买后使用');
+                    return;
+                }
+
+                var content = this.trumpetContent.getString();
+                if (content == '') {
+                    prompt.fadeMiddle('请输入喇叭内容');
+                    return;
+                }
+
+                this.trumpetVal -= 1;
+                this.trumpetCountString.setString('您还有'+this.trumpetVal+'个');
+                GameController.chat(GAME.CHAT.SCOPE_ALL, '', '', content);
+                this.trumpetBox.removeFromParent(true);
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
                 break;
 
             default:

@@ -165,7 +165,7 @@ pomelo.on(gameEvents.CHAT, function (data) {
 //喇叭
 pomelo.on(gameEvents.BROADCAST, function (data) {
     //console.log('receive onBroadcast event.', data);
-
+    EventBus.publish(gameEvents.BROADCAST, data);
 });
 
 /**

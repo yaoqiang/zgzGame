@@ -439,6 +439,7 @@ ChatInGameLayer.prototype = {
                 this.trumpetVal -= 1;
                 this.trumpetCountString.setString('您还有'+this.trumpetVal+'个');
                 GameController.chat(GAME.CHAT.SCOPE_ALL, '', '', content);
+                this.box.removeFromParent(true);
 
                 break;
 
