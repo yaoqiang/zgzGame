@@ -217,6 +217,14 @@ var RichRankingListLayer = cc.Layer.extend({
         nickNameLabel.setPosition(xx, this.m_nCelleHeight / 2 + 4);
         cell.addChild(nickNameLabel);
 
+        //summary
+        var summary = oneRanking.summary || '';
+        var summaryLabel = new cc.LabelTTF(summary, "Arial", 20);
+        summaryLabel.color = {r: 0, g: 255, b: 127};
+        summaryLabel.setAnchorPoint(0, 0);
+        summaryLabel.setPosition(xx + 250, this.m_nCelleHeight / 2 + 4);
+        cell.addChild(summaryLabel);
+
         //
         var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
         goldIcon.setPosition(xx, this.m_nCelleHeight / 2 - 30);
@@ -371,6 +379,14 @@ var GodRankingListLayer = cc.Layer.extend({
         nickNameLabel.setAnchorPoint(0, 0);
         nickNameLabel.setPosition(xx, this.m_nCelleHeight / 2 + 4);
         cell.addChild(nickNameLabel);
+
+        //summary
+        var summary = oneRanking.summary || '';
+        var summaryLabel = new cc.LabelTTF(summary, "Arial", 20);
+        summaryLabel.color = {r: 0, g: 255, b: 127};
+        summaryLabel.setAnchorPoint(0, 0);
+        summaryLabel.setPosition(xx + 250, this.m_nCelleHeight / 2 + 4);
+        cell.addChild(summaryLabel);
 
         //
         var percentIcon = new cc.LabelTTF("胜率:", "Arial", 22);
@@ -531,6 +547,14 @@ var RechargeRankingListLayer = cc.Layer.extend({
         nickNameLabel.setAnchorPoint(0, 0);
         nickNameLabel.setPosition(xx, this.m_nCelleHeight / 2 + 4);
         cell.addChild(nickNameLabel);
+
+        //summary
+        var summary = oneRanking.summary || '';
+        var summaryLabel = new cc.LabelTTF(summary, "Arial", 20);
+        summaryLabel.color = {r: 0, g: 255, b: 127};
+        summaryLabel.setAnchorPoint(0, 0);
+        summaryLabel.setPosition(xx + 250, this.m_nCelleHeight / 2 + 4);
+        cell.addChild(summaryLabel);
 
         //
         var rechargeIcon = new cc.LabelTTF("充值:", "Arial", 22);

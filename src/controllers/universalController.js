@@ -210,7 +210,7 @@ UniversalController.getShopList = function (cb) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
 
-    var device = cc.sys.os == cc.sys.OS_IOS ? 'ios' : 'android';
+    var device = gOS;
     pomelo.request(route.getShopList, {device: device}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
 

@@ -148,7 +148,7 @@ AuthController.autoLogin = function()
 
     Network.post({
         action : 'autoLogin',
-        args : {},
+        args : {os: gOS},
         onSuccess : function(result) {
 
             if (result.code == 1001)

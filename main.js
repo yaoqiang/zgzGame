@@ -8,6 +8,7 @@ cc.game.onStart = function(){
 
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
 
+        gOS = cc.sys.os == cc.sys.OS_IOS ? 'ios' : 'android';
         //init data conf
         if (!Storage.get(CommonConf.LOCAL_STORAGE.INIT)) {
             Storage.init();

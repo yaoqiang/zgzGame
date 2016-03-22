@@ -54,7 +54,7 @@ var Network = {
                     //标识已连接到connector
                     gHasConnector = true;
                     var route = 'connector.entryHandler.enter';
-                    pomelo.request(route, {uid: uid, token: token}, function (data) {
+                    pomelo.request(route, {uid: uid, token: token, os: gOS}, function (data) {
                         cb(data);
                     });
                 });
