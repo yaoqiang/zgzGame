@@ -2,7 +2,7 @@ var LoginScene = cc.Scene.extend({
     ctor: function () {
         this._super();
 
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist);
+        this.addSpriteRes();
         var layer = new LoginLayer();
         this.addChild(layer);
 

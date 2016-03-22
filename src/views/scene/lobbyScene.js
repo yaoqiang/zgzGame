@@ -37,7 +37,7 @@ var LobbyScene = cc.Scene.extend({
         cc.spriteFrameCache.addSpriteFrames(res.common_plist);
         cc.spriteFrameCache.addSpriteFrames(res.index_plist);
 
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.login_plist);
     },
     removeSpriteRes: function () {
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.room_plist);
@@ -45,13 +45,13 @@ var LobbyScene = cc.Scene.extend({
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
         cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_plist);
 
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.login_plist);
+        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.login_plist);
     },
 
     onExit: function() {
         this._super();
         //
-        //this.removeSpriteRes();
+       // this.removeSpriteRes();
         cc.eventManager.removeListener(this.keyboardListener);
     }
 
