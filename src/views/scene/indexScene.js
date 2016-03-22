@@ -11,10 +11,7 @@ var IndexScene = cc.Scene.extend({
         this._super();
 
         var self = this;
-
-        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        this.addSpriteRes();
 
         //header
         var headerLayer = new HeaderLayer({lobbyId: undefined});
@@ -57,10 +54,25 @@ var IndexScene = cc.Scene.extend({
         }, this);
 
     },
+    addSpriteRes: function () {
+        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.room_plist);
 
+        cc.spriteFrameCache.addSpriteFrames(res.login_plist);
+    },
+    removeSpriteRes: function () {
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.avatar_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.room_plist);
+
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.login_plist);
+    },
     onExit: function () {
         this._super();
-
+        this.removeSpriteRes();
         cc.eventManager.removeListener(this.keyboardListener);
 
     }

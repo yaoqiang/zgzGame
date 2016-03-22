@@ -2,25 +2,20 @@ var GameScene = cc.Scene.extend({
     ctor: function (args, isBackGame) {
         this._super();
 
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
+
 
         gGameSenceCompleted = false;
         var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
 
     }
-
-
 });
 
 var GameLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args, isBackGame) {
         this._super();
-
+        this.addSpriteRes();
         this.initSubscribeEvent();
 
         this.m_pData = args;
@@ -58,6 +53,24 @@ var GameLayer = cc.Layer.extend({
             this.init();
         }
 
+    },
+    addSpriteRes: function () {
+        cc.spriteFrameCache.addSpriteFrames(res.game_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+
+        //cc.spriteFrameCache.addSpriteFrames(res.index_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.login_plist);
+    },
+    removeSpriteRes: function () {
+        //cc.spriteFrameCache.removeSpriteFrameByName(res.game_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.poker_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.avatar_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.exp_plist);
+        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
     },
 
     initSubscribeEvent: function () {
@@ -1235,6 +1248,8 @@ var GameLayer = cc.Layer.extend({
 
         //
         cc.eventManager.removeListener(this.keyboardListener);
+
+        this.removeSpriteRes();
     }
 
 
