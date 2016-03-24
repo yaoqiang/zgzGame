@@ -2,22 +2,10 @@ var LoginScene = cc.Scene.extend({
     ctor: function () {
         this._super();
 
-        this.addSpriteRes();
+        cc.spriteFrameCache.addSpriteFrames(res.login_plist);
         var layer = new LoginLayer();
         this.addChild(layer);
 
-    },
-    addSpriteRes: function () {
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist);
-    },
-    removeSpriteRes: function () {
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.login_plist);
-    },
-
-    onExit: function() {
-        this._super();
-        //
-        this.removeSpriteRes();
     }
 
 });

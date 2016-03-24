@@ -2,7 +2,11 @@ var LobbyScene = cc.Scene.extend({
     lobbyTitle: ['扎股子-五人', '扎股子-六人', '扎股子-七人'],
     ctor: function (data, lobbyId) {
         this._super();
-        this.addSpriteRes();
+
+        cc.spriteFrameCache.addSpriteFrames(res.room_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
 
         //header
         var headerLayer = new HeaderLayer({title: this.lobbyTitle[lobbyId], lobbyId: lobbyId});
@@ -31,27 +35,9 @@ var LobbyScene = cc.Scene.extend({
         }, this);
     },
 
-    addSpriteRes: function () {
-        cc.spriteFrameCache.addSpriteFrames(res.room_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
-
-        //cc.spriteFrameCache.addSpriteFrames(res.login_plist);
-    },
-    removeSpriteRes: function () {
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.room_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.avatar_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.common_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.index_plist);
-
-        //cc.spriteFrameCache.removeSpriteFramesFromFile(res.login_plist);
-    },
-
     onExit: function() {
         this._super();
         //
-       // this.removeSpriteRes();
         cc.eventManager.removeListener(this.keyboardListener);
     }
 

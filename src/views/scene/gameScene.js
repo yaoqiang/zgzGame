@@ -1,37 +1,26 @@
 var GameScene = cc.Scene.extend({
     ctor: function (args, isBackGame) {
         this._super();
-        this.addSpriteRes();
 
+        cc.spriteFrameCache.addSpriteFrames(res.game_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
 
         gGameSenceCompleted = false;
         var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
 
-    },
-    addSpriteRes: function () {
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
-    },
-    removeSpriteRes: function () {
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.game_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.poker_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.avatar_plist);
-        cc.spriteFrameCache.removeSpriteFramesFromFile(res.exp_plist);
-    },
-    onExit: function () {
-        this._super();
-        this.removeSpriteRes();
     }
+
+
 });
 
 var GameLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args, isBackGame) {
         this._super();
+
         this.initSubscribeEvent();
 
         this.m_pData = args;
@@ -1241,12 +1230,11 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
         cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
         cc.eventManager.removeCustomListeners(gameEvents.CHAT);
-        cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
+        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
         cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
 
         //
         cc.eventManager.removeListener(this.keyboardListener);
-
     }
 
 
