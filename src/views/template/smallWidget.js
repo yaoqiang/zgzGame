@@ -427,3 +427,119 @@ var DialogSmall = function (title, mode, callback, target, scale) {
     var box = new DialogSmallNode(title, mode, callback, target, scale);
     return box;
 };
+
+
+var UpdataDataAppNode = cc.Node.extend({
+    ctor: function (level, url, msg) {
+        this._super();
+//类变量
+        console.log(" onUrlCallback");
+        this.level = level||1;
+        this.url = url||"https://www.baidu.com/";
+        this.m_msg = msg||"发现新版本，请更新";
+        this.init({});
+        console.log(" onUrlCallback");
+    },
+    onEnter: function () {
+        this._super();
+    },
+    onExit: function () {
+        this._super();
+    },
+
+    init: function (args) {
+        if (this.m_bRun) return;
+        this.m_bRun = true;
+        this._super();
+        console.log(" onUrlCallback 1");
+        var self = this;
+        var sg = new MaskLayer(false);
+        this.addChild(sg);
+
+        var winSize = cc.director.getWinSize();
+
+        var bg = new cc.Scale9Sprite(res.common_box_1, cc.rect(90, 50, 10, 10));
+        bg.width = winSize.width / 2.0;
+        bg.height = winSize.height / 2.;
+        bg.x = winSize.width / 2.0;
+        bg.y = winSize.height / 2.0;
+        this.addChild(bg);
+
+        this.m_pLable = new cc.LabelTTF(this.m_msg, "Arial", 22);
+        this.m_pLable.color = cc.color.WHITE;
+        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2 + 30);
+        this.addChild(this.m_pLable);
+
+
+        //mode switch
+        if (this.level == 2) {
+            //确定
+            this.okNormal = new cc.Sprite("#common_btn_hong.png");
+            this.okSelected = new cc.Sprite("#common_btn_hong.png");
+            this.okDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, this.onUrlCallback, this);
+            //this.okButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.okButton);
+            menuItem.setPosition(winSize.width / 2 - 160, winSize.height / 2 - 180);
+            menuItem.scale = 0.6;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.okButton.getContentSize();
+            this.okLabel = new cc.LabelTTF("确定", "Arial", 22);
+            this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.okButton.addChild(this.okLabel);
+        } else {
+            //确定
+            this.okNormal = new cc.Sprite("#common_btn_lv.png");
+            this.okSelected = new cc.Sprite("#common_btn_lv.png");
+            this.okDisabled = new cc.Sprite("#common_btn_lv.png");
+            this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, this.onUrlCallback, this);
+            //this.okButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.okButton);
+            menuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 180);
+            menuItem.scale = 0.6;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.okButton.getContentSize();
+            this.okLabel = new cc.LabelTTF( "确定", "Arial", 22);
+            this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.okButton.addChild(this.okLabel);
+
+            //取消
+            this.cancelNormal = new cc.Sprite("#common_btn_hong.png");
+            this.cancelSelected = new cc.Sprite("#common_btn_hong.png");
+            this.cancelDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.cancelButton = new cc.MenuItemSprite(this.cancelNormal, this.cancelSelected, this.cancelDisabled, this.onExitCallback, this);
+            //this.cancelButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.cancelButton);
+            menuItem.setPosition(winSize.width / 2 - 80, winSize.height / 2 - 180);
+            menuItem.scale = 0.6;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.cancelButton.getContentSize();
+            this.cancelLabel = new cc.LabelTTF( "取消", "Arial", 22);
+            this.cancelLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.cancelButton.addChild(this.cancelLabel);
+        }
+
+    },
+
+    onExitCallback: function () {
+        console.log(" onExitCallback");
+        playEffect(audio_common.Button_Click);
+        this.removeFromParent(true);
+    },
+    onUrlCallback: function () {
+        console.log(" onUrlCallback");
+        playEffect(audio_common.Button_Click);
+        cc.openURL();
+    }
+});
+//level: 1: 可更新可不更新, 2: 强制更新
+//url：更新地址
+var UpdataDataApp = function (level, url, msg) {
+    var box = new UpdataDataAppNode(level, url, msg);
+    cc.director.getRunningScene().addChild(box,100);
+};
+
+//cc.openURL

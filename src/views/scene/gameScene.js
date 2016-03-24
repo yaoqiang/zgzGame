@@ -908,6 +908,10 @@ var GameLayer = cc.Layer.extend({
         this.m_pPokerLayer.setFanOutCards(cards, actorNr);
 
         this.audioCard(cardRecognization, actorNr);
+        if (cardRecognization == null) {
+            var random = Math.floor(Math.random() * 2);
+            this.m_pTableLayer.showSay(text, actorNr);
+        }
     },
 
     fanCountdownEvent: function (data) {
@@ -1176,6 +1180,7 @@ var GameLayer = cc.Layer.extend({
         if (cardRecognization == null) {
             var random = Math.floor(Math.random() * 2);
             playEffect(audio_fanmenu.Pass[random][sex]);
+            this.m_pTableLayer.showSay(PassText[random], actorNr);
             return;
         }
         if (cardRecognization.cardSeries > 2) {
