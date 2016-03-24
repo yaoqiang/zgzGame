@@ -401,6 +401,8 @@ var PokerLayer = cc.Layer.extend({
     setFanOutCards: function (cardsVector, actorNr) {
         var len = cardsVector.length;
         if (len == 0) {
+            //显示不出
+
             return;
         }
 

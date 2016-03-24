@@ -28,13 +28,13 @@ var LoadingNode = cc.Node.extend({
         var sg = new MaskLayer(false);
 
 
-        this.bg = new cc.Sprite("#loading_bg.png");
+        this.bg = new cc.Sprite(res.loadingBg);
         this.bg.scaleY = 1.2;
         this.bg.setPosition(winSize.width / 2, winSize.height / 2);
 
         sg.addChild(this.bg);
 
-        this.icon = new cc.Sprite("#loading.png");
+        this.icon = new cc.Sprite(res.loading);
         this.icon.setPosition(winSize.width / 2, winSize.height / 2 + 15);
         this.icon.scale = 1.2;
         sg.addChild(this.icon);
@@ -101,7 +101,7 @@ var AlertBoxNode = cc.Node.extend({
         this.m_bRun = false;
         this.m_bgWidth = 300;
         this.m_bgHeight = 180;
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.common_plist);
 
         this.init({});
     },
@@ -127,7 +127,7 @@ var AlertBoxNode = cc.Node.extend({
         var winSize = cc.director.getWinSize();
 
         // var bg = new cc.Sprite("#common_box_1.png");
-        var bg = new cc.Scale9Sprite("common_box_1.png", cc.rect(90, 50, 10, 10));
+        var bg = new cc.Scale9Sprite(res.common_box_1, cc.rect(90, 50, 10, 10));
         bg.width = this.m_bgWidth;
         bg.height = this.m_bgHeight;
         bg.x = winSize.width / 2.0;
@@ -142,7 +142,7 @@ var AlertBoxNode = cc.Node.extend({
         this.addChild(this.m_pLable);
 
         //ok
-        var okItem = new cc.MenuItemImage("#common_btn_lan.png", "#common_btn_lv.png", this.onOkCallback, this);
+        var okItem = new cc.MenuItemImage(res.common_btn_lan, res.common_btn_lv, this.onOkCallback, this);
         okItem.setScale(0.65);
         okItem.x = winSize.width / 2;
         okItem.y = winSize.height / 2 - this.m_bgHeight / 2 + 30;
@@ -154,7 +154,7 @@ var AlertBoxNode = cc.Node.extend({
         okLable.y = okSize.height / 2;
         okItem.addChild(okLable);
         //close
-        var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
+        var closeItem = new cc.MenuItemImage(res.common_btn_shanchu, res.common_btn_shanchu, this.onExitCallback, this);
         closeItem.setScale(0.65);
         closeItem.x = winSize.width / 2 + this.m_bgWidth / 2 - 5;
         closeItem.y = winSize.height / 2 + this.m_bgHeight / 2 - 5;

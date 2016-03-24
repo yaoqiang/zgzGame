@@ -28,9 +28,17 @@ var res = {
     settings_plist : "res/settings.plist",
     shop_plist : "res/shop.plist",
     task_plist : "res/task.plist",
-    exp_plist: "res/free_expression.plist"
+    exp_plist: "res/free_expression.plist",
     //effect
 
+
+    //res/x.png
+    loadingBg: "res/loading_bg.png",
+    loading: "res/loading.png",
+    common_box_1: "res/common_box_1.png",
+    common_btn_lan: "res/common_btn_lan.png",
+    common_btn_lv: "res/common_btn_lv.png",
+    common_btn_shanchu: "res/common_btn_shanchu.png"
 
     //dev
 };
