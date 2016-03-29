@@ -11,9 +11,17 @@ var GameScene = cc.Scene.extend({
         var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
 
+    },
+
+    onEnter: function () {
+        this._super();
+
+        EventQueue.dispatchEventFromQueue();
+        gGameSenceCompleted = true;
+    },
+    onExit: function () {
+        this._super();
     }
-
-
 });
 
 var GameLayer = cc.Layer.extend({
@@ -909,8 +917,8 @@ var GameLayer = cc.Layer.extend({
 
         this.audioCard(cardRecognization, actorNr);
         if (cardRecognization == null) {
-            var random = Math.floor(Math.random() * 2);
-            this.m_pTableLayer.showSay(text, actorNr);
+            //var random = Math.floor(Math.random() * 2);
+            //this.m_pTableLayer.showSay(text, actorNr);
         }
     },
 
@@ -1218,7 +1226,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onExit: function () {
-        gGameSenceCompleted = false;
+
         this._super();
         //event
         cc.eventManager.removeCustomListeners(gameEvents.JOIN);
