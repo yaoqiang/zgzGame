@@ -287,6 +287,21 @@ var CommonConf = {
             CANCELED: "CANCELED",
             FINISHED: "FINISHED"
         }
+    },
+
+    PAYMENT: {
+        CHANNEL: {
+            alipay: 'alipay',
+            alipay_wap: 'alipay_wap',
+            alipay_qr: 'alipay_qr',
+            alipay_pc_direct: "alipay_pc_direct",
+            apple_pay: "apple_pay",
+            upacp: "upacp",
+            upacp_wap: "upacp_wap",
+            upacp_pc: "upacp_pc",
+            cp_b2b: "cp_b2b",
+            wx: "wx"
+        }
     }
 }
 

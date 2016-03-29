@@ -226,20 +226,19 @@ var ShopLayer = cc.Layer.extend({
         if (cc.sys.os == cc.sys.OS_IOS) {
             sdkbox.IAP.purchase(this.productId);
         } else {
-            prompt.fadeMiddle('安卓支付即将支持..')
+            var paymentLayer = new PaymentLayer(this.productId);
+            this.addChild(paymentLayer);
         }
 
     },
+
+
 
 
     paymentCallback: function () {
 
 
     },
-
-
-
-
 
     onEnter: function () {
         this._super();

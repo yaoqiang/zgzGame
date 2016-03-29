@@ -32,6 +32,17 @@ UpgradeLayer.prototype = {
     ensureCallback: function (cb) {
 
         //window.open('itms://itunes.apple.com/cn/app/apple-store/id375380948?mt=8');
+
+        if (gOS === cc.sys.OS_IOS) {
+            prompt.fadeMiddle('请前往Apple Store更新')
+        }
+        else {
+            cc.loader.loadJson("res/game_config.json", function (err, config) {
+                erun.openBrowser(config.release_url_android);
+            });
+        }
+
+
     },
 
     cancelCallback: function (cb) {

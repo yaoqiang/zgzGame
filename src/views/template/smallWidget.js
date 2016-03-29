@@ -347,9 +347,9 @@ var DialogSmallNode = cc.Node.extend({
 
         } else if (this.mode == 2) {
             //确定
-            this.okNormal = new cc.Sprite("#common_btn_hong.png");
-            this.okSelected = new cc.Sprite("#common_btn_hong.png");
-            this.okDisabled = new cc.Sprite("#common_btn_hong.png");
+            this.okNormal = new cc.Sprite("#common_btn_lv.png");
+            this.okSelected = new cc.Sprite("#common_btn_lv.png");
+            this.okDisabled = new cc.Sprite("#common_btn_lv.png");
             this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, function () {
                 self.callback.ensureCallback.call(self.target, function (close) {
                     if (close) {

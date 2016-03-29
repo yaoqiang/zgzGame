@@ -234,8 +234,12 @@ UniversalController.getRankingList = function (data, cb) {
     });
 }
 
+////////////////////////////////
+// 支付相关
+////////////////////////////////
+
 /**
- * 支付
+ * 发送IAP支付结果
  */
 UniversalController.payment = function (product) {
     pomelo.notify(route.sendPaymentResult, {productId: product.name, product: product});
@@ -291,6 +295,28 @@ UniversalController.initIAP = function () {
 }
 
 /**
+ * 请求创建pingpp支付charge
+ * @param channel
+ * @param productId
+ * @param device
+ * @param cb
+ */
+UniversalController.requestPaymentByPingpp = function (channel, productId, device, cb) {
+    pomelo.request(route.requestPaymentByPingpp, {channel: channel, productId: productId, device: gOS}, cb);
+}
+
+/**
+ * 当客户端支付失败或取消支付时, 向服务器上报
+ * @param state: success, fail, cancel, invalid
+ * @param cb
+ */
+UniversalController.payment4PingppFromClient = function (state, cb) {
+    pomelo.request(route.payment4PingppFromClient, {state: state}, cb);
+}
+
+
+
+/**
  * 获取最新版本信息
  */
 UniversalController.getTopOfAppReleaseRecord = function () {
@@ -301,7 +327,10 @@ UniversalController.getTopOfAppReleaseRecord = function () {
 }
 
 UniversalController.getSystemMessage = function (cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
     pomelo.request(route.getSystemMessage, {}, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
