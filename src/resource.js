@@ -195,4 +195,9 @@ var audio_chat = [
     ["res/audio/chat/Audio_Dialog8_M.mp3", "res/audio/chat/Audio_Dialog8_W.mp3"],
     ["res/audio/chat/Audio_Dialog9_M.mp3", "res/audio/chat/Audio_Dialog9_W.mp3"],
     ["res/audio/chat/Audio_Dialog10_M.mp3", "res/audio/chat/Audio_Dialog10_W.mp3"],
+];
+var PassText = [
+    "pass！",
+    "不要！",
+    "过！"
 ]

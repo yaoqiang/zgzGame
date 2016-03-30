@@ -6,6 +6,13 @@ var LoginScene = cc.Scene.extend({
         var layer = new LoginLayer();
         this.addChild(layer);
 
+
+    },
+    onEnter: function () {
+        this._super();
+
+       // UpdataDataApp(1, null, null);
+
     }
 
 });

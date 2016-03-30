@@ -11,9 +11,17 @@ var GameScene = cc.Scene.extend({
         var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
 
+    },
+
+    onEnter: function () {
+        this._super();
+
+        EventQueue.dispatchEventFromQueue();
+        gGameSenceCompleted = true;
+    },
+    onExit: function () {
+        this._super();
     }
-
-
 });
 
 var GameLayer = cc.Layer.extend({
@@ -908,6 +916,10 @@ var GameLayer = cc.Layer.extend({
         this.m_pPokerLayer.setFanOutCards(cards, actorNr);
 
         this.audioCard(cardRecognization, actorNr);
+        if (cardRecognization == null) {
+            //var random = Math.floor(Math.random() * 2);
+            //this.m_pTableLayer.showSay(text, actorNr);
+        }
     },
 
     fanCountdownEvent: function (data) {
@@ -1176,6 +1188,7 @@ var GameLayer = cc.Layer.extend({
         if (cardRecognization == null) {
             var random = Math.floor(Math.random() * 2);
             playEffect(audio_fanmenu.Pass[random][sex]);
+            this.m_pTableLayer.showSay(PassText[random], actorNr);
             return;
         }
         if (cardRecognization.cardSeries > 2) {
@@ -1213,7 +1226,7 @@ var GameLayer = cc.Layer.extend({
     },
 
     onExit: function () {
-        gGameSenceCompleted = false;
+
         this._super();
         //event
         cc.eventManager.removeCustomListeners(gameEvents.JOIN);
