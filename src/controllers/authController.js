@@ -30,34 +30,7 @@ AuthController.login = function(username, password)
                 return;
             }
 
-            var uid = result.uid;
-            var token = result.token;
-
-            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, token);
-
-            Network.enter(uid, token, function (data) {
-                if (data.code !== RETURN_CODE.OK)
-                {
-                    //console.log('err.');
-                    prompt.fade(data.message);
-                    return;
-                }
-
-                //INIT
-                Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
-                UniversalController.initIAP();
-
-                //初始化全局变量gPlayer;
-                gPlayer = data.player;
-                //console.log("gPlayer => ", gPlayer);
-
-                //如果是断线重回游戏, 则不需要自动进入大厅;
-                if (data.isBackGame) return;
-
-                //进入Index
-                UniversalController.enterIndex();
-
-            });
+            AuthController.enter(result);
 
         },
 
@@ -104,35 +77,7 @@ AuthController.loginWithToken = function(token, cb)
                 return;
             }
 
-            var uid = result.uid;
-            var token = result.token;
-
-            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, token);
-
-            Network.enter(uid, token, function (data) {
-                if (data.code !== RETURN_CODE.OK)
-                {
-                    //console.log('err.');
-                    prompt.fade(data.message);
-                    return;
-                }
-
-                //INIT
-                Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
-                UniversalController.initIAP();
-
-                //初始化全局变量gPlayer;
-                gPlayer = data.player;
-                //console.log("#gPlayer => ", gPlayer);
-                if (cb) cb();
-
-                //如果是断线重回游戏, 则不需要自动进入大厅;
-                if (data.isBackGame) return;
-
-                //进入Index
-                UniversalController.enterIndex();
-
-            });
+            AuthController.enter(result);
 
         },
 
@@ -171,35 +116,8 @@ AuthController.autoLogin = function()
                 return;
             }
 
+            AuthController.enter(result);
 
-            var uid = result.uid;
-            var token = result.token;
-
-            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, token);
-
-            Network.enter(uid, token, function (data) {
-                if (data.code !== RETURN_CODE.OK)
-                {
-                    //console.log('err.');
-                    prompt.fade(data.message);
-                    return;
-                }
-
-                //INIT
-                Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
-                UniversalController.initIAP();
-
-                //初始化全局变量gPlayer;
-                gPlayer = data.player;
-                //console.log("gPlayer => ", gPlayer);
-
-                //如果是断线重回游戏, 则不需要自动进入大厅;
-                if (data.isBackGame) return;
-
-                //进入Index
-                UniversalController.enterIndex();
-
-            });
 
         },
 
@@ -210,4 +128,36 @@ AuthController.autoLogin = function()
 
 }
 
+
+AuthController.enter = function (result) {
+    var uid = result.uid;
+    var token = result.token;
+
+    Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, token);
+
+    Network.enter(uid, token, function (data) {
+        if (data.code !== RETURN_CODE.OK)
+        {
+            //console.log('err.');
+            prompt.fade(data.message);
+            return;
+        }
+
+        //INIT
+        Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
+        UniversalController.initIAP();
+
+        //初始化全局变量gPlayer;
+        gPlayer = data.player;
+        //console.log("gPlayer => ", gPlayer);
+
+        playBackMusic();
+        //如果是断线重回游戏, 则不需要自动进入大厅;
+        if (data.isBackGame) return;
+
+        //进入Index
+        UniversalController.enterIndex();
+
+    });
+}
 

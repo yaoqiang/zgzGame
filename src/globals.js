@@ -12,8 +12,14 @@ var gWebSvrAddr = {
     port: 3001
 }
 
-//网络状态,
+//网络状态,是否与connector服务连接
 var gHasConnector = false;
+
+//全局"连接中.." bar(loading bar)
+var gConnectingBar = null;
+
+//
+var gOS = 'android'
 
 var gPlayer = {};
 var gLobbyId = 0;

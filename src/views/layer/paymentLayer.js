@@ -22,7 +22,6 @@ PaymentLayer.prototype = {
                 cc.director.getRunningScene().addChild(loadingBar, 100);
                 UniversalController.requestPaymentByPingpp(self.channel, productId, gOS, function (data) {
                     if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
-                    console.log('charge => ', data);
                     if (data.code === RETURN_CODE.FAIL) {
                         prompt.fadeMiddle("支付请求发送失败, 请重新支付");
                         return;

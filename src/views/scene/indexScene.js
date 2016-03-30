@@ -4,7 +4,9 @@ var IndexScene = cc.Scene.extend({
         this._super();
         //var pLayer = new lobbyTableLayer({});
         //this.addChild(pLayer);
-        playBackMusic();
+
+        //移动到登录成功后, 因为重回游戏不再进入index, 会导致背景音乐无效
+        //playBackMusic();
     },
 
     ctor: function (lobbyData) {
