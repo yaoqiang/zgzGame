@@ -1,23 +1,26 @@
 var GameScene = cc.Scene.extend({
     ctor: function (args, isBackGame) {
         this._super();
+        if (!cc.eventManager.isEnabled()) {
+            cc.eventManager.setEnabled(true);
+        }
 
         cc.spriteFrameCache.addSpriteFrames(res.game_plist);
         cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
         cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
         cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
 
-        gGameSenceCompleted = false;
         var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
-
     },
 
     onEnter: function () {
+
         this._super();
 
-        EventQueue.dispatchEventFromQueue();
-        gGameSenceCompleted = true;
+        if (!cc.eventManager.isEnabled()) {
+            cc.eventManager.setEnabled(true);
+        }
     },
     onExit: function () {
         this._super();
@@ -28,8 +31,17 @@ var GameLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args, isBackGame) {
         this._super();
+        if (!cc.eventManager.isEnabled()) {
+            cc.eventManager.setEnabled(true);
+        }
 
         this.initSubscribeEvent();
+        EventQueue.dispatchEventFromQueue();
+
+
+        //
+        gGameSceneCompleted = false;
+
 
         this.m_pData = args;
         this.m_pTableLayer = null;  //zOrder: 2x
@@ -66,12 +78,49 @@ var GameLayer = cc.Layer.extend({
             this.init();
         }
 
+
+
+    },
+
+    onEnter: function () {
+        this._super();
+
+
+
+
+        //gGameSceneCompleted = true;
+
+    },
+
+    onExit: function () {
+
+        this._super();
+        //event
+        cc.eventManager.removeCustomListeners(gameEvents.JOIN);
+        cc.eventManager.removeCustomListeners(gameEvents.LEAVE);
+        cc.eventManager.removeCustomListeners(gameEvents.READY);
+        cc.eventManager.removeCustomListeners(gameEvents.START);
+        cc.eventManager.removeCustomListeners(gameEvents.TALK_COUNTDOWN);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN_COUNTDOWN);
+        cc.eventManager.removeCustomListeners(gameEvents.TALK);
+        cc.eventManager.removeCustomListeners(gameEvents.OVER);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN_FINISHED);
+        cc.eventManager.removeCustomListeners(gameEvents.FAN_WHEN_IS_RED);
+        cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
+        cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
+        cc.eventManager.removeCustomListeners(gameEvents.CHAT);
+        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
+        cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
+
+        //
+        cc.eventManager.removeListener(this.keyboardListener);
     },
 
     initSubscribeEvent: function () {
         var selfPointer = this;
-
         EventBus.subscribe(gameEvents.JOIN, function (data) {
+            //cc.log("---->game  joinEvent: ", data);
             selfPointer.joinEvent(data);
         })
 
@@ -151,11 +200,16 @@ var GameLayer = cc.Layer.extend({
         });
 
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
-            selfPointer.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
+            if (selfPointer && cc.sys.isObjectValid(selfPointer)) {
+                selfPointer.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
+            }
         });
 
         EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
-            selfPointer.ingotValue.setString(zgzNumeral(data.ingot).format('0,0'))
+            if (selfPointer && cc.sys.isObjectValid(selfPointer)) {
+                selfPointer.ingotValue.setString(zgzNumeral(data.ingot).format('0,0'))
+            }
+
         });
 
         //
@@ -438,7 +492,6 @@ var GameLayer = cc.Layer.extend({
     },
 
     onActorAvatarClicked: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         var self = this;
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
@@ -449,6 +502,8 @@ var GameLayer = cc.Layer.extend({
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
+
                 UniversalController.getProfileByUid(this.m_uid, function (data) {
                     cc.director.getRunningScene().addChild(new PlayerProfileLayer(data), 21);
                 });
@@ -484,7 +539,6 @@ var GameLayer = cc.Layer.extend({
     },
 
     onExpressBtnClicked: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
 
@@ -495,6 +549,7 @@ var GameLayer = cc.Layer.extend({
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
 
                 var chatLayer = new ChatInGameLayer();
                 this.addChild(chatLayer, 22);
@@ -768,6 +823,7 @@ var GameLayer = cc.Layer.extend({
 
 //event
     joinEvent: function (data) {
+        console.log('????????????', data);
         this.addActorToList(data.actor);
         this.updateOneActorHD(data.actor, 1);
         playEffect(audio_common.Player_Come_In);
@@ -1021,7 +1077,6 @@ var GameLayer = cc.Layer.extend({
     },
 
     trusteeship: function (sender, type) {
-        playEffect(audio_common.Button_Click);
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
 
@@ -1032,6 +1087,8 @@ var GameLayer = cc.Layer.extend({
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
+
                 GameController.trusteeship(gRoomId, gGameId);
                 break;
 
@@ -1218,37 +1275,9 @@ var GameLayer = cc.Layer.extend({
         //var roomInfoLabel = new cc.LabelTTF("底注:"+this.m_pData.base, "Arial", 34);
         //var gameShare = new cc.LabelTTF("股数:"+share, "Arial", 34);
 
-    },
-
-    onEnter: function () {
-        this._super();
-
-    },
-
-    onExit: function () {
-
-        this._super();
-        //event
-        cc.eventManager.removeCustomListeners(gameEvents.JOIN);
-        cc.eventManager.removeCustomListeners(gameEvents.LEAVE);
-        cc.eventManager.removeCustomListeners(gameEvents.READY);
-        cc.eventManager.removeCustomListeners(gameEvents.START);
-        cc.eventManager.removeCustomListeners(gameEvents.TALK_COUNTDOWN);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN_COUNTDOWN);
-        cc.eventManager.removeCustomListeners(gameEvents.TALK);
-        cc.eventManager.removeCustomListeners(gameEvents.OVER);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN_FINISHED);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN_WHEN_IS_RED);
-        cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
-        cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
-        cc.eventManager.removeCustomListeners(gameEvents.CHAT);
-        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
-        cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
-
-        //
-        cc.eventManager.removeListener(this.keyboardListener);
     }
+
+
 
 
 });

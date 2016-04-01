@@ -151,7 +151,9 @@ var ExchangeTabLayer = cc.Layer.extend({
         var self = this;
 
         EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
-            self.ingot.setString(zgzNumeral(data.ingot).format('0,0'))
+            if (self && cc.sys.isObjectValid(self)) {
+                self.ingot.setString(zgzNumeral(data.ingot).format('0,0'))
+            }
         });
     },
 

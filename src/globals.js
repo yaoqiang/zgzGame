@@ -63,7 +63,7 @@ ZGZ.GAME_TYPE = {
 
 ZGZ.SCALE = 1;
 
-var gGameSenceCompleted = false;
+var gGameSceneCompleted = false;
 
 var lobbyName = [
     "五人场",

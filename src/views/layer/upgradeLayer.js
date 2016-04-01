@@ -31,13 +31,13 @@ UpgradeLayer.prototype = {
 
     ensureCallback: function (cb) {
 
-        //window.open('itms://itunes.apple.com/cn/app/apple-store/id375380948?mt=8');
 
         if (gOS === cc.sys.OS_IOS) {
             prompt.fadeMiddle('请前往Apple Store更新')
         }
         else {
             cc.loader.loadJson("res/game_config.json", function (err, config) {
+                //erun是通过js-binding定义在c++的
                 erun.openBrowser(config.release_url_android);
             });
         }

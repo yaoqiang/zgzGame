@@ -54,7 +54,7 @@ var PlayerLayer = cc.Layer.extend({
         this.m_avatar = -1;
 
         if (this.m_pPhoto != null && cc.sys.isObjectValid(this.m_pPhoto)) {
-            this.removeChild(this.m_pPhoto);
+            this.removeChild(this.m_pPhoto, true);
         }
         this.showNickName();
         this.showReady(false);
@@ -220,8 +220,8 @@ var PlayerLayer = cc.Layer.extend({
         if (this.m_avatar != -1) {
             var image = utils.getAvatar(this.m_avatar);
             //console.log(image);
-            if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
-                this.removeChild(this.m_pPhoto);
+            if (this.m_pPhoto != null  && cc.sys.isObjectValid(this.m_pPhoto)) {
+                this.removeChild(this.m_pPhoto, true);
             }
 
 
@@ -232,7 +232,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pPhoto.loadTextures(image, image, image, ccui.Widget.PLIST_TEXTURE);
             this.m_pPhoto.addTouchEventListener(this.onActorAvatarClicked, this);
 
-            if (this.m_pPhoto) {
+            if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
                 this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
                 this.m_pPhoto.anchorX = this.m_anchorX;
                 this.m_pPhoto.anchorY = this.m_anchorY;

@@ -207,15 +207,18 @@ var HeaderLayer = cc.Layer.extend({
 
     initSubscribeEvent: function () {
         var self = this;
-        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
-            self.gold.setString(zgzNumeral(data.gold).format('0,0'))
-        });
+
     },
 
     onEnter: function () {
         this._super();
 
-
+        var self = this;
+        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+            if (self && cc.sys.isObjectValid(self)) {
+                self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+            }
+        });
 
     },
 

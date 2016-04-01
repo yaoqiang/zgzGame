@@ -126,10 +126,11 @@ var AlertBoxNode = cc.Node.extend({
 
         var winSize = cc.director.getWinSize();
 
-        // var bg = new cc.Sprite("#common_box_1.png");
-        var bg = new cc.Scale9Sprite(res.common_box_1, cc.rect(90, 50, 10, 10));
+        //var bg = new cc.Sprite(res.common_box_1);
+        var bg = new cc.Scale9Sprite(res.common_box_1);
         bg.width = this.m_bgWidth;
         bg.height = this.m_bgHeight;
+
         bg.x = winSize.width / 2.0;
         bg.y = winSize.height / 2.0;
         this.addChild(bg);

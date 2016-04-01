@@ -402,6 +402,9 @@ var FivePeopleTableLayer = cc.Layer.extend({
 
 
         ///////////////动画开始//////////////////////
+        if (this.expSprite && cc.sys.isObjectValid(this.expSprite)) {
+            this.expSprite.removeFromParent(true);
+        }
         this.expSprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
         var animation = new cc.Animation();
         for (var i = 1; i <= 5; i++) {
@@ -420,7 +423,9 @@ var FivePeopleTableLayer = cc.Layer.extend({
         this.expSprite.runAction(actF);
 
         function expCallback() {
-            if (this.expSprite) this.expSprite.removeFromParent(true);
+            if (this.expSprite && cc.sys.isObjectValid(this.expSprite)) {
+                this.expSprite.removeFromParent(true);
+            }
         }
 
         //////////////////动画结束///////////////////

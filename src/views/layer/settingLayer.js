@@ -17,6 +17,7 @@ SettingLayer.prototype = {
 
     init: function () {
 
+        var self = this;
         var winSize = cc.director.getWinSize();
 
         //加载当前音乐音效设置
@@ -24,14 +25,18 @@ SettingLayer.prototype = {
         var music = code[0];
         var effect = code[1];
 
-        //version title
-        var version = Storage.get('version') ? Storage.get('version') : '1.0.0';
-        var versionLabel = new cc.LabelTTF('游戏版本: '+version, 'AmericanTypewriter', 38);
-        versionLabel.setAnchorPoint(0, 0.5);
-        versionLabel.color = {r: 0, g: 255, b: 127};
-        versionLabel.x = 100;
-        versionLabel.y = winSize.height / 2 + 300;
-        this.box.bg.addChild(versionLabel);
+        cc.loader.loadJson("res/game_config.json", function (err, config) {
+
+            //version title
+            var version = config.version ? config.version : '1.0';
+            var versionLabel = new cc.LabelTTF('游戏版本: '+version, 'AmericanTypewriter', 38);
+            versionLabel.setAnchorPoint(0, 0.5);
+            versionLabel.color = {r: 0, g: 255, b: 127};
+            versionLabel.x = 100;
+            versionLabel.y = winSize.height / 2 + 300;
+            self.box.bg.addChild(versionLabel);
+        });
+
 
         var idLabel = new cc.LabelTTF('玩家ID: '+gPlayer.uid, 'AmericanTypewriter', 38);
         idLabel.setAnchorPoint(0, 0.5);
@@ -124,17 +129,34 @@ SettingLayer.prototype = {
         y = y-220;
 
         //button
-        var versionDetectBtn = new ccui.Button();
-        versionDetectBtn.setTitleText('版本检测');
-        versionDetectBtn.setTitleFontSize(28);
-        versionDetectBtn.setAnchorPoint(0.5, 0.5);
-        versionDetectBtn.setTouchEnabled(true);
-        versionDetectBtn.loadTextures("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
-        versionDetectBtn.addTouchEventListener(this.versionDetectBtnClicked, this);
-        versionDetectBtn.x = winSize.width/2 - 100;
-        versionDetectBtn.y = y;
-        versionDetectBtn.scale = 1.3;
-        this.box.bg.addChild(versionDetectBtn);
+        //如果是iOS版本 按钮功能为:游戏声明
+        if (cc.sys.os == cc.sys.OS_IOS) {
+            var gameDeclareBtn = new ccui.Button();
+            gameDeclareBtn.setTitleText('游戏声明');
+            gameDeclareBtn.setTitleFontSize(28);
+            gameDeclareBtn.setAnchorPoint(0.5, 0.5);
+            gameDeclareBtn.setTouchEnabled(true);
+            gameDeclareBtn.loadTextures("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+            gameDeclareBtn.addTouchEventListener(this.gameDeclareBtnClicked, this);
+            gameDeclareBtn.x = winSize.width/2 - 100;
+            gameDeclareBtn.y = y;
+            gameDeclareBtn.scale = 1.3;
+            this.box.bg.addChild(gameDeclareBtn);
+        }
+        else {
+            var versionDetectBtn = new ccui.Button();
+            versionDetectBtn.setTitleText('版本检测');
+            versionDetectBtn.setTitleFontSize(28);
+            versionDetectBtn.setAnchorPoint(0.5, 0.5);
+            versionDetectBtn.setTouchEnabled(true);
+            versionDetectBtn.loadTextures("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+            versionDetectBtn.addTouchEventListener(this.versionDetectBtnClicked, this);
+            versionDetectBtn.x = winSize.width/2 - 100;
+            versionDetectBtn.y = y;
+            versionDetectBtn.scale = 1.3;
+            this.box.bg.addChild(versionDetectBtn);
+        }
+
 
         var switchAccountBtn = new ccui.Button();
         switchAccountBtn.setTitleText('切换账号');
@@ -171,6 +193,43 @@ SettingLayer.prototype = {
                 break;
             case ccui.CheckBox.EVENT_SELECTED:
                 setPlayEffects(false);
+                break;
+
+            default:
+                break;
+        }
+    },
+
+    gameDeclareBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
+
+                var gameDeclareBox = new DialogMiddle("游戏声明", 1, null);
+                cc.director.getRunningScene().addChild(gameDeclareBox, 50);
+
+
+                var webView = new ccui.WebView("http://www.zaguzi.com/privacy.html");
+                var x = 400, y = 210, w = 500, h = 290;
+                if (cc.sys.isNative) {
+                    x = 485;
+                    y = 300;
+                    w = 900;
+                    h = 500;
+                }
+                webView.setContentSize(w, h);
+                webView.setPosition(x, y);
+                gameDeclareBox.bg.addChild(webView);
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
                 break;
 
             default:

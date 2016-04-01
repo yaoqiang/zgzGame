@@ -311,6 +311,7 @@ UniversalController.requestPaymentByPingpp = function (channel, productId, devic
  * @param cb
  */
 UniversalController.payment4PingppFromClient = function (state, cb) {
+    console.log('universal.ppp - ', state);
     pomelo.request(route.payment4PingppFromClient, {state: state}, cb);
 }
 

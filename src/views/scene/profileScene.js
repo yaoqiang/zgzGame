@@ -631,7 +631,9 @@ var ProfileLayer = cc.Layer.extend({
     initSubscribeEvent: function () {
         var self = this;
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
-            self.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
+            if (self && cc.sys.isObjectValid(self)) {
+                self.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
+            }
 
         });
     },
@@ -664,6 +666,14 @@ var BagLayer = cc.Layer.extend({
         bg.setPosition(winSize.width / 2, winSize.height / 2);
         bg.scale = ZGZ.SCALE * 10;
         this.addChild(bg);
+
+        if (args.itemList.length == 0) {
+            var itemLabel = new cc.LabelTTF("这家伙很穷,什么都没有", "Arial", 34);
+            itemLabel.setPosition(winSize.width / 2, winSize.height / 2);
+            itemLabel.color = cc.color.YELLOW;
+            this.addChild(itemLabel);
+            return;
+        }
 
         var x = 20, y = winSize.height/2 + 150;
 

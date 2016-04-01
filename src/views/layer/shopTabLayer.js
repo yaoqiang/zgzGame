@@ -63,7 +63,9 @@ var ShopTabLayer = cc.Layer.extend({
         var self = this;
 
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
-            self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+            if (self && cc.sys.isObjectValid(self)) {
+                self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+            }
         });
     },
 

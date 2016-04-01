@@ -53,11 +53,11 @@ pomelo.on('disconnect', function (reason) {
 
 pomelo.on('close', function (reason) {
     console.log('close -> ', reason);
-    
+
 });
 
 pomelo.on('onKick', function (data) {
-    var msg = '哎呀,您的账号在其他设备登录...';
+    var msg = '您的账号在其他设备登录';
     if (data.reason == CommonConf.KICK_REASON.SERVICE_MAINTENANCE) {
         msg = '服务器正在维护...';
     }
@@ -87,14 +87,25 @@ pomelo.on('heartbeat', function () {
 });
 
 function doConnectingWithBar() {
-    if (gConnectingBar != null) return;
-    //
-    gConnectingBar = new LoadingLayer({msg: '连接中'});
-    cc.director.getRunningScene().addChild(gConnectingBar, 9);
-    //
-    var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
-    AuthController.loginWithToken(token, function () {
-        if (cc.sys.isObjectValid(gConnectingBar)) gConnectingBar.removeFromParent(true);
-        gConnectingBar = null;
-    });
+    if (gHasConnector) return;
+
+    var box = new AlertBox("您的网络已断开", function () {
+
+        //
+        gConnectingBar = new LoadingLayer({msg: '连接中'});
+        cc.director.getRunningScene().addChild(gConnectingBar, 9);
+        //
+        var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+        AuthController.loginWithToken(token, function () {
+            if (cc.sys.isObjectValid(gConnectingBar)) {
+                gConnectingBar.removeFromParent(true);
+                gConnectingBar = null;
+            }
+
+        });
+
+    }, this);
+
+    cc.director.getRunningScene().addChild(box);
+
 }

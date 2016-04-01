@@ -2,8 +2,8 @@ var pomelo = window.pomelo;
 
 pomelo.on(gameEvents.JOIN, function (data) {
     //console.log('receive join event -> ', data);
-
     EventBus.publish(gameEvents.JOIN, data);
+
 });
 
 pomelo.on(gameEvents.LEAVE, function (data) {

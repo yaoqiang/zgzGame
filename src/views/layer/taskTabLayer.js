@@ -155,10 +155,14 @@ var TaskTabLayer = cc.Layer.extend({
         var self = this;
 
         EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
-            self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+            if (self && cc.sys.isObjectValid(self)) {
+                self.gold.setString(zgzNumeral(data.gold).format('0,0'))
+            }
         });
         EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
-            self.ingot.setString(zgzNumeral(data.ingot).format('0,0'))
+            if (self && cc.sys.isObjectValid(self)) {
+                self.ingot.setString(zgzNumeral(data.ingot).format('0,0'))
+            }
         });
     },
 

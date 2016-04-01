@@ -210,6 +210,7 @@ var IndexLayer = cc.Layer.extend({
                 break;
 
             case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
 
                 if (this.trumpetVal == 0) {
                     prompt.fadeMiddle('您没有小喇叭,可在商城购买后使用');

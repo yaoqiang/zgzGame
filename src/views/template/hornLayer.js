@@ -7,7 +7,10 @@ var HornSprite = cc.Layer.extend({
         var self = this;
         EventBus.subscribe(gameEvents.BROADCAST, function (data) {
             //cc.log("---->game  cancelTrusteeshipEvent: ", data);
-            self.trumpet(data);
+            if (self && cc.sys.isObjectValid(self)) {
+                self.trumpet(data);
+            }
+
         });
 
         var winSize = cc.director.getWinSize();
@@ -27,18 +30,20 @@ var HornSprite = cc.Layer.extend({
     },
 
     trumpet: function (data) {
-        //后续可调整为向上滚动动画(2-3行),再消失.
+        //后续可调整为向上滚动动画(2-3行),再消失,有一个顶掉的效果.(引发喇叭大战)
         var self = this;
-        if (this.contentLabel) this.contentLabel.removeFromParent(true);
         this.unscheduleAllCallbacks();
+        this.hornBg.removeAllChildren(true);
+
+        //if (self.contentLabel && cc.sys.isObjectValid(self.contentLabel)) this.contentLabel.removeFromParent(true);
         this.contentLabel = new cc.LabelTTF(data.from + ": " + data.msg, "Arial", 22);
         this.contentLabel.setAnchorPoint(0, 0.5);
         this.contentLabel.x = 60;
         this.contentLabel.y = this.hornBg.height/2;
         this.hornBg.addChild(this.contentLabel);
         this.scheduleOnce(function () {
-            if (self.contentLabel) self.contentLabel.removeFromParent(true);
-        }, 5)
+            self.hornBg.removeAllChildren(true);
+        }, 6)
     },
 
     onEnter: function () {

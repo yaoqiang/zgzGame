@@ -119,6 +119,15 @@ var RichRankingListLayer = cc.Layer.extend({
         var iconSize = icon.getBoundingBox();
 
         var rankingList = args.rankingList;
+
+        if (rankingList.length == 0) {
+            var blankLabel = new cc.LabelTTF("排行榜空档期,您还有机会!", "Arial", 34);
+            blankLabel.setPosition(winSize.width / 2, winSize.height / 2);
+            blankLabel.color = cc.color.YELLOW;
+            this.addChild(blankLabel);
+            return;
+        }
+
         var cellH = iconSize.height + 10;
         var tabH = 60;
 //init data
@@ -282,6 +291,14 @@ var GodRankingListLayer = cc.Layer.extend({
         var iconSize = icon.getBoundingBox();
 
         var rankingList = args.rankingList;
+        if (rankingList.length == 0) {
+            var blankLabel = new cc.LabelTTF("排行榜空档期,您还有机会!", "Arial", 34);
+            blankLabel.setPosition(winSize.width / 2, winSize.height / 2);
+            blankLabel.color = cc.color.YELLOW;
+            this.addChild(blankLabel);
+            return;
+        }
+
         var cellH = iconSize.height + 10;
         var tabH = 60;
 //init data
@@ -450,6 +467,13 @@ var RechargeRankingListLayer = cc.Layer.extend({
         var iconSize = icon.getBoundingBox();
 
         var rankingList = args.rankingList;
+
+        if (rankingList.length == 0) {
+            var blankLabel = new cc.LabelTTF("排行榜空档期,您还有机会!", "Arial", 34);
+            blankLabel.setPosition(winSize.width / 2, winSize.height / 2);
+            blankLabel.color = cc.color.YELLOW;
+            this.addChild(blankLabel);
+        }
         var cellH = iconSize.height + 10;
         var tabH = 60;
 //init data
