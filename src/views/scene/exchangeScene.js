@@ -110,7 +110,17 @@ var ExchangeListLayer = cc.Layer.extend({
 
         var exchangeList = args.exchangeList;
         var cellH = iconSize.height + 10;
-        var tabH = 60;
+        var tabH = 120;
+
+        //兑换说明
+        var exchangeSummay = '兑换说明: 本活动与苹果公司无关, 元宝只能通过任务或活动获得!';
+        var exchangeSummayLabel = new cc.LabelTTF(exchangeSummay, 'AmericanTypewriter', 22);
+        exchangeSummayLabel.setAnchorPoint(0, 0.5);
+        exchangeSummayLabel.color = {r: 0, g: 255, b: 127};
+        exchangeSummayLabel.x = 20;
+        exchangeSummayLabel.y = visibleOrigin.y + visibleSize.height - tabH + 28;
+        this.addChild(exchangeSummayLabel);
+
 //init data
         this.m_pTableView = null;
         this.m_nTableWidth = visibleSize.width;
