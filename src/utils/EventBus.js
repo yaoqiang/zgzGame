@@ -1,6 +1,14 @@
 var EventBus = {
 
     publish: function (eventName, data) {
+
+        if (!gGameSceneCompleted) {
+            if (eventName == gameEvents.JOIN) {
+                EventQueue.addEventToQueue(eventName, data);
+                return;
+            }
+        }
+
         cc.eventManager.dispatchCustomEvent(eventName, data);
     },
 
