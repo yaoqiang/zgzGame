@@ -4,9 +4,6 @@ var EventQueue = function(){
 }
 
 EventQueue.addEventToQueue = function (eventName, optionalUserData) {
-    //if(gGameSceneCompleted == true){
-    //    return false;
-    //}
     if(eventName == null || eventName == "") return false;
 
     var item = {event:eventName, data:optionalUserData};
@@ -16,8 +13,10 @@ EventQueue.addEventToQueue = function (eventName, optionalUserData) {
 };
 
 EventQueue.dispatchEventFromQueue = function () {
+
     for (var i in gCache) {
         cc.eventManager.dispatchCustomEvent(gCache[i].event, gCache[i].data);
+
     }
     EventQueue.clearCache();
 };

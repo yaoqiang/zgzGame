@@ -20,7 +20,8 @@ GameController.join = function (roomId, lobbyId) {
             gGameType = data.gameType;
 
             var scene = new GameScene(data, false);
-            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+            //cc.director.pushScene(new cc.TransitionSlideInT(0.5, scene));
+            cc.director.pushScene(scene);
 
         } else if (data.code == RETURN_CODE.FAIL) {
             //cc.log("----> join game fail");

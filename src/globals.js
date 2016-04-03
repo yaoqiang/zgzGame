@@ -14,6 +14,8 @@ var gWebSvrAddr = {
 
 //网络状态,是否与connector服务连接
 var gHasConnector = false;
+//
+var gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED;
 
 //全局"连接中.." bar(loading bar)
 var gConnectingBar = null;

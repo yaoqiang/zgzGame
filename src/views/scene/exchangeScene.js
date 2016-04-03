@@ -113,7 +113,7 @@ var ExchangeListLayer = cc.Layer.extend({
         var tabH = 120;
 
         //兑换说明
-        var exchangeSummay = '兑换说明: 本活动与苹果公司无关, 元宝只能通过任务或活动获得!';
+        var exchangeSummay = '兑换说明: 元宝只能通过任务或活动获得! 充值不能购买元宝!!';
         var exchangeSummayLabel = new cc.LabelTTF(exchangeSummay, 'AmericanTypewriter', 22);
         exchangeSummayLabel.setAnchorPoint(0, 0.5);
         exchangeSummayLabel.color = {r: 0, g: 255, b: 127};

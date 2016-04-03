@@ -15,14 +15,16 @@
         "src/vendors/underscore-min.js",
         "src/vendors/pomelo-cocos2d-js.js",
 
-        "src/resource.js",
-        "src/views/scene/gameLoaderScene.js",
-        "src/globals.js",
-        "src/utils/network.js",
         "src/consts/consts.js",
         "src/consts/chatConf.js",
         "src/consts/routes.js",
         "src/consts/gameEvents.js",
+
+        "src/resource.js",
+        "src/views/scene/gameLoaderScene.js",
+        "src/globals.js",
+        "src/utils/network.js",
+
         "src/utils/utils.js",
         "src/utils/numeral.js",
         "src/events/gameMessageEvent.js",

@@ -33,16 +33,17 @@ var HornSprite = cc.Layer.extend({
         //后续可调整为向上滚动动画(2-3行),再消失,有一个顶掉的效果.(引发喇叭大战)
         var self = this;
         this.unscheduleAllCallbacks();
-        this.hornBg.removeAllChildren(true);
+        this.hornBg.removeChildByTag(2, true);
 
         //if (self.contentLabel && cc.sys.isObjectValid(self.contentLabel)) this.contentLabel.removeFromParent(true);
         this.contentLabel = new cc.LabelTTF(data.from + ": " + data.msg, "Arial", 22);
         this.contentLabel.setAnchorPoint(0, 0.5);
         this.contentLabel.x = 60;
+        this.contentLabel.setTag(2);
         this.contentLabel.y = this.hornBg.height/2;
         this.hornBg.addChild(this.contentLabel);
         this.scheduleOnce(function () {
-            self.hornBg.removeAllChildren(true);
+            self.hornBg.removeChildByTag(2, true);
         }, 6)
     },
 

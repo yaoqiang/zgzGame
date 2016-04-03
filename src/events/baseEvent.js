@@ -41,13 +41,12 @@ pomelo.on('disconnect', function (reason) {
     console.log('disconnected -> ', reason);
 
     if (gHasConnector) {
-
-        //reset gHasConnector
         gHasConnector = false;
+        gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED;
         //
         doConnectingWithBar();
-
     }
+
 
 });
 
@@ -70,7 +69,8 @@ pomelo.on('onKick', function (data) {
 
 pomelo.on('heartbeat timeout', function (data) {
     console.log('heartbeat timeout -> ', data);
-
+    //设置网络断开
+    gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED
     var box = new AlertBox('您的网络太差...', function () {
         doConnectingWithBar();
     }, this);
@@ -87,25 +87,27 @@ pomelo.on('heartbeat', function () {
 });
 
 function doConnectingWithBar() {
-    if (gHasConnector) return;
+    if (gCONNECT_STATE == CommonConf.CONNECT_STATE.CONNECTING || gCONNECT_STATE == CommonConf.CONNECT_STATE.CONNECTED) return;
 
     var box = new AlertBox("您的网络已断开", function () {
 
         //
         gConnectingBar = new LoadingLayer({msg: '连接中'});
-        cc.director.getRunningScene().addChild(gConnectingBar, 9);
+        cc.director.getRunningScene().addChild(gConnectingBar, 999);
         //
         var token = Storage.get(CommonConf.LOCAL_STORAGE.TOKEN);
+        //设置连接中状态
+        gCONNECT_STATE == CommonConf.CONNECT_STATE.CONNECTING;
+
         AuthController.loginWithToken(token, function () {
             if (cc.sys.isObjectValid(gConnectingBar)) {
                 gConnectingBar.removeFromParent(true);
-                gConnectingBar = null;
             }
 
         });
 
     }, this);
 
-    cc.director.getRunningScene().addChild(box);
+    cc.director.getRunningScene().addChild(box, 999);
 
 }

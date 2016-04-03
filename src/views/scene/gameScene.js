@@ -18,10 +18,12 @@ var GameScene = cc.Scene.extend({
 
         this._super();
 
-        if (!cc.eventManager.isEnabled()) {
-            cc.eventManager.setEnabled(true);
-        }
     },
+
+    onEnterTransitionDidFinish: function () {
+
+    },
+
     onExit: function () {
         this._super();
     }
@@ -31,12 +33,7 @@ var GameLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args, isBackGame) {
         this._super();
-        if (!cc.eventManager.isEnabled()) {
-            cc.eventManager.setEnabled(true);
-        }
-
-        this.initSubscribeEvent();
-        EventQueue.dispatchEventFromQueue();
+        this.init();
 
 
         //
@@ -75,7 +72,7 @@ var GameLayer = cc.Layer.extend({
             gLobbyId = args.lobbyId;
             gGameId = args.gameId;
             this.initActorList(args.actors);
-            this.init();
+            this.initGame();
         }
 
 
@@ -84,17 +81,28 @@ var GameLayer = cc.Layer.extend({
 
     onEnter: function () {
         this._super();
+        this.init();
+        //cc.log("GameLayer#onEnter");
+        this.initSubscribeEvent();
+
+        EventQueue.dispatchEventFromQueue();
 
 
-
-
-        //gGameSceneCompleted = true;
+        gGameSceneCompleted = true;
 
     },
 
+    onEnterTransitionDidFinish:function () {
+        //cc.log("GameLayer#onEnterTransitionDidFinish");
+        this._super();
+    },
+
+
     onExit: function () {
+        //cc.log("GameLayer#onExit");
 
         this._super();
+        gGameSceneCompleted = false;
         //event
         cc.eventManager.removeCustomListeners(gameEvents.JOIN);
         cc.eventManager.removeCustomListeners(gameEvents.LEAVE);
@@ -117,10 +125,13 @@ var GameLayer = cc.Layer.extend({
         cc.eventManager.removeListener(this.keyboardListener);
     },
 
+
+
     initSubscribeEvent: function () {
+        //console.log('###initSubscribeEvent -> ');
         var selfPointer = this;
         EventBus.subscribe(gameEvents.JOIN, function (data) {
-            //cc.log("---->game  joinEvent: ", data);
+            cc.log("---->game  joinEvent: ", data);
             selfPointer.joinEvent(data);
         })
 
@@ -332,7 +343,7 @@ var GameLayer = cc.Layer.extend({
 
     },
 
-    init: function () {
+    initGame: function () {
         //背景
         this.addBg();
 
@@ -823,7 +834,6 @@ var GameLayer = cc.Layer.extend({
 
 //event
     joinEvent: function (data) {
-        console.log('????????????', data);
         this.addActorToList(data.actor);
         this.updateOneActorHD(data.actor, 1);
         playEffect(audio_common.Player_Come_In);
@@ -836,7 +846,8 @@ var GameLayer = cc.Layer.extend({
             this.updateOneActorHD(data.actor, 2);
             playEffect(audio_common.Player_Logout);
         } else {
-            GameController.enterLobby(gLobbyId);//回大厅
+            cc.director.popScene();
+            //GameController.enterLobby(gLobbyId);//回大厅
         }
     },
 

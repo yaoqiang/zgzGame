@@ -2,6 +2,7 @@ var LobbyScene = cc.Scene.extend({
     lobbyTitle: ['扎股子-五人', '扎股子-六人', '扎股子-七人'],
     ctor: function (data, lobbyId) {
         this._super();
+        this.init();
 
         cc.spriteFrameCache.addSpriteFrames(res.room_plist);
         cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
@@ -14,6 +15,24 @@ var LobbyScene = cc.Scene.extend({
 
         var lobbyLayer = new LobbyLayer(data, lobbyId);
         this.addChild(lobbyLayer);
+
+
+    },
+
+    onExit: function() {
+        this._super();
+        //
+
+    }
+
+
+});
+
+
+var LobbyLayer = cc.Layer.extend({
+    onEnter: function () {
+        //cc.log("LobbyLayer#onEnter");
+        this._super();
 
         //add a keyboard event listener to statusLabel
         this.keyboardListener = cc.eventManager.addListener({
@@ -33,32 +52,26 @@ var LobbyScene = cc.Scene.extend({
 
             }
         }, this);
-    },
-
-    onExit: function() {
-        this._super();
-        //
-        cc.eventManager.removeListener(this.keyboardListener);
-    }
-
-
-});
-
-
-var LobbyLayer = cc.Layer.extend({
-    onEnter: function () {
-        this._super();
 
     },
 
     onExit: function () {
+        //cc.log("LobbyLayer#onExit");
         this._super();
+
+        cc.eventManager.removeListener(this.keyboardListener);
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.room_plist);
         //cc.spriteFrameCache.removeSpriteFramesFromFile(res.other_plist);
     },
 
+    onEnterTransitionDidFinish:function () {
+        //cc.log("LobbyLayer#onEnterTransitionDidFinish");
+        this._super();
+    },
+
     ctor: function (data, lobbyId) {
         this._super();
+        this.init();
 
         this.lobbyId = lobbyId;
 

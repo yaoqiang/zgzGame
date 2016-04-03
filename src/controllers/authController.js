@@ -143,8 +143,15 @@ AuthController.enter = function (result) {
             return;
         }
 
+
+
         //INIT
         Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
+
+        //标识已连接到connector
+        gCONNECT_STATE = CommonConf.CONNECT_STATE.CONNECTED;
+        gHasConnector = true;
+        //
         UniversalController.initIAP();
 
         //初始化全局变量gPlayer;
