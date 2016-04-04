@@ -131,7 +131,7 @@ var GameLayer = cc.Layer.extend({
         //console.log('###initSubscribeEvent -> ');
         var selfPointer = this;
         EventBus.subscribe(gameEvents.JOIN, function (data) {
-            cc.log("---->game  joinEvent: ", data);
+            //cc.log("---->game  joinEvent: ", data);
             selfPointer.joinEvent(data);
         })
 
