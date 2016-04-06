@@ -42,12 +42,7 @@ var LobbyLayer = cc.Layer.extend({
             onKeyReleased: function(keyCode, event){
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
-                    if (target.lobbyId != undefined) {
-                        GameController.enterLobby(target.lobbyId);
-                    }
-                    else {
-                        UniversalController.enterIndex();
-                    }
+                    UniversalController.enterIndex();
                 }
 
             }

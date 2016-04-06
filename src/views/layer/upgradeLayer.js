@@ -27,6 +27,8 @@ UpgradeLayer.prototype = {
         summaryLabel.y = 440;
         summaryLabel.setAnchorPoint(0, 1);
         this.box.bg.addChild(summaryLabel);
+
+        this.releaseUrlAndroid = data.releaseUrlAndroid;
     },
 
     ensureCallback: function (cb) {
@@ -36,10 +38,8 @@ UpgradeLayer.prototype = {
             prompt.fadeMiddle('请前往Apple Store更新')
         }
         else {
-            cc.loader.loadJson("res/game_config.json", function (err, config) {
-                //erun是通过js-binding定义在c++的
-                erun.openBrowser(config.release_url_android);
-            });
+            //erun是通过js-binding定义在c++的
+            erun.openBrowser(this.releaseUrlAndroid);
         }
 
 
