@@ -1,13 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="http调整, routes++">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scene/gameScene.js" afterPath="$PROJECT_DIR$/src/views/scene/gameScene.js" />
+    <list default="true" id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="添加framework/runtime-src">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs/arm64-v8a/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs/armeabi-v7a/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs/armeabi/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs/x86/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs_c++_static/arm64-v8a/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs_c++_static/armeabi-v7a/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs_c++_static/armeabi/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/libs_c++_static/x86/libsdkbox.a" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/res/mipmap-hdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/res/mipmap-mdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/res/mipmap-xhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/res/mipmap-xxhdpi/ic_launcher.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/gradle/wrapper/gradle-wrapper.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/assets/data.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/UPPayAssistEx.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/UPPayPluginExPro.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/alipaySingle-20160111.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/armeabi-v7a/libentryexpro.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/armeabi-v7a/libuptsmaddon.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/armeabi/libentryexpro.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/armeabi/libuptsmaddon.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/libammsdk.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/libs/libpingpp-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/classes.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/libs/libone-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_alipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_baidu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_baidupay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_failed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_jingdongpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_nocard.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_shopping.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_unionpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_unipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_wechat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_wepay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/BuildConfig.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$anim.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$attr.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$color.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$dimen.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$drawable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$id.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$layout.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$string.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$style.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R$styleable.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/classes/debug/com/pingplusplus/libone/R.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/assets/data.bin" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jars/classes.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jars/libs/UPPayAssistEx.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jars/libs/UPPayPluginExPro.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jars/libs/alipaySingle-20160111.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jars/libs/libammsdk.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jars/libs/libpingpp-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jni/armeabi-v7a/libentryexpro.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jni/armeabi-v7a/libuptsmaddon.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jni/armeabi/libentryexpro.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/jni/armeabi/libuptsmaddon.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/incremental/aidl/debug/dependency.store" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_alipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_baidu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_baidupay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_failed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_jingdongpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_nocard.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_shopping.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_unionpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_unipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_wechat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_wepay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/outputs/aar/pingpp_one-debug.aar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/libs/libone-2.1.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_alipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_baidu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_baidupay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_done.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_failed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_jingdongpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_nocard.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_shopping.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_success.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_unionpay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_unipay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_wechat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_wepay.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/PluginIAP.framework/PluginIAP" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/PluginIAP.framework/Versions/A/PluginIAP" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/PluginIAP.framework/Versions/Current/PluginIAP" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/AppController.dia" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/AppController.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/AppDelegate.dia" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/PluginIAPJS.dia" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/PluginIAPJS.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/RootViewController.dia" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/RootViewController.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/main.dia" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/main.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/dgph" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/zgzGame-mobile.hmap" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Default-568h@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Default-736h@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Default-Landscape~ipad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Default.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Default@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-100.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-114.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-120.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-144.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-152.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-180.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-58.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-80.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Icon-87.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/icon-29.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/icon-40.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/icon-50.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/icon-57.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/icon-72.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/icon-76.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/mac/Icon.icns" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Versions/A/sdkbox" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Versions/Current/sdkbox" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/sdkbox" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.xcworkspace/xcuserdata/yaoqiang.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.sdkbox_packages.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/AppDelegate.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/AppDelegate.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/ERunSDK.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/ERunSDK.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/Java_org_cocos2dx_javascript_ERunJniHelper.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/Java_org_cocos2dx_javascript_ERunJniHelper.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/PaymentWithPingpp.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/PaymentWithPingpp.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/PluginIAPJS.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/PluginIAPJS.hpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/PluginIAPJSHelper.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/PluginIAPJSHelper.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/SDKBoxJSHelper.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/Classes/SDKBoxJSHelper.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/gradle.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/runConfigurations.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/build.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/Android.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/Application.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/hellojavascript/main.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/Android.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/sdkbox/Sdkbox.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/local.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/proguard-rules.pro" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/src/org/cocos2dx/javascript/AppActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/src/org/cocos2dx/javascript/ERunJniHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/zgzGame.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/build-cfg.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/gradle.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/gradlew" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/gradlew.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/lib.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/pingpp.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/generated/source/buildConfig/debug/com/pingplusplus/libone/BuildConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/generated/source/r/debug/com/pingplusplus/libone/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/R.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/anim/dialog_enter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/anim/dialog_exit.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_channel_item_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_common_pay_button_blue.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_common_pay_button_green.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_common_pay_channel_btton.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/drawable/pingpp_progressbar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/layout/fragment_pay_way_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/layout/pingpp_activity_pay.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/layout/pingpp_activity_pay_failed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/layout/pingpp_activity_pay_successed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/layout/pingpp_bill_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/layout/pingpp_pay_channel_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1024x600/values-1024x600.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1024x768/values-1024x768.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1184x720/values-1184x720.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1196x720/values-1196x720.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1280x720/values-1280x720.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1280x768/values-1280x768.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1280x800/values-1280x800.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1812x1080/values-1812x1080.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-1920x1080/values-1920x1080.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-2560x1440/values-2560x1440.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-480x320/values-480x320.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-640x360/values-640x360.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-800x480/values-800x480.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-854x480/values-854x480.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values-960x540/values-960x540.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/res/values/values.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/exploded-aar/proj.android-studio.lib/pingpp/unspecified/aapt/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/incremental/mergeAssets/debug/merger.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/incremental/mergeResourcesdebug/merger.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/incremental/packageResourcesdebug/merger.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/anim/dialog_enter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/anim/dialog_exit.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_channel_item_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_common_pay_button_blue.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_common_pay_button_green.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_common_pay_channel_btton.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/drawable/pingpp_progressbar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/layout/fragment_pay_way_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/layout/pingpp_activity_pay.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/layout/pingpp_activity_pay_failed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/layout/pingpp_activity_pay_successed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/layout/pingpp_bill_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/layout/pingpp_pay_channel_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1024x600/values-1024x600.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1024x768/values-1024x768.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1184x720/values-1184x720.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1196x720/values-1196x720.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1280x720/values-1280x720.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1280x768/values-1280x768.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1280x800/values-1280x800.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1812x1080/values-1812x1080.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-1920x1080/values-1920x1080.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-2560x1440/values-2560x1440.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-480x320/values-480x320.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-640x360/values-640x360.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-800x480/values-800x480.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-854x480/values-854x480.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values-960x540/values-960x540.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/res/merged/debug/values/values.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/tmp/packageDebugJar/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/pingpp_one.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/proguard-project.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/project.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/anim/dialog_enter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/anim/dialog_exit.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_channel_item_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_common_pay_button_blue.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_common_pay_button_green.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_common_pay_channel_btton.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/drawable/pingpp_progressbar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/layout/fragment_pay_way_dialog.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/layout/pingpp_activity_pay.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/layout/pingpp_activity_pay_failed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/layout/pingpp_activity_pay_successed.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/layout/pingpp_bill_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/layout/pingpp_pay_channel_item.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1024x600/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1024x600/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1024x768/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1024x768/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1184x720/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1184x720/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1196x720/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1196x720/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1280x720/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1280x720/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1280x768/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1280x768/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1280x800/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1280x800/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1812x1080/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1812x1080/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1920x1080/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-1920x1080/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-2560x1440/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-2560x1440/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-480x320/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-480x320/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-640x360/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-640x360/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-800x480/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-800x480/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-854x480/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-854x480/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-960x540/lay_x.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values-960x540/lay_y.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values/attrs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values/colors.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values/strings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/res/values/styles.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/proj.android-studio.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/settings.gradle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/PluginIAP.framework/Headers/PluginIAP.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/PluginIAP.framework/Versions/A/Headers/PluginIAP.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/PluginIAP.framework/Versions/Current/Headers/PluginIAP.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/AppController.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/AppDelegate.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/PluginIAPJS.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/RootViewController.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/main.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/build/zgzGame.build/Debug-iphonesimulator/zgzGame-mobile.build/Objects-normal/i386/zgzGame-mobile.LinkFileList" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/AppController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/AppController.mm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Prefix.pch" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/RootViewController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/RootViewController.mm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/main.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/mac/Info.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/mac/Prefix.pch" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/mac/main.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Headers/Sdkbox.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Headers/SdkboxAds.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Versions/A/Headers/Sdkbox.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Versions/A/Headers/SdkboxAds.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Versions/Current/Headers/Sdkbox.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/sdkbox.framework/Versions/Current/Headers/SdkboxAds.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.pbxproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/xcuserdata/yaoqiang.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/xcuserdata/yaoqiang.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/xcuserdata/yaoqiang.xcuserdatad/xcschemes/zgzGame-desktop.xcscheme" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/xcuserdata/yaoqiang.xcuserdatad/xcschemes/zgzGame-mobile.xcscheme" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globals.js" afterPath="$PROJECT_DIR$/src/globals.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scene/loginScene.js" afterPath="$PROJECT_DIR$/src/views/scene/loginScene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource.js" afterPath="$PROJECT_DIR$/src/resource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/template/smallWidget.js" afterPath="$PROJECT_DIR$/src/views/template/smallWidget.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="b4c2d095-8e15-429c-8432-16fc022c81a3" name="Revert: 替换pomelo客户端 (d22ed81376edc1d31fd8d3451cb1b79ee14810e0)" comment="" />
     <ignored path="ZgzGame.iws" />
@@ -33,82 +371,52 @@
     <favorites_list name="ZgzGame" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="loginScene.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/scene/loginScene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="personTalk.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/template/personTalk.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="14" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="gameScene.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.0">
-              <caret line="1182" column="25" selection-start-line="1182" selection-start-column="25" selection-end-line="1182" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pokerLayer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayer.js">
+      <file leaf-file-name="cardUtil.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/cardUtil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.833333">
-              <caret line="401" column="0" selection-start-line="401" selection-start-column="0" selection-end-line="406" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="globals.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="globals.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/globals.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46503496">
-              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pokerCard.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/poker/pokerCard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.466666">
-              <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pokerLayerDefine.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayerDefine.js">
+      <file leaf-file-name="cppCallback.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/cppCallback.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fivePeopleTableLayer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js">
+      <file leaf-file-name="baseEvent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/events/baseEvent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="366" column="22" selection-start-line="366" selection-start-column="22" selection-end-line="366" selection-end-column="22" />
+              <caret line="95" column="64" selection-start-line="95" selection-start-column="64" selection-end-line="95" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -118,17 +426,47 @@
         <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="534" column="19" selection-start-line="534" selection-start-column="19" selection-end-line="534" selection-end-column="19" />
+              <caret line="153" column="40" selection-start-line="153" selection-start-column="40" selection-end-line="153" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resource.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resource.js">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4338843">
+              <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upgradeLayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/layer/upgradeLayer.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="173" column="21" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="21" />
+              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game_config.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/game_config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lobbyScene.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/scene/lobbyScene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -147,46 +485,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/utils/network.js" />
-        <option value="$PROJECT_DIR$/src/views/template/HelpLayer.js" />
-        <option value="$PROJECT_DIR$/src/views/layer/sevenPeopleTableLayer.js" />
-        <option value="$PROJECT_DIR$/src/views/template/actor.js" />
-        <option value="$PROJECT_DIR$/src/views/layer/gameMenuLayer.js" />
-        <option value="$PROJECT_DIR$/src/controllers/authController.js" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/views/template/modeStruct.js" />
-        <option value="$PROJECT_DIR$/src/views/layer/clock.js" />
         <option value="$PROJECT_DIR$/src/views/poker/pokerLayerDefine.js" />
         <option value="$PROJECT_DIR$/src/views/layer/readyMenuLayer.js" />
         <option value="$PROJECT_DIR$/src/views/poker/bidMenuLayer.js" />
         <option value="$PROJECT_DIR$/src/views/poker/pokerCard.js" />
         <option value="$PROJECT_DIR$/src/views/template/cueBox.js" />
-        <option value="$PROJECT_DIR$/src/events/gameMessageEvent.js" />
         <option value="$PROJECT_DIR$/src/views/template/commonLayer.js" />
         <option value="$PROJECT_DIR$/src/views/template/components.js" />
         <option value="$PROJECT_DIR$/src/views/template/balanceLayer.js" />
         <option value="$PROJECT_DIR$/src/views/poker/fanOutMenuLayer.js" />
-        <option value="$PROJECT_DIR$/src/views/template/headerLayer.js" />
         <option value="$PROJECT_DIR$/src/views/scene/questionsScene.js" />
         <option value="$PROJECT_DIR$/src/views/scene/signupScene.js" />
-        <option value="$PROJECT_DIR$/src/views/template/playerLayer.js" />
-        <option value="$PROJECT_DIR$/src/controllers/gameController.js" />
-        <option value="$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js" />
-        <option value="$PROJECT_DIR$/project.json" />
-        <option value="$PROJECT_DIR$/src/consts/consts.js" />
         <option value="$PROJECT_DIR$/src/views/scene/GameLoaderScene.js" />
         <option value="$PROJECT_DIR$/src/views/scene/gameLoaderScene.js" />
         <option value="$PROJECT_DIR$/src/views/template/chatInGameLayer.js" />
-        <option value="$PROJECT_DIR$/src/globals.js" />
-        <option value="$PROJECT_DIR$/src/views/scene/indexScene.js" />
-        <option value="$PROJECT_DIR$/src/views/scene/lobbyScene.js" />
-        <option value="$PROJECT_DIR$/src/views/template/smallWidget.js" />
         <option value="$PROJECT_DIR$/src/views/scene/loginScene.js" />
         <option value="$PROJECT_DIR$/src/views/poker/pokerLayer.js" />
-        <option value="$PROJECT_DIR$/src/views/scene/gameScene.js" />
         <option value="$PROJECT_DIR$/src/resource.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/indexScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/rankingListTabLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/rankingListScene.js" />
+        <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/event-manager/CCEventManager.js" />
+        <option value="$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/script/jsb_cocos2d.js" />
+        <option value="$PROJECT_DIR$/src/controllers/universalController.js" />
+        <option value="$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/transitions/CCTransition.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/settingLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/profileScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/taskTabLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/shopTabLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/exchangeTabLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/headerLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/playerLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js" />
+        <option value="$PROJECT_DIR$/src/controllers/gameController.js" />
+        <option value="$PROJECT_DIR$/src/consts/consts.js" />
+        <option value="$PROJECT_DIR$/src/utils/network.js" />
+        <option value="$PROJECT_DIR$/project.json" />
+        <option value="$PROJECT_DIR$/src/views/template/hornLayer.js" />
+        <option value="$PROJECT_DIR$/src/controllers/authController.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/exchangeScene.js" />
+        <option value="$PROJECT_DIR$/src/utils/eventBus.js" />
+        <option value="$PROJECT_DIR$/src/views/template/eventQueue.js" />
+        <option value="$PROJECT_DIR$/src/events/gameMessageEvent.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/gameScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/upgradeLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/lobbyScene.js" />
+        <option value="$PROJECT_DIR$/res/game_config.json" />
+        <option value="$PROJECT_DIR$/src/globals.js" />
+        <option value="$PROJECT_DIR$/src/utils/cppCallback.js" />
+        <option value="$PROJECT_DIR$/src/events/baseEvent.js" />
+        <option value="$PROJECT_DIR$/src/views/template/smallWidget.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -195,14 +544,11 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
-  <component name="NamedScopeManager">
-    <order />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="33" />
-    <option name="y" value="8" />
-    <option name="width" value="1440" />
-    <option name="height" value="996" />
+    <option name="x" value="4" />
+    <option name="y" value="23" />
+    <option name="width" value="1276" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -225,8 +571,11 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,7 +604,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="frameworks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="runtime-src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -269,105 +622,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scene" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="frameworks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -392,7 +652,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Cocos2d/cocos2d-x-3.8.1/tests/js-tests" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="FullScreen" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="105" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -410,15 +669,15 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="904" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="SearchEverywhereHistoryKey" value="glo&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/globals.js&#10;ev&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/events/gameMessageEvent.js&#10;bi&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/poker/bidMenuLayer.js&#10;gameS&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/scene/gameScene.js&#10;game&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/scene/gameScene.js&#10;pro&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/project.json&#10;fi&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/layer/fivePeopleTableLayer.js&#10;g&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/scene/gameScene.js&#10;fan&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/poker/fanOutMenuLayer.js" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/res/game_config.json&#10;glo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;player&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/playerLayer.js&#10;lobb&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;ex&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;horl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;se&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;lo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;gameCon&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/gameController.js&#10;gameM&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;gameS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/gameScene.js&#10;hor&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;head&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;Ho&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;lobbys&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;eventbus&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/utils/eventBus.js&#10;headerl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;gameContro&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/gameController.js&#10;tasks&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/taskScene.js&#10;player.js&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/playerLayer.js&#10;base&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;sett&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;gameSc&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/gameScene.js&#10;gameE&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;basee&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;gameEv&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;MAIN&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/main.js&#10;trumpet&#9;null&#9;null&#10;gl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;g&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;ev&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/events/gameMessageEvent.js&#10;bi&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/poker/bidMenuLayer.js&#10;game&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/scene/gameScene.js&#10;pro&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/project.json&#10;fi&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/layer/fivePeopleTableLayer.js&#10;fan&#9;FILE&#9;file:///Users/yaoqiang/game/zgzGame/src/views/poker/fanOutMenuLayer.js" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/res/fonts" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -455,6 +714,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
       <node-options />
       <working-directory>$PROJECT_DIR$</working-directory>
@@ -462,6 +727,7 @@
       <envs />
       <ui>bdd</ui>
       <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
       <test-directory />
       <recursive>false</recursive>
       <method />
@@ -760,49 +1026,97 @@
       <option name="project" value="LOCAL" />
       <updated>1458662657686</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="..........">
+      <created>1459474148228</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1459474148228</updated>
+    </task>
+    <task id="LOCAL-00043" summary="兑换提示">
+      <created>1459585304309</created>
+      <option name="number" value="00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1459585304309</updated>
+    </task>
+    <task id="LOCAL-00044" summary="############## 解决加入事件BUG!!! 主要因为node的生命周期和事件接受时间的巧合导致!!!&#10;其他细节优化">
+      <created>1459659181116</created>
+      <option name="number" value="00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1459659181116</updated>
+    </task>
+    <task id="LOCAL-00045" summary="############## 解决加入事件BUG!!! 主要因为node的生命周期和事件接受时间的巧合导致!!!&#10;其他细节优化">
+      <created>1459660613971</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1459660613971</updated>
+    </task>
+    <task id="LOCAL-00046" summary="remove log">
+      <created>1459736416046</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1459736416046</updated>
+    </task>
+    <task id="LOCAL-00047" summary="细节修改">
+      <created>1459954767838</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1459954767838</updated>
+    </task>
+    <task id="LOCAL-00048" summary="add payment failed request for pingpp">
+      <created>1459956827501</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1459956827501</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fixed reconnect alert can close bug">
+      <created>1460073947843</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1460073947843</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="33" y="8" width="1440" height="996" extended-state="0" />
+    <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2261236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29506314" sideWeight="0.50284785" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34836528" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3348365" sideWeight="0.49715215" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32784432" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978212" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Particles&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Images&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37518248" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Physics&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Animations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer.New" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="ARAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="true" content_ui="tabs" />
-      <window_info id="Palette.New&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="NodeAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29561752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37518248" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29506314" sideWeight="0.50284785" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2788321" sideWeight="0.49715215" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25255474" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Particles&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978212" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Images&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Physics&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Animations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer.New" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="ARAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette.New&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34744525" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="NodeAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -818,8 +1132,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="commit" />
-    <MESSAGE value="部分重构" />
     <MESSAGE value="调整join game请求地址和参数" />
     <MESSAGE value="设置debug入口" />
     <MESSAGE value="调整参数" />
@@ -837,7 +1149,15 @@
     <MESSAGE value="loader and index back button handler for android" />
     <MESSAGE value="res加载调整" />
     <MESSAGE value="调整资源加载" />
-    <option name="LAST_COMMIT_MESSAGE" value="调整资源加载" />
+    <MESSAGE value=".........." />
+    <MESSAGE value="兑换提示" />
+    <MESSAGE value="############## 解决加入事件BUG!!! 主要因为node的生命周期和事件接受时间的巧合导致!!!&#10;其他细节优化" />
+    <MESSAGE value="remove log" />
+    <MESSAGE value="细节修改" />
+    <MESSAGE value="add payment failed request for pingpp" />
+    <MESSAGE value="添加framework/runtime-src" />
+    <MESSAGE value="fixed reconnect alert can close bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed reconnect alert can close bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -848,309 +1168,354 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/script/jsb_cocos2d.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78494626">
+          <caret line="1455" column="5" selection-start-line="1455" selection-start-column="5" selection-end-line="1455" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/event-manager/CCEventManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="899" column="14" selection-start-line="899" selection-start-column="4" selection-end-line="899" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-          <folding />
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/headerLayer.js">
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/transitions/CCTransition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="34" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/headerLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="119" column="34" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/profileTabLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/EventBus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3414264">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/cardUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6160849">
-          <caret line="71" column="20" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/consts/consts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="241" column="22" selection-start-line="241" selection-start-column="22" selection-end-line="241" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/network.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="58" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/profileScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="171" column="30" selection-start-line="171" selection-start-column="30" selection-end-line="171" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/taskTabLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="58" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/shopTabLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="74" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/shopScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="150" column="61" selection-start-line="150" selection-start-column="56" selection-end-line="150" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/settingLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="45" selection-start-line="129" selection-start-column="45" selection-end-line="129" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/rankingListScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/playerLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.555555">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/storageUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/bottomBtnLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63981044">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/gameController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        <state vertical-scroll-proportion="-0.5555556">
+          <caret line="131" column="42" selection-start-line="131" selection-start-column="42" selection-end-line="131" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/universalController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+          <caret line="313" column="43" selection-start-line="313" selection-start-column="43" selection-end-line="313" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/src/views/scene/profileScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        <state vertical-scroll-proportion="-7.0740743">
+          <caret line="633" column="53" selection-start-line="633" selection-start-column="12" selection-end-line="633" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/authController.js">
+    <entry file="file://$PROJECT_DIR$/src/views/scene/shopScene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/events/baseEvent.js">
+    <entry file="file://$PROJECT_DIR$/src/views/scene/taskScene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="97" column="10" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/profileTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="114" column="16" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/exchangeTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="153" column="53" selection-start-line="153" selection-start-column="53" selection-end-line="153" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/shopTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/taskTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="13" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/template/headerLayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="34" selection-start-line="127" selection-start-column="34" selection-end-line="127" selection-end-column="34" />
-          <folding />
+          <caret line="222" column="6" selection-start-line="222" selection-start-column="6" selection-end-line="222" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/external/pluginx/platform/facebook_sdk.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3675799">
+          <caret line="41" column="1228" selection-start-line="41" selection-start-column="1227" selection-end-line="41" selection-end-column="1228" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/script/jsb_prepare.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.372043">
+          <caret line="261" column="48" selection-start-line="261" selection-start-column="45" selection-end-line="261" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/scenes/CCScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/base-nodes/CCNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.962963">
+          <caret line="253" column="60" selection-start-line="253" selection-start-column="34" selection-end-line="253" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23809524">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android/ant.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/soundManger.js">
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/jni/Android.mk">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="116" column="2" selection-start-line="116" selection-start-column="2" selection-end-line="116" selection-end-column="2" />
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android/jni/Android.mk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6745182">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android/jni/Application.mk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/settingLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="54" selection-start-line="30" selection-start-column="12" selection-end-line="35" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11029412">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android/project.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44444445">
+          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/network.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5905512">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/hornLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="26" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/exchangeScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1388889">
+          <caret line="110" column="45" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/authController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="152" column="29" selection-start-line="152" selection-start-column="29" selection-end-line="152" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/eventBus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/eventQueue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="441" column="51" selection-start-line="441" selection-start-column="51" selection-end-line="441" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/consts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="196" column="8" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/events/gameMessageEvent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/playerLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="299" column="44" selection-start-line="299" selection-start-column="44" selection-end-line="299" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/gameEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/gameController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/chatInGameLayer.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/cardUtil.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="361" column="22" selection-start-line="361" selection-start-column="22" selection-end-line="361" selection-end-column="22" />
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/sprites/CCSpriteFrameCache.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.2">
-          <caret line="215" column="20" selection-start-line="215" selection-start-column="4" selection-end-line="215" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/script/jsb_boot.js">
+    <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="877" column="31" selection-start-line="877" selection-start-column="31" selection-end-line="877" selection-end-column="31" />
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/gameLoaderScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="147" column="12" selection-start-line="147" selection-start-column="12" selection-end-line="147" selection-end-column="12" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/lobbyScene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
-          <folding>
-            <marker date="1458828365301" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/auto/api/jsb_cocos2dx_auto_api.js">
+    <entry file="file://$PROJECT_DIR$/res/game_config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20758" column="0" selection-start-line="20758" selection-start-column="0" selection-end-line="20758" selection-end-column="0" />
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/components.js">
+    <entry file="file://$PROJECT_DIR$/src/views/layer/upgradeLayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/exchangeScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.2">
-          <caret line="360" column="11" selection-start-line="360" selection-start-column="4" selection-end-line="360" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/indexScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.3">
-          <caret line="201" column="4" selection-start-line="201" selection-start-column="4" selection-end-line="201" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/gameMenuLayer.js">
+    <entry file="file://$PROJECT_DIR$/src/globals.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="105" selection-start-line="13" selection-start-column="105" selection-end-line="13" selection-end-column="105" />
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/CCBoot.js">
+    <entry file="file://$PROJECT_DIR$/.sdkbox_packages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9782609">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/cppCallback.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1866" column="4" selection-start-line="1866" selection-start-column="4" selection-end-line="1866" selection-end-column="4" />
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/events/baseEvent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="64" selection-start-line="95" selection-start-column="64" selection-end-line="95" selection-end-column="64" />
           <folding />
         </state>
       </provider>
@@ -1158,79 +1523,15 @@
     <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="534" column="19" selection-start-line="534" selection-start-column="19" selection-end-line="534" selection-end-column="19" />
+          <caret line="153" column="40" selection-start-line="153" selection-start-column="40" selection-end-line="153" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/loginScene.js">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/personTalk.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="14" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/poker/pokerCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.466666">
-          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayerDefine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="366" column="22" selection-start-line="366" selection-start-column="22" selection-end-line="366" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.833333">
-          <caret line="401" column="0" selection-start-line="401" selection-start-column="0" selection-end-line="406" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.0">
-          <caret line="1182" column="25" selection-start-line="1182" selection-start-column="25" selection-end-line="1182" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="173" column="21" selection-start-line="173" selection-start-column="21" selection-end-line="173" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/globals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46503496">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.4338843">
+          <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
           <folding />
         </state>
       </provider>

@@ -1,7 +1,21 @@
 reated by .ignore support plugin (hsz.mobi)
 
 #ignore
-/frameworks
+#/frameworks
+
+/frameworks/cocos2d-html5
+/frameworks/cocos2d-x
+
+/frameworks/runtime-src/proj.android
+/frameworks/runtime-src/proj.linux
+/frameworks/runtime-src/proj.win8.1-universal
+/frameworks/runtime-src/proj.win32
+
+/frameworks/runtime-src/proj.android-studio/app/build/*
+/frameworks/runtime-src/proj.android-studio/app/obj/*
+/frameworks/runtime-src/proj.android-studio/app/libs/*
+/frameworks/runtime-src/proj.android-studio/app/assets/*
+
 /runtime
 /tools
 /.idea
@@ -9,3 +23,6 @@ reated by .ignore support plugin (hsz.mobi)
 /.idea/workspace.xml
 /.idea/vcs.xml
 /simulator
+/publish
+
+backup-2016-02-26.zip
