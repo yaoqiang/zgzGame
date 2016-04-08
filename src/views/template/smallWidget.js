@@ -89,12 +89,13 @@ var LoadingLayer = function (data) {
 
 //////////////
 var AlertBoxNode = cc.Node.extend({
-    ctor: function (msg, callback, targe) {
+    ctor: function (msg, callback, targe, notClose) {
         this._super();
 //类变量
         this.m_msg = msg;
         this.m_targe = targe;
         this.m_callback = callback;
+        this.notClose = notClose;
 
         this.m_pLable = null;
         this.m_nIdx = 0;
@@ -154,13 +155,20 @@ var AlertBoxNode = cc.Node.extend({
         okLable.x = okSize.width / 2;
         okLable.y = okSize.height / 2;
         okItem.addChild(okLable);
-        //close
-        var closeItem = new cc.MenuItemImage(res.common_btn_shanchu, res.common_btn_shanchu, this.onExitCallback, this);
-        closeItem.setScale(0.65);
-        closeItem.x = winSize.width / 2 + this.m_bgWidth / 2 - 5;
-        closeItem.y = winSize.height / 2 + this.m_bgHeight / 2 - 5;
 
-        this.m_menu = new cc.Menu(okItem, closeItem);
+        if (this.notClose === undefined) {
+            //close
+            var closeItem = new cc.MenuItemImage(res.common_btn_shanchu, res.common_btn_shanchu, this.onExitCallback, this);
+            closeItem.setScale(0.65);
+            closeItem.x = winSize.width / 2 + this.m_bgWidth / 2 - 5;
+            closeItem.y = winSize.height / 2 + this.m_bgHeight / 2 - 5;
+
+            this.m_menu = new cc.Menu(okItem, closeItem);
+
+        }
+        else {
+            this.m_menu = new cc.Menu(okItem);
+        }
         this.m_menu.tag = TAG_MENU;
         this.m_menu.x = 0;
         this.m_menu.y = 0;
@@ -182,8 +190,8 @@ var AlertBoxNode = cc.Node.extend({
         this.removeFromParent(true);
     }
 });
-var AlertBox = function (msg, callback, targe) {
-    var box = new AlertBoxNode(msg, callback, targe);
+var AlertBox = function (msg, callback, targe, notClose) {
+    var box = new AlertBoxNode(msg, callback, targe, notClose);
     return box;
 };
 

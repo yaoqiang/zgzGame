@@ -73,8 +73,8 @@ pomelo.on('heartbeat timeout', function (data) {
     gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED
     var box = new AlertBox('您的网络太差...', function () {
         doConnectingWithBar();
-    }, this);
-    cc.director.getRunningScene().addChild(box, 9);
+    }, this, true);
+    cc.director.getRunningScene().addChild(box, 999);
 
 })
 
@@ -106,7 +106,7 @@ function doConnectingWithBar() {
 
         });
 
-    }, this);
+    }, this, true);
 
     cc.director.getRunningScene().addChild(box, 999);
 
