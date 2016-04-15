@@ -42,6 +42,7 @@ var route = {
 
     //兑换相关
     getExchangeList: 'connector.universalHandler.getExchangeList',    //获取兑换列表
+    getExchangeListNew: 'connector.universalHandler.getExchangeListNew',    //获取兑换列表-新版!
     getMyExchangeRecordList: 'connector.universalHandler.getMyExchangeRecordList',    //获取兑换列表
     exchange: 'connector.universalHandler.exchange',  //兑换
 

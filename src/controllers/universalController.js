@@ -159,11 +159,13 @@ UniversalController.getTaskGrant = function (taskId, cb) {
 UniversalController.getExchangeList = function (cb) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
-    pomelo.request(route.getExchangeList, {}, function (data) {
+    pomelo.request(route.getExchangeListNew, {os: cc.sys.os == cc.sys.OS_IOS ? 'ios' : 'android'}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         cb(data);
     });
 }
+
+
 
 /**
  * 获取我的兑换记录

@@ -846,8 +846,8 @@ var GameLayer = cc.Layer.extend({
             this.updateOneActorHD(data.actor, 2);
             playEffect(audio_common.Player_Logout);
         } else {
-            cc.director.popScene();
-            //GameController.enterLobby(gLobbyId);//回大厅
+            //cc.director.popScene();
+            GameController.enterLobby(gLobbyId);//回大厅
         }
     },
 
