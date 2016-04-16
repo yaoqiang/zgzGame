@@ -53,6 +53,8 @@
         "src/views/template/bottomBtnLayer.js",
         "src/views/template/soundManger.js",
         "src/views/template/chatInGameLayer.js",
+        "src/views/template/frameCache.js",
+
         "src/views/layer/playerProfileLayer.js",
         "src/views/layer/systemMessageLayer.js",
         "src/views/layer/upgradeLayer.js",

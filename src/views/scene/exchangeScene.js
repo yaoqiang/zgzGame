@@ -6,7 +6,9 @@ var ExchangeScene = cc.Scene.extend({
 
     ctor: function (args) {
         this._super();
-
+        console.log("  ExchangeScene ctor");
+        FrameCache.addSpriteFrames(res.common_plist);
+        FrameCache.addSpriteFrames(res.index_plist);
         this.selected = 100;
 
         //background
@@ -46,7 +48,10 @@ var ExchangeScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
+        console.log("  ExchangeScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
+        FrameCache.removeSpriteFrames(res.common_plist);
+        FrameCache.removeSpriteFrames(res.index_plist);
     },
 
     updateTime: function () {

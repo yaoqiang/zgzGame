@@ -4,11 +4,16 @@ var GameScene = cc.Scene.extend({
         if (!cc.eventManager.isEnabled()) {
             cc.eventManager.setEnabled(true);
         }
-
-        cc.spriteFrameCache.addSpriteFrames(res.game_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
+        console.log("---->GameScene ctor");
+        //cc.spriteFrameCache.addSpriteFrames(res.game_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.exp_plist);
+        FrameCache.addSpriteFrames(res.game_plist);
+        FrameCache.addSpriteFrames(res.poker_plist);
+        FrameCache.addSpriteFrames(res.avatar_plist);
+        FrameCache.addSpriteFrames(res.exp_plist);
+        FrameCache.addSpriteFrames(res.common_plist);
 
         var layer = new GameLayer(args, isBackGame);
         this.addChild(layer);
@@ -26,6 +31,12 @@ var GameScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
+        console.log("---->GameScene onExit");
+        FrameCache.removeSpriteFrames(res.game_plist);
+        FrameCache.removeSpriteFrames(res.poker_plist);
+        FrameCache.removeSpriteFrames(res.avatar_plist);
+        FrameCache.removeSpriteFrames(res.exp_plist);
+        FrameCache.removeSpriteFrames(res.common_plist);
     }
 });
 
