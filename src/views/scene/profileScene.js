@@ -1,8 +1,11 @@
 var ProfileScene = cc.Scene.extend({
     ctor: function (args) {
         this._super();
-
-        cc.spriteFrameCache.addSpriteFrames(res.profile_plist);
+        console.log("---->ProfileScene ctor");
+        FrameCache.addSpriteFrames(res.common_plist);
+        FrameCache.addSpriteFrames(res.profile_plist);
+        FrameCache.addSpriteFrames(res.avatar_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.profile_plist);
 
         this.profileTabLayer = new ProfileTabLayer({lobbyId: args.lobbyId, callback: this.onTabChange});
         this.addChild(this.profileTabLayer, 9);
@@ -62,7 +65,11 @@ var ProfileScene = cc.Scene.extend({
     onExit: function () {
         this._super();
         //
+        console.log("---->ProfileScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
+        FrameCache.removeSpriteFrames(res.common_plist);
+        FrameCache.removeSpriteFrames(res.profile_plist);
+        FrameCache.removeSpriteFrames(res.avatar_plist);
     }
 
 });

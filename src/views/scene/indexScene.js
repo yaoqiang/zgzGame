@@ -13,10 +13,13 @@ var IndexScene = cc.Scene.extend({
         this._super();
 
         var self = this;
-
-        cc.spriteFrameCache.addSpriteFrames(res.index_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
-        cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        console.log("---->IndexScene ctor");
+        //cc.spriteFrameCache.addSpriteFrames(res.index_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.common_plist);
+        FrameCache.addSpriteFrames(res.index_plist);
+        FrameCache.addSpriteFrames(res.avatar_plist);
+        FrameCache.addSpriteFrames(res.common_plist);
 
         //header
         var headerLayer = new HeaderLayer({lobbyId: undefined});
@@ -62,9 +65,12 @@ var IndexScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
-
+        console.log("---->IndexScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
 
+        FrameCache.removeSpriteFrames(res.avatar_plist);
+        FrameCache.removeSpriteFrames(res.common_plist);
+        FrameCache.removeSpriteFrames(res.index_plist);
     }
 
 });

@@ -1,8 +1,10 @@
 var LoginScene = cc.Scene.extend({
     ctor: function () {
         this._super();
-
-        cc.spriteFrameCache.addSpriteFrames(res.login_plist);
+        console.log("---->LoginScene ctor");
+        FrameCache.addSpriteFrames(res.login_plist);
+        FrameCache.addSpriteFrames(res.common_plist);
+        //cc.spriteFrameCache.addSpriteFrames(res.login_plist);
         var layer = new LoginLayer();
         this.addChild(layer);
 
@@ -13,6 +15,12 @@ var LoginScene = cc.Scene.extend({
 
        // UpdataDataApp(1, null, null);
 
+    },
+    onExit: function () {
+        this._super();
+        console.log("---->LoginScene onExit");
+        FrameCache.removeSpriteFrames(res.login_plist);
+        FrameCache.removeSpriteFrames(res.common_plist);
     }
 
 });
