@@ -148,18 +148,21 @@ var DailyTodoLayer = cc.Layer.extend({
             }
 
             if (!this.canGetBankruptcyGrant) {
-                prompt.fade("您已领取完今日破产补助");
+                prompt.fadeMiddle("您已领取完今日破产补助");
                 return;
             }
 
             if (!this.threshold) {
-                prompt.fade("您的金币太多了, 扎光了再来吧");
+                prompt.fadeMiddle("您的金币太多了, 扎光了再来吧");
                 return;
             }
 
             var self = this;
             UniversalController.getBankruptcyGrant(function (data) {
-
+                if (data.code === RETURN_CODE.FAIL) {
+                    prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+                    return;
+                }
                 self.bankruptGrantBtnLabel.setString(data.canGetBankruptcyGrant ? "已领取" : "前往游戏");
                 self.canGetCheckInGrant = data.canGetBankruptcyGrant;
                 prompt.fade("您成功领取破产补助" + data.gold + "金币");
