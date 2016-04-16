@@ -189,17 +189,16 @@ var ExchangeListLayer = cc.Layer.extend({
         if (oneExchange.type == CommonConf.EXCHANGE.TYPE.INBOX_CALL) {
 
         }
-        //移动流量
-        else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.INBOX_DATA_MOBILE) {
-
-        }
-        //联通流量
-        else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.INBOX_DATA_UNICOM) {
-
-        }
-        //电信流量
-        else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.INBOX_DATA_TELECOM) {
-
+        else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.VIRTUAL) {
+            if (oneExchange.icon == 'GIFT') {
+                itemImageString = "#index_duihuan_icon.png";
+            }
+            else if (oneExchange.icon == 'TRUMPET') {
+                itemImageString = "#common_icon_laba.png";
+            }
+            else if (oneExchange.icon == 'NOTE_CARD') {
+                itemImageString = "#jipaiqi.png";
+            }
         }
         //实物兑换
         else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.OUTBOX) {
@@ -211,6 +210,16 @@ var ExchangeListLayer = cc.Layer.extend({
         icon.setPosition(xx, this.m_nCelleHeight / 2);
         icon.setAnchorPoint(0, 0.5);
         cell.addChild(icon);
+
+        if (oneExchange.icon == 'GIFT') {
+            icon.scale = 0.85;
+        }
+        else if (oneExchange.icon == 'TRUMPET') {
+            icon.scale = 0.6;
+        }
+        else if (oneExchange.icon == 'NOTE_CARD') {
+            icon.scale = 0.6;
+        }
 
         xx = xx + 150;
 
@@ -231,13 +240,13 @@ var ExchangeListLayer = cc.Layer.extend({
 
         //元宝要求
         var ingotImage = new cc.Sprite("#yuanbaoIcon.png");
-        ingotImage.setPosition(xx + 200, this.m_nCelleHeight / 2 + 10);
+        ingotImage.setPosition(xx + 270, this.m_nCelleHeight / 2 + 10);
         ingotImage.setAnchorPoint(0, 0.5);
         ingotImage.scale = 0.6;
         cell.addChild(ingotImage);
 
         var ingotLabel = new cc.LabelTTF(oneExchange.fragment+"个元宝可兑换", "Arial", 16);
-        ingotLabel.setPosition(xx + 200, this.m_nCelleHeight / 2 - 30);
+        ingotLabel.setPosition(xx + 270, this.m_nCelleHeight / 2 - 30);
         ingotLabel.setAnchorPoint(0, 0);
         ingotLabel.color = cc.color.RED;
         cell.addChild(ingotLabel);
@@ -281,6 +290,14 @@ var ExchangeListLayer = cc.Layer.extend({
         this.exchangeId = oneExchange._id;
 
         if (gPlayer.fragment >= oneExchange.fragment) {
+
+            //兑换虚拟消耗品
+            if (oneExchange.type == CommonConf.EXCHANGE.TYPE.VIRTUAL) {
+
+                this.doExchangeVirtual();
+                return;
+            }
+
             //弹框, 如果是话费, 输入手机号码; 如果是实物类, 输入地址, 联系人, 电话;
             if (oneExchange.type == CommonConf.EXCHANGE.TYPE.INBOX_CALL) {
                 this.infoBox = new DialogSmall('填写信息', 2, {ensureCallback: this.doExchange}, this);
@@ -308,7 +325,7 @@ var ExchangeListLayer = cc.Layer.extend({
                     "\n或号码对应归属地的运营商系统正在结算或维护" +
                     "\n请稍等再试。通常月初月末或者每天晚上12点左右" +
                     "\n各地区运营商系统会进入1-2两小时的维护结算。", "Arial", 14);
-                this.mobileRechargeTipLabel.color = cc.color.RED;
+                this.mobileRechargeTipLabel.color = {r: 0, g: 255, b: 127};
                 this.mobileRechargeTipLabel.setPosition(boxSize.width / 2 + 220, boxSize.height / 2 + 80);
                 this.infoBox.addChild(this.mobileRechargeTipLabel, 10);
 
@@ -335,6 +352,33 @@ var ExchangeListLayer = cc.Layer.extend({
             return false;
         }
         return true;
+    },
+
+    doExchangeVirtual: function () {
+        UniversalController.exchange(this.exchangeId, '', 1, '', '', function (data) {
+            if (data.code == RETURN_CODE.OK) {
+                prompt.fadeMiddle('兑换成功, 请您注意查收');
+
+                //兑换结束后更新view
+                var exchangeList = self.data.exchangeList;
+
+                for (var i = 0; i < exchangeList.length; i++) {
+                    var item = exchangeList[i];
+                    if (item._id == self.exchangeId) {
+                        //暂时客户端处理
+                        item.inventory -= 1;
+                        item.inventory = item.inventory < 0 ? 0 : item.inventory;
+                        self.m_pTableView.reloadData();
+                        break;
+                    }
+                }
+
+
+            }
+            else {
+                prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+            }
+        });
     },
 
     doExchange: function () {

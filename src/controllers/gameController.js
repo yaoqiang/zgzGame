@@ -21,7 +21,7 @@ GameController.join = function (roomId, lobbyId) {
 
             var scene = new GameScene(data, false);
             //cc.director.pushScene(new cc.TransitionSlideInT(0.5, scene));
-            cc.director.pushScene(scene);
+            cc.director.runScene(scene);
 
         } else if (data.code == RETURN_CODE.FAIL) {
             //cc.log("----> join game fail");
@@ -62,7 +62,7 @@ GameController.enterLobby = function (lobbyId) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("enterLobby :", data);
         var scene = new LobbyScene(data, lobbyId);
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        cc.director.runScene(scene);
     });
 
 };

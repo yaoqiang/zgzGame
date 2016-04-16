@@ -53,7 +53,7 @@ AuthController.loginWithToken = function(token, cb)
                 if (cb) cb();
                 var box = new AlertBox('用户名不存在,请重新登录', function () {
                     cc.director.runScene(new LoginScene());
-                }, this);
+                }, this, true);
                 cc.director.getRunningScene().addChild(box, 9);
 
                 return;
@@ -63,7 +63,7 @@ AuthController.loginWithToken = function(token, cb)
                 if (cb) cb();
                 var box = new AlertBox('密码错误,请重新登录', function () {
                     cc.director.runScene(new LoginScene());
-                }, this);
+                }, this, true);
                 cc.director.getRunningScene().addChild(box, 9);
                 return;
             }
@@ -72,7 +72,7 @@ AuthController.loginWithToken = function(token, cb)
                 if (cb) cb();
                 var box = new AlertBox('账号密码错误,请重新登录', function () {
                     cc.director.runScene(new LoginScene());
-                }, this);
+                }, this, true);
                 cc.director.getRunningScene().addChild(box, 9);
                 return;
             }
