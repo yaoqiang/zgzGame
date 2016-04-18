@@ -1,6 +1,9 @@
 var SignupScene = cc.Scene.extend({
     onEnter: function () {
         this._super();
+        console.log("---->SignupScene ctor");
+        FrameCache.addSpriteFrames(res.common_plist);
+        FrameCache.addSpriteFrames(res.login_plist);
 
         var layer = new SignupLayer();
         this.addChild(layer);
@@ -28,6 +31,9 @@ var SignupScene = cc.Scene.extend({
     onExit: function() {
         this._super();
         cc.eventManager.removeListener(this.keyboardListener);
+        console.log("---->SignupScene onExit");
+        FrameCache.removeSpriteFrames(res.common_plist);
+        FrameCache.removeSpriteFrames(res.login_plist);
     }
 
 });

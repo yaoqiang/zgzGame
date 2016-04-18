@@ -5,8 +5,11 @@ var ShopScene = cc.Scene.extend({
 
     ctor: function (args) {
         this._super();
-
-        cc.spriteFrameCache.addSpriteFrames(res.shop_plist);
+        console.log("---->ShopScene ctor");
+        FrameCache.addSpriteFrames(res.common_plist);
+        FrameCache.addSpriteFrames(res.shop_plist);
+        FrameCache.addSpriteFrames(res.index_plist);
+       // cc.spriteFrameCache.addSpriteFrames(res.shop_plist);
 
         this.selected = 100;
 
@@ -48,7 +51,11 @@ var ShopScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
+        console.log("---->ShopScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
+        FrameCache.removeSpriteFrames(res.common_plist);
+        FrameCache.removeSpriteFrames(res.rank_plist);
+        FrameCache.removeSpriteFrames(res.index_plist);
     }
 
 });
