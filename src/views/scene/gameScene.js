@@ -1009,22 +1009,15 @@ var GameLayer = cc.Layer.extend({
         }
 
         if (data.actor.uid == gPlayer.uid) {
-            this.addFanOutMenu();
             var boss = data.isBoss;
-            //cc.log("---->fanCountdownEvent   boss:", !boss);
-            if (this.m_pFanOutMenuLayer) {
-                this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
+            if(this.trusteeshipMask == null){
+                this.addFanOutMenu();
+                cc.log("---->未托管状态");
+                if (this.m_pFanOutMenuLayer) {
+                    this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
+                }
+                this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, true);
             }
-            //if (data.isBoss) {
-            //    if (this.m_pFanOutMenuLayer) {
-            //        this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, false);
-            //    }
-            //}else{
-            //    if (this.m_pFanOutMenuLayer) {
-            //        this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
-            //    }
-            //}
-            this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_FanOut, true);
         } else {
 
         }
