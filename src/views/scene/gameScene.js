@@ -72,7 +72,7 @@ var GameLayer = cc.Layer.extend({
             this.m_type = game.gameType;
             this.base = game.base;
             // 如果是重回游戏, 一定要为gGameType赋值, 决定游戏的牌型关键!!!
-            gGameType = data.game.gameType;
+            gGameType = game.gameType;
             gLobbyId = game.lobbyId;
             gGameId = game.gameId;
             gRoomId = game.roomId;
@@ -1014,7 +1014,7 @@ var GameLayer = cc.Layer.extend({
             var boss = data.isBoss;
             if(this.trusteeshipMask == null){
                 this.addFanOutMenu();
-                cc.log("---->未托管状态");
+                //cc.log("---->未托管状态");
                 if (this.m_pFanOutMenuLayer) {
                     this.m_pFanOutMenuLayer.setBtnEnabled(FanOutMenuBtn.kCCFanOutMenu_Pass, true);
                 }
