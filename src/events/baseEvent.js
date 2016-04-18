@@ -19,7 +19,12 @@ cc.eventManager.addCustomListener(cc.game.EVENT_SHOW, function () {
             var fromHandshake = getDateDiff(handshake, now, 'second');
             if (fromHandshake > heartbeat * 2) {
                 //
-                doConnectingWithBar();
+                if (gHasConnector) {
+                    gHasConnector = false;
+                    gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED;
+                    //
+                    doConnectingWithBar();
+                }
             }
             return;
         }
@@ -28,7 +33,12 @@ cc.eventManager.addCustomListener(cc.game.EVENT_SHOW, function () {
         var diff = getDateDiff(lastHeartbeatTime, now, 'second');
         if (diff > heartbeat * 2) {
             //
-            doConnectingWithBar();
+            if (gHasConnector) {
+                gHasConnector = false;
+                gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED;
+                //
+                doConnectingWithBar();
+            }
         }
     } catch (e) {
         console.error(e);
