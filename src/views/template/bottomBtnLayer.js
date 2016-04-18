@@ -57,19 +57,22 @@ var BottomBtnLayer = cc.Layer.extend({
     onTaskBtnClick: function () {
        // playEffect(audio_common.Button_Click);
         var scene = new TaskScene({selected: 0, lobbyId: this.lobbyId});
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        cc.director.runScene(scene);
     },
 
     onRankingBtnClick: function () {
        // playEffect(audio_common.Button_Click);
         var scene = new RankingListScene({selected: 0, lobbyId: this.lobbyId});
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        cc.director.runScene(scene);
     },
 
     onExchangeBtnClick: function () {
         //playEffect(audio_common.Button_Click);
         var scene = new ExchangeScene({selected: 0, lobbyId: this.lobbyId});
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        cc.director.runScene(scene);
     },
 
     onShopButton: function () {
@@ -80,7 +83,8 @@ var BottomBtnLayer = cc.Layer.extend({
             args.data = data;
             args.lobbyId = self.lobbyId;
             var scene = new ShopScene(args);
-            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+            //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+            cc.director.runScene(scene);
         });
-    },
+    }
 })

@@ -154,7 +154,8 @@ var LoginLayer = cc.Layer.extend({
 
     onSignUp: function () {
         var scene = new SignupScene();
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        cc.director.runScene( scene);
         playEffect(audio_common.Button_Click);
     }
 

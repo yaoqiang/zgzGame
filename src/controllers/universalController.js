@@ -9,7 +9,8 @@ UniversalController.enterIndex = function () {
     pomelo.request(route.enterIndex, {}, function (lobbyData) {
 
         var indexScene = new IndexScene(lobbyData.onlineLobby);
-        cc.director.runScene(new cc.TransitionFade(1.2, indexScene));
+        //cc.director.runScene(new cc.TransitionFade(1.2, indexScene));
+        cc.director.runScene(indexScene);
     });
 }
 

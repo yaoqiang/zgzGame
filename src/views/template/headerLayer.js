@@ -162,7 +162,7 @@ var HeaderLayer = cc.Layer.extend({
         UniversalController.getProfile(gPlayer.uid, function (data) {
             self.args.player = data;
             var scene = new ProfileScene(self.args);
-            cc.director.runScene(new cc.TransitionFade(1.2, scene));
+            cc.director.runScene(scene);
         });
     },
 

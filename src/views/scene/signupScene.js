@@ -21,7 +21,8 @@ var SignupScene = cc.Scene.extend({
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
                     var scene = new LoginScene();
-                    cc.director.runScene(new cc.TransitionFade(1.2, scene));
+                    //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+                    cc.director.runScene(scene);
                 }
 
             }
@@ -157,7 +158,8 @@ var SignupLayer = cc.Layer.extend({
     registerCallback: function () {
         playEffect(audio_common.Button_Click);
         var scene = new LoginScene();
-        cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        //cc.director.runScene(new cc.TransitionFade(1.2, scene));
+        cc.director.runScene(scene);
     },
     onExit: function()
     {
