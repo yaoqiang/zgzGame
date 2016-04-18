@@ -71,6 +71,8 @@ var GameLayer = cc.Layer.extend({
 
             this.m_type = game.gameType;
             this.base = game.base;
+            // 如果是重回游戏, 一定要为gGameType赋值, 决定游戏的牌型关键!!!
+            gGameType = data.game.gameType;
             gLobbyId = game.lobbyId;
             gGameId = game.gameId;
             gRoomId = game.roomId;
