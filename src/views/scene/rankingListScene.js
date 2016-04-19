@@ -10,6 +10,7 @@ var RankingListScene = cc.Scene.extend({
         //cc.spriteFrameCache.addSpriteFrames(res.rank_plist);
         FrameCache.addSpriteFrames(res.common_plist);
         FrameCache.addSpriteFrames(res.rank_plist);
+        FrameCache.addSpriteFrames(res.avatar_plist);
 
         this.selected = 100;
 
@@ -54,6 +55,7 @@ var RankingListScene = cc.Scene.extend({
         cc.eventManager.removeListener(this.keyboardListener);
         FrameCache.removeSpriteFrames(res.common_plist);
         FrameCache.removeSpriteFrames(res.rank_plist);
+        FrameCache.removeSpriteFrames(res.avatar_plist);
     },
 
     updateTime: function () {
