@@ -312,7 +312,7 @@ var GameLayer = cc.Layer.extend({
             }
 
             var actor = {actorNr: currentFanActor.actorNr, uid: currentFanActor.uid};
-            var isBoss = false;
+            var isBoss = gameLogic.isBoss;
             var second = 15;
             gActor.isBoss = isBoss;
             gLastFanCardRecognization = lastFanCardRecongnization;
