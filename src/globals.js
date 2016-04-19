@@ -75,3 +75,8 @@ var lobbyName = [
 
 TAG_MENU = 100;
 
+//游戏类型
+GAME_ZODER = {
+    PlayerProfile: 21  //个人信息
+
+}

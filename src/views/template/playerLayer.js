@@ -197,8 +197,8 @@ var PlayerLayer = cc.Layer.extend({
 
 
     updata: function (args) {
-        //console.log("PlayerLayer updata");
-        //console.log(args);
+        console.log("PlayerLayer updata");
+        console.log(args);
         var properties = args.m_properties;
 
         this.m_uid = args.m_uid;
@@ -230,7 +230,7 @@ var PlayerLayer = cc.Layer.extend({
             this.m_pPhoto = new ccui.Button();
             this.m_pPhoto.setTouchEnabled(true);
             this.m_pPhoto.loadTextures(image, image, image, ccui.Widget.PLIST_TEXTURE);
-            this.m_pPhoto.addTouchEventListener(this.onActorAvatarClicked, this);
+            this.m_pPhoto.addTouchEventListener(this.onActorAvatarClicked, this, -255);
 
             if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
                 this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
@@ -253,8 +253,22 @@ var PlayerLayer = cc.Layer.extend({
         if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
             this.m_pPhoto.removeFromParent(true);
         }
-        this.m_pPhoto = new cc.Sprite(image);
-        if (this.m_pPhoto) {
+        //this.m_pPhoto = new cc.Sprite(image);
+        //if (this.m_pPhoto) {
+        //    this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
+        //    this.m_pPhoto.anchorX = this.m_anchorX;
+        //    this.m_pPhoto.anchorY = this.m_anchorY;
+        //    this.m_pPhoto.scale = ZGZ.SCALE * 0.5;
+        //    this.addChild(this.m_pPhoto);
+        //}
+        var photoImage = image;
+        photoImage = photoImage.substring(1, photoImage.length);
+        this.m_pPhoto = new ccui.Button();
+        this.m_pPhoto.setTouchEnabled(true);
+        this.m_pPhoto.loadTextures(photoImage, photoImage, photoImage, ccui.Widget.PLIST_TEXTURE);
+        this.m_pPhoto.addTouchEventListener(this.onActorAvatarClicked, this, -255);
+
+        if (this.m_pPhoto && cc.sys.isObjectValid(this.m_pPhoto)) {
             this.m_pPhoto.setPosition(this.m_position.x, this.m_position.y);
             this.m_pPhoto.anchorX = this.m_anchorX;
             this.m_pPhoto.anchorY = this.m_anchorY;

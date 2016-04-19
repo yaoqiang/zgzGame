@@ -529,7 +529,10 @@ var GameLayer = cc.Layer.extend({
                 playEffect(audio_common.Button_Click);
 
                 UniversalController.getProfileByUid(this.m_uid, function (data) {
-                    cc.director.getRunningScene().addChild(new PlayerProfileLayer(data), 21);
+                    var node = cc.director.getRunningScene().getChildByTag( GAME_ZODER.PlayerProfile);
+                    if(node == null){
+                        cc.director.getRunningScene().addChild(new PlayerProfileLayer(data), GAME_ZODER.PlayerProfile, GAME_ZODER.PlayerProfile);
+                    }
                 });
 
                 break;
