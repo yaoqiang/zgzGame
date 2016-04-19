@@ -168,6 +168,12 @@ pomelo.on(gameEvents.BROADCAST, function (data) {
     EventBus.publish(gameEvents.BROADCAST, data);
 });
 
+//公告
+pomelo.on(gameEvents.BBS, function (data) {
+    console.log('receive BBS event.', data);
+    EventBus.publish(gameEvents.BBS, data);
+});
+
 /**
  * 自己金币变化
  */

@@ -26,6 +26,7 @@ var gameEvents = {
     GOLD_CHANGE: 'onGoldChange',
     CHAT: 'onChat',
     BROADCAST: 'onBroadcast',
+    BBS: 'onBBS',   //公告
     UI_COMMAND: 'onUICommand',
     VERSION_UPGRADE: 'onVersionUpgrade',
     INGOT_CHANGE: 'onIngotChange',
