@@ -298,7 +298,19 @@ var GameLayer = cc.Layer.extend({
 
         //
         if (state == ZGZ.GAME_STATE.TALK) {
+            var actors = args.actors;
+            var len = actors.length;
             //console.log("-----------------回到游戏，说话阶段-----------------");
+            for (var i = 0; i < len; i++) {
+                //说话情况
+                this.talkEvent({
+                    actorNr: actors[i].actorNr,
+                    uid: actors[i].uid,
+                    append: actors[i].append,
+                    share: share,
+                    goal: actors[i].identity
+                });
+            }
             this.talkCountdownEvent({actor: {actorNr: currentTalker.actorNr, uid: currentTalker.uid}, second: 15});
         } else {
             //console.log("-----------------回到游戏，打牌阶段-----------------");
@@ -676,7 +688,7 @@ var GameLayer = cc.Layer.extend({
 //把join得到的actor数组重新整理，生成actor结构，push到
     initActorList: function (actorArray) {
         this.m_actorList = [];
-
+        console.log("--->initActorList:", actorArray);
         var len = actorArray.length;
 
         for (var i = 0; i < len; i++) {
