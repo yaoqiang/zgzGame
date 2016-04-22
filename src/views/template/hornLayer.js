@@ -53,6 +53,6 @@ var HornSprite = cc.Layer.extend({
     onExit: function () {
         this._super();
         //cc.eventManager.removeCustomListeners(gameEvents.BROADCAST);
-    },
+    }
 });
 
