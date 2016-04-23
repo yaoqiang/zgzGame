@@ -2,23 +2,29 @@
 var notificationLayer = cc.Layer.extend({
     ctor: function (params) {
         this._super();
+
         this.contentLabel = null;
         this.hornBg = null;
         this.clip = null;
-        this.massage = [];
+        self = null;
+        nextNotification = true;
+
         FrameCache.addSpriteFrames(res.common_plist);
 
         this.init(params);
+        this.initListener();
     },
 
     init:function (params) {
         this._super();
 
         var size =  cc.director.getWinSize();
+        var x = params.x?params.x:size.width / 2;
+        var y = params.x?params.y:size.height - 110;
 
         this.clip = this.clipper();
         var clipSize = this.clip.getContentSize();
-        this.setPosition(cc.p(size.width / 2, size.height - 110));
+        this.setPosition(cc.p(x, y));
         this.addChild(this.clip, 0);
 
         this.hornBg = new cc.Sprite("#common_bg_laba.png");
@@ -45,6 +51,9 @@ var notificationLayer = cc.Layer.extend({
     moveDone:function (sender) {
         sender.removeFromParentAndCleanup();
     },
+    moveMid:function (sender) {
+        nextNotification = true;
+    },
     trumpet: function (data) {
         if(data == null)return;
         var time = 0.6;
@@ -69,15 +78,82 @@ var notificationLayer = cc.Layer.extend({
         this.contentLabel.runAction( mt );
     },
 
+    trumpetTwo: function (data) {
+        if(data == null)return;
+        nextNotification = false;
+        var time = 0.5;
+        var xx = 60;
+        var size = this.hornBg.getContentSize();
+
+        if(this.contentLabel && cc.sys.isObjectValid(this.contentLabel)){
+            this.contentLabel.stopAllActions();
+            var moveAction = cc.moveTo(time, cc.p(xx, size.height/2*3));
+            var action = cc.sequence(
+                moveAction,
+                cc.callFunc(this.moveDone));
+
+            this.contentLabel.runAction(action);
+            //----end22----
+        }
+
+        this.contentLabel = new cc.LabelTTF(data.from + ": " + data.msg, "Arial", 25);
+        this.contentLabel.color = cc.color.RED;
+        this.contentLabel.setAnchorPoint(0, 0.5);
+        this.contentLabel.x = xx;
+        this.contentLabel.y = -size.height/2;
+        this.hornBg.addChild(this.contentLabel, 1);
+
+        var mt1 = cc.moveTo(time, cc.p(xx, size.height/2));
+        var dt = cc.delayTime(3);
+        var mt2 = cc.moveTo(time, cc.p(xx, size.height/2*3));
+        var action1 = cc.sequence(
+            mt1,
+            cc.callFunc(this.moveMid),
+            dt,
+            mt2,
+            cc.callFunc(this.moveDone));
+
+        this.contentLabel.runAction(action1);
+
+
+    },
+
+    initListener: function (){
+        self = this;
+        EventBus.subscribe(gameEvents.BROADCAST, function (data) {
+            //cc.log("---->game  cancelTrusteeshipEvent: ", data);
+            if (self && cc.sys.isObjectValid(self)) {
+                //self.trumpetTwo(data);
+                MassageQueue.pushMassage(data);
+            }
+
+        });
+        //MassageQueue.pushMassage({from:"aaa", msg:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"});
+        //MassageQueue.pushMassage({from:"bbb", msg:"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"});
+        //MassageQueue.pushMassage({from:"ccc", msg:"cccccccccccccccccccccccccccccccccc"});
+        //MassageQueue.pushMassage({from:"ddd", msg:"dddddddddddddddddddddddddddddddddd"});
+        //MassageQueue.pushMassage({from:"eee", msg:"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"});
+        //MassageQueue.pushMassage({from:"fff", msg:"fffffffffffffffffffffffffffffffffff"});
+        //MassageQueue.pushMassage({from:"ggg", msg:"gggggggggggggggggggggggggggggggggg"});
+    },
     onEnter: function () {
         this._super();
+
         this.schedule(function () {
-            this.trumpet(MassageQueue.shiftMassage());
-        }, 3)
+            if(nextNotification == true){
+                this.trumpetTwo(MassageQueue.shiftMassage());
+            }
+
+        }, 0.2)
+
+
+
+
     },
 
     onExit: function () {
         FrameCache.removeSpriteFrames(res.common_plist);
+        self = null;
         this._super();
     }
 
