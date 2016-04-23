@@ -25,6 +25,8 @@ pomelo.on(gameEvents.START, function (data) {
     gActor.actorNr = data.actor.actorNr;
     gActor.uid = data.actor.uid;
     gActor.cards = data.actor.gameStatus.currentHoldingCards;
+    gRemainingCards = data.actor.remainingCards;
+
     EventBus.publish(gameEvents.START, data);
 });
 
@@ -90,6 +92,10 @@ pomelo.on(gameEvents.FAN, function (data) {
     if (data.cardRecognization) {
         gLastFanCardRecognization = data.cardRecognization;
     }
+    if (data.cards.length > 0 && data.uid !== gPlayer.uid) {
+        cardUtil.updateRemainingCards(data.cards);
+        EventBus.publish(gameEvents.UPDATE_REMAINING_CARD, data);
+    }
     EventBus.publish(gameEvents.FAN, data);
     //actor: {uid: xx, actorNr: xx},
     //cardRecognization: utils.cards.CardRecognization (当前出牌牌型）, cards: 出牌，数组[]，为空时为不出
@@ -152,7 +158,12 @@ pomelo.on(gameEvents.FAN_FINISHED, function (data) {
 });
 
 pomelo.on(gameEvents.BACK_TO_GAME, function (data) {
-    //console.log('receive onBackToGame event.', data);
+    console.log('receive onBackToGame event.', data);
+    for (var i = 0; i < data.actors.length; i++) {
+        if (data.actors[i].uid === gPlayer.uid) {
+            gRemainingCards = data.actors[i].remainingCards
+        }
+    }
     var scene = new GameScene(data, true);
     cc.director.runScene(scene);
 });

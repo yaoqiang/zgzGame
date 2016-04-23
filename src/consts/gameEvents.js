@@ -32,6 +32,8 @@ var gameEvents = {
     INGOT_CHANGE: 'onIngotChange',
     RESTART_GAME: 'onRestartGame',
     DISSOLVE_GAME: 'onDissolveGame',
-    PAYMENT_RESULT: 'onPaymentResult'
+    PAYMENT_RESULT: 'onPaymentResult',
 
+    //
+    UPDATE_REMAINING_CARD: 'UPDATE_REMAINING_CARD'  //更新剩余牌(记牌器)
 }
