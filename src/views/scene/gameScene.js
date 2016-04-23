@@ -236,6 +236,10 @@ var GameLayer = cc.Layer.extend({
 
         });
 
+        EventBus.subscribe(gameEvents.UPDATE_REMAINING_CARD, function (data) {
+            selfPointer.updateRemainingCards(data);
+        });
+
         //
         //add a keyboard event listener to statusLabel
         this.keyboardListener = cc.eventManager.addListener({
@@ -266,6 +270,12 @@ var GameLayer = cc.Layer.extend({
         this.updateActorHD();
         //game menu
         this.addMenu();
+
+
+        //添加记牌器
+        if (gRemainingCards) {
+            this.addRemainingCards();
+        }
 
 
 //更新纸牌
@@ -912,6 +922,51 @@ var GameLayer = cc.Layer.extend({
             this.m_pTableLayer.removeAllActorReady();
         }
         //console.log("gameStartEvent end");
+
+        if (gRemainingCards) {
+            this.addRemainingCards();
+        }
+    },
+
+    addRemainingCards: function () {
+        if (!gRemainingCards || gRemainingCards.length == 0);
+
+        var winSize = cc.director.getWinSize();
+        var remainingCardsSprite = new cc.Sprite('#game_jipaiqi_01.png');
+        remainingCardsSprite.setAnchorPoint(0, 0);
+        remainingCardsSprite.setPosition(winSize.width / 2 - 80, -20);
+        this.addChild(remainingCardsSprite, 24);
+
+        var perWidth = remainingCardsSprite.getContentSize().width / 15;
+        var y = 20;
+        var labelXList = _.map([19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5], function (modValue, index) {
+            return {modValue: modValue, x: index * perWidth + perWidth / 2};
+        });
+
+        this.remainingCardsLabelList = [];
+
+        var self = this;
+
+        gRemainingCards.forEach(function (remainingCard) {
+            var x = _.findWhere(labelXList, {modValue: remainingCard.modValue}).x;
+            var label = new cc.LabelTTF(remainingCard.count, 'Arial', 14);
+            label.setAnchorPoint(0.5, 0);
+            label.x = x;
+            label.y = y;
+            label.setTag(remainingCard.modValue);
+            remainingCardsSprite.addChild(label);
+            self.remainingCardsLabelList.push({modValue: remainingCard.modValue, label: label});
+        })
+
+    },
+
+    updateRemainingCards: function (data) {
+        var self = this;
+        gRemainingCards.forEach(function (remainingCard) {
+            var label = _.findWhere(self.remainingCardsLabelList, {modValue: remainingCard.modValue}).label;
+            label.setString(remainingCard.count);
+        });
+
     },
 
     talkCountdownEvent: function (data) {

@@ -30,6 +30,7 @@ var gGameId = 0;
 var gGameType = 0;
 var gActor = {};
 var gLastFanCardRecognization = null;   //上手牌型
+var gRemainingCards = null; //记牌器
 
 var gGameState = 0;
 var avatars = [

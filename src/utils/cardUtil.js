@@ -53,3 +53,21 @@ cardUtil.recognitionCards = function (cards, type, append) {
 cardUtil.isCurrentBiggerThanLast = function (cr1, cr2, type, append) {
     return CardLogic.isCurrentBiggerThanLast(cr1, cr2, type, append);
 }
+
+
+/**
+ * 更新剩余牌数组(更新记牌器)
+ * @param cards
+ */
+cardUtil.updateRemainingCards = function (cards) {
+    cards.forEach(function (card) {
+        if (gRemainingCards && gRemainingCards.length > 0) {
+            gRemainingCards = _.map(gRemainingCards, function (remainingCard) {
+                if (remainingCard.modValue === card % 100) {
+                    remainingCard.count -= 1;
+                }
+                return remainingCard;
+            });
+        }
+    })
+}
