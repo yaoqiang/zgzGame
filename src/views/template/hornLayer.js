@@ -2,10 +2,10 @@
 var HornSprite = cc.Layer.extend({
     ctor: function () {
         this._super();
-
+        this.broadcastListener = null;
         //
         var self = this;
-        EventBus.subscribe(gameEvents.BROADCAST, function (data) {
+        this.broadcastListener = EventBus.subscribe(gameEvents.BROADCAST, function (data) {
             //cc.log("---->game  cancelTrusteeshipEvent: ", data);
             if (self && cc.sys.isObjectValid(self)) {
                 self.trumpet(data);
@@ -52,6 +52,10 @@ var HornSprite = cc.Layer.extend({
     },
     onExit: function () {
         this._super();
+        if(this.broadcastListener ){
+            EventBus.removeSubscribe(this.broadcastListener);
+            this.broadcastListener = null;
+        }
         //cc.eventManager.removeCustomListeners(gameEvents.BROADCAST);
     }
 });

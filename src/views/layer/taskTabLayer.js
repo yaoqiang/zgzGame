@@ -1,7 +1,8 @@
 var TaskTabLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
-
+        this.ingotChangeListener = null;
+        this.goldChangeListener = null;
         this.initSubscribeEvent();
 
         //this.lobbyId = args.lobbyId;
@@ -154,12 +155,12 @@ var TaskTabLayer = cc.Layer.extend({
     initSubscribeEvent: function () {
         var self = this;
 
-        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+        this.goldChangeListener = EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
                 self.gold.setString(zgzNumeral(data.gold).format('0,0'))
             }
         });
-        EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
+        this.ingotChangeListener =  EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
                 self.ingot.setString(zgzNumeral(data.ingot).format('0,0'))
             }
@@ -173,6 +174,14 @@ var TaskTabLayer = cc.Layer.extend({
 
     onExit: function () {
         this._super();
+        if(this.goldChangeListener){
+            EventBus.removeSubscribe(this.goldChangeListener);
+            this.goldChangeListener = null;
+        }
+        if(this.ingotChangeListener){
+            EventBus.removeSubscribe(this.ingotChangeListener);
+            this.ingotChangeListener = null;
+        }
         //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
         //cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
     }
