@@ -78,7 +78,7 @@ var ProfileScene = cc.Scene.extend({
 var ProfileLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
-
+        this.goldChangeListener = null;
         //init event
         this.initSubscribeEvent();
 
@@ -637,7 +637,7 @@ var ProfileLayer = cc.Layer.extend({
 
     initSubscribeEvent: function () {
         var self = this;
-        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+        this.goldChangeListener = EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
                 self.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
             }
@@ -651,6 +651,10 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     onExit: function () {
+        if(this.goldChangeListener){
+            EventBus.removeSubscribe(this.goldChangeListener);
+            this.goldChangeListener = null;
+        }
         this._super();
         //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }

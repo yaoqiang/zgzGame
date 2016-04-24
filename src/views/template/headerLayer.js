@@ -214,7 +214,7 @@ var HeaderLayer = cc.Layer.extend({
         this._super();
 
         var self = this;
-        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+        this.goldChangeListener = EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
                 self.gold.setString(zgzNumeral(data.gold).format('0,0'))
             }
@@ -224,6 +224,10 @@ var HeaderLayer = cc.Layer.extend({
 
     onExit: function () {
         this._super();
+        if(this.goldChangeListener){
+            EventBus.removeSubscribe(this.goldChangeListener);
+            this.goldChangeListener = null;
+        }
         //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 

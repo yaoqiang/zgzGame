@@ -1,6 +1,7 @@
 var ExchangeTabLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
+        this.ingotChangeListener = null;
 
         this.initSubscribeEvent();
 
@@ -150,7 +151,7 @@ var ExchangeTabLayer = cc.Layer.extend({
     initSubscribeEvent: function () {
         var self = this;
 
-        EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
+        this.ingotChangeListener = EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
                 self.ingot.setString(zgzNumeral(data.ingot).format('0,0'))
             }
@@ -164,7 +165,10 @@ var ExchangeTabLayer = cc.Layer.extend({
 
     onExit: function () {
         this._super();
-
+        if(this.ingotChangeListener){
+            EventBus.removeSubscribe(this.ingotChangeListener);
+            this.ingotChangeListener = null;
+        }
         //cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
     }
 
