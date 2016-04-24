@@ -13,10 +13,15 @@ var EventBus = {
     },
 
     subscribe: function (eventName, cb) {
-        cc.eventManager.addCustomListener(eventName, function (event) {
+        return cc.eventManager.addCustomListener(eventName, function (event) {
             cb(event._userData);
         });
     },
+
+    removeSubscribe: function (listener) {
+        cc.eventManager.removeListener(listener);
+    },
+
     filter: function () {
 
     }

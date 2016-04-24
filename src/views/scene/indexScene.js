@@ -98,8 +98,9 @@ var IndexLayer = cc.Layer.extend({
     init: function (lobbyData) {
         //console.log("---|---->init");
         var winSize = cc.director.getWinSize();
-        this.addChild(new HornSprite());    //zIndex: 0
-        
+        //this.addChild(new HornSprite());    //zIndex: 0
+        this.addChild(new notificationLayer({}), 9);
+
         //add trumpet btn
         var talkIcon = new ccui.Button();
         talkIcon.setAnchorPoint(0, 0.5);

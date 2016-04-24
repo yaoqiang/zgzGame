@@ -45,7 +45,25 @@ var GameLayer = cc.Layer.extend({
     ctor: function (args, isBackGame) {
         this._super();
         this.init();
-
+        this.joinListener = null;
+        this.leaveListener = null;
+        this.readyListener = null;
+        this.startListener = null;
+        this.talkCountdwnListener = null;
+        this.fanListener = null;
+        this.fanCountdwnListener = null;
+        this.talkListener = null;
+        this.talkCountdownTimeoutListener = null;
+        this.afterListener = null;
+        this.overListener = null;
+        this.fanFinishedListener = null;
+        this.fanWhenIsRedListener = null;
+        this.trusteeshipListener = null;
+        this.cancelTrusteeshipListener = null;
+        this.chatListener = null;
+        this.goldChangeListener = null;
+        this.ingotChangeListener = null;
+        this.updateRemainingCardListener = null;
 
         //
         gGameSceneCompleted = false;
@@ -117,24 +135,103 @@ var GameLayer = cc.Layer.extend({
         this._super();
         gGameSceneCompleted = false;
         //event
-        cc.eventManager.removeCustomListeners(gameEvents.JOIN);
-        cc.eventManager.removeCustomListeners(gameEvents.LEAVE);
-        cc.eventManager.removeCustomListeners(gameEvents.READY);
-        cc.eventManager.removeCustomListeners(gameEvents.START);
-        cc.eventManager.removeCustomListeners(gameEvents.TALK_COUNTDOWN);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN_COUNTDOWN);
-        cc.eventManager.removeCustomListeners(gameEvents.TALK);
-        cc.eventManager.removeCustomListeners(gameEvents.OVER);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN_FINISHED);
-        cc.eventManager.removeCustomListeners(gameEvents.FAN_WHEN_IS_RED);
-        cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
-        cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
-        cc.eventManager.removeCustomListeners(gameEvents.CHAT);
-        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
-        cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
+        //cc.eventManager.removeCustomListeners(gameEvents.JOIN);
+        //cc.eventManager.removeCustomListeners(gameEvents.LEAVE);
+        //cc.eventManager.removeCustomListeners(gameEvents.READY);
+        //cc.eventManager.removeCustomListeners(gameEvents.START);
+        //cc.eventManager.removeCustomListeners(gameEvents.TALK_COUNTDOWN);
+        //cc.eventManager.removeCustomListeners(gameEvents.FAN);
+        //cc.eventManager.removeCustomListeners(gameEvents.FAN_COUNTDOWN);
+        //cc.eventManager.removeCustomListeners(gameEvents.TALK);
+        //cc.eventManager.removeCustomListeners(gameEvents.OVER);
+        //cc.eventManager.removeCustomListeners(gameEvents.FAN_FINISHED);
+        //cc.eventManager.removeCustomListeners(gameEvents.FAN_WHEN_IS_RED);
+        //cc.eventManager.removeCustomListeners(gameEvents.TRUSTEESHIP);
+        //cc.eventManager.removeCustomListeners(gameEvents.CANCEL_TRUSTEESHIP);
+        //cc.eventManager.removeCustomListeners(gameEvents.CHAT);
+        //cc.eventManager.removeCustomListeners(gameEvents.INGOT_CHANGE);
 
-        //
+        if(this.joinListener){
+            EventBus.removeSubscribe(this.joinListener);
+            this.joinListener = null;
+        }
+        if(this.leaveListener){
+            EventBus.removeSubscribe(this.leaveListener);
+            this.leaveListener = null;
+        }
+        if(this.readyListener){
+            EventBus.removeSubscribe(this.readyListener);
+            this.readyListener = null;
+        }
+        if(this.talkCountdwnListener){
+            EventBus.removeSubscribe(this.talkCountdwnListener);
+            this.talkCountdwnListener = null;
+        }
+        if(this.startListener){
+            EventBus.removeSubscribe(this.startListener);
+            this.startListener = null;
+        }
+        if(this.fanListener){
+            EventBus.removeSubscribe(this.fanListener);
+            this.fanListener = null;
+        }
+        if(this.fanListener){
+            EventBus.removeSubscribe(this.fanListener);
+            this.fanListener = null;
+        }
+        if(this.fanCountdwnListener){
+            EventBus.removeSubscribe(this.fanCountdwnListener);
+            this.fanCountdwnListener = null;
+        }
+        if(this.talkListener){
+            EventBus.removeSubscribe(this.talkListener);
+            this.talkListener = null;
+        }
+        if(this.talkCountdownTimeoutListener){
+            EventBus.removeSubscribe(this.talkCountdownTimeoutListener);
+            this.talkCountdownTimeoutListener = null;
+        }
+        if(this.afterListener){
+            EventBus.removeSubscribe(this.afterListener);
+            this.afterListener = null;
+        }
+        if(this.overListener){
+            EventBus.removeSubscribe(this.overListener);
+            this.overListener = null;
+        }
+        if(this.fanFinishedListener){
+            EventBus.removeSubscribe(this.fanFinishedListener);
+            this.fanFinishedListener = null;
+        }
+        if(this.fanWhenIsRedListener){
+            EventBus.removeSubscribe(this.fanWhenIsRedListener);
+            this.fanWhenIsRedListener = null;
+        }
+        if(this.trusteeshipListener){
+            EventBus.removeSubscribe(this.trusteeshipListener);
+            this.trusteeshipListener = null;
+        }
+        if(this.cancelTrusteeshipListener){
+            EventBus.removeSubscribe(this.cancelTrusteeshipListener);
+            this.cancelTrusteeshipListener = null;
+        }
+        if(this.chatListener){
+            EventBus.removeSubscribe(this.chatListener);
+            this.chatListener = null;
+        }
+        if(this.goldChangeListener){
+            EventBus.removeSubscribe(this.goldChangeListener);
+            this.goldChangeListener = null;
+        }
+        if(this.ingotChangeListener){
+            EventBus.removeSubscribe(this.ingotChangeListener);
+            this.ingotChangeListener = null;
+        }
+        if(this.updateRemainingCardListener){
+            EventBus.removeSubscribe(this.updateRemainingCardListener);
+            this.updateRemainingCardListener = null;
+        }
+       //
         cc.eventManager.removeListener(this.keyboardListener);
     },
 
@@ -143,100 +240,100 @@ var GameLayer = cc.Layer.extend({
     initSubscribeEvent: function () {
         //console.log('###initSubscribeEvent -> ');
         var selfPointer = this;
-        EventBus.subscribe(gameEvents.JOIN, function (data) {
+        this.joinListener = EventBus.subscribe(gameEvents.JOIN, function (data) {
             //cc.log("---->game  joinEvent: ", data);
             selfPointer.joinEvent(data);
         })
 
-        EventBus.subscribe(gameEvents.LEAVE, function (data) {
+        this.leaveListener = EventBus.subscribe(gameEvents.LEAVE, function (data) {
             //cc.log("---->game  leaveEvent: ", event._userData);
             selfPointer.leaveEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.READY, function (data) {
+        this.readyListener = EventBus.subscribe(gameEvents.READY, function (data) {
             //cc.log("---->game  readyEvent: ", event._userData);
             selfPointer.readyEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.START, function (data) {
+        this.startListener = EventBus.subscribe(gameEvents.START, function (data) {
             //cc.log("---->game  gameStartEvent: ", data);
             selfPointer.gameStartEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.TALK_COUNTDOWN, function (data) {
+        this.talkCountdwnListener = EventBus.subscribe(gameEvents.TALK_COUNTDOWN, function (data) {
             //cc.log("---->game  talkCountdownEvent: ", data);
             selfPointer.talkCountdownEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.FAN, function (data) {
+        this.fanListener = EventBus.subscribe(gameEvents.FAN, function (data) {
             //cc.log("---->game  fanOutEvent: ", data);
             selfPointer.fanOutEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.FAN_COUNTDOWN, function (data) {
+        this.fanCountdwnListener = EventBus.subscribe(gameEvents.FAN_COUNTDOWN, function (data) {
             //cc.log("---->game  fanCountdownEvent: ", data);
             selfPointer.fanCountdownEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.TALK, function (data) {
+        this.talkListener = EventBus.subscribe(gameEvents.TALK, function (data) {
             //cc.log("---->game  talkEvent: ", data);
             selfPointer.talkEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.TALK_COUNTDOWN_TIMEOUT, function (data) {
+        this.talkCountdownTimeoutListener = EventBus.subscribe(gameEvents.TALK_COUNTDOWN_TIMEOUT, function (data) {
             //cc.log("---->game  talkTimeoutEvent: ", data);
             selfPointer.talkTimeoutEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.AFTER_TALK, function (data) {
+        this.afterListener = EventBus.subscribe(gameEvents.AFTER_TALK, function (data) {
             //cc.log("---->game  afterTalk: ", data);
             selfPointer.afterTalk(data);
         });
 
-        EventBus.subscribe(gameEvents.OVER, function (data) {
+        this.overListener = EventBus.subscribe(gameEvents.OVER, function (data) {
             //cc.log("---->game  gameOverEvent: ", data);
             selfPointer.overEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.FAN_FINISHED, function (data) {
+        this.fanFinishedListener = EventBus.subscribe(gameEvents.FAN_FINISHED, function (data) {
             //cc.log("---->game  fanFinishedEvent: ", data);
             selfPointer.fanFinishedEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.FAN_WHEN_IS_RED, function (data) {
+        this.fanWhenIsRedListener = EventBus.subscribe(gameEvents.FAN_WHEN_IS_RED, function (data) {
             //cc.log("---->game  fanWhenIsRedEvent: ", data);
             selfPointer.fanWhenIsRedEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.TRUSTEESHIP, function (data) {
+        this.trusteeshipListener = EventBus.subscribe(gameEvents.TRUSTEESHIP, function (data) {
             //cc.log("---->game  trusteeshipEvent: ", data);
             selfPointer.trusteeshipEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
+        this.cancelTrusteeshipListener = EventBus.subscribe(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
             //cc.log("---->game  cancelTrusteeshipEvent: ", data);
             selfPointer.cancelTrusteeshipEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.CHAT, function (data) {
+        this.chatListener = EventBus.subscribe(gameEvents.CHAT, function (data) {
             //cc.log("---->game  cancelTrusteeshipEvent: ", data);
             selfPointer.chatEvent(data);
         });
 
-        EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
+        this.goldChangeListener = EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             if (selfPointer && cc.sys.isObjectValid(selfPointer)) {
                 selfPointer.goldValue.setString(zgzNumeral(data.gold).format('0,0'))
             }
         });
 
-        EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
+        this.ingotChangeListener = EventBus.subscribe(gameEvents.INGOT_CHANGE, function (data) {
             if (selfPointer && cc.sys.isObjectValid(selfPointer)) {
                 selfPointer.ingotValue.setString(zgzNumeral(data.ingot).format('0,0'))
             }
 
         });
 
-        EventBus.subscribe(gameEvents.UPDATE_REMAINING_CARD, function (data) {
+        this.updateRemainingCardListener = EventBus.subscribe(gameEvents.UPDATE_REMAINING_CARD, function (data) {
             selfPointer.updateRemainingCards(data);
         });
 
@@ -617,12 +714,14 @@ var GameLayer = cc.Layer.extend({
 
 
     createTable: function () {
+        var winSize = cc.director.getWinSize();
         switch (this.m_type) {
             case ZGZ.GAME_TYPE.T1:
                 this.m_pTableLayer = new FivePeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});
                 this.addChild(this.m_pTableLayer, 1);
                 this.m_pTableLayer.setClockCallback(this, this.clockCallback);
 
+                this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 50}), 0);
                 break;
             case ZGZ.GAME_TYPE.T2:
                 this.m_pTableLayer = new SixPeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});

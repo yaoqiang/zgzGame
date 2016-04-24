@@ -3,6 +3,7 @@ var notificationLayer = cc.Layer.extend({
     ctor: function (params) {
         this._super();
 
+        this.broadcastListener = null;
         this.contentLabel = null;
         this.hornBg = null;
         this.clip = null;
@@ -120,12 +121,14 @@ var notificationLayer = cc.Layer.extend({
 
     initListener: function (){
         self = this;
-        EventBus.subscribe(gameEvents.BROADCAST, function (data) {
+        this.broadcastListener = EventBus.subscribe(gameEvents.BROADCAST, function (data) {;
+            console.log(data);
+            MassageQueue.pushMassage(data);
             //cc.log("---->game  cancelTrusteeshipEvent: ", data);
-            if (self && cc.sys.isObjectValid(self)) {
-                //self.trumpetTwo(data);
-                MassageQueue.pushMassage(data);
-            }
+            //if (self && cc.sys.isObjectValid(self)) {
+            //    //self.trumpetTwo(data);
+            //
+            //}
 
         });
         //MassageQueue.pushMassage({from:"aaa", msg:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"});
@@ -152,6 +155,11 @@ var notificationLayer = cc.Layer.extend({
     },
 
     onExit: function () {
+        if(this.broadcastListener){
+            EventBus.removeSubscribe(this.broadcastListener);
+            this.broadcastListener = null;
+        }
+
         FrameCache.removeSpriteFrames(res.common_plist);
         self = null;
         this._super();
