@@ -1,0 +1,5 @@
+## compile
+cocos compile -p android --android-studio --app-abi armeabi:armeabi-v7a -m release
+
+
+##

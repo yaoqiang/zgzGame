@@ -15,6 +15,7 @@ reated by .ignore support plugin (hsz.mobi)
 /frameworks/runtime-src/proj.android-studio/app/obj/*
 /frameworks/runtime-src/proj.android-studio/app/libs/*
 /frameworks/runtime-src/proj.android-studio/app/assets/*
+/frameworks/runtime-src/proj.android-studio/lib/pingpp_one
 
 /runtime
 /tools

@@ -33,6 +33,7 @@ var res = {
 
 
     //res/x.png
+    logo: "res/logo.png",
     loadingBg: "res/loading_bg.png",
     loading: "res/loading.png",
     common_box_1: "res/common_box_1.png",

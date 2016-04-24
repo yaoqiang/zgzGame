@@ -67,7 +67,7 @@ cc.GameLoaderScene = cc.Scene.extend({
         //    lblHeight = -logoHeight / 2 - 10;
         //}
 
-        var logoSprite = new cc.Sprite("res/logo.png");
+        var logoSprite = new cc.Sprite(res.logo);
         logoSprite.scale = 0.8;
         logoSprite.setPosition(cc.visibleRect.center.x, cc.visibleRect.center.y);
         self._bgLayer.addChild(logoSprite, 20);

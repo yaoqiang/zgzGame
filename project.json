@@ -20,15 +20,15 @@
         "src/consts/routes.js",
         "src/consts/gameEvents.js",
 
+        "src/globals.js",
         "src/resource.js",
         "src/views/scene/gameLoaderScene.js",
-        "src/globals.js",
         "src/utils/network.js",
+
+        "src/views/template/frameCache.js",
 
         "src/utils/utils.js",
         "src/utils/numeral.js",
-        "src/events/gameMessageEvent.js",
-        "src/events/baseEvent.js",
         "src/utils/cards/cardRecognization.js",
         "src/utils/cards/cardLogic.js",
         "src/utils/cards/cardSorter.js",
@@ -36,6 +36,10 @@
         "src/utils/eventBus.js",
         "src/utils/storageUtil.js",
         "src/utils/cppCallback.js",
+
+        "src/events/gameMessageEvent.js",
+        "src/events/baseEvent.js",
+
 
 
 
@@ -53,9 +57,9 @@
         "src/views/template/bottomBtnLayer.js",
         "src/views/template/soundManger.js",
         "src/views/template/chatInGameLayer.js",
-        "src/views/template/frameCache.js",
+
         "src/views/template/notificationLayer.js",
-        "src/views/template/MassageQueue.js",
+        "src/views/template/massageQueue.js",
 
         "src/views/layer/playerProfileLayer.js",
         "src/views/layer/systemMessageLayer.js",
