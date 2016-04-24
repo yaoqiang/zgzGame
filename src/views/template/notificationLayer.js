@@ -98,7 +98,7 @@ var notificationLayer = cc.Layer.extend({
         }
 
         this.contentLabel = new cc.LabelTTF(data.from + ": " + data.msg, "Arial", 25);
-        this.contentLabel.color = cc.color.RED;
+        this.contentLabel.color = cc.color.WHITE;
         this.contentLabel.setAnchorPoint(0, 0.5);
         this.contentLabel.x = xx;
         this.contentLabel.y = -size.height/2;

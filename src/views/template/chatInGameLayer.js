@@ -184,9 +184,9 @@ ChatInGameLayer.prototype = {
         //
         // add custom item
         for (var i = 0; i < count; ++i) {
-            var labelContent = new cc.LabelTTF(this.quickChatArray[i], "Arial", 40);
+            var labelContent = new cc.LabelTTF(this.quickChatArray[i], "Arial", 44);
             labelContent.color = {r:218, g:112, b:214};
-            labelContent.setContentSize(cc.size(200, 80));
+            labelContent.setContentSize(cc.size(200, 100));
 
             var custom_item = new ccui.Layout();
             custom_item.setContentSize(labelContent.getContentSize());

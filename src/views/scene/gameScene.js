@@ -106,6 +106,7 @@ var GameLayer = cc.Layer.extend({
             this.initGame();
         }
 
+        this.addExpressionBtn();
 
 
     },
@@ -570,7 +571,7 @@ var GameLayer = cc.Layer.extend({
 
 
         this.toolBar = new cc.Sprite("#toolsBg.png");
-        this.toolBar.setPosition(winSize.width / 2, winSize.height + 25);
+        this.toolBar.setPosition(winSize.width - 20, winSize.height-30);
         this.toolBar.scale = 0.55;
 
         this.addChild(this.toolBar, 21);
@@ -583,32 +584,25 @@ var GameLayer = cc.Layer.extend({
             this.onOptionClicked,
             this
         );
-        this.toolDrop = new cc.Sprite("#game_icon_gu.png");
-        this.toolDrop.scale = 0.25
-        this.sToolDrop.addChild(this.toolDrop);
-        this.toolDrop.setPosition(32, 34);
+        //this.toolDrop = new cc.Sprite("#game_icon_gu.png");
+        //this.toolDrop.scale = 0.25
+        //this.sToolDrop.addChild(this.toolDrop);
+        //this.toolDrop.setPosition(32, 34);
+        //
+        //this.toolDropMenu = new cc.Menu(this.sToolDrop);
+        //this.toolDropMenu.setPosition(winSize.width / 2 + 80, winSize.height - 80);
+        //this.toolDropMenu.scale = 0.7
+        //this.addChild(this.toolDropMenu, 1);
 
-        this.toolDropMenu = new cc.Menu(this.sToolDrop);
-        this.toolDropMenu.setPosition(winSize.width / 2 + 120, winSize.height - 80);
-        this.toolDropMenu.scale = 0.7
-        this.addChild(this.toolDropMenu, 1);
-
-        //聊天
-        var cellWidth = this.toolBar.getBoundingBox().width / 4;
-        this.expressBtn = new ccui.Button();
-        this.expressBtn.setPressedActionEnabled(true);
-        this.expressBtn.setTouchEnabled(true);
-        this.expressBtn.loadTextures("tool_chat.png", "tool_chat.png", "", ccui.Widget.PLIST_TEXTURE);
-        this.expressBtn.x = cellWidth;
-        this.expressBtn.y = 55;
-        this.expressBtn.addTouchEventListener(this.onExpressBtnClicked, this);
-        this.toolBar.addChild(this.expressBtn);
+        //per width of component
+        var cellWidth = 40;
 
         //托管
         this.trusteeshipBtn = new ccui.Button();
         this.trusteeshipBtn.setTouchEnabled(true);
+        this.trusteeshipBtn.setAnchorPoint(0, 0.5)
         this.trusteeshipBtn.loadTextures("tool_ai.png", "tool_ai.png", "", ccui.Widget.PLIST_TEXTURE);
-        this.trusteeshipBtn.x = cellWidth * 2;
+        this.trusteeshipBtn.x = cellWidth/2;
         this.trusteeshipBtn.y = 55;
         this.trusteeshipBtn.addTouchEventListener(this.trusteeship, this);
         this.toolBar.addChild(this.trusteeshipBtn);
@@ -616,22 +610,39 @@ var GameLayer = cc.Layer.extend({
 
         //底注
         this.baseBtn = new ccui.Button();
+        this.baseBtn.setAnchorPoint(0, 0.5)
         //this.trusteeshipBtn.setTouchEnabled(true);
         this.baseBtn.loadTextures("basechip_tag.png", "basechip_tag.png", "", ccui.Widget.PLIST_TEXTURE);
         this.baseBtn.scale = 1.25;
-        this.baseBtn.x = cellWidth * 5.9;
+        this.baseBtn.x = 200;
         this.baseBtn.y = 55;
         this.toolBar.addChild(this.baseBtn);
 
         var baseLabel = new cc.LabelTTF(this.base, "Arial", 28);
         baseLabel.enableStroke(cc.color.YELLOW, 1);
+        baseLabel.setAnchorPoint(0, 0.5)
         //baseLabel.color = cc.color.WHITE;
-        baseLabel.setPosition(cellWidth * 6 + 55, 55);
+        baseLabel.setPosition(270, 55);
         this.toolBar.addChild(baseLabel);
 
 
 
 
+    },
+
+    addExpressionBtn: function () {
+        var winSize = cc.director.getWinSize();
+
+        this.expressBtn = new ccui.Button();
+        this.expressBtn.setPressedActionEnabled(true);
+        this.expressBtn.setTouchEnabled(true);
+        this.expressBtn.loadTextures("tool_chat.png", "tool_chat.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.expressBtn.setAnchorPoint(1, 0);
+        this.expressBtn.scale = 0.8;
+        this.expressBtn.x = winSize.width - 10;
+        this.expressBtn.y = 30;
+        this.expressBtn.addTouchEventListener(this.onExpressBtnClicked, this);
+        this.addChild(this.expressBtn, 2);
     },
 
     onActorAvatarClicked: function (sender, type) {
@@ -667,20 +678,20 @@ var GameLayer = cc.Layer.extend({
 
     onOptionClicked: function () {
         playEffect(audio_common.Button_Click);
-        if (this.toolBarState == 0) {
-            this.toolBarState = 1;
-            var moveDown = cc.moveBy(0.5, cc.p(0, -this.toolBarHeight));
-            var moveBack = moveDown.reverse();
-
-            this.toolBar.runAction(cc.sequence(moveDown));
-
-        } else {
-            this.toolBarState = 0;
-            var moveDown = cc.moveBy(0.5, cc.p(0, this.toolBarHeight));
-            var moveBack = moveDown.reverse();
-
-            this.toolBar.runAction(cc.sequence(moveDown));
-        }
+        //if (this.toolBarState == 0) {
+        //    this.toolBarState = 1;
+        //    var moveDown = cc.moveBy(0.5, cc.p(0, -this.toolBarHeight));
+        //    var moveBack = moveDown.reverse();
+        //
+        //    this.toolBar.runAction(cc.sequence(moveDown));
+        //
+        //} else {
+        //    this.toolBarState = 0;
+        //    var moveDown = cc.moveBy(0.5, cc.p(0, this.toolBarHeight));
+        //    var moveBack = moveDown.reverse();
+        //
+        //    this.toolBar.runAction(cc.sequence(moveDown));
+        //}
 
     },
 
@@ -697,8 +708,16 @@ var GameLayer = cc.Layer.extend({
             case ccui.Widget.TOUCH_ENDED:
                 playEffect(audio_common.Button_Click);
 
-                var chatLayer = new ChatInGameLayer();
-                this.addChild(chatLayer, 22);
+                console.log(this.chatLayer);
+
+                if (this.getChildByName('chatLayer')) {
+                    this.chatLayer.removeFromParent(true);
+                    return;
+                }
+
+                this.chatLayer = new ChatInGameLayer();
+                this.chatLayer.setName('chatLayer');
+                this.addChild(this.chatLayer, 22);
 
 
                 break;
@@ -1046,25 +1065,30 @@ var GameLayer = cc.Layer.extend({
 
         var self = this;
 
-        gRemainingCards.forEach(function (remainingCard) {
-            var x = _.findWhere(labelXList, {modValue: remainingCard.modValue}).x;
-            var label = new cc.LabelTTF(remainingCard.count, 'Arial', 14);
-            label.setAnchorPoint(0.5, 0);
-            label.x = x;
-            label.y = y;
-            label.setTag(remainingCard.modValue);
-            remainingCardsSprite.addChild(label);
-            self.remainingCardsLabelList.push({modValue: remainingCard.modValue, label: label});
-        })
+        if (gRemainingCards && gRemainingCards.length > 0) {
+            gRemainingCards.forEach(function (remainingCard) {
+                var x = _.findWhere(labelXList, {modValue: remainingCard.modValue}).x;
+                var label = new cc.LabelTTF(remainingCard.count, 'Arial', 14);
+                label.setAnchorPoint(0.5, 0);
+                label.x = x;
+                label.y = y;
+                label.setTag(remainingCard.modValue);
+                remainingCardsSprite.addChild(label);
+                self.remainingCardsLabelList.push({modValue: remainingCard.modValue, label: label});
+            })
+        }
+
 
     },
 
     updateRemainingCards: function (data) {
         var self = this;
-        gRemainingCards.forEach(function (remainingCard) {
-            var label = _.findWhere(self.remainingCardsLabelList, {modValue: remainingCard.modValue}).label;
-            label.setString(remainingCard.count);
-        });
+        if (gRemainingCards && gRemainingCards.length > 0) {
+            gRemainingCards.forEach(function (remainingCard) {
+                var label = _.findWhere(self.remainingCardsLabelList, {modValue: remainingCard.modValue}).label;
+                label.setString(remainingCard.count);
+            });
+        }
 
     },
 
