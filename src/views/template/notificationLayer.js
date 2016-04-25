@@ -127,7 +127,7 @@ var notificationLayer = cc.Layer.extend({
         this.hornBg.addChild(this.contentLabel, 1);
 
         var mt1 = cc.moveTo(time, cc.p(xx, size.height/2));
-        var dt = cc.delayTime(2);
+        var dt = cc.delayTime(4);
         var mt2 = cc.moveTo(time, cc.p(xx, size.height/2*3));
         var action1 = cc.sequence(
             mt1,
