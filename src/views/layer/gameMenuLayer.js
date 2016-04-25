@@ -8,14 +8,14 @@ var GameMenuLayer = cc.Layer.extend({
     init:function(){
         var winSize = cc.director.getWinSize();
 
-        var backNormal = new cc.Sprite("#back_btn.png");
-        var backSelected = new cc.Sprite("#back_btn.png");
-        var backDisabled = new cc.Sprite("#back_btn.png");
-        var leaveButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackButton, this);
-        leaveButton.scale = 0.7
-        var menu = new cc.Menu(leaveButton);
-        menu.setPosition(30, winSize.height-30);
-        this.addChild(menu);
+        //var backNormal = new cc.Sprite("#back_btn.png");
+        //var backSelected = new cc.Sprite("#back_btn.png");
+        //var backDisabled = new cc.Sprite("#back_btn.png");
+        //var leaveButton = new cc.MenuItemSprite(backNormal, backSelected, backDisabled, this.onBackButton, this);
+        //leaveButton.scale = 0.7
+        //var menu = new cc.Menu(leaveButton);
+        //menu.setPosition(30, winSize.height-30);
+        //this.addChild(menu);
 
     },
 

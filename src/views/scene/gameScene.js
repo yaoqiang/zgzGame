@@ -597,6 +597,7 @@ var GameLayer = cc.Layer.extend({
         //per width of component
         var cellWidth = 40;
 
+
         //托管
         this.trusteeshipBtn = new ccui.Button();
         this.trusteeshipBtn.setTouchEnabled(true);
@@ -614,7 +615,7 @@ var GameLayer = cc.Layer.extend({
         //this.trusteeshipBtn.setTouchEnabled(true);
         this.baseBtn.loadTextures("basechip_tag.png", "basechip_tag.png", "", ccui.Widget.PLIST_TEXTURE);
         this.baseBtn.scale = 1.25;
-        this.baseBtn.x = 200;
+        this.baseBtn.x = cellWidth/2 + 100;
         this.baseBtn.y = 55;
         this.toolBar.addChild(this.baseBtn);
 
@@ -622,12 +623,26 @@ var GameLayer = cc.Layer.extend({
         baseLabel.enableStroke(cc.color.YELLOW, 1);
         baseLabel.setAnchorPoint(0, 0.5)
         //baseLabel.color = cc.color.WHITE;
-        baseLabel.setPosition(270, 55);
+        baseLabel.setPosition(cellWidth/2 + 170, 55);
         this.toolBar.addChild(baseLabel);
 
+        //leave
+        this.leaveBtn = new ccui.Button();
+        this.leaveBtn.setTouchEnabled(true);
+        this.leaveBtn.setAnchorPoint(0, 0.5)
+        this.leaveBtn.loadTextures("tool_exit.png", "tool_exit.png", "", ccui.Widget.PLIST_TEXTURE);
+        this.leaveBtn.x = cellWidth/2 + 230;
+        this.leaveBtn.y = 55;
+        this.leaveBtn.addTouchEventListener(this.onBackButton, this);
+        this.toolBar.addChild(this.leaveBtn);
 
 
+    },
 
+    onBackButton:function(){
+        playEffect(audio_common.Button_Click);
+        //console.log("GameMenuLayer onBackButton:" + gRoomId);
+        GameController.leave(gRoomId);
     },
 
     addExpressionBtn: function () {
@@ -642,7 +657,7 @@ var GameLayer = cc.Layer.extend({
         this.expressBtn.x = winSize.width - 10;
         this.expressBtn.y = 30;
         this.expressBtn.addTouchEventListener(this.onExpressBtnClicked, this);
-        this.addChild(this.expressBtn, 2);
+        this.addChild(this.expressBtn, 24);
     },
 
     onActorAvatarClicked: function (sender, type) {
@@ -676,25 +691,6 @@ var GameLayer = cc.Layer.extend({
         }
     },
 
-    onOptionClicked: function () {
-        playEffect(audio_common.Button_Click);
-        //if (this.toolBarState == 0) {
-        //    this.toolBarState = 1;
-        //    var moveDown = cc.moveBy(0.5, cc.p(0, -this.toolBarHeight));
-        //    var moveBack = moveDown.reverse();
-        //
-        //    this.toolBar.runAction(cc.sequence(moveDown));
-        //
-        //} else {
-        //    this.toolBarState = 0;
-        //    var moveDown = cc.moveBy(0.5, cc.p(0, this.toolBarHeight));
-        //    var moveBack = moveDown.reverse();
-        //
-        //    this.toolBar.runAction(cc.sequence(moveDown));
-        //}
-
-    },
-
     onExpressBtnClicked: function (sender, type) {
         switch (type) {
             case ccui.Widget.TOUCH_BEGAN:
@@ -707,8 +703,6 @@ var GameLayer = cc.Layer.extend({
 
             case ccui.Widget.TOUCH_ENDED:
                 playEffect(audio_common.Button_Click);
-
-                console.log(this.chatLayer);
 
                 if (this.getChildByName('chatLayer')) {
                     this.chatLayer.removeFromParent(true);
@@ -740,7 +734,7 @@ var GameLayer = cc.Layer.extend({
                 this.addChild(this.m_pTableLayer, 1);
                 this.m_pTableLayer.setClockCallback(this, this.clockCallback);
 
-                this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 50}), 0);
+                //this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 50}), 0);
                 break;
             case ZGZ.GAME_TYPE.T2:
                 this.m_pTableLayer = new SixPeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});
