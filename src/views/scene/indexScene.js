@@ -99,7 +99,7 @@ var IndexLayer = cc.Layer.extend({
         //console.log("---|---->init");
         var winSize = cc.director.getWinSize();
         //this.addChild(new HornSprite());    //zIndex: 0
-        this.addChild(new notificationLayer({}), 9);
+        this.addChild(new notificationLayer({visible:true}), 9);
 
         //add trumpet btn
         var talkIcon = new ccui.Button();

@@ -734,19 +734,22 @@ var GameLayer = cc.Layer.extend({
                 this.addChild(this.m_pTableLayer, 1);
                 this.m_pTableLayer.setClockCallback(this, this.clockCallback);
 
-                //this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 50}), 0);
                 break;
             case ZGZ.GAME_TYPE.T2:
                 this.m_pTableLayer = new SixPeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});
                 this.addChild(this.m_pTableLayer, 1);
                 this.m_pTableLayer.setClockCallback(this, this.clockCallback);
+
                 break;
             case ZGZ.GAME_TYPE.T3:
                 this.m_pTableLayer = new SevenPeopleTableLayer({onActorAvatarClickedCallback: this.onActorAvatarClicked});
                 this.addChild(this.m_pTableLayer, 1);
                 this.m_pTableLayer.setClockCallback(this, this.clockCallback);
+
                 break;
         }
+        var visSize = cc.director.getVisibleSize();
+        this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 100, w:visSize.width*0.6 , visible:false}), 0);
         this.addPokerLayer(this.m_pTableLayer);
     },
     addMenu: function () {

@@ -80,7 +80,7 @@ var LobbyLayer = cc.Layer.extend({
         this.lobbyId = lobbyId;
 
         //this.addChild(new HornSprite(), 9);
-        this.addChild(new notificationLayer({}), 9);
+        this.addChild(new notificationLayer({visible:true}), 9);
 
         var winSize = cc.director.getWinSize();
         this.m_pScrollView = null;
