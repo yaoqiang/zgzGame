@@ -65,13 +65,13 @@ var notificationLayer = cc.Layer.extend({
     },
 
     moveDoneAndVisible:function (sender) {
-        sender.removeFromParentAndCleanup();
+        sender.removeFromParent(true);
         if(this.clip && cc.sys.isObjectValid(this.clip)){
             this.clip.visible = this.cvisible;
         }
     },
     moveDone:function (sender) {
-        sender.removeFromParentAndCleanup();
+        sender.removeFromParent(true);
     },
     moveMid:function (sender) {
         this.nextNotification = true;

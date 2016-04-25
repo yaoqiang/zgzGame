@@ -126,6 +126,12 @@ PlayerProfileLayer.prototype = {
         rankValue.setAnchorPoint(0, 0.5);
         this.box.addChild(rankValue);
 
+        //rank avatar
+        var rankAvatar = new cc.Sprite("#"+utils.getRankAvatar(this.data.rank || 1));
+        rankAvatar.setPosition(contentX + 60, contentY);
+        rankAvatar.setAnchorPoint(0, 0.5);
+        rankAvatar.scale = 0.3;
+        this.box.addChild(rankAvatar);
         //
         contentY = contentY - lineHeight;
 

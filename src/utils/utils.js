@@ -12,6 +12,11 @@ utils.getAvatar = function (avatar, type) {
     }
 };
 
+utils.getRankAvatar = function (rank) {
+    if (rank == 0 || rank > 12) return rankConf[0];
+    return rankConf[rank-1];
+}
+
 //百分比
 utils.getPercent = function (num, total) {
     num = parseFloat(num);

@@ -202,3 +202,6 @@ var PassText = [
     "不要！",
     "过！"
 ]
+
+var rankConf = ["rank_1.png", "rank_2.png", "rank_3.png", "rank_4.png", "rank_5.png", "rank_6.png"
+    , "rank_7.png", "rank_8.png", "rank_9.png", "rank_10.png", "rank_11.png", "rank_12.png"]
