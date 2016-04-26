@@ -313,6 +313,10 @@ var CommonConf = {
             cp_b2b: "cp_b2b",
             wx: "wx"
         }
+    },
+
+    TRUMPET: {
+        STAY_SECOND: 7
     }
 }
 
