@@ -21,7 +21,7 @@ var LobbyScene = cc.Scene.extend({
         var lobbyLayer = new LobbyLayer(data, lobbyId);
         this.addChild(lobbyLayer);
 
-
+        this.addChild(createScrollCaption({}),150);
     },
 
     onExit: function() {

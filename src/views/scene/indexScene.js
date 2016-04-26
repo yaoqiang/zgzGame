@@ -33,6 +33,7 @@ var IndexScene = cc.Scene.extend({
         var bottomBtnLayer = new BottomBtnLayer({});
         this.addChild(bottomBtnLayer);
 
+        this.addChild(createScrollCaption({}),500);
 
         //add a keyboard event listener to statusLabel
 
