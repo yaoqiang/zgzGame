@@ -633,16 +633,37 @@ var GameLayer = cc.Layer.extend({
         this.leaveBtn.loadTextures("tool_exit.png", "tool_exit.png", "", ccui.Widget.PLIST_TEXTURE);
         this.leaveBtn.x = cellWidth/2 + 230;
         this.leaveBtn.y = 55;
-        this.leaveBtn.addTouchEventListener(this.onBackButton, this);
+        this.leaveBtn.addTouchEventListener(this.onLeaveButton, this);
         this.toolBar.addChild(this.leaveBtn);
 
 
     },
 
-    onBackButton:function(){
-        playEffect(audio_common.Button_Click);
-        //console.log("GameMenuLayer onBackButton:" + gRoomId);
-        GameController.leave(gRoomId);
+    onLeaveButton: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
+                //console.log("GameMenuLayer onBackButton:" + gRoomId);
+                GameController.leave(gRoomId);
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
     },
 
     addExpressionBtn: function () {
