@@ -214,6 +214,7 @@ pomelo.on(gameEvents.PAYMENT_RESULT, function (data) {
 
 pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
     if (data.isNew) {
+        if (gRequestAppReleaseFrom == 'auto') return;
         prompt.fadeMiddle('当前已是最新版本');
         return;
     }

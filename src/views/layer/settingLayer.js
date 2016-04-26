@@ -248,6 +248,8 @@ SettingLayer.prototype = {
             case ccui.Widget.TOUCH_ENDED:
                 playEffect(audio_common.Button_Click);
 
+                //
+                gRequestAppReleaseFrom = 'setting';
                 UniversalController.getTopOfAppReleaseRecord();
 
                 break;
