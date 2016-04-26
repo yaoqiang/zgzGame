@@ -662,8 +662,6 @@ var GameLayer = cc.Layer.extend({
             default:
                 break;
         }
-    }
-
     },
 
     addExpressionBtn: function () {
