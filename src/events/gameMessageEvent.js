@@ -181,7 +181,7 @@ pomelo.on(gameEvents.BROADCAST, function (data) {
 
 //公告
 pomelo.on(gameEvents.BBS, function (data) {
-    console.log('receive BBS event.', data);
+    //console.log('receive BBS event.', data);
     EventBus.publish(gameEvents.BBS, data);
 });
 

@@ -14,7 +14,7 @@ var scrollCaptionLayer = cc.Layer.extend({
         this.clip = null;
 
         this.nextNotification = true;
-        this.moveSpeed = 1;
+        this.moveSpeed = 1.5;
         FrameCache.addSpriteFrames(res.common_plist);
 
         this.init(params);
@@ -28,9 +28,9 @@ var scrollCaptionLayer = cc.Layer.extend({
         var origin = cc.director.getVisibleOrigin();
 
         this.cx  = params.x?params.x:origin.x;
-        this.cy = params.x?params.y:origin.y+50;
+        this.cy = params.x?params.y:origin.y+60;
         this.cw = params.w?params.w:visSize.width;
-        this.ch = params.h?params.h:30;
+        this.ch = params.h?params.h:25;
         this.cvisible = false;
 
         this.clip = this.clipper();
@@ -58,7 +58,7 @@ var scrollCaptionLayer = cc.Layer.extend({
         stencil.drawPoly(rectangle, white, 1, white);
         clipper.stencil = stencil;
 
-        var layer1 = new cc.LayerColor(cc.color(100, 100, 100, 128), clipper.width, clipper.height);
+        var layer1 = new cc.LayerColor(cc.color(255,255,255,0.8), clipper.width, clipper.height);
         layer1.anchorX = 0;
         layer1.anchorY = 0;
         layer1.x = 0;
@@ -78,7 +78,7 @@ var scrollCaptionLayer = cc.Layer.extend({
         this.clip.visible = true;
 
 
-        this.contentLabel = new cc.LabelTTF(data.from + ": " + data.msg, "Arial", 25);
+        this.contentLabel = new cc.LabelTTF(data, "Arial", 22);
         this.contentLabel.color = cc.color.RED;
         this.contentLabel.setAnchorPoint(0, 0.5);
         this.contentLabel.x = this.cw;
