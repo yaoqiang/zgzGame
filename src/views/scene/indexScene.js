@@ -7,6 +7,25 @@ var IndexScene = cc.Scene.extend({
 
         //移动到登录成功后, 因为重回游戏不再进入index, 会导致背景音乐无效
         //playBackMusic();
+
+        //----------------------
+        //进入大厅后逻辑处理
+        //----------------------
+        if (cc.sys.os == cc.sys.OS_ANDROID) {
+            var lastRequestAppReleaseTime = Storage.get(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME);
+
+            if (!lastRequestAppReleaseTime) {
+                gRequestAppReleaseFrom = 'auto';
+                UniversalController.getTopOfAppReleaseRecord();
+            }
+            else {
+                if (lastRequestAppReleaseTime != new Date().getDate()) {
+                    UniversalController.getTopOfAppReleaseRecord();
+                }
+            }
+            Storage.set(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME, new Date().getDate());
+
+        }
     },
 
     ctor: function (lobbyData) {

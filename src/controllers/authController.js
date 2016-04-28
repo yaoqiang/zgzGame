@@ -148,21 +148,7 @@ AuthController.enter = function (result) {
         //INIT
         Storage.set(CommonConf.LOCAL_STORAGE.LAST_HEARTBEAT_TIME, '');
 
-        if (cc.sys.os == cc.sys.OS_ANDROID) {
-            var lastRequestAppReleaseTime = Storage.get(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME);
 
-            if (!lastRequestAppReleaseTime) {
-                gRequestAppReleaseFrom = 'auto';
-                UniversalController.getTopOfAppReleaseRecord();
-            }
-            else {
-                if (lastRequestAppReleaseTime != new Date().getDate()) {
-                    UniversalController.getTopOfAppReleaseRecord();
-                }
-            }
-            Storage.set(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME, new Date().getDate());
-
-        }
 
 
         //标识已连接到connector
