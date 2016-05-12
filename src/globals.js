@@ -31,7 +31,7 @@ var gLobbyId = 0;
 var gRoomId = 0;
 var gGameId = 0;
 var gGameType = 0;
-var gActor = {};
+var gActor = {};    //gActor.append: 用来客户端识别牌型了..
 var gLastFanCardRecognization = null;   //上手牌型
 var gRemainingCards = null; //记牌器
 

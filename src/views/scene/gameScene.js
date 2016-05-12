@@ -94,6 +94,7 @@ var GameLayer = cc.Layer.extend({
             gLobbyId = game.lobbyId;
             gGameId = game.gameId;
             gRoomId = game.roomId;
+
             this.initActorList(args.actors);
             this.backGameInit(args);
 
@@ -403,6 +404,9 @@ var GameLayer = cc.Layer.extend({
         var lastFanActor = gameLogic.lastFanActor;
         var lastFanCardRecongnization = gameLogic.lastFanCardRecognization;
         var share = gameLogic.share;
+
+        //append.. 用于牌型识别
+        gActor.append = self.append;
 
         //
         if (state == ZGZ.GAME_STATE.TALK) {
