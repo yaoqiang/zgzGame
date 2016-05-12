@@ -92,8 +92,7 @@ var scrollCaptionLayer = cc.Layer.extend({
             console.log(data);
             SystemMassageQueue.pushMassage(data);
         });
-        //SystemMassageQueue.pushMassage({from:"aaa", msg:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"});
-        //SystemMassageQueue.pushMassage({from:"bbb", msg:"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"});
+       // SystemMassageQueue.pushMassage("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     },
     onEnter: function () {
         this._super();
