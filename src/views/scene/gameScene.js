@@ -772,7 +772,7 @@ var GameLayer = cc.Layer.extend({
                 break;
         }
         var visSize = cc.director.getVisibleSize();
-        this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 100, w:visSize.width*0.6 , visible:false}), 0);
+        this.addChild(new notificationLayer({x:winSize.width/2, y:winSize.height - 100, w:visSize.width*0.6 , visible:false, opacity:150}), 15);
         this.addPokerLayer(this.m_pTableLayer);
     },
     addMenu: function () {

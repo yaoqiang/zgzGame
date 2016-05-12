@@ -31,6 +31,7 @@ var notificationLayer = cc.Layer.extend({
         this.cw = params.w?params.w:visSize.width*0.9;
         this.ch = params.h?params.h:34;
         this.cvisible = params.visible?params.visible:false;
+        this.copacity = params.opacity?params.opacity:255;
 
         this.clip = this.clipper();
         this.clip.visible = this.cvisible;
@@ -42,6 +43,7 @@ var notificationLayer = cc.Layer.extend({
         var bgsize = this.hornBg.getContentSize();
         this.hornBg.setScaleX(this.cw/bgsize.width);
         this.hornBg.setScaleY(this.ch/bgsize.height);
+        this.hornBg.setOpacity(this.copacity);
         this.clip.addChild(this.hornBg, 1);//先添加标题,会完全显示出来,因为跟模板一样大小
 
         //horn icon
