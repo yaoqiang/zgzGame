@@ -323,15 +323,16 @@ var CommonConf = {
 
 
 var RankConf = [
-    {"rank":1, "title": "临时工", "exp": "100", "icon": ""},
-    {"rank":2, "title": "矿工", "exp": "500", "icon": ""},
-    {"rank":3, "title": "副队长", "exp": "1000", "icon": ""},
-    {"rank":4, "title": "队长", "exp": "1800", "icon": ""},
-    {"rank":5, "title": "副科长", "exp": "3000", "icon": ""},
-    {"rank":6, "title": "科长", "exp": "4000", "icon": ""},
-    {"rank":7, "title": "副矿长", "exp": "6000", "icon": ""},
-    {"rank":8, "title": "矿长", "exp": "10000", "icon": ""},
-    {"rank":9, "title": "副局", "exp": "20000", "icon": ""},
-    {"rank":10, "title": "局长", "exp": "50000", "icon": ""},
-    {"rank":11, "title": "董事长", "exp": "100000", "icon": ""}
+    {"rank":1, "title": "临时工", "exp": "100", "icon": "rank_1"},
+    {"rank":2, "title": "矿工", "exp": "500", "icon": "rank_2"},
+    {"rank":3, "title": "班组长", "exp": "800", "icon": "rank_3"},
+    {"rank":4, "title": "副队长", "exp": "1000", "icon": "rank_4"},
+    {"rank":5, "title": "队长", "exp": "1800", "icon": "rank_5"},
+    {"rank":6, "title": "副科长", "exp": "3000", "icon": "rank_6"},
+    {"rank":7, "title": "科长", "exp": "4000", "icon": "rank_7"},
+    {"rank":8, "title": "副矿长", "exp": "6000", "icon": "rank_8"},
+    {"rank":9, "title": "矿长", "exp": "10000", "icon": "rank_9"},
+    {"rank":10, "title": "副局", "exp": "20000", "icon": "rank_10"},
+    {"rank":11, "title": "局长", "exp": "50000", "icon": "rank_11"},
+    {"rank":12, "title": "董事长", "exp": "100000", "icon": "rank_12"}
 ]

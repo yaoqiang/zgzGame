@@ -26,4 +26,7 @@ reated by .ignore support plugin (hsz.mobi)
 /simulator
 /publish
 
+.DS_Store
+.DS_Store?
+
 backup-2016-02-26.zip
