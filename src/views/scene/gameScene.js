@@ -1048,8 +1048,8 @@ var GameLayer = cc.Layer.extend({
     },
 
     gameStartEvent: function (data) {
-        //console.log("gameStartEvent :");
-        //console.log(data);
+        console.log("gameStartEvent :");
+        console.log(data);
         gGameState = data.state || ZGZ.GAME_STATE.TALK;
 
         if (this.m_pPokerLayer) {
@@ -1166,7 +1166,11 @@ var GameLayer = cc.Layer.extend({
 
         //如果是亮3操作，说话结束后把亮的牌收回
         if (this.m_pPokerLayer) {
-            this.m_pPokerLayer.resetSelectedCards(data.actor);
+            if(uid == gPlayer.uid){
+                if(goal == GAME.IDENTITY.HONG3 || goal == GAME.IDENTITY.GUZI){
+                    this.m_pPokerLayer.resetSelectedCards();
+                }
+            }
         }
 
         if (this.m_pTableLayer) {
