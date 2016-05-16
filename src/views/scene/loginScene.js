@@ -102,7 +102,17 @@ var LoginLayer = cc.Layer.extend({
         this.registerMenu.setScale(0.65);
 
         //bg.addChild(this.registerMenu);
-
+        //忘记密码
+        this.forgetPassword = new cc.MenuItemImage(
+            "#login_wanchengzhuce.png",
+            "#login_wanchengzhuce.png",
+            this.onForgetPassword,
+            this
+        );
+        this.forgetPasswordMenu = new cc.Menu(this.forgetPassword);
+        this.forgetPasswordMenu.setPosition(bg.width/2-70, 50);
+        this.forgetPasswordMenu.setScale(0.6);
+        //bg.addChild(this.forgetPasswordMenu);
 
         //other.
         var left = new cc.Sprite("#login_puke1.png");
@@ -156,6 +166,11 @@ var LoginLayer = cc.Layer.extend({
         var scene = new SignupScene();
         //cc.director.runScene(new cc.TransitionFade(1.2, scene));
         cc.director.runScene( scene);
+        playEffect(audio_common.Button_Click);
+    },
+
+    onForgetPassword: function () {
+
         playEffect(audio_common.Button_Click);
     }
 
