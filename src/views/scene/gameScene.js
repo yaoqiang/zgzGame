@@ -1169,6 +1169,7 @@ var GameLayer = cc.Layer.extend({
             if(uid == gPlayer.uid){
                 if(goal == GAME.IDENTITY.HONG3 || goal == GAME.IDENTITY.GUZI){
                     this.m_pPokerLayer.resetSelectedCards();
+                    this.m_pPokerLayer.clearSelectedWillOutCards();
                 }
             }
         }
