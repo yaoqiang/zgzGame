@@ -363,3 +363,19 @@ UniversalController.bindingMobile = function (data, cb) {
         cb(data);
     });
 }
+
+UniversalController.changePasswords = function (data, cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
+    pomelo.request(route.bindingMobile, {
+        oldpassword: data.oldpassword,
+        newpassword: data.newpassword,
+        againpassword: data.againpassword
+    }, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        if (data.code == RETURN_CODE.OK) {
+            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, data.token);
+        }
+        cb(data);
+    });
+}

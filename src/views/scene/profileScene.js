@@ -644,7 +644,126 @@ var ProfileLayer = cc.Layer.extend({
 
         });
     },
+//修改密码
+    changePasswords: function () {
+        this.bindingBox = new DialogSmall('修改密码', 2, {ensureCallback: this.sendNewPasswords}, this);
 
+        var boxSize = this.bindingBox.bg.getBoundingBox();
+
+        var oldPasswords = new cc.LabelTTF("原密码:", "AmericanTypewriter", 26);
+        oldPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 350);
+        oldPasswords.color = cc.color.WHITE;
+        oldPasswords.scale = 2;
+        this.bindingBox.bg.addChild(oldPasswords);
+
+
+        var blockSize = cc.size(370, 70);
+        this.oldValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.oldValue.setPlaceHolder('请输入原密码');
+        this.oldValue.setFontColor(cc.color.BLACK);
+        this.oldValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
+        this.oldValue.color = cc.color.WHITE;
+        this.oldValue.setMaxLength(11);
+        this.bindingBox.bg.addChild(this.oldValue);
+
+
+        //验证码
+        var mewPasswords = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
+        mewPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 220);
+        mewPasswords.color = cc.color.WHITE;
+        mewPasswords.scale = 2;
+        this.bindingBox.bg.addChild(mewPasswords);
+
+
+        this.newValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.newValue.setPlaceHolder('请输入新密码');
+        this.newValue.setFontColor(cc.color.BLACK);
+        this.newValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 220);
+        this.newValue.color = cc.color.WHITE;
+        this.newValue.setMaxLength(6);
+        this.bindingBox.bg.addChild(this.newValue);
+
+        //密码
+        var againNewPasswords = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
+        againNewPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 90);
+        againNewPasswords.color = cc.color.WHITE;
+        againNewPasswords.scale = 2;
+        this.bindingBox.bg.addChild(againNewPasswords);
+
+
+        this.againValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.againValue.setPlaceHolder('请再次输入新密码');
+        this.againValue.setFontColor(cc.color.BLACK);
+        this.againValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 90);
+        this.againValue.color = cc.color.WHITE;
+        this.againValue.setMaxLength(16);
+        this.bindingBox.bg.addChild(this.againValue);
+
+
+        //确定
+        this.addChild(this.bindingBox, 20);
+    },
+    validateoOldPassword: function () {
+        var password = this.oldValue.getString();
+
+        if (password == '') {
+            prompt.fadeMiddle('请输入原密码');
+            return false;
+        }
+
+        return true;
+    },
+    validateoNewPassword: function () {
+        var password = this.newValue.getString();
+
+        if (password == '') {
+            prompt.fadeMiddle('请输入新密码');
+            return false;
+        }
+
+        return true;
+    },
+    validateoAgainPassword: function () {
+        var newpassword = this.newValue.getString();
+        var againpassword = this.againValue.getString();
+
+        if (againpassword == newpassword) {
+            return true;
+        }else{
+            prompt.fadeMiddle('密码不一致');
+            return false;
+        }
+
+        return true;
+    },
+    /**
+     * 发送绑定请求
+     */
+    sendNewPasswords: function () {
+        if (!this.validateoOldPassword()) return;
+        if (!this.validateoNewPassword()) return;
+        if (!this.validateoAgainPassword()) return;
+
+        var self = this;
+        var winSize = cc.director.getWinSize();
+
+        var oldpassword = this.oldValue.getString();
+        var newpassword = this.newValue.getString();
+        var againpassword = this.againValue.getString();
+
+        var data = {oldpassword: oldpassword, newpassword: newpassword, againpassword: againpassword};
+
+        UniversalController.changePasswords(data, function (data) {
+            if (data.code == RETURN_CODE.OK) {
+                prompt.fadeMiddle('密码修改成功，请重新登录。');
+                if (self.bindingBox) self.bindingBox.removeFromParent(true);
+            }
+            else {
+                prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+            }
+        })
+
+    },
     onEnter: function () {
         this._super();
 
