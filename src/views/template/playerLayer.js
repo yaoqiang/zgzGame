@@ -170,7 +170,15 @@ var PlayerLayer = cc.Layer.extend({
             }
 
         }
-
+        var hh = 0;
+        len = this.m_pIdentityArray.length;
+        for (var i = 0; i < len; i++) {
+            var identityImage = this.m_pIdentityArray[i];
+            identityImage.setAnchorPoint(0, 1);
+            identityImage.setPosition(cc.p(size.width - 0, size.height - hh));
+            console.log("----->showIdentity : %d", hh);
+            hh = hh + identityImage.getBoundingBox().height+1;
+        }
     },
 
     removeIdentity: function () {
