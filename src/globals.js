@@ -12,6 +12,13 @@ var gWebSvrAddr = {
     port: 3001
 }
 
+var gGameHttpAddr = {
+    host: '101.200.128.237',
+    //host: '127.0.0.1',
+    //host: '101.201.154.38',
+    port: 1337
+}
+
 //网络状态,是否与connector服务连接
 var gHasConnector = false;
 //

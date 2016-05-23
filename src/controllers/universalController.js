@@ -245,8 +245,53 @@ UniversalController.getRankingList = function (data, cb) {
  * 发送IAP支付结果
  */
 UniversalController.payment = function (product) {
-    pomelo.notify(route.sendPaymentResult, {productId: product.name, product: product});
+    //以HTTP方式发送IAP支付结果
+    GameHttp.post({
+        action: 'api/game/payment4AppleIAP',
+        args: {productId: product.name, product: product, uid: gPlayer.uid},
+        onSuccess: function (result) {
+            //如果成功则不处理(客户端交互由服务端发送event)
+            if (result.code == 200) {
+                return;
+            }
+            //如果是500
+            //如果是其他异常, 如HTTP或者..., 则存储在客户端, 再下次进入app时候再次发送.以免漏单
+            //Note: 客户端不存了,直接提示联系客服!
+            //var receipt = {
+            //    product: product,
+            //    retry: 0
+            //}
+            //Storage.set(CommonConf.LOCAL_STORAGE.RECEIPT, receipt)
+            var box = new AlertBox("充值失败,请联系客服", function () {
+            }, this);
+
+            cc.director.getRunningScene().addChild(box, 999);
+        },
+        onError: function (result) {
+            //如果是400, 缺参数, 则不处理
+            //if (result.code == 400) {
+            //    return;
+            //}
+            //如果是500, 如果是其他异常, 如HTTP或者..., 则存储在客户端, 再下次进入app时候再次发送.以免漏单
+            if (result.code == 500) {
+                //Note: 不存了,直接提示联系客服!
+                //var receipt = {
+                //    product: product,
+                //    retry: 0
+                //}
+                //Storage.set(CommonConf.LOCAL_STORAGE.RECEIPT, receipt)
+                var box = new AlertBox("充值失败,请联系客服", function () {
+                }, this);
+
+                cc.director.getRunningScene().addChild(box, 999);
+            }
+        }
+    });
+
+    // 废弃, 改用HTTP方式
+    //pomelo.notify(route.sendPaymentResult, {productId: product.name, product: product});
 }
+
 
 /**
  * 苹果IAP支付

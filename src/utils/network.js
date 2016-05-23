@@ -26,7 +26,7 @@ var Network = {
                 }
             }
         };
-//        var args = "username="+params.data.username+"&password="+params.data.password;
+//        var args = {username: params.data.username, password: params.data.password}
         xhr.send(JSON.stringify(params.args));
     },
     onError: function (status) {
@@ -59,5 +59,36 @@ var Network = {
                 });
             });
         });
+    }
+};
+
+var GameHttp = {
+    url: "http://" + gGameHttpAddr.host.concat(':').concat(gGameHttpAddr.port).concat('/'),
+    get: function (params) {
+    },
+    post: function (params) {
+        var xhr = cc.loader.getXMLHttpRequest();
+        xhr.open("POST", this.url + params.action);
+
+        //set Content-Type "application/x-www-form-urlencoded" to post form data
+        //mulipart/form-data for upload
+        xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                var httpStatus = xhr.statusText;
+                var response = xhr.responseText;
+
+                if (xhr.status == RETURN_CODE.OK) {
+                    params.onSuccess(JSON.parse(response));
+                }
+                else {
+                    params.onError(response);
+                }
+            }
+        };
+//        var args = {username: params.data.username, password: params.data.password}
+        xhr.send(JSON.stringify(params.args));
+    },
+    onError: function (status) {
     }
 };
