@@ -272,7 +272,7 @@ ChatInGameLayer.prototype = {
         this.trumpetContent.setFont("Arial", 30);
         this.trumpetContent.setPosition(520, 400);
         this.trumpetContent.color = cc.color.WHITE;
-        this.trumpetContent.setMaxLength(20);
+        //this.trumpetContent.setMaxLength(20);
         this.rightBox.addChild(this.trumpetContent);
 
         //btn
@@ -435,6 +435,8 @@ ChatInGameLayer.prototype = {
                     prompt.fadeMiddle('请输入喇叭内容');
                     return;
                 }
+
+                content = content.substring(0, 20);
 
                 this.trumpetVal -= 1;
                 this.trumpetCountString.setString('您还有'+this.trumpetVal+'个');

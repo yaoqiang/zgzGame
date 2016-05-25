@@ -195,7 +195,7 @@ var ProfileLayer = cc.Layer.extend({
         this.nickNameValue.setFontColor(cc.color.BLACK);
         this.nickNameValue.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 80);
         this.nickNameValue.color = cc.color.WHITE;
-        this.nickNameValue.setMaxLength(6);
+        //this.nickNameValue.setMaxLength(6);
         this.addChild(this.nickNameValue);
 
 
@@ -663,7 +663,7 @@ var ProfileLayer = cc.Layer.extend({
         this.oldValue.setFontColor(cc.color.BLACK);
         this.oldValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
         this.oldValue.color = cc.color.WHITE;
-        this.oldValue.setMaxLength(11);
+        //this.oldValue.setMaxLength(11);
         this.bindingBox.bg.addChild(this.oldValue);
 
 
@@ -680,7 +680,7 @@ var ProfileLayer = cc.Layer.extend({
         this.newValue.setFontColor(cc.color.BLACK);
         this.newValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 220);
         this.newValue.color = cc.color.WHITE;
-        this.newValue.setMaxLength(6);
+        //this.newValue.setMaxLength(6);
         this.bindingBox.bg.addChild(this.newValue);
 
         //密码

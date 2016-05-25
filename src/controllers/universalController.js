@@ -409,6 +409,22 @@ UniversalController.bindingMobile = function (data, cb) {
     });
 }
 
+UniversalController.sendResetPasswordSMS = function (mobile, cb) {
+    GameHttp.post({action: route.sendResetPasswordSMS, args: {mobile: mobile}, onSuccess: function (data) {
+        cb(data);
+    }});
+}
+
+UniversalController.resetPassword = function (data, cb) {
+    GameHttp.post({action: route.resetPassword, args: {
+        mobile: data.mobile,
+        password: data.password,
+        captcha: data.captcha
+    }, onSuccess: function (data) {
+        cb(data);
+    }});
+}
+
 UniversalController.changePasswords = function (data, cb) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);

@@ -87,13 +87,14 @@ var ERR_CODE = {
         MOBILE_NOT_VALIDATE: 9302,
         MOBILE_ALREADY_BINDING: 9303,
         CAPTCHA_ERR: 9304,
-        ERR: 9305
+        ERR: 9305,
+        MOBILE_NOT_FOUNT: 9306
     },
     MOBILE_RECHARGE: {
         MOBILE_NOT_BLANK: 9401,
         MOBILE_NOT_VALIDATE: 9402,
-        DENOMINATION_NOT_ERR: 9303,
-        ERR: 9305
+        DENOMINATION_NOT_ERR: 9403,
+        ERR: 9405
     }
 };
 
@@ -168,6 +169,7 @@ var ERR_MESSAGE = {
     9303: "该手机已绑定",
     9304: "验证码错误",
     9305: "操作失败, 请稍后重试",
+    9306: "您输入的手机号没有绑定游戏帐号"
 }
 
 

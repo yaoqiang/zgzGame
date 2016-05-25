@@ -54,7 +54,16 @@ var route = {
 
 
     sendBindingSMS: 'connector.universalHandler.sendBindingSMS',    //
-    bindingMobile: 'connector.universalHandler.bindingMobile'    //
+    bindingMobile: 'connector.universalHandler.bindingMobile',    //
+
+
+
+
+    //-----------------------
+    //HTTP Routes...
+    //-----------------------
+    sendResetPasswordSMS: 'api/game/sendResetPasswordSMS',    //
+    resetPassword: 'api/game/resetPassword'    //
 
 
 }
