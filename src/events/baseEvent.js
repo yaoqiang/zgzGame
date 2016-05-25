@@ -100,8 +100,14 @@ function doConnectingWithBar() {
     if (gCONNECT_STATE == CommonConf.CONNECT_STATE.CONNECTING || gCONNECT_STATE == CommonConf.CONNECT_STATE.CONNECTED) return;
 
     var box = new AlertBox("您的网络已断开", function () {
-
+        var bar = null;
+        bar = cc.director.getRunningScene().getChildByTag(999);
+        if (bar && cc.sys.isObjectValid(bar)) {
+            bar.removeFromParent(true);
+            bar = null;
+        }
         //
+        console.log("您的网络已断开");
         gConnectingBar = new LoadingLayer({msg: '连接中'});
         cc.director.getRunningScene().addChild(gConnectingBar, 999);
         //
@@ -110,8 +116,9 @@ function doConnectingWithBar() {
         gCONNECT_STATE == CommonConf.CONNECT_STATE.CONNECTING;
 
         AuthController.loginWithToken(token, function () {
-            if (cc.sys.isObjectValid(gConnectingBar)) {
+            if (gConnectingBar && cc.sys.isObjectValid(gConnectingBar)) {
                 gConnectingBar.removeFromParent(true);
+                gConnectingBar = null;
             }
 
         });
