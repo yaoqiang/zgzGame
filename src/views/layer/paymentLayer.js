@@ -14,7 +14,7 @@ PaymentLayer.prototype = {
 
 
                 if (self.channel === CommonConf.PAYMENT.CHANNEL.wx) {
-                    prompt.fadeMiddle("微信支付即将支持,请先选择其他支付");
+                    prompt.fadeMiddle(self.tipWeixinString);
                     return;
                 }
 
@@ -82,11 +82,13 @@ PaymentLayer.prototype = {
 
 
         //tip
-        var tipLabel = new cc.LabelTTF("可通过银行转账或支付宝转账充值\n详情请咨询客服: 0352-7963773", "AmericanTypewriter", 38);
-        tipLabel.color = {r: 0, g: 255, b: 127};
-        tipLabel.x = 480;
-        tipLabel.y = 220;
-        this.box.bg.addChild(tipLabel);
+        this.tipDefaultString = '可银行转账或支付宝/微信转账充值\n详情请咨询客服: 0352-7963773';
+        this.tipWeixinString = '微信充值请加客服微信: OOXXcctt';
+        this.tipLabel = new cc.LabelTTF(this.tipDefaultString, "AmericanTypewriter", 38);
+        this.tipLabel.color = {r: 0, g: 255, b: 127};
+        this.tipLabel.x = 480;
+        this.tipLabel.y = 220;
+        this.box.bg.addChild(this.tipLabel);
     },
 
     onAlipayClicked: function (ref, event) {
@@ -97,6 +99,7 @@ PaymentLayer.prototype = {
             //选择支付宝支付, 设置选中状态
             this.selected = CommonConf.PAYMENT.CHANNEL.alipay;
             this.alipayBg.setVisible(true);
+            this.tipLabel.setString(this.tipDefaultString);
 
             //设置其他支付方式为未选择
             this.wxBg.setVisible(false);
@@ -111,6 +114,7 @@ PaymentLayer.prototype = {
             //选择微信支付, 设置选中状态
             this.channel = CommonConf.PAYMENT.CHANNEL.wx;
             this.wxBg.setVisible(true);
+            this.tipLabel.setString(this.tipWeixinString);
 
             //设置其他支付方式为未选择
             this.alipayBg.setVisible(false);
