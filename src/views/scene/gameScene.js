@@ -906,10 +906,12 @@ var GameLayer = cc.Layer.extend({
         switch (tag) {
             case BidMenuBtn.kCCBidMenu_Liang:
                 if (this.m_pPokerLayer.m_pSelectedWillOutCards && this.m_pPokerLayer.m_pSelectedWillOutCards.length == 0) {
+                   // console.log("---->33333333333333333");
                     prompt.fadeMiddle('请先选出手牌里的3,再点亮3');
                     return;
                 }
                 if (this.m_pPokerLayer.m_pSelectedWillOutCards == null || this.m_pPokerLayer.m_pSelectedWillOutCards == undefined) {
+                    //console.log("---->44444444444444444");
                     prompt.fadeMiddle('请先选出手牌里的3,再点亮3');
                     return;
                 }
@@ -1053,6 +1055,7 @@ var GameLayer = cc.Layer.extend({
         gGameState = data.state || ZGZ.GAME_STATE.TALK;
 
         if (this.m_pPokerLayer) {
+            //console.log("m_pSelectedWillOutCards  == null  1");
             this.m_pPokerLayer.clearSelectedWillOutCards();
             this.m_pPokerLayer.gameStart(data.actor);
         }
@@ -1168,6 +1171,7 @@ var GameLayer = cc.Layer.extend({
         if (this.m_pPokerLayer) {
             if(uid == gPlayer.uid){
                 if(goal == GAME.IDENTITY.HONG3 || goal == GAME.IDENTITY.GUZI){
+                   // console.log("m_pSelectedWillOutCards  == null  0");
                     this.m_pPokerLayer.resetSelectedCards();
                     this.m_pPokerLayer.clearSelectedWillOutCards();
                 }
