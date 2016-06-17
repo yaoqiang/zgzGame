@@ -72,7 +72,7 @@ pomelo.on('onKick', function (data) {
     }
     gHasConnector = false;
     var box = new AlertBox(msg, function () {
-        if (cc.sys.os == cc.sys.ANDROID) cc.director.end();
+        if (cc.sys.os == cc.sys.OS_ANDROID) cc.director.end();
     }, this);
     cc.director.getRunningScene().addChild(box);
 });

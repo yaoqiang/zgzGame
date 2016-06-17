@@ -29,7 +29,7 @@ var ERR_CODE = {
         GUZI_APPEND_NOT_HOLDING_CARD: 3006, //股子附加3，但是手牌里没有
         LIANG3_APPEND_NOT_3: 3007,  //亮3附加牌不是3
         LIANG3_APPEND_NOT_HOLDING_CARD: 3008,   //亮3附加3，但是手牌里没有
-        ERR: 3009,   //未知错误
+        ERR: 3009,   //未知错误,
         ALREADY_TALK: 3010, //已说话
         NOT_YOU: 3011   //不轮他说
     },
@@ -56,6 +56,11 @@ var ERR_CODE = {
         ALREADY_CANCELED_TRUSTEESHIP: 7003,
         NOT_GAMING: 7004,
         ERR: 7005
+    },
+    CHAT: {
+        NOT_MORE_TRUMPET: 7101,
+        NOT_INT_GAME: 7102,
+        ERR: 7103
     },
     CHECK_IN: {
         ALREADY_CHECK_IN: 8001,
@@ -88,13 +93,9 @@ var ERR_CODE = {
         MOBILE_ALREADY_BINDING: 9303,
         CAPTCHA_ERR: 9304,
         ERR: 9305,
-        MOBILE_NOT_FOUNT: 9306
-    },
-    MOBILE_RECHARGE: {
-        MOBILE_NOT_BLANK: 9401,
-        MOBILE_NOT_VALIDATE: 9402,
-        DENOMINATION_NOT_ERR: 9403,
-        ERR: 9405
+        MOBILE_NOT_FOUNT: 9306,
+        INVITE_NOT_FOUNT: 9307,
+        INVITE_CAN_NOT_BE_SELF: 9308
     }
 };
 
@@ -169,7 +170,9 @@ var ERR_MESSAGE = {
     9303: "该手机已绑定",
     9304: "验证码错误",
     9305: "操作失败, 请稍后重试",
-    9306: "您输入的手机号没有绑定游戏帐号"
+    9306: "您输入的手机号没有绑定游戏帐号",
+    9307: "您输入邀请码不存在,请确认大小写无误",
+    9308: "不支持填写自己的邀请码"
 }
 
 
@@ -339,3 +342,7 @@ var RankConf = [
     {"rank":11, "title": "局长", "exp": "50000", "icon": "rank_11"},
     {"rank":12, "title": "董事长", "exp": "100000", "icon": "rank_12"}
 ]
+
+
+var ASSETS_DOMAIN = 'http://assets.zaguzi.com/';   //七牛自定义cdn域名
+var QUNIU_AVATAR_SUFFIX = '?imageView2/2/w/88/h/88';    //缩略图设置

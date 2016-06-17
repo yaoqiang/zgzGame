@@ -56,6 +56,8 @@ var route = {
     sendBindingSMS: 'connector.universalHandler.sendBindingSMS',    //
     bindingMobile: 'connector.universalHandler.bindingMobile',    //
 
+    getInviteRecordListByUid: 'connector.universalHandler.getInviteRecordListByUid',
+
 
 
 
@@ -63,7 +65,9 @@ var route = {
     //HTTP Routes...
     //-----------------------
     sendResetPasswordSMS: 'api/game/sendResetPasswordSMS',    //
-    resetPassword: 'api/game/resetPassword'    //
+    resetPassword: 'api/game/resetPassword',    //
+    getQiniuToken: 'api/game/getQiniuToken',    //
+    updateAvatar: 'api/game/updateAvatar',
 
 
 }

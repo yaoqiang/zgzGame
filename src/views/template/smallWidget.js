@@ -281,7 +281,7 @@ var DialogMiddle = function (title, mode, callback) {
 ////////
 ///
 var DialogSmallNode = cc.Node.extend({
-    ctor: function (title, mode, callback, target, bgScale) {
+    ctor: function (title, mode, callback, target, bgScale, offset) {
         this._super();
 //类变量
         this.callback = callback;
@@ -290,6 +290,10 @@ var DialogSmallNode = cc.Node.extend({
 
         this.bgScale = bgScale ? bgScale : 1;
 
+        this.offset = {h: 0, w: 0};
+
+        this.offset.w = offset !== undefined && offset.w !== undefined ? offset.w : 0;
+        this.offset.h = offset !== undefined && offset.h !== undefined ? offset.h : 0;
 
         this.mode = mode;
         this.m_msg = title;
@@ -324,8 +328,8 @@ var DialogSmallNode = cc.Node.extend({
         var bgString = "#dialog_bg_middle.png";
 
         this.bg = new cc.Sprite(bgString);
-        this.bg.x = winSize.width / 2;
-        this.bg.y = winSize.height / 2;
+        this.bg.x = winSize.width / 2 + this.offset.w;
+        this.bg.y = winSize.height / 2 + this.offset.h;
         this.bg.scale = 0.4 * this.bgScale;
         this.addChild(this.bg);
 
@@ -336,14 +340,14 @@ var DialogSmallNode = cc.Node.extend({
         this.m_pLable.enableStroke(cc.color.WHITE, 1);
         this.m_pLable.color = cc.color.WHITE;
         //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
-        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2 + bgActualSize.height / 2 - 18);
+        this.m_pLable.setPosition(winSize.width / 2 + this.offset.w, winSize.height / 2 + bgActualSize.height / 2 - 18 + this.offset.h);
         this.addChild(this.m_pLable);
 
         //close
         var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
         closeItem.setScale(0.65);
-        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8;
-        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8;
+        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8 + this.offset.w;
+        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8 + this.offset.h;
         this.m_menu = new cc.Menu(closeItem);
         this.m_menu.tag = TAG_MENU;
         this.m_menu.x = 0;
@@ -368,7 +372,7 @@ var DialogSmallNode = cc.Node.extend({
             }, this);
             //this.okButton.scale = 2.3;
             var menuItem = new cc.Menu(this.okButton);
-            menuItem.setPosition(winSize.width / 2 - 160, winSize.height / 2 - 180);
+            menuItem.setPosition(winSize.width / 2 - 160, winSize.height / 2 - 190);
             menuItem.scale = 0.6;
             this.addChild(menuItem, 2);
 
@@ -390,7 +394,7 @@ var DialogSmallNode = cc.Node.extend({
             }, this);
             //this.okButton.scale = 2.3;
             var menuItem = new cc.Menu(this.okButton);
-            menuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 180);
+            menuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 190);
             menuItem.scale = 0.6;
             this.addChild(menuItem, 2);
 
@@ -412,7 +416,7 @@ var DialogSmallNode = cc.Node.extend({
             }, this);
             //this.cancelButton.scale = 2.3;
             var menuItem = new cc.Menu(this.cancelButton);
-            menuItem.setPosition(winSize.width / 2 - 80, winSize.height / 2 - 180);
+            menuItem.setPosition(winSize.width / 2 - 80, winSize.height / 2 - 190);
             menuItem.scale = 0.6;
             this.addChild(menuItem, 2);
 
@@ -432,8 +436,10 @@ var DialogSmallNode = cc.Node.extend({
 });
 //mode: 1: blank, 2: alert, 3: confirm
 //callback: {ensureCallback: xx, cancelCallback: xx, ensureLabel: xx, cancelLabel: xx}
-var DialogSmall = function (title, mode, callback, target, scale) {
-    var box = new DialogSmallNode(title, mode, callback, target, scale);
+//scale: 背景框缩放比例
+//offset: 背景框位置偏移量
+var DialogSmall = function (title, mode, callback, target, scale, offset) {
+    var box = new DialogSmallNode(title, mode, callback, target, scale, offset);
     return box;
 };
 

@@ -79,6 +79,7 @@ var ProfileLayer = cc.Layer.extend({
     ctor: function (args) {
         this._super();
         this.goldChangeListener = null;
+        this.updateAvatarListener = null;
         //init event
         this.initSubscribeEvent();
 
@@ -88,6 +89,8 @@ var ProfileLayer = cc.Layer.extend({
 
 
         this.player = {};
+
+        var self = this;
 
         this.player.nickName = args.player.nickName;
         this.player.gender = args.player.gender || 'MALE';
@@ -100,6 +103,7 @@ var ProfileLayer = cc.Layer.extend({
         this.player.fragment = args.player.fragment;
         this.player.meetingTimes = args.player.meetingTimes;
         this.player.mobile = args.player.mobile;
+        this.player.shortid = args.player.shortid;
 
         var winSize = cc.director.getWinSize();
 
@@ -111,7 +115,7 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var avatarBg = new cc.Sprite("#hallinfo_kuang.png");
-        avatarBg.setPosition(160, winSize.height / 2 + 50);
+        avatarBg.setPosition(160, winSize.height / 2 + 80);
         avatarBg.scale = ZGZ.SCALE * 0.3;
         this.addChild(avatarBg);
 
@@ -142,7 +146,7 @@ var ProfileLayer = cc.Layer.extend({
         //var butSize  = avatarEditButton.getContentSize();
         var avatarEditStr = new cc.LabelTTF("点击换头像", "Arial", 14);
         avatarEditStr.color = cc.color.WHITE;
-        avatarEditStr.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 5);
+        avatarEditStr.setPosition(winSize.width / 2 - 240, winSize.height / 2 + 25);
         this.addChild(avatarEditStr);
 
         //绑定手机
@@ -154,7 +158,7 @@ var ProfileLayer = cc.Layer.extend({
             this.bindingMobileButton = new cc.MenuItemSprite(this.bindingMobileNormal, this.bindingMobileSelected, this.bindingMobileDisabled, this.bindingMobileProfile, this);
             this.bindingMobileButton.scale = 0.65;
             this.bindingMenuItem = new cc.Menu(this.bindingMobileButton);
-            this.bindingMenuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 50);
+            this.bindingMenuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 20);
             this.addChild(this.bindingMenuItem, 2);
 
             var butSize = this.bindingMobileButton.getContentSize();
@@ -164,14 +168,14 @@ var ProfileLayer = cc.Layer.extend({
 
             this.bindingMobileTipLabel = new cc.LabelTTF("绑定后可用手机号登录\n(+金币奖励)", "Arial", 14);
             this.bindingMobileTipLabel.color = cc.color.RED;
-            this.bindingMobileTipLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 100);
+            this.bindingMobileTipLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 70);
             this.addChild(this.bindingMobileTipLabel, 10);
 
         }
         else {
             this.mobileLabel = new cc.LabelTTF("账号:" + this.player.mobile, "Arial", 16);
             this.mobileLabel.color = cc.color.WHITE;
-            this.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 40);
+            this.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 10);
             this.addChild(this.mobileLabel);
         }
 
@@ -179,13 +183,13 @@ var ProfileLayer = cc.Layer.extend({
         //
         var modifyBg = new cc.Sprite("#deep_bg_big.png");
 
-        modifyBg.setPosition(winSize.width / 2 + 100, winSize.height / 2 + 63);
+        modifyBg.setPosition(winSize.width / 2 + 100, winSize.height / 2 + 83);
         modifyBg.scaleY = 1.3
         this.addChild(modifyBg);
 
         //
         var nickNameLabel = new cc.LabelTTF("昵  称:", "AmericanTypewriter", 18);
-        nickNameLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 + 80);
+        nickNameLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 + 110);
         nickNameLabel.color = cc.color.WHITE;
 
 
@@ -193,7 +197,7 @@ var ProfileLayer = cc.Layer.extend({
         this.nickNameValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.nickNameValue.setString(this.player.nickName);
         this.nickNameValue.setFontColor(cc.color.BLACK);
-        this.nickNameValue.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 80);
+        this.nickNameValue.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 110);
         this.nickNameValue.color = cc.color.WHITE;
         //this.nickNameValue.setMaxLength(6);
         this.addChild(this.nickNameValue);
@@ -203,19 +207,19 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var genderLabel = new cc.LabelTTF("性  别:", "AmericanTypewriter", 18);
-        genderLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 + 40);
+        genderLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 + 70);
         genderLabel.color = cc.color.WHITE;
         this.addChild(genderLabel);
 
 
         var maleLabel = new cc.LabelTTF("男", "AmericanTypewriter", 16);
-        maleLabel.setPosition(winSize.width / 2 - 30, winSize.height / 2 + 40);
+        maleLabel.setPosition(winSize.width / 2 - 30, winSize.height / 2 + 70);
         maleLabel.color = cc.color.WHITE;
         this.addChild(maleLabel);
 
 
         var femaleLabel = new cc.LabelTTF("女", "AmericanTypewriter", 16);
-        femaleLabel.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 40);
+        femaleLabel.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 70);
         femaleLabel.color = cc.color.WHITE;
         this.addChild(femaleLabel);
 
@@ -224,7 +228,7 @@ var ProfileLayer = cc.Layer.extend({
 
         //summary
         var summaryLabel = new cc.LabelTTF("简  介:", "AmericanTypewriter", 18);
-        summaryLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2);
+        summaryLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 + 30);
         summaryLabel.color = cc.color.WHITE;
 
 
@@ -232,7 +236,7 @@ var ProfileLayer = cc.Layer.extend({
         this.summaryValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.summaryValue.setString(this.player.summary);
         this.summaryValue.setFontColor(cc.color.BLACK);
-        this.summaryValue.setPosition(winSize.width / 2 + 50, winSize.height / 2);
+        this.summaryValue.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 30);
         this.summaryValue.color = cc.color.WHITE;
         this.summaryValue.setMaxLength(10);
         this.addChild(this.summaryValue);
@@ -248,7 +252,7 @@ var ProfileLayer = cc.Layer.extend({
         this.updateButton = new cc.MenuItemSprite(this.updateNormal, this.updateSelected, this.updateDisabled, this.updateProfile, this);
         this.updateButton.scale = 0.8;
         var menuItem = new cc.Menu(this.updateButton);
-        menuItem.setPosition(winSize.width / 2 + 250, winSize.height / 2 + 40);
+        menuItem.setPosition(winSize.width / 2 + 250, winSize.height / 2 + 70);
         this.addChild(menuItem, 2);
 
         var butSize = this.updateButton.getContentSize();
@@ -259,19 +263,19 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var goldLabel = new cc.LabelTTF("金  币:", "AmericanTypewriter", 18);
-        goldLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 40);
+        goldLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 10);
         goldLabel.color = cc.color.WHITE;
 
         this.addChild(goldLabel);
 
         var goldIcon = new cc.Sprite("#common_icon_coins_1.png");
-        goldIcon.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 40);
+        goldIcon.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 10);
         goldIcon.scale = 0.4;
         goldIcon.setAnchorPoint(0, 0.5);
         this.addChild(goldIcon);
 
         this.goldValue = new cc.LabelTTF(zgzNumeral(this.player.gold).format('0,0'), "AmericanTypewriter", 20);
-        this.goldValue.setPosition(winSize.width / 2 - 10, winSize.height / 2 - 40);
+        this.goldValue.setPosition(winSize.width / 2 - 10, winSize.height / 2 - 10);
         this.goldValue.color = cc.color.YELLOW;
         this.goldValue.setAnchorPoint(0, 0.5);
 
@@ -280,7 +284,7 @@ var ProfileLayer = cc.Layer.extend({
 
         //胜率
         var percentLabel = new cc.LabelTTF("胜  率:", "AmericanTypewriter", 18);
-        percentLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 80);
+        percentLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 50);
         percentLabel.color = cc.color.WHITE;
 
         this.addChild(percentLabel);
@@ -290,45 +294,45 @@ var ProfileLayer = cc.Layer.extend({
         var percentStr = utils.getPercent(this.player.winNr, totalBattle);
 
         var percentValue = new cc.LabelTTF(percentStr, "AmericanTypewriter", 18);
-        percentValue.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 80);
+        percentValue.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 50);
         percentValue.setAnchorPoint(0, 0.5);
         this.addChild(percentValue);
 
         //win
         var winNrLabel = new cc.LabelTTF("胜:", "AmericanTypewriter", 18);
-        winNrLabel.setPosition(winSize.width / 2 + 40, winSize.height / 2 - 80);
+        winNrLabel.setPosition(winSize.width / 2 + 40, winSize.height / 2 - 50);
         winNrLabel.color = cc.color.WHITE;
         winNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(winNrLabel);
 
         var winNrValueLabel = new cc.LabelTTF(this.player.winNr.toString(), "AmericanTypewriter", 18);
-        winNrValueLabel.setPosition(winSize.width / 2 + 70, winSize.height / 2 - 80);
+        winNrValueLabel.setPosition(winSize.width / 2 + 70, winSize.height / 2 - 50);
         winNrValueLabel.color = cc.color.WHITE;
         winNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(winNrValueLabel);
 
         //tie
         var tieNrLabel = new cc.LabelTTF("平:", "AmericanTypewriter", 18);
-        tieNrLabel.setPosition(winSize.width / 2 + 120, winSize.height / 2 - 80);
+        tieNrLabel.setPosition(winSize.width / 2 + 120, winSize.height / 2 - 50);
         tieNrLabel.color = cc.color.WHITE;
         tieNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(tieNrLabel);
 
         var tieNrValueLabel = new cc.LabelTTF(this.player.tieNr.toString(), "AmericanTypewriter", 18);
-        tieNrValueLabel.setPosition(winSize.width / 2 + 150, winSize.height / 2 - 80);
+        tieNrValueLabel.setPosition(winSize.width / 2 + 150, winSize.height / 2 - 50);
         tieNrValueLabel.color = cc.color.WHITE
         tieNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(tieNrValueLabel);
 
         //lose
         var loseNrLabel = new cc.LabelTTF("负:", "AmericanTypewriter", 18);
-        loseNrLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 - 80);
+        loseNrLabel.setPosition(winSize.width / 2 + 200, winSize.height / 2 - 50);
         loseNrLabel.color = cc.color.WHITE;
         loseNrLabel.setAnchorPoint(0, 0.5);
         this.addChild(loseNrLabel);
 
         var loseNrValueLabel = new cc.LabelTTF(this.player.loseNr.toString(), "AmericanTypewriter", 18);
-        loseNrValueLabel.setPosition(winSize.width / 2 + 230, winSize.height / 2 - 80);
+        loseNrValueLabel.setPosition(winSize.width / 2 + 230, winSize.height / 2 - 50);
         loseNrValueLabel.color = cc.color.WHITE;
         loseNrValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(loseNrValueLabel);
@@ -336,35 +340,69 @@ var ProfileLayer = cc.Layer.extend({
 
         //
         var meetingTimeLabel = new cc.LabelTTF("开  会:", "AmericanTypewriter", 18);
-        meetingTimeLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 120);
+        meetingTimeLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 90);
         meetingTimeLabel.color = cc.color.WHITE;
 
         this.addChild(meetingTimeLabel);
 
         var meetingTimeValueLabel = new cc.LabelTTF(this.player.meetingTimes.toString(), "AmericanTypewriter", 18);
-        meetingTimeValueLabel.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 120);
+        meetingTimeValueLabel.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 90);
         meetingTimeValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(meetingTimeValueLabel);
 
         //
         var ingotLabel = new cc.LabelTTF("元  宝:", "AmericanTypewriter", 18);
-        ingotLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 160);
+        ingotLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 130);
         ingotLabel.color = cc.color.WHITE;
 
         this.addChild(ingotLabel);
 
         var ingotIcon = new cc.Sprite("#common_icon_yuanbao.png");
-        ingotIcon.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 160);
+        ingotIcon.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 130);
         ingotIcon.scale = 0.8;
         ingotIcon.setAnchorPoint(0, 0.5);
         this.addChild(ingotIcon);
 
         var ingotValue = new cc.LabelTTF(this.player.fragment.toString(), "AmericanTypewriter", 20);
-        ingotValue.setPosition(winSize.width / 2 - 10, winSize.height / 2 - 160);
+        ingotValue.setPosition(winSize.width / 2 - 10, winSize.height / 2 - 130);
         ingotValue.color = cc.color.YELLOW;
         ingotValue.setAnchorPoint(0, 0.5);
 
         this.addChild(ingotValue);
+
+
+        //邀请码
+        this.inviteLabel = new cc.LabelTTF("邀请码:", "AmericanTypewriter", 18);
+        this.inviteLabel.color = {r: 0, g: 255, b: 127};
+        this.inviteLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 170);
+        this.addChild(this.inviteLabel);
+
+        this.inviteCodeLabel = new cc.LabelTTF(this.player.shortid, "Arial", 18);
+        this.inviteCodeLabel.setAnchorPoint(0, 0.5);
+        this.inviteCodeLabel.color = {r: 0, g: 255, b: 127};
+        this.inviteCodeLabel.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 170);
+        this.addChild(this.inviteCodeLabel);
+
+        this.inviteCopyNormal = new cc.Sprite("#common_btn_4.png");
+        this.inviteCopySelected = new cc.Sprite("#common_btn_4.png");
+        this.inviteCopyDisabled = new cc.Sprite("#common_btn_4.png");
+        this.inviteCopyButton = new cc.MenuItemSprite(this.inviteCopyNormal, this.inviteCopySelected, this.inviteCopyDisabled, this.inviteCopyClick, this);
+        this.inviteCopyButton.scale = 0.7;
+        this.inviteCopyMenuItem = new cc.Menu(this.inviteCopyButton);
+        this.inviteCopyMenuItem.setPosition(winSize.width / 2 + 180, winSize.height / 2 - 170);
+        this.inviteCopyMenuItem.setAnchorPoint(0, 0.5);
+        this.addChild(this.inviteCopyMenuItem, 2);
+
+        var butSize = this.inviteCopyButton.getContentSize();
+        var inviteCopyLabel = new cc.LabelTTF("复制", "Arial", 26);
+        inviteCopyLabel.setPosition(butSize.width / 2, butSize.height / 2);
+        this.inviteCopyButton.addChild(inviteCopyLabel);
+
+        this.inviteTipLabel = new cc.LabelTTF("邀请朋友并绑定手机(填您的邀请码),您可获得6元礼包奖励", "Arial", 18);
+        this.inviteTipLabel.color = cc.color.RED;
+        this.inviteTipLabel.setAnchorPoint(0, 0.5);
+        this.inviteTipLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 200);
+        this.addChild(this.inviteTipLabel, 10);
     },
 
     updateProfile: function () {
@@ -376,7 +414,7 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     updateAvatar: function () {
-
+        //更新头像, 并向发送服务器更新请求
     },
 
     validator: function () {
@@ -389,7 +427,7 @@ var ProfileLayer = cc.Layer.extend({
         var boxSize = this.bindingBox.bg.getBoundingBox();
 
         var mobileLabel = new cc.LabelTTF("手机号:", "AmericanTypewriter", 26);
-        mobileLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 350);
+        mobileLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 390);
         mobileLabel.color = cc.color.WHITE;
         mobileLabel.scale = 2;
         this.bindingBox.bg.addChild(mobileLabel);
@@ -399,7 +437,7 @@ var ProfileLayer = cc.Layer.extend({
         this.mobileValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.mobileValue.setPlaceHolder('请输入手机号');
         this.mobileValue.setFontColor(cc.color.BLACK);
-        this.mobileValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
+        this.mobileValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 390);
         this.mobileValue.color = cc.color.WHITE;
         this.mobileValue.setMaxLength(11);
         this.bindingBox.bg.addChild(this.mobileValue);
@@ -411,7 +449,7 @@ var ProfileLayer = cc.Layer.extend({
         this.sendCaptchaButton = new cc.MenuItemSprite(this.sendCaptchaNormal, this.sendCaptchaSelected, this.sendCaptchaDisabled, this.sendCaptcha, this);
         this.sendCaptchaButton.scale = 2.3;
         var menuItem = new cc.Menu(this.sendCaptchaButton);
-        menuItem.setPosition(boxSize.width / 2 + 610, boxSize.height / 2 + 350);
+        menuItem.setPosition(boxSize.width / 2 + 610, boxSize.height / 2 + 390);
         this.bindingBox.bg.addChild(menuItem, 2);
 
         var butSize = this.sendCaptchaButton.getContentSize();
@@ -421,7 +459,7 @@ var ProfileLayer = cc.Layer.extend({
 
         //验证码
         var captchaLabel = new cc.LabelTTF("验证码:", "AmericanTypewriter", 26);
-        captchaLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 220);
+        captchaLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 280);
         captchaLabel.color = cc.color.WHITE;
         captchaLabel.scale = 2;
         this.bindingBox.bg.addChild(captchaLabel);
@@ -430,14 +468,14 @@ var ProfileLayer = cc.Layer.extend({
         this.captchaValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.captchaValue.setPlaceHolder('请输入验证码');
         this.captchaValue.setFontColor(cc.color.BLACK);
-        this.captchaValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 220);
+        this.captchaValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 280);
         this.captchaValue.color = cc.color.WHITE;
         this.captchaValue.setMaxLength(6);
         this.bindingBox.bg.addChild(this.captchaValue);
 
         //密码
         var passwordLabel = new cc.LabelTTF("密  码:", "AmericanTypewriter", 26);
-        passwordLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 90);
+        passwordLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 170);
         passwordLabel.color = cc.color.WHITE;
         passwordLabel.scale = 2;
         this.bindingBox.bg.addChild(passwordLabel);
@@ -446,13 +484,25 @@ var ProfileLayer = cc.Layer.extend({
         this.passwordValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.passwordValue.setPlaceHolder('请输入密码');
         this.passwordValue.setFontColor(cc.color.BLACK);
-        this.passwordValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 90);
+        this.passwordValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 170);
         this.passwordValue.color = cc.color.WHITE;
         this.passwordValue.setMaxLength(16);
         this.bindingBox.bg.addChild(this.passwordValue);
 
+        //邀请码
+        var fromInviteLabel = new cc.LabelTTF("邀请码:", "AmericanTypewriter", 26);
+        fromInviteLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 60);
+        fromInviteLabel.color = cc.color.WHITE;
+        fromInviteLabel.scale = 2;
+        this.bindingBox.bg.addChild(fromInviteLabel);
 
-        //确定
+
+        this.fromInviteLabel = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        this.fromInviteLabel.setPlaceHolder('');
+        this.fromInviteLabel.setFontColor(cc.color.BLACK);
+        this.fromInviteLabel.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 60);
+        this.fromInviteLabel.color = cc.color.WHITE;
+        this.bindingBox.bg.addChild(this.fromInviteLabel);
 
 
         this.addChild(this.bindingBox, 20);
@@ -531,8 +581,9 @@ var ProfileLayer = cc.Layer.extend({
         var mobile = this.mobileValue.getString();
         var password = this.passwordValue.getString();
         var captcha = this.captchaValue.getString();
+        var fromInvite = this.fromInviteLabel.getString();
 
-        var data = {mobile: mobile, password: password, captcha: captcha};
+        var data = {mobile: mobile, password: password, captcha: captcha, shortid: fromInvite};
         UniversalController.bindingMobile(data, function (data) {
             if (data.code == RETURN_CODE.OK) {
                 prompt.fadeMiddle('绑定成功, 您可以使用手机号登录');
@@ -546,7 +597,7 @@ var ProfileLayer = cc.Layer.extend({
                 if (self.mobileLabel) self.mobileLabel.removeFromParent(true);
                 self.mobileLabel = new cc.LabelTTF("账号:" + mobile, "Arial", 16);
                 self.mobileLabel.color = cc.color.WHITE;
-                self.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 40);
+                self.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 10);
                 self.addChild(self.mobileLabel);
 
             }
@@ -554,6 +605,31 @@ var ProfileLayer = cc.Layer.extend({
                 prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
             }
         })
+
+    },
+
+    onSelectAvatar: function () {
+        console.log('onSelectAvatar -- ');
+
+
+    },
+
+    //复制邀请码按钮事件
+    inviteCopyClick: function () {
+        if (cc.sys.os === cc.sys.OS_IOS) {
+            var ret = jsb.reflection.callStaticMethod("NativeOcClass",
+                "callNativePasteboard:",
+                this.player.shortid);
+
+            if (ret) {
+                prompt.fadeMiddle('复制成功,快发送给朋友吧');
+            }
+        }
+        else if (cc.sys.os === cc.sys.OS_ANDROID) {
+            console.log('### this.player.shortid -> ', this.player.shortid)
+            erun.copyStringToClipboard(this.player.shortid);
+            prompt.fadeMiddle('复制成功,快发送给朋友吧');
+        }
 
     },
 
@@ -615,7 +691,7 @@ var ProfileLayer = cc.Layer.extend({
         this.checkBoxMale.addEventListener(this.onMaleChecked, this);
         this.checkBoxMale.scale = 0.7;
         this.checkBoxMale.selected = this.player.gender == 'MALE' ? true : false;
-        this.checkBoxMale.setPosition(winSize.width / 2, winSize.height / 2 + 40);
+        this.checkBoxMale.setPosition(winSize.width / 2, winSize.height / 2 + 70);
         this.addChild(this.checkBoxMale);
 
         this.checkBoxFemale = new ccui.CheckBox();
@@ -630,12 +706,13 @@ var ProfileLayer = cc.Layer.extend({
         this.checkBoxFemale.addEventListener(this.onFemaleChecked, this);
         this.checkBoxFemale.scale = 0.7;
         this.checkBoxFemale.selected = this.player.gender == 'FEMALE' ? true : false;
-        this.checkBoxFemale.setPosition(winSize.width / 2 + 80, winSize.height / 2 + 40);
+        this.checkBoxFemale.setPosition(winSize.width / 2 + 80, winSize.height / 2 + 70);
         this.addChild(this.checkBoxFemale);
 
     },
 
     initSubscribeEvent: function () {
+        var winSize = cc.director.getWinSize();
         var self = this;
         this.goldChangeListener = EventBus.subscribe(gameEvents.GOLD_CHANGE, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
@@ -643,99 +720,111 @@ var ProfileLayer = cc.Layer.extend({
             }
 
         });
+
+        this.updateAvatarListener = EventBus.subscribe(gameEvents.CLIENT_UPDATE_AVATAR, function (data) {
+            if (self && cc.sys.isObjectValid(self)) {
+
+            }
+
+        });
+
     },
-//修改密码
-    changePasswords: function () {
-        this.bindingBox = new DialogSmall('修改密码', 2, {ensureCallback: this.sendNewPasswords}, this);
-
-        var boxSize = this.bindingBox.bg.getBoundingBox();
-
-        var oldPasswords = new cc.LabelTTF("原密码:", "AmericanTypewriter", 26);
-        oldPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 350);
-        oldPasswords.color = cc.color.WHITE;
-        oldPasswords.scale = 2;
-        this.bindingBox.bg.addChild(oldPasswords);
 
 
-        var blockSize = cc.size(370, 70);
-        this.oldValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.oldValue.setPlaceHolder('请输入原密码');
-        this.oldValue.setFontColor(cc.color.BLACK);
-        this.oldValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
-        this.oldValue.color = cc.color.WHITE;
-        //this.oldValue.setMaxLength(11);
-        this.bindingBox.bg.addChild(this.oldValue);
-
-
-        //验证码
-        var mewPasswords = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
-        mewPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 220);
-        mewPasswords.color = cc.color.WHITE;
-        mewPasswords.scale = 2;
-        this.bindingBox.bg.addChild(mewPasswords);
-
-
-        this.newValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.newValue.setPlaceHolder('请输入新密码');
-        this.newValue.setFontColor(cc.color.BLACK);
-        this.newValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 220);
-        this.newValue.color = cc.color.WHITE;
-        //this.newValue.setMaxLength(6);
-        this.bindingBox.bg.addChild(this.newValue);
-
-        //密码
-        var againNewPasswords = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
-        againNewPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 90);
-        againNewPasswords.color = cc.color.WHITE;
-        againNewPasswords.scale = 2;
-        this.bindingBox.bg.addChild(againNewPasswords);
-
-
-        this.againValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.againValue.setPlaceHolder('请再次输入新密码');
-        this.againValue.setFontColor(cc.color.BLACK);
-        this.againValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 90);
-        this.againValue.color = cc.color.WHITE;
-        this.againValue.setMaxLength(16);
-        this.bindingBox.bg.addChild(this.againValue);
-
-
-        //确定
-        this.addChild(this.bindingBox, 20);
-    },
-    validateoOldPassword: function () {
-        var password = this.oldValue.getString();
-
-        if (password == '') {
-            prompt.fadeMiddle('请输入原密码');
-            return false;
-        }
-
-        return true;
-    },
-    validateoNewPassword: function () {
-        var password = this.newValue.getString();
-
-        if (password == '') {
-            prompt.fadeMiddle('请输入新密码');
-            return false;
-        }
-
-        return true;
-    },
-    validateoAgainPassword: function () {
-        var newpassword = this.newValue.getString();
-        var againpassword = this.againValue.getString();
-
-        if (againpassword == newpassword) {
-            return true;
-        }else{
-            prompt.fadeMiddle('密码不一致');
-            return false;
-        }
-
-        return true;
-    },
+    //--------------
+    //修改密码废弃
+    //--------------
+//    changePasswords: function () {
+//        this.bindingBox = new DialogSmall('修改密码', 2, {ensureCallback: this.sendNewPasswords}, this);
+//
+//        var boxSize = this.bindingBox.bg.getBoundingBox();
+//
+//        var oldPasswords = new cc.LabelTTF("原密码:", "AmericanTypewriter", 26);
+//        oldPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 350);
+//        oldPasswords.color = cc.color.WHITE;
+//        oldPasswords.scale = 2;
+//        this.bindingBox.bg.addChild(oldPasswords);
+//
+//
+//        var blockSize = cc.size(370, 70);
+//        this.oldValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+//        this.oldValue.setPlaceHolder('请输入原密码');
+//        this.oldValue.setFontColor(cc.color.BLACK);
+//        this.oldValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
+//        this.oldValue.color = cc.color.WHITE;
+//        //this.oldValue.setMaxLength(11);
+//        this.bindingBox.bg.addChild(this.oldValue);
+//
+//
+//        //验证码
+//        var mewPasswords = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
+//        mewPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 220);
+//        mewPasswords.color = cc.color.WHITE;
+//        mewPasswords.scale = 2;
+//        this.bindingBox.bg.addChild(mewPasswords);
+//
+//
+//        this.newValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+//        this.newValue.setPlaceHolder('请输入新密码');
+//        this.newValue.setFontColor(cc.color.BLACK);
+//        this.newValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 220);
+//        this.newValue.color = cc.color.WHITE;
+//        //this.newValue.setMaxLength(6);
+//        this.bindingBox.bg.addChild(this.newValue);
+//
+//        //密码
+//        var againNewPasswords = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
+//        againNewPasswords.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 90);
+//        againNewPasswords.color = cc.color.WHITE;
+//        againNewPasswords.scale = 2;
+//        this.bindingBox.bg.addChild(againNewPasswords);
+//
+//
+//        this.againValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+//        this.againValue.setPlaceHolder('请再次输入新密码');
+//        this.againValue.setFontColor(cc.color.BLACK);
+//        this.againValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 90);
+//        this.againValue.color = cc.color.WHITE;
+//        this.againValue.setMaxLength(16);
+//        this.bindingBox.bg.addChild(this.againValue);
+//
+//
+//        //确定
+//        this.addChild(this.bindingBox, 20);
+//    },
+//    validateoOldPassword: function () {
+//        var password = this.oldValue.getString();
+//
+//        if (password == '') {
+//            prompt.fadeMiddle('请输入原密码');
+//            return false;
+//        }
+//
+//        return true;
+//    },
+//    validateoNewPassword: function () {
+//        var password = this.newValue.getString();
+//
+//        if (password == '') {
+//            prompt.fadeMiddle('请输入新密码');
+//            return false;
+//        }
+//
+//        return true;
+//    },
+//    validateoAgainPassword: function () {
+//        var newpassword = this.newValue.getString();
+//        var againpassword = this.againValue.getString();
+//
+//        if (againpassword == newpassword) {
+//            return true;
+//        } else {
+//            prompt.fadeMiddle('密码不一致');
+//            return false;
+//        }
+//
+//        return true;
+//    },
     /**
      * 发送绑定请求
      */
@@ -770,12 +859,15 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     onExit: function () {
-        if(this.goldChangeListener){
+        if (this.goldChangeListener) {
             EventBus.removeSubscribe(this.goldChangeListener);
             this.goldChangeListener = null;
         }
+        if (this.updateAvatarListener) {
+            EventBus.removeSubscribe(this.updateAvatarListener);
+            this.updateAvatarListener = null;
+        }
         this._super();
-        //cc.eventManager.removeCustomListeners(gameEvents.GOLD_CHANGE);
     }
 
 
@@ -805,7 +897,7 @@ var BagLayer = cc.Layer.extend({
             return;
         }
 
-        var x = 20, y = winSize.height/2 + 150;
+        var x = 20, y = winSize.height / 2 + 150;
 
         var self = this;
         args.itemList.forEach(function (item, index) {
@@ -816,7 +908,7 @@ var BagLayer = cc.Layer.extend({
 
             if (index == 5) {
                 x = 20;
-                y = winSize.height/2 - 100;
+                y = winSize.height / 2 - 100;
             }
         });
 
@@ -827,7 +919,7 @@ var BagLayer = cc.Layer.extend({
         //this.addChild(itemLabel);
     },
 
-    generateItemView: function(item) {
+    generateItemView: function (item) {
 
         var valueLabel = item.mode === 'count' ? item.value : new Date(item.value).format('yyyy-MM-dd');
         var unitLabel = item.mode === 'count' ? '个' : '\n      到期';

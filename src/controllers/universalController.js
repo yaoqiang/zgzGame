@@ -399,7 +399,8 @@ UniversalController.bindingMobile = function (data, cb) {
     pomelo.request(route.bindingMobile, {
         mobile: data.mobile,
         password: data.password,
-        captcha: data.captcha
+        captcha: data.captcha,
+        shortid: data.shortid
     }, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         if (data.code == RETURN_CODE.OK) {
@@ -425,18 +426,49 @@ UniversalController.resetPassword = function (data, cb) {
     }});
 }
 
-UniversalController.changePasswords = function (data, cb) {
-    var loadingBar = new LoadingLayer({msg: '加载中'});
-    cc.director.getRunningScene().addChild(loadingBar, 100);
-    pomelo.request(route.bindingMobile, {
-        oldpassword: data.oldpassword,
-        newpassword: data.newpassword,
-        againpassword: data.againpassword
-    }, function (data) {
-        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
-        if (data.code == RETURN_CODE.OK) {
-            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, data.token);
+
+
+UniversalController.updateAvatar = function (data) {
+
+    GameHttp.post({action: route.updateAvatar, args: {
+        uid: gPlayer.uid,
+        avatar: data.avatar
+    }, onSuccess: function (uploadAvatarResult) {
+        if (uploadAvatarResult.code != 200) {
+            prompt.fadeMiddle('上传图片失败, 请重试');
+            return;
         }
-        cb(data);
-    });
+        gPlayer.avatar = data.avatar;
+        EventBus.publish('CLIENT_UPDATE_AVATAR', data);
+    }, onError: function (uploadAvatarResult) {
+        console.log(uploadAvatarResult);
+            prompt.fadeMiddle('上传图片失败, 请重试');
+            return;
+    }});
+
 }
+
+
+
+
+
+
+//------------------
+// 废弃
+//------------------
+
+//UniversalController.changePasswords = function (data, cb) {
+//    var loadingBar = new LoadingLayer({msg: '加载中'});
+//    cc.director.getRunningScene().addChild(loadingBar, 100);
+//    pomelo.request(route.bindingMobile, {
+//        oldpassword: data.oldpassword,
+//        newpassword: data.newpassword,
+//        againpassword: data.againpassword
+//    }, function (data) {
+//        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+//        if (data.code == RETURN_CODE.OK) {
+//            Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, data.token);
+//        }
+//        cb(data);
+//    });
+//}

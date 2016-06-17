@@ -75,6 +75,7 @@
 		D454520C156E22BD00887EB5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D454520B156E22BD00887EB5 /* libz.dylib */; };
 		D4545227156E28EF00887EB5 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4545215156E28EF00887EB5 /* AppDelegate.cpp */; };
 		D6B061241803AB9F0077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B061231803AB9F0077942B /* CoreMotion.framework */; };
+		DB4435F31CFA65D000F7E0D7 /* NativeOcClass.mm in Sources */ = {isa = PBXBuildFile; fileRef = DB4435F21CFA65D000F7E0D7 /* NativeOcClass.mm */; };
 		DBA13B401CA61CC000CA85DF /* PaymentWithPingpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA13B3E1CA61CC000CA85DF /* PaymentWithPingpp.cpp */; };
 		DBA13B4B1CA9785500CA85DF /* ERunSDK.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA13B491CA9785500CA85DF /* ERunSDK.cpp */; };
 		DBA13B4E1CAA045800CA85DF /* Java_org_cocos2dx_javascript_ERunJniHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DBA13B4D1CAA045800CA85DF /* Java_org_cocos2dx_javascript_ERunJniHelper.cpp */; };
@@ -211,6 +212,7 @@
 		D4545216156E28EF00887EB5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D6B061231803AB9F0077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		D87C4F7B937787DFF2DB3B56 /* SDKBoxJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SDKBoxJSHelper.h; path = ../Classes/SDKBoxJSHelper.h; sourceTree = SOURCE_ROOT; };
+		DB4435F21CFA65D000F7E0D7 /* NativeOcClass.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NativeOcClass.mm; sourceTree = "<group>"; };
 		DBA13B3E1CA61CC000CA85DF /* PaymentWithPingpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PaymentWithPingpp.cpp; sourceTree = "<group>"; };
 		DBA13B3F1CA61CC000CA85DF /* PaymentWithPingpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentWithPingpp.h; sourceTree = "<group>"; };
 		DBA13B491CA9785500CA85DF /* ERunSDK.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ERunSDK.cpp; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				509D4AB917EBB2AB00697056 /* Prefix.pch */,
 				509D4ABA17EBB2AB00697056 /* RootViewController.h */,
 				509D4ABB17EBB2AB00697056 /* RootViewController.mm */,
+				DB4435F21CFA65D000F7E0D7 /* NativeOcClass.mm */,
 			);
 			name = ios;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				1BCB41839842B734BB5F5E82 /* PluginIAPJSHelper.cpp in Sources */,
 				DBA13B401CA61CC000CA85DF /* PaymentWithPingpp.cpp in Sources */,
 				9CF04BFA862268FB32C38AE9 /* SDKBoxJSHelper.cpp in Sources */,
+				DB4435F31CFA65D000F7E0D7 /* NativeOcClass.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,5 +35,11 @@ var gameEvents = {
     PAYMENT_RESULT: 'onPaymentResult',
 
     //
-    UPDATE_REMAINING_CARD: 'UPDATE_REMAINING_CARD'  //更新剩余牌(记牌器)
+    UPDATE_REMAINING_CARD: 'UPDATE_REMAINING_CARD',  //更新剩余牌(记牌器)
+
+
+    //-------------
+    //客户端事件
+    //-------------
+    CLIENT_UPDATE_AVATAR: 'CLIENT_UPDATE_AVATAR',    //上传头像成功后, 更新客户端头像.
 }
