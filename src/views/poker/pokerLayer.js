@@ -740,14 +740,16 @@ var PokerLayer = cc.Layer.extend({
         }
 
         //--显示可以操作的按钮
+        console.log("--->gGameState:", gGameState);
         switch (gGameState) {
             case ZGZ.GAME_STATE.TALK:
                 //console.log("ZGZ.GAME_STATE.TALK");
+                this.setSelectedWillOutCards();
                 if (this.getParent().m_pBidMenuLayer) {
                     var able;// = this.checkForFanOut();
                     //console.log("------>able:", able);
                     var identity = cardUtil.recognitionIdentity(gActor.cards, gGameType);
-                    this.setSelectedWillOutCards();
+                    //this.setSelectedWillOutCards();
                     var able = true;
                     if (identity == GAME.IDENTITY.HONG3) {
                         //able = this.checkForFanOut(this.isHong3);

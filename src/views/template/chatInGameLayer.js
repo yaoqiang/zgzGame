@@ -11,7 +11,7 @@ ChatInGameLayer.prototype = {
 
         var winSize = cc.director.getWinSize();
 
-        this.box = new DialogSmall('聊 天', 1, null);
+        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.4);
 
         var boxSize = this.box.bg.getBoundingBox();
 
@@ -257,30 +257,69 @@ ChatInGameLayer.prototype = {
 
     },
 
+    editBoxEditingDidBegin: function (editBox) {
+        cc.log("editBox " + this._getEditBoxName(editBox) + " DidBegin !");
+    },
+
+    editBoxEditingDidEnd: function (editBox) {
+        cc.log("editBox " + this._getEditBoxName(editBox) + " DidEnd !");
+    },
+
+    editBoxTextChanged: function (editBox, text) {
+        cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
+    },
+
+    editBoxReturn: function (editBox) {
+        cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
+    },
+
+    _getEditBoxName :function(editBox){
+        if (this.trumpetContent == editBox) {
+            return "trumpetContent";
+        }
+        return "Unknown EditBox";
+    },
+
     initTrumpetChatBox: function () {
         this.rightBox = new cc.Layer();
+        var bgScale = this.box.bgScale;
+        var bgRect = this.box.bg.getBoundingBox();
 
         var trumpetHeaderIcon = new cc.Sprite("#common_icon_laba_2.png");
-        trumpetHeaderIcon.scale = 1.5;
-        trumpetHeaderIcon.setPosition(300, 470);
+        trumpetHeaderIcon.scale = 1.5*bgScale;
+        trumpetHeaderIcon.setPosition(bgRect.x + 300*bgScale, bgRect.y + 490*bgScale);
         this.rightBox.addChild(trumpetHeaderIcon);
 
-        var blockSize = cc.size(480, 50);
-        this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.trumpetContent.setPlaceHolder('小喇叭内容');
-        this.trumpetContent.setFontColor(cc.color.BLACK);
-        this.trumpetContent.setFont("Arial", 30);
-        this.trumpetContent.setPosition(520, 400);
-        this.trumpetContent.color = cc.color.WHITE;
+        var blockSize = cc.size(480*bgScale, 80*bgScale);
+        //this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        //this.trumpetContent.setPlaceHolder('小喇叭内容');
+        //this.trumpetContent.setFontColor(cc.color.BLACK);
+        //this.trumpetContent.setFont("Arial", 30);
+        //this.trumpetContent.setPosition(520, 400);
+        //this.trumpetContent.color = cc.color.WHITE;
         //this.trumpetContent.setMaxLength(20);
+        //this.rightBox.addChild(this.trumpetContent);
+
+        this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+        //this.trumpetContent.setString("EditBox Sample");
+        this.trumpetContent.x = bgRect.x + 520*bgScale;
+        this.trumpetContent.y = bgRect.y + 420*bgScale;
+        //this.trumpetContent.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
+        this.trumpetContent.setFontColor(cc.color.BLACK);
+        this.trumpetContent.setFont("Arial", 36*bgScale);
+       // this.trumpetContent.color = cc.color.WHITE;
+        this.trumpetContent.setPlaceHolder('小喇叭内容');
+        this.trumpetContent.setMaxLength(20);
+        this.trumpetContent.setPlaceholderFontColor(cc.color.WHITE);
+        this.trumpetContent.setDelegate(this);
         this.rightBox.addChild(this.trumpetContent);
 
         //btn
         var btnTrumpet = new ccui.Button("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
-        btnTrumpet.setPosition(850, 400);
+        btnTrumpet.setPosition(bgRect.x+ 850*bgScale, bgRect.y + 420*bgScale);
         btnTrumpet.setTitleText("发送");
-        btnTrumpet.setTitleFontSize(34);
-        btnTrumpet.scale = 1;
+        btnTrumpet.setTitleFontSize(30);
+        btnTrumpet.scale = bgScale;
         btnTrumpet.addTouchEventListener(this.doTrumpetChat, this);
         this.rightBox.addChild(btnTrumpet);
 
@@ -309,20 +348,20 @@ ChatInGameLayer.prototype = {
             });
 
             if (self.trumpetVal > 0) {
-                self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个", "AmericanTypewriter", 34);
-                self.trumpetCountString.setPosition(480, 170);
+                self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个", "AmericanTypewriter", 34*bgScale);
+                self.trumpetCountString.setPosition(bgRect.x + 480*bgScale, bgRect.y + 170*bgScale);
                 self.trumpetCountString.color = {r: 0, g: 255, b: 127};
                 self.rightBox.addChild(self.trumpetCountString);
 
                 //
                 var trumpetCountIcon = new cc.Sprite("#common_icon_laba.png");
-                trumpetCountIcon.scale = 0.8;
-                trumpetCountIcon.setPosition(350, 170);
+                trumpetCountIcon.scale = 0.8*bgScale;
+                trumpetCountIcon.setPosition(bgRect.x + 350*bgScale, bgRect.y + 170*bgScale);
                 self.rightBox.addChild(trumpetCountIcon);
             }
             else {
-                var trumpetCountString = new cc.LabelTTF("您当前没有小喇叭, 可前往商城购买", "AmericanTypewriter", 34);
-                trumpetCountString.setPosition(550, 170);
+                var trumpetCountString = new cc.LabelTTF("您当前没有小喇叭, 可前往商城购买", "AmericanTypewriter", 34*bgScale);
+                trumpetCountString.setPosition(bgRect.x + 550*bgScale, bgRect.y + 170*bgScale);
                 trumpetCountString.color = cc.color.RED;
                 self.rightBox.addChild(trumpetCountString);
             }
@@ -331,7 +370,7 @@ ChatInGameLayer.prototype = {
         });
 
 
-        this.box.bg.addChild(this.rightBox);
+        this.box.addChild(this.rightBox);
     },
 
     onTabChange: function (index) {
@@ -435,8 +474,6 @@ ChatInGameLayer.prototype = {
                     prompt.fadeMiddle('请输入喇叭内容');
                     return;
                 }
-
-                content = content.substring(0, 20);
 
                 this.trumpetVal -= 1;
                 this.trumpetCountString.setString('您还有'+this.trumpetVal+'个');
