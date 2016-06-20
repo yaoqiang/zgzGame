@@ -1,10 +1,16 @@
 var gMassageQueue = [];
+var gHistoryMassage = [];
 
 var MassageQueue = {
 
     pushMassage : function (massage) {
         if(massage == null || massage == "") return false;
         gMassageQueue.push(massage);
+
+        gHistoryMassage.push(massage);
+        if(gHistoryMassage.length > 5){
+            gHistoryMassage.shift();
+        }
     },
 
     shiftMassage : function () {
@@ -15,7 +21,7 @@ var MassageQueue = {
         return gMassageQueue.pop();
     },
     clearAllMassage : function () {
-
+        gHistoryMassage = [];
         gMassageQueue = [];
     }
 

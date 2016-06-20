@@ -589,6 +589,107 @@ var DialogSmall_T = function (title, mode, callback, target, scale) {
     return box;
 };
 
+var DialogHistoryNode = cc.Node.extend({
+    ctor: function (msg) {
+        this._super();
+//类变量
+        this.m_msg = msg ? msg : "";
+        this.m_pLable = null;
+        this.m_bRun = false;
+        var winSize = cc.director.getWinSize();
+        this.m_w  = winSize.width*0.7;
+        this.m_h = 40;
+        this.m_bgw  = this.m_w + 10;
+        this.m_bgh = winSize.height*0.9 ;
+
+        this.init(msg);
+    },
+    onEnter: function () {
+        this._super();
+    },
+    onExit: function () {
+        this._super();
+    },
+
+    init: function (msg) {
+        if (this.m_bRun) return;
+        this.m_bRun = true;
+
+        this._super();
+
+        var self = this;
+        var sg = new MaskLayer(false);
+        this.addChild(sg);
+
+        var winSize = cc.director.getWinSize();
+        var xx =   winSize.width/2;
+        var yy = winSize.height - 30;
+        var bgString = "game_dikuang_4.png";
+
+        this.bg = new cc.Scale9Sprite(bgString, cc.rect(10, 10, 10, 10));
+        this.bg.setAnchorPoint(0.5, 1);
+        this.bg.width = this.m_bgw;
+        this.bg.height =this.m_bgh;
+        this.bg.x = winSize.width/2;
+        this.bg.y = winSize.height-20;
+        this.addChild(this.bg);
+
+        var bgActualSize = this.bg.getBoundingBox();
+
+        var num = gHistoryMassage.length;
+        var i=0;
+        for(i=0; i<num;i++){
+            var data = gHistoryMassage[num-1-i];
+            var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 20);
+            lable.setAnchorPoint(0, 0.5);
+            lable.color = cc.color.BLACK;
+            lable.setPosition(this.bg.x - this.bg.width/2 + 20, yy - this.m_h/2-30 -(i+1)*26);
+            this.addChild(lable);
+        }
+
+
+
+
+        this.setString(msg);
+
+    },
+
+    setString: function (msg) {
+        if(this.m_pLable == null){
+            var winSize = cc.director.getWinSize();
+            var xx =   winSize.width/2;
+            var yy = winSize.height - 30;
+
+            var bg = new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29));
+            bg.setAnchorPoint(0.5, 0.5);
+            bg.width = this.m_w;
+            bg.height = this.m_h;
+            bg.x = xx;
+            bg.y = yy-30;
+            this.addChild(bg);
+
+
+            this.m_pLable = new cc.LabelTTF(msg, "AmericanTypewriter", 25);
+            //this.m_pLable.enableStroke(cc.color.WHITE, 1);
+            this.m_pLable.setAnchorPoint(0.5, 0.5);
+            this.m_pLable.color = cc.color.BLACK;
+            //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER);
+            this.m_pLable.setPosition(xx, yy - this.m_h/2-10 );
+            this.addChild(this.m_pLable);
+        }else{
+            this.m_pLable.setString(msg);
+        }
+
+        this.m_msg = msg;
+    }
+});
+
+var DialogHistory = function (msg) {
+    var box = new DialogHistoryNode(msg);
+    return box;
+};
+
+
 var UpdataDataAppNode = cc.Node.extend({
     ctor: function (level, url, msg) {
         this._super();
