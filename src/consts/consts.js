@@ -324,6 +324,13 @@ var CommonConf = {
 
     TRUMPET: {
         STAY_SECOND: 10
+    },
+
+    SHOP: {
+        TYPE: {
+            GOLD: 'gold',
+            PROP: 'prop'
+        }
     }
 }
 

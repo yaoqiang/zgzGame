@@ -4,14 +4,79 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>daoju_normal.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{134,300},{86,44}}</string>
+                <key>offset</key>
+                <string>{0,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{47,4},{86,44}}</string>
+                <key>sourceSize</key>
+                <string>{180,48}</string>
+            </dict>
+            <key>daoju_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{94,388},{86,44}}</string>
+                <key>offset</key>
+                <string>{0,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{23,26},{86,44}}</string>
+                <key>sourceSize</key>
+                <string>{132,92}</string>
+            </dict>
+            <key>golds_normal.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{86,300},{86,46}}</string>
+                <key>offset</key>
+                <string>{-1,-1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{46,2},{86,46}}</string>
+                <key>sourceSize</key>
+                <string>{180,48}</string>
+            </dict>
+            <key>golds_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{46,390},{86,46}}</string>
+                <key>offset</key>
+                <string>{-1,-1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{22,24},{86,46}}</string>
+                <key>sourceSize</key>
+                <string>{132,92}</string>
+            </dict>
+            <key>light.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{406,2},{79,92}}</string>
+                <key>offset</key>
+                <string>{-1,1}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{79,92}}</string>
+                <key>sourceSize</key>
+                <string>{81,94}</string>
+            </dict>
             <key>shop_VIP.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{82,180},{70,66}}</string>
+                <string>{{162,123},{70,66}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{2,0},{70,66}}</string>
                 <key>sourceSize</key>
@@ -20,7 +85,7 @@
             <key>shop_VIP_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,260},{54,54}}</string>
+                <string>{{224,195},{54,54}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,11 +98,11 @@
             <key>shop_VIP_weixuanze.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{94,140},{90,38}}</string>
+                <string>{{2,300},{90,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{90,38}}</string>
                 <key>sourceSize</key>
@@ -46,7 +111,7 @@
             <key>shop_VIP_xuanze.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,140},{90,38}}</string>
+                <string>{{406,83},{90,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +124,7 @@
             <key>shop_dalibao.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,180},{78,78}}</string>
+                <string>{{140,388},{78,78}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,11 +137,11 @@
             <key>shop_experience-doubled.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{82,248},{60,64}}</string>
+                <string>{{162,195},{60,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{7,1},{60,64}}</string>
                 <key>sourceSize</key>
@@ -85,7 +150,7 @@
             <key>shop_gift_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,94},{200,44}}</string>
+                <string>{{204,48},{200,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -115,7 +180,7 @@
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{200,44}}</string>
                 <key>sourceSize</key>
@@ -137,7 +202,7 @@
             <key>shop_hot.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,180},{41,41}}</string>
+                <string>{{140,468},{41,41}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +215,7 @@
             <key>shop_song_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{197,204},{56,56}}</string>
+                <string>{{180,261},{56,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -160,6 +225,45 @@
                 <key>sourceSize</key>
                 <string>{56,56}</string>
             </dict>
+            <key>vipBg.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,123},{158,175}}</string>
+                <key>offset</key>
+                <string>{0,-5}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,10},{158,175}}</string>
+                <key>sourceSize</key>
+                <string>{158,185}</string>
+            </dict>
+            <key>vip_normal.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{42,300},{88,42}}</string>
+                <key>offset</key>
+                <string>{-1,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{45,5},{88,42}}</string>
+                <key>sourceSize</key>
+                <string>{180,48}</string>
+            </dict>
+            <key>vip_selected.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,392},{88,42}}</string>
+                <key>offset</key>
+                <string>{-1,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{21,27},{88,42}}</string>
+                <key>sourceSize</key>
+                <string>{132,92}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -168,9 +272,9 @@
             <key>realTextureFileName</key>
             <string>shop.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:da76ba9bdd98f69dc5333954e09eddf7:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:fe56290db14df4d1971435fd2527fc1f:1/1$</string>
             <key>textureFileName</key>
             <string>shop.png</string>
         </dict>

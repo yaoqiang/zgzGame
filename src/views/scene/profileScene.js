@@ -240,7 +240,7 @@ var ProfileLayer = cc.Layer.extend({
         this.summaryValue.setFontColor(cc.color.BLACK);
         this.summaryValue.setPosition(winSize.width / 2 + 50, winSize.height / 2 + 30);
         this.summaryValue.color = cc.color.WHITE;
-        this.summaryValue.setMaxLength(10);
+        //this.summaryValue.setMaxLength(10);
         this.addChild(this.summaryValue);
 
 
@@ -472,7 +472,7 @@ var ProfileLayer = cc.Layer.extend({
         this.captchaValue.setFontColor(cc.color.BLACK);
         this.captchaValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 280);
         this.captchaValue.color = cc.color.WHITE;
-        this.captchaValue.setMaxLength(6);
+        //this.captchaValue.setMaxLength(6);
         this.bindingBox.bg.addChild(this.captchaValue);
 
         //密码
@@ -982,3 +982,4 @@ var BagLayer = cc.Layer.extend({
         return bg;
     }
 });
+

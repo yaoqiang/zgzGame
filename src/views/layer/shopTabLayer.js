@@ -47,6 +47,78 @@ var ShopTabLayer = cc.Layer.extend({
         goldBg.addChild(goldIcon);
 
         //
+        //
+        this.selectedSprite = new cc.Sprite("#tab_selected_bg.png");
+        this.selectedSprite.scale = 0.7;
+
+        //
+        var goldNormal = new cc.Sprite("#golds_normal.png");
+        var goldSelected = new cc.Sprite("#golds_selected.png");
+        var goldDisabled = new cc.Sprite("#golds_normal.png");
+        var goldButton = new cc.MenuItemSprite(goldNormal, goldSelected, goldDisabled, this.onGoldClick, this);
+        goldButton.scale = 0.5;
+        var goldMenu = new cc.Menu(goldButton);
+        goldMenu.setPosition(winSize.width - 250, winSize.height - 30);
+        this.addChild(goldMenu, 2);
+
+        if (this.selected == 0) {
+            this.selectedSprite.setPosition(winSize.width - 250, winSize.height - 30);
+            this.addChild(this.selectedSprite)
+        }
+
+        var separatorSprite = new cc.Sprite("#separator.png");
+        separatorSprite.setPosition(winSize.width - 155, winSize.height - 30);
+        this.addChild(separatorSprite);
+
+        //
+        var propNormal = new cc.Sprite("#daoju_normal.png");
+        var propSelected = new cc.Sprite("#daoju_selected.png");
+        var propDisabled = new cc.Sprite("#daoju_normal.png");
+        var propButton = new cc.MenuItemSprite(propNormal, propSelected, propDisabled, this.onPropClick, this);
+        propButton.scale = 0.5;
+        var propMenu = new cc.Menu(propButton);
+        propMenu.setPosition(winSize.width - 70, winSize.height - 30);
+        this.addChild(propMenu, 2);
+
+        if (this.selected == 1) {
+            this.selectedSprite.setPosition(winSize.width - 70, winSize.height - 30);
+            this.addChild(this.selectedSprite)
+        }
+    },
+
+    onTabChange: function (index) {
+        if (this.selected == index) return;
+        if (this.selectedSprite) {
+            this.selectedSprite.removeFromParent(true);
+            this.selectedSprite = null;
+        }
+
+        this.selected = index;
+        playEffect(audio_common.Button_Click);
+        //
+        this.selectedSprite = new cc.Sprite("#tab_selected_bg.png");
+        this.selectedSprite.scale = 0.7;
+        var winSize = cc.director.getWinSize();
+        //
+        if (this.selected == 0) {
+            this.selectedSprite.setPosition(winSize.width - 250, winSize.height - 30);
+        }
+
+        if (this.selected == 1) {
+            this.selectedSprite.setPosition(winSize.width - 70, winSize.height - 30);
+        }
+        this.addChild(this.selectedSprite);
+
+        this.args.callback.call(this.args.target, index);
+
+    },
+
+    onGoldClick: function () {
+        this.onTabChange(0);
+    },
+
+    onPropClick: function () {
+        this.onTabChange(1);
     },
 
 

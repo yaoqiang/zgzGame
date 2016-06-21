@@ -76,15 +76,7 @@ var BottomBtnLayer = cc.Layer.extend({
     },
 
     onShopButton: function () {
-        playEffect(audio_common.Button_Click);
-        var self = this;
-        UniversalController.getShopList(function (data) {
-            var args = {};
-            args.data = data;
-            args.lobbyId = self.lobbyId;
-            var scene = new ShopScene(args);
-            //cc.director.runScene(new cc.TransitionFade(1.2, scene));
-            cc.director.runScene(scene);
-        });
+        var scene = new ShopScene({selected: 0, lobbyId: this.lobbyId});
+        cc.director.runScene(scene);
     }
 })

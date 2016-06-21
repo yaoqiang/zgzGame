@@ -45,7 +45,7 @@ UniversalController.updateProfile = function (nickName, gender, avatar, summary)
     }
 
     if (summary.length > 10) {
-        prompt.fadeMiddle('修改失败, 简介<10位', 3);
+        prompt.fadeMiddle('修改失败, 简介不能超10位', 3);
         return;
     }
 
@@ -207,14 +207,15 @@ UniversalController.exchange = function (exchangeId, mobile, count, contact, add
 
 /**
  * 获取商城列表
+ * @param type 商城类型: 金币,道具,VIP
  * @param cb
  */
-UniversalController.getShopList = function (cb) {
+UniversalController.getShopList = function (type, cb) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
 
     var device = gOS;
-    pomelo.request(route.getShopList, {device: device}, function (data) {
+    pomelo.request(route.getShopList, {device: device, type: type}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
 
         cb(data);
@@ -448,6 +449,11 @@ UniversalController.updateAvatar = function (data) {
 }
 
 
+UniversalController.getInviteRecordListByUid = function (cb) {
+    pomelo.request(route.getInviteRecordListByUid, {}, function (data) {
+        cb(data);
+    });
+}
 
 
 
