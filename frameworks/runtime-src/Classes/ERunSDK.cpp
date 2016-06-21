@@ -108,6 +108,10 @@ bool jsb_open_browser(JSContext *cx, uint32_t argc, jsval *vp) {
     return true;
 }
 
+bool jsb_copy_string_to_clipboard(JSContext *cx, uint32_t argc, jsval *vp) {
+    return true;
+}
+
 #endif
 
 

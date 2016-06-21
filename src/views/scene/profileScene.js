@@ -123,12 +123,14 @@ var ProfileLayer = cc.Layer.extend({
         var avatar = new cc.MenuItemSprite(
             new cc.Sprite(utils.getAvatar(this.player.avatar)),
             new cc.Sprite(utils.getAvatar(this.player.avatar)),
-            this.profile,
+            this.onSelectAvatar,
             this
         );
+        avatar.setName("avatar");
 
         var avatarMenu = new cc.Menu(avatar);
-        avatarMenu.setPosition(winSize.width / 2 - 240, winSize.height / 2 + 50)
+        avatarMenu.setName('avatarMenu');
+        avatarMenu.setPosition(winSize.width / 2 - 240, winSize.height / 2 + 80)
         this.addChild(avatarMenu, 1);
 
 
@@ -609,8 +611,8 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     onSelectAvatar: function () {
-        console.log('onSelectAvatar -- ');
-
+        var avatarSelectorLayer = new AvatarSelectorLayer();
+        this.addChild(avatarSelectorLayer, 10);
 
     },
 
@@ -723,7 +725,12 @@ var ProfileLayer = cc.Layer.extend({
 
         this.updateAvatarListener = EventBus.subscribe(gameEvents.CLIENT_UPDATE_AVATAR, function (data) {
             if (self && cc.sys.isObjectValid(self)) {
-
+                var avatarMenu = self.getChildByName('avatarMenu');
+                var avatar = avatarMenu.getChildByName('avatar');
+                avatar.setNormalImage(new cc.Sprite(utils.getAvatar(data.avatar)));
+                avatar.setSelectedImage(new cc.Sprite(utils.getAvatar(data.avatar)));
+                avatar.setDisabledImage(new cc.Sprite(utils.getAvatar(data.avatar)));
+                prompt.fadeMiddle('修改头像成功');
             }
 
         });

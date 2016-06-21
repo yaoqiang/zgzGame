@@ -2,15 +2,20 @@ var utils = utils || {};
 
 //处理公共头像, 后续添加HTTP头像处理
 utils.getAvatar = function (avatar, type) {
-    switch (type)
-    {
-        case 1:
-            return avatars[avatar][0];
-
-        default :
-            return  avatars[avatar][1];
+    try {
+        return  avatars[avatar][1];
+    } catch (e) {
+        return avatars[9][1];
     }
 };
+
+utils.getAvatarForButton = function (avatar) {
+    try {
+        return avatars[avatar][1].substring(1, avatars[avatar][1].length);
+    } catch (e) {
+        return avatars[9][1].substring(1, avatars[avatar][1].length);
+    }
+}
 
 utils.getRankAvatar = function (rank) {
     if (rank == 0 || rank > 12) return rankConf[0];

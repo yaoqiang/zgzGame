@@ -29,27 +29,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 
-import com.erun.zgz.R;
 import com.pingplusplus.android.PaymentActivity;
 import com.pingplusplus.android.PingppLog;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
-import org.json.JSONObject;
-
-import java.io.File;
-import java.util.Date;
 
 
 public class AppActivity extends Cocos2dxActivity {

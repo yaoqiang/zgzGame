@@ -435,14 +435,13 @@ UniversalController.updateAvatar = function (data) {
         avatar: data.avatar
     }, onSuccess: function (uploadAvatarResult) {
         if (uploadAvatarResult.code != 200) {
-            prompt.fadeMiddle('上传图片失败, 请重试');
+            prompt.fadeMiddle('头像修改失败, 请重试');
             return;
         }
         gPlayer.avatar = data.avatar;
-        EventBus.publish('CLIENT_UPDATE_AVATAR', data);
+        EventBus.publish(gameEvents.CLIENT_UPDATE_AVATAR, data);
     }, onError: function (uploadAvatarResult) {
-        console.log(uploadAvatarResult);
-            prompt.fadeMiddle('上传图片失败, 请重试');
+            prompt.fadeMiddle('头像修改失败, 请重试');
             return;
     }});
 

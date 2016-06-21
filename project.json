@@ -101,6 +101,8 @@
         "src/views/layer/indexScrollLayer.js",
         "src/views/layer/dailyTodoLayer.js",
         "src/views/layer/settingLayer.js",
+        "src/views/layer/avatarSelectorLayer.js",
+
 
 
         "src/views/poker/pokerLayer.js",
