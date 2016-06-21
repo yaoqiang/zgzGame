@@ -259,18 +259,31 @@ ChatInGameLayer.prototype = {
 
     editBoxEditingDidBegin: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " DidBegin !");
+        if(this.trumpetContent == editBox){
+            this.dialogHistory = DialogHistory(editBox.getString());
+            this.box.addChild(this.dialogHistory, 100);
+        }
     },
 
     editBoxEditingDidEnd: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " DidEnd !");
+        if(this.trumpetContent == editBox) {
+            this.dialogHistory.removeFromParent();
+        }
     },
 
     editBoxTextChanged: function (editBox, text) {
         cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
+        if(this.trumpetContent == editBox) {
+            this.dialogHistory.setString(text);
+        }
     },
 
     editBoxReturn: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
+        if(this.trumpetContent == editBox){
+            this.dialogHistory.removeFromParent();
+        }
     },
 
     _getEditBoxName :function(editBox){
