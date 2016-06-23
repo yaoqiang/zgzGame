@@ -500,7 +500,7 @@ var ProfileLayer = cc.Layer.extend({
 
 
         this.fromInviteLabel = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.fromInviteLabel.setPlaceHolder('');
+        this.fromInviteLabel.setPlaceHolder('请输入邀请码');
         this.fromInviteLabel.setFontColor(cc.color.BLACK);
         this.fromInviteLabel.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 60);
         this.fromInviteLabel.color = cc.color.WHITE;
