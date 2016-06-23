@@ -11,7 +11,7 @@ ChatInGameLayer.prototype = {
 
         var winSize = cc.director.getWinSize();
 
-        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.4);
+        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.6);
 
         var boxSize = this.box.bg.getBoundingBox();
 
@@ -260,29 +260,29 @@ ChatInGameLayer.prototype = {
     editBoxEditingDidBegin: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " DidBegin !");
         if(this.trumpetContent == editBox){
-            this.dialogHistory = DialogHistory(editBox.getString());
-            this.box.addChild(this.dialogHistory, 100);
+            //this.dialogHistory = DialogHistory(editBox.getString());
+            //this.box.addChild(this.dialogHistory, 100);
         }
     },
 
     editBoxEditingDidEnd: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " DidEnd !");
         if(this.trumpetContent == editBox) {
-            this.dialogHistory.removeFromParent();
+            //this.dialogHistory.removeFromParent();
         }
     },
 
     editBoxTextChanged: function (editBox, text) {
         cc.log("editBox " + this._getEditBoxName(editBox) + ", TextChanged, text: " + text);
         if(this.trumpetContent == editBox) {
-            this.dialogHistory.setString(text);
+            //this.dialogHistory.setString(text);
         }
     },
 
     editBoxReturn: function (editBox) {
         cc.log("editBox " + this._getEditBoxName(editBox) + " was returned !");
         if(this.trumpetContent == editBox){
-            this.dialogHistory.removeFromParent();
+            //this.dialogHistory.removeFromParent();
         }
     },
 
@@ -300,10 +300,10 @@ ChatInGameLayer.prototype = {
 
         var trumpetHeaderIcon = new cc.Sprite("#common_icon_laba_2.png");
         trumpetHeaderIcon.scale = 1.5*bgScale;
-        trumpetHeaderIcon.setPosition(bgRect.x + 300*bgScale, bgRect.y + 490*bgScale);
+        trumpetHeaderIcon.setPosition(bgRect.x + 300*bgScale, bgRect.y + 530*bgScale);
         this.rightBox.addChild(trumpetHeaderIcon);
 
-        var blockSize = cc.size(480*bgScale, 80*bgScale);
+        var blockSize = cc.size(500*bgScale, 84*bgScale);
         //this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         //this.trumpetContent.setPlaceHolder('小喇叭内容');
         //this.trumpetContent.setFontColor(cc.color.BLACK);
@@ -316,7 +316,7 @@ ChatInGameLayer.prototype = {
         this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         //this.trumpetContent.setString("EditBox Sample");
         this.trumpetContent.x = bgRect.x + 520*bgScale;
-        this.trumpetContent.y = bgRect.y + 420*bgScale;
+        this.trumpetContent.y = bgRect.y + 460*bgScale;
         //this.trumpetContent.setInputFlag(cc.EDITBOX_INPUT_FLAG_PASSWORD);
         this.trumpetContent.setFontColor(cc.color.BLACK);
         this.trumpetContent.setFont("Arial", 36*bgScale);
@@ -329,7 +329,7 @@ ChatInGameLayer.prototype = {
 
         //btn
         var btnTrumpet = new ccui.Button("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
-        btnTrumpet.setPosition(bgRect.x+ 850*bgScale, bgRect.y + 420*bgScale);
+        btnTrumpet.setPosition(bgRect.x+ 865*bgScale, bgRect.y + 460*bgScale);
         btnTrumpet.setTitleText("发送");
         btnTrumpet.setTitleFontSize(30);
         btnTrumpet.scale = bgScale;
@@ -337,12 +337,8 @@ ChatInGameLayer.prototype = {
         this.rightBox.addChild(btnTrumpet);
 
 
-
-
-
-
         var self = this;
-
+        var xx = bgRect.x + 350*bgScale;
         //当前玩家喇叭情况, 如果没有则显示快捷购买喇叭
         UniversalController.getMyItemList(function (data) {
 
@@ -361,20 +357,22 @@ ChatInGameLayer.prototype = {
             });
 
             if (self.trumpetVal > 0) {
-                self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个", "AmericanTypewriter", 34*bgScale);
-                self.trumpetCountString.setPosition(bgRect.x + 480*bgScale, bgRect.y + 170*bgScale);
+                self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个小喇叭", "AmericanTypewriter", 30*bgScale);
+                self.trumpetCountString.setPosition(xx, bgRect.y + 530*bgScale);
+                self.trumpetCountString.setAnchorPoint(0, 0.5);
                 self.trumpetCountString.color = {r: 0, g: 255, b: 127};
                 self.rightBox.addChild(self.trumpetCountString);
 
                 //
-                var trumpetCountIcon = new cc.Sprite("#common_icon_laba.png");
-                trumpetCountIcon.scale = 0.8*bgScale;
-                trumpetCountIcon.setPosition(bgRect.x + 350*bgScale, bgRect.y + 170*bgScale);
-                self.rightBox.addChild(trumpetCountIcon);
+                //var trumpetCountIcon = new cc.Sprite("#common_icon_laba.png");
+                //trumpetCountIcon.scale = 0.8*bgScale;
+                //trumpetCountIcon.setPosition(bgRect.x + 350*bgScale, bgRect.y + 170*bgScale);
+                //self.rightBox.addChild(trumpetCountIcon);
             }
             else {
-                var trumpetCountString = new cc.LabelTTF("您当前没有小喇叭, 可前往商城购买", "AmericanTypewriter", 34*bgScale);
-                trumpetCountString.setPosition(bgRect.x + 550*bgScale, bgRect.y + 170*bgScale);
+                var trumpetCountString = new cc.LabelTTF("您当前没有小喇叭,可前往商城购买", "AmericanTypewriter", 30*bgScale);
+                trumpetCountString.setPosition(xx, bgRect.y + 530*bgScale);
+                trumpetCountString.setAnchorPoint(0, 0.5);
                 trumpetCountString.color = cc.color.RED;
                 self.rightBox.addChild(trumpetCountString);
             }
@@ -382,6 +380,18 @@ ChatInGameLayer.prototype = {
 
         });
 
+
+//历史
+        var num = gHistoryMassage.length;
+        var i=0;
+        for(i=0; i<num;i++){
+            var data = gHistoryMassage[num-1-i];
+            var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 26*bgScale);
+            lable.setAnchorPoint(0, 0.5);
+            lable.color = cc.color.BLACK;
+            lable.setPosition(xx - 50*bgScale, bgRect.y + 410*bgScale -(i+1)*40*bgScale);
+            self.rightBox.addChild(lable);
+        }
 
         this.box.addChild(this.rightBox);
     },
