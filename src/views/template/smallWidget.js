@@ -804,3 +804,169 @@ var UpdataDataApp = function (level, url, msg) {
 };
 
 //cc.openURL
+
+var trumpetBoxLayer = cc.Layer.extend({
+    sprite: null,
+    ctor: function () {
+        this._super();
+        this.init();
+        return;
+
+    },
+    init: function () {
+        //console.log("---|---->init");
+        var winSize = cc.director.getWinSize();
+
+        //add trumpet btn
+        var talkIcon = new ccui.Button();
+        talkIcon.setAnchorPoint(0, 0.5);
+        talkIcon.setTouchEnabled(true);
+        talkIcon.loadTextures("btn_hall_chat_nor.png", "btn_hall_chat_nor.png", "btn_hall_chat_nor.png", ccui.Widget.PLIST_TEXTURE);
+        talkIcon.addTouchEventListener(this.onTrumpetBtnClick, this);
+        talkIcon.x = 0;
+        talkIcon.y = winSize.height/2;
+        talkIcon.scale = 0.55;
+
+        this.addChild(talkIcon, 11);
+    },
+
+    onTrumpetBtnClick: function (ref, event) {
+        if (event === ccui.Widget.TOUCH_ENDED) {
+            playEffect(audio_common.Button_Click);
+
+            this.trumpetBox = new DialogSmall_T('聊 天', 1, null, null, 0.4);
+            var bgScale = this.trumpetBox.bgScale;
+            var bgRect = this.trumpetBox.bg.getBoundingBox();
+
+            var trumpetHeaderIcon = new cc.Sprite("#common_icon_laba_2.png");
+            trumpetHeaderIcon.scale = 1.5*bgScale;
+            trumpetHeaderIcon.setPosition(bgRect.x + 150*bgScale, bgRect.y + 530*bgScale);
+            this.trumpetBox.addChild(trumpetHeaderIcon);
+
+            var blockSize = cc.size(620*bgScale, 84*bgScale);
+            this.trumpetContent = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+            this.trumpetContent.x = bgRect.x + 395*bgScale;
+            this.trumpetContent.y = bgRect.y + 460*bgScale;
+            this.trumpetContent.setFontColor(cc.color.BLACK);
+            this.trumpetContent.setFont("Arial", 36*bgScale);
+            // this.trumpetContent.color = cc.color.WHITE;
+            this.trumpetContent.setPlaceHolder('小喇叭内容');
+            this.trumpetContent.setMaxLength(20);
+            this.trumpetContent.setPlaceholderFontColor(cc.color.WHITE);
+            this.trumpetContent.setDelegate(this);
+            this.trumpetBox.addChild(this.trumpetContent);
+            //btn
+            var btnTrumpet = new ccui.Button("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+            btnTrumpet.setPosition(bgRect.x+ 820*bgScale, bgRect.y + 460*bgScale);
+            btnTrumpet.setTitleText("发送");
+            btnTrumpet.setTitleFontSize(30);
+            btnTrumpet.scale = bgScale;
+            btnTrumpet.addTouchEventListener(this.doTrumpetChat, this);
+            this.trumpetBox.addChild(btnTrumpet);
+
+            var self = this;
+            var xx = bgRect.x + 200*bgScale;
+            //当前玩家喇叭情况, 如果没有则显示快捷购买喇叭
+            UniversalController.getMyItemList(function (data) {
+
+                if (data.code != RETURN_CODE.OK) {
+                    return;
+                }
+
+                if (data.itemList.length == 0) {
+                    self.trumpetVal = 0;
+                }
+
+                _.each(data.itemList, function (item) {
+                    if (item.id == 2) {
+                        self.trumpetVal = item.value;
+                    }
+                });
+
+                if (self.trumpetVal > 0) {
+                    self.trumpetCountString = new cc.LabelTTF('您还有' + self.trumpetVal + "个小喇叭", "AmericanTypewriter", 30*bgScale);
+                    self.trumpetCountString.setPosition(xx, bgRect.y + 530*bgScale);
+                    self.trumpetCountString.setAnchorPoint(0, 0.5);
+                    self.trumpetCountString.color = {r: 0, g: 255, b: 127};
+                    self.trumpetBox.addChild(self.trumpetCountString);
+
+                    //
+                    //var trumpetCountIcon = new cc.Sprite("#common_icon_laba.png");
+                    //trumpetCountIcon.scale = 0.8*bgScale;
+                    //trumpetCountIcon.setPosition(bgRect.x + 350*bgScale, bgRect.y + 170*bgScale);
+                    //self.rightBox.addChild(trumpetCountIcon);
+                }
+                else {
+                    var trumpetCountString = new cc.LabelTTF("您当前没有小喇叭,可前往商城购买", "AmericanTypewriter", 30*bgScale);
+                    trumpetCountString.setPosition(xx, bgRect.y + 530*bgScale);
+                    trumpetCountString.setAnchorPoint(0, 0.5);
+                    trumpetCountString.color = cc.color.RED;
+                    self.trumpetBox.addChild(trumpetCountString);
+                }
+
+
+            });
+
+//历史
+            var num = gHistoryMassage.length;
+            var i=0;
+            for(i=0; i<num;i++){
+                var data = gHistoryMassage[num-1-i];
+                var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 26*bgScale);
+                lable.setAnchorPoint(0, 0.5);
+                lable.color = cc.color.BLACK;
+                lable.setPosition(xx - 90*bgScale, bgRect.y + 410*bgScale -(i+1)*40*bgScale);
+                self.trumpetBox.addChild(lable);
+            }
+
+            this.addChild(this.trumpetBox, 1);
+
+        }
+    },
+
+    doTrumpetChat: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+                playEffect(audio_common.Button_Click);
+
+                if (this.trumpetVal == 0) {
+                    prompt.fadeMiddle('您没有小喇叭,可在商城购买后使用');
+                    return;
+                }
+
+                var content = this.trumpetContent.getString();
+                if (content == '') {
+                    prompt.fadeMiddle('请输入喇叭内容');
+                    return;
+                }
+
+                this.trumpetVal -= 1;
+                this.trumpetCountString.setString('您还有'+this.trumpetVal+'个');
+                GameController.chat(GAME.CHAT.SCOPE_ALL, '', '', content);
+                this.trumpetBox.removeFromParent(true);
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                break;
+
+            default:
+                break;
+        }
+    },
+
+    onEnter: function () {
+        this._super();
+
+    },
+
+    onExit: function () {
+        this._super();
+    }
+});
