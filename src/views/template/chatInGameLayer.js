@@ -11,7 +11,7 @@ ChatInGameLayer.prototype = {
 
         var winSize = cc.director.getWinSize();
 
-        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.6);
+        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.4);
 
         var boxSize = this.box.bg.getBoundingBox();
 
