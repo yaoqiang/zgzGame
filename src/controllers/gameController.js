@@ -187,5 +187,6 @@ GameController.cancelTrusteeship = function (roomId, gameId) {
 }
 
 GameController.chat = function (scope, type, item, content) {
+    if (content.length > 20) content = content.substring(0, 20);
     pomelo.request(route.chat, {scope: scope, type: type, item: item, content: content, gameId: gGameId}, null);
 }

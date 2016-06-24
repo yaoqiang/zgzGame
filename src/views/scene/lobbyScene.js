@@ -271,6 +271,10 @@ var LobbyLayer = cc.Layer.extend({
         }
     },
 
+    onTrumpetBtnClick: function(ref, event) {
+
+    }
+
     //onTrumpetBtnClick: function (ref, event) {
     //    if (event === ccui.Widget.TOUCH_ENDED) {
     //        playEffect(audio_common.Button_Click);

@@ -11,7 +11,7 @@ ChatInGameLayer.prototype = {
 
         var winSize = cc.director.getWinSize();
 
-        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.4);
+        this.box = new DialogSmall_T('聊 天', 1, null, null, 0.4, {w: 0, h: -30});
 
         var boxSize = this.box.bg.getBoundingBox();
 
@@ -322,7 +322,7 @@ ChatInGameLayer.prototype = {
         this.trumpetContent.setFont("Arial", 36*bgScale);
        // this.trumpetContent.color = cc.color.WHITE;
         this.trumpetContent.setPlaceHolder('小喇叭内容');
-        this.trumpetContent.setMaxLength(20);
+        //this.trumpetContent.setMaxLength(20);
         this.trumpetContent.setPlaceholderFontColor(cc.color.WHITE);
         this.trumpetContent.setDelegate(this);
         this.rightBox.addChild(this.trumpetContent);
@@ -386,9 +386,9 @@ ChatInGameLayer.prototype = {
         var i=0;
         for(i=0; i<num;i++){
             var data = gHistoryMassage[num-1-i];
-            var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 26*bgScale);
+            var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 36*bgScale);
             lable.setAnchorPoint(0, 0.5);
-            lable.color = cc.color.BLACK;
+            lable.color = cc.color.WHITE;
             lable.setPosition(xx - 50*bgScale, bgRect.y + 410*bgScale -(i+1)*40*bgScale);
             self.rightBox.addChild(lable);
         }

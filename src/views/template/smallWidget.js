@@ -444,7 +444,7 @@ var DialogSmall = function (title, mode, callback, target, scale, offset) {
 };
 
 var DialogSmallNode_T = cc.Node.extend({
-    ctor: function (title, mode, callback, target, bgScale) {
+    ctor: function (title, mode, callback, target, bgScale, offset) {
         this._super();
 //类变量
         this.callback = callback;
@@ -452,6 +452,11 @@ var DialogSmallNode_T = cc.Node.extend({
         this.target = target;
 
         this.bgScale = bgScale ? bgScale : 1;
+
+        this.offset = {h: 0, w: 0};
+
+        this.offset.w = offset !== undefined && offset.w !== undefined ? offset.w : 0;
+        this.offset.h = offset !== undefined && offset.h !== undefined ? offset.h : 0;
 
 
         this.mode = mode;
@@ -483,8 +488,8 @@ var DialogSmallNode_T = cc.Node.extend({
         var bgString = "#dialog_bg_middle.png";
 
         this.bg = new cc.Sprite(bgString);
-        this.bg.x = winSize.width / 2;
-        this.bg.y = winSize.height / 2;
+        this.bg.x = winSize.width / 2 + this.offset.w;
+        this.bg.y = winSize.height / 2 + this.offset.h;
         this.bg.scale = this.bgScale;
         this.addChild(this.bg);
 
@@ -495,14 +500,14 @@ var DialogSmallNode_T = cc.Node.extend({
         this.m_pLable.enableStroke(cc.color.WHITE, 1);
         this.m_pLable.color = cc.color.WHITE;
         //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
-        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2 + bgActualSize.height / 2 - 18);
+        this.m_pLable.setPosition(winSize.width / 2 + this.offset.w, winSize.height / 2 + bgActualSize.height / 2 - 18 + this.offset.h);
         this.addChild(this.m_pLable);
 
         //close
         var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
         closeItem.setScale(0.65);
-        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8;
-        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8;
+        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8 + this.offset.w;
+        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8 + this.offset.h;
         this.m_menu = new cc.Menu(closeItem);
         this.m_menu.tag = TAG_MENU;
         this.m_menu.x = 0;
@@ -590,8 +595,10 @@ var DialogSmallNode_T = cc.Node.extend({
 });
 //mode: 1: blank, 2: alert, 3: confirm
 //callback: {ensureCallback: xx, cancelCallback: xx, ensureLabel: xx, cancelLabel: xx}
-var DialogSmall_T = function (title, mode, callback, target, scale) {
-    var box = new DialogSmallNode_T(title, mode, callback, target, scale);
+//scale: 背景框缩放比例
+//offset: 背景框位置偏移量
+var DialogSmall_T = function (title, mode, callback, target, scale, offset) {
+    var box = new DialogSmallNode_T(title, mode, callback, target, scale, offset);
     return box;
 };
 
@@ -840,8 +847,8 @@ var trumpetBoxLayer = cc.Layer.extend({
         if (event === ccui.Widget.TOUCH_ENDED) {
             playEffect(audio_common.Button_Click);
 
-            this.trumpetBox = new DialogSmall_T('聊 天', 1, null, null, 0.4);
-            var bgScale = this.trumpetBox.bgScale;
+            this.trumpetBox = new DialogSmall_T('聊 天', 1, null, null, 0.4, {w: 0, h: -30});
+            var bgScale = this.trumpetBox.bgScale
             var bgRect = this.trumpetBox.bg.getBoundingBox();
 
             var trumpetHeaderIcon = new cc.Sprite("#common_icon_laba_2.png");
@@ -854,10 +861,10 @@ var trumpetBoxLayer = cc.Layer.extend({
             this.trumpetContent.x = bgRect.x + 395*bgScale;
             this.trumpetContent.y = bgRect.y + 460*bgScale;
             this.trumpetContent.setFontColor(cc.color.BLACK);
-            this.trumpetContent.setFont("Arial", 36*bgScale);
+            this.trumpetContent.setFont("Arial", 40*bgScale);
             // this.trumpetContent.color = cc.color.WHITE;
             this.trumpetContent.setPlaceHolder('小喇叭内容');
-            this.trumpetContent.setMaxLength(20);
+            //this.trumpetContent.setMaxLength(20);
             this.trumpetContent.setPlaceholderFontColor(cc.color.WHITE);
             this.trumpetContent.setDelegate(this);
             this.trumpetBox.addChild(this.trumpetContent);
@@ -918,9 +925,9 @@ var trumpetBoxLayer = cc.Layer.extend({
             var i=0;
             for(i=0; i<num;i++){
                 var data = gHistoryMassage[num-1-i];
-                var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 26*bgScale);
+                var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 36*bgScale);
                 lable.setAnchorPoint(0, 0.5);
-                lable.color = cc.color.BLACK;
+                lable.color = cc.color.WHITE;
                 lable.setPosition(xx - 90*bgScale, bgRect.y + 410*bgScale -(i+1)*40*bgScale);
                 self.trumpetBox.addChild(lable);
             }
