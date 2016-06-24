@@ -154,16 +154,16 @@ var LobbyLayer = cc.Layer.extend({
 
         //
         //add trumpet btn
-        var talkIcon = new ccui.Button();
-        talkIcon.setAnchorPoint(0, 0.5);
-        talkIcon.setTouchEnabled(true);
-        talkIcon.loadTextures("btn_hall_chat_nor.png", "btn_hall_chat_nor.png", "btn_hall_chat_nor.png", ccui.Widget.PLIST_TEXTURE);
-        talkIcon.addTouchEventListener(this.onTrumpetBtnClick, this);
-        talkIcon.x = 0;
-        talkIcon.y = winSize.height/2;
-        talkIcon.scale = 0.55;
+        //var talkIcon = new ccui.Button();
+        //talkIcon.setAnchorPoint(0, 0.5);
+        //talkIcon.setTouchEnabled(true);
+        //talkIcon.loadTextures("btn_hall_chat_nor.png", "btn_hall_chat_nor.png", "btn_hall_chat_nor.png", ccui.Widget.PLIST_TEXTURE);
+        //talkIcon.addTouchEventListener(this.onTrumpetBtnClick, this);
+        //talkIcon.x = 0;
+        //talkIcon.y = winSize.height/2;
+        //talkIcon.scale = 0.55;
 
-        this.addChild(talkIcon, 11);
+       // this.addChild(talkIcon, 11);
 
         return true;
 
@@ -269,7 +269,7 @@ var LobbyLayer = cc.Layer.extend({
             default:
                 break;
         }
-    },
+    }
 
     onTrumpetBtnClick: function(ref, event) {
 
@@ -357,7 +357,7 @@ var LobbyLayer = cc.Layer.extend({
     //        this.addChild(this.trumpetBox, 77);
     //
     //    }
-    //},
+    //}
 
     //doTrumpetChat: function (sender, type) {
     //    switch (type) {
