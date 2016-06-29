@@ -8,7 +8,7 @@ var MassageQueue = {
         gMassageQueue.push(massage);
 
         gHistoryMassage.push(massage);
-        if(gHistoryMassage.length > 5){
+        if(gHistoryMassage.length > 3){
             gHistoryMassage.shift();
         }
     },

@@ -921,14 +921,28 @@ var trumpetBoxLayer = cc.Layer.extend({
             });
 
 //历史
+            var x = xx - 90*bgScale, y = bgRect.y + 415*bgScale - (0+1)*50*bgScale;
+
             var num = gHistoryMassage.length;
             var i=0;
             for(i=0; i<num;i++){
+
                 var data = gHistoryMassage[num-1-i];
-                var lable = new cc.LabelTTF(data.from + ": " + data.msg, "AmericanTypewriter", 36*bgScale);
-                lable.setAnchorPoint(0, 0.5);
+                var msg = "";
+                if (data.msg.length > 10) {
+                    msg = data.msg.substring(0, 10) + '\n' + data.msg.substring(10, data.msg.length);
+                }
+                else {
+                    msg = data.msg;
+                }
+                var lable = new cc.LabelTTF(data.from + ": " + msg, "AmericanTypewriter", 40*bgScale);
+                lable.setAnchorPoint(0, 1);
                 lable.color = cc.color.WHITE;
-                lable.setPosition(xx - 90*bgScale, bgRect.y + 410*bgScale -(i+1)*40*bgScale);
+
+                lable.setPosition(x, y);
+
+                y = y - 50*bgScale - 22;
+
                 self.trumpetBox.addChild(lable);
             }
 

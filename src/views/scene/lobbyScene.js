@@ -269,7 +269,7 @@ var LobbyLayer = cc.Layer.extend({
             default:
                 break;
         }
-    }
+    },
 
     onTrumpetBtnClick: function(ref, event) {
 
