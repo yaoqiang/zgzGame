@@ -66,8 +66,19 @@ var FivePeopleTableLayer = cc.Layer.extend({
         this.m_HDList.push(player4);
         this.m_HDList.push(player5);
 
+        this.addExpression();
     },
 
+
+    addExpression: function () {
+        this.expSprite = [];
+        var i = 0;
+        for (i = 0; i < 5; i++) {
+            var node = new cc.Node();
+            this.addChild(node);
+            this.expSprite.push(node);
+        }
+    },
 
     updateActorHD: function (args) {
         //cc.log("---->updateActorHD:",args);
@@ -378,6 +389,9 @@ var FivePeopleTableLayer = cc.Layer.extend({
         //console.log("-------------------->showSay:", text);
     },
 //say end
+    expCallback:function (sender) {
+        sender.removeFromParent(true);
+    },
 
     showExpression: function (exp, actorNr) {
         var winSize = cc.director.getWinSize();
@@ -385,7 +399,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var x = showP.x;
         var y = showP.y;
         var space = 70;
-
+        console.log("-------------------->showExpression:", actorNr);
         switch (showP.mode) {
             case SHOW_MODE.LEFT:
                 x = showP.x + space;
@@ -400,12 +414,10 @@ var FivePeopleTableLayer = cc.Layer.extend({
                 y = y - 100;
         }
 
+        var node = this.expSprite[actorNr-1];
+        node.removeAllChildren();
 
-        ///////////////动画开始//////////////////////
-        if (this.expSprite && cc.sys.isObjectValid(this.expSprite)) {
-            this.expSprite.removeFromParent(true);
-        }
-        this.expSprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
+        var sprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
         var animation = new cc.Animation();
         for (var i = 1; i <= 5; i++) {
             var frameName = ChatConf.express[exp] + i + ".png";
@@ -417,22 +429,45 @@ var FivePeopleTableLayer = cc.Layer.extend({
         animation.setRestoreOriginalFrame(true);    //动画执行后还原初始状态
 
         var action = cc.animate(animation);
+        var actF = cc.sequence(action, cc.callFunc(this.expCallback));
+        sprite.runAction(actF);
+        node.addChild(sprite);
+        node.setPosition(x, y);
 
-        var actF = cc.sequence(action, cc.callFunc(expCallback, this));
+        ///////////////动画开始//////////////////////
+        //if (this.expSprite && cc.sys.isObjectValid(this.expSprite)) {
+        //    this.expSprite.removeFromParent(true);
+        //    this.expSprite = null;
+        //}
+        //this.expSprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
+        //var animation = new cc.Animation();
+        //for (var i = 1; i <= 5; i++) {
+        //    var frameName = ChatConf.express[exp] + i + ".png";
+        //    var spriteFrame = cc.spriteFrameCache.getSpriteFrame(frameName);
+        //    animation.addSpriteFrame(spriteFrame);
+        //}
+        //
+        //animation.setDelayPerUnit(0.3);           //设置两个帧播放时间
+        //animation.setRestoreOriginalFrame(true);    //动画执行后还原初始状态
+        //
+        //var action = cc.animate(animation);
+        //
+        //var actF = cc.sequence(action, cc.callFunc(expCallback, this));
+        //
+        //this.expSprite.runAction(actF);
+        //
+        //function expCallback() {
+        //    if (this.expSprite && cc.sys.isObjectValid(this.expSprite)) {
+        //        this.expSprite.removeFromParent(true);
+        //        this.expSprite = null;
+        //    }
+        //}
+        //
+        ////////////////////动画结束///////////////////
+        //
+        //this.expSprite.setPosition(x, y);
+        //this.addChild(this.expSprite);
 
-        this.expSprite.runAction(actF);
-
-        function expCallback() {
-            if (this.expSprite && cc.sys.isObjectValid(this.expSprite)) {
-                this.expSprite.removeFromParent(true);
-            }
-        }
-
-        //////////////////动画结束///////////////////
-
-        this.expSprite.setPosition(x, y);
-        this.addChild(this.expSprite);
-        //console.log("-------------------->showSay:", text);
     },
 
     getActorHDWithNr: function (actorNr) {

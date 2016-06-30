@@ -84,8 +84,19 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         this.m_HDList.push(player6);
         this.m_HDList.push(player7);
 
+        this.addExpression();
     },
 
+
+    addExpression: function () {
+        this.expSprite = [];
+        var i = 0;
+        for (i = 0; i < 7; i++) {
+            var node = new cc.Node();
+            this.addChild(node);
+            this.expSprite.push(node);
+        }
+    },
 
     updateActorHD: function (args) {
         //cc.log("---->updateActorHD:",args);
@@ -394,6 +405,9 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         //console.log("-------------------->showSay:", text);
     },
 //say end
+    expCallback:function (sender) {
+        sender.removeFromParent(true);
+    },
 
     showExpression: function (exp, actorNr) {
         var winSize = cc.director.getWinSize();
@@ -416,9 +430,10 @@ var SevenPeopleTableLayer = cc.Layer.extend({
                 y = y;
         }
 
+        var node = this.expSprite[actorNr-1];
+        node.removeAllChildren();
 
-        ///////////////动画开始//////////////////////
-        this.expSprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
+        var sprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
         var animation = new cc.Animation();
         for (var i = 1; i <= 5; i++) {
             var frameName = ChatConf.express[exp] + i + ".png";
@@ -430,20 +445,29 @@ var SevenPeopleTableLayer = cc.Layer.extend({
         animation.setRestoreOriginalFrame(true);    //动画执行后还原初始状态
 
         var action = cc.animate(animation);
-
-        var actF = cc.sequence(action, cc.callFunc(expCallback, this));
-
-        this.expSprite.runAction(actF);
-
-        function expCallback() {
-            if (this.expSprite) this.expSprite.removeFromParent(true);
-        }
-
-        //////////////////动画结束///////////////////
-
-        this.expSprite.setPosition(x, y);
-        this.addChild(this.expSprite);
-        //console.log("-------------------->showSay:", text);
+        var actF = cc.sequence(action, cc.callFunc(this.expCallback));
+        sprite.runAction(actF);
+        node.addChild(sprite);
+        node.setPosition(x, y);
+        ///////////////动画开始//////////////////////
+        //this.expSprite = new cc.Sprite("#" + ChatConf.express[exp] + "1.png");
+        //var animation = new cc.Animation();
+        //for (var i = 1; i <= 5; i++) {
+        //    var frameName = ChatConf.express[exp] + i + ".png";
+        //    var spriteFrame = cc.spriteFrameCache.getSpriteFrame(frameName);
+        //    animation.addSpriteFrame(spriteFrame);
+        //}
+        //animation.setDelayPerUnit(0.3);           //设置两个帧播放时间
+        //animation.setRestoreOriginalFrame(true);    //动画执行后还原初始状态
+        //var action = cc.animate(animation);
+        //var actF = cc.sequence(action, cc.callFunc(expCallback, this));
+        //this.expSprite.runAction(actF);
+        //function expCallback() {
+        //    if (this.expSprite) this.expSprite.removeFromParent(true);
+        //}
+        ////////////////////动画结束///////////////////
+        //this.expSprite.setPosition(x, y);
+        //this.addChild(this.expSprite);
     },
 
     getActorHDWithNr: function (actorNr) {

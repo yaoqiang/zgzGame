@@ -1472,8 +1472,8 @@ var GameLayer = cc.Layer.extend({
             var actorHD = this.m_pTableLayer.getActorHDWithNr(data.actorNr);
             var sex = actorHD.m_gender;
             playEffect(audio_chat[data.item][sex]);
-        }
-        else if (data.type == GAME.CHAT.TYPE_EXP) {
+
+        }else if (data.type == GAME.CHAT.TYPE_EXP) {
             this.m_pTableLayer.showExpression(data.item, data.actorNr);
         }
     },
