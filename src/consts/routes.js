@@ -29,7 +29,8 @@ var route = {
     getForeverTaskList: 'connector.universalHandler.getForeverTaskList',  //获取成长任务列表
     getTaskGrant: 'connector.universalHandler.getTaskGrant',  //领取任务奖励
 
-    getTopOfAppReleaseRecord: 'connector.universalHandler.getTopOfAppReleaseRecord',    //获取最新发布的版本及信息
+    getTopOfAppReleaseRecord: 'connector.universalHandler.getTopOfAppReleaseRecord',    //获取最新发布的版本及信息 - 用户手工在设置中请求
+    getLastApp: 'connector.universalHandler.getLastApp',    //获取最新发布的版本及信息 - 每日首次登陆进入大厅自动请求;
     getSystemMessage: 'connector.universalHandler.getSystemMessage',    //获取最新系统消息
     getRankingList: 'connector.universalHandler.getRankingList',  //获取排行榜
     getShopList: 'connector.universalHandler.getShopList',    //获取商城列表

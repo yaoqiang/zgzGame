@@ -15,16 +15,14 @@ var IndexScene = cc.Scene.extend({
             var lastRequestAppReleaseTime = Storage.get(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME);
 
             if (!lastRequestAppReleaseTime) {
-                gRequestAppReleaseFrom = 'auto';
-                UniversalController.getTopOfAppReleaseRecord();
+                UniversalController.getLastApp();
             }
             else {
                 if (lastRequestAppReleaseTime != new Date().getDate()) {
-                    UniversalController.getTopOfAppReleaseRecord();
+                    UniversalController.getLastApp();
                 }
             }
             Storage.set(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME, new Date().getDate());
-
         }
     },
 

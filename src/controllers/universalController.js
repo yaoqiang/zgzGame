@@ -367,11 +367,21 @@ UniversalController.payment4PingppFromClient = function (state, cb) {
 
 
 /**
- * 获取最新版本信息
+ * 获取最新版本信息 - 用户手工在设置中请求
  */
 UniversalController.getTopOfAppReleaseRecord = function () {
     cc.loader.loadJson("res/game_config.json", function (err, config) {
         pomelo.notify(route.getTopOfAppReleaseRecord, {version: config.version});
+    });
+
+}
+
+/**
+ * 获取最新版本信息 - 每日首次登陆进入大厅自动请求;(与上一个区别是: 如果是最新版本, 后端就不会向客户端发送消息)
+ */
+UniversalController.getLastApp = function () {
+    cc.loader.loadJson("res/game_config.json", function (err, config) {
+        pomelo.notify(route.getLastApp, {version: config.version});
     });
 
 }
