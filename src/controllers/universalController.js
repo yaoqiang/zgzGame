@@ -397,12 +397,7 @@ UniversalController.sendBindingSMS = function (mobile, cb) {
 UniversalController.bindingMobile = function (data, cb) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
-    pomelo.request(route.bindingMobile, {
-        mobile: data.mobile,
-        password: data.password,
-        captcha: data.captcha,
-        shortid: data.shortid
-    }, function (data) {
+    pomelo.request(route.bindingMobile, data, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         if (data.code == RETURN_CODE.OK) {
             Storage.set(CommonConf.LOCAL_STORAGE.TOKEN, data.token);

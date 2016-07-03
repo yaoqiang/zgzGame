@@ -225,7 +225,7 @@ var LoginLayer = cc.Layer.extend({
         this.resetBox.bg.addChild(this.captchaValue);
 
         //密码
-        var passwordLabel = new cc.LabelTTF("密  码:", "AmericanTypewriter", 26);
+        var passwordLabel = new cc.LabelTTF("新密码:", "AmericanTypewriter", 26);
         passwordLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 90);
         passwordLabel.color = cc.color.WHITE;
         passwordLabel.scale = 2;
@@ -233,7 +233,7 @@ var LoginLayer = cc.Layer.extend({
 
 
         this.passwordValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.passwordValue.setPlaceHolder('请输入密码');
+        this.passwordValue.setPlaceHolder('请输入新密码');
         this.passwordValue.setFontColor(cc.color.BLACK);
         this.passwordValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 90);
         this.passwordValue.color = cc.color.WHITE;
@@ -278,7 +278,7 @@ var LoginLayer = cc.Layer.extend({
         var password = this.passwordValue.getString();
 
         if (password == '') {
-            prompt.fadeMiddle('请输入密码');
+            prompt.fadeMiddle('请输入新密码');
             return false;
         }
 

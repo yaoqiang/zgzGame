@@ -338,7 +338,7 @@ SettingLayer.prototype = {
             case ccui.Widget.TOUCH_ENDED:
                 playEffect(audio_common.Button_Click);
 
-                prompt.fadeMiddle('请拨打客服热线: 0352-7963773', 3)
+                prompt.fadeMiddle('请联系客服QQ:7405510,或发消息到微信公众号:大同扎股子', 5)
 
                 break;
 

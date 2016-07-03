@@ -179,6 +179,21 @@ var ProfileLayer = cc.Layer.extend({
             this.mobileLabel.color = cc.color.WHITE;
             this.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 10);
             this.addChild(this.mobileLabel);
+
+            this.inviteRecordNormal = new cc.Sprite("#common_btn_3.png");
+            this.inviteRecordSelected = new cc.Sprite("#common_btn_3.png");
+            this.inviteRecordDisabled = new cc.Sprite("#common_btn_3.png");
+            this.inviteRecordButton = new cc.MenuItemSprite(this.inviteRecordNormal, this.inviteRecordSelected, this.inviteRecordDisabled, this.inviteRecordClicked, this);
+            this.inviteRecordButton.scale = 0.5;
+            this.inviteRecordMenuItem = new cc.Menu(this.inviteRecordButton);
+            this.inviteRecordMenuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 55);
+            this.addChild(this.inviteRecordMenuItem, 2);
+
+            var butSize = this.inviteRecordButton.getContentSize();
+            var inviteCopyLabel = new cc.LabelTTF("邀请奖励", "Arial", 28);
+            inviteCopyLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.inviteRecordButton.addChild(inviteCopyLabel);
+
         }
 
 
@@ -186,7 +201,7 @@ var ProfileLayer = cc.Layer.extend({
         var modifyBg = new cc.Sprite("#deep_bg_big.png");
 
         modifyBg.setPosition(winSize.width / 2 + 100, winSize.height / 2 + 83);
-        modifyBg.scaleY = 1.3
+        modifyBg.scaleY = 1.2
         this.addChild(modifyBg);
 
         //
@@ -195,7 +210,7 @@ var ProfileLayer = cc.Layer.extend({
         nickNameLabel.color = cc.color.WHITE;
 
 
-        var blockSize = cc.size(180, 30);
+        var blockSize = cc.size(200, 30);
         this.nickNameValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.nickNameValue.setString(this.player.nickName);
         this.nickNameValue.setFontColor(cc.color.BLACK);
@@ -234,7 +249,7 @@ var ProfileLayer = cc.Layer.extend({
         summaryLabel.color = cc.color.WHITE;
 
 
-        var blockSize = cc.size(180, 30);
+        var blockSize = cc.size(200, 30);
         this.summaryValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
         this.summaryValue.setString(this.player.summary);
         this.summaryValue.setFontColor(cc.color.BLACK);
@@ -373,37 +388,42 @@ var ProfileLayer = cc.Layer.extend({
         this.addChild(ingotValue);
 
 
+
+        ///
+        /// 去掉邀请码,改为根据绑定手机来奖励
+        ///
         //邀请码
-        this.inviteLabel = new cc.LabelTTF("邀请码:", "AmericanTypewriter", 18);
-        this.inviteLabel.color = {r: 0, g: 255, b: 127};
-        this.inviteLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 170);
-        this.addChild(this.inviteLabel);
+        //this.inviteLabel = new cc.LabelTTF("邀请码:", "AmericanTypewriter", 18);
+        //this.inviteLabel.color = {r: 0, g: 255, b: 127};
+        //this.inviteLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 170);
+        //this.addChild(this.inviteLabel);
+        //
+        //this.inviteCodeLabel = new cc.LabelTTF(this.player.shortid, "Arial", 18);
+        //this.inviteCodeLabel.setAnchorPoint(0, 0.5);
+        //this.inviteCodeLabel.color = {r: 0, g: 255, b: 127};
+        //this.inviteCodeLabel.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 170);
+        //this.addChild(this.inviteCodeLabel);
+        //
+        //this.inviteCopyNormal = new cc.Sprite("#common_btn_5.png");
+        //this.inviteCopySelected = new cc.Sprite("#common_btn_5.png");
+        //this.inviteCopyDisabled = new cc.Sprite("#common_btn_5.png");
+        //this.inviteCopyButton = new cc.MenuItemSprite(this.inviteCopyNormal, this.inviteCopySelected, this.inviteCopyDisabled, this.inviteCopyClick, this);
+        //this.inviteCopyButton.scale = 0.4;
+        //this.inviteCopyMenuItem = new cc.Menu(this.inviteCopyButton);
+        //this.inviteCopyMenuItem.setPosition(winSize.width / 2 + 180, winSize.height / 2 - 170);
+        //this.inviteCopyMenuItem.setAnchorPoint(0, 0.5);
+        //this.addChild(this.inviteCopyMenuItem, 2);
+        //
+        //var butSize = this.inviteCopyButton.getContentSize();
+        //var inviteCopyLabel = new cc.LabelTTF("复制", "Arial", 30);
+        //inviteCopyLabel.setPosition(butSize.width / 2, butSize.height / 2);
+        //this.inviteCopyButton.addChild(inviteCopyLabel);
 
-        this.inviteCodeLabel = new cc.LabelTTF(this.player.shortid, "Arial", 18);
-        this.inviteCodeLabel.setAnchorPoint(0, 0.5);
-        this.inviteCodeLabel.color = {r: 0, g: 255, b: 127};
-        this.inviteCodeLabel.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 170);
-        this.addChild(this.inviteCodeLabel);
 
-        this.inviteCopyNormal = new cc.Sprite("#common_btn_4.png");
-        this.inviteCopySelected = new cc.Sprite("#common_btn_4.png");
-        this.inviteCopyDisabled = new cc.Sprite("#common_btn_4.png");
-        this.inviteCopyButton = new cc.MenuItemSprite(this.inviteCopyNormal, this.inviteCopySelected, this.inviteCopyDisabled, this.inviteCopyClick, this);
-        this.inviteCopyButton.scale = 0.7;
-        this.inviteCopyMenuItem = new cc.Menu(this.inviteCopyButton);
-        this.inviteCopyMenuItem.setPosition(winSize.width / 2 + 180, winSize.height / 2 - 170);
-        this.inviteCopyMenuItem.setAnchorPoint(0, 0.5);
-        this.addChild(this.inviteCopyMenuItem, 2);
-
-        var butSize = this.inviteCopyButton.getContentSize();
-        var inviteCopyLabel = new cc.LabelTTF("复制", "Arial", 26);
-        inviteCopyLabel.setPosition(butSize.width / 2, butSize.height / 2);
-        this.inviteCopyButton.addChild(inviteCopyLabel);
-
-        this.inviteTipLabel = new cc.LabelTTF("邀请朋友并绑定手机(填您的邀请码),您可获得6元礼包奖励", "Arial", 18);
-        this.inviteTipLabel.color = cc.color.RED;
+        this.inviteTipLabel = new cc.LabelTTF("邀请朋友并绑定手机(填您的手机号),您可获得3元礼包(可累积)", "Arial", 16);
+        this.inviteTipLabel.color = cc.color.YELLOW;
         this.inviteTipLabel.setAnchorPoint(0, 0.5);
-        this.inviteTipLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 200);
+        this.inviteTipLabel.setPosition(winSize.width / 2 - 140, winSize.height / 2 - 190);
         this.addChild(this.inviteTipLabel, 10);
     },
 
@@ -415,13 +435,6 @@ var ProfileLayer = cc.Layer.extend({
         UniversalController.updateProfile(nickName, this.player.gender, this.player.avatar, summary);
     },
 
-    updateAvatar: function () {
-        //更新头像, 并向发送服务器更新请求
-    },
-
-    validator: function () {
-
-    },
 
     bindingMobileProfile: function () {
         this.bindingBox = new DialogSmall('绑定手机', 2, {ensureCallback: this.sendBinding}, this);
@@ -491,8 +504,8 @@ var ProfileLayer = cc.Layer.extend({
         this.passwordValue.setMaxLength(16);
         this.bindingBox.bg.addChild(this.passwordValue);
 
-        //邀请码
-        var fromInviteLabel = new cc.LabelTTF("邀请码:", "AmericanTypewriter", 26);
+        //邀请人手机号
+        var fromInviteLabel = new cc.LabelTTF("邀请人手机:", "AmericanTypewriter", 26);
         fromInviteLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 60);
         fromInviteLabel.color = cc.color.WHITE;
         fromInviteLabel.scale = 2;
@@ -500,7 +513,7 @@ var ProfileLayer = cc.Layer.extend({
 
 
         this.fromInviteLabel = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
-        this.fromInviteLabel.setPlaceHolder('请输入邀请码');
+        this.fromInviteLabel.setPlaceHolder('请输入邀请人手机号');
         this.fromInviteLabel.setFontColor(cc.color.BLACK);
         this.fromInviteLabel.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 60);
         this.fromInviteLabel.color = cc.color.WHITE;
@@ -583,9 +596,9 @@ var ProfileLayer = cc.Layer.extend({
         var mobile = this.mobileValue.getString();
         var password = this.passwordValue.getString();
         var captcha = this.captchaValue.getString();
-        var fromInvite = this.fromInviteLabel.getString();
+        var fromInvite = this.fromInviteLabel.getString();  //邀请人手机号
 
-        var data = {mobile: mobile, password: password, captcha: captcha, shortid: fromInvite};
+        var data = {mobile: mobile, password: password, captcha: captcha, inviteMobile: fromInvite};
         UniversalController.bindingMobile(data, function (data) {
             if (data.code == RETURN_CODE.OK) {
                 prompt.fadeMiddle('绑定成功, 您可以使用手机号登录');
@@ -601,6 +614,21 @@ var ProfileLayer = cc.Layer.extend({
                 self.mobileLabel.color = cc.color.WHITE;
                 self.mobileLabel.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 10);
                 self.addChild(self.mobileLabel);
+
+
+                self.inviteRecordNormal = new cc.Sprite("#common_btn_3.png");
+                self.inviteRecordSelected = new cc.Sprite("#common_btn_3.png");
+                self.inviteRecordDisabled = new cc.Sprite("#common_btn_3.png");
+                self.inviteRecordButton = new cc.MenuItemSprite(self.inviteRecordNormal, self.inviteRecordSelected, self.inviteRecordDisabled, self.inviteRecordClicked, self);
+                self.inviteRecordButton.scale = 0.5;
+                self.inviteRecordMenuItem = new cc.Menu(self.inviteRecordButton);
+                self.inviteRecordMenuItem.setPosition(winSize.width / 2 - 240, winSize.height / 2 - 55);
+                self.addChild(self.inviteRecordMenuItem, 2);
+
+                var butSize = self.inviteRecordButton.getContentSize();
+                var inviteCopyLabel = new cc.LabelTTF("邀请奖励", "Arial", 28);
+                inviteCopyLabel.setPosition(butSize.width / 2, butSize.height / 2);
+                self.inviteRecordButton.addChild(inviteCopyLabel);
 
             }
             else {
@@ -628,11 +656,18 @@ var ProfileLayer = cc.Layer.extend({
             }
         }
         else if (cc.sys.os === cc.sys.OS_ANDROID) {
-            console.log('### this.player.shortid -> ', this.player.shortid)
             erun.copyStringToClipboard(this.player.shortid);
             prompt.fadeMiddle('复制成功,快发送给朋友吧');
         }
 
+    },
+
+    inviteRecordClicked: function () {
+        var inviteRecordBox = new DialogSmall("我的邀请奖励", 2, {ensureCallback: function (cb) {
+            cb(true);
+        }, ensureLabel: '确定'}, this, 1);
+
+        this.addChild(inviteRecordBox);
     },
 
     updateTime: function (dt) {

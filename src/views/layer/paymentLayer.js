@@ -72,18 +72,18 @@ PaymentLayer.prototype = {
         this.box.bg.addChild(this.wxBg);
 
 
-        var wxIcon = new ccui.Button();
-        wxIcon.scale = 3;
-        wxIcon.setTouchEnabled(true);
-        wxIcon.loadTextures("weixin.png", "weixin.png", "weixin.png", ccui.Widget.PLIST_TEXTURE);
-        wxIcon.addTouchEventListener(this.onWxClicked, this);
-        wxIcon.setPosition(wxX, y);
-        this.box.bg.addChild(wxIcon);
+        //var wxIcon = new ccui.Button();
+        //wxIcon.scale = 3;
+        //wxIcon.setTouchEnabled(true);
+        //wxIcon.loadTextures("weixin.png", "weixin.png", "weixin.png", ccui.Widget.PLIST_TEXTURE);
+        //wxIcon.addTouchEventListener(this.onWxClicked, this);
+        //wxIcon.setPosition(wxX, y);
+        //this.box.bg.addChild(wxIcon);
 
 
         //tip
-        this.tipDefaultString = '可银行转账或支付宝/微信转账充值\n详情请咨询客服: 0352-7963773';
-        this.tipWeixinString = '微信充值请加客服微信: OOXXcctt';
+        this.tipDefaultString = '如充值遇到问题, 请咨询客服QQ: 7405510 \n 或发消息到微信公众号:大同扎股子';
+        //this.tipWeixinString = '微信充值请加客服微信: OOXXcctt';
         this.tipLabel = new cc.LabelTTF(this.tipDefaultString, "AmericanTypewriter", 38);
         this.tipLabel.color = {r: 0, g: 255, b: 127};
         this.tipLabel.x = 480;
