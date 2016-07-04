@@ -663,24 +663,18 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     inviteRecordClicked: function () {
-        //var winSize = cc.director.getWinSize();
-        //var visibleOrigin = cc.director.getVisibleOrigin();
-        //var visibleSize = cc.director.getVisibleSize();
         var self = this;
         var inviteRecordBox = new DialogSmall("我的邀请奖励", 2, {ensureCallback: function (cb) {
             cb(true);
 
         }, ensureLabel: '确定'}, this, 1);
-        //inviteRecordBox.getBoundingBox()
-        //inviteRecordBox.getVisibleOrigin();
-        //inviteRecordBox.getVisibleSize
-        
+
         UniversalController.getInviteRecordListByUid(function (result) {
             if (result.code === RETURN_CODE.FAIL) {
                 return;
             }
             if (result.inviteRecordList && result.inviteRecordList.length > 0) {
-                var inviteRecordListLayer = new InviteRecordListLayer(result, inviteRecordBox);
+                var inviteRecordListLayer = new InviteRecordListLayer(result);
                 inviteRecordBox.addChild(inviteRecordListLayer);
             }
             else {
@@ -947,26 +941,17 @@ var ProfileLayer = cc.Layer.extend({
 //////////////////////
 var InviteRecordListLayer = cc.Layer.extend({
     sprite: null,
-    ctor: function (args, target) {
+    ctor: function (args) {
         this._super();
         this.data = args;
 
-        //var winSize = cc.director.getWinSize();
-        //var visibleOrigin = cc.director.getVisibleOrigin();
-        //var visibleSize = cc.director.getVisibleSize();
-        //
-        //
-        //console.log(winSize)
-        //console.log(visibleOrigin)
-        //console.log(visibleSize)
 
         var winSize = cc.size(380, 350);
         var visibleOrigin = {x: 210, y: 30};
         var visibleSize = cc.size(380, 350);
-
 //
 
-        var exchangeRecordList = args.inviteRecordList;
+        var inviteRecordList = args.inviteRecordList;
         var cellH = 40;
         var tabH = 100;
 
@@ -983,12 +968,14 @@ var InviteRecordListLayer = cc.Layer.extend({
 //init data
         this.m_pTableView = null;
         this.m_nTableWidth = visibleSize.width;
-        this.m_nTableHeight = (cellH * exchangeRecordList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * exchangeRecordList.length);
+        this.m_nTableHeight = (cellH * inviteRecordList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * inviteRecordList.length);
+        this.m_nTableHeight = this.m_nTableHeight * 0.6
         this.m_nCellWidth = visibleSize.width;
         this.m_nCelleHeight = cellH;
         this.m_nTableX = visibleOrigin.x;
         this.m_nTableY = visibleOrigin.y + visibleSize.height - tabH - this.m_nTableHeight;
-        this.m_nCelleNum = exchangeRecordList.length;
+        this.m_nCelleNum = inviteRecordList.length;
+
 
         //添加列头
         var startX = winSize.width / 3;
