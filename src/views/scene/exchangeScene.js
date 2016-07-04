@@ -118,13 +118,13 @@ var ExchangeListLayer = cc.Layer.extend({
         var tabH = 120;
 
         //兑换说明
-        var exchangeSummay = '兑换说明: 元宝只能通过任务或活动获得! 充值不能购买元宝!!';
-        var exchangeSummayLabel = new cc.LabelTTF(exchangeSummay, 'AmericanTypewriter', 22);
-        exchangeSummayLabel.setAnchorPoint(0, 0.5);
-        exchangeSummayLabel.color = {r: 0, g: 255, b: 127};
-        exchangeSummayLabel.x = 20;
-        exchangeSummayLabel.y = visibleOrigin.y + visibleSize.height - tabH + 28;
-        this.addChild(exchangeSummayLabel);
+        var exchangeSummary = '兑换说明: 元宝只能通过任务或活动获得! 充值不能购买元宝!!';
+        var exchangeSummaryLabel = new cc.LabelTTF(exchangeSummary, 'AmericanTypewriter', 22);
+        exchangeSummaryLabel.setAnchorPoint(0, 0.5);
+        exchangeSummaryLabel.color = {r: 0, g: 255, b: 127};
+        exchangeSummaryLabel.x = 20;
+        exchangeSummaryLabel.y = visibleOrigin.y + visibleSize.height - tabH + 28;
+        this.addChild(exchangeSummaryLabel);
 
 //init data
         this.m_pTableView = null;
@@ -470,11 +470,11 @@ var ExchangeRecordListLayer = cc.Layer.extend({
         exchangeProductLabel.color = cc.color.GREEN;
         exchangeProductLabel.setPosition(startX*2 - halfX, columnY);
         this.addChild(exchangeProductLabel, 1);
-        var exchangenNumberLabel = new cc.LabelTTF("兑换单号", "Arial", 18);
-        exchangenNumberLabel.setAnchorPoint(0.5, 0);
-        exchangenNumberLabel.color = cc.color.GREEN;
-        exchangenNumberLabel.setPosition(startX*3 - halfX, columnY);
-        this.addChild(exchangenNumberLabel, 1);
+        var exchangeNumberLabel = new cc.LabelTTF("兑换单号", "Arial", 18);
+        exchangeNumberLabel.setAnchorPoint(0.5, 0);
+        exchangeNumberLabel.color = cc.color.GREEN;
+        exchangeNumberLabel.setPosition(startX*3 - halfX, columnY);
+        this.addChild(exchangeNumberLabel, 1);
         var exchangeStateLabel = new cc.LabelTTF("兑换状态", "Arial", 18);
         exchangeStateLabel.setAnchorPoint(0.5, 0);
         exchangeStateLabel.color = cc.color.GREEN;

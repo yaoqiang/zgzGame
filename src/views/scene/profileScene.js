@@ -663,11 +663,38 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     inviteRecordClicked: function () {
+        //var winSize = cc.director.getWinSize();
+        //var visibleOrigin = cc.director.getVisibleOrigin();
+        //var visibleSize = cc.director.getVisibleSize();
+        var self = this;
         var inviteRecordBox = new DialogSmall("我的邀请奖励", 2, {ensureCallback: function (cb) {
             cb(true);
-        }, ensureLabel: '确定'}, this, 1);
 
-        this.addChild(inviteRecordBox);
+        }, ensureLabel: '确定'}, this, 1);
+        //inviteRecordBox.getBoundingBox()
+        //inviteRecordBox.getVisibleOrigin();
+        //inviteRecordBox.getVisibleSize
+        
+        UniversalController.getInviteRecordListByUid(function (result) {
+            if (result.code === RETURN_CODE.FAIL) {
+                return;
+            }
+            if (result.inviteRecordList && result.inviteRecordList.length > 0) {
+                var inviteRecordListLayer = new InviteRecordListLayer(result, inviteRecordBox);
+                inviteRecordBox.addChild(inviteRecordListLayer);
+            }
+            else {
+                //密码
+                var label = new cc.LabelTTF("您还没有邀请奖励,快去邀请朋友来玩吧!\n\n第一步: 推荐朋友下载游戏\n第二步: 请朋友绑定手机\n并在邀请人手机填写您的手机号\n第三步: 朋友成功绑定,您可获得商城\n3元礼包(2999金+喇叭+记牌器)!\n", "AmericanTypewriter", 26);
+                label.setPosition(30, 550);
+                label.setAnchorPoint(0, 1);
+                label.color = cc.color.WHITE;
+                label.scale = 1.8;
+                inviteRecordBox.bg.addChild(label);
+            }
+        })
+
+        this.addChild(inviteRecordBox, 20);
     },
 
     updateTime: function (dt) {
@@ -914,6 +941,172 @@ var ProfileLayer = cc.Layer.extend({
 
 
 });
+
+//////////////////////
+// 邀请记录
+//////////////////////
+var InviteRecordListLayer = cc.Layer.extend({
+    sprite: null,
+    ctor: function (args, target) {
+        this._super();
+        this.data = args;
+
+        //var winSize = cc.director.getWinSize();
+        //var visibleOrigin = cc.director.getVisibleOrigin();
+        //var visibleSize = cc.director.getVisibleSize();
+        //
+        //
+        //console.log(winSize)
+        //console.log(visibleOrigin)
+        //console.log(visibleSize)
+
+        var winSize = cc.size(380, 350);
+        var visibleOrigin = {x: 210, y: 30};
+        var visibleSize = cc.size(380, 350);
+
+//
+
+        var exchangeRecordList = args.inviteRecordList;
+        var cellH = 40;
+        var tabH = 100;
+
+        //邀请总计
+        var summary = '奖励总计: '+args.totalGold+'金币+'+args.totalTrumpet+'喇叭+'+args.totalJipaiqi+'天记牌器';
+        var summaryLabel = new cc.LabelTTF(summary, 'AmericanTypewriter', 18);
+        summaryLabel.setAnchorPoint(0, 0.5);
+        summaryLabel.color = {r: 0, g: 255, b: 127};
+        summaryLabel.x = 215;
+        summaryLabel.y = visibleOrigin.y + visibleSize.height - tabH + 28;
+        this.addChild(summaryLabel);
+
+
+//init data
+        this.m_pTableView = null;
+        this.m_nTableWidth = visibleSize.width;
+        this.m_nTableHeight = (cellH * exchangeRecordList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * exchangeRecordList.length);
+        this.m_nCellWidth = visibleSize.width;
+        this.m_nCelleHeight = cellH;
+        this.m_nTableX = visibleOrigin.x;
+        this.m_nTableY = visibleOrigin.y + visibleSize.height - tabH - this.m_nTableHeight;
+        this.m_nCelleNum = exchangeRecordList.length;
+
+        //添加列头
+        var startX = winSize.width / 3;
+        var halfX = startX/2;
+        var columnY = visibleOrigin.y + visibleSize.height - tabH;
+        var invitedMobileLabel = new cc.LabelTTF("被邀请人手机", "Arial", 16);
+        invitedMobileLabel.setAnchorPoint(0.5, 0);
+        invitedMobileLabel.color = cc.color.GREEN;
+        invitedMobileLabel.setPosition(210 + startX - halfX, columnY);
+        this.addChild(invitedMobileLabel, 1);
+        var createdAtLabel = new cc.LabelTTF("邀请时间", "Arial", 16);
+        createdAtLabel.setAnchorPoint(0.5, 0);
+        createdAtLabel.color = cc.color.GREEN;
+        createdAtLabel.setPosition(210 + startX*2 - halfX, columnY);
+        this.addChild(createdAtLabel, 1);
+        var grantStateLabel = new cc.LabelTTF("奖励状态", "Arial", 16);
+        grantStateLabel.setAnchorPoint(0.5, 0);
+        grantStateLabel.color = cc.color.GREEN;
+        grantStateLabel.setPosition(210 + startX*3 - halfX, columnY);
+        this.addChild(grantStateLabel, 1);
+
+
+
+        this.init();
+
+    },
+    init: function () {
+        this.m_pTableView = new cc.TableView(this, cc.size(this.m_nTableWidth, this.m_nTableHeight));
+        this.m_pTableView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
+        this.m_pTableView.x = this.m_nTableX;
+        this.m_pTableView.y = this.m_nTableY;
+        this.m_pTableView.setDelegate(this);
+        this.m_pTableView.setVerticalFillOrder(cc.TABLEVIEW_FILL_TOPDOWN);
+        this.addChild(this.m_pTableView);
+        this.m_pTableView.reloadData();
+    },
+
+    scrollViewDidScroll: function (view) {
+        //c.log("----->scrollViewDidScroll ");
+    },
+    scrollViewDidZoom: function (view) {
+        //cc.log("----->scrollViewDidZoom ");
+    },
+
+    tableCellTouched: function (table, cell) {
+        //cc.log("cell touched at index: " + cell.getIdx());
+    },
+
+    tableCellSizeForIndex: function (table, idx) {
+        return cc.size(this.m_nCellWidth, this.m_nCelleHeight);
+    },
+
+    tableCellAtIndex: function (table, idx) {
+        var strValue = idx.toFixed(0);
+        var cell = table.dequeueCell();
+        if (!cell) {
+            cell = new CustomTableViewCell();
+        }
+        cell.removeAllChildren(true);
+        var inviteRecordList = this.data.inviteRecordList;
+        var oneInviteRecord = inviteRecordList[idx];
+
+//bg
+        var bg = new cc.Scale9Sprite("bg_cell.png", cc.rect(70, 10, 10, 10));
+        bg.width = this.m_nCellWidth;
+        bg.height = this.m_nCelleHeight;
+        bg.setPosition(this.m_nCellWidth / 2, this.m_nCelleHeight / 2);
+        cell.addChild(bg);
+
+
+        //
+        var xx = this.m_nTableWidth / 3;
+        var halfX = xx/2;
+
+        //被邀请人手机
+        var invitedMobileLabel = new cc.LabelTTF(oneInviteRecord.mobile);
+        invitedMobileLabel.setPosition(xx - halfX, this.m_nCelleHeight / 2);
+        cell.addChild(invitedMobileLabel);
+
+        //邀请时间
+        var date = new Date(oneInviteRecord.createdAt);
+        var createdAtLabel = new cc.LabelTTF(date.format('yyyy-MM-dd'));
+        createdAtLabel.setPosition(xx*2 - halfX, this.m_nCelleHeight / 2);
+        cell.addChild(createdAtLabel);
+
+        //邀请状态
+        var stateLabel = new cc.LabelTTF(utils.getOrderStateString(oneInviteRecord.state));
+        stateLabel.setPosition(xx*3 - halfX, this.m_nCelleHeight / 2);
+        cell.addChild(stateLabel);
+
+
+
+
+
+
+
+        return cell;
+    },
+
+    numberOfCellsInTableView: function (table) {
+        return this.m_nCelleNum;
+    },
+    onCallBack: function (sender) {
+
+    },
+
+    onEnter: function () {
+        this._super();
+
+    },
+
+    onExit: function () {
+        this._super();
+    }
+});
+
+
+
 
 
 /**
