@@ -6,6 +6,9 @@ var route = {
     enterIndex: 'connector.entryHandler.enterIndex',    //进入index
     enterLobby: 'connector.entryHandler.enterLobby',    //进入lobby
 
+    enterIndex_v_1_3: 'connector.entryHandler.enterIndex_v_1_3',    //进入index_v_1_3
+    enterLobby_v_1_3: 'connector.entryHandler.enterLobby_v_1_3',    //进入lobby_v_1_3
+
     //////////
     //牌局相关
     //////////

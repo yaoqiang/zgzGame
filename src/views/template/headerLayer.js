@@ -129,12 +129,20 @@ var HeaderLayer = cc.Layer.extend({
         this.addChild(middleBg);
 
         var titleImage = "#index_title.png";
-        if (args.lobbyId == 0) {
-            titleImage = "#index_five.png";
-        } else if (args.lobbyId == 1) {
-            titleImage = "#index_six.png";
-        } else if (args.lobbyId == 2) {
-            titleImage = "#index_seven.png";
+        //if (args.lobbyId == 0) {
+        //    titleImage = "#index_five.png";
+        //} else if (args.lobbyId == 1) {
+        //    titleImage = "#index_six.png";
+        //} else if (args.lobbyId == 2) {
+        //    titleImage = "#index_seven.png";
+        //}
+
+        try {
+            if (args.lobbyId !== undefined) {
+                titleImage = '#lobby'+args.lobbyId+'_title.png';
+            }
+        } catch (e) {
+            titleImage = "#index_title.png";
         }
 
         var title = new cc.Sprite(titleImage);

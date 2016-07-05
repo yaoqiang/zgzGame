@@ -6,7 +6,7 @@ var UniversalController = function () {
 
 UniversalController.enterIndex = function () {
 
-    pomelo.request(route.enterIndex, {}, function (lobbyData) {
+    pomelo.request(route.enterIndex_v_1_3, {}, function (lobbyData) {
 
         var indexScene = new IndexScene(lobbyData.onlineLobby);
         //cc.director.runScene(new cc.TransitionFade(1.2, indexScene));

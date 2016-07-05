@@ -4,16 +4,16 @@
 
 var indexScrollLayer = cc.Layer.extend({
 
-    ctor:function (data) {
+    ctor: function (data) {
         this._super();
         //if(data == null)return;
         //var data = {};
         var winSize = cc.director.getWinSize();
         this.m_pScrollView = null;
-        this.m_nScrollWidth = data.width? data.width : winSize.width;
-        this.m_nScrollHeight = data.height? data.height : winSize.height;
-        this.m_nScrollX = data.x? data.x : 0;
-        this.m_nScrollY = data.y? data.y : 0;
+        this.m_nScrollWidth = data.width ? data.width : winSize.width;
+        this.m_nScrollHeight = data.height ? data.height : winSize.height;
+        this.m_nScrollX = data.x ? data.x : 0;
+        this.m_nScrollY = data.y ? data.y : 0;
 
 
         this.lobbyData = data.lobbyData;
@@ -21,7 +21,7 @@ var indexScrollLayer = cc.Layer.extend({
         this.init();
     },
 
-    init:function () {
+    init: function () {
         if (this._super()) {
             var winSize = cc.director.getWinSize();
 
@@ -41,41 +41,43 @@ var indexScrollLayer = cc.Layer.extend({
 
             var line = new cc.LabelTTF("------------------------------", "Arial", 24);
             line.color = cc.color.YELLOW;
-            line.setPosition(this.m_nScrollWidth/2, this.m_nScrollHeight-2);
+            line.setPosition(this.m_nScrollWidth / 2, this.m_nScrollHeight - 2);
             //this.m_pScrollView.addChild(line);
 
-             line = new cc.LabelTTF("------------------------------", "Arial", 24);
+            line = new cc.LabelTTF("------------------------------", "Arial", 24);
             line.color = cc.color.YELLOW;
-            line.setPosition(this.m_nScrollWidth/2, 0);
+            line.setPosition(this.m_nScrollWidth / 2, 0);
             //this.m_pScrollView.addChild(line);
 
             //this.m_pScrollView.setInnerContainerSize(cc.size(innerWidth, innerHeight));
 
-            var cellWidth = this.m_pScrollView.getInnerContainerSize().width/3;
-            var lobbyStr = "五人场";
-            var onLineNumStr = "在线:"+this.lobbyData[0].online;
+            var cellWidth = this.m_pScrollView.getInnerContainerSize().width / 3;
+            var lobbyStr = "普通场";
+            var onLineNumStr = "在线:" + this.lobbyData[0].online;
             var bunX = cellWidth / 2;
             var bunY = this.m_pScrollView.getInnerContainerSize().height / 2 + 40;
-            this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 5));
+            this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 0));
 
-            lobbyStr = "六人场";
-            onLineNumStr = "在线:"+this.lobbyData[1].online;
+            lobbyStr = "元宝场";
+            onLineNumStr = "在线:" + this.lobbyData[1].online;
             bunX = cellWidth / 2 + cellWidth;
             //bunY = this.m_pScrollView.getInnerContainerSize().height / 2;
-            this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 6));
+            this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 1));
 
-            lobbyStr = "七人场";
-            onLineNumStr = "在线:"+this.lobbyData[2].online;
-            bunX = cellWidth / 2 + 2*cellWidth;
+            //lobbyData[2] 预留为比赛场
+
+            lobbyStr = "私人场";
+            onLineNumStr = "在线:" + this.lobbyData[3].online;
+            bunX = cellWidth / 2 + 2 * cellWidth;
             //bunY = this.m_pScrollView.getInnerContainerSize().height / 2;
-            this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 7));
+            this.m_pScrollView.addChild(this.createButton(lobbyStr, onLineNumStr, bunX, bunY, 3));
 
             return true;
         }
         return false;
     },
 
-    createButton:function (lobbyStr, numStr, x, y, tag) {
+    createButton: function (lobbyStr, numStr, x, y, tag) {
         var button = new ccui.Button();
         button.setAnchorPoint(0.5, 0.5);
         button.setTouchEnabled(true);
@@ -87,16 +89,22 @@ var indexScrollLayer = cc.Layer.extend({
         button.setScale(0.8);
         //label
         var labelBg = new cc.Sprite("#index_mianban_08.png");
-        labelBg.setPosition(button.width/2, button.height/2 - 110);
+        labelBg.setPosition(button.width / 2, button.height / 2 - 110);
         //labelBg.scale = 0.8;
-        var label = new cc.LabelTTF(lobbyStr, "Arial", 30);
-        label.color = cc.color.YELLOW;
-        label.setPosition(labelBg.width/2, labelBg.height/2+25);
-        labelBg.addChild(label);
+
+        //var label = new cc.LabelTTF(lobbyStr, "Arial", 30);
+        //label.color = cc.color.YELLOW;
+        //label.setPosition(labelBg.width/2, labelBg.height/2+25);
+        //labelBg.addChild(label);
+
+
+        var lobbyIcon = new cc.Sprite('#lobby' + tag + '.png');
+        lobbyIcon.setPosition(labelBg.width / 2, labelBg.height / 2 + 25);
+        labelBg.addChild(lobbyIcon);
 
         this.lobbyOnline = new cc.LabelTTF(numStr, "Arial", 24);
         this.lobbyOnline.color = cc.color.YELLOW;
-        this.lobbyOnline.setPosition(labelBg.width/2, labelBg.height/2-15);
+        this.lobbyOnline.setPosition(labelBg.width / 2, labelBg.height / 2 - 15);
         labelBg.addChild(this.lobbyOnline);
 
         button.addChild(labelBg);
@@ -108,15 +116,18 @@ var indexScrollLayer = cc.Layer.extend({
         switch (type) {
             case ccui.Widget.TOUCH_ENDED:
                 playEffect(audio_common.Button_Click);
-                if(sender.tag == 5){
+                if (sender.tag == 0) {
                     //console.log("------->5");
                     GameController.enterLobby(0);
-                }else if(sender.tag == 6){
+                } else if (sender.tag == 1) {
                     //console.log("------->6");
                     GameController.enterLobby(1);
-                }else if(sender.tag == 7){
+                } else if (sender.tag == 2) {
                     //console.log("------->7");
                     GameController.enterLobby(2);
+                } else if (sender.tag == 3) {
+                    //console.log("------->7");
+                    GameController.enterLobby(3);
                 }
                 break;
         }

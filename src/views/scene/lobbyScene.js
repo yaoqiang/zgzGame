@@ -1,5 +1,5 @@
 var LobbyScene = cc.Scene.extend({
-    lobbyTitle: ['扎股子-五人', '扎股子-六人', '扎股子-七人'],
+    lobbyTitle: ['普通场', '元宝场', '比赛场', '私人场'],
     ctor: function (data, lobbyId) {
         this._super();
 
@@ -136,17 +136,17 @@ var LobbyLayer = cc.Layer.extend({
         //this.m_pScrollView.addChild(line);
 
 
-        var width = -200, height = containerH - cellH/2;
+        var width = -160, height = containerH - cellH/2;
         for (var i = 1; i <= data.rooms.length; i++)
         {
             var room = data.rooms[i-1];
             this.m_pScrollView.addChild(this.createButton(room, "", room.online.toString(), width, height, i));
 
             if (i%2 == 0){
-                width = -200;
+                width = -160;
                 height -= cellH;
             } else{
-                width += 400;
+                width += 340;
             }
         }
 
@@ -208,39 +208,58 @@ var LobbyLayer = cc.Layer.extend({
         var button = new ccui.Button();
         button.room = room;
         button.setTouchEnabled(true);
-        button.loadTextures("room_diban.png", "room_diban2.png", "", ccui.Widget.PLIST_TEXTURE);
+        button.loadTextures("item_room.png", "item_room.png", "", ccui.Widget.PLIST_TEXTURE);
         button.x = winSize.width / 2.0 + x;
         button.y = y;
-        button.scaleX = 0.85;
+        button.scale = 0.55;
         button.addTouchEventListener(this.touchEvent, this);
 
-        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 22);
+        var specialString = "";
+        switch (room.maxActor) {
+            case 5:
+                specialString = "五人局"
+                break;
+            case 6:
+                specialString = "六人局"
+                break;
+            case 7:
+                specialString = "七人局"
+                break;
+        }
+
+        var special = new cc.LabelTTF(specialString, "AmericanTypewriter", 40);
+        special.enableStroke(cc.color.WHITE, 1.5);
+        special.setLineHeight(28)
+        special.setPosition(button.width / 2, button.height / 2 + 65);
+        button.addChild(special);
+
+        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 28);
         title.setColor(cc.color.YELLOW);
-        title.setPosition(button.width / 2, button.height / 2 + 25);
+        title.setPosition(button.width / 2, button.height / 2 - 5);
         button.addChild(title);
 
-        var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 20);
+        var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 24);
         onlineCounterLabel.setColor(cc.color.WHITE);
         onlineCounterLabel.setAnchorPoint(0, 0);
-        onlineCounterLabel.setPosition(20, button.height / 2 - 30);
+        onlineCounterLabel.setPosition(40, button.height / 2 - 75);
         button.addChild(onlineCounterLabel);
 
-        var onlineCounterValue = new cc.LabelTTF(numStr, "AmericanTypewriter", 22);
+        var onlineCounterValue = new cc.LabelTTF(numStr, "AmericanTypewriter", 24);
         onlineCounterValue.setColor(cc.color.WHITE);
         onlineCounterValue.setAnchorPoint(0, 0);
-        onlineCounterValue.setPosition(onlineCounterLabel.width+10, button.height / 2 - 30);
+        onlineCounterValue.setPosition(onlineCounterLabel.width+30, button.height / 2 - 75);
         button.addChild(onlineCounterValue);
 
-        var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 20);
+        var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 24);
         baseLabel.setColor(cc.color.WHITE);
         baseLabel.setAnchorPoint(0, 0);
-        baseLabel.setPosition(button.width / 2 - 45, button.height / 2 - 30);
+        baseLabel.setPosition(button.width / 2 - 45, button.height / 2 - 75);
         button.addChild(baseLabel);
 
-        var baseValue = new cc.LabelTTF(""+room.min+'≤金', "Arial", 16);
+        var baseValue = new cc.LabelTTF(""+room.min+'≤金', "Arial", 20);
         baseValue.setColor(cc.color.GREEN);
         baseValue.setAnchorPoint(0, 0);
-        baseValue.setPosition(button.width / 2 + 100, button.height / 2 - 30);
+        baseValue.setPosition(button.width / 2 + 100, button.height / 2 - 75);
         button.addChild(baseValue);
 
         return button;

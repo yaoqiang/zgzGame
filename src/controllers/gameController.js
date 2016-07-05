@@ -58,7 +58,7 @@ GameController.leave = function (roomId, lobbyId) {
 GameController.enterLobby = function (lobbyId) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
-    pomelo.request(route.enterLobby, {lobbyId: lobbyId}, function (data) {
+    pomelo.request(route.enterLobby_v_1_3, {lobbyId: lobbyId}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("enterLobby :", data);
         var scene = new LobbyScene(data, lobbyId);
