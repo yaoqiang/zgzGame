@@ -99,7 +99,7 @@ var indexScrollLayer = cc.Layer.extend({
 
 
         var lobbyIcon = new cc.Sprite('#lobby' + tag + '.png');
-        lobbyIcon.setPosition(labelBg.width / 2, labelBg.height / 2 + 25);
+        lobbyIcon.setPosition(labelBg.width / 2, labelBg.height / 2 + 40);
         labelBg.addChild(lobbyIcon);
 
         this.lobbyOnline = new cc.LabelTTF(numStr, "Arial", 24);

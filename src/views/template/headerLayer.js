@@ -139,7 +139,7 @@ var HeaderLayer = cc.Layer.extend({
 
         try {
             if (args.lobbyId !== undefined) {
-                titleImage = '#lobby'+args.lobbyId+'_title.png';
+                titleImage = '#lobby'+args.lobbyId+'.png';
             }
         } catch (e) {
             titleImage = "#index_title.png";

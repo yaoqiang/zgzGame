@@ -37,6 +37,12 @@ var DailyTodoLayer = cc.Layer.extend({
         checkInSummary.setPosition(200, startY + 170);
         this.box.bg.addChild(checkInSummary);
 
+        var checkInSummaryExtra = new cc.LabelTTF("7天一周期,第7天送喇叭记牌器!", "AmericanTypewriter", 20);
+        checkInSummaryExtra.setColor(cc.color.RED);
+        checkInSummaryExtra.setAnchorPoint(0, 0);
+        checkInSummaryExtra.setPosition(200, startY + 140);
+        this.box.bg.addChild(checkInSummaryExtra);
+
 
         //按钮
         var checkInBtn = new ccui.Button();
@@ -115,6 +121,47 @@ var DailyTodoLayer = cc.Layer.extend({
         line.scaleY = 1.3
         this.box.bg.addChild(line);
 
+
+        //
+        //邀请奖励
+        var inviteGrantIcon = new cc.Sprite('#yuanbaoIcon.png');
+        inviteGrantIcon.setPosition(80, startY - 80);
+        inviteGrantIcon.scale = 1.5
+        this.box.bg.addChild(inviteGrantIcon);
+
+        var inviteGrantTitle = new cc.LabelTTF("邀请奖励", "AmericanTypewriter", 32);
+        inviteGrantTitle.setColor(cc.color.GREEN);
+        inviteGrantTitle.enableStroke(cc.color.GREEN, 1);
+        inviteGrantTitle.setAnchorPoint(0, 0);
+        inviteGrantTitle.setPosition(200, startY - 60);
+        this.box.bg.addChild(inviteGrantTitle);
+
+        var inviteGrantSummary = new cc.LabelTTF("邀请朋友下载, 您可获得丰厚奖励!", "AmericanTypewriter", 28);
+        inviteGrantSummary.setColor(cc.color.WHITE);
+        inviteGrantSummary.setAnchorPoint(0, 0);
+        inviteGrantSummary.setPosition(200, startY - 110);
+        this.box.bg.addChild(inviteGrantSummary);
+
+
+        var inviteGrantBtn = new ccui.Button();
+        inviteGrantBtn.setAnchorPoint(0.5, 0.5);
+        inviteGrantBtn.setTouchEnabled(true);
+        inviteGrantBtn.loadTextures("common_btn_lv.png", "common_btn_lv.png", "common_btn_lv.png", ccui.Widget.PLIST_TEXTURE);
+        inviteGrantBtn.addTouchEventListener(this.onInviteGrantClick, this);
+        inviteGrantBtn.x = 820;
+        inviteGrantBtn.y = startY - 80;
+        inviteGrantBtn.scale = 1.2;
+
+        var inviteGrantBtnLabelStr = "去邀请!";
+
+        this.inviteGrantBtnLabel = new cc.LabelTTF(inviteGrantBtnLabelStr, "AmericanTypewriter", 30);
+        this.inviteGrantBtnLabel.setColor(cc.color.WHITE);
+        this.inviteGrantBtnLabel.setPosition(checkInBtn.getContentSize().width/2, checkInBtn.getContentSize().height/2);
+        inviteGrantBtn.addChild(this.inviteGrantBtnLabel);
+
+        this.box.bg.addChild(inviteGrantBtn);
+
+
         this.addChild(this.box);
 
     },
@@ -167,6 +214,20 @@ var DailyTodoLayer = cc.Layer.extend({
                 self.canGetCheckInGrant = data.canGetBankruptcyGrant;
                 prompt.fade("您成功领取破产补助" + data.gold + "金币");
             })
+        }
+    },
+
+    onInviteGrantClick: function (ref, event) {
+        if (event === ccui.Widget.TOUCH_ENDED) {
+            playEffect(audio_common.Button_Click);
+
+            UniversalController.getProfile(gPlayer.uid, function (data) {
+                var args = {};
+                args.player = data;
+                var scene = new ProfileScene(args);
+                cc.director.runScene(scene);
+            });
+
         }
     },
 

@@ -217,23 +217,22 @@ var LobbyLayer = cc.Layer.extend({
         var specialString = "";
         switch (room.maxActor) {
             case 5:
-                specialString = "五人局"
+                specialString = "五 人 局"
                 break;
             case 6:
-                specialString = "六人局"
+                specialString = "六 人 局"
                 break;
             case 7:
-                specialString = "七人局"
+                specialString = "七 人 局"
                 break;
         }
 
-        var special = new cc.LabelTTF(specialString, "AmericanTypewriter", 40);
-        special.enableStroke(cc.color.WHITE, 1.5);
-        special.setLineHeight(28)
+        var special = new cc.LabelTTF(specialString, "AmericanTypewriter", 44);
+        special.enableStroke(cc.color.WHITE, 1.6);
         special.setPosition(button.width / 2, button.height / 2 + 65);
         button.addChild(special);
 
-        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 28);
+        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 30);
         title.setColor(cc.color.YELLOW);
         title.setPosition(button.width / 2, button.height / 2 - 5);
         button.addChild(title);
@@ -241,13 +240,13 @@ var LobbyLayer = cc.Layer.extend({
         var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 24);
         onlineCounterLabel.setColor(cc.color.WHITE);
         onlineCounterLabel.setAnchorPoint(0, 0);
-        onlineCounterLabel.setPosition(40, button.height / 2 - 75);
+        onlineCounterLabel.setPosition(50, button.height / 2 - 75);
         button.addChild(onlineCounterLabel);
 
         var onlineCounterValue = new cc.LabelTTF(numStr, "AmericanTypewriter", 24);
         onlineCounterValue.setColor(cc.color.WHITE);
         onlineCounterValue.setAnchorPoint(0, 0);
-        onlineCounterValue.setPosition(onlineCounterLabel.width+30, button.height / 2 - 75);
+        onlineCounterValue.setPosition(onlineCounterLabel.width+40, button.height / 2 - 75);
         button.addChild(onlineCounterValue);
 
         var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 24);
