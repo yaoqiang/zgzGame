@@ -37,6 +37,8 @@ var gameEvents = {
     //
     UPDATE_REMAINING_CARD: 'UPDATE_REMAINING_CARD',  //更新剩余牌(记牌器)
 
+    UI_ALERT_BANKRUPTCY_IN_GAME: 'UI_ALERT_BANKRUPTCY_IN_GAME', //弹出牌局中领取破产补助框
+
 
     //-------------
     //客户端事件

@@ -395,6 +395,13 @@ UniversalController.getSystemMessage = function (cb) {
     });
 }
 
+
+UniversalController.getLastSystemMessageDate = function (cb) {
+    pomelo.request(route.getLastSystemMessageDate, {}, function (data) {
+        cb(data);
+    });
+}
+
 UniversalController.sendBindingSMS = function (mobile, cb) {
     var loadingBar = new LoadingLayer({msg: '发送中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);

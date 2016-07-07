@@ -12,6 +12,7 @@ var IndexScene = cc.Scene.extend({
         //进入大厅后逻辑处理
         //----------------------
         if (cc.sys.os == cc.sys.OS_ANDROID) {
+            //处理安卓版本更新提示
             var lastRequestAppReleaseTime = Storage.get(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME);
 
             if (!lastRequestAppReleaseTime) {
@@ -24,6 +25,44 @@ var IndexScene = cc.Scene.extend({
             }
             Storage.set(CommonConf.LOCAL_STORAGE.LAST_REQUEST_APP_RELEASE_TIME, new Date().getDate());
         }
+
+        //处理每日首次登陆后逻辑
+        var lastLoginDay = Storage.get(CommonConf.LOCAL_STORAGE.LAST_LOGIN_DAY);
+
+        if (!lastLoginDay) {
+            this.enterOptionFirstTimeInDay();
+        } else {
+            if (lastLoginDay != new Date().getDate()) {
+                this.enterOptionFirstTimeInDay();
+            }
+        }
+
+        Storage.set(CommonConf.LOCAL_STORAGE.LAST_LOGIN_DAY, new Date().getDate());
+
+    },
+
+    enterOptionFirstTimeInDay: function () {
+        var self = this;
+        //弹出每日必做窗口
+        UniversalController.getDailyTodoInfo(function (data) {
+            var box = new DailyTodoLayer(data);
+            self.addChild(box, 998);
+        });
+
+        //请求最新邮件
+        UniversalController.getLastSystemMessageDate(function (data) {
+            var lastSystemMessageDate = Storage.get(CommonConf.LOCAL_STORAGE.LAST_SYSTEM_MESSAGE_DATE);
+            if (!lastSystemMessageDate) {
+                Storage.set(CommonConf.LOCAL_STORAGE.UI_HIGHLIGHT_SYSTEM_MESSAGE, true);
+            }
+            else {
+                if (lastSystemMessageDate < data.lastSystemMessageDate) {
+                    Storage.set(CommonConf.LOCAL_STORAGE.UI_HIGHLIGHT_SYSTEM_MESSAGE, true);
+                }
+            }
+            //设置最新一条系统消息的时间
+            Storage.set(CommonConf.LOCAL_STORAGE.LAST_SYSTEM_MESSAGE_DATE, data.lastSystemMessageDate);
+        })
     },
 
     ctor: function (lobbyData) {
@@ -82,6 +121,7 @@ var IndexScene = cc.Scene.extend({
         }, this);
 
     },
+
 
     onExit: function () {
         this._super();

@@ -91,6 +91,12 @@ var HeaderLayer = cc.Layer.extend({
         menu.setPosition(55, rightTopBg.height / 2 + 3);
         rightTopBg.addChild(menu);
 
+        //red tip
+        var doTip = new cc.Sprite("#red_tip.png");
+        doTip.setPosition(70, rightTopBg.height / 2 - 15);
+        doTip.scale = 0.4
+        rightTopBg.addChild(doTip);
+
         //邮件
         var messageNormal = new cc.Sprite("#index_youjian_icon.png");
         messageNormal.attr({scale: 0.65});
@@ -104,6 +110,22 @@ var HeaderLayer = cc.Layer.extend({
         menu.setPosition(95, rightTopBg.height / 2 + 10);
         rightTopBg.addChild(menu);
 
+        var uiHighlightSystemMessage = Storage.get(CommonConf.LOCAL_STORAGE.UI_HIGHLIGHT_SYSTEM_MESSAGE);
+        if (typeof uiHighlightSystemMessage === 'string') {
+            if (uiHighlightSystemMessage == 'true') {
+                uiHighlightSystemMessage = true;
+            }
+            else {
+                uiHighlightSystemMessage = false;
+            }
+        }
+        if (uiHighlightSystemMessage == null || uiHighlightSystemMessage == true) {
+            //red tip
+            var messageTip = new cc.Sprite("#red_tip.png");
+            messageTip.setPosition(140, rightTopBg.height / 2 - 15);
+            messageTip.scale = 0.4
+            rightTopBg.addChild(messageTip);
+        }
 
         //setting
         var settingNormal = new cc.Sprite("#index_shezhi_icon.png");
@@ -209,6 +231,8 @@ var HeaderLayer = cc.Layer.extend({
         //
         UniversalController.getSystemMessage(function (data) {
             self.addChild(new SystemMessageLayer(data));
+
+            Storage.set(CommonConf.LOCAL_STORAGE.UI_HIGHLIGHT_SYSTEM_MESSAGE, false);
         })
 
     },

@@ -218,7 +218,7 @@ pomelo.on(gameEvents.VERSION_UPGRADE, function (data) {
         return;
     }
     var upgradeBox = new UpgradeLayer(data);
-    cc.director.getRunningScene().addChild(upgradeBox, 9);
+    cc.director.getRunningScene().addChild(upgradeBox, 999);
     EventBus.publish(gameEvents.VERSION_UPGRADE, data);
 })
 
@@ -228,4 +228,9 @@ pomelo.on(gameEvents.RESTART_GAME, function (data) {
 
 pomelo.on(gameEvents.DISSOLVE_GAME, function (data) {
     prompt.fadeMiddle('连续没有人说话,即将解散牌局!');
+});
+
+
+pomelo.on(gameEvents.UI_ALERT_BANKRUPTCY_IN_GAME, function (data) {
+    //弹出破产补助领取框
 });
