@@ -53,7 +53,7 @@ var BidMenuLayer = cc.Layer.extend({
         var giveUpSelected = new cc.Sprite("#common_btn_hong.png");
         var giveUpDisabled = new cc.Sprite("#common_btn_hong.png");
         var giveUpButton = new cc.MenuItemSprite(giveUpNormal, giveUpSelected, giveUpDisabled, this.onGiveUpButton, this);
-        giveUpButton.setPosition(winSize.width / 2 + 150, h);
+        giveUpButton.setPosition(winSize.width / 2, h + 40);
         giveUpButton.setTag(BidMenuBtn.kCCBidMenu_GiveUp);
         giveUpButton.setVisible(false);
 

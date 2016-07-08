@@ -924,6 +924,7 @@ var GameLayer = cc.Layer.extend({
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.UNKNOW, []);
                 break;
             case BidMenuBtn.kCCBidMenu_GiveUp:
+                this.removeBidMenu();
                 GameController.giveUp();
                 break;
         }
