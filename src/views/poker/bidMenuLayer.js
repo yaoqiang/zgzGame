@@ -47,6 +47,24 @@ var BidMenuLayer = cc.Layer.extend({
         //guziStr.color = cc.color.YELLOW;
         guziStr.setPosition(size.width / 2, size.height / 2);
         guziButton.addChild(guziStr);
+
+        //认输
+        var giveUpNormal = new cc.Sprite("#common_btn_hong.png");
+        var giveUpSelected = new cc.Sprite("#common_btn_hong.png");
+        var giveUpDisabled = new cc.Sprite("#common_btn_hong.png");
+        var giveUpButton = new cc.MenuItemSprite(giveUpNormal, giveUpSelected, giveUpDisabled, this.onGiveUpButton, this);
+        giveUpButton.setPosition(winSize.width / 2 + 150, h);
+        giveUpButton.setTag(BidMenuBtn.kCCBidMenu_GiveUp);
+        giveUpButton.setVisible(false);
+
+        giveUpButton.scale = 0.5
+
+        size = giveUpButton.getContentSize();
+        var giveUpStr = new cc.LabelTTF("认输", "Arial", 30);
+        //giveUpStr.color = cc.color.YELLOW;
+        giveUpStr.setPosition(size.width / 2, size.height / 2);
+        giveUpButton.addChild(giveUpStr);
+
 //不叫
 
         var bujiaoNormal = new cc.Sprite("#common_btn_huang.png");
@@ -63,10 +81,12 @@ var BidMenuLayer = cc.Layer.extend({
         //bujiaoStr.color = cc.color.YELLOW;
         bujiaoStr.setPosition(size.width / 2, size.height / 2);
         bujiaoButton.addChild(bujiaoStr);
+
+
 //menu
 
 
-        this.m_pMenu = new cc.Menu(liangButton, guziButton, bujiaoButton);
+        this.m_pMenu = new cc.Menu(liangButton, guziButton, bujiaoButton, giveUpButton);
         this.m_pMenu.setPosition(0, 0);
         this.addChild(this.m_pMenu);
 
@@ -105,6 +125,14 @@ var BidMenuLayer = cc.Layer.extend({
             this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_Bujiao);
         }
         //GameController.talk(gRoomId, gGameId, GAME.IDENTITY.UNKNOW, []);
+    },
+
+    onGiveUpButton: function () {
+        if (this.m_pTarge && cc.isFunction(this.m_pCallback)) {
+            //console.log("不叫 callback");
+
+            this.m_pCallback.call(this.m_pTarge, BidMenuBtn.kCCBidMenu_GiveUp);
+        }
     },
 
 

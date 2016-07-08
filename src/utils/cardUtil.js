@@ -31,6 +31,17 @@ cardUtil.recognitionIdentity = function (cards, type) {
     return identity;
 }
 
+cardUtil.isShuangSan = function (cards, type) {
+    if (GAME.TYPE.FIVE == type) {
+        if (_.contains(cards, 116) && _.contains(cards, 216)) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+
+}
+
 /**
  * 牌型识别
  * @param cards 当前出牌

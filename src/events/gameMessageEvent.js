@@ -233,4 +233,6 @@ pomelo.on(gameEvents.DISSOLVE_GAME, function (data) {
 
 pomelo.on(gameEvents.UI_ALERT_BANKRUPTCY_IN_GAME, function (data) {
     //弹出破产补助领取框
+    var layer = new BankruptLayer();
+    cc.director.getRunningScene().addChild(layer, 999);
 });

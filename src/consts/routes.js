@@ -19,6 +19,7 @@ var route = {
     fan: 'game.gameHandler.fan',    //出牌
     trusteeship: 'game.gameHandler.trusteeship',    //托管
     cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',    //取消托管
+    giveUp: 'game.gameHandler.giveUp',    //认输
 
     chat: 'chat.chatHandler.send',  //房间内聊天&小喇叭
 

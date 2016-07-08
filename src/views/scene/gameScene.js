@@ -923,6 +923,9 @@ var GameLayer = cc.Layer.extend({
             case BidMenuBtn.kCCBidMenu_Bujiao:
                 GameController.talk(gRoomId, gGameId, GAME.IDENTITY.UNKNOW, []);
                 break;
+            case BidMenuBtn.kCCBidMenu_GiveUp:
+                GameController.giveUp();
+                break;
         }
 
     },
@@ -1140,6 +1143,11 @@ var GameLayer = cc.Layer.extend({
                 //cc.log('说话阶段-当前玩家是股子，显示“股子”按钮')
                 this.addBidMenu(BidMenuBtn.kCCBidMenu_Guzi);
                 //gActor.identity = false;
+            }
+
+            var isShuangSan = cardUtil.isShuangSan(gActor.cards, gGameType);
+            if (isShuangSan) {
+                this.addBidMenu(BidMenuBtn.kCCBidMenu_GiveUp);
             }
 
 
