@@ -124,7 +124,8 @@ pomelo.on(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
  * 结束
  * {
      game: {result: consts.GAME.RESULT.x, share: x},
-     details: [{uid:x, actorNr:x, actualIdentity:[], result: consts.GAME.ACTOR_RESULT.x, gold: x, roomId: game.roomId, rank: actor.gameStatus.rank}]
+     details: [{uid:x, actorNr:x, actualIdentity:[], result: consts.GAME.ACTOR_RESULT.x, gold: x, roomId: game.roomId, rank: actor.gameStatus.rank}],
+     remainingCardsOfActors: [{actorNr: Int, remainingCards: []}, ...]  //结束后各玩家剩余的手牌
    }
  */
 pomelo.on(gameEvents.OVER, function (data) {

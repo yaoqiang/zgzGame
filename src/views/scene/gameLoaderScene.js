@@ -77,7 +77,7 @@ cc.GameLoaderScene = cc.Scene.extend({
         label.setColor(cc.color(180, 180, 180));
         bgLayer.addChild(this._label, 10);
 
-        var copyright = new cc.LabelTTF("大同亿润网络", "Arial", fontSize);
+        var copyright = new cc.LabelTTF("www.zaguzi.com", "Arial", fontSize);
         copyright.setPosition(cc.pAdd(cc.visibleRect.center, cc.p(0, lblHeight-200)));
         copyright.setColor(cc.color(180, 180, 180));
         bgLayer.addChild(copyright, 21);
