@@ -21,7 +21,7 @@ PlayerProfileLayer.prototype = {
     init: function () {
         var winSize = cc.director.getWinSize();
 
-        var headerX = 380, contentX = 420, contentY = 280, lineHeight = 25, avatarX = 305;
+        var headerX = 365, contentX = 395, contentY = 280, lineHeight = 25, avatarX = 295;
 
         //avatar
         var avatarBg = new cc.Sprite("#hallinfo_kuang.png");
