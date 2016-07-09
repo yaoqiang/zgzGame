@@ -391,13 +391,19 @@ var ShopPropLayer = cc.Layer.extend({
         icon.addChild(nameLabel);
 
         var innerIcon = null;
-        if (product.title.indexOf('喇叭') > 0) {
+        if (product.title.indexOf('喇叭') > -1) {
             innerIcon= new cc.Sprite("#common_icon_laba.png");
             innerIcon.setAnchorPoint(0, 0.5);
             innerIcon.scale = 0.45;
             innerIcon.setPosition(xx + 55, this.m_nCelleHeight / 2 + 20);
             cell.addChild(innerIcon);
-
+        }
+        else if (product.title.indexOf('记牌器') > -1) {
+            innerIcon= new cc.Sprite("#jipaiqi.png");
+            innerIcon.setAnchorPoint(0, 0.5);
+            innerIcon.scale = 0.45;
+            innerIcon.setPosition(xx + 55, this.m_nCelleHeight / 2 + 20);
+            cell.addChild(innerIcon);
         }
 
         ////+number

@@ -82,6 +82,8 @@ SystemMessageLayer.prototype = {
             custom_button.setScale9Enabled(true);
             custom_button.loadTextures("readBtnBg.png", "readBtnBg.png", "", ccui.Widget.PLIST_TEXTURE);
             custom_button.setContentSize(default_button.getContentSize());
+            custom_button.setTag(i);
+            custom_button.addTouchEventListener(this.readBtnClicked, this);
 
             //icon
             var icon = new cc.Sprite('#system_flag.png');
@@ -133,5 +135,50 @@ SystemMessageLayer.prototype = {
 
         this.rightBox.setItemsMargin(30);
 
+    },
+
+    readBtnClicked: function (sender, type) {
+        switch (type) {
+            case ccui.Widget.TOUCH_BEGAN:
+                break;
+
+            case ccui.Widget.TOUCH_MOVED:
+                break;
+
+            case ccui.Widget.TOUCH_ENDED:
+
+                var index = sender.getTag();
+                var url = this.data.systemMessageList[index].url;
+                if (!url) {
+                    return;
+                }
+
+                playEffect(audio_common.Button_Click);
+
+                var box = new DialogMiddle("详情", 1, null);
+                cc.director.getRunningScene().addChild(box, 50);
+
+
+                var webView = new ccui.WebView(url);
+                var x = 400, y = 210, w = 500, h = 290;
+                if (cc.sys.isNative) {
+                    x = 485;
+                    y = 300;
+                    w = 900;
+                    h = 500;
+                }
+                webView.setContentSize(w, h);
+                webView.setPosition(x, y);
+                box.bg.addChild(webView);
+
+
+                break;
+
+            case ccui.Widget.TOUCH_CANCELED:
+                break;
+
+            default:
+                break;
+        }
     }
 }

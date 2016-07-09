@@ -663,11 +663,9 @@ var ProfileLayer = cc.Layer.extend({
     },
 
     inviteRecordClicked: function () {
+        playEffect(audio_common.Button_Click);
         var self = this;
-        var inviteRecordBox = new DialogSmall("我的邀请奖励", 2, {ensureCallback: function (cb) {
-            cb(true);
-
-        }, ensureLabel: '确定'}, this, 1);
+        var inviteRecordBox = new DialogSmall("我的邀请奖励", 1, null, this, 1);
 
         UniversalController.getInviteRecordListByUid(function (result) {
             if (result.code === RETURN_CODE.FAIL) {
@@ -980,24 +978,30 @@ var InviteRecordListLayer = cc.Layer.extend({
         //添加列头
         var startX = winSize.width / 3;
         var halfX = startX/2;
-        var columnY = visibleOrigin.y + visibleSize.height - tabH;
-        var invitedMobileLabel = new cc.LabelTTF("被邀请人手机", "Arial", 16);
+        var columnY = visibleOrigin.y + visibleSize.height - tabH - 2;
+        var invitedMobileLabel = new cc.LabelTTF("被邀请人手机", "Arial", 14);
         invitedMobileLabel.setAnchorPoint(0.5, 0);
         invitedMobileLabel.color = cc.color.GREEN;
         invitedMobileLabel.setPosition(210 + startX - halfX, columnY);
         this.addChild(invitedMobileLabel, 1);
-        var createdAtLabel = new cc.LabelTTF("邀请时间", "Arial", 16);
+        var createdAtLabel = new cc.LabelTTF("邀请时间", "Arial", 14);
         createdAtLabel.setAnchorPoint(0.5, 0);
         createdAtLabel.color = cc.color.GREEN;
         createdAtLabel.setPosition(210 + startX*2 - halfX, columnY);
         this.addChild(createdAtLabel, 1);
-        var grantStateLabel = new cc.LabelTTF("奖励状态", "Arial", 16);
+        var grantStateLabel = new cc.LabelTTF("奖励状态", "Arial", 14);
         grantStateLabel.setAnchorPoint(0.5, 0);
         grantStateLabel.color = cc.color.GREEN;
         grantStateLabel.setPosition(210 + startX*3 - halfX, columnY);
         this.addChild(grantStateLabel, 1);
 
-
+        //tip
+        var tipLabel = new cc.LabelTTF('只显示最近20条邀请记录', 'AmericanTypewriter', 14);
+        tipLabel.setAnchorPoint(0, 0.5);
+        tipLabel.color = {r: 0, g: 255, b: 127};
+        tipLabel.x = 215;
+        tipLabel.y = 118;
+        this.addChild(tipLabel);
 
         this.init();
 
