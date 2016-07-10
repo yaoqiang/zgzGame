@@ -1377,6 +1377,13 @@ var GameLayer = cc.Layer.extend({
             this.trusteeshipMask = null;
         }
 
+        //显示玩家剩余手牌
+        _.each(data.remainingCardsOfActors, function (v) {
+            if (v.remainingCards.length == 0) return;
+            if (v.actorNr == gActor.actorNr) return;
+            self.showRemainingCards(v);
+        })
+
         this.balanceLayer = new BalanceLayer(data,
             {
                 ready: function () {
@@ -1389,6 +1396,13 @@ var GameLayer = cc.Layer.extend({
                 }
             });
         this.addChild(this.balanceLayer, 30);
+    },
+
+
+    showRemainingCards: function (data) {
+        var actorNr = data.actorNr;
+        var cards = data.remainingCards;
+        this.m_pPokerLayer.showRemainingCards(cards, actorNr);
     },
 
     /**

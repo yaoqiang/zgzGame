@@ -479,6 +479,39 @@ var PokerLayer = cc.Layer.extend({
         actorHD.setFanoutCards(cardsArray)
     },
 
+    showRemainingCards: function (cardsVector, actorNr) {
+        var len = cardsVector.length;
+        if (len == 0) {
+            return;
+        }
+
+        this.m_pFanOutCard = cardsVector;
+        var actorHD = this.m_pTable.getActorHDWithNr(actorNr);//根据玩家编号获取HD
+        var cardsArray = [];
+
+        if (len > 0) {
+            for (var idx = 0; idx < len; idx++) {
+                var cardValue = cardsVector[idx];
+                //console.log("create fanOutCard Normal");
+                var cardFace = Math.floor(cardValue / 100);
+                var cardPoint = cardValue % 100;
+                var pc = new PokerCard({
+                    cardPoint: cardPoint,
+                    cardFace: cardFace,
+                    cardSize: PokerCard_enum.kCCCardSizeNormal
+                });
+                pc.setCardPointImageScale(0.9);
+                //pc.setScale(ZySize.scale() * 0.6);
+                this.addChild(pc);
+                cardsArray.push(pc);
+            }
+            this.showFanOutCards(cardsArray, actorNr);
+        }
+
+
+        actorHD.setFanoutCards(cardsArray)
+    },
+
     clearCards: function () {
         var len = this.m_pSelfCardArray.length;
         for (var i = 0; i < len; i++) {
