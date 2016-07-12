@@ -21,6 +21,10 @@ var route = {
     cancelTrusteeship: 'game.gameHandler.cancelTrusteeship',    //取消托管
     giveUp: 'game.gameHandler.giveUp',    //认输
 
+    createPrivateGame: 'game.gameHandler.createPrivateGame',    //创建私人房
+    listPrivateGame: 'game.gameHandler.listPrivateGame',    //私人房列表
+    joinPrivateGame: 'game.gameHandler.joinPrivateGame',    //加入私人房
+
     chat: 'chat.chatHandler.send',  //房间内聊天&小喇叭
 
     getProfileByUid: 'connector.universalHandler.getProfileByUid',    //根据uid获取玩家信息

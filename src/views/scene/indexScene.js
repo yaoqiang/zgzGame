@@ -69,7 +69,7 @@ var IndexScene = cc.Scene.extend({
         this._super();
 
         var self = this;
-        console.log("---->IndexScene ctor");
+        //console.log("---->IndexScene ctor");
         //cc.spriteFrameCache.addSpriteFrames(res.index_plist);
         //cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
         //cc.spriteFrameCache.addSpriteFrames(res.common_plist);
@@ -85,7 +85,7 @@ var IndexScene = cc.Scene.extend({
         var indexLayer = new IndexLayer(lobbyData);
         this.addChild(indexLayer);
 
-        var trumpetLayer = new trumpetBoxLayer();
+        var trumpetLayer = new TrumpetBoxLayer();
         this.addChild(trumpetLayer, 2);
         //template
         var bottomBtnLayer = new BottomBtnLayer({});
@@ -125,7 +125,7 @@ var IndexScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
-        console.log("---->IndexScene onExit");
+        //console.log("---->IndexScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
 
         FrameCache.removeSpriteFrames(res.avatar_plist);

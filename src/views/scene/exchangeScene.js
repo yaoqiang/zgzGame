@@ -6,7 +6,7 @@ var ExchangeScene = cc.Scene.extend({
 
     ctor: function (args) {
         this._super();
-        console.log("  ExchangeScene ctor");
+        //console.log("  ExchangeScene ctor");
         FrameCache.addSpriteFrames(res.common_plist);
         FrameCache.addSpriteFrames(res.index_plist);
         this.selected = 100;
@@ -280,6 +280,8 @@ var ExchangeListLayer = cc.Layer.extend({
     },
 
     onExchange: function (sender) {
+
+        playEffect(audio_common.Button_Click);
 
         var self = this;
         var tag = sender.tag;

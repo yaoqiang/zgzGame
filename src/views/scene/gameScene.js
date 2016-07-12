@@ -4,7 +4,7 @@ var GameScene = cc.Scene.extend({
         if (!cc.eventManager.isEnabled()) {
             cc.eventManager.setEnabled(true);
         }
-        console.log("---->GameScene ctor");
+        //console.log("---->GameScene ctor");
         //cc.spriteFrameCache.addSpriteFrames(res.game_plist);
         //cc.spriteFrameCache.addSpriteFrames(res.poker_plist);
         //cc.spriteFrameCache.addSpriteFrames(res.avatar_plist);
@@ -31,7 +31,7 @@ var GameScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
-        console.log("---->GameScene onExit");
+        //console.log("---->GameScene onExit");
         FrameCache.removeSpriteFrames(res.game_plist);
         FrameCache.removeSpriteFrames(res.poker_plist);
         FrameCache.removeSpriteFrames(res.avatar_plist);
@@ -108,6 +108,12 @@ var GameLayer = cc.Layer.extend({
         }
 
         this.addExpressionBtn();
+
+        //私人场
+        if (gLobbyId == 3) {
+            //显示房间号, 在左上角空白处
+            this.addPrivateGameBar();
+        }
 
 
     },
@@ -666,6 +672,15 @@ var GameLayer = cc.Layer.extend({
             default:
                 break;
         }
+    },
+
+    addPrivateGameBar: function () {
+        var winSize = cc.director.getWinSize();
+        var gameIdLabel = new cc.LabelTTF('房间ID:'+gGameId, "Arial", 20);
+        gameIdLabel.color = {r: 0, g: 255, b: 127};
+        gameIdLabel.setAnchorPoint(0, 0);
+        gameIdLabel.setPosition(15, winSize.height - 35);
+        this.addChild(gameIdLabel);
     },
 
     addExpressionBtn: function () {

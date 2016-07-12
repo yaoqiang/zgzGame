@@ -1,7 +1,7 @@
 //牌局中头像框component
 var scrollCaptionLayer = cc.Layer.extend({
     ctor: function (params) {
-        console.log("---->scrollCaptionLayer");
+        //console.log("---->scrollCaptionLayer");
         this._super();
         this.cx = 0;
         this.cy = 0;
@@ -96,7 +96,7 @@ var scrollCaptionLayer = cc.Layer.extend({
     },
     onEnter: function () {
         this._super();
-        console.log("createScrollCaption  onEnter");
+        //console.log("createScrollCaption  onEnter");
         this.schedule(function () {
             if(this.nextNotification == true){
                 this.trumpetTwo(SystemMassageQueue.shiftMassage());

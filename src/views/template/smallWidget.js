@@ -818,7 +818,7 @@ var UpdataDataApp = function (level, url, msg) {
 
 //cc.openURL
 
-var trumpetBoxLayer = cc.Layer.extend({
+var TrumpetBoxLayer = cc.Layer.extend({
     sprite: null,
     ctor: function () {
         this._super();

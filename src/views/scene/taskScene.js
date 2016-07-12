@@ -7,7 +7,7 @@ var TaskScene = cc.Scene.extend({
     ctor: function (args) {
         this._super();
         //cc.spriteFrameCache.addSpriteFrames(res.task_plist);
-        console.log("---->TaskScene ctor");
+        //console.log("---->TaskScene ctor");
         FrameCache.addSpriteFrames(res.common_plist);
         FrameCache.addSpriteFrames(res.task_plist);
         FrameCache.addSpriteFrames(res.index_plist);
@@ -53,7 +53,7 @@ var TaskScene = cc.Scene.extend({
         this._super();
         //
         cc.eventManager.removeListener(this.keyboardListener);
-        console.log("---->TaskScene onExit");
+        //console.log("---->TaskScene onExit");
         FrameCache.removeSpriteFrames(res.common_plist);
         FrameCache.removeSpriteFrames(res.task_plist);
         FrameCache.removeSpriteFrames(res.index_plist);

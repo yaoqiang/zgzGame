@@ -80,6 +80,7 @@
         "src/views/scene/rankingListScene.js",
         "src/views/scene/exchangeScene.js",
         "src/views/scene/shopScene.js",
+        "src/views/scene/privateRoomScene.js",
 
 
         "src/controllers/authController.js",

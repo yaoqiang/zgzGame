@@ -136,7 +136,7 @@ prompt.fadeMiddle = function (txt, duration) {
         fontName : "Arial",
         duration : duration || 2,
         position : cc.p(winSize.width / 2, winSize.height / 2)});
-    toast.run(cc.director.getRunningScene());
+    toast.run(cc.director.getRunningScene(), 999);
 }
 
 /**

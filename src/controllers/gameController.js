@@ -61,8 +61,15 @@ GameController.enterLobby = function (lobbyId) {
     pomelo.request(route.enterLobby_v_1_3, {lobbyId: lobbyId}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("enterLobby :", data);
-        var scene = new LobbyScene(data, lobbyId);
-        cc.director.runScene(scene);
+        //如果是私人场, 初始化PrivateRoomScene
+        if (lobbyId == 3) {
+            var scene = new PrivateRoomScene(data, lobbyId);
+            cc.director.runScene(scene);
+        }
+        else {
+            var scene = new LobbyScene(data, lobbyId);
+            cc.director.runScene(scene);
+        }
     });
 
 };
@@ -193,4 +200,69 @@ GameController.giveUp = function () {
 GameController.chat = function (scope, type, item, content) {
     if (content.length > 20) content = content.substring(0, 20);
     pomelo.request(route.chat, {scope: scope, type: type, item: item, content: content, gameId: gGameId}, null);
+}
+
+
+/**
+ * 创建游戏房间
+ * @param data {name: String, password: String, maxActor: Int, base: Int, useNoteCard: true/false}
+ */
+GameController.createPrivateRoom = function (data) {
+    //cc.log("GameController.join roomId:", roomId);
+    gRoomId = 45;
+
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
+
+    pomelo.request(route.createPrivateGame, data, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        //cc.log("join :", data);
+        if (data.code == RETURN_CODE.OK) {
+            gGameType = data.gameType;
+
+            var scene = new GameScene(data, false);
+            //cc.director.pushScene(new cc.TransitionSlideInT(0.5, scene));
+            cc.director.runScene(scene);
+
+        } else if (data.code == RETURN_CODE.FAIL) {
+            //cc.log("----> join game fail");
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+        }
+
+    });
+};
+
+GameController.listPrivateGame = function (data, cb) {
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
+
+    pomelo.request(route.listPrivateGame, data, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        cb(data);
+
+    });
+}
+
+GameController.joinPrivateGame = function (data) {
+    gRoomId = 45;
+
+    var loadingBar = new LoadingLayer({msg: '加载中'});
+    cc.director.getRunningScene().addChild(loadingBar, 100);
+
+    pomelo.request(route.joinPrivateGame, data, function (data) {
+        if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
+        //cc.log("join :", data);
+        if (data.code == RETURN_CODE.OK) {
+            gGameType = data.gameType;
+
+            var scene = new GameScene(data, false);
+            //cc.director.pushScene(new cc.TransitionSlideInT(0.5, scene));
+            cc.director.runScene(scene);
+
+        } else if (data.code == RETURN_CODE.FAIL) {
+            //cc.log("----> join game fail");
+            prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+        }
+
+    });
 }
