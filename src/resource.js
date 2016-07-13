@@ -39,10 +39,39 @@ var res = {
     common_box_1: "res/common_box_1.png",
     common_btn_lan: "res/common_btn_lan.png",
     common_btn_lv: "res/common_btn_lv.png",
-    common_btn_shanchu: "res/common_btn_shanchu.png"
+    common_btn_shanchu: "res/common_btn_shanchu.png",
+
+    effects_missile_json:"res/effects/Missile.ExportJson",
+    effects_missile_png:"res/effects/Missile0.png",
+    effects_missile_plist:"res/effects/Missile0.plist",
+    effects_bomb_json:"res/effects/bomb.ExportJson",
+    effects_bomb_png:"res/effects/bomb0.png",
+    effects_bomb_plist:"res/effects/bomb0.plist",
+    effects_line2_json:"res/effects/line2.ExportJson",
+    effects_line2_png:"res/effects/line20.png",
+    effects_line2_plist:"res/effects/line20.plist",
+    effects_plane_json:"res/effects/plane.ExportJson",
+    effects_plane_png:"res/effects/plane0.png",
+    effects_plane_plist:"res/effects/plane0.plist",
+    effects_doubleline2_json:"res/effects/doubleline2.ExportJson",
+    effects_doubleline2_png:"res/effects/doubleline20.png",
+    effects_doubleline2_plist:"res/effects/doubleline20.plist",
+    effects_spring_json:"res/effects/spring.ExportJson",
+    effects_spring_png:"res/effects/spring0.png",
+    effects_spring_plist:"res/effects/spring0.plist"
 
     //dev
 };
+
+var __effectFiles = [
+    "",
+    res.effects_line2_json,//1
+    res.effects_plane_json,//2
+    res.effects_bomb_json,//3
+    res.effects_doubleline2_json,//4
+    res.effects_missile_json,//5
+    res.effects_spring_json//6
+];
 
 var g_resources = [];
 for (var i in res) {

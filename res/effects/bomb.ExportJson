@@ -1,0 +1,1003 @@
+{
+  "content_scale": 1.0,
+  "armature_data": [
+    {
+      "strVersion": "1.2.0.1",
+      "version": 1.201,
+      "name": "bomb",
+      "bone_data": [
+        {
+          "name": "Layer1",
+          "parent": "",
+          "x": -6.0,
+          "y": 21.17333984375,
+          "z": 4,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -1.530278,
+          "kY": 1.530278,
+          "arrow_x": 74.0608139038086,
+          "arrow_y": 3.5613942600321025E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "bomb/bang/baozha_000.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.530278
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_001.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_002.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_003.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_004.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_005.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_006.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_007.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_008.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_009.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_010.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_011.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_012.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            },
+            {
+              "name": "bomb/bang/baozha_013.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -6.46730042,
+                  "y": -0.9412999,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.53027809,
+                  "kY": -1.53027809
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer28",
+          "parent": "",
+          "x": -15.267898559570313,
+          "y": 329.32382202148438,
+          "z": 2,
+          "cX": 0.8,
+          "cY": 0.8,
+          "kX": -1.22981739,
+          "kY": 1.22981739,
+          "arrow_x": 41.117202758789062,
+          "arrow_y": -0.0001407139643561095,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "bomb/boom/zhadan_000.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -7.59164429,
+                  "y": -20.59974,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.22981751,
+                  "kY": -1.22981775
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer30",
+          "parent": "Layer28",
+          "x": 75.953414916992188,
+          "y": -17.008232116699219,
+          "z": 3,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": -0.721485257,
+          "kY": 0.721485257,
+          "arrow_x": 40.388675689697266,
+          "arrow_y": -0.00013320965808816254,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "bomb/fire/yinxian_000.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -39.4270821,
+                  "y": 39.42711,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": 1.95130348,
+                  "kY": -1.95130253
+                }
+              ]
+            },
+            {
+              "name": "bomb/fire/yinxian_001.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -9.98111,
+                  "y": 32.2645721,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": 1.95130348,
+                  "kY": -1.95130348
+                }
+              ]
+            },
+            {
+              "name": "bomb/fire/yinxian_002.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -9.98111,
+                  "y": 32.2645721,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": 1.95130348,
+                  "kY": -1.95130348
+                }
+              ]
+            },
+            {
+              "name": "bomb/fire/yinxian_003.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -9.98111,
+                  "y": 32.2645721,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": 1.95130348,
+                  "kY": -1.95130348
+                }
+              ]
+            },
+            {
+              "name": "bomb/fire/yinxian_004.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -9.98111,
+                  "y": 32.2645721,
+                  "cX": 1.00000012,
+                  "cY": 1.00000012,
+                  "kX": 1.95130348,
+                  "kY": -1.95130348
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "animation_data": [
+    {
+      "name": "bomb",
+      "mov_data": [
+        {
+          "name": "bomb",
+          "dr": 108,
+          "lp": true,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 1.0,
+          "mov_bone_data": [
+            {
+              "name": "Layer1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.50000012,
+                  "cY": 1.50000012,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.50000012,
+                  "cY": 1.50000012,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 39,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 42,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 47,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 52,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 3,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 57,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 62,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 5,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 67,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 6,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 72,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 7,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 77,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 8,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 82,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 9,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 87,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 10,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 92,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 11,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 97,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 12,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 102,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 13,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.50000012,
+                  "cY": 1.50000012,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 107,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "Layer30",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 5,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 10,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 3,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 15,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 20,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 3,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 35,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 40,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 45,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Layer28",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 4,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": -1.0714271068572998,
+                  "y": -355.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 10,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "twEP": []
+                },
+                {
+                  "dI": 0,
+                  "x": -1.0714271068572998,
+                  "y": -355.0,
+                  "z": 0,
+                  "cX": 0.199999928,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 14,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  },
+                  "twEP": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                },
+                {
+                  "dI": 0,
+                  "x": -1.0714271068572998,
+                  "y": -355.0,
+                  "z": 0,
+                  "cX": 1.2,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 21,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "twEP": []
+                },
+                {
+                  "dI": 0,
+                  "x": -1.0714271068572998,
+                  "y": -355.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 26,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "twEP": []
+                },
+                {
+                  "dI": 0,
+                  "x": -1.0714271068572998,
+                  "y": -355.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 40,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "twEP": []
+                },
+                {
+                  "dI": 0,
+                  "x": -1.0714271068572998,
+                  "y": -355.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 41,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  },
+                  "twEP": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "texture_data": [
+    {
+      "name": "bomb/boom/zhadan_000",
+      "width": 584.0,
+      "height": 1050.0,
+      "pX": 0.493150681,
+      "pY": 0.5314286,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_000",
+      "width": 584.0,
+      "height": 1050.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_013",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_001",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_002",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_003",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_004",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_005",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_006",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_007",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_008",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_009",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_010",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_011",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/bang/baozha_012",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/fire/yinxian_000",
+      "width": 584.0,
+      "height": 1050.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/fire/yinxian_001",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/fire/yinxian_002",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/fire/yinxian_003",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "bomb/fire/yinxian_004",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    }
+  ],
+  "config_file_path": [
+    "bomb0.plist"
+  ]
+}

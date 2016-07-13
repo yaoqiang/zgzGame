@@ -78,7 +78,7 @@ var GameLayer = cc.Layer.extend({
         this.m_pFanOutMenuLayer = null;
         this.m_pBidMenuLayer = null;
         this.trusteeshipMask = null;
-
+        this.m_pEffectLayer = null;
         //
         this.optionLayer = null;
 
@@ -128,7 +128,7 @@ var GameLayer = cc.Layer.extend({
 
 
         gGameSceneCompleted = true;
-
+       // this.effectCard(0, 1);
     },
 
     onEnterTransitionDidFinish:function () {
@@ -1242,6 +1242,7 @@ var GameLayer = cc.Layer.extend({
         this.m_pPokerLayer.setFanOutCards(cards, actorNr);
 
         this.audioCard(cardRecognization, actorNr);
+        this.effectCard(cardRecognization, actorNr);
         if (cardRecognization == null) {
             //var random = Math.floor(Math.random() * 2);
             //this.m_pTableLayer.showSay(text, actorNr);
@@ -1514,6 +1515,25 @@ var GameLayer = cc.Layer.extend({
         }else if (data.type == GAME.CHAT.TYPE_EXP) {
             this.m_pTableLayer.showExpression(data.item, data.actorNr);
         }
+    },
+
+    effectCardCallBack: function ()
+    {
+        this.m_pEffectLayer = null;
+        cc.log("----> effectCardCallBack");
+    },
+
+    effectCard: function (cardRecognization, actorNr) {
+        if (cardRecognization == null) {
+            return;
+        }
+        if(this.m_pEffectLayer ){
+            this.m_pEffectLayer.removeFromParent(true);
+            this.m_pEffectLayer = null;
+        }
+        this.m_pEffectLayer = new EffectLayer({effect:cardRecognization.cardSeries, targe:this, callback:this.effectCardCallBack});
+        //this.m_pEffectLayer = new EffectLayer({effect:6, targe:this, callback:this.effectCardCallBack});
+        this.addChild(this.m_pEffectLayer, 10);
     },
 
     audioCard: function (cardRecognization, actorNr) {
