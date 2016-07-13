@@ -174,7 +174,7 @@ var PrivateGameLayer = cc.Layer.extend({
         this.roomIdLabel.y = visibleOrigin.y + visibleSize.height - btnH + 28 - 80;
         this.roomIdLabel.setFontColor(cc.color.BLACK);
         this.roomIdLabel.setFont("Arial", 24);
-        this.roomIdLabel.setString(q);
+        this.roomIdLabel.setString(q || '');
         this.roomIdLabel.setPlaceHolder('请输入房间ID,精确查找');
         this.roomIdLabel.setPlaceholderFontColor(cc.color.BLACK);
         this.addChild(this.roomIdLabel);
@@ -508,7 +508,7 @@ CreatePrivateRoomBox.prototype = {
         this.checkBoxGame5 = new ccui.CheckBox();
         this.checkBoxGame5.setTouchEnabled(true);
         this.checkBoxGame5.setAnchorPoint(0, 0.5);
-        this.checkBoxGame5.selected = true;
+        this.checkBoxGame5.setSelected(true);
         this.checkBoxGame5.loadTextures("common_checkbox_1.png",
             "common_checkbox_2.png",
             "common_checkbox_2.png",
@@ -583,7 +583,7 @@ CreatePrivateRoomBox.prototype = {
         this.checkBoxBase100 = new ccui.CheckBox();
         this.checkBoxBase100.setTouchEnabled(true);
         this.checkBoxBase100.setAnchorPoint(0, 0.5);
-        this.checkBoxBase100.selected = true;
+        this.checkBoxBase100.setSelected(true);
         this.checkBoxBase100.loadTextures("common_checkbox_1.png",
             "common_checkbox_2.png",
             "common_checkbox_2.png",
@@ -646,7 +646,7 @@ CreatePrivateRoomBox.prototype = {
         this.checkBoxUseNoteCard = new ccui.CheckBox();
         this.checkBoxUseNoteCard.setTouchEnabled(true);
         this.checkBoxUseNoteCard.setAnchorPoint(0, 0.5);
-        this.checkBoxUseNoteCard.selected = true;
+        this.checkBoxUseNoteCard.setSelected(true);
         this.checkBoxUseNoteCard.loadTextures("common_checkbox_1.png",
             "common_checkbox_2.png",
             "common_checkbox_2.png",
@@ -687,28 +687,29 @@ CreatePrivateRoomBox.prototype = {
                 data.roomId = 45;   //私人场固定ROOMID
                 data.name = this.roomNameLabel.getString().substring(0, 10);
                 data.password = this.roomPasswordLabel.getString();
+                console.log('################# - ', this.checkBoxGame5.isSelected())
                 //max actor
-                if (this.checkBoxGame5.selected) {
+                if (this.checkBoxGame5.isSelected()) {
                     data.maxActor = 5;
                 }
-                else if (this.checkBoxGame6.selected) {
+                else if (this.checkBoxGame6.isSelected()) {
                     data.maxActor = 6;
                 }
                 else {
                     data.maxActor = 7;
                 }
                 //base
-                if (this.checkBoxBase100.selected) {
+                if (this.checkBoxBase100.isSelected()) {
                     data.base = 100;
                 }
-                else if (this.checkBoxBase1000.selected) {
+                else if (this.checkBoxBase1000.isSelected()) {
                     data.base = 1000;
                 }
                 else {
                     data.base = 5000;
                 }
 
-                data.useNoteCard = this.checkBoxUseNoteCard.selected;
+                data.useNoteCard = this.checkBoxUseNoteCard.isSelected();
 
                 GameController.createPrivateRoom(data);
                 break;
@@ -722,19 +723,19 @@ CreatePrivateRoomBox.prototype = {
     onGameTypeSelected: function (maxActor) {
         playEffect(audio_common.Button_Click);
         if (maxActor == 5) {
-            this.checkBoxGame5.selected = true;
-            this.checkBoxGame6.selected = false;
-            this.checkBoxGame7.selected = false;
+            this.checkBoxGame5.setSelected(true);
+            this.checkBoxGame6.setSelected(false);
+            this.checkBoxGame7.setSelected(false);
         }
         else if (maxActor == 6) {
-            this.checkBoxGame5.selected = false;
-            this.checkBoxGame6.selected = true;
-            this.checkBoxGame7.selected = false;
+            this.checkBoxGame5.setSelected(false);
+            this.checkBoxGame6.setSelected(true);
+            this.checkBoxGame7.setSelected(false);
         }
         else {
-            this.checkBoxGame5.selected = false;
-            this.checkBoxGame6.selected = false;
-            this.checkBoxGame7.selected = true;
+            this.checkBoxGame5.setSelected(false);
+            this.checkBoxGame6.setSelected(false);
+            this.checkBoxGame7.setSelected(true);
         }
     },
 
@@ -752,19 +753,19 @@ CreatePrivateRoomBox.prototype = {
     onGameBaseSelected: function (base) {
         playEffect(audio_common.Button_Click);
         if (base == 100) {
-            this.checkBoxBase100.selected = true;
-            this.checkBoxBase1000.selected = false;
-            this.checkBoxBase5000.selected = false;
+            this.checkBoxBase100.setSelected(true);
+            this.checkBoxBase1000.setSelected(false);
+            this.checkBoxBase5000.setSelected(false);
         }
         else if (base == 1000) {
-            this.checkBoxBase100.selected = false;
-            this.checkBoxBase1000.selected = true;
-            this.checkBoxBase5000.selected = false;
+            this.checkBoxBase100.setSelected(false);
+            this.checkBoxBase1000.setSelected(true);
+            this.checkBoxBase5000.setSelected(false);
         }
         else {
-            this.checkBoxBase100.selected = false;
-            this.checkBoxBase1000.selected = false;
-            this.checkBoxBase5000.selected = true;
+            this.checkBoxBase100.setSelected(false);
+            this.checkBoxBase1000.setSelected(false);
+            this.checkBoxBase5000.setSelected(true);
         }
     },
 
