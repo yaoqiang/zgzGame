@@ -313,7 +313,7 @@ var PrivateGameLayer = cc.Layer.extend({
         }
 
 
-        var baseValue = new cc.LabelTTF('1000≤金', "Arial", 20);
+        var baseValue = new cc.LabelTTF(game.min + '≤金', "Arial", 20);
         baseValue.setColor(cc.color.GREEN);
         baseValue.setAnchorPoint(0, 0);
         baseValue.setPosition(button.width / 2 + 100, button.height / 2 - 75);
@@ -687,7 +687,6 @@ CreatePrivateRoomBox.prototype = {
                 data.roomId = 45;   //私人场固定ROOMID
                 data.name = this.roomNameLabel.getString().substring(0, 10);
                 data.password = this.roomPasswordLabel.getString();
-                console.log('################# - ', this.checkBoxGame5.isSelected())
                 //max actor
                 if (this.checkBoxGame5.isSelected()) {
                     data.maxActor = 5;

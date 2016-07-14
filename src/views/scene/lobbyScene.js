@@ -252,14 +252,24 @@ var LobbyLayer = cc.Layer.extend({
         var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 24);
         baseLabel.setColor(cc.color.WHITE);
         baseLabel.setAnchorPoint(0, 0);
-        baseLabel.setPosition(button.width / 2 - 45, button.height / 2 - 75);
+        baseLabel.setPosition(button.width / 2 - 80, button.height / 2 - 75);
         button.addChild(baseLabel);
+
+        if (room.useNoteCard) {
+            var useNoteCard = new cc.Sprite("#jipaiqi.png");
+            useNoteCard.setAnchorPoint(0, 0);
+            useNoteCard.scale = 0.3;
+            useNoteCard.setPosition(button.width / 2 + 55, button.height / 2 - 75);
+            button.addChild(useNoteCard);
+        }
 
         var baseValue = new cc.LabelTTF(""+room.min+'≤金', "Arial", 20);
         baseValue.setColor(cc.color.GREEN);
         baseValue.setAnchorPoint(0, 0);
         baseValue.setPosition(button.width / 2 + 100, button.height / 2 - 75);
         button.addChild(baseValue);
+
+
 
         return button;
     },
