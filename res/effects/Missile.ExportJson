@@ -1,0 +1,908 @@
+{
+  "content_scale": 1.0,
+  "armature_data": [
+    {
+      "strVersion": "1.2.0.1",
+      "version": 1.201,
+      "name": "Missile",
+      "bone_data": [
+        {
+          "name": "Layer6",
+          "parent": "",
+          "x": -2.9999856948852539,
+          "y": 17.173336029052734,
+          "z": 4,
+          "cX": 0.8,
+          "cY": 0.8,
+          "kX": -1.54263473,
+          "kY": 1.54263473,
+          "arrow_x": 71.028190612792969,
+          "arrow_y": 7.6928590715397149E-06,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "huojian/huojian/huojian_000.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 15.8696651,
+                  "y": -1.30364561,
+                  "cX": 0.9999999,
+                  "cY": 0.9999999,
+                  "kX": 1.54263473,
+                  "kY": -1.54263437
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer11",
+          "parent": "Layer6",
+          "x": -71.076553344726562,
+          "y": -0.71596181392669678,
+          "z": 2,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 3.08779573,
+          "kY": -3.08779573,
+          "arrow_x": 55.732624053955078,
+          "arrow_y": -1.3911967471358366E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "fire/huo_000.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -62.72664,
+                  "y": 5.8955,
+                  "cX": 0.9999999,
+                  "cY": 0.9999999,
+                  "kX": -1.54516065,
+                  "kY": 1.54516256
+                }
+              ]
+            },
+            {
+              "name": "fire/huo_001.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -62.72664,
+                  "y": 5.8955,
+                  "cX": 0.9999999,
+                  "cY": 0.9999999,
+                  "kX": -1.54516065,
+                  "kY": 1.54516065
+                }
+              ]
+            },
+            {
+              "name": "fire/huo_002.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -62.72664,
+                  "y": 5.8955,
+                  "cX": 0.9999999,
+                  "cY": 0.9999999,
+                  "kX": -1.54516065,
+                  "kY": 1.54516065
+                }
+              ]
+            },
+            {
+              "name": "fire/huo_003.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -62.72664,
+                  "y": 5.8955,
+                  "cX": 0.9999999,
+                  "cY": 0.9999999,
+                  "kX": -1.54516065,
+                  "kY": 1.54516065
+                }
+              ]
+            },
+            {
+              "name": "fire/huo_004.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": -62.72664,
+                  "y": 5.8955,
+                  "cX": 0.9999999,
+                  "cY": 0.9999999,
+                  "kX": -1.54516065,
+                  "kY": 1.54516065
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Layer54",
+          "parent": "",
+          "x": -1.9999856948852539,
+          "y": -70.0,
+          "z": 3,
+          "cX": 0.9999999,
+          "cY": 1.2,
+          "kX": 10.99603,
+          "kY": -10.99603,
+          "arrow_x": 60.033332824707031,
+          "arrow_y": 3.874790490954183E-05,
+          "effectbyskeleton": true,
+          "display_data": [
+            {
+              "name": "huojian/smoke/huojian_000.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60412
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_001.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_002.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_003.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_004.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_005.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_006.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_007.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_008.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_009.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_010.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_011.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            },
+            {
+              "name": "huojian/smoke/huojian_012.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 76.92396,
+                  "y": -3.56468415,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 1.60411727,
+                  "kY": -1.60411727
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "animation_data": [
+    {
+      "name": "Missile",
+      "mov_data": [
+        {
+          "name": "missile",
+          "dr": 81,
+          "lp": true,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 1.0,
+          "mov_bone_data": [
+            {
+              "name": "Layer6",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "twEP": []
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 51.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 1,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 472.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "Layer54",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 3,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 35,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 40,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 5,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 45,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 6,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 7,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 55,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 8,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 60,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 9,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 65,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 10,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 70,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 11,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 75,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 12,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 80,
+                  "twE": 0,
+                  "tweenFrame": true
+                }
+              ]
+            },
+            {
+              "name": "Layer11",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 5,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 155,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 10,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 3,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 15,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 20,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 30,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 3,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 35,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 4,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 40,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 1,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 45,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 50,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 2,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 51,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "texture_data": [
+    {
+      "name": "huojian/huojian/huojian_000",
+      "width": 584.0,
+      "height": 1050.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "fire/huo_004",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_000",
+      "width": 584.0,
+      "height": 1050.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_001",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_002",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_003",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_004",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_005",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_006",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_007",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_008",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_009",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_010",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_011",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "huojian/smoke/huojian_012",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "fire/huo_000",
+      "width": 584.0,
+      "height": 1050.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "fire/huo_003",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "fire/huo_002",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    },
+    {
+      "name": "fire/huo_001",
+      "width": 0.0,
+      "height": 0.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": ""
+    }
+  ],
+  "config_file_path": [
+    "Missile0.plist"
+  ]
+}
