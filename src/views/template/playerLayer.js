@@ -205,8 +205,8 @@ var PlayerLayer = cc.Layer.extend({
 
 
     updata: function (args) {
-        console.log("PlayerLayer updata");
-        console.log(args);
+        //console.log("PlayerLayer updata");
+        //console.log(args);
         var properties = args.m_properties;
 
         this.m_uid = args.m_uid;

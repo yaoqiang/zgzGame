@@ -1069,8 +1069,8 @@ var GameLayer = cc.Layer.extend({
     },
 
     gameStartEvent: function (data) {
-        console.log("gameStartEvent :");
-        console.log(data);
+        //console.log("gameStartEvent :");
+        //console.log(data);
         gGameState = data.state || ZGZ.GAME_STATE.TALK;
 
         if (this.m_pPokerLayer) {

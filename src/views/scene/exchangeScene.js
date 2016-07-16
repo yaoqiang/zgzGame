@@ -27,9 +27,9 @@ var ExchangeScene = cc.Scene.extend({
         //add a keyboard event listener to statusLabel
         this.keyboardListener = cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
-            onKeyPressed:  function(keyCode, event){
+            onKeyPressed: function (keyCode, event) {
             },
-            onKeyReleased: function(keyCode, event){
+            onKeyReleased: function (keyCode, event) {
                 playEffect(audio_common.Button_Click);
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
@@ -166,6 +166,7 @@ var ExchangeListLayer = cc.Layer.extend({
     },
 
     tableCellAtIndex: function (table, idx) {
+        var self = this;
         var strValue = idx.toFixed(0);
         var cell = table.dequeueCell();
         if (!cell) {
@@ -202,14 +203,33 @@ var ExchangeListLayer = cc.Layer.extend({
         }
         //实物兑换
         else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.OUTBOX) {
-
+            //如果是实物兑换, icon是远程HTTP资源
+            itemImageString = oneExchange.icon;
         }
 
+        try {
 
-        var icon = new cc.Sprite(itemImageString);
-        icon.setPosition(xx, this.m_nCelleHeight / 2);
-        icon.setAnchorPoint(0, 0.5);
-        cell.addChild(icon);
+            //本地资源和远程资源(后期实物兑换用远程资源), 这里有一个问题, 就是在tableCell没刷出来时候, 远程资源加载完会显示在可视区域,
+            // 第一次点进来会出现问题, 后面就不会出现了. 或者第一次点进来, 来回刷刷..
+            // 可能是loadImg的行为, 导致cell... 先这样带着bug来..
+            if (itemImageString.indexOf("http://") == -1) {
+                var icon = new cc.Sprite(itemImageString);
+                icon.setPosition(xx, this.m_nCelleHeight / 2);
+                icon.setAnchorPoint(0, 0.5);
+                cell.addChild(icon);
+            }
+            else {
+
+                utils.loadImgFromUrl(cell, itemImageString, cc.p(xx, self.m_nCelleHeight / 2), {x: 0, y: 0.5}, idx)
+
+            }
+        } catch (e) {
+            //异常后 直接显示"X"logo
+            var icon = new cc.Sprite("#dialog_close_btn.png");
+            icon.setPosition(xx, this.m_nCelleHeight / 2);
+            icon.setAnchorPoint(0, 0.5);
+            cell.addChild(icon);
+        }
 
         if (oneExchange.icon == 'GIFT') {
             icon.scale = 0.85;
@@ -232,7 +252,7 @@ var ExchangeListLayer = cc.Layer.extend({
         cell.addChild(nameLabel);
 
         //库存
-        var inventoryLabel = new cc.LabelTTF("剩余"+oneExchange.inventory+"个", "Arial", 16);
+        var inventoryLabel = new cc.LabelTTF("剩余" + oneExchange.inventory + "个", "Arial", 16);
         inventoryLabel.setPosition(xx, this.m_nCelleHeight / 2 - 30);
         inventoryLabel.color = cc.color.GREEN;
         inventoryLabel.setAnchorPoint(0, 0);
@@ -245,7 +265,7 @@ var ExchangeListLayer = cc.Layer.extend({
         ingotImage.scale = 0.6;
         cell.addChild(ingotImage);
 
-        var ingotLabel = new cc.LabelTTF(oneExchange.fragment+"个元宝可兑换", "Arial", 16);
+        var ingotLabel = new cc.LabelTTF(oneExchange.fragment + "个元宝可兑换", "Arial", 16);
         ingotLabel.setPosition(xx + 270, this.m_nCelleHeight / 2 - 30);
         ingotLabel.setAnchorPoint(0, 0);
         ingotLabel.color = cc.color.RED;
@@ -335,6 +355,69 @@ var ExchangeListLayer = cc.Layer.extend({
 
             }
 
+            else if (oneExchange.type == CommonConf.EXCHANGE.TYPE.OUTBOX) {
+                this.infoBox = new DialogSmall('填写信息', 2, {ensureCallback: this.doExchangeOutbox}, this);
+
+                var boxSize = this.infoBox.bg.getBoundingBox();
+
+                var mobileLabel = new cc.LabelTTF("手机号:", "AmericanTypewriter", 26);
+                mobileLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 350);
+                mobileLabel.color = cc.color.WHITE;
+                mobileLabel.scale = 2;
+                this.infoBox.bg.addChild(mobileLabel);
+
+
+                var blockSize = cc.size(370, 70);
+                this.mobileValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+                this.mobileValue.setPlaceHolder('请输入手机号');
+                this.mobileValue.setFontColor(cc.color.BLACK);
+                this.mobileValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 350);
+                this.mobileValue.color = cc.color.WHITE;
+                this.mobileValue.setMaxLength(11);
+                this.infoBox.bg.addChild(this.mobileValue);
+
+                //收货人
+                var consigneeLabel = new cc.LabelTTF("收货人:", "AmericanTypewriter", 26);
+                consigneeLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 250);
+                consigneeLabel.color = cc.color.WHITE;
+                consigneeLabel.scale = 2;
+                this.infoBox.bg.addChild(consigneeLabel);
+
+
+                var blockSize = cc.size(370, 70);
+                this.consigneeValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+                this.consigneeValue.setPlaceHolder('请输入收货人');
+                this.consigneeValue.setFontColor(cc.color.BLACK);
+                this.consigneeValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 250);
+                this.consigneeValue.color = cc.color.WHITE;
+                this.infoBox.bg.addChild(this.consigneeValue);
+
+                //收货地址
+                var deliveryAddressLabel = new cc.LabelTTF("收货地址:", "AmericanTypewriter", 26);
+                deliveryAddressLabel.setPosition(boxSize.width / 2 - 20, boxSize.height / 2 + 150);
+                deliveryAddressLabel.color = cc.color.WHITE;
+                deliveryAddressLabel.scale = 2;
+                this.infoBox.bg.addChild(deliveryAddressLabel);
+
+
+                var blockSize = cc.size(370, 70);
+                this.deliveryAddressValue = new cc.EditBox(blockSize, new cc.Scale9Sprite("common_shurukuang.png", cc.rect(14, 14, 25, 29)));
+                this.deliveryAddressValue.setPlaceHolder('请输入收货地址');
+                this.deliveryAddressValue.setFontColor(cc.color.BLACK);
+                this.deliveryAddressValue.setPosition(boxSize.width / 2 + 300, boxSize.height / 2 + 150);
+                this.deliveryAddressValue.color = cc.color.WHITE;
+                this.infoBox.bg.addChild(this.deliveryAddressValue);
+
+
+                this.outboxRechargeTipLabel = new cc.LabelTTF("温馨提示: 兑换后,客服在1-3个工作日与您联系");
+                this.outboxRechargeTipLabel.color = {r: 0, g: 255, b: 127};
+                this.outboxRechargeTipLabel.setPosition(boxSize.width / 2 + 220, boxSize.height / 2 + 30);
+                this.infoBox.addChild(this.outboxRechargeTipLabel, 10);
+
+                this.addChild(this.infoBox, 20);
+
+            }
+
         } else {
             //去做任务
             UniversalController.enterIndex();
@@ -353,6 +436,27 @@ var ExchangeListLayer = cc.Layer.extend({
             prompt.fadeMiddle('您输入的手机号有误, 请检查');
             return false;
         }
+        return true;
+    },
+
+    validateConsignee: function () {
+        var consignee = this.consigneeValue.getString();
+
+        if (consignee == '') {
+            prompt.fadeMiddle('请输入收货人');
+            return false;
+        }
+        return true;
+    },
+
+    validateDeliveryAddress: function () {
+        var deliveryAddressValue = this.deliveryAddressValue.getString();
+
+        if (deliveryAddressValue == '') {
+            prompt.fadeMiddle('请输入收货地址');
+            return false;
+        }
+
         return true;
     },
 
@@ -393,6 +497,45 @@ var ExchangeListLayer = cc.Layer.extend({
         UniversalController.exchange(this.exchangeId, mobile, 1, this.contact, this.address, function (data) {
             if (data.code == RETURN_CODE.OK) {
                 prompt.fadeMiddle('兑换成功, 请您注意查收');
+                if (self.infoBox) self.infoBox.removeFromParent(true);
+
+                //兑换结束后更新view
+                var exchangeList = self.data.exchangeList;
+
+                for (var i = 0; i < exchangeList.length; i++) {
+                    var item = exchangeList[i];
+                    if (item._id == self.exchangeId) {
+                        //暂时客户端处理
+                        item.inventory -= 1;
+                        item.inventory = item.inventory < 0 ? 0 : item.inventory;
+                        self.m_pTableView.reloadData();
+                        break;
+                    }
+                }
+
+
+            }
+            else {
+                prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err));
+            }
+        });
+
+    },
+
+    doExchangeOutbox: function () {
+        if (!this.validateMobile()) return;
+        if (!this.validateConsignee()) return;
+        if (!this.validateDeliveryAddress()) return;
+
+        var self = this;
+
+        var mobile = this.mobileValue.getString();
+        var contact = this.consigneeValue.getString();
+        var address = this.deliveryAddressValue.getString();
+
+        UniversalController.exchange(this.exchangeId, mobile, 1, contact, address, function (data) {
+            if (data.code == RETURN_CODE.OK) {
+                prompt.fadeMiddle('兑换成功, 我们会尽快把物品送到');
                 if (self.infoBox) self.infoBox.removeFromParent(true);
 
                 //兑换结束后更新view
@@ -460,7 +603,7 @@ var ExchangeRecordListLayer = cc.Layer.extend({
 
         //添加列头
         var startX = winSize.width / 4;
-        var halfX = startX/2;
+        var halfX = startX / 2;
         var columnY = visibleOrigin.y + visibleSize.height - tabH;
         var exchangeDateLabel = new cc.LabelTTF("兑换时间", "Arial", 18);
         exchangeDateLabel.setAnchorPoint(0.5, 0);
@@ -470,17 +613,17 @@ var ExchangeRecordListLayer = cc.Layer.extend({
         var exchangeProductLabel = new cc.LabelTTF("兑换商品", "Arial", 18);
         exchangeProductLabel.setAnchorPoint(0.5, 0);
         exchangeProductLabel.color = cc.color.GREEN;
-        exchangeProductLabel.setPosition(startX*2 - halfX, columnY);
+        exchangeProductLabel.setPosition(startX * 2 - halfX, columnY);
         this.addChild(exchangeProductLabel, 1);
         var exchangeNumberLabel = new cc.LabelTTF("兑换单号", "Arial", 18);
         exchangeNumberLabel.setAnchorPoint(0.5, 0);
         exchangeNumberLabel.color = cc.color.GREEN;
-        exchangeNumberLabel.setPosition(startX*3 - halfX, columnY);
+        exchangeNumberLabel.setPosition(startX * 3 - halfX, columnY);
         this.addChild(exchangeNumberLabel, 1);
         var exchangeStateLabel = new cc.LabelTTF("兑换状态", "Arial", 18);
         exchangeStateLabel.setAnchorPoint(0.5, 0);
         exchangeStateLabel.color = cc.color.GREEN;
-        exchangeStateLabel.setPosition(startX*4 - halfX, columnY);
+        exchangeStateLabel.setPosition(startX * 4 - halfX, columnY);
         this.addChild(exchangeStateLabel, 1);
 
 
@@ -533,7 +676,7 @@ var ExchangeRecordListLayer = cc.Layer.extend({
 
         //
         var xx = this.m_nTableWidth / 4;
-        var halfX = xx/2;
+        var halfX = xx / 2;
 
         //兑换时间
         var date = new Date(oneExchangeRecord.createdAt);
@@ -543,17 +686,17 @@ var ExchangeRecordListLayer = cc.Layer.extend({
 
         //兑换商品
         var productLabel = new cc.LabelTTF(oneExchangeRecord.productName);
-        productLabel.setPosition(xx*2 - halfX, this.m_nCelleHeight / 2);
+        productLabel.setPosition(xx * 2 - halfX, this.m_nCelleHeight / 2);
         cell.addChild(productLabel);
 
         //兑换单号
         var numberLabel = new cc.LabelTTF(oneExchangeRecord.number);
-        numberLabel.setPosition(xx*3 - halfX, this.m_nCelleHeight / 2);
+        numberLabel.setPosition(xx * 3 - halfX, this.m_nCelleHeight / 2);
         cell.addChild(numberLabel);
 
         //兑换状态
         var stateLabel = new cc.LabelTTF(utils.getOrderStateString(oneExchangeRecord.state));
-        stateLabel.setPosition(xx*4 - halfX, this.m_nCelleHeight / 2);
+        stateLabel.setPosition(xx * 4 - halfX, this.m_nCelleHeight / 2);
         cell.addChild(stateLabel);
 
 

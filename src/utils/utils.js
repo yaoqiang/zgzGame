@@ -117,3 +117,24 @@ function getDateDiff(startTime, endTime, diffType) {
 utils.mobileValidate = function (mobile) {
     return !!mobile.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
 }
+
+
+//
+utils.loadImgFromUrl = function (target, imgUrl, p, anchor, tag) {
+    if(!imgUrl)return;
+    var self = target;
+    var loadCb = function(err, img){
+        cc.textureCache.addImage(imgUrl);
+        var texture2d = new cc.Texture2D();
+        texture2d.initWithElement(img);
+        texture2d.handleLoadedTexture();
+        var sp = new cc.Sprite();
+        sp.initWithTexture(texture2d);
+        self.addChild(sp);
+        sp.x = p.x;
+        sp.y = p.y;
+        sp.setAnchorPoint(anchor.x, anchor.y);
+        sp.tag = tag;
+    };
+    cc.loader.loadImg(imgUrl, {isCrossOrigin : true }, loadCb);
+}

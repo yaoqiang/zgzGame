@@ -211,7 +211,7 @@ var DailyTodoLayer = cc.Layer.extend({
                     return;
                 }
                 self.bankruptGrantBtnLabel.setString(data.canGetBankruptcyGrant ? "已领取" : "前往游戏");
-                self.canGetCheckInGrant = data.canGetBankruptcyGrant;
+                self.canGetBankruptcyGrant = data.canGetBankruptcyGrant;
                 prompt.fade("您成功领取破产补助" + data.gold + "金币");
             })
         }
