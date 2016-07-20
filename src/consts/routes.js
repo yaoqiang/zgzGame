@@ -68,7 +68,8 @@ var route = {
 
     getInviteRecordListByUid: 'connector.universalHandler.getInviteRecordListByUid',
 
-
+    isLatestActivityGodMonth: 'connector.universalHandler.isLatestActivityGodMonth',
+    getLatestActivityGodMonth: 'connector.universalHandler.getLatestActivityGodMonth',
 
 
     //-----------------------

@@ -467,6 +467,27 @@ UniversalController.getInviteRecordListByUid = function (cb) {
     });
 }
 
+UniversalController.isLatestActivityGodMonth = function (cb) {
+    var lastActivityGodMonth = Storage.set(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH);
+    if (!lastActivityGodMonth) return cb({isLatest: false});
+
+    lastActivityGodMonth = JSON.parse(lastActivityGodMonth);
+
+    pomelo.request(route.isLatestActivityGodMonth, {updatedAt: lastActivityGodMonth.updatedAt}, function (data) {
+        cb(data);
+    });
+}
+
+UniversalController.getLatestActivityGodMonth = function (cb) {
+    pomelo.request(route.getLatestActivityGodMonth, {}, function (data) {
+        if (!data) {
+            cb(null);
+            return;
+        }
+        Storage.set(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH, JSON.stringify(data));
+        cb(data);
+    });
+}
 
 
 

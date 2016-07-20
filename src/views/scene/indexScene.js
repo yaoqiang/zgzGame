@@ -63,6 +63,13 @@ var IndexScene = cc.Scene.extend({
             //设置最新一条系统消息的时间
             Storage.set(CommonConf.LOCAL_STORAGE.LAST_SYSTEM_MESSAGE_DATE, data.lastSystemMessageDate);
         })
+
+        //如果是每月第一天, 处理后续逻辑
+        var now = new Date();
+        if (now.getDate() == 1) {
+            Storage.set(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH, 0);
+        }
+
     },
 
     ctor: function (lobbyData) {

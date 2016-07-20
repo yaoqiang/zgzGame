@@ -105,11 +105,11 @@ var RankingListTabLayer = cc.Layer.extend({
         //var rechargeSelected = new cc.Sprite("#sys_task_normal.png");
         //var rechargeDisabled = new cc.Sprite("#sys_task_normal.png");
 
-        var rechargeNormal = new cc.LabelTTF("昨日充值榜", "AmericanTypewriter", 40);
+        var rechargeNormal = new cc.LabelTTF("充值榜", "AmericanTypewriter", 40);
         rechargeNormal.enableStroke(cc.color.WHITE, 1);
-        var rechargeSelected = new cc.LabelTTF("昨日充值榜", "AmericanTypewriter", 42);
+        var rechargeSelected = new cc.LabelTTF("充值榜", "AmericanTypewriter", 42);
         rechargeSelected.enableStroke(cc.color.WHITE, 1);
-        var rechargeDisabled = new cc.LabelTTF("昨日充值榜", "AmericanTypewriter", 40);
+        var rechargeDisabled = new cc.LabelTTF("充值榜", "AmericanTypewriter", 40);
         rechargeDisabled.enableStroke(cc.color.WHITE, 1);
         var rechargeButton = new cc.MenuItemSprite(rechargeNormal, rechargeSelected, rechargeDisabled, this.onRechargeClick, this);
         rechargeButton.scale = 0.5;

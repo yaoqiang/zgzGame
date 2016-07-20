@@ -83,11 +83,28 @@ var RankingListScene = cc.Scene.extend({
         }
 
         if (index == 1) {
-            UniversalController.getRankingList({type: CommonConf.RANKING_LIST.GOD}, function (data) {
-                var layer = new GodRankingListLayer(data);
-                self.addChild(layer);
-                self.layer = layer;
+            //如果本地没有存储股神月排行榜信息, 先请求.
+            UniversalController.isLatestActivityGodMonth(function (result) {
+
+                if (!result.isLatest) {
+                    UniversalController.getLatestActivityGodMonth(function (activity) {
+                        UniversalController.getRankingList({type: CommonConf.RANKING_LIST.GOD_MONTH}, function (data) {
+                            var layer = new GodRankingListLayer(data);
+                            self.addChild(layer);
+                            self.layer = layer;
+                        })
+                    })
+                }
+                else {
+                    UniversalController.getRankingList({type: CommonConf.RANKING_LIST.GOD_MONTH}, function (data) {
+                        var layer = new GodRankingListLayer(data);
+                        self.addChild(layer);
+                        self.layer = layer;
+                    })
+                }
             })
+            
+
         }
 
         if (index == 2) {
@@ -298,6 +315,75 @@ var GodRankingListLayer = cc.Layer.extend({
         icon.scale = 0.8;
         var iconSize = icon.getBoundingBox();
 
+        var cellH = iconSize.height + 10;
+        var tabH = 120;
+
+        //排行榜说明
+        var rankingSummary = '股神月排行榜,每月清零,统计当月战绩,上榜即有奖!';
+        var rankingSummaryLabel = new cc.LabelTTF(rankingSummary, 'AmericanTypewriter', 20);
+        rankingSummaryLabel.setAnchorPoint(0, 0.5);
+        rankingSummaryLabel.color = {r: 0, g: 255, b: 127};
+        rankingSummaryLabel.x = 20;
+        rankingSummaryLabel.y = visibleOrigin.y + visibleSize.height - tabH + 35;
+        this.addChild(rankingSummaryLabel);
+
+        //当前玩家上榜资格情况
+        var selfRanking = '';
+
+        var gameCounter = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
+        var activity = Storage.get(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH);
+        var target = 300;
+        if (activity) {
+            activity = JSON.parse(activity);
+            target = activity.threshold;
+        }
+        gameCounter = gameCounter == null ? 0 : gameCounter;
+        if (gameCounter < target) {
+            selfRanking += '您的游戏局数不够:'+gameCounter+'/'+target;
+        }
+
+        var selfRankingLabel = new cc.LabelTTF(selfRanking, 'AmericanTypewriter', 14);
+        selfRankingLabel.setAnchorPoint(0, 0.5);
+        selfRankingLabel.color = {r: 0, g: 255, b: 127};
+        selfRankingLabel.x = 20;
+        selfRankingLabel.y = visibleOrigin.y + visibleSize.height - tabH + 13;
+        this.addChild(selfRankingLabel);
+
+        //上榜规则
+        var rulesBtn = new ccui.Button();
+        rulesBtn.setAnchorPoint(0.5, 0.5);
+        rulesBtn.setTouchEnabled(true);
+        rulesBtn.loadTextures('common_btn_lv.png', 'common_btn_lv.png', 'common_btn_lv.png', ccui.Widget.PLIST_TEXTURE);
+        rulesBtn.addTouchEventListener(this.getBankruptGrant, this);
+        rulesBtn.x = 550;
+        rulesBtn.y = visibleOrigin.y + visibleSize.height - tabH + 28;
+        rulesBtn.scale = 0.6;
+
+        var butSize = rulesBtn.getContentSize();
+        var okLabel = new cc.LabelTTF("上榜规则", "Arial", 22);
+        okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+        rulesBtn.addChild(okLabel);
+
+        this.addChild(rulesBtn);
+
+        //上月排行
+        var lastRankingBtn = new ccui.Button();
+        lastRankingBtn.setAnchorPoint(0.5, 0.5);
+        lastRankingBtn.setTouchEnabled(true);
+        lastRankingBtn.loadTextures('common_btn_lv.png', 'common_btn_lv.png', 'common_btn_lv.png', ccui.Widget.PLIST_TEXTURE);
+        lastRankingBtn.addTouchEventListener(this.getBankruptGrant, this);
+        lastRankingBtn.x = 700;
+        lastRankingBtn.y = visibleOrigin.y + visibleSize.height - tabH + 28;
+        lastRankingBtn.scale = 0.6;
+
+        var butSize = lastRankingBtn.getContentSize();
+        var okLabel = new cc.LabelTTF("上月排行", "Arial", 22);
+        okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+        lastRankingBtn.addChild(okLabel);
+
+        this.addChild(lastRankingBtn);
+
+
         var rankingList = args.rankingList;
         if (rankingList.length == 0) {
             var blankLabel = new cc.LabelTTF("排行榜空档期,您还有机会!", "Arial", 34);
@@ -307,8 +393,7 @@ var GodRankingListLayer = cc.Layer.extend({
             return;
         }
 
-        var cellH = iconSize.height + 10;
-        var tabH = 60;
+
 //init data
         this.m_pTableView = null;
         this.m_nTableWidth = visibleSize.width;

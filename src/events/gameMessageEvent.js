@@ -131,6 +131,15 @@ pomelo.on(gameEvents.CANCEL_TRUSTEESHIP, function (data) {
 pomelo.on(gameEvents.OVER, function (data) {
     //console.log('receive onOver event -> ', data);
     EventBus.publish(gameEvents.OVER, data);
+
+    if (gRoomId !== 45) {
+        var currentGameCounter = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
+        var gameCounter = parseInt(currentGameCounter == null ? 0 : currentGameCounter);
+        gameCounter += 1;
+        Storage.set(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH, gameCounter);
+    }
+
+
 });
 
 /**
