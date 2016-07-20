@@ -12,7 +12,7 @@ BankruptLayer.prototype = {
         label.color = {r: 0, g: 255, b: 127};
         this.box.addChild(label);
 
-        var label2 = new cc.LabelTTF('提示: 每天共3次机会', "Arial", 20);
+        var label2 = new cc.LabelTTF('提示:赞助次数不多哦', "Arial", 20);
         label2.setPosition(400, 230);
         label2.color = {r: 0, g: 255, b: 127};
         this.box.addChild(label2);

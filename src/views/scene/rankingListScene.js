@@ -319,7 +319,7 @@ var GodRankingListLayer = cc.Layer.extend({
         var tabH = 120;
 
         //排行榜说明
-        var rankingSummary = '股神月排行榜,每月清零,统计当月战绩,上榜即有奖!';
+        var rankingSummary = '股神月排行,每月1号揭晓上月排行,上榜就有奖励!';
         var rankingSummaryLabel = new cc.LabelTTF(rankingSummary, 'AmericanTypewriter', 20);
         rankingSummaryLabel.setAnchorPoint(0, 0.5);
         rankingSummaryLabel.color = {r: 0, g: 255, b: 127};
@@ -330,16 +330,24 @@ var GodRankingListLayer = cc.Layer.extend({
         //当前玩家上榜资格情况
         var selfRanking = '';
 
-        var gameCounter = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
+        var gameCounterList = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
         var activity = Storage.get(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH);
-        var target = 300;
+        var target = CommonConf.GOD_MONTH.TARGET;
         if (activity) {
             activity = JSON.parse(activity);
             target = activity.threshold;
         }
-        gameCounter = gameCounter == null ? 0 : gameCounter;
-        if (gameCounter < target) {
-            selfRanking += '您的游戏局数不够:'+gameCounter+'/'+target;
+
+        gameCounterList = gameCounterList == null ? [{uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}] : JSON.parse(gameCounterList);
+
+        var gameCounter = _.findWhere(gameCounterList, {uid: gPlayer.uid});
+
+        if (gameCounter.battle < target) {
+            selfRanking += '您的游戏局数不够:'+gameCounter.battle+'/'+target;
+        }
+        else {
+            var winning = parseFloat(gameCounter.winNr / (gameCounter.winNr + gameCounter.loseNr) * 100).toFixed(2);
+            selfRanking += "您本月战况:"+gameCounter.winNr + '胜/' + gameCounter.loseNr + '负' + ' - ' + winning + '%';
         }
 
         var selfRankingLabel = new cc.LabelTTF(selfRanking, 'AmericanTypewriter', 14);
@@ -354,7 +362,7 @@ var GodRankingListLayer = cc.Layer.extend({
         rulesBtn.setAnchorPoint(0.5, 0.5);
         rulesBtn.setTouchEnabled(true);
         rulesBtn.loadTextures('common_btn_lv.png', 'common_btn_lv.png', 'common_btn_lv.png', ccui.Widget.PLIST_TEXTURE);
-        rulesBtn.addTouchEventListener(this.getBankruptGrant, this);
+        rulesBtn.addTouchEventListener(this.showGodMonthSummary, this);
         rulesBtn.x = 550;
         rulesBtn.y = visibleOrigin.y + visibleSize.height - tabH + 28;
         rulesBtn.scale = 0.6;
@@ -371,7 +379,7 @@ var GodRankingListLayer = cc.Layer.extend({
         lastRankingBtn.setAnchorPoint(0.5, 0.5);
         lastRankingBtn.setTouchEnabled(true);
         lastRankingBtn.loadTextures('common_btn_lv.png', 'common_btn_lv.png', 'common_btn_lv.png', ccui.Widget.PLIST_TEXTURE);
-        lastRankingBtn.addTouchEventListener(this.getBankruptGrant, this);
+        lastRankingBtn.addTouchEventListener(this.showLatestRecord, this);
         lastRankingBtn.x = 700;
         lastRankingBtn.y = visibleOrigin.y + visibleSize.height - tabH + 28;
         lastRankingBtn.scale = 0.6;
@@ -526,6 +534,51 @@ var GodRankingListLayer = cc.Layer.extend({
     },
     onCallBack: function (sender) {
 
+    },
+
+    showGodMonthSummary: function (ref, event) {
+        if (event === ccui.Widget.TOUCH_ENDED) {
+            playEffect(audio_common.Button_Click);
+            var layer = new GodMonthSummaryLayer();
+            this.addChild(layer);
+        }
+    },
+
+    showLatestRecord: function (ref, event) {
+        if (event === ccui.Widget.TOUCH_ENDED) {
+            playEffect(audio_common.Button_Click);
+
+
+            var activity = Storage.get(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH);
+
+            if (activity) {
+                activity = JSON.parse(activity);
+            }
+            else {
+                prompt.fadeMiddle('暂无排行信息');
+                return;
+            }
+
+            if (!activity.enabled) {
+                prompt.fadeMiddle('暂无排行信息');
+                return;
+            }
+
+            var latestRankingBox = new DialogMiddle("上月排行", 1, null);
+            cc.director.getRunningScene().addChild(latestRankingBox, 50);
+
+            var webView = new ccui.WebView(activity.urlForRecord);
+            var x = 400, y = 210, w = 500, h = 290;
+            if (cc.sys.isNative) {
+                x = 485;
+                y = 300;
+                w = 900;
+                h = 500;
+            }
+            webView.setContentSize(w, h);
+            webView.setPosition(x, y);
+            latestRankingBox.bg.addChild(webView);
+        }
     },
 
     onEnter: function () {
@@ -706,3 +759,44 @@ var RechargeRankingListLayer = cc.Layer.extend({
         this._super();
     }
 });
+
+
+var GodMonthSummaryLayer = function () {
+    return this.ctor();
+}
+
+GodMonthSummaryLayer.prototype = {
+    ctor: function () {
+
+        this.box = new DialogSmall("上榜说明", 1, null, this, 1);
+
+        this.init();
+
+        return this.box;
+
+    },
+
+    init: function () {
+        var activity = Storage.get(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH);
+        var title = "即将开放, 敬请期待", summary = "";
+        if (activity) {
+            activity = JSON.parse(activity);
+            title = activity.content;
+            summary = activity.detail;
+        }
+
+
+        //title
+        var titleLabel = new cc.LabelTTF(title, "Arial", 22);
+        titleLabel.color = cc.color.YELLOW;
+        titleLabel.setAnchorPoint(0.5, 0.5);
+        titleLabel.setPosition(400, 300);
+        this.box.addChild(titleLabel);
+
+        var titleLabel = new cc.LabelTTF(summary, "Arial", 18);
+        titleLabel.color = {r: 0, g: 255, b: 127};
+        titleLabel.setAnchorPoint(0, 1);
+        titleLabel.setPosition(230, 260);
+        this.box.addChild(titleLabel);
+    }
+}

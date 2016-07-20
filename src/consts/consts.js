@@ -344,6 +344,10 @@ var CommonConf = {
             GOLD: 'gold',
             PROP: 'prop'
         }
+    },
+
+    GOD_MONTH: {
+        TARGET: 1
     }
 }
 

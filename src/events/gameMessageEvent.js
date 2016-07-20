@@ -133,10 +133,28 @@ pomelo.on(gameEvents.OVER, function (data) {
     EventBus.publish(gameEvents.OVER, data);
 
     if (gRoomId !== 45) {
+        //每月客户端存储的战绩, 支持多账号, 一旦卸载或清除数据, 就重新计算
         var currentGameCounter = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
-        var gameCounter = parseInt(currentGameCounter == null ? 0 : currentGameCounter);
-        gameCounter += 1;
-        Storage.set(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH, gameCounter);
+        var gameCounterList = currentGameCounter == null ? [{uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}] : JSON.parse(currentGameCounter);
+        var gameCounter = _.findWhere(gameCounterList, {uid: gPlayer.uid});
+        var isNew = false;
+        if (gameCounter == undefined) {
+            isNew = true;
+            gameCounter = {uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}
+        }
+        gameCounter.battle += 1;
+        data.details.forEach(function (detail) {
+            if (detail.uid == gPlayer.uid) {
+                if (detail.result == GAME.ACTOR_RESULT.WIN) {
+                    gameCounter.winNr += 1;
+                }
+                else if (detail.result == GAME.ACTOR_RESULT.LOSE) {
+                    gameCounter.loseNr += 1;
+                }
+            }
+        })
+        if (isNew) gameCounterList.push(gameCounter);
+        Storage.set(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH, JSON.stringify(gameCounterList));
     }
 
 

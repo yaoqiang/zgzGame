@@ -62,12 +62,21 @@ var IndexScene = cc.Scene.extend({
             }
             //设置最新一条系统消息的时间
             Storage.set(CommonConf.LOCAL_STORAGE.LAST_SYSTEM_MESSAGE_DATE, data.lastSystemMessageDate);
-        })
+        });
 
         //如果是每月第一天, 处理后续逻辑
         var now = new Date();
-        if (now.getDate() == 1) {
-            Storage.set(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH, 0);
+        if (now.getDate() == 20) {
+            var currentGameCounter = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
+            var gameCounterList = currentGameCounter == null ? [{uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}] : JSON.parse(currentGameCounter);
+            gameCounterList = _.map(gameCounterList, function (gameCounter) {
+                gameCounter.battle = 0;
+                gameCounter.winNr = 0;
+                gameCounter.loseNr = 0;
+                return gameCounter;
+            });
+
+            Storage.set(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH, JSON.stringify(gameCounterList));
         }
 
     },
