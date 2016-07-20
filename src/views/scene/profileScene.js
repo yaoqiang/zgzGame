@@ -1,7 +1,7 @@
 var ProfileScene = cc.Scene.extend({
     ctor: function (args) {
         this._super();
-        console.log("---->ProfileScene ctor");
+        //console.log("---->ProfileScene ctor");
         FrameCache.addSpriteFrames(res.common_plist);
         FrameCache.addSpriteFrames(res.profile_plist);
         FrameCache.addSpriteFrames(res.avatar_plist);
@@ -65,7 +65,7 @@ var ProfileScene = cc.Scene.extend({
     onExit: function () {
         this._super();
         //
-        console.log("---->ProfileScene onExit");
+        //console.log("---->ProfileScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
         FrameCache.removeSpriteFrames(res.common_plist);
         FrameCache.removeSpriteFrames(res.profile_plist);

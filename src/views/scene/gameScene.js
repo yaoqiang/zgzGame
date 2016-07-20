@@ -851,7 +851,7 @@ var GameLayer = cc.Layer.extend({
 //把join得到的actor数组重新整理，生成actor结构，push到
     initActorList: function (actorArray) {
         this.m_actorList = [];
-        console.log("--->initActorList:", actorArray);
+        //console.log("--->initActorList:", actorArray);
         var len = actorArray.length;
 
         for (var i = 0; i < len; i++) {

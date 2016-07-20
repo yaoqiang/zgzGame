@@ -707,12 +707,12 @@ var UpdataDataAppNode = cc.Node.extend({
     ctor: function (level, url, msg) {
         this._super();
 //类变量
-        console.log(" onUrlCallback");
+//        console.log(" onUrlCallback");
         this.level = level||1;
         this.url = url||"https://www.baidu.com/";
         this.m_msg = msg||"发现新版本，请更新";
         this.init({});
-        console.log(" onUrlCallback");
+        //console.log(" onUrlCallback");
     },
     onEnter: function () {
         this._super();
@@ -725,7 +725,7 @@ var UpdataDataAppNode = cc.Node.extend({
         if (this.m_bRun) return;
         this.m_bRun = true;
         this._super();
-        console.log(" onUrlCallback 1");
+        //console.log(" onUrlCallback 1");
         var self = this;
         var sg = new MaskLayer(false);
         this.addChild(sg);
@@ -799,12 +799,12 @@ var UpdataDataAppNode = cc.Node.extend({
     },
 
     onExitCallback: function () {
-        console.log(" onExitCallback");
+        //console.log(" onExitCallback");
         playEffect(audio_common.Button_Click);
         this.removeFromParent(true);
     },
     onUrlCallback: function () {
-        console.log(" onUrlCallback");
+        //console.log(" onUrlCallback");
         playEffect(audio_common.Button_Click);
         cc.openURL();
     }

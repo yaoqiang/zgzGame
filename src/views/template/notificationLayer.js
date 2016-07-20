@@ -146,7 +146,7 @@ var notificationLayer = cc.Layer.extend({
     initListener: function (){
         self = this;
         this.broadcastListener = EventBus.subscribe(gameEvents.BROADCAST, function (data) {;
-            console.log(data);
+            //console.log(data);
             MassageQueue.pushMassage(data);
         });
         //MassageQueue.pushMassage({from:"aaa", msg:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"});

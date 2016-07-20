@@ -89,7 +89,7 @@ var scrollCaptionLayer = cc.Layer.extend({
 
     initListener: function (){
         this.systemMessageListener = EventBus.subscribe(gameEvents.BBS, function (data) {;
-            console.log(data);
+            //console.log(data);
             SystemMassageQueue.pushMassage(data);
         });
        // SystemMassageQueue.pushMassage("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
@@ -127,7 +127,7 @@ var scrollCaptionLayer = cc.Layer.extend({
             EventBus.removeSubscribe(this.systemMessageListener);
             this.systemMessageListener = null;
         }
-        console.log("createScrollCaption  onExit");
+        //console.log("createScrollCaption  onExit");
         FrameCache.removeSpriteFrames(res.common_plist);
         this._super();
     }

@@ -773,7 +773,7 @@ var PokerLayer = cc.Layer.extend({
         }
 
         //--显示可以操作的按钮
-        console.log("--->gGameState:", gGameState);
+        //console.log("--->gGameState:", gGameState);
         switch (gGameState) {
             case ZGZ.GAME_STATE.TALK:
                 //console.log("ZGZ.GAME_STATE.TALK");

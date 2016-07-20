@@ -399,7 +399,7 @@ var FivePeopleTableLayer = cc.Layer.extend({
         var x = showP.x;
         var y = showP.y;
         var space = 70;
-        console.log("-------------------->showExpression:", actorNr);
+        //console.log("-------------------->showExpression:", actorNr);
         switch (showP.mode) {
             case SHOW_MODE.LEFT:
                 x = showP.x + space;

@@ -1,7 +1,7 @@
 var LoginScene = cc.Scene.extend({
     ctor: function () {
         this._super();
-        console.log("---->LoginScene ctor");
+        //console.log("---->LoginScene ctor");
         FrameCache.addSpriteFrames(res.login_plist);
         FrameCache.addSpriteFrames(res.common_plist);
         //cc.spriteFrameCache.addSpriteFrames(res.login_plist);
@@ -18,7 +18,7 @@ var LoginScene = cc.Scene.extend({
     },
     onExit: function () {
         this._super();
-        console.log("---->LoginScene onExit");
+        //console.log("---->LoginScene onExit");
         FrameCache.removeSpriteFrames(res.login_plist);
         FrameCache.removeSpriteFrames(res.common_plist);
     }

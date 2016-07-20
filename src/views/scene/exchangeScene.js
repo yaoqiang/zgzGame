@@ -48,7 +48,7 @@ var ExchangeScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
-        console.log("  ExchangeScene onExit");
+        //console.log("  ExchangeScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
         FrameCache.removeSpriteFrames(res.common_plist);
         FrameCache.removeSpriteFrames(res.index_plist);

@@ -6,7 +6,7 @@ var RankingListScene = cc.Scene.extend({
 
     ctor: function (args) {
         this._super();
-        console.log("---->RankingListScene ctor");
+        //console.log("---->RankingListScene ctor");
         //cc.spriteFrameCache.addSpriteFrames(res.rank_plist);
         FrameCache.addSpriteFrames(res.common_plist);
         FrameCache.addSpriteFrames(res.rank_plist);
@@ -51,7 +51,7 @@ var RankingListScene = cc.Scene.extend({
 
     onExit: function () {
         this._super();
-        console.log("---->RankingListScene onExit");
+        //console.log("---->RankingListScene onExit");
         cc.eventManager.removeListener(this.keyboardListener);
         FrameCache.removeSpriteFrames(res.common_plist);
         FrameCache.removeSpriteFrames(res.rank_plist);
@@ -341,6 +341,10 @@ var GodRankingListLayer = cc.Layer.extend({
         gameCounterList = gameCounterList == null ? [{uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}] : JSON.parse(gameCounterList);
 
         var gameCounter = _.findWhere(gameCounterList, {uid: gPlayer.uid});
+
+        if (gameCounter == undefined) {
+            gameCounter = {uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}
+        }
 
         if (gameCounter.battle < target) {
             selfRanking += '您的游戏局数不够:'+gameCounter.battle+'/'+target;

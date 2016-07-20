@@ -186,7 +186,7 @@ pomelo.on(gameEvents.FAN_FINISHED, function (data) {
 });
 
 pomelo.on(gameEvents.BACK_TO_GAME, function (data) {
-    console.log('receive onBackToGame event.', data);
+    //console.log('receive onBackToGame event.', data);
     for (var i = 0; i < data.actors.length; i++) {
         if (data.actors[i].uid === gPlayer.uid) {
             gRemainingCards = data.actors[i].remainingCards
