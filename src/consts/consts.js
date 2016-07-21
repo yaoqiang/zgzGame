@@ -347,7 +347,7 @@ var CommonConf = {
     },
 
     GOD_MONTH: {
-        TARGET: 1
+        TARGET: 200
     }
 }
 

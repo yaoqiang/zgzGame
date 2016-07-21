@@ -950,7 +950,7 @@ var InviteRecordListLayer = cc.Layer.extend({
 //
 
         var inviteRecordList = args.inviteRecordList;
-        var cellH = 40;
+        var cellH = 30;
         var tabH = 100;
 
         //邀请总计
@@ -967,7 +967,7 @@ var InviteRecordListLayer = cc.Layer.extend({
         this.m_pTableView = null;
         this.m_nTableWidth = visibleSize.width;
         this.m_nTableHeight = (cellH * inviteRecordList.length > (visibleSize.height - tabH)) ? (visibleSize.height - tabH) : (cellH * inviteRecordList.length);
-        this.m_nTableHeight = this.m_nTableHeight * 0.6
+        this.m_nTableHeight = this.m_nTableHeight * 0.7
         this.m_nCellWidth = visibleSize.width;
         this.m_nCelleHeight = cellH;
         this.m_nTableX = visibleOrigin.x;
