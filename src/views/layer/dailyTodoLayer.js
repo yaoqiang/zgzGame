@@ -37,8 +37,8 @@ var DailyTodoLayer = cc.Layer.extend({
         checkInSummary.setPosition(200, startY + 170);
         this.box.bg.addChild(checkInSummary);
 
-        var checkInSummaryExtra = new cc.LabelTTF("7天一周期,第7天送喇叭记牌器!", "AmericanTypewriter", 20);
-        checkInSummaryExtra.setColor(cc.color.RED);
+        var checkInSummaryExtra = new cc.LabelTTF("连续7天一周期,第7天送喇叭记牌器!", "AmericanTypewriter", 20);
+        checkInSummaryExtra.color = {r: 0, g: 255, b: 127};
         checkInSummaryExtra.setAnchorPoint(0, 0);
         checkInSummaryExtra.setPosition(200, startY + 140);
         this.box.bg.addChild(checkInSummaryExtra);
