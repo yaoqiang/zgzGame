@@ -49,7 +49,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     aniFinished:function (sender) {
-        cc.log("----------------->aniFinished:");
+        //cc.log("----------------->aniFinished:");
         if (__effectFiles[this.m_eEffect]){
             ccs.armatureDataManager.removeArmatureFileInfo(__effectFiles[this.m_eEffect]);
         }
@@ -70,7 +70,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     playRocketAni:function(){
-        cc.log("----------------->playRocketAni:");
+        //cc.log("----------------->playRocketAni:");
         var winSize = cc.director.getWinSize();
         ccs.armatureDataManager.addArmatureFileInfo(__effectFiles[this.m_eEffect]);
         var armature = new ccs.Armature("Missile");
@@ -91,7 +91,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     playBoomAni:function(){
-        cc.log("----------------->playBoomAni:");
+        //cc.log("----------------->playBoomAni:");
         var winSize = cc.director.getWinSize();
         ccs.armatureDataManager.addArmatureFileInfo(__effectFiles[this.m_eEffect]);
         var armature = new ccs.Armature("bomb");
@@ -111,7 +111,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     playPlaneAni:function(){
-        cc.log("----------------->playPlaneAni:");
+        //cc.log("----------------->playPlaneAni:");
         var winSize = cc.director.getWinSize();
         ccs.armatureDataManager.addArmatureFileInfo(__effectFiles[this.m_eEffect]);
         var armature = new ccs.Armature("plane");
@@ -130,7 +130,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     playShunziAni:function(){
-        cc.log("----------------->playShunziAni:");
+        //cc.log("----------------->playShunziAni:");
         var winSize = cc.director.getWinSize();
         ccs.armatureDataManager.addArmatureFileInfo(__effectFiles[this.m_eEffect]);
         var armature = new ccs.Armature("line2");
@@ -149,7 +149,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     playLianduiAni:function(){
-        cc.log("----------------->playLianduiAni:");
+        //cc.log("----------------->playLianduiAni:");
         var winSize = cc.director.getWinSize();
         ccs.armatureDataManager.addArmatureFileInfo(__effectFiles[this.m_eEffect]);
         var armature = new ccs.Armature("doubleline2");
@@ -168,7 +168,7 @@ var EffectLayer = cc.Layer.extend({
     },
 
     playSpringAni:function(){
-        cc.log("----------------->playSpringAni:");
+        //cc.log("----------------->playSpringAni:");
         var winSize = cc.director.getWinSize();
         ccs.armatureDataManager.addArmatureFileInfo(__effectFiles[this.m_eEffect]);
         var armature = new ccs.Armature("spring");
