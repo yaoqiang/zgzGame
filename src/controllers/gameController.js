@@ -13,7 +13,7 @@ GameController.join = function (roomId, lobbyId) {
     var loadingBar = new LoadingLayer({msg: '加载中'});
     cc.director.getRunningScene().addChild(loadingBar, 100);
 
-    pomelo.request(route.join, {roomId: roomId}, function (data) {
+    pomelo.request(route.join_v_1_3, {roomId: roomId}, function (data) {
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("join :", data);
         if (data.code == RETURN_CODE.OK) {

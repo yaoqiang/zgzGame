@@ -13,6 +13,7 @@ var route = {
     //牌局相关
     //////////
     join: 'game.gameHandler.join',  //加入游戏
+    join_v_1_3: 'game.gameHandler.join_v_1_3',  //加入游戏
     leave: 'game.gameHandler.leave',    //离开游戏
     ready: 'game.gameHandler.ready',    //准备
     talk: 'game.gameHandler.talk',  //说话
