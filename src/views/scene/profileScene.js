@@ -103,7 +103,6 @@ var ProfileLayer = cc.Layer.extend({
         this.player.fragment = args.player.fragment;
         this.player.meetingTimes = args.player.meetingTimes;
         this.player.mobile = args.player.mobile;
-        this.player.shortid = args.player.shortid;
 
         var winSize = cc.director.getWinSize();
 
@@ -644,7 +643,7 @@ var ProfileLayer = cc.Layer.extend({
 
     },
 
-    //复制邀请码按钮事件
+    //复制邀请码按钮事件 - 废弃, 改用手机号
     inviteCopyClick: function () {
         if (cc.sys.os === cc.sys.OS_IOS) {
             var ret = jsb.reflection.callStaticMethod("NativeOcClass",
