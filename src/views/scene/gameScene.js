@@ -1520,7 +1520,7 @@ var GameLayer = cc.Layer.extend({
     effectCardCallBack: function ()
     {
         this.m_pEffectLayer = null;
-        cc.log("----> effectCardCallBack");
+        //cc.log("----> effectCardCallBack");
     },
 
     effectCard: function (cardRecognization, actorNr) {
