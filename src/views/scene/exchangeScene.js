@@ -461,6 +461,7 @@ var ExchangeListLayer = cc.Layer.extend({
     },
 
     doExchangeVirtual: function () {
+        var self = this;
         UniversalController.exchange(this.exchangeId, '', 1, '', '', function (data) {
             if (data.code == RETURN_CODE.OK) {
                 prompt.fadeMiddle('兑换成功, 请您注意查收');
