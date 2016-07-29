@@ -19,6 +19,43 @@ var gGameHttpAddr = {
     port: 1337
 }
 
+var gGameServerUrl = function () {
+    if (gGameSvrAddr.host.indexOf('101.200.128.237') > -1) {
+        return {host: "test.apigame1.zaguzi.com", port: 3014};
+    }
+    else if (gGameSvrAddr.host.indexOf('101.201.154.38') > -1) {
+        return {host: "apigame1.zaguzi.com", port: 3014};
+    }
+    else {
+        return {host: "127.0.0.1", port: 3014}
+    }
+}
+
+var gWebServerUrl = function () {
+    if (gWebSvrAddr.host.indexOf('101.200.128.237') > -1) {
+        return "http://test.apigame2.zaguzi.com:3001/"
+    }
+    else if (gWebSvrAddr.host.indexOf('101.201.154.38') > -1) {
+        return "http://apigame2.zaguzi.com:3001/"
+    }
+    else {
+        return "http://127.0.0.1:3001/";
+    }
+}
+
+var gGameHttpServerUrl = function () {
+    if (gGameHttpAddr.host.indexOf('101.200.128.237') > -1) {
+        return "http://test.apigame3.zaguzi.com:1337/"
+    }
+    else if (gGameHttpAddr.host.indexOf('101.201.154.38') > -1) {
+        return "http://apigame3.zaguzi.com:1337/"
+    }
+    else {
+        return "http://127.0.0.1:1337/";
+    }
+}
+
+
 //网络状态,是否与connector服务连接
 var gHasConnector = false;
 //

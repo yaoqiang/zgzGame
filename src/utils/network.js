@@ -3,7 +3,7 @@ var pomelo = window.pomelo;
  * http请求
  */
 var Network = {
-    url: "http://" + gWebSvrAddr.host.concat(':').concat(gWebSvrAddr.port).concat('/'),
+    url: gWebServerUrl(),
     get: function (params) {
     },
     post: function (params) {
@@ -35,8 +35,8 @@ var Network = {
     //连接pomelo: connector server
     enter: function (uid, token, cb) {
         pomelo.init({
-            host: gGameSvrAddr.host,
-            port: gGameSvrAddr.port,
+            host: gGameServerUrl().host,
+            port: gGameServerUrl().port,
             log: true
         }, function () {
             var route = 'gate.gateHandler.queryEntry';
@@ -63,7 +63,7 @@ var Network = {
 };
 
 var GameHttp = {
-    url: "http://" + gGameHttpAddr.host.concat(':').concat(gGameHttpAddr.port).concat('/'),
+    url: gGameHttpServerUrl(),
     get: function (params) {
     },
     post: function (params) {
