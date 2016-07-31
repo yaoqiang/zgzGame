@@ -66,7 +66,7 @@ var IndexScene = cc.Scene.extend({
 
         //如果是每月第一天, 处理后续逻辑
         var now = new Date();
-        if (now.getDate() == 20) {
+        if (now.getDate() == 1) {
             var currentGameCounter = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
             var gameCounterList = currentGameCounter == null ? [{uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}] : JSON.parse(currentGameCounter);
             gameCounterList = _.map(gameCounterList, function (gameCounter) {
