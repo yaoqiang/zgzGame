@@ -37,7 +37,7 @@ UniversalController.getMyItemList = function (cb) {
     });
 }
 
-UniversalController.updateProfile = function (nickName, gender, avatar, summary) {
+UniversalController.updateProfile = function (nickName, gender, summary) {
 
     if (nickName.length < 2 || nickName.length > 6) {
         prompt.fadeMiddle('修改失败, 昵称2-6位', 3);
@@ -52,13 +52,11 @@ UniversalController.updateProfile = function (nickName, gender, avatar, summary)
     pomelo.request(route.updateProfile, {
         nickName: nickName,
         gender: gender,
-        avatar: avatar,
         summary: summary
     }, function (data) {
         if (data.code == RETURN_CODE.OK) {
             gPlayer.nickName = data.nickName;
             gPlayer.gender = gender;
-            gPlayer.avatar = avatar;
             gPlayer.summary = data.summary;
 
             prompt.fadeMiddle('修改成功');

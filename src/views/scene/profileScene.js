@@ -431,7 +431,7 @@ var ProfileLayer = cc.Layer.extend({
         var nickName = this.nickNameValue.getString();
         var summary = this.summaryValue.getString();
 
-        UniversalController.updateProfile(nickName, this.player.gender, this.player.avatar, summary);
+        UniversalController.updateProfile(nickName, this.player.gender, summary);
     },
 
 
