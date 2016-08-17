@@ -73,6 +73,11 @@ var route = {
     getLatestActivityGodMonth: 'connector.universalHandler.getLatestActivityGodMonth',
 
 
+    getLotteryCard: 'connector.universalHandler.getLotteryCard',
+    lottery: 'connector.universalHandler.lottery',
+    getAppleStoreApproveState: 'connector.universalHandler.getAppleStoreApproveState',
+
+
     //-----------------------
     //HTTP Routes...
     //-----------------------
