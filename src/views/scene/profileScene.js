@@ -104,6 +104,10 @@ var ProfileLayer = cc.Layer.extend({
         this.player.meetingTimes = args.player.meetingTimes;
         this.player.mobile = args.player.mobile;
 
+        this.player.rank = args.player.rank;
+        this.player.exp = args.player.exp;
+        this.player.nextUpgradeExp = args.player.nextUpgradeExp;
+
         var winSize = cc.director.getWinSize();
 
         //background
@@ -366,6 +370,8 @@ var ProfileLayer = cc.Layer.extend({
         meetingTimeValueLabel.setAnchorPoint(0, 0.5);
         this.addChild(meetingTimeValueLabel);
 
+
+
         //
         var ingotLabel = new cc.LabelTTF("元  宝:", "AmericanTypewriter", 18);
         ingotLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 130);
@@ -385,6 +391,44 @@ var ProfileLayer = cc.Layer.extend({
         ingotValue.setAnchorPoint(0, 0.5);
 
         this.addChild(ingotValue);
+
+
+        //
+        var rankLabel = new cc.LabelTTF("级  别:", "AmericanTypewriter", 18);
+        rankLabel.setPosition(winSize.width / 2 - 110, winSize.height / 2 - 170);
+        rankLabel.color = cc.color.WHITE;
+
+        this.addChild(rankLabel);
+
+        //rank avatar
+        var rankAvatar = new cc.Sprite("#"+utils.getRankAvatar(this.player.rank || 1));
+        rankAvatar.setPosition(winSize.width / 2 - 40, winSize.height / 2 - 170);
+        rankAvatar.setAnchorPoint(0, 0.5);
+        rankAvatar.scale = 0.28;
+        this.addChild(rankAvatar);
+
+
+        var rankString = RankConf[0].title;
+        if (this.player.rank) {
+            if (this.player.rank > 0) {
+                rankString = RankConf[this.player.rank-1].title;
+            }
+        }
+        var rankValueLabel = new cc.LabelTTF(rankString, "AmericanTypewriter", 18);
+        rankValueLabel.setPosition(winSize.width / 2, winSize.height / 2 - 170);
+        rankValueLabel.setAnchorPoint(0, 0.5);
+        this.addChild(rankValueLabel);
+
+
+        var expTitleLabel = new cc.LabelTTF("经验值:", "AmericanTypewriter", 18);
+        expTitleLabel.setPosition(winSize.width / 2 + 70, winSize.height / 2 - 170);
+        expTitleLabel.setAnchorPoint(0, 0.5);
+        this.addChild(expTitleLabel);
+
+        var expValueLabel = new cc.LabelTTF(this.player.exp+"/"+this.player.nextUpgradeExp, "AmericanTypewriter", 18);
+        expValueLabel.setPosition(winSize.width / 2 + 145, winSize.height / 2 - 170);
+        expValueLabel.setAnchorPoint(0, 0.5);
+        this.addChild(expValueLabel);
 
 
 
@@ -422,7 +466,7 @@ var ProfileLayer = cc.Layer.extend({
         this.inviteTipLabel = new cc.LabelTTF("邀请朋友并绑定手机(填您的手机号),您可获得3元礼包(可累积)", "Arial", 16);
         this.inviteTipLabel.color = cc.color.YELLOW;
         this.inviteTipLabel.setAnchorPoint(0, 0.5);
-        this.inviteTipLabel.setPosition(winSize.width / 2 - 140, winSize.height / 2 - 190);
+        this.inviteTipLabel.setPosition(winSize.width / 2 - 140, winSize.height / 2 - 205);
         this.addChild(this.inviteTipLabel, 10);
     },
 
