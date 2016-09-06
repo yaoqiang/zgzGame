@@ -61,6 +61,8 @@ var gHasConnector = false;
 //
 var gCONNECT_STATE = CommonConf.CONNECT_STATE.DISCONNECTED;
 
+var gBeingJoin = false;
+
 //全局"连接中.." bar(loading bar)
 var gConnectingBar = null;
 //后端处理app更新事件为统一发送, 客户端目前有2处, 1是每日自动登陆请求1次, 2是设置-更新,

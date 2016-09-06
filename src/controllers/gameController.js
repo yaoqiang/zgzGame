@@ -7,6 +7,9 @@ var GameController = GameController || {};
  * @param roomId
  */
 GameController.join = function (roomId, lobbyId) {
+    if (gBeingJoin) return;
+
+    gBeingJoin = true;
     //cc.log("GameController.join roomId:", roomId);
     gRoomId = roomId;
 
@@ -14,6 +17,7 @@ GameController.join = function (roomId, lobbyId) {
     cc.director.getRunningScene().addChild(loadingBar, 100);
 
     pomelo.request(route.join_v_1_3, {roomId: roomId}, function (data) {
+        gBeingJoin = false;
         if (cc.sys.isObjectValid(loadingBar)) loadingBar.removeFromParent(true);
         //cc.log("join :", data);
         if (data.code == RETURN_CODE.OK) {
