@@ -487,6 +487,11 @@ UniversalController.getLatestActivityGodMonth = function (cb) {
     });
 }
 
+UniversalController.getLotteryItemList = function (cb) {
+    pomelo.request(route.getLotteryItemList, {}, function (data) {
+        cb(data);
+    });
+}
 
 UniversalController.getLotteryCard = function (cb) {
     pomelo.request(route.getLotteryCard, {}, function (data) {

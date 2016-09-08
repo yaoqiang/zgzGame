@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="添加framework/runtime-src">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/classes.jar" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/intermediates/bundles/debug/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/outputs/aar/pingpp_one-debug.aar" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/outputs/aar/pingpp_one-debug.aar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.xcworkspace/xcuserdata/yaoqiang.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.xcworkspace/xcuserdata/yaoqiang.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/pingpp.iml" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/pingpp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/tmp/packageDebugJar/MANIFEST.MF" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/build/tmp/packageDebugJar/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/pingpp_one.iml" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/pingpp_one.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Info.plist" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/ios/Info.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/globals.js" afterPath="$PROJECT_DIR$/src/globals.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/utils.js" afterPath="$PROJECT_DIR$/src/utils/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/layer/dailyTodoLayer.js" afterPath="$PROJECT_DIR$/src/views/layer/dailyTodoLayer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scene/exchangeScene.js" afterPath="$PROJECT_DIR$/src/views/scene/exchangeScene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/scene/gameScene.js" afterPath="$PROJECT_DIR$/src/views/scene/gameScene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/template/playerLayer.js" afterPath="$PROJECT_DIR$/src/views/template/playerLayer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/consts/routes.js" afterPath="$PROJECT_DIR$/src/consts/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/universalController.js" afterPath="$PROJECT_DIR$/src/controllers/universalController.js" />
     </list>
     <list id="b4c2d095-8e15-429c-8432-16fc022c81a3" name="Revert: 替换pomelo客户端 (d22ed81376edc1d31fd8d3451cb1b79ee14810e0)" comment="" />
     <ignored path="ZgzGame.iws" />
@@ -43,74 +32,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gameScene.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
+      <file leaf-file-name="scrollCaptionLayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/template/scrollCaptionLayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1079" column="9" selection-start-line="1079" selection-start-column="9" selection-end-line="1079" selection-end-column="9" />
+            <state relative-caret-position="340">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="exchangeScene.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/scene/exchangeScene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16816144">
-              <caret line="226" column="29" selection-start-line="226" selection-start-column="29" selection-end-line="226" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="139" column="1" selection-start-line="139" selection-start-column="1" selection-end-line="139" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="universalController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="universalController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controllers/universalController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+            <state relative-caret-position="381">
+              <caret line="487" column="1" selection-start-line="487" selection-start-column="1" selection-end-line="487" selection-end-column="1" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="privateRoomScene.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/scene/privateRoomScene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="304" column="9" selection-start-line="298" selection-start-column="8" selection-end-line="304" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="globals.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/globals.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lobbyScene.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/scene/lobbyScene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
-              <folding>
-                <element signature="e#9570#10213#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -118,28 +55,78 @@
       <file leaf-file-name="dailyTodoLayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/layer/dailyTodoLayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.0">
-              <caret line="201" column="34" selection-start-line="201" selection-start-column="34" selection-end-line="201" selection-end-column="34" />
+            <state relative-caret-position="204">
+              <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="consts.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/consts/consts.js">
+      <file leaf-file-name="systemMessageLayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/layer/systemMessageLayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="308" column="0" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="183" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playerLayer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/template/playerLayer.js">
+      <file leaf-file-name="lotteryLayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/layer/lotteryLayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="209" column="28" selection-start-line="209" selection-start-column="28" selection-end-line="209" selection-end-column="28" />
+            <state relative-caret-position="323">
+              <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="smallWidget.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4165">
+              <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/consts/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="systemMassageQueue.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/template/systemMassageQueue.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notificationLayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/template/notificationLayer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2380">
+              <caret line="140" column="45" selection-start-line="140" selection-start-column="45" selection-end-line="140" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexScene.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/scene/indexScene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1853">
+              <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -159,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/utils/cppCallback.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/views/layer/fivePeopleTableLayer.js" />
         <option value="$PROJECT_DIR$/src/views/layer/sixPeopleTableLayer.js" />
@@ -174,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/views/layer/paymentLayer.js" />
         <option value="$PROJECT_DIR$/src/views/layer/settingLayer.js" />
         <option value="$PROJECT_DIR$/src/views/layer/indexScrollLayer.js" />
-        <option value="$PROJECT_DIR$/src/controllers/universalController.js" />
         <option value="$PROJECT_DIR$/src/views/template/headerLayer.js" />
         <option value="$PROJECT_DIR$/src/views/template/chatInGameLayer.js" />
         <option value="$PROJECT_DIR$/src/consts/gameEvents.js" />
@@ -187,7 +172,6 @@
         <option value="$PROJECT_DIR$/src/views/layer/systemMessageLayer.js" />
         <option value="$PROJECT_DIR$/src/views/scene/shopScene.js" />
         <option value="$PROJECT_DIR$/src/views/poker/pokerLayer.js" />
-        <option value="$PROJECT_DIR$/src/consts/routes.js" />
         <option value="$PROJECT_DIR$/src/views/template/smallWidget.js" />
         <option value="$PROJECT_DIR$/src/views/scene/indexScene.js" />
         <option value="$PROJECT_DIR$/project.json" />
@@ -200,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/views/poker/fanOutMenuLayer.js" />
         <option value="$PROJECT_DIR$/src/consts/consts.js" />
         <option value="$PROJECT_DIR$/src/views/scene/profileScene.js" />
-        <option value="$PROJECT_DIR$/src/globals.js" />
         <option value="$PROJECT_DIR$/res/game_config.json" />
         <option value="$PROJECT_DIR$/src/views/scene/privateRoomScene.js" />
         <option value="$PROJECT_DIR$/src/views/scene/lobbyScene.js" />
@@ -210,6 +193,10 @@
         <option value="$PROJECT_DIR$/src/views/layer/EffectLayer.js" />
         <option value="$PROJECT_DIR$/src/utils/utils.js" />
         <option value="$PROJECT_DIR$/src/views/scene/exchangeScene.js" />
+        <option value="$PROJECT_DIR$/src/globals.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/lotteryLayer.js" />
+        <option value="$PROJECT_DIR$/src/consts/routes.js" />
+        <option value="$PROJECT_DIR$/src/controllers/universalController.js" />
       </list>
     </option>
   </component>
@@ -219,10 +206,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
-    <option name="y" value="23" />
-    <option name="width" value="1276" />
-    <option name="height" value="777" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -249,7 +236,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -296,7 +282,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,34 +300,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scene" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zgzGame" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="consts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
@@ -383,16 +348,17 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="904" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="SearchEverywhereHistoryKey" value="exc&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;gameS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/gameScene.js&#10;player&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/playerLayer.js&#10;da&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/dailyTodoLayer.js&#10;profile&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;cons&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;profi&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;taskS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/taskScene.js&#10;chati&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;CONS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;route&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/routes.js&#10;set&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;auth&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;hea&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;base&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;au&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;index&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/indexScene.js&#10;he&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;glo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;wi&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/smallWidget.js&#10;aut&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;setting&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;sh&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/shopScene.js&#10;baseE&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;CHA&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;ne&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/utils/network.js&#10;sett&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;chatl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;const&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;gameM&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;conf&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/config.json&#10;commonconf&#9;null&#9;null&#10;consts&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;uni&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/universalController.js&#10;me&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;settingL&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;glob&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;profileS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;lobb&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;ex&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;horl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;se&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;lo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;gameCon&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/gameController.js&#10;hor&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;head&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;Ho&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;lobbys&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;eventbus&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/utils/eventBus.js&#10;headerl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js" />
+    <property name="SearchEverywhereHistoryKey" value="gameS&#9;FILE&#9;file://D:/playground/zgzGame/src/views/scene/gameScene.js&#10;exc&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;player&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/playerLayer.js&#10;da&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/dailyTodoLayer.js&#10;profile&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;cons&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;profi&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;taskS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/taskScene.js&#10;chati&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;CONS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;route&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/routes.js&#10;set&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;auth&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;hea&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;base&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;au&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;index&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/indexScene.js&#10;he&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;glo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;wi&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/smallWidget.js&#10;aut&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;setting&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;sh&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/shopScene.js&#10;baseE&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;CHA&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;ne&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/utils/network.js&#10;sett&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;chatl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;const&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;gameM&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;conf&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/config.json&#10;commonconf&#9;null&#9;null&#10;consts&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;uni&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/universalController.js&#10;me&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;settingL&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;glob&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;profileS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;lobb&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;ex&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;horl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;se&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;lo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;gameCon&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/gameController.js&#10;hor&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;head&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;Ho&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;lobbys&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;eventbus&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/utils/eventBus.js&#10;headerl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res/fonts" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\playground\zgzGame\src\views\layer" />
       <recent name="$PROJECT_DIR$/src/views/scene" />
       <recent name="$PROJECT_DIR$/res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/fonts" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.index.html">
@@ -404,14 +370,19 @@
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
       <method />
     </configuration>
     <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
@@ -421,6 +392,7 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
@@ -432,10 +404,12 @@
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run-script" />
       <scripts />
+      <node-interpreter value="project" />
       <envs />
       <method />
     </configuration>
     <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>C:/Program Files/nodejs/node.exe</node-interpreter>
       <node-options />
       <working-directory>$PROJECT_DIR$</working-directory>
       <pass-parent-env>true</pass-parent-env>
@@ -468,7 +442,9 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="StructuralSearchPlugin">
     <searchConfiguration name="user defined" created="1436801465697" text="gLastFanCardRecognization" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
     <searchConfiguration name="user defined" created="1436287366754" text="showCardPosition" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
@@ -493,315 +469,372 @@
       <changelist id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="" />
       <created>1416970661300</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1416970661300</updated>
-    </task>
-    <task id="LOCAL-00040" summary="res加载调整">
-      <created>1458661076417</created>
-      <option name="number" value="00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1458661076417</updated>
+      <workItem from="1469602579013" duration="1990000" />
+      <workItem from="1469782628534" duration="1848000" />
+      <workItem from="1471323144680" duration="275000" />
+      <workItem from="1471416970898" duration="3332000" />
+      <workItem from="1472006968242" duration="685000" />
+      <workItem from="1473230668497" duration="3083000" />
     </task>
     <task id="LOCAL-00041" summary="调整资源加载">
       <created>1458662657686</created>
       <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
       <option name="project" value="LOCAL" />
       <updated>1458662657686</updated>
     </task>
     <task id="LOCAL-00042" summary="..........">
       <created>1459474148228</created>
       <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
       <option name="project" value="LOCAL" />
       <updated>1459474148228</updated>
     </task>
     <task id="LOCAL-00043" summary="兑换提示">
       <created>1459585304309</created>
       <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
       <option name="project" value="LOCAL" />
       <updated>1459585304309</updated>
     </task>
     <task id="LOCAL-00044" summary="############## 解决加入事件BUG!!! 主要因为node的生命周期和事件接受时间的巧合导致!!!&#10;其他细节优化">
       <created>1459659181116</created>
       <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
       <updated>1459659181116</updated>
     </task>
     <task id="LOCAL-00045" summary="############## 解决加入事件BUG!!! 主要因为node的生命周期和事件接受时间的巧合导致!!!&#10;其他细节优化">
       <created>1459660613971</created>
       <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
       <updated>1459660613971</updated>
     </task>
     <task id="LOCAL-00046" summary="remove log">
       <created>1459736416046</created>
       <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
       <option name="project" value="LOCAL" />
       <updated>1459736416046</updated>
     </task>
     <task id="LOCAL-00047" summary="细节修改">
       <created>1459954767838</created>
       <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
       <option name="project" value="LOCAL" />
       <updated>1459954767838</updated>
     </task>
     <task id="LOCAL-00048" summary="add payment failed request for pingpp">
       <created>1459956827501</created>
       <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
       <option name="project" value="LOCAL" />
       <updated>1459956827501</updated>
     </task>
     <task id="LOCAL-00049" summary="fixed reconnect alert can close bug">
       <created>1460073947843</created>
       <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
       <updated>1460073947843</updated>
     </task>
     <task id="LOCAL-00050" summary="修改喇叭字体为白色: 后续如果有VIP 再卖变色喇叭..&#10;调整牌局布局. (聊天表情放右下角), 上方调整.">
       <created>1461508989890</created>
       <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
       <option name="project" value="LOCAL" />
       <updated>1461508989890</updated>
     </task>
     <task id="LOCAL-00051" summary="牌局结构调整">
       <created>1461590571672</created>
       <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
       <option name="project" value="LOCAL" />
       <updated>1461590571673</updated>
     </task>
     <task id="LOCAL-00052" summary="更新资源, 添加级别icon">
       <created>1461626014345</created>
       <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
       <updated>1461626014346</updated>
     </task>
     <task id="LOCAL-00053" summary="更新资源">
       <created>1461626373906</created>
       <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
       <updated>1461626373906</updated>
     </task>
     <task id="LOCAL-00054" summary="logo, trumpet stay second">
       <created>1461680166411</created>
       <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
       <updated>1461680166412</updated>
     </task>
     <task id="LOCAL-00055" summary="处理安卓每日自动请求一次版本更新.">
       <created>1461682160481</created>
       <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
       <updated>1461682160481</updated>
     </task>
     <task id="LOCAL-00056" summary="leave click event bug fixed">
       <created>1461683036625</created>
       <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
       <option name="project" value="LOCAL" />
       <updated>1461683036625</updated>
     </task>
     <task id="LOCAL-00057" summary="leave click event bug fixed">
       <created>1461683178830</created>
       <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
       <option name="project" value="LOCAL" />
       <updated>1461683178830</updated>
     </task>
     <task id="LOCAL-00058" summary="公告调整">
       <created>1461764519988</created>
       <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
       <option name="project" value="LOCAL" />
       <updated>1461764519989</updated>
     </task>
     <task id="LOCAL-00059" summary="apple icon, and version to 1.2">
       <created>1461856687215</created>
       <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
       <option name="project" value="LOCAL" />
       <updated>1461856687216</updated>
     </task>
     <task id="LOCAL-00060" summary="android res">
       <created>1461857997216</created>
       <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
       <option name="project" value="LOCAL" />
       <updated>1461857997217</updated>
     </task>
     <task id="LOCAL-00061" summary="把版本更新放在Index onEnter. 以免其他事件导致UI冲突">
       <created>1461884963353</created>
       <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
       <updated>1461884963353</updated>
     </task>
     <task id="LOCAL-00062" summary="修复重回游戏后, gActor.append没有被赋值导致牌型识别错误的bug.(双3飞不了)">
       <created>1463011603221</created>
       <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
       <option name="project" value="LOCAL" />
       <updated>1463011603223</updated>
     </task>
     <task id="LOCAL-00063" summary="同步rank">
       <created>1463012539047</created>
       <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
       <option name="project" value="LOCAL" />
       <updated>1463012539047</updated>
     </task>
     <task id="LOCAL-00064" summary="ignore .ds_store">
       <created>1463094610810</created>
       <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
       <option name="project" value="LOCAL" />
       <updated>1463094610810</updated>
     </task>
     <task id="LOCAL-00065" summary="ignore .ds_store">
       <created>1463094880685</created>
       <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
       <option name="project" value="LOCAL" />
       <updated>1463094880685</updated>
     </task>
     <task id="LOCAL-00066" summary="客户端apple IAP改为http方式">
       <created>1463964430025</created>
       <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
       <option name="project" value="LOCAL" />
       <updated>1463964430025</updated>
     </task>
     <task id="LOCAL-00067" summary="找回密码">
       <created>1464136754626</created>
       <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
       <option name="project" value="LOCAL" />
       <updated>1464136754626</updated>
     </task>
     <task id="LOCAL-00068" summary="调整支付提示,">
       <created>1464272044092</created>
       <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
       <option name="project" value="LOCAL" />
       <updated>1464272044093</updated>
     </task>
     <task id="LOCAL-00069" summary="邀请码,其他">
       <created>1466122109842</created>
       <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
       <option name="project" value="LOCAL" />
       <updated>1466122109846</updated>
     </task>
     <task id="LOCAL-00070" summary="调整个人信息">
       <created>1466641389346</created>
       <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
       <updated>1466641389346</updated>
     </task>
     <task id="LOCAL-00071" summary="喇叭微调">
       <created>1466775917184</created>
       <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
       <updated>1466775917184</updated>
     </task>
     <task id="LOCAL-00072" summary="喇叭微调, 支持换行, 修改为显示3条历史记录.">
       <created>1467160906242</created>
       <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
       <updated>1467160906242</updated>
     </task>
     <task id="LOCAL-00073" summary="去掉客服电话信息, 转留QQ微信公众号联系方式;&#10;邀请注册奖励调整, 去掉以邀请码邀请, 直接改为手机号邀请. 其他细节调整;">
       <created>1467540741481</created>
       <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
       <option name="project" value="LOCAL" />
       <updated>1467540741482</updated>
     </task>
     <task id="LOCAL-00074" summary="调整安卓每日首次登陆时检测版本的接口, 1.3修改为1.3的接口;">
       <created>1467541787141</created>
       <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
       <option name="project" value="LOCAL" />
       <updated>1467541787141</updated>
     </task>
     <task id="LOCAL-00075" summary="兑换变量单词纠错修改; 邀请奖励列表">
       <created>1467593956161</created>
       <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
       <updated>1467593956161</updated>
     </task>
     <task id="LOCAL-00076" summary="完善邀请奖励框">
       <created>1467594597455</created>
       <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
       <updated>1467594597455</updated>
     </task>
     <task id="LOCAL-00077" summary="客户端大厅&amp;房间改造">
       <created>1467678669531</created>
       <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
       <updated>1467678669531</updated>
     </task>
     <task id="LOCAL-00078" summary="字体更换, 其他细节">
       <created>1467765011436</created>
       <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
       <updated>1467765011436</updated>
     </task>
     <task id="LOCAL-00079" summary="各种调整..每日首次登陆处理, 其他">
       <created>1467851933955</created>
       <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
       <option name="project" value="LOCAL" />
       <updated>1467851933955</updated>
     </task>
     <task id="LOCAL-00080" summary="破产补助和五人局双三认输认输">
       <created>1467937880568</created>
       <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
       <option name="project" value="LOCAL" />
       <updated>1467937880569</updated>
     </task>
     <task id="LOCAL-00081" summary="认输和破产补助调整.">
       <created>1467984980205</created>
       <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
       <option name="project" value="LOCAL" />
       <updated>1467984980206</updated>
     </task>
     <task id="LOCAL-00082" summary="牌局结束后向客户端发送各玩家手牌, remainingCardsOfActors;&#10;启动动画公司名换为www.zaguzi.com">
       <created>1468030657071</created>
       <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
       <option name="project" value="LOCAL" />
       <updated>1468030657071</updated>
     </task>
     <task id="LOCAL-00083" summary="牌局中玩家信息框, 内容整体往左移动一点, 之前简介太长会超出框.">
       <created>1468031586735</created>
       <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
       <option name="project" value="LOCAL" />
       <updated>1468031586736</updated>
     </task>
     <task id="LOCAL-00084" summary="邀请奖励添加tip;&#10;商店道具的记牌器加icon;&#10;系统消息如果数据带url,则点击可弹出webview查看网页内容;">
       <created>1468063838412</created>
       <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
       <option name="project" value="LOCAL" />
       <updated>1468063838413</updated>
     </task>
     <task id="LOCAL-00085" summary="牌局结束后 显示各玩家手牌">
       <created>1468117701524</created>
       <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
       <updated>1468117701524</updated>
     </task>
     <task id="LOCAL-00086" summary="-----------------完美分割线----------------&#10;私人场和其他细节">
       <created>1468340017910</created>
       <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
       <option name="project" value="LOCAL" />
       <updated>1468340017911</updated>
     </task>
     <task id="LOCAL-00087" summary="调整代码,适配native, checkbox需要通过get... set...来设置/获取状态;">
       <created>1468420449747</created>
       <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
       <option name="project" value="LOCAL" />
       <updated>1468420449749</updated>
     </task>
     <task id="LOCAL-00088" summary="私人场增加金币限制, 普通场增加记牌器是否可用icon">
       <created>1468503567819</created>
       <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
       <option name="project" value="LOCAL" />
       <updated>1468503567824</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="about lottery and some api define">
+      <created>1471426572722</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1471426572723</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11213000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1276" height="777" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19681275" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19642857" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37518248" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25255474" sideWeight="0.50278884" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25547445" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26861313" sideWeight="0.49402392" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2675367" sideWeight="0.49402392" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35474452" sideWeight="0.49721116" order="13" side_tool="false" content_ui="tabs" />
@@ -822,6 +855,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Images&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37518248" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Physics&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Animations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -831,6 +865,7 @@
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="true" content_ui="tabs" />
       <window_info id="Palette.New&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24183007" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="NodeAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -848,7 +883,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
-    <MESSAGE value="客户端apple IAP改为http方式" />
     <MESSAGE value="找回密码" />
     <MESSAGE value="调整支付提示," />
     <MESSAGE value="邀请码,其他" />
@@ -873,7 +907,8 @@
     <MESSAGE value="-----------------完美分割线----------------&#10;私人场和其他细节" />
     <MESSAGE value="调整代码,适配native, checkbox需要通过get... set...来设置/获取状态;" />
     <MESSAGE value="私人场增加金币限制, 普通场增加记牌器是否可用icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="私人场增加金币限制, 普通场增加记牌器是否可用icon" />
+    <MESSAGE value="about lottery and some api define" />
+    <option name="LAST_COMMIT_MESSAGE" value="about lottery and some api define" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -886,386 +921,369 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/template/soundManger.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/avatarSelectorLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="50" selection-start-line="48" selection-start-column="20" selection-end-line="50" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resource.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayerDefine.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/cardUtil.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="20" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/consts/gameEvents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/gameLoaderScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48765433">
+        <state relative-caret-position="0">
           <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/template/balanceLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38243628">
+        <state relative-caret-position="0">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/playerProfileLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61728394">
+        <state relative-caret-position="0">
           <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/bankruptLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.121813">
+        <state relative-caret-position="0">
           <caret line="41" column="50" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/poker/bidMenuLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24645892">
+        <state relative-caret-position="0">
           <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/sevenPeopleTableLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/shopScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59490085">
+        <state relative-caret-position="0">
           <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/systemMessageLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42331287">
-          <caret line="132" column="39" selection-start-line="132" selection-start-column="39" selection-end-line="132" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2222223">
+        <state relative-caret-position="0">
           <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/template/headerLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/indexScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/exchangeTabLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="90" column="41" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/readyMenuLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.072527476">
+        <state relative-caret-position="0">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/gameMenuLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15560167">
+        <state relative-caret-position="0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/indexScrollLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.031120332">
+        <state relative-caret-position="0">
           <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/taskScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="322" column="34" selection-start-line="322" selection-start-column="34" selection-end-line="322" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="626" column="26" selection-start-line="626" selection-start-column="26" selection-end-line="626" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/template/chatInGameLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="490" column="9" selection-start-line="472" selection-start-column="8" selection-end-line="490" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/consts/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/template/components.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="138" column="48" selection-start-line="138" selection-start-column="48" selection-end-line="138" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/events/gameMessageEvent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/template/scrollCaptionLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46373627">
-          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/poker/fanOutMenuLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="32" column="45" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/settingLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="33" column="56" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/gameController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="216" column="42" selection-start-line="216" selection-start-column="25" selection-end-line="216" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/project.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/profileScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="711" column="36" selection-start-line="711" selection-start-column="36" selection-end-line="711" selection-end-column="36" />
-          <folding>
-            <element signature="e#42168#45466#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/ccui/uiwidgets/UICheckBox.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="0">
           <caret line="440" column="14" selection-start-line="440" selection-start-column="4" selection-end-line="440" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8979592">
+        <state relative-caret-position="0">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/sdkbox_config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6632653">
+        <state relative-caret-position="0">
           <caret line="77" column="17" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/game_config.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06122449">
+        <state relative-caret-position="0">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/globals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/privateRoomScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="5168">
           <caret line="304" column="9" selection-start-line="298" selection-start-column="8" selection-end-line="304" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/lobbyScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="4148">
           <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
-          <folding>
-            <element signature="e#9570#10213#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/layer/dailyTodoLayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.0">
-          <caret line="201" column="34" selection-start-line="201" selection-start-column="34" selection-end-line="201" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/template/playerLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state relative-caret-position="3553">
           <caret line="209" column="28" selection-start-line="209" selection-start-column="28" selection-end-line="209" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/layer/EffectLayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.093361">
+        <state relative-caret-position="0">
           <caret line="93" column="49" selection-start-line="93" selection-start-column="49" selection-end-line="93" selection-end-column="49" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/consts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5236">
+          <caret line="308" column="0" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/auto/api/jsb_cocos2dx_extension_auto_api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="2308" column="0" selection-start-line="2308" selection-start-column="0" selection-end-line="2308" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/gui/scrollview/CCTableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="545" column="15" selection-start-line="545" selection-start-column="4" selection-end-line="545" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2363">
+          <caret line="139" column="1" selection-start-line="139" selection-start-column="1" selection-end-line="139" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/exchangeScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4046">
+          <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/globals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/gameController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="85" column="46" selection-start-line="85" selection-start-column="46" selection-end-line="85" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1079" column="9" selection-start-line="1079" selection-start-column="9" selection-end-line="1079" selection-end-column="9" />
+        <state relative-caret-position="18139">
+          <caret line="1067" column="9" selection-start-line="1067" selection-start-column="9" selection-end-line="1067" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/eventBus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/events/gameMessageEvent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="212" column="35" selection-start-line="212" selection-start-column="21" selection-end-line="212" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/massageQueue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/systemMassageQueue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/notificationLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="140" column="45" selection-start-line="140" selection-start-column="45" selection-end-line="140" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/indexScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="109" column="36" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/scrollCaptionLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/dailyTodoLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/systemMessageLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="183" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4165">
+          <caret line="245" column="0" selection-start-line="245" selection-start-column="0" selection-end-line="245" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/lotteryLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/universalController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/consts/consts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="308" column="0" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/auto/api/jsb_cocos2dx_extension_auto_api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3319239">
-          <caret line="2308" column="0" selection-start-line="2308" selection-start-column="0" selection-end-line="2308" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/gui/scrollview/CCTableView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.807611">
-          <caret line="545" column="15" selection-start-line="545" selection-start-column="4" selection-end-line="545" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="139" column="1" selection-start-line="139" selection-start-column="1" selection-end-line="139" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/scene/exchangeScene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16816144">
-          <caret line="226" column="29" selection-start-line="226" selection-start-column="29" selection-end-line="226" selection-end-column="29" />
+        <state relative-caret-position="381">
+          <caret line="487" column="1" selection-start-line="487" selection-start-column="1" selection-end-line="487" selection-end-column="1" />
           <folding />
         </state>
       </provider>
