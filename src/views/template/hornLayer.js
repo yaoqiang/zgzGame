@@ -1,4 +1,7 @@
 // 小喇叭layer
+/////////////////////////
+//: 已废弃!!!
+/////////////////////////
 var HornSprite = cc.Layer.extend({
     ctor: function () {
         this._super();

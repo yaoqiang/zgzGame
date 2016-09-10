@@ -175,7 +175,7 @@ var IndexLayer = cc.Layer.extend({
         //console.log("---|---->init");
         var winSize = cc.director.getWinSize();
         //this.addChild(new HornSprite());    //zIndex: 0
-        this.addChild(new notificationLayer({visible:true}), 9);
+        this.addChild(new notificationLayer({visible:true}), 11);
 
 
         this.addChild(createIndexScrollLayer({
