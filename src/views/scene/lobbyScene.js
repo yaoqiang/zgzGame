@@ -232,24 +232,24 @@ var LobbyLayer = cc.Layer.extend({
         special.setPosition(button.width / 2, button.height / 2 + 65);
         button.addChild(special);
 
-        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 30);
+        var title = new cc.LabelTTF(room.title, "AmericanTypewriter", 32);
         title.setColor(cc.color.YELLOW);
         title.setPosition(button.width / 2, button.height / 2 - 5);
         button.addChild(title);
 
-        var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 24);
+        var onlineCounterLabel = new cc.LabelTTF("在线：", "AmericanTypewriter", 26);
         onlineCounterLabel.setColor(cc.color.WHITE);
         onlineCounterLabel.setAnchorPoint(0, 0);
         onlineCounterLabel.setPosition(50, button.height / 2 - 75);
         button.addChild(onlineCounterLabel);
 
-        var onlineCounterValue = new cc.LabelTTF(numStr, "AmericanTypewriter", 24);
+        var onlineCounterValue = new cc.LabelTTF(numStr, "AmericanTypewriter", 26);
         onlineCounterValue.setColor(cc.color.WHITE);
         onlineCounterValue.setAnchorPoint(0, 0);
         onlineCounterValue.setPosition(onlineCounterLabel.width+40, button.height / 2 - 75);
         button.addChild(onlineCounterValue);
 
-        var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 24);
+        var baseLabel = new cc.LabelTTF("底注："+room.base, "AmericanTypewriter", 26);
         baseLabel.setColor(cc.color.WHITE);
         baseLabel.setAnchorPoint(0, 0);
         baseLabel.setPosition(button.width / 2 - 80, button.height / 2 - 75);
@@ -263,7 +263,7 @@ var LobbyLayer = cc.Layer.extend({
             button.addChild(useNoteCard);
         }
 
-        var baseValue = new cc.LabelTTF(""+room.min+'≤金', "Arial", 20);
+        var baseValue = new cc.LabelTTF(""+room.min+'≤金', "Arial", 22);
         baseValue.setColor(cc.color.GREEN);
         baseValue.setAnchorPoint(0, 0);
         baseValue.setPosition(button.width / 2 + 100, button.height / 2 - 75);
