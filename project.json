@@ -105,6 +105,7 @@
         "src/views/layer/avatarSelectorLayer.js",
         "src/views/layer/bankruptLayer.js",
         "src/views/layer/EffectLayer.js",
+        "src/views/layer/lotteryLayer.js",
 
 
 
