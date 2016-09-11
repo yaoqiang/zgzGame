@@ -67,7 +67,7 @@ LotteryLayer.prototype = {
 
             var itemLabel = new cc.LabelTTF(this.data.lotteryItemList[i].summary);
             itemLabel.setPosition(110, 40);
-            itemLabel.color = cc.color.BLUE;
+            itemLabel.color = cc.color.YELLOW;
             itemLabel.setFontSize(36);
             itemBg.addChild(itemLabel);
 
