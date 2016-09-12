@@ -78,6 +78,8 @@ var route = {
     lottery: 'connector.universalHandler.lottery',
     getAppleStoreApproveState: 'connector.universalHandler.getAppleStoreApproveState',
 
+    getUserBattleRecordAnalysis: 'connector.universalHandler.getUserBattleRecordAnalysis',
+
 
     //-----------------------
     //HTTP Routes...

@@ -30,9 +30,9 @@ var RankingListScene = cc.Scene.extend({
         //add a keyboard event listener to statusLabel
         this.keyboardListener = cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
-            onKeyPressed:  function(keyCode, event){
+            onKeyPressed: function (keyCode, event) {
             },
-            onKeyReleased: function(keyCode, event){
+            onKeyReleased: function (keyCode, event) {
                 var target = event.getCurrentTarget();
                 if (keyCode == cc.KEY.back) {
                     playEffect(audio_common.Button_Click);
@@ -103,7 +103,7 @@ var RankingListScene = cc.Scene.extend({
                     })
                 }
             })
-            
+
 
         }
 
@@ -229,7 +229,7 @@ var RichRankingListLayer = cc.Layer.extend({
 
         if (idx > 2) {
             var rankValue = new cc.LabelTTF(idx + 1, "Arial", 26);
-            rankValue.setPosition(icon.width/2, icon.height/2)
+            rankValue.setPosition(icon.width / 2, icon.height / 2)
             icon.addChild(rankValue);
         }
 
@@ -302,12 +302,12 @@ var GodRankingListLayer = cc.Layer.extend({
     sprite: null,
     ctor: function (args) {
         this._super();
+        var self = this;
         this.data = args;
 
         var winSize = cc.director.getWinSize();
         var visibleOrigin = cc.director.getVisibleOrigin();
         var visibleSize = cc.director.getVisibleSize();
-
 
 //
         var iconImage = "#rank_top_rank1.png";
@@ -330,7 +330,6 @@ var GodRankingListLayer = cc.Layer.extend({
         //当前玩家上榜资格情况
         var selfRanking = '';
 
-        var gameCounterList = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
         var activity = Storage.get(CommonConf.LOCAL_STORAGE.ACTIVITY_GOD_MONTH);
         var target = CommonConf.GOD_MONTH.TARGET;
         if (activity) {
@@ -338,21 +337,65 @@ var GodRankingListLayer = cc.Layer.extend({
             target = activity.threshold;
         }
 
-        gameCounterList = gameCounterList == null ? [{uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}] : JSON.parse(gameCounterList);
+        try {
+            UniversalController.getUserBattleRecordAnalysis(function (battleData) {
+                if (battleData.code !== RETURN_CODE.OK) {
+                    throw new Error('接口异常, 走catch处理');
+                    return;
+                }
+                if (battleData.battleCount < target) {
+                    selfRanking += '您的游戏局数不够:' + battleData.battleCount + '/' + target;
+                }
+                else {
+                    var winning = parseFloat(battleData.winCount / (battleData.winCount + battleData.loseCount) * 100).toFixed(2);
+                    selfRanking += "您本月战况:" + battleData.winCount + '胜/' + battleData.loseCount + '负' + ' - ' + winning + '%';
+                }
+                self.composeUI(selfRanking, args);
+            });
+        } catch (e) {
+            //如果api异常，则按本地数据显示
+            var gameCounterList = Storage.get(CommonConf.LOCAL_STORAGE.GAME_RECORD_MONTH);
 
-        var gameCounter = _.findWhere(gameCounterList, {uid: gPlayer.uid});
+            gameCounterList = gameCounterList == null ? [{
+                uid: gPlayer.uid,
+                battle: 0,
+                winNr: 0,
+                loseNr: 0
+            }] : JSON.parse(gameCounterList);
 
-        if (gameCounter == undefined) {
-            gameCounter = {uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}
+            var gameCounter = _.findWhere(gameCounterList, {uid: gPlayer.uid});
+
+            if (gameCounter == undefined) {
+                gameCounter = {uid: gPlayer.uid, battle: 0, winNr: 0, loseNr: 0}
+            }
+
+            if (gameCounter.battle < target) {
+                selfRanking += '您的游戏局数不够:' + gameCounter.battle + '/' + target;
+            }
+            else {
+                var winning = parseFloat(gameCounter.winNr / (gameCounter.winNr + gameCounter.loseNr) * 100).toFixed(2);
+                selfRanking += "您本月战况:" + gameCounter.winNr + '胜/' + gameCounter.loseNr + '负' + ' - ' + winning + '%';
+            }
+
+            self.composeUI(selfRanking, args);
         }
 
-        if (gameCounter.battle < target) {
-            selfRanking += '您的游戏局数不够:'+gameCounter.battle+'/'+target;
-        }
-        else {
-            var winning = parseFloat(gameCounter.winNr / (gameCounter.winNr + gameCounter.loseNr) * 100).toFixed(2);
-            selfRanking += "您本月战况:"+gameCounter.winNr + '胜/' + gameCounter.loseNr + '负' + ' - ' + winning + '%';
-        }
+
+    },
+
+    composeUI: function (selfRanking, args) {
+
+        var winSize = cc.director.getWinSize();
+        var visibleOrigin = cc.director.getVisibleOrigin();
+        var visibleSize = cc.director.getVisibleSize();
+        //
+        var iconImage = "#rank_top_rank1.png";
+        var icon = new cc.Sprite(iconImage);
+        icon.scale = 0.8;
+        var iconSize = icon.getBoundingBox();
+
+        var cellH = iconSize.height + 10;
+        var tabH = 120;
 
         var selfRankingLabel = new cc.LabelTTF(selfRanking, 'AmericanTypewriter', 14);
         selfRankingLabel.setAnchorPoint(0, 0.5);
@@ -417,8 +460,8 @@ var GodRankingListLayer = cc.Layer.extend({
         this.m_nCelleNum = rankingList.length;
 
         this.init();
-
     },
+
     init: function () {
         this.m_pTableView = new cc.TableView(this, cc.size(this.m_nTableWidth, this.m_nTableHeight));
         this.m_pTableView.setDirection(cc.SCROLLVIEW_DIRECTION_VERTICAL);
@@ -480,7 +523,7 @@ var GodRankingListLayer = cc.Layer.extend({
 
         if (idx > 2) {
             var rankValue = new cc.LabelTTF(idx + 1, "Arial", 26);
-            rankValue.setPosition(icon.width/2, icon.height/2)
+            rankValue.setPosition(icon.width / 2, icon.height / 2)
             icon.addChild(rankValue);
         }
 
@@ -700,7 +743,7 @@ var RechargeRankingListLayer = cc.Layer.extend({
 
         if (idx > 2) {
             var rankValue = new cc.LabelTTF(idx + 1, "Arial", 26);
-            rankValue.setPosition(icon.width/2, icon.height/2)
+            rankValue.setPosition(icon.width / 2, icon.height / 2)
             icon.addChild(rankValue);
         }
 

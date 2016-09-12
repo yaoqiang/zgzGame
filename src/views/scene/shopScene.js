@@ -136,6 +136,13 @@ var ShopGoldLayer = cc.Layer.extend({
 
         this.init();
 
+        //如果是苹果手机, 提示充值失败处理方式
+        UniversalController.getAppleStoreApproveState(function(data) {
+            if (!data.inReview) {
+                prompt.fadeMiddle('苹果充值偶尔会失败, 如果您充值失败, 请加微信: 7405510\n建议直接通过添加微信进行人工充值', 7)
+            }
+        });
+
     },
     init: function () {
         this.m_pTableView = new cc.TableView(this, cc.size(this.m_nTableWidth, this.m_nTableHeight));
