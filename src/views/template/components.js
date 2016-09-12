@@ -125,6 +125,7 @@ prompt.fade = function (txt, opts) {
  * 在屏幕中间提示语
  * @param txt
  * @param duration
+ * @params duration2 播放时长
  */
 prompt.fadeMiddle = function (txt, duration) {
     var winSize = cc.director.getWinSize();
@@ -266,18 +267,20 @@ var Toast = cc.Layer.extend({
         return _labelChild.getString();
     },
     setDuration:function(duration) {
-        _duration = duration;
+        this._duration = duration;
     },
     getDuration:function() {
-        return _duration;
+        return this._duration;
     },
+
     run:function(parent) {
         var childFadeInAction = new cc.FadeIn(0.5);
         var childFadeOutAction = new cc.FadeOut(0.5);
         var childDelayAction = new cc.DelayTime(this._duration);
         var toastDelayAction = new cc.DelayTime(this._duration + 1);
+        var self = this;
         var toastFinishAction = new cc.CallFunc(function() {
-            this.removeFromParent(true);
+            self.removeFromParent(true);
         }, this);
         var childSequenceAction = new cc.Sequence(childFadeInAction, childDelayAction, childFadeOutAction);
         var toastSequenceAction = new cc.Sequence(toastDelayAction, toastFinishAction);
