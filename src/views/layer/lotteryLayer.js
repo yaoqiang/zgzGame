@@ -132,7 +132,7 @@ LotteryLayer.prototype = {
                 playEffect(audio_common.Button_Click);
                 this.getBtnState = false;
 
-                //
+                //先转3圈
                 this.delayList = [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100];
 
                 this.selectedTag = 0;
@@ -140,7 +140,6 @@ LotteryLayer.prototype = {
                 var self = this;
 
                 UniversalController.lottery(function(data) {
-                    console.log(data);
 
                     if (data.code !== RETURN_CODE.OK) {
                         prompt.fadeMiddle(ERR_MESSAGE.getMessage(data.err))
