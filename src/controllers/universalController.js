@@ -511,3 +511,8 @@ UniversalController.getAppleStoreApproveState = function (cb) {
     });
 }
 
+UniversalController.getUserBattleRecordAnalysis = function (cb) {
+    pomelo.request(route.getUserBattleRecordAnalysis, {}, function (data) {
+        cb(data);
+    });
+}
