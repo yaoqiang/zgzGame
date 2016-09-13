@@ -1,8 +1,0 @@
-<component name="libraryTable">
-  <library name="NdComPlatform">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/plugins/nd91/proj.android/sdk/NdComPlatform.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>
