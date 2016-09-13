@@ -23,6 +23,17 @@ cocos compile -p android --android-studio --app-abi armeabi:armeabi-v7a -m relea
 cocos compile -p android --android-studio --app-abi armeabi:armeabi-v7a -m debug
 
 
+
+===
+# 安卓发布流程
+1、打包
+2、上传到七牛cdn，apk名字规则为：豆面扎股子_v1.4.apk，如果发布1.5则只修改版本号即可
+3、修改zgz-web/assets/js/appView.js的变量: targetUrl，只修改版本号即可；并更新到服务器
+
+
+
+
+
 ## 适配IPv6
 因工程基于cocos2d-js v3.10, 导致默认不支持IPv6
 下载cocos2d最新第三方库:[https://github.com/cocos2d/cocos2d-x-3rd-party-libs-bin/releases] 当前为v107
