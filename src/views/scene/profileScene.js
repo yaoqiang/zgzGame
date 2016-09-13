@@ -1240,6 +1240,23 @@ var BagLayer = cc.Layer.extend({
             //VIP
             case 4:
                 break;
+            case 5:
+                var itemIcon = new cc.Sprite("res/images/ic_macth_chuangguanjiangli_duijiangjuan.png");
+                itemIcon.setAnchorPoint(0.5, 1);
+                itemIcon.setPosition(x, 260);
+                itemIcon.scale = 0.85;
+
+                var itemLabel = new cc.LabelTTF(item.title, "Arial", 30);
+                itemLabel.setAnchorPoint(0.5, 1);
+                itemLabel.setPosition(x, 170);
+
+                var itemValueLabel = new cc.LabelTTF(valueLabel + unitLabel, "Arial", 26);
+                itemValueLabel.setAnchorPoint(0.5, 1);
+                itemValueLabel.setPosition(x, 110);
+                bg.addChild(itemIcon);
+                bg.addChild(itemLabel);
+                bg.addChild(itemValueLabel);
+                ;
         }
         return bg;
     }

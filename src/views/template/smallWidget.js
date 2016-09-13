@@ -200,15 +200,20 @@ var AlertBox = function (msg, callback, targe, notClose) {
 ///
 ///////////////
 var DialogMiddleNode = cc.Node.extend({
-    ctor: function (title, mode, callback) {
+    ctor: function (title, mode, callback, target, bgScale, offset) {
         this._super();
 //类变量
-        this.m_callback = callback;
+        this.callback = callback;
 
         this.mode = mode;
         this.m_msg = title;
 
         this.m_bRun = false;
+
+        this.offset = {h: 0, w: 0};
+
+        this.offset.w = offset !== undefined && offset.w !== undefined ? offset.w : 0;
+        this.offset.h = offset !== undefined && offset.h !== undefined ? offset.h : 0;
 
         this.init({});
     },
@@ -227,6 +232,8 @@ var DialogMiddleNode = cc.Node.extend({
         if (this.m_bRun) return;
         this.m_bRun = true;
 
+        var self = this;
+
         this._super();
         var sg = new MaskLayer(false);
         this.addChild(sg);
@@ -236,8 +243,8 @@ var DialogMiddleNode = cc.Node.extend({
         var bgString = "#dialog_bg_middle.png";
 
         this.bg = new cc.Sprite(bgString);
-        this.bg.x = winSize.width / 2.0;
-        this.bg.y = winSize.height / 2.0;
+        this.bg.x = winSize.width / 2 + this.offset.w;
+        this.bg.y = winSize.height / 2 + this.offset.h;
         this.bg.scale = 0.55;
         this.addChild(this.bg);
 
@@ -248,20 +255,48 @@ var DialogMiddleNode = cc.Node.extend({
         this.m_pLable.enableStroke(cc.color.WHITE, 1);
         this.m_pLable.color = cc.color.WHITE;
         //this.m_pLable.setHorizontalAlignment(cc.TEXT_ALIGNMENT_LEFT);
-        this.m_pLable.setPosition(winSize.width / 2, winSize.height / 2 + bgActualSize.height / 2 - 22);
+        this.m_pLable.setPosition(winSize.width / 2 + this.offset.w, winSize.height / 2 + bgActualSize.height / 2 - 22 + this.offset.h);
         this.addChild(this.m_pLable);
 
         //close
         var closeItem = new cc.MenuItemImage("#common_btn_shanchu.png", "#common_btn_shanchu.png", this.onExitCallback, this);
         closeItem.setScale(0.65);
-        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8;
-        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8;
+        closeItem.x = winSize.width / 2 + bgActualSize.width / 2 - 8 + this.offset.w;
+        closeItem.y = winSize.height / 2 + bgActualSize.height / 2 - 8 + this.offset.h;
         this.m_menu = new cc.Menu(closeItem);
         this.m_menu.tag = TAG_MENU;
         this.m_menu.x = 0;
         this.m_menu.y = 0;
         this.addChild(this.m_menu, 1);
         // menu end
+
+
+        //mode switch
+        if (this.mode == 1) {
+
+        } else if (this.mode == 2) {
+            //确定
+            this.okNormal = new cc.Sprite("#common_btn_lv.png");
+            this.okSelected = new cc.Sprite("#common_btn_lv.png");
+            this.okDisabled = new cc.Sprite("#common_btn_lv.png");
+            this.okButton = new cc.MenuItemSprite(this.okNormal, this.okSelected, this.okDisabled, function () {
+                self.callback.ensureCallback.call(self.target, function (close) {
+                    if (close) {
+                        self.onExitCallback();
+                    }
+                });
+            }, this);
+            //this.okButton.scale = 2.3;
+            var menuItem = new cc.Menu(this.okButton);
+            menuItem.setPosition(winSize.width / 2 - 120 + this.offset.w, winSize.height / 2 - 215 + this.offset.h);
+            menuItem.scale = 0.7;
+            this.addChild(menuItem, 2);
+
+            var butSize = this.okButton.getContentSize();
+            this.okLabel = new cc.LabelTTF(self.callback.ensureLabel ? self.callback.ensureLabel : "确定", "Arial", 22);
+            this.okLabel.setPosition(butSize.width / 2, butSize.height / 2);
+            this.okButton.addChild(this.okLabel);
+        }
 
     },
 
@@ -271,8 +306,8 @@ var DialogMiddleNode = cc.Node.extend({
         this.removeFromParent(true);
     }
 });
-var DialogMiddle = function (title, mode, callback) {
-    var box = new DialogMiddleNode(title, mode, callback);
+var DialogMiddle = function (title, mode, callback, target, bgScale, offset) {
+    var box = new DialogMiddleNode(title, mode, callback, target, bgScale, offset);
     return box;
 };
 

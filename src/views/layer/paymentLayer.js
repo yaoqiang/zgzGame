@@ -43,7 +43,7 @@ PaymentLayer.prototype = {
 
         var winSize = cc.director.getWinSize();
 
-        //default alipay
+        //default payment by alipay
         this.channel = CommonConf.PAYMENT.CHANNEL.alipay;
 
         var alipayX = 300, wxX = 640, y = 430;
@@ -100,6 +100,7 @@ PaymentLayer.prototype = {
             this.selected = CommonConf.PAYMENT.CHANNEL.alipay;
             this.alipayBg.setVisible(true);
             this.tipLabel.setString(this.tipDefaultString);
+            this.channel = CommonConf.PAYMENT.CHANNEL.alipay;
 
             //设置其他支付方式为未选择
             this.wxBg.setVisible(false);
