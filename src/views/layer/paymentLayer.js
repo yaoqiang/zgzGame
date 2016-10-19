@@ -49,8 +49,8 @@ PaymentLayer.prototype = {
         var alipayX = 300, wxX = 640, y = 430;
 
         //
-        this.alipayBg = new cc.Sprite("#dialog_content_bg.png");
-        this.alipayBg.scale = 5;
+        this.alipayBg = new cc.Sprite("res/images/common/ui_daquan.png");
+        this.alipayBg.scale = 1.3;
         this.alipayBg.setPosition(alipayX, y);
         //this.alipayBg.setVisible(false);
         this.box.bg.addChild(this.alipayBg);
@@ -65,8 +65,8 @@ PaymentLayer.prototype = {
         this.box.bg.addChild(alipayIcon);
 
         //
-        this.wxBg = new cc.Sprite("#dialog_content_bg.png");
-        this.wxBg.scale = 5;
+        this.wxBg = new cc.Sprite("res/images/common/ui_daquan.png");
+        this.wxBg.scale = 1.3;
         this.wxBg.setPosition(wxX, y);
         this.wxBg.setVisible(false);
         this.box.bg.addChild(this.wxBg);
@@ -124,4 +124,6 @@ PaymentLayer.prototype = {
 
 
 }
+
+
 

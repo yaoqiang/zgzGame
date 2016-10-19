@@ -68,6 +68,7 @@
         "src/views/layer/systemMessageLayer.js",
         "src/views/layer/upgradeLayer.js",
         "src/views/layer/paymentLayer.js",
+        "src/views/layer/paymentAppleLayer.js",
 
 
         "src/views/scene/loginScene.js",

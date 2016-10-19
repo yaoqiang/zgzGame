@@ -10,7 +10,7 @@ var ShopScene = cc.Scene.extend({
         FrameCache.addSpriteFrames(res.common_plist);
         FrameCache.addSpriteFrames(res.shop_plist);
         FrameCache.addSpriteFrames(res.index_plist);
-       // cc.spriteFrameCache.addSpriteFrames(res.shop_plist);
+        // cc.spriteFrameCache.addSpriteFrames(res.shop_plist);
 
         this.selected = 100;
 
@@ -137,13 +137,13 @@ var ShopGoldLayer = cc.Layer.extend({
         this.init();
 
         //如果是苹果手机, 提示充值失败处理方式
-        if (cc.sys.os == cc.sys.OS_IOS) {
-            UniversalController.getAppleStoreApproveState(function (data) {
-                if (!data.inReview) {
-                    prompt.fadeMiddle('苹果充值偶尔会失败, 如果您充值失败, 请加微信: 7405510\n建议直接通过添加微信进行人工充值', 7)
-                }
-            });
-        }
+        //if (cc.sys.os == cc.sys.OS_IOS) {
+        //    UniversalController.getAppleStoreApproveState(function (data) {
+        //        if (!data.inReview) {
+        //            prompt.fadeMiddle('苹果充值偶尔会失败, 如果您充值失败, 请加微信: 7405510\n建议直接通过添加微信进行人工充值', 7)
+        //        }
+        //    });
+        //}
 
     },
     init: function () {
@@ -274,17 +274,26 @@ var ShopGoldLayer = cc.Layer.extend({
         //设置购买物品信息
         this.productId = product.id;
 
-        //暂时iOS只支持苹果支付, 如果是安卓则接其他支付
-        if (cc.sys.os == cc.sys.OS_IOS) {
-            sdkbox.IAP.purchase(this.productId);
+        if (cc.sys.os === cc.sys.OS_IOS) {
+
+            //如果在apple app审核状态, 则不显示其他支付方式
+            UniversalController.getAppleStoreApproveState(function (data) {
+                if (!data.inReview) {
+                    var paymentLayer = new PaymentAppleLayer(self.productId);
+                    self.addChild(paymentLayer);
+                }
+                else {
+                    sdkbox.IAP.purchase(self.productId);
+                }
+            });
+
+
         } else {
             var paymentLayer = new PaymentLayer(this.productId);
             this.addChild(paymentLayer);
         }
 
     },
-
-
 
 
     paymentCallback: function () {
@@ -401,14 +410,14 @@ var ShopPropLayer = cc.Layer.extend({
 
         var innerIcon = null;
         if (product.title.indexOf('喇叭') > -1) {
-            innerIcon= new cc.Sprite("#common_icon_laba.png");
+            innerIcon = new cc.Sprite("#common_icon_laba.png");
             innerIcon.setAnchorPoint(0, 0.5);
             innerIcon.scale = 0.45;
             innerIcon.setPosition(xx + 55, this.m_nCelleHeight / 2 + 20);
             cell.addChild(innerIcon);
         }
         else if (product.title.indexOf('记牌器') > -1) {
-            innerIcon= new cc.Sprite("#jipaiqi.png");
+            innerIcon = new cc.Sprite("#jipaiqi.png");
             innerIcon.setAnchorPoint(0, 0.5);
             innerIcon.scale = 0.45;
             innerIcon.setPosition(xx + 55, this.m_nCelleHeight / 2 + 20);
@@ -473,17 +482,24 @@ var ShopPropLayer = cc.Layer.extend({
         //设置购买物品信息
         this.productId = product.id;
 
-        //暂时iOS只支持苹果支付, 如果是安卓则接其他支付
-        if (cc.sys.os == cc.sys.OS_IOS) {
-            sdkbox.IAP.purchase(this.productId);
+
+        if (cc.sys.os === cc.sys.OS_IOS) {
+            //如果在apple app审核状态, 则不显示其他支付方式
+            UniversalController.getAppleStoreApproveState(function (data) {
+                if (!data.inReview) {
+                    var paymentLayer = new PaymentAppleLayer(self.productId);
+                    self.addChild(paymentLayer);
+                }
+                else {
+                    sdkbox.IAP.purchase(self.productId);
+                }
+            });
         } else {
             var paymentLayer = new PaymentLayer(this.productId);
             this.addChild(paymentLayer);
         }
 
     },
-
-
 
 
     paymentCallback: function () {

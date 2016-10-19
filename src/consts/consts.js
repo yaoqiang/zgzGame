@@ -182,6 +182,7 @@ var ERR_MESSAGE = {
     9406: "房间已满员,请刷新列表",
 
     9501: "您的金币不足, 无法抽奖",
+    9502: "您的级别太低, 不能抽奖",
 }
 
 
@@ -333,7 +334,8 @@ var CommonConf = {
             upacp_wap: "upacp_wap",
             upacp_pc: "upacp_pc",
             cp_b2b: "cp_b2b",
-            wx: "wx"
+            wx: "wx",
+            apple_iap: "apple_iap"
         }
     },
 
