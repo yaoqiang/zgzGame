@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sdk">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/plugins/uc/proj.android/sdk/alipay_plugin.jar!/" />
-      <root url="jar://$PROJECT_DIR$/frameworks/js-bindings/cocos2d-x/plugin/plugins/uc/proj.android/sdk/UCGameSDK.jar!/" />
-    </CLASSES>
-    <SOURCES />
-  </library>
-</component>
