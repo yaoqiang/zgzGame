@@ -37,5 +37,17 @@ cocos compile -p android --android-studio --app-abi armeabi:armeabi-v7a -m debug
 ## 适配IPv6
 因工程基于cocos2d-js v3.10, 导致默认不支持IPv6
 下载cocos2d最新第三方库:[https://github.com/cocos2d/cocos2d-x-3rd-party-libs-bin/releases] 当前为v107
-把工程里framework/cocos2d-x/external/下的curl和websocket替换为第三方库的版本. 编译运行即可.
+把工程里framework/cocos2d-x/external/下的curl和websocket替换为第三方库的版本.
+然后注释: cocos2d-x/blob/v3/cocos/network/WebSocket.cpp 598行 // info.extensions = exts;
+编译运行即可.
 当前(2016.7.29)最新第三方库的websocket有bug,[http://forum.cocos.com/t/websocket/38447],需要关注社区尽快解决.
+
+
+
+
+
+-------------------------------
+
+## framework/runtime-src
+Classes里存放第三方的C++和自定义的C++
+proj.ios_mac下面的lib是存放ping++sdk的
