@@ -1,7 +1,7 @@
 var ChatConf = {
 
-    quick: ["快点吧,我等的花儿都谢了", "实在太厉害了你", "和你合作太愉快啦", "这牌也太不能看啦", "今天的炸弹不要钱吗?",
-        "等等,我想想", "只怕猪一样的队友", "别吵了,别吵了", "出来混迟早是要还的", "给个出牌的机会哇"],
+    quick: ["坐这套雕呢,牌也不出", "股子扎的好,全凭双眼瞟", "身体不好的往后站", "一把方主牌", "好好出,看打成你个死5的",
+        "缓缓的,思暮啥呢", "你会耍吧,看不出谁跟谁", "赢个芝麻,输个西瓜", "片3是漏气了,都不敢亮", "这股子扎的真精干"],
 
     express: [
         "ani/expression/changgui/chijing/", "ani/expression/changgui/ciyaxiao/", "ani/expression/changgui/daogao/", "ani/expression/changgui/facai/", "ani/expression/changgui/fennu/",

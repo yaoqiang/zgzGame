@@ -1,0 +1,1353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="about lottery and some api define">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Rocket_M.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Rocket_W.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Yasi1_M.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Yasi1_W.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Yasi2_M.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Yasi2_W.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Yasi3_M.mp3" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Yasi3_W.mp3" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.xcworkspace/xcuserdata/yaoqiang.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.ios_mac/zgzGame.xcodeproj/project.xcworkspace/xcuserdata/yaoqiang.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Bomb_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Bomb_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Bomb_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Bomb_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_10_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_10_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_10_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_10_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_2_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_2_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_2_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_2_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_3_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_3_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_3_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_3_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_4_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_4_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_4_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_4_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_5_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_5_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_5_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_5_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_6_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_6_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_6_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_6_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_7_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_7_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_7_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_7_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_8_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_8_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_8_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_8_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_9_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_9_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_9_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_9_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_A_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_A_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_A_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_A_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_J_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_J_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_J_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_J_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_K_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_K_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_K_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_K_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_Q_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_Q_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_Q_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Double_Q_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Four_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Four_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Four_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Four_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_SHUANG3_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_SHUANG3_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_SHUANGW_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_SHUANGW_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_SHUANGW_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_SHUANGW_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_10_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_10_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_10_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_10_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_2_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_2_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_2_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_2_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_3_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_3_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_3_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_3_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_4_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_4_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_4_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_4_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_5_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_5_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_5_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_5_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_6_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_6_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_6_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_6_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_7_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_7_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_7_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_7_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_8_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_8_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_8_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_8_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_9_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_9_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_9_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_9_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_A_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_A_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_A_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_A_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_J_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_J_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_J_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_J_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Joker1_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Joker1_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Joker2_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Joker2_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_K_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_K_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_K_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_K_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Q_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Q_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Q_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Single_Q_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Three_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Three_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Card_Three_W.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Card_Three_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_FAN_YOU3_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_FAN_YOU3_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Pass1_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Pass1_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Pass2_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Pass2_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_Pass3_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_Pass3_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_TALK_GUZI_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_TALK_GUZI_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_TALK_LIANG_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_TALK_LIANG_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/card/Audio_TALK_NOTHING_M.mp3" afterPath="$PROJECT_DIR$/res/audio/card/Audio_TALK_NOTHING_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog10_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog10_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog10_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog10_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog1_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog1_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog1_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog1_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog2_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog2_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog2_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog2_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog3_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog3_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog3_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog3_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog4_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog4_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog4_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog4_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog5_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog5_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog5_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog5_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog6_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog6_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog6_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog6_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog7_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog7_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog7_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog7_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog8_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog8_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog8_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog8_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog9_M.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog9_M.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog9_W.mp3" afterPath="$PROJECT_DIR$/res/audio/chat/Audio_Dialog9_W.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/pingpp.iml" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp/pingpp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/pingpp_one.iml" afterPath="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/lib/pingpp_one/pingpp_one.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/consts/chatConf.js" afterPath="$PROJECT_DIR$/src/consts/chatConf.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource.js" afterPath="$PROJECT_DIR$/src/resource.js" />
+    </list>
+    <list id="b4c2d095-8e15-429c-8432-16fc022c81a3" name="Revert: 替换pomelo客户端 (d22ed81376edc1d31fd8d3451cb1b79ee14810e0)" comment="" />
+    <ignored path="ZgzGame.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ZgzGame" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="globals.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/globals.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.77272725">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chatConf.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/consts/chatConf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gameEvents.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/consts/gameEvents.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gameScene.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="1402" column="36" selection-start-line="1402" selection-start-column="36" selection-end-line="1402" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resource.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/resource.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="209" column="2" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/authController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="network.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/network.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/assets/src/views/template/chatInGameLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/massageQueue.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/loginScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/settingLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/indexScrollLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/headerLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/chatInGameLayer.js" />
+        <option value="$PROJECT_DIR$/src/consts/gameEvents.js" />
+        <option value="$PROJECT_DIR$/src/views/poker/pokerLayerDefine.js" />
+        <option value="$PROJECT_DIR$/src/utils/cardUtil.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/bankruptLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/poker/bidMenuLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/gameLoaderScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/playerProfileLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/systemMessageLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/poker/pokerLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/smallWidget.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/indexScene.js" />
+        <option value="$PROJECT_DIR$/src/views/template/scrollCaptionLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/readyMenuLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/taskScene.js" />
+        <option value="$PROJECT_DIR$/src/views/template/components.js" />
+        <option value="$PROJECT_DIR$/src/events/gameMessageEvent.js" />
+        <option value="$PROJECT_DIR$/src/controllers/gameController.js" />
+        <option value="$PROJECT_DIR$/src/views/poker/fanOutMenuLayer.js" />
+        <option value="$PROJECT_DIR$/res/game_config.json" />
+        <option value="$PROJECT_DIR$/src/views/scene/privateRoomScene.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/lobbyScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/dailyTodoLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/template/playerLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/gameScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/EffectLayer.js" />
+        <option value="$PROJECT_DIR$/src/utils/utils.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/exchangeScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/lotteryLayer.js" />
+        <option value="$PROJECT_DIR$/src/consts/routes.js" />
+        <option value="$PROJECT_DIR$/src/controllers/universalController.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/rankingListScene.js" />
+        <option value="$PROJECT_DIR$/project.json" />
+        <option value="$PROJECT_DIR$/src/views/layer/paymentLayer.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/shopScene.js" />
+        <option value="$PROJECT_DIR$/src/views/layer/paymentAppleLayer.js" />
+        <option value="$PROJECT_DIR$/src/utils/cppCallback.js" />
+        <option value="$PROJECT_DIR$/src/views/scene/profileScene.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/consts/consts.js" />
+        <option value="$PROJECT_DIR$/src/consts/chatConf.js" />
+        <option value="$PROJECT_DIR$/src/resource.js" />
+        <option value="$PROJECT_DIR$/src/utils/network.js" />
+        <option value="$PROJECT_DIR$/src/controllers/authController.js" />
+        <option value="$PROJECT_DIR$/src/globals.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
+    <option name="y" value="23" />
+    <option name="width" value="1276" />
+    <option name="height" value="777" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files" />
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="events" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="consts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zgzGame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frameworks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="configurable.group.appearance" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="98" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="154" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="103" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="870" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="105" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="106" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="110" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="904" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="SearchEverywhereHistoryKey" value="glo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;GAMES&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/gameScene.js&#10;lotte&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/lotteryLayer.js&#10;g&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;lott&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/lotteryLayer.js&#10;shop&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/shopScene.js&#10;gameS&#9;FILE&#9;file://D:/playground/zgzGame/src/views/scene/gameScene.js&#10;exc&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;player&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/playerLayer.js&#10;da&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/dailyTodoLayer.js&#10;profile&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;cons&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;profi&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;taskS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/taskScene.js&#10;chati&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;CONS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;route&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/routes.js&#10;set&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;auth&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;hea&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;base&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;au&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;index&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/indexScene.js&#10;he&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/headerLayer.js&#10;wi&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/smallWidget.js&#10;aut&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/authController.js&#10;setting&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;sh&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/shopScene.js&#10;baseE&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/baseEvent.js&#10;CHA&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;ne&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/utils/network.js&#10;sett&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;chatl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/chatInGameLayer.js&#10;const&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;gameM&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;conf&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/config.json&#10;commonconf&#9;null&#9;null&#10;consts&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/consts/consts.js&#10;uni&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/universalController.js&#10;me&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/events/gameMessageEvent.js&#10;settingL&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;glob&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/globals.js&#10;profileS&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/profileScene.js&#10;lobb&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;ex&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/exchangeScene.js&#10;horl&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js&#10;se&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/layer/settingLayer.js&#10;lo&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/scene/lobbyScene.js&#10;gameCon&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/controllers/gameController.js&#10;hor&#9;FILE&#9;file:///Users/yaoqiang/workspace/zgzGame/src/views/template/hornLayer.js" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\playground\zgzGame\src\views\layer" />
+      <recent name="$PROJECT_DIR$/src/views/scene" />
+      <recent name="$PROJECT_DIR$/res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/res/fonts" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" uri="http://localhost:63342/ZgzGame/index.html">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="false" name="zgz" type="CocosJSB" factoryName="CocosJSB">
+      <option name="workingDirectory" value="E:\game\ZgzGame" />
+      <option name="scriptType" value="Javascript" />
+      <option name="module" value="ZgzGame" />
+      <option name="width" value="320" />
+      <option name="programParameters" value="" />
+      <option name="height" value="480" />
+      <option name="module" value="ZgzGame" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="user defined" created="1436801465697" text="gLastFanCardRecognization" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1436287366754" text="showCardPosition" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1435075797697" text="gPlayer" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1434465254454" text="gLobbyId" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1434465232846" text="GameController.leave" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1434464777576" text="GameController.join" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433346163169" text="lobbyScene" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433346107179" text="LobbyScene" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433261037442" text="&quot;onJoin&quot;" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433260114112" text="GameScene" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433258838790" text="HeaderLayer" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433174727305" text="questionsScene" recursive="true" caseInsensitive="true" type="JavaScript" history="1" />
+    <searchConfiguration name="user defined" created="1433173076304" text="questionsScene" recursive="true" caseInsensitive="true" type="XML" history="1" />
+    <searchConfiguration name="user defined" created="1433173061604" text="questionsScene.js" recursive="true" caseInsensitive="true" type="XML" history="1" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b7ea236a-abcd-4b31-b243-d1e50b5cbe85" name="Default" comment="" />
+      <created>1416970661300</created>
+      <option name="number" value="Default" />
+      <updated>1416970661300</updated>
+      <workItem from="1469602579013" duration="1990000" />
+      <workItem from="1469782628534" duration="1848000" />
+      <workItem from="1471323144680" duration="275000" />
+      <workItem from="1471416970898" duration="3332000" />
+      <workItem from="1472006968242" duration="685000" />
+      <workItem from="1473230668497" duration="3083000" />
+    </task>
+    <task id="LOCAL-00046" summary="remove log">
+      <created>1459736416046</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1459736416046</updated>
+    </task>
+    <task id="LOCAL-00047" summary="细节修改">
+      <created>1459954767838</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1459954767838</updated>
+    </task>
+    <task id="LOCAL-00048" summary="add payment failed request for pingpp">
+      <created>1459956827501</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1459956827501</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fixed reconnect alert can close bug">
+      <created>1460073947843</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1460073947843</updated>
+    </task>
+    <task id="LOCAL-00050" summary="修改喇叭字体为白色: 后续如果有VIP 再卖变色喇叭..&#10;调整牌局布局. (聊天表情放右下角), 上方调整.">
+      <created>1461508989890</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1461508989890</updated>
+    </task>
+    <task id="LOCAL-00051" summary="牌局结构调整">
+      <created>1461590571672</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1461590571673</updated>
+    </task>
+    <task id="LOCAL-00052" summary="更新资源, 添加级别icon">
+      <created>1461626014345</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1461626014346</updated>
+    </task>
+    <task id="LOCAL-00053" summary="更新资源">
+      <created>1461626373906</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1461626373906</updated>
+    </task>
+    <task id="LOCAL-00054" summary="logo, trumpet stay second">
+      <created>1461680166411</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1461680166412</updated>
+    </task>
+    <task id="LOCAL-00055" summary="处理安卓每日自动请求一次版本更新.">
+      <created>1461682160481</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1461682160481</updated>
+    </task>
+    <task id="LOCAL-00056" summary="leave click event bug fixed">
+      <created>1461683036625</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1461683036625</updated>
+    </task>
+    <task id="LOCAL-00057" summary="leave click event bug fixed">
+      <created>1461683178830</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1461683178830</updated>
+    </task>
+    <task id="LOCAL-00058" summary="公告调整">
+      <created>1461764519988</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1461764519989</updated>
+    </task>
+    <task id="LOCAL-00059" summary="apple icon, and version to 1.2">
+      <created>1461856687215</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1461856687216</updated>
+    </task>
+    <task id="LOCAL-00060" summary="android res">
+      <created>1461857997216</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1461857997217</updated>
+    </task>
+    <task id="LOCAL-00061" summary="把版本更新放在Index onEnter. 以免其他事件导致UI冲突">
+      <created>1461884963353</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1461884963353</updated>
+    </task>
+    <task id="LOCAL-00062" summary="修复重回游戏后, gActor.append没有被赋值导致牌型识别错误的bug.(双3飞不了)">
+      <created>1463011603221</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1463011603223</updated>
+    </task>
+    <task id="LOCAL-00063" summary="同步rank">
+      <created>1463012539047</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1463012539047</updated>
+    </task>
+    <task id="LOCAL-00064" summary="ignore .ds_store">
+      <created>1463094610810</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1463094610810</updated>
+    </task>
+    <task id="LOCAL-00065" summary="ignore .ds_store">
+      <created>1463094880685</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1463094880685</updated>
+    </task>
+    <task id="LOCAL-00066" summary="客户端apple IAP改为http方式">
+      <created>1463964430025</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1463964430025</updated>
+    </task>
+    <task id="LOCAL-00067" summary="找回密码">
+      <created>1464136754626</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1464136754626</updated>
+    </task>
+    <task id="LOCAL-00068" summary="调整支付提示,">
+      <created>1464272044092</created>
+      <option name="number" value="00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1464272044093</updated>
+    </task>
+    <task id="LOCAL-00069" summary="邀请码,其他">
+      <created>1466122109842</created>
+      <option name="number" value="00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1466122109846</updated>
+    </task>
+    <task id="LOCAL-00070" summary="调整个人信息">
+      <created>1466641389346</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1466641389346</updated>
+    </task>
+    <task id="LOCAL-00071" summary="喇叭微调">
+      <created>1466775917184</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1466775917184</updated>
+    </task>
+    <task id="LOCAL-00072" summary="喇叭微调, 支持换行, 修改为显示3条历史记录.">
+      <created>1467160906242</created>
+      <option name="number" value="00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1467160906242</updated>
+    </task>
+    <task id="LOCAL-00073" summary="去掉客服电话信息, 转留QQ微信公众号联系方式;&#10;邀请注册奖励调整, 去掉以邀请码邀请, 直接改为手机号邀请. 其他细节调整;">
+      <created>1467540741481</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1467540741482</updated>
+    </task>
+    <task id="LOCAL-00074" summary="调整安卓每日首次登陆时检测版本的接口, 1.3修改为1.3的接口;">
+      <created>1467541787141</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1467541787141</updated>
+    </task>
+    <task id="LOCAL-00075" summary="兑换变量单词纠错修改; 邀请奖励列表">
+      <created>1467593956161</created>
+      <option name="number" value="00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1467593956161</updated>
+    </task>
+    <task id="LOCAL-00076" summary="完善邀请奖励框">
+      <created>1467594597455</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1467594597455</updated>
+    </task>
+    <task id="LOCAL-00077" summary="客户端大厅&amp;房间改造">
+      <created>1467678669531</created>
+      <option name="number" value="00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1467678669531</updated>
+    </task>
+    <task id="LOCAL-00078" summary="字体更换, 其他细节">
+      <created>1467765011436</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1467765011436</updated>
+    </task>
+    <task id="LOCAL-00079" summary="各种调整..每日首次登陆处理, 其他">
+      <created>1467851933955</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1467851933955</updated>
+    </task>
+    <task id="LOCAL-00080" summary="破产补助和五人局双三认输认输">
+      <created>1467937880568</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1467937880569</updated>
+    </task>
+    <task id="LOCAL-00081" summary="认输和破产补助调整.">
+      <created>1467984980205</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1467984980206</updated>
+    </task>
+    <task id="LOCAL-00082" summary="牌局结束后向客户端发送各玩家手牌, remainingCardsOfActors;&#10;启动动画公司名换为www.zaguzi.com">
+      <created>1468030657071</created>
+      <option name="number" value="00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1468030657071</updated>
+    </task>
+    <task id="LOCAL-00083" summary="牌局中玩家信息框, 内容整体往左移动一点, 之前简介太长会超出框.">
+      <created>1468031586735</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1468031586736</updated>
+    </task>
+    <task id="LOCAL-00084" summary="邀请奖励添加tip;&#10;商店道具的记牌器加icon;&#10;系统消息如果数据带url,则点击可弹出webview查看网页内容;">
+      <created>1468063838412</created>
+      <option name="number" value="00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1468063838413</updated>
+    </task>
+    <task id="LOCAL-00085" summary="牌局结束后 显示各玩家手牌">
+      <created>1468117701524</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1468117701524</updated>
+    </task>
+    <task id="LOCAL-00086" summary="-----------------完美分割线----------------&#10;私人场和其他细节">
+      <created>1468340017910</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1468340017911</updated>
+    </task>
+    <task id="LOCAL-00087" summary="调整代码,适配native, checkbox需要通过get... set...来设置/获取状态;">
+      <created>1468420449747</created>
+      <option name="number" value="00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1468420449749</updated>
+    </task>
+    <task id="LOCAL-00088" summary="私人场增加金币限制, 普通场增加记牌器是否可用icon">
+      <created>1468503567819</created>
+      <option name="number" value="00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1468503567824</updated>
+    </task>
+    <task id="LOCAL-00089" summary="about lottery and some api define">
+      <created>1471426572722</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1471426572723</updated>
+    </task>
+    <task id="LOCAL-00090" summary="update android conf">
+      <created>1473692146286</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1473692146287</updated>
+    </task>
+    <task id="LOCAL-00091" summary="fixed shop ui bug">
+      <created>1473717187315</created>
+      <option name="number" value="00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1473717187315</updated>
+    </task>
+    <task id="LOCAL-00092" summary="添加苹果支付宝支付, 优化商城细节, 抽奖提示">
+      <created>1476921367467</created>
+      <option name="number" value="00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1476921367471</updated>
+    </task>
+    <task id="LOCAL-00093" summary="add some..">
+      <created>1477266779392</created>
+      <option name="number" value="00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1477266779393</updated>
+    </task>
+    <task id="LOCAL-00094" summary="update txt">
+      <created>1477266990823</created>
+      <option name="number" value="00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1477266990823</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="11213000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="4" y="23" width="1276" height="777" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27410358" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37518248" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25255474" sideWeight="0.50278884" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33576643" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47737226" sideWeight="0.49402392" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35474452" sideWeight="0.49721116" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978212" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Particles&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Images&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Physics&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Animations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer.New" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="ARAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette.New&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="NodeAnimations&#9;" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
+    <MESSAGE value="喇叭微调, 支持换行, 修改为显示3条历史记录." />
+    <MESSAGE value="去掉客服电话信息, 转留QQ微信公众号联系方式;&#10;邀请注册奖励调整, 去掉以邀请码邀请, 直接改为手机号邀请. 其他细节调整;" />
+    <MESSAGE value="调整安卓每日首次登陆时检测版本的接口, 1.3修改为1.3的接口;" />
+    <MESSAGE value="兑换变量单词纠错修改; 邀请奖励列表" />
+    <MESSAGE value="完善邀请奖励框" />
+    <MESSAGE value="客户端大厅&amp;房间改造" />
+    <MESSAGE value="字体更换, 其他细节" />
+    <MESSAGE value="各种调整..每日首次登陆处理, 其他" />
+    <MESSAGE value="破产补助和五人局双三认输认输" />
+    <MESSAGE value="认输和破产补助调整." />
+    <MESSAGE value="牌局结束后向客户端发送各玩家手牌, remainingCardsOfActors" />
+    <MESSAGE value="牌局结束后向客户端发送各玩家手牌, remainingCardsOfActors;&#10;启动动画公司名换www.zaguzi.com" />
+    <MESSAGE value="牌局结束后向客户端发送各玩家手牌, remainingCardsOfActors;&#10;启动动画公司名换为www.zaguzi.com" />
+    <MESSAGE value="牌局中玩家信息框, 内容整体往左移动一点, 之前简介太长会超出框." />
+    <MESSAGE value="邀请奖励添加tip;&#10;商店道具的记牌器加icon;&#10;系统消息如果数据带url,则点击可弹出webview查看网页内容;" />
+    <MESSAGE value="牌局结束后 显示各玩家手牌" />
+    <MESSAGE value="-----------------完美分割线----------------&#10;私人场和其他细节" />
+    <MESSAGE value="调整代码,适配native, checkbox需要通过get... set...来设置/获取状态;" />
+    <MESSAGE value="私人场增加金币限制, 普通场增加记牌器是否可用icon" />
+    <MESSAGE value="about lottery and some api define" />
+    <MESSAGE value="update android conf" />
+    <MESSAGE value="fixed shop ui bug" />
+    <MESSAGE value="添加苹果支付宝支付, 优化商城细节, 抽奖提示" />
+    <MESSAGE value="add some.." />
+    <MESSAGE value="update txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="update txt" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/views/layer/settingLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="135" column="48" selection-start-line="135" selection-start-column="26" selection-end-line="135" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/notificationLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="215" column="16" selection-start-line="215" selection-start-column="13" selection-end-line="215" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/smallWidget.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="284" column="46" selection-start-line="284" selection-start-column="46" selection-end-line="284" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/avatarSelectorLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/bottomBtnLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="64" selection-start-line="105" selection-start-column="64" selection-end-line="105" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/components.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/cocos2d/core/labelttf/CCLabelTTF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="444" column="26" selection-start-line="444" selection-start-column="21" selection-end-line="444" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/ios/zgzGame-mobile.app/src/consts/consts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66416043">
+          <caret line="169" column="24" selection-start-line="169" selection-start-column="24" selection-end-line="169" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/bankruptLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/game_config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/exchangeTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/profileTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/rankingListTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/taskTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="58" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/lobbyScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="177" column="28" selection-start-line="177" selection-start-column="28" selection-end-line="177" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/privateRoomScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="10" selection-start-line="125" selection-start-column="10" selection-end-line="125" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/loginScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/exchangeScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="670" column="63" selection-start-line="670" selection-start-column="63" selection-end-line="670" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/scripting/js-bindings/script/ccui/jsb_cocos2d_ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3317757">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-html5/extensions/ccui/base-classes/UIScale9Sprite.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51122195">
+          <caret line="228" column="69" selection-start-line="228" selection-start-column="69" selection-end-line="228" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/taskScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45618558">
+          <caret line="193" column="37" selection-start-line="193" selection-start-column="37" selection-end-line="193" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/rankingListScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="355" column="0" selection-start-line="355" selection-start-column="0" selection-end-line="355" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/universalController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="253" column="23" selection-start-line="253" selection-start-column="23" selection-end-line="253" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.5">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/runtime-src/proj.android-studio/app/src/org/cocos2dx/javascript/AppActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54332554">
+          <caret line="98" column="77" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/ios/zgzGame-mobile.app/script/ccui/jsb_cocos2d_ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3105023">
+          <caret line="175" column="25" selection-start-line="175" selection-start-column="12" selection-end-line="175" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/shopTabLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47945204">
+          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/lotteryLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="69" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/shopScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="145" column="11" selection-start-line="145" selection-start-column="11" selection-end-line="145" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/paymentLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/layer/paymentAppleLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/cppCallback.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38641685">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/profileScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3363774">
+          <caret line="660" column="0" selection-start-line="660" selection-start-column="0" selection-end-line="660" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/external/websockets/include/ios/libwebsockets.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frameworks/cocos2d-x/cocos/network/WebSocket.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="597" column="29" selection-start-line="597" selection-start-column="29" selection-end-line="597" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7777777">
+          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/cards/cardRecognization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06849315">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/soundManger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="38" column="4" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/gameEvents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/events/gameMessageEvent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="168" column="47" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/poker/pokerLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6487119">
+          <caret line="271" column="43" selection-start-line="271" selection-start-column="43" selection-end-line="271" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/scene/gameScene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="1402" column="36" selection-start-line="1402" selection-start-column="36" selection-end-line="1402" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/template/balanceLayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="9" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/consts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7025761">
+          <caret line="123" column="30" selection-start-line="123" selection-start-column="30" selection-end-line="123" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/gameController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/consts/chatConf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="209" column="2" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/network.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/authController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/globals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77272725">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

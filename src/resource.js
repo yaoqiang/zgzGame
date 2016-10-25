@@ -206,11 +206,6 @@ var audio_fanmenu = {
         ["res/audio/card/Audio_Pass1_M.mp3", "res/audio/card/Audio_Pass1_W.mp3"],
         ["res/audio/card/Audio_Pass2_M.mp3", "res/audio/card/Audio_Pass2_W.mp3"],
         ["res/audio/card/Audio_Pass3_M.mp3", "res/audio/card/Audio_Pass3_W.mp3"]
-    ],
-    Yasi : [
-        ["res/audio/card/Audio_Yasi1_M.mp3", "res/audio/card/Audio_Yasi1_W.mp3"],
-        ["res/audio/card/Audio_Yasi2_M.mp3", "res/audio/card/Audio_Yasi2_W.mp3"],
-        ["res/audio/card/Audio_Yasi3_M.mp3", "res/audio/card/Audio_Yasi3_W.mp3"]
     ]
 };
 
@@ -227,8 +222,8 @@ var audio_chat = [
     ["res/audio/chat/Audio_Dialog10_M.mp3", "res/audio/chat/Audio_Dialog10_W.mp3"],
 ];
 var PassText = [
-    "pass！",
-    "不要！",
+    "不出！",
+    "过！",
     "过！"
 ]
 
