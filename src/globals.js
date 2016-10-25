@@ -1,29 +1,29 @@
 var gGameSvrAddr = {
-    host: '101.200.128.237',
-    //host: '127.0.0.1',
-    //host: '101.201.154.38',
+    env: 'qa',
+    //env: 'dev',
+    //env: 'prod',
     port: 3014
 };
 
 var gWebSvrAddr = {
-    host: '101.200.128.237',
-    //host: '127.0.0.1',
-    //host: '101.201.154.38',
+    env: 'qa',
+    //env: 'dev',
+    //env: 'prod',
     port: 3001
 }
 
 var gGameHttpAddr = {
-    host: '101.200.128.237',
-    //host: '127.0.0.1',
-    //host: '101.201.154.38',
+    env: 'qa',
+    //env: 'dev',
+    //env: 'prod',
     port: 1337
 }
 
 var gGameServerUrl = function () {
-    if (gGameSvrAddr.host.indexOf('101.200.128.237') > -1) {
+    if (gGameSvrAddr.env.indexOf('qa') > -1) {
         return {host: "test.apigame1.zaguzi.com", port: 3014};
     }
-    else if (gGameSvrAddr.host.indexOf('101.201.154.38') > -1) {
+    else if (gGameSvrAddr.env.indexOf('prod') > -1) {
         return {host: "apigame1.zaguzi.com", port: 3014};
     }
     else {
@@ -32,10 +32,10 @@ var gGameServerUrl = function () {
 }
 
 var gWebServerUrl = function () {
-    if (gWebSvrAddr.host.indexOf('101.200.128.237') > -1) {
+    if (gWebSvrAddr.env.indexOf('qa') > -1) {
         return "http://test.apigame2.zaguzi.com:3001/"
     }
-    else if (gWebSvrAddr.host.indexOf('101.201.154.38') > -1) {
+    else if (gWebSvrAddr.env.indexOf('prod') > -1) {
         return "http://apigame2.zaguzi.com:3001/"
     }
     else {
@@ -44,10 +44,10 @@ var gWebServerUrl = function () {
 }
 
 var gGameHttpServerUrl = function () {
-    if (gGameHttpAddr.host.indexOf('101.200.128.237') > -1) {
+    if (gGameHttpAddr.env.indexOf('qa') > -1) {
         return "http://test.apigame3.zaguzi.com:1337/"
     }
-    else if (gGameHttpAddr.host.indexOf('101.201.154.38') > -1) {
+    else if (gGameHttpAddr.env.indexOf('prod') > -1) {
         return "http://apigame3.zaguzi.com:1337/"
     }
     else {
