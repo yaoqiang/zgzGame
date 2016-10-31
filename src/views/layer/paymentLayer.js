@@ -64,6 +64,12 @@ PaymentLayer.prototype = {
         alipayIcon.setPosition(alipayX, y);
         this.box.bg.addChild(alipayIcon);
 
+        var recommendtip = new cc.Sprite("res/images/recommendtip.png");
+        recommendtip.x = 75;
+        recommendtip.y = 65;
+        recommendtip.scale = 0.5
+        alipayIcon.addChild(recommendtip);
+
         //
         this.wxBg = new cc.Sprite("res/images/common/ui_daquan.png");
         this.wxBg.scale = 1.3;

@@ -99,15 +99,15 @@ var HeaderLayer = cc.Layer.extend({
 
         //邮件
         var messageNormal = new cc.Sprite("#index_youjian_icon.png");
-        messageNormal.attr({scale: 0.65});
+        messageNormal.attr({scale: 0.6});
         var messageSelected = new cc.Sprite("#index_youjian_icon.png");
-        messageSelected.attr({scale: 0.7});
+        messageSelected.attr({scale: 0.65});
         var messageDisabled = new cc.Sprite("#index_youjian_icon.png");
 
         var messageMenu = new cc.MenuItemSprite(messageNormal, messageSelected, messageDisabled, this.onMessageBtnClick, this);
         messageMenu.setAnchorPoint(0, 0.5);
         var menu = new cc.Menu(messageMenu);
-        menu.setPosition(95, rightTopBg.height / 2 + 10);
+        menu.setPosition(95, rightTopBg.height / 2 + 15);
         rightTopBg.addChild(menu);
 
         var uiHighlightSystemMessage = Storage.get(CommonConf.LOCAL_STORAGE.UI_HIGHLIGHT_SYSTEM_MESSAGE);
@@ -129,16 +129,16 @@ var HeaderLayer = cc.Layer.extend({
 
         //setting
         var settingNormal = new cc.Sprite("#index_shezhi_icon.png");
-        doNormal.attr({scale: 0.9});
+        settingNormal.attr({scale: 0.6});
         var settingSelected = new cc.Sprite("#index_shezhi_icon.png");
-        doSelected.attr({scale: 1});
+        settingSelected.attr({scale: 0.65});
         var settingDisabled = new cc.Sprite("#index_shezhi_icon.png");
 
         // create help button and added it to header
-        var doSetButton = new cc.MenuItemSprite(settingNormal, settingSelected, settingDisabled, this.onSetButton, this);
-        doSetButton.setAnchorPoint(0, 0.5);
-        var menu = new cc.Menu(doSetButton);
-        menu.setPosition(170, rightTopBg.height / 2);
+        var setButton = new cc.MenuItemSprite(settingNormal, settingSelected, settingDisabled, this.onSetButton, this);
+        setButton.setAnchorPoint(0, 0.5);
+        var menu = new cc.Menu(setButton);
+        menu.setPosition(170, rightTopBg.height / 2 + 15);
         rightTopBg.addChild(menu);
 
 

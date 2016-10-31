@@ -78,18 +78,25 @@ var indexScrollLayer = cc.Layer.extend({
     },
 
     createButton: function (lobbyStr, numStr, x, y, tag) {
+        var imgString = "index_normal.png";
+        if (tag === 1) {
+            imgString = "index_ingot.png";
+        }
+        else if (tag === 3) {
+            imgString = "index_private.png";
+        }
         var button = new ccui.Button();
         button.setAnchorPoint(0.5, 0.5);
         button.setTouchEnabled(true);
-        button.loadTextures("index_mianban_05.png", "index_mianban_05.png", "index_mianban_05.png", ccui.Widget.PLIST_TEXTURE);
+        button.loadTextures(imgString, imgString, imgString, ccui.Widget.PLIST_TEXTURE);
         button.addTouchEventListener(this.buttoTouchEvent, this);
         button.x = x;
         button.y = y;
         button.tag = tag;
-        button.setScale(0.8);
+        button.setScale(0.54);
         //label
         var labelBg = new cc.Sprite("#index_mianban_08.png");
-        labelBg.setPosition(button.width / 2, button.height / 2 - 110);
+        labelBg.setPosition(button.width / 2, button.height / 2 - 180);
         //labelBg.scale = 0.8;
 
         //var label = new cc.LabelTTF(lobbyStr, "Arial", 30);
