@@ -93,9 +93,10 @@ var LobbyLayer = cc.Layer.extend({
         this.m_nScrollY =  50;
 
         //background
-        var bg = new cc.Sprite("#common_bg_beijing.png");
+        //var bg = new cc.Sprite("#common_bg_beijing.png");
+        var bg = new cc.Sprite("res/images/LoginBackView.jpg");
         bg.setPosition(winSize.width/2, winSize.height/2);
-        bg.scale = ZGZ.SCALE * 10;
+        bg.scale = ZGZ.SCALE * 1;
         this.addChild(bg);
 
         // Create the scrollview
