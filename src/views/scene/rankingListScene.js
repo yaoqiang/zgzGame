@@ -415,7 +415,7 @@ var GodRankingListLayer = cc.Layer.extend({
         rulesBtn.scale = 0.6;
 
         var butSize = rulesBtn.getContentSize();
-        var okLabel = new cc.LabelTTF("上榜规则", "Arial", 22);
+        var okLabel = new cc.LabelTTF("查看奖励", "Arial", 22);
         okLabel.setPosition(butSize.width / 2, butSize.height / 2);
         rulesBtn.addChild(okLabel);
 
